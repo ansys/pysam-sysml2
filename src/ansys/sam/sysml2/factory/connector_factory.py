@@ -21,13 +21,41 @@
 # SOFTWARE.
 
 """
-Entry point of the SysML Library for SAM tool.
+File created on Tue Dec 03 2024.
 
-File <__init__.py> created on Mon Dec 09 2024
+Thanks to this class, we provide an interface for user.
+This interface intent to protect user of this library of any
+future changes in the code (New object or other ...)
 """
-import importlib.metadata as importlib_metadata
+from ansys.sam.sysml2.connector.sysml_connector import SysMLConnector
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
 
-from .connector.sysml_connector import SysMLConnector
-from .factory.connector_factory import ConnectorFactory
+class ConnectorFactory:
+    """Interface for connector creation.For specific SysML Models tools."""
+
+    def __init__(self):
+        pass
+
+    @staticmethod
+    def create_ansys_sysml_connector(
+        server_url: str = "http://localhost:8443",
+        organization_id: str = None,
+        token: str = None,
+    ) -> SysMLConnector:
+        """
+        Create a SysML Connector for Ansys Standard API.
+
+        Parameters
+        ----------
+        server_url : str, optional
+            The API base URL, by default "http://localhost:8443"
+        organization_id : str, optional
+            organization ID, by default None
+        token : str, optional
+            Your auth token, by default None
+
+        Returns
+        -------
+        SysMLConnector
+            The initialized Connector
+        """

@@ -21,13 +21,20 @@
 # SOFTWARE.
 
 """
-Entry point of the SysML Library for SAM tool.
+File created on Tue Dec 03 2024.
 
-File <__init__.py> created on Mon Dec 09 2024
+This class is used to store all information, and is used to create a new requests.
 """
-import importlib.metadata as importlib_metadata
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+from dataclasses import dataclass, field
 
-from .connector.sysml_connector import SysMLConnector
-from .factory.connector_factory import ConnectorFactory
+
+@dataclass
+class HttpRequest:
+    """HttpRequest class store data for a future HTTP request."""
+
+    url: str
+    data: dict = field(default_factory=dict())
+    params: dict = field(default_factory=dict())
+    headers: dict = field(default_factory=dict())
+    cookies: dict = field(default_factory=dict())

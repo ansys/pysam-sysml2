@@ -20,14 +20,38 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-Entry point of the SysML Library for SAM tool.
+"""File created on Tue Dec 03 2024."""
 
-File <__init__.py> created on Mon Dec 09 2024
-"""
-import importlib.metadata as importlib_metadata
+from overrides import overrides
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+from .route_dispatcher import RouteDispatcher
 
-from .connector.sysml_connector import SysMLConnector
-from .factory.connector_factory import ConnectorFactory
+
+class AnsysRouteDispatcher(RouteDispatcher):
+    """Class dedicated to Ansys specific API route."""
+
+    _organization_id: str = None
+
+    def __init__(self, server_url: str, organization_id: str = None) -> None:
+        super().__init__(server_url)
+
+    @overrides
+    def build_endpoint(self, url: str):
+        """
+        build_endpoint create the full URL using the given API endpoint.
+
+        Parameters
+        ----------
+        end_point : str
+            The endpoint
+        """
+
+    def set_organization(self, organization_id: str):
+        """
+        set_organization update the organization Id.
+
+        Parameters
+        ----------
+        organization_id : str
+            New organization Id
+        """

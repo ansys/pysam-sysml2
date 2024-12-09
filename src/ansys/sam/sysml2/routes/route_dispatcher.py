@@ -20,14 +20,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-Entry point of the SysML Library for SAM tool.
+"""File created on Tue Dec 03 2024."""
 
-File <__init__.py> created on Mon Dec 09 2024
-"""
-import importlib.metadata as importlib_metadata
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+class RouteDispatcher:
+    """RouteDispatcher class create the full url for a SysML Standard API."""
 
-from .connector.sysml_connector import SysMLConnector
-from .factory.connector_factory import ConnectorFactory
+    _server_url: str
+
+    def __init__(self, server_url: str) -> None:
+        self._server_url = server_url
+
+    def build_endpoint(self, end_point: str):
+        """
+        build_endpoint create the full URL using the given API endpoint.
+
+        Parameters
+        ----------
+        end_point : str
+            The endpoint
+        """

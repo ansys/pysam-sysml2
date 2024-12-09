@@ -20,14 +20,42 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-Entry point of the SysML Library for SAM tool.
+"""File created on Tue Dec 03 2024."""
 
-File <__init__.py> created on Mon Dec 09 2024
-"""
-import importlib.metadata as importlib_metadata
+from __future__ import annotations
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+from overrides import overrides
 
-from .connector.sysml_connector import SysMLConnector
-from .factory.connector_factory import ConnectorFactory
+from ansys.sam.sysml2.core.http_request import HttpRequest
+
+from .sysml_auth import SysMLAuth
+
+
+class AnsysAuth(SysMLAuth):
+    """AnsysAuth provide the correct authentication for Ansys Standard API implementation."""
+
+    _token: str
+
+    def __init__(self, token: str) -> None:
+        super().__init__()
+
+    @overrides
+    def update_request(self, request: HttpRequest) -> None:
+        """
+        update_request Implement the `SysMLAuth` method, for the needs of Ansys security.
+
+        Parameters
+        ----------
+        request : HttpRequest
+            The update to update
+        """
+
+    def update_token(token: str) -> None:
+        """
+        update_token take the new token and update it.
+
+        Parameters
+        ----------
+        token : str
+            The new token
+        """

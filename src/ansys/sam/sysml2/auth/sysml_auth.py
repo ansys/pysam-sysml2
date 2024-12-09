@@ -20,14 +20,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-Entry point of the SysML Library for SAM tool.
+"""File created on Tue Dec 03 2024."""
 
-File <__init__.py> created on Mon Dec 09 2024
-"""
-import importlib.metadata as importlib_metadata
+from ansys.sam.sysml2.core.http_request import HttpRequest
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+from .connector_auth import ConnectorAuth
 
-from .connector.sysml_connector import SysMLConnector
-from .factory.connector_factory import ConnectorFactory
+
+class SysMLAuth(ConnectorAuth):
+    """SysMLAuth Interface for all SysML Auth classes."""
+
+    def __init__(self) -> None:
+        super().__init__()
+
+    def update_request(self, request: HttpRequest) -> None:
+        """
+        update_request add the needed field for request authentication.
+
+        Parameters
+        ----------
+        request : HttpRequest
+            The request to update
+        """

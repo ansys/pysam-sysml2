@@ -20,14 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-Entry point of the SysML Library for SAM tool.
+"""File created on Tue Dec 03 2024."""
 
-File <__init__.py> created on Mon Dec 09 2024
-"""
-import importlib.metadata as importlib_metadata
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+class ConnectorAuth:
+    """Top interface for connector authentication classes."""
 
-from .connector.sysml_connector import SysMLConnector
-from .factory.connector_factory import ConnectorFactory
+    def __init__(self) -> None: ...

@@ -20,14 +20,29 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-Entry point of the SysML Library for SAM tool.
+"""File created on Tue Dec 03 2024."""
 
-File <__init__.py> created on Mon Dec 09 2024
-"""
-import importlib.metadata as importlib_metadata
+from ansys.sam.sysml2.auth.connector_auth import ConnectorAuth
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
 
-from .connector.sysml_connector import SysMLConnector
-from .factory.connector_factory import ConnectorFactory
+class ModelConnector:
+    """ModelConnector is the more generic connector for all type of models sources."""
+
+    _authenticator: ConnectorAuth = None
+
+    def __init__(self, authenticator: ConnectorAuth) -> None: ...
+
+    def get_project_data(self, project_id: str) -> object:
+        """
+        get_project_data collect information of the project and project elements.
+
+        Parameters
+        ----------
+        project_id : str
+            The Id of the project
+
+        Returns
+        -------
+        object
+            All information collected.
+        """
