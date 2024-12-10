@@ -20,43 +20,38 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""File created on Tue Dec 03 2024."""
+"""File  created on Tue Dec 10 2024."""
 
-from overrides import overrides
+import pytest
 
-from .route_dispatcher import RouteDispatcher
+from ansys.sam.sysml2.auth.ansys_auth import AnsysAuth
+from ansys.sam.sysml2.core.http_request import HttpRequest
 
 
-class AnsysRouteDispatcher(RouteDispatcher):
-    """Class dedicated to Ansys specific API route."""
+class TestAnsysSysMLAuth:
 
-    _organization_id: str = None
+    TOKEN: str = "ASuperToken"
 
-    def __init__(self, server_url: str, organization_id: str = None) -> None:
-        super().__init__(server_url)
+    @pytest.fixture
+    def http_request(self):
+        return HttpRequest(url="localhost")
 
-    @overrides
-    def build_endpoint(self, endpoint: str) -> str:
-        """
-        build_endpoint create the full URL using the given API endpoint.
+    def test_initialization(self, http_request: HttpRequest):
+        auth = AnsysAuth(token=self.TOKEN)
 
-        Parameters
-        ----------
-        endpoint : str
-            The endpoint
+        auth.update_request(request=http_request)
 
-        Returns
-        -------
-        str
-            Full url
-        """
+        assert "Bearer Token" in http_request.headers
+        assert http_request.headers["Bearer Token"] == self.TOKEN
 
-    def set_organization(self, organization_id: str):
-        """
-        set_organization update the organization Id.
+    def test_update_token(self, http_request: HttpRequest):
+        auth = AnsysAuth(token=self.TOKEN)
 
-        Parameters
-        ----------
-        organization_id : str
-            New organization Id
-        """
+        auth.update_request(request=http_request)
+        assert http_request.headers["Bearer Token"] == self.TOKEN
+
+        auth.update_token(token="A")
+        auth.update_request(request=http_request)
+
+        assert http_request.headers["Bearer Token"] != self.TOKEN
+        assert http_request.headers["Bearer Token"] == "A"

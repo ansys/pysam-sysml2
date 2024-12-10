@@ -20,43 +20,23 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""File created on Tue Dec 03 2024."""
+"""File  created on Tue Dec 10 2024."""
 
-from overrides import overrides
-
-from .route_dispatcher import RouteDispatcher
+from ansys.sam.sysml2 import ConnectorFactory
 
 
-class AnsysRouteDispatcher(RouteDispatcher):
-    """Class dedicated to Ansys specific API route."""
+class TestConnectorFactory:
 
-    _organization_id: str = None
+    URL: str = "localhost"
+    ORGANIZATION: str = "org_id"
+    TOKEN: str = "TOKEN"
 
-    def __init__(self, server_url: str, organization_id: str = None) -> None:
-        super().__init__(server_url)
+    def test_sysml_initialization(self):
+        conn = ConnectorFactory.create_ansys_sysml_connector(
+            server_url=self.URL, organization_id=self.ORGANIZATION, token=self.TOKEN
+        )
 
-    @overrides
-    def build_endpoint(self, endpoint: str) -> str:
-        """
-        build_endpoint create the full URL using the given API endpoint.
-
-        Parameters
-        ----------
-        endpoint : str
-            The endpoint
-
-        Returns
-        -------
-        str
-            Full url
-        """
-
-    def set_organization(self, organization_id: str):
-        """
-        set_organization update the organization Id.
-
-        Parameters
-        ----------
-        organization_id : str
-            New organization Id
-        """
+        assert conn is not None
+        assert hasattr(conn._authenticator, "_token")
+        assert self.ORGANIZATION in conn._route_dispatcher.build_endpoint("")
+        assert conn._route_dispatcher.build_endpoint("").startswith(self.URL)

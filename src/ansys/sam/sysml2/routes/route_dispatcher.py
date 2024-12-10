@@ -31,12 +31,17 @@ class RouteDispatcher:
     def __init__(self, server_url: str) -> None:
         self._server_url = server_url
 
-    def build_endpoint(self, end_point: str):
+    def build_endpoint(self, endpoint: str) -> str:
         """
         build_endpoint create the full URL using the given API endpoint.
 
         Parameters
         ----------
-        end_point : str
+        endpoint : str
             The endpoint
+
+        Returns
+        -------
+        str
+            Full url
         """

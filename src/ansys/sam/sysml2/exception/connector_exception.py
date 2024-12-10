@@ -20,43 +20,24 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""File created on Tue Dec 03 2024."""
-
-from overrides import overrides
-
-from .route_dispatcher import RouteDispatcher
+"""File  created on Tue Dec 10 2024."""
 
 
-class AnsysRouteDispatcher(RouteDispatcher):
-    """Class dedicated to Ansys specific API route."""
+class ConnectorException(Exception):
+    """Top level exception for Connector classes."""
 
-    _organization_id: str = None
 
-    def __init__(self, server_url: str, organization_id: str = None) -> None:
-        super().__init__(server_url)
+class ConnectorConnectionException(ConnectorException):
+    """Exception when connection information are invalid."""
 
-    @overrides
-    def build_endpoint(self, endpoint: str) -> str:
-        """
-        build_endpoint create the full URL using the given API endpoint.
 
-        Parameters
-        ----------
-        endpoint : str
-            The endpoint
+class InvalidElementJsonFoundException(ConnectorException):
+    """Exception when the receive JSON is invalid."""
 
-        Returns
-        -------
-        str
-            Full url
-        """
 
-    def set_organization(self, organization_id: str):
-        """
-        set_organization update the organization Id.
+class ProjectNotFoundException(ConnectorException):
+    """Exception when the asked projects is not found."""
 
-        Parameters
-        ----------
-        organization_id : str
-            New organization Id
-        """
+
+class ElementNotFoundException(ConnectorException):
+    """Exception when the wanted elements is not found."""

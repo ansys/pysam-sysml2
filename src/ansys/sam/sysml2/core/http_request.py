@@ -34,7 +34,7 @@ class HttpRequest:
     """HttpRequest class store data for a future HTTP request."""
 
     url: str
-    data: dict = field(default_factory=dict())
-    params: dict = field(default_factory=dict())
-    headers: dict = field(default_factory=dict())
-    cookies: dict = field(default_factory=dict())
+    data: dict = field(default_factory=dict)
+    params: dict = field(default_factory=dict)
+    headers: dict = field(default_factory=dict)
+    cookies: dict = field(default_factory=dict)

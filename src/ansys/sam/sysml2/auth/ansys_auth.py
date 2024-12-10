@@ -50,7 +50,7 @@ class AnsysAuth(SysMLAuth):
             The update to update
         """
 
-    def update_token(token: str) -> None:
+    def update_token(self, token: str) -> None:
         """
         update_token take the new token and update it.
 
