@@ -19,7 +19,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = ["overrides"]
+dependencies = ["overrides", "flask"]
 
 [project.optional-dependencies]
 tests = ["pytest==8.2.1", "pytest-cov==4.1.0"]
@@ -28,6 +28,7 @@ doc = [
     "numpydoc==1.8.0",
     "Sphinx==8.0.2",
     "sphinx-copybutton==0.5.2",
+    "sphinx_design==0.6.1",
 ]
 
 [tool.flit.module]
@@ -42,6 +43,9 @@ Documentation = "https://sam.docs.pyansys.com"
 [tool.pydocstyle]
 convention = "numpy"
 
+[tool.codespell]
+ignore-words-list = "THIRDPARTY"
+count = true
 
 [tool.black]
 line-length = 100

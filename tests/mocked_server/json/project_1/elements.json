@@ -1,0 +1,134 @@
+[
+    {
+        "@type": "Package",
+        "@id": "0b5280f4-00ab-419f-84bd-146e4964ac7f",
+        "identifier": "0b5280f4-00ab-419f-84bd-146e4964ac7f",
+        "name": "PySamTestProject",
+        "ownedElement": [
+            {
+                "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c"
+            },
+            {
+                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+            }
+        ],
+        "qualifiedName": "PySamTestProject",
+        "ownedMember": [
+            {
+                "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c"
+            },
+            {
+                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+            }
+        ]
+    },
+    {
+        "@type": "PartUsage",
+        "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c",
+        "identifier": "12ed6cd5-ae7e-489e-994d-980473ed0f2c",
+        "name": "myPartUsage",
+        "qualifiedName": "PySamTestProject::myPartUsage",
+        "owner": {
+            "@id": "0b5280f4-00ab-419f-84bd-146e4964ac7f"
+        },
+        "directedFeature": [],
+        "feature": [
+            {
+                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+            }
+        ],
+        "inheritedFeature": [
+            {
+                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+            }
+        ],
+        "isComposite": true,
+        "type": [
+            {
+                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+            }
+        ],
+        "declaration": {
+            "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c"
+        },
+        "definition": [
+            {
+                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+            }
+        ],
+        "individualDefinition": {
+            "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+        },
+        "occurrenceDefinition": [
+            {
+                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+            }
+        ],
+        "itemDefinition": [
+            {
+                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+            }
+        ],
+        "partDefinition": [
+            {
+                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+            }
+        ]
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f",
+        "identifier": "61ac5435-8537-4f46-aec7-43636dcbb36f",
+        "name": "Attribute",
+        "qualifiedName": "PySamTestProject::PartUsage::Attribute",
+        "owner": {
+            "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+        },
+        "isComposite": true,
+        "declaration": {
+            "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+        }
+    },
+    {
+        "@type": "PartDefinition",
+        "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d",
+        "identifier": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d",
+        "name": "PartUsage",
+        "ownedElement": [
+            {
+                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+            }
+        ],
+        "qualifiedName": "PySamTestProject::PartUsage",
+        "owner": {
+            "@id": "0b5280f4-00ab-419f-84bd-146e4964ac7f"
+        },
+        "ownedMember": [
+            {
+                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+            }
+        ],
+        "ownedEndFeature": [],
+        "ownedFeature": [
+            {
+                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+            }
+        ],
+        "directedFeature": [],
+        "feature": [
+            {
+                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+            }
+        ],
+        "ownedUsage": [
+            {
+                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+            }
+        ],
+        "ownedAttribute": [
+            {
+                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+            }
+        ]
+    }
+]

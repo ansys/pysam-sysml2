@@ -8,8 +8,9 @@
 
 .. toctree::
    :hidden:
-   :maxdepth: 3
+   :maxdepth: 1
 
    getting_started/index
+   documentation/index
    examples
    changelog
