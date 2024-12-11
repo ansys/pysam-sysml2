@@ -1,8 +1,26 @@
+.. _dev_guide:
+
+
 Developer Guide
 ---------------
 
-
 Select your subject of development:
+
+.. grid:: 2
+
+    .. grid-item-card:: Installation :fa:`wrench`
+        :link: installation
+        :link-type: doc
+
+        Install Pysam for development
+
+    .. grid-item-card:: Environment Setup :fa:`screwdriver-wrench`
+        :link: https://dev.docs.pyansys.com/how-to/setting-up.html
+        :link-type: url
+
+        Setup your development environment
+
+
 
 .. grid:: 2
 
@@ -13,7 +31,7 @@ Select your subject of development:
         Create new tests
 
     .. grid-item-card:: New SysML Connector :fa:`plug`
-        :link: dev_guide
+        :link: connector
         :link-type: doc
 
         Create a new SysML Connector
@@ -23,4 +41,6 @@ Select your subject of development:
    :maxdepth: 3
    :hidden:
 
+   connector
+   installation
    tests/index
