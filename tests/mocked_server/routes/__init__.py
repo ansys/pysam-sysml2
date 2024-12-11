@@ -70,7 +70,7 @@ from .route_class import (
 )
 from .route_functions import *
 
-ANSYS_BASE_URI = "/api/space/<string:organization>/sysml2/"
+ANSYS_BASE_URI = "/api/spaces/<string:organization>/sysml2/"
 
 
 # Add HERE your new route

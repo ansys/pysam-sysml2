@@ -37,10 +37,11 @@ class AnsysAuth(SysMLAuth):
     _token: str
 
     def __init__(self, token: str) -> None:
+        self._token = token
         super().__init__()
 
     @overrides
-    def update_request(self, request: HttpRequest) -> None:
+    def update_request(self, request: HttpRequest) -> HttpRequest:
         """
         update_request Implement the `SysMLAuth` method, for the needs of Ansys security.
 
@@ -48,7 +49,13 @@ class AnsysAuth(SysMLAuth):
         ----------
         request : HttpRequest
             The update to update
+        Returns
+        -------
+        HttpRequest
+            Updated Request
         """
+        request.headers["Authorization"] = "Bearer " + self._token
+        return request
 
     def update_token(self, token: str) -> None:
         """
@@ -59,3 +66,4 @@ class AnsysAuth(SysMLAuth):
         token : str
             The new token
         """
+        self._token = token

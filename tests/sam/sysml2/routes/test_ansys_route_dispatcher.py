@@ -47,6 +47,9 @@ class TestAnsysRouteDispatcher:
         routes = AnsysRouteDispatcher(server_url=self.URL_1)
         with pytest.raises(InvalidAnsysOrganizationIdException):
             routes.build_endpoint("")
+        routes = AnsysRouteDispatcher(server_url=self.URL_1 + "/", organization_id=self.ORG_ID_1)
+
+        assert not routes._server_url.endswith("/")
 
     def test_update_organization_id(self):
         routes = AnsysRouteDispatcher(server_url=self.URL_1, organization_id=self.ORG_ID_1)

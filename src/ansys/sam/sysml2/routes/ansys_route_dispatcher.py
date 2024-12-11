@@ -22,7 +22,11 @@
 
 """File created on Tue Dec 03 2024."""
 
+from typing import Optional
+
 from overrides import overrides
+
+from ansys.sam.sysml2.exception.route_exception import InvalidAnsysOrganizationIdException
 
 from .route_dispatcher import RouteDispatcher
 
@@ -30,10 +34,11 @@ from .route_dispatcher import RouteDispatcher
 class AnsysRouteDispatcher(RouteDispatcher):
     """Class dedicated to Ansys specific API route."""
 
-    _organization_id: str = None
+    _organization_id: Optional[str] = None
 
     def __init__(self, server_url: str, organization_id: str = None) -> None:
         super().__init__(server_url)
+        self._organization_id = organization_id
 
     @overrides
     def build_endpoint(self, endpoint: str) -> str:
@@ -50,6 +55,11 @@ class AnsysRouteDispatcher(RouteDispatcher):
         str
             Full url
         """
+        if self._organization_id is None:
+            raise InvalidAnsysOrganizationIdException("Organization id is not provided!")
+        if endpoint.startswith("/"):
+            endpoint = endpoint[1:]
+        return f"{self._server_url}/api/spaces/{self._organization_id}/sysml2/{endpoint}"
 
     def set_organization(self, organization_id: str):
         """
@@ -60,3 +70,4 @@ class AnsysRouteDispatcher(RouteDispatcher):
         organization_id : str
             New organization Id
         """
+        self._organization_id = organization_id

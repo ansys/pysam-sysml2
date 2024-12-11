@@ -38,3 +38,14 @@ class HttpRequest:
     params: dict = field(default_factory=dict)
     headers: dict = field(default_factory=dict)
     cookies: dict = field(default_factory=dict)
+
+    def explode(self) -> dict:
+        """
+        Explode function return all information to build a request.
+
+        Returns
+        -------
+        dict
+            Information
+        """
+        return dict((x, y) for x, y in self.__dict__.items() if not x.startswith("_"))

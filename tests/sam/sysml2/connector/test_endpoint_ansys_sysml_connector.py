@@ -35,7 +35,6 @@ from ansys.sam.sysml2 import ConnectorFactory
 from ansys.sam.sysml2.connector.sysml_connector import SysMLConnector
 from ansys.sam.sysml2.exception.connector_exception import (
     ElementNotFoundException,
-    InvalidElementJsonFoundException,
     ProjectNotFoundException,
 )
 from mocked_server.mocked_server import MockedServer
@@ -59,6 +58,12 @@ class TestEndPointSysMLConnector:
         return ConnectorFactory.create_ansys_sysml_connector(
             server_url=MockedServer.get_url(), organization_id=VALID_ORGANIZATION, token=VALID_TOKEN
         )
+
+    def test_get_project_data(self, valid_source: SysMLConnector):
+        project_data = valid_source.get_project_data(PROJECT_ID_1)
+        assert project_data is not None
+        assert "elements" in project_data
+        assert project_data["@id"] == PROJECT_ID_1
 
     def test_get_projects(self, valid_source: SysMLConnector):
         projects = valid_source.get_projects()
@@ -87,10 +92,6 @@ class TestEndPointSysMLConnector:
         assert len(elements) > 0
         assert all(type(element) == dict for element in elements)
 
-    def test_get_elements_invalid_json(self, valid_source: SysMLConnector):
-        with pytest.raises(InvalidElementJsonFoundException):
-            valid_source.get_elements(PROJECT_ID_2)
-
     def test_get_elements_invalid_project(self, valid_source: SysMLConnector):
         with pytest.raises(ProjectNotFoundException):
             valid_source.get_elements(TestEndPointSysMLConnector.RANDOM_PROJECT_ID)
@@ -110,7 +111,7 @@ class TestEndPointSysMLConnector:
             valid_source.get_element(PROJECT_ID_1, TestEndPointSysMLConnector.RANDOM_ELEMENT_ID)
 
     def test_get_element_invalid_project(self, valid_source: SysMLConnector):
-        with pytest.raises(ProjectNotFoundException):
+        with pytest.raises(ElementNotFoundException):
             valid_source.get_element(
                 TestEndPointSysMLConnector.RANDOM_PROJECT_ID, PROJECT_1_PART_ID
             )

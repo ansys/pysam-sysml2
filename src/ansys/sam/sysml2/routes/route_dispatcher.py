@@ -29,6 +29,8 @@ class RouteDispatcher:
     _server_url: str
 
     def __init__(self, server_url: str) -> None:
+        if server_url.endswith("/"):
+            server_url = server_url[:-1]
         self._server_url = server_url
 
     def build_endpoint(self, endpoint: str) -> str:

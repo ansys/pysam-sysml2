@@ -20,38 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""File  created on Tue Dec 10 2024."""
+from mocked_server.mocked_server import MockedServer
 
-import pytest
-
-from ansys.sam.sysml2.auth.ansys_auth import AnsysAuth
-from ansys.sam.sysml2.core.http_request import HttpRequest
-
-
-class TestAnsysSysMLAuth:
-
-    TOKEN: str = "ASuperToken"
-
-    @pytest.fixture
-    def http_request(self):
-        return HttpRequest(url="localhost")
-
-    def test_initialization(self, http_request: HttpRequest):
-        auth = AnsysAuth(token=self.TOKEN)
-
-        auth.update_request(request=http_request)
-
-        assert "Authorization" in http_request.headers
-        assert http_request.headers["Authorization"] == "Bearer " + self.TOKEN
-
-    def test_update_token(self, http_request: HttpRequest):
-        auth = AnsysAuth(token=self.TOKEN)
-
-        auth.update_request(request=http_request)
-        assert http_request.headers["Authorization"] == "Bearer " + self.TOKEN
-
-        auth.update_token(token="A")
-        auth.update_request(request=http_request)
-
-        assert http_request.headers["Authorization"] != "Bearer " + self.TOKEN
-        assert http_request.headers["Authorization"] == "Bearer A"
+a = MockedServer()
+a.get_app().run()

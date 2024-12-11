@@ -14,6 +14,7 @@ __pycache__/
 .Python
 build/
 _build/
+.scannerwork/
 develop-eggs/
 dist/
 downloads/

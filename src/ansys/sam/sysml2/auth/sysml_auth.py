@@ -33,7 +33,7 @@ class SysMLAuth(ConnectorAuth):
     def __init__(self) -> None:
         super().__init__()
 
-    def update_request(self, request: HttpRequest) -> None:
+    def update_request(self, request: HttpRequest) -> HttpRequest:
         """
         update_request add the needed field for request authentication.
 
@@ -41,4 +41,9 @@ class SysMLAuth(ConnectorAuth):
         ----------
         request : HttpRequest
             The request to update
+
+        Returns
+        -------
+        HttpRequest
+            Updated Request
         """

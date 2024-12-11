@@ -31,6 +31,10 @@ class ConnectorConnectionException(ConnectorException):
     """Exception when connection information are invalid."""
 
 
+class HTTPResponseException(ConnectorException):
+    """Exception when connection return other than 200."""
+
+
 class InvalidElementJsonFoundException(ConnectorException):
     """Exception when the receive JSON is invalid."""
 

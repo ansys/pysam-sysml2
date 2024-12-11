@@ -32,9 +32,9 @@ from functools import wraps
 from json import dumps, loads
 import os
 
-from flask import abort
+from flask import abort, request
 
-from .const import VALID_ORGANIZATION
+from .const import VALID_ORGANIZATION, VALID_TOKEN
 
 """
 
@@ -69,6 +69,36 @@ def return_json(function):
     return wrapper
 
 
+def authenticate(function):
+    """
+    authenticate is a decorator who check the Bearer Token in headers.
+
+    Parameters
+    ----------
+    function : Callable
+        The function to protect
+    Returns
+    -------
+    object
+        the result of the function
+
+    Exception
+    ---------
+    Throw a 403 error if no token or invalid token provided
+    """
+
+    @wraps(function)
+    def auth_wrapper(**args):
+        token = request.headers.get("Authorization", "")
+        if token != "Bearer " + VALID_TOKEN:
+            return create_http_error(
+                code=403, title="Forbidden", description="You don't have access to this resource"
+            )
+        return function(**args)
+
+    return auth_wrapper
+
+
 def space_route(function):
     """
     Create a wrapper for render function.
@@ -94,7 +124,9 @@ def space_route(function):
     @wraps(function)
     def space_wrapper(organization, **args):
         if organization != VALID_ORGANIZATION:
-            return abort(404)
+            return create_http_error(
+                code=404, title="Not Found", description="Organization not found"
+            )
         return function(**args)
 
     return space_wrapper
@@ -180,6 +212,7 @@ def check_project_id(project_id: str):
 #######################################
 
 
+@authenticate
 @space_route
 @return_json
 def route_get_projects() -> str:
@@ -207,6 +240,7 @@ def route_get_projects() -> str:
     return projects
 
 
+@authenticate
 @space_route
 @return_json
 def route_get_project(project_id: str) -> str:
@@ -233,6 +267,7 @@ def route_get_project(project_id: str) -> str:
     }
 
 
+@authenticate
 @space_route
 @return_json
 def route_get_elements(project_id: str) -> str:
@@ -253,6 +288,7 @@ def route_get_elements(project_id: str) -> str:
     return load_project(project_id)
 
 
+@authenticate
 @space_route
 @return_json
 def route_get_element(project_id: str, element_id: str) -> str:

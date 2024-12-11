@@ -21,10 +21,22 @@
 # SOFTWARE.
 
 """File created on Tue Dec 03 2024."""
+import json
+from typing import Callable
 
 from overrides import override
+import requests
+from requests import Response
 
-from ansys.sam.sysml2.auth.connector_auth import ConnectorAuth
+from ansys.sam.sysml2.auth.sysml_auth import SysMLAuth
+from ansys.sam.sysml2.core.http_request import HttpRequest
+from ansys.sam.sysml2.exception.connector_exception import (
+    ConnectorConnectionException,
+    ElementNotFoundException,
+    HTTPResponseException,
+    InvalidElementJsonFoundException,
+    ProjectNotFoundException,
+)
 from ansys.sam.sysml2.routes.route_dispatcher import RouteDispatcher
 
 from .model_connector import ModelConnector
@@ -34,9 +46,15 @@ class SysMLConnector(ModelConnector):
     """Unique class for all SysML V2 Standard API connection."""
 
     _route_dispatcher: RouteDispatcher = None
+    _authenticator: SysMLAuth = None
+    _is_secure: bool = True
 
-    def __init__(self, route_dispatcher: RouteDispatcher, authenticator: ConnectorAuth) -> None:
+    def __init__(
+        self, route_dispatcher: RouteDispatcher, authenticator: SysMLAuth, is_secure: bool = True
+    ) -> None:
         super().__init__(authenticator)
+        self._route_dispatcher = route_dispatcher
+        self._is_secure = is_secure
 
     @override
     def get_project_data(self, project_id: str) -> object:
@@ -53,6 +71,10 @@ class SysMLConnector(ModelConnector):
         object
             All information collected, for JSON data, the type is Dict
         """
+        project_information = self.get_project(project_id=project_id)
+        elements = self.get_elements(project_id=project_id)
+        project_information["elements"] = elements
+        return project_information
 
     def get_projects(self) -> list:
         """
@@ -63,6 +85,10 @@ class SysMLConnector(ModelConnector):
         list
             The list of all projects
         """
+        url = self._route_dispatcher.build_endpoint("/projects")
+        http_request = HttpRequest(url=url)
+        http_request = self._authenticator.update_request(request=http_request)
+        return self._send_request(http_request, requests.get)
 
     def get_project(self, project_id: str) -> dict:
         """
@@ -78,6 +104,14 @@ class SysMLConnector(ModelConnector):
         dict
             Information of the project
         """
+        url = self._route_dispatcher.build_endpoint(f"/projects/{project_id}")
+        http_request = HttpRequest(url=url)
+        http_request = self._authenticator.update_request(request=http_request)
+        return self._send_request(
+            http_request=http_request,
+            call=requests.get,
+            exception_dict={404: ProjectNotFoundException},
+        )
 
     def get_elements(self, project_id: str) -> list:
         """
@@ -93,6 +127,14 @@ class SysMLConnector(ModelConnector):
         list
             The list of all elements
         """
+        url = self._route_dispatcher.build_endpoint(f"/projects/{project_id}/commits/head/elements")
+        http_request = HttpRequest(url=url)
+        http_request = self._authenticator.update_request(request=http_request)
+        return self._send_request(
+            http_request=http_request,
+            call=requests.get,
+            exception_dict={404: ProjectNotFoundException},
+        )
 
     def get_element(self, project_id: str, element_id: str) -> dict:
         """
@@ -110,6 +152,16 @@ class SysMLConnector(ModelConnector):
         dict
             Information of the element
         """
+        url = self._route_dispatcher.build_endpoint(
+            f"/projects/{project_id}/commits/head/elements/{element_id}"
+        )
+        http_request = HttpRequest(url=url)
+        http_request = self._authenticator.update_request(request=http_request)
+        return self._send_request(
+            http_request=http_request,
+            call=requests.get,
+            exception_dict={404: ElementNotFoundException},
+        )
 
     def query(self, query: str) -> dict:
         """
@@ -140,3 +192,57 @@ class SysMLConnector(ModelConnector):
         dict
             Result of the Commit
         """
+
+    def _send_request(
+        self, http_request: HttpRequest, call: Callable, exception_dict: dict = None
+    ) -> object:
+        """
+        _send_request send the http request throws the call function.
+
+        Parameters
+        ----------
+        http_request : HttpRequest
+            The request to send
+        call : Callable
+            THe call function to send the request
+        exception_dict : dict
+            Association of exception for http return code
+
+        Returns
+        -------
+        object
+            JSON object (as Dict or list)
+
+        Raises
+        ------
+        ConnectorConnectionException
+            When the connection fail
+        ConnectorConnectionException
+            When provided information are false
+        InvalidElementJsonFoundException
+            If the server return invalid element
+        """
+        response = None
+        try:
+            response = call(**http_request.explode(), verify=self._is_secure)
+        except Exception as e:
+            raise ConnectorConnectionException(e)
+
+        if response.status_code == 200:
+            try:
+                return json.loads(response.content)
+            except Exception as e:
+                raise InvalidElementJsonFoundException(f"Invalid JSON received : {e}")
+        else:
+            self._check_status_code(response, exception_dict)
+
+    def _check_status_code(self, response: Response, exception_dict: dict) -> None:
+        content = response.json()
+        if "Organization" in content["description"]:
+            raise ConnectorConnectionException(content["description"])
+        if response.status_code == 403:
+            raise ConnectorConnectionException("Access Forbidden!")
+        if exception_dict is not None and response.status_code in exception_dict:
+            raise exception_dict[response.status_code](response.content)
+        else:
+            raise HTTPResponseException(response.content)

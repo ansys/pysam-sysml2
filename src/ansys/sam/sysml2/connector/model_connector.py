@@ -30,7 +30,8 @@ class ModelConnector:
 
     _authenticator: ConnectorAuth = None
 
-    def __init__(self, authenticator: ConnectorAuth) -> None: ...
+    def __init__(self, authenticator: ConnectorAuth) -> None:
+        self._authenticator = authenticator
 
     def get_project_data(self, project_id: str) -> object:
         """

@@ -50,10 +50,11 @@ class MockedServer:
             app.add_url_rule(**route.get_data())
 
         @app.errorhandler(404)
-        def handle_404(e):
+        @app.errorhandler(403)
+        def handle_error(e):
             return (
                 jsonify(e.description),
-                404,
+                e.code,
             )
 
         self.__app = app
