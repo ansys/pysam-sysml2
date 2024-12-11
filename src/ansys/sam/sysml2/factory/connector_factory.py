@@ -53,6 +53,8 @@ class ConnectorFactory:
             organization ID, by default None
         token : str, optional
             Your auth token, by default None
+        is_secure : bool,optional
+            Indicates if the server uses SSL.
 
         Returns
         -------
