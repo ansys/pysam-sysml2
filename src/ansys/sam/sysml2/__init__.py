@@ -1,4 +1,4 @@
-# Copyright (C) 2024 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -19,12 +19,12 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+"""Base module for PySam library."""
 
-"""
-Entry point of the SysML Library for SAM tool.
-
-File <__init__.py> created on Mon Dec 09 2024
-"""
 import importlib.metadata as importlib_metadata
 
 __version__ = importlib_metadata.version(__name__.replace(".", "-"))
+
+
+from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
+from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager

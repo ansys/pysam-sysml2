@@ -2,8 +2,9 @@
 
 ## Project Lead or Owner
 
-* [First Last]()
+* [Xavier Le Pallec]()
 
 ## Individual Contributors
 
-* [First Last]()
+* [Leo Le Van Canh dit Ban]()
+* [Adrien Grzechowiak]()
