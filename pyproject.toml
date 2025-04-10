@@ -24,7 +24,7 @@ dependencies = ["overrides"]
 [project.optional-dependencies]
 tests = ["pytest==8.2.1", "pytest-cov==4.1.0"]
 doc = [
-    "ansys-sphinx-theme==1.0.5",
+    "ansys-sphinx-theme==1.4.2",
     "numpydoc==1.8.0",
     "Sphinx==8.0.2",
     "sphinx-copybutton==0.5.2",
