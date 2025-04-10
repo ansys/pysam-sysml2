@@ -1,0 +1,508 @@
+# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# SPDX-License-Identifier: MIT
+#
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# -*- coding: utf-8 -*-
+"""
+  Copyright (c) 2024 ANSYS, Inc.
+  Unauthorized use, distribution, or duplication is prohibited.
+
+ File <server_route.py> created on Tue Nov 26 2024
+"""
+
+from collections import Counter
+from functools import wraps
+from json import dumps, loads
+import os
+from uuid import uuid4
+
+from flask import abort, request
+
+from .const import VALID_ORGANIZATION, VALID_TOKEN
+
+"""
+
+This section declare helper function for all render functions.
+
+For function declaration, go to the next section .
+
+"""
+
+
+def return_json(function):
+    """
+    Create a JSON wrapper for render function.
+
+    Convert the return the function into a json.
+
+    Parameters
+    ----------
+    function : function
+        The Function
+
+    Returns
+    -------
+    str
+        JSON
+    """
+
+    @wraps(function)
+    def wrapper(**args):
+        return dumps(function(**args))
+
+    return wrapper
+
+
+def authenticate(function):
+    """
+    authenticate is a decorator who check the Bearer Token in headers.
+
+    Parameters
+    ----------
+    function : Callable
+        The function to protect
+    Returns
+    -------
+    object
+        the result of the function
+
+    Exception
+    ---------
+    Throw a 403 error if no token or invalid token provided
+    """
+
+    @wraps(function)
+    def auth_wrapper(**args):
+        token = request.headers.get("Authorization", "")
+        if token != "Bearer " + VALID_TOKEN:
+            return create_http_error(
+                code=401,
+                title="",
+                message="",
+            )
+        return function(**args)
+
+    return auth_wrapper
+
+
+def space_route(function):
+    """
+    Create a wrapper for render function.
+
+    This wrapper check if there is a organization id
+    in the url and check is validity.
+
+    Parameters
+    ----------
+    function : function
+        The Function
+
+    Returns
+    -------
+    object
+        the result of the function
+
+    Exception
+    ---------
+    Throw a 404 error if the given Id is invalid
+    """
+
+    @wraps(function)
+    def space_wrapper(organization, **args):
+        if organization != VALID_ORGANIZATION:
+            return create_http_error(
+                code=404,
+                title="resource-not-found",
+                message="Organization not found",
+            )
+        return function(**args)
+
+    return space_wrapper
+
+
+def get_project_path(path: str = "") -> str:
+    """
+    Return the full path of the json folder
+
+    Parameters
+    ----------
+    path : str, optional
+        path in json, by default ""
+
+    Returns
+    -------
+    str
+        full path
+    """
+    local_path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(local_path, "..", "json", path)
+
+
+def load_project(id: str) -> dict:
+    """
+    Use this function to load project data.
+
+    Parameters
+    ----------
+    id : str
+        project id
+
+    Returns
+    -------
+    str
+        Project data
+    """
+    path = get_project_path(os.path.join(f"project_{id}", "elements.json"))
+    try:
+        with open(path, "r") as file:
+            return loads(file.read())
+    except Exception:
+        create_http_error(
+            code=500,
+            title="JSON not found",
+            message="Make sure the file is named : project_<id>/elements.json",
+        )
+
+
+def create_http_error(code: int = 404, title: str = "Error", message: str = ""):
+    """
+    Use this function to generate a HTTP error.
+
+    Parameters
+    ----------
+    code : int, optional
+        Error code, by default 404
+    title : str, optional
+        Error tile, by default "Error"
+    description : str, optional
+        Error description, by default ""
+    """
+    abort(code, {"title": title, "message": message})
+
+
+def check_project_id(project_id: str):
+    """
+    Use this method to check if the give project id is valid.
+
+
+    Parameters
+    ----------
+    project_id : str
+        _description_
+    """
+    path = get_project_path("project_" + project_id)
+    if not os.path.exists(path):
+        create_http_error(
+            title="resource-not-found",
+            message=f"Project {project_id} not found",
+        )
+
+
+#######################################
+#       Create your function below   #
+#######################################
+
+
+@authenticate
+@space_route
+@return_json
+def route_get_projects() -> str:
+    """
+    Use this function to render all project in ```../json/``
+
+    Returns
+    -------
+    str
+        all projects
+    """
+    projects_root = get_project_path("")
+    projects = []
+    for _, dirs, _ in os.walk(projects_root):
+        for directory in dirs:
+            projects.append(
+                {
+                    "@type": "Project",
+                    "defaultBranch": {"@id": "defaultBranch"},
+                    "description": "",
+                    "name": directory.replace("_", " "),
+                    "@id": directory.split("_")[1],
+                },
+            )
+    return projects
+
+
+@authenticate
+@space_route
+@return_json
+def route_get_project(project_id: str) -> str:
+    """
+    Use this function to get information of one project.
+
+    Parameters
+    ----------
+    project_id : str
+        Project Id
+
+    Returns
+    -------
+    str
+        Project information
+    """
+    check_project_id(project_id)
+    return {
+        "@type": "Project",
+        "defaultBranch": {"@id": "defaultBranch"},
+        "description": "",
+        "name": f"project {project_id}",
+        "@id": project_id,
+    }
+
+
+@authenticate
+@space_route
+@return_json
+def route_get_elements(project_id: str) -> str:
+    """
+    use this function to get all elements of a project.
+
+    Parameters
+    ----------
+    project_id : str
+        Project id
+
+    Returns
+    -------
+    str
+        All elements
+    """
+    check_project_id(project_id)
+    return load_project(project_id)
+
+
+@authenticate
+@space_route
+@return_json
+def route_get_element(project_id: str, element_id: str) -> str:
+    """
+    Return a specific element of a project.
+
+    Parameters
+    ----------
+    project_id : str
+        Project Id
+    element_id : str
+        Element Id
+
+    Returns
+    -------
+    str
+        Element information
+    """
+    check_project_id(project_id)
+    data = load_project(project_id)
+    for element in data:
+        if element["@id"] == element_id:
+            return element
+    create_http_error(
+        title="resource-not-found",
+        message=f"Element {element_id}  not found in Project {project_id}",
+    )
+
+
+@authenticate
+@space_route
+@return_json
+def route_get_roots_elements(project_id: str) -> str:
+    """
+    Return all roots elements (With no owner field).
+
+    Parameters
+    ----------
+    project_id : str
+        Project Id
+
+    Returns
+    -------
+    str
+        All roots Elements
+    """
+    check_project_id(project_id)
+    data = load_project(project_id)
+    roots_elements = []
+    for element in data:
+        if not "owner" in element:
+            roots_elements.append(element)
+    return roots_elements
+
+
+@authenticate
+@space_route
+@return_json
+def route_query(project_id: str) -> str:
+    """
+    Apply query to the project
+
+    Parameters
+    ----------
+    project_id : str
+        Project Id
+
+    Returns
+    -------
+    str
+        Query result
+    """
+    check_project_id(project_id)
+    data = load_project(project_id)
+    query = request.data
+    try:
+        query = loads(query)
+    except Exception as e:
+        create_http_error(code=500)
+
+    return _handle_constraint(query["where"], data)
+
+
+@authenticate
+@space_route
+@return_json
+def route_create_project() -> str:
+    """
+    route_create_project creates a project
+
+    Returns
+    -------
+    str
+        _description_
+    """
+    project_info = loads(request.data)
+    if "name" in project_info and "description" in project_info:
+        return {
+            "@type": "Project",
+            "defaultBranch": {"@id": "defaultBranch"},
+            "description": project_info["description"],
+            "name": project_info["name"],
+            "@id": str(uuid4()),
+        }
+    create_http_error(code=405)
+
+
+def _handle_constraint(constraint: dict, data: list) -> list:
+    """
+    handle_constraint _summary_
+
+    Parameters
+    ----------
+    constraint : _type_
+        _description_
+    data : _type_
+        _description_
+    """
+    match constraint["@type"]:
+        case "PrimitiveConstraint":
+            return _handle_search(constraint, data)
+        case "CompositeConstraint":
+            res = list()
+            for c in constraint["constraint"]:
+                res.extend(_handle_constraint(c, data))
+            return _apply_join(constraint, res)
+        case _:
+            return None
+
+
+def _apply_join(constraint: dict, result: list) -> list:
+    """
+    _apply_join Sort result depending of the join operator.
+
+    Parameters
+    ----------
+    constraint : dict
+        The compositeConstraint
+    result : list
+        the result list
+
+    Returns
+    -------
+    list
+        the final list
+    """
+    if constraint["operator"] == "and":
+        id_counter = Counter(element["@id"] for element in result)
+
+        required_count = len(constraint["constraint"])
+        seen_ids = set()
+        final_res = []
+
+        for element in result:
+            if id_counter[element["@id"]] == required_count and element["@id"] not in seen_ids:
+                final_res.append(element)
+                seen_ids.add(element["@id"])
+
+        return final_res
+    return result
+
+
+def _handle_search(constraint: dict, data: list) -> list:
+    """
+    _handle_search make the constraint search in the given data
+
+    Parameters
+    ----------
+    constraint : dict
+        Primitive constraint
+    data : list
+        data
+
+    Returns
+    -------
+    list
+        result
+    """
+    prop = constraint["property"]
+    operator = constraint["operator"]
+    value = constraint["value"]
+    inverse = True if constraint["inverse"] == "true" else False
+    operator_map = {
+        "=": lambda x, y: x == y,
+        ">": lambda x, y: x > y,
+        "<": lambda x, y: x < y,
+        ">=": lambda x, y: x >= y,
+        "<=": lambda x, y: x <= y,
+    }
+
+    op_func = operator_map.get(operator)
+    if not op_func and operator != "instanceOf":
+        raise ValueError(f"Unsupported operator: {operator}")
+
+    def check(e):
+        if prop not in e:
+            e_type = e["@type"]
+            create_http_error(
+                500,
+                title="SysML Error",
+                message=f"Invalid fields {prop} for element {e_type}",
+            )
+
+        left = e[prop] if operator != "instanceOf" else e["@type"]
+        comparison = op_func(left, value) if op_func else left == value
+        return not comparison if inverse else comparison
+
+    return [x for x in data if check(x)]

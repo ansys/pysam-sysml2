@@ -6,11 +6,12 @@ on:
       - "*"
     branches:
       - main
+      - test/*
 
 env:
-  MAIN_PYTHON_VERSION: '3.11'
-  DOCUMENTATION_CNAME: 'sam.docs.pyansys.com'
-  LIBRARY_NAME: 'ansys-sam-sysml2'
+  MAIN_PYTHON_VERSION: "3.11"
+  DOCUMENTATION_CNAME: "sam.docs.pyansys.com"
+  LIBRARY_NAME: "ansys-sam-sysml2"
   MEILISEARCH_API_KEY: ${{ secrets.MEILISEARCH_API_KEY }}
   MEILISEARCH_HOST_URL: ${{ vars.MEILISEARCH_HOST_URL }}
 
@@ -19,7 +20,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-
   update-changelog:
     name: "Update CHANGELOG (on release)"
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
@@ -57,7 +57,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest]
-        python-version: ['3.11', '3.12']
+        python-version: ["3.11", "3.12"]
     steps:
       - uses: ansys/actions/build-wheelhouse@v7
         with:
@@ -71,8 +71,8 @@ jobs:
     needs: [smoke-tests]
     strategy:
       matrix:
-       os: [ubuntu-latest, windows-latest]
-       python-version: ['3.11', '3.12']
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.11", "3.12"]
       fail-fast: false
     steps:
       - name: PyAnsys tests check

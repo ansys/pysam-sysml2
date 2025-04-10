@@ -9,11 +9,10 @@ __pycache__/
 
 # C extensions
 *.so
-.vscode
+
 # Distribution / packaging
 .Python
 build/
-_build/
 develop-eggs/
 dist/
 downloads/
@@ -158,3 +157,7 @@ cython_debug/
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/python
+.scannerwork
+.reuse
+_build
+doc/v1

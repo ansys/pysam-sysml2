@@ -8,7 +8,7 @@ name = "ansys-sam-sysml2"
 version = "0.1.dev0"
 description = "Python library for sysml2 model manipulation"
 readme = "README.rst"
-requires-python = ">=3.11,<4.0"
+requires-python = ">=3.10,<4.0"
 license = { file = "LICENSE" }
 authors = [{ name = "ANSYS, Inc.", email = "pyansys.core@ansys.com" }]
 maintainers = [{ name = "ANSYS, Inc.", email = "pyansys.core@ansys.com" }]
@@ -19,28 +19,28 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-dependencies = ["overrides"]
+dependencies = ["overrides", "flask", "requests"]
 
 [project.optional-dependencies]
 tests = ["pytest==8.2.1", "pytest-cov==4.1.0"]
-doc = [
-    "ansys-sphinx-theme==1.0.5",
-    "numpydoc==1.8.0",
-    "Sphinx==8.0.2",
-    "sphinx-copybutton==0.5.2",
-]
+# doc = [
+#     "ansys-sphinx-theme==1.0.5",
+#     "numpydoc==1.8.0",
+#     "Sphinx==8.0.2",
+#     "sphinx-copybutton==0.5.2",
+# ]
 
 [tool.flit.module]
 name = "ansys.sam.sysml2"
 
-[project.urls]
-Source = "https://github.com/ansys/pysam-sysml2"
-Tracker = "https://github.com/ansys/pysam-sysml2/issues"
-Homepage = "https://github.com/ansys/pysam-sysml2"
-Documentation = "https://sam.docs.pyansys.com"
+# [project.urls]
+# Source = "https://github.com/ansys/pysam-sysml2"
+# Tracker = "https://github.com/ansys/pysam-sysml2/issues"
+# Homepage = "https://github.com/ansys/pysam-sysml2"
+# Documentation = "https://sam.docs.pyansys.com"
 
-[tool.pydocstyle]
-convention = "numpy"
+# [tool.pydocstyle]
+# convention = "numpy"
 
 
 [tool.black]
@@ -53,6 +53,8 @@ line_length = 100
 default_section = "THIRDPARTY"
 src_paths = ["doc", "src", "tests"]
 
+# [tool.pydocstyle]
+# convention = "numpy"
 
 [tool.coverage.run]
 source = ["ansys.sam"]
@@ -60,36 +62,36 @@ source = ["ansys.sam"]
 [tool.coverage.report]
 show_missing = true
 
-[tool.towncrier]
-package = "ansys.sam.sysml2"
-directory = "doc/changelog.d"
-filename = "doc/source/changelog.rst"
-start_string = ".. towncrier release notes start\n"
-template = "doc/changelog.d/changelog_template.jinja"
-title_format = "`{version} <https://github.com/ansys/ansys.sam.sysml2/releases/tag/v{version}>`_ - {project_date}"
-issue_format = "`#{issue} <https://github.com/ansys/ansys.sam.sysml2/pull/{issue}>`_"
+# [tool.towncrier]
+# package = "ansys.sam.sysml2"
+# directory = "doc/changelog.d"
+# filename = "doc/source/changelog.rst"
+# start_string = ".. towncrier release notes start\n"
+# template = "doc/changelog.d/changelog_template.jinja"
+# title_format = "`{version} <https://github.com/ansys/ansys.sam.sysml2/releases/tag/v{version}>`_ - {project_date}"
+# issue_format = "`#{issue} <https://github.com/ansys/ansys.sam.sysml2/pull/{issue}>`_"
 
-[[tool.towncrier.type]]
-directory = "added"
-name = "Added"
-showcontent = true
+# [[tool.towncrier.type]]
+# directory = "added"
+# name = "Added"
+# showcontent = true
 
-[[tool.towncrier.type]]
-directory = "changed"
-name = "Changed"
-showcontent = true
+# [[tool.towncrier.type]]
+# directory = "changed"
+# name = "Changed"
+# showcontent = true
 
-[[tool.towncrier.type]]
-directory = "fixed"
-name = "Fixed"
-showcontent = true
+# [[tool.towncrier.type]]
+# directory = "fixed"
+# name = "Fixed"
+# showcontent = true
 
-[[tool.towncrier.type]]
-directory = "dependencies"
-name = "Dependencies"
-showcontent = true
+# [[tool.towncrier.type]]
+# directory = "dependencies"
+# name = "Dependencies"
+# showcontent = true
 
-[[tool.towncrier.type]]
-directory = "miscellaneous"
-name = "Miscellaneous"
-showcontent = true
+# [[tool.towncrier.type]]
+# directory = "miscellaneous"
+# name = "Miscellaneous"
+# showcontent = true
