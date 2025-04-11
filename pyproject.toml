@@ -22,13 +22,14 @@ classifiers = [
 dependencies = ["overrides", "flask", "requests"]
 
 [project.optional-dependencies]
+doc = [
+    "ansys-sphinx-theme==1.0.5",
+    "sphinx_design",
+    "numpydoc==1.8.0",
+    "Sphinx==8.0.2",
+    "sphinx-copybutton==0.5.2",
+]
 tests = ["pytest==8.2.1", "pytest-cov==4.1.0"]
-# doc = [
-#     "ansys-sphinx-theme==1.0.5",
-#     "numpydoc==1.8.0",
-#     "Sphinx==8.0.2",
-#     "sphinx-copybutton==0.5.2",
-# ]
 
 [tool.flit.module]
 name = "ansys.sam.sysml2"
@@ -39,8 +40,8 @@ name = "ansys.sam.sysml2"
 # Homepage = "https://github.com/ansys/pysam-sysml2"
 # Documentation = "https://sam.docs.pyansys.com"
 
-# [tool.pydocstyle]
-# convention = "numpy"
+[tool.pydocstyle]
+convention = "numpy"
 
 
 [tool.black]
@@ -52,9 +53,6 @@ force_sort_within_sections = true
 line_length = 100
 default_section = "THIRDPARTY"
 src_paths = ["doc", "src", "tests"]
-
-# [tool.pydocstyle]
-# convention = "numpy"
 
 [tool.coverage.run]
 source = ["ansys.sam"]
