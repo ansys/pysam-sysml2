@@ -9,7 +9,7 @@ Documentation
 
         Connector Classes and Interfaces
 
-    .. grid-item-card:: ProjectManger
+    .. grid-item-card:: Project Manager
         :link: connector
         :link-type: doc
 

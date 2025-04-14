@@ -1,7 +1,7 @@
 .. _PM_Section:
 
-ProjectManger
-#############
+Project Manager
+###############
 
 
 .. autoclass:: ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager
