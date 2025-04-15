@@ -36,55 +36,134 @@ Overview
 
 Python library for SysML2 model manipulation
 
-.. contribute_start
+Getting started
+===============
 
-Installation
-^^^^^^^^^^^^
+This section's scope is about user installation.
 
-You can use `pip <https://pypi.org/project/pip/>`_ to install Pysam sysml2.
+
+ToDO
+====
+
+- [ ] Add Search function
+- [ ] Add element["member"]
+- [ ] Add Organization_name in connector
+- [ ] Add manager.get_project_by_name
+- [ ] Add Get Token with username-password
+
+Dev Installation
+----------------
+
+
+#. Start by cloning this repository:
+
+   .. code:: bash
+
+      git clone https://github.com/ansys-internal/pysam-sysml2
+
+
+
+#. Make sure you have the latest required build system and doc, testing, and CI tools:
+
+   .. code:: bash
+
+      python -m pip install -U pip flit tox
+      python -m pip install -r requirements.txt
+
+
+#. Finally, verify your development installation by running:
+
+    .. code:: bash
+
+        tox
+
+
+Development
+-----------
+
+You can use tox to: run test, format code, add Copyrights, sort imports
+
+Run tox to run everything :
 
 .. code:: bash
 
-    pip install ansys-sam-sysml2
+   tox
 
-To install the latest development version, run these commands:
+or select the run with :
 
-.. code:: bash
+- Test :
+   .. code:: bash
 
-    git clone https://github.com/ansys/pysam-sysml2
-    cd pysam-sysml2
-    pip install -e .
+      tox -e py
 
-For more information, see `Getting Started`_.
+- Formatting & Copyrights (pre-commit):
+   .. code:: bash
 
-Basic usage
-^^^^^^^^^^^
+      tox -e style
 
-This code shows how to import Pysam sysml2 and use some basic capabilities:
+
+.. note::
+    When you run pre-commit, you (style), it's will check for staged changes, if the pre-commit tools modify a file, you need to stage the changes before re-run tox.
+
+
+
+Usage
+-----
+
+Create a connector
+~~~~~~~~~~~~~~~~~~
+
+Start a Python INterpreter and import PySam Package:
 
 .. code:: python
 
-    print("Put sample code here")
+    from ansys.sam import ConnectorFactory,SysMLModelManager
 
-For comprehensive usage information, see `Examples`_ in the `Pysam sysml2 documentation`_.
+Next, create the connector for your tool. Here for SAM SysML2 API.
 
-Documentation and issues
-^^^^^^^^^^^^^^^^^^^^^^^^
-Documentation for the latest stable release of Pysam sysml2 is hosted at `Pysam sysml2 documentation`_.
+.. code:: python
 
-In the upper right corner of the documentation's title bar, there is an option for switching from
-viewing the documentation for the latest stable release to viewing the documentation for the
-development version or previously released versions.
+    conn = ConnectorFactory.create_ansys_sysml_connector(
+            server_url="https://sam-testing.ansys.com:9050",
+            organization_id="<organization_id>",
+            token=<token>,
+            is_secure=False
+            )
 
-On the `Pysam sysml2 Issues <https://github.com/ansys/pysam-sysml2/issues>`_ page,
-you can create issues to report bugs and request new features. On the `Pysam sysml2 Discussions
-<https://github.com/ansys/pysam-sysml2/discussions>`_ page or the `Discussions <https://discuss.ansys.com/>`_
-page on the Ansys Developer portal, you can post questions, share ideas, and get community feedback.
+Load a model
+~~~~~~~~~~~~
 
-To reach the project support team, email `pyansys.core@ansys.com <mailto:pyansys.core@ansys.com>`_.
+To load  a model, use SysMLModelManager()
+
+.. code:: python
+
+   model = SysMLModelManager(project_id="17a0fb7c-6236-4801-9746-e626eea78c01", connector=conn)
 
 
-.. LINKS AND REFERENCES
-.. _Getting Started: https://sam.docs.pyansys.com/version/stable/getting_started/index.html
-.. _Examples: https://sam.docs.pyansys.com/version/stable/examples.html
-.. _Pysam sysml2 documentation: https://sam.docs.pyansys.com/version/stable/index.html
+Access to model element
+~~~~~~~~~~~~~~~~~~~~~~~
+
+To access model element, you can use direct dot notation:
+
+
+.. code:: python
+
+   Bike.frame
+
+Or call a SysML Basing function:
+
+
+.. code:: python
+
+      for part in Bike._ownedElement:
+         print(part)
+
+
+Check sysml type
+~~~~~~~~~~~~~~~~
+
+.. code:: python
+
+   from ansys.sam import SysmlTools
+
+   SysmlTools.isinstance(Bike,"PartUsage")

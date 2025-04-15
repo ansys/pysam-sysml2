@@ -42,6 +42,7 @@ extensions = [
     "numpydoc",
     "sphinx.ext.intersphinx",
     "sphinx_copybutton",
+    "sphinx_design",
 ]
 
 # Intersphinx mapping
@@ -93,7 +94,7 @@ master_doc = "index"
 
 # Keep these while the repository is private
 linkcheck_ignore = [
-    "https://github.com/ansys/pysam-sysml2/*",
+    "https://github.com/ansys-internal/pysam-sysml2/*",
     "https://sam.docs.pyansys.com/version/stable/*",
     "https://pypi.org/project/ansys-sam-sysml2",
 ]
