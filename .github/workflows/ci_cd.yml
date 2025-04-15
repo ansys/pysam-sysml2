@@ -55,6 +55,14 @@ jobs:
     name: "Publishing Package"
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.11"
+      - name: Compiling
+        run: |
+          python -m build
       - uses: ansys/actions/release-github@v8
         with:
           library-name: "ansys-sam-sysml2"
