@@ -53,3 +53,11 @@ class ElementNotFoundException(ConnectorException):
 
 class InvalidProjectNameException(ConnectorException):
     """Exception when the name given for a project is not correct."""
+
+
+class BadRequestConnectionException(ConnectorException):
+    """Exception when request is invalid."""
+
+
+class ModelAsNotChangedException(ConnectorException):
+    """Exception when the model has not changed."""

@@ -20,6 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 """SysML Util class."""
+
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 

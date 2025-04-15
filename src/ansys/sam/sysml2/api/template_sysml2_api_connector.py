@@ -31,11 +31,13 @@ import requests
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.classes.http_request import HttpRequest
 from ansys.sam.sysml2.exception.connector_exception import (
+    BadRequestConnectionException,
     ConnectorConnectionException,
     ElementNotFoundException,
     HTTPResponseException,
     InvalidElementJsonFoundException,
     InvalidProjectNameException,
+    ModelAsNotChangedException,
     ProjectNotFoundException,
     UnauthorizedConnectionException,
 )
@@ -212,6 +214,27 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request.json = json.loads(query)
         return self.__send_request(http_request=http_request, call=requests.post)
 
+    @overrides
+    def create_commit(self, project_id: str, commit: str) -> dict:
+        """
+        Create a commit and send to the Standard API.
+
+        Parameters
+        ----------
+        project_id : str
+            Project Id
+        commit : str
+            Commit, in JSON format
+
+        Returns
+        -------
+        dict
+            Result of the commit
+        """
+        http_request = self.__build_http_request(endpoint=f"/projects/{project_id}/commit")
+        http_request.json = json.loads(commit)
+        return self.__send_request(http_request=http_request, call=requests.post)
+
     def __build_http_request(self, endpoint: str) -> HttpRequest:
         """
         Build a full HTTP Request to be sended, from API Endpoint.
@@ -299,6 +322,12 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
                 raise ConnectorConnectionException(response.json()["message"])
             case 401:
                 raise UnauthorizedConnectionException("Authentication failed")
+            case 400:
+                message = response.json()["message"]
+                if message == "Model has not changed":
+                    raise ModelAsNotChangedException(f"Bad Request : {message}")
+                else:
+                    raise BadRequestConnectionException(f"Bad Request : {message}")
             case _:
                 raise HTTPResponseException(response.content)
 

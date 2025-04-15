@@ -38,7 +38,7 @@ class TestJsonMapper:
             "@type": "PartUsage",
             "qualifiedName": "pp::p",
         }
-        element = json_mapper.map("pp", data).get_element()
+        element = json_mapper.map("pp", data, None).get_element()
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -78,7 +78,7 @@ class TestJsonMapper:
             "name": "Element",
             "qualifiedName": "pp::p",
         }
-        element = json_mapper.map("pp", data).get_element()
+        element = json_mapper.map("pp", data, None).get_element()
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -92,7 +92,7 @@ class TestJsonMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = json_mapper.map("pp", data_1).get_element()
+        element = json_mapper.map("pp", data_1, None).get_element()
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -106,7 +106,7 @@ class TestJsonMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = json_mapper.map("pp", data_1).get_element()
+        element = json_mapper.map("pp", data_1, None).get_element()
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -126,8 +126,8 @@ class TestJsonMapper:
             "qualifiedName": "pp::p",
         }
 
-        mapped_element = json_mapper.map("pp", data)
-        mapped_owner = json_mapper.map("pp", owner)
+        mapped_element = json_mapper.map("pp", data, None)
+        mapped_owner = json_mapper.map("pp", owner, None)
         element = mapped_element.get_element()
         owner = mapped_owner.get_element()
         unresolved_fields = (

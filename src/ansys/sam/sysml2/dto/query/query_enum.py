@@ -1,4 +1,4 @@
-# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -19,28 +19,23 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+"""Enum classes for SysML Queries."""
 
-"""Tool module for SysML elements."""
+
+class Operator:
+    """Operator Enum."""
+
+    EQUALS: str = "="
+    INSTANCE_OF: str = "instanceOf"
+    IN: str = "in"
+    LOWER: str = "<"
+    UPPER: str = ">"
+    EQUALS_OR_LOWER: str = "<="
+    EQUALS_OR_UPPER: str = ">="
 
 
-class SysMLTools:
-    """Static class for all sysml tools."""
+class JoinOperator:
+    """AND - OR enum."""
 
-    @staticmethod
-    def isinstance(element, type: str) -> bool:
-        """
-        Use this function to check type of an element.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            The element to check
-        type : str
-            SysML class name
-
-        Returns
-        -------
-        bool
-            True if yes, False else
-        """
-        return element.__class__.__name__.split(".")[-1] == type
+    AND: str = "and"
+    OR: str = "or"

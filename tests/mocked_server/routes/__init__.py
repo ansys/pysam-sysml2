@@ -103,4 +103,8 @@ routes_list = [
         route=ANSYS_BASE_URI + "/projects",
         controller_function=route_create_project,
     ),
+    ServerPostRouteMapping(
+        route=ANSYS_BASE_URI + "/projects/<string:project_id>/commit",
+        controller_function=route_create_commit,
+    ),
 ]

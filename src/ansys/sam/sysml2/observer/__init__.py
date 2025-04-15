@@ -20,27 +20,4 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Tool module for SysML elements."""
-
-
-class SysMLTools:
-    """Static class for all sysml tools."""
-
-    @staticmethod
-    def isinstance(element, type: str) -> bool:
-        """
-        Use this function to check type of an element.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            The element to check
-        type : str
-            SysML class name
-
-        Returns
-        -------
-        bool
-            True if yes, False else
-        """
-        return element.__class__.__name__.split(".")[-1] == type
+"""Observer Package."""

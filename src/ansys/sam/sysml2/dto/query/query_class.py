@@ -1,4 +1,4 @@
-# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -19,28 +19,27 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+"""Query class."""
 
-"""Tool module for SysML elements."""
+from dataclasses import dataclass
+from json import dumps
+
+from .constraints_classes import Constraint
 
 
-class SysMLTools:
-    """Static class for all sysml tools."""
+@dataclass
+class Query:
+    """Dataclass for Query."""
 
-    @staticmethod
-    def isinstance(element, type: str) -> bool:
+    where: Constraint = None
+
+    def to_json(self) -> str:
         """
-        Use this function to check type of an element.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            The element to check
-        type : str
-            SysML class name
+        to_json convert the class to JSON format.
 
         Returns
         -------
-        bool
-            True if yes, False else
+        str
+            The class adapted to JSON Format
         """
-        return element.__class__.__name__.split(".")[-1] == type
+        return dumps({"@type": "Query", "where": self.where.to_json()})

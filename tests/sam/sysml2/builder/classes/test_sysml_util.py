@@ -20,27 +20,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Tool module for SysML elements."""
+from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 
 
-class SysMLTools:
-    """Static class for all sysml tools."""
+class TestSysMLUtil:
 
-    @staticmethod
-    def isinstance(element, type: str) -> bool:
-        """
-        Use this function to check type of an element.
+    def test_check_inherited_name_with_string_input(self):
+        assert SysMLUtil.check_inherited_name("test") == "::test"
 
-        Parameters
-        ----------
-        element : SysMLElement
-            The element to check
-        type : str
-            SysML class name
+    def test_check_inherited_name_with_object_with__name_attribute(self):
+        class WithName:
+            def __init__(self):
+                self._name = "TestName"
 
-        Returns
-        -------
-        bool
-            True if yes, False else
-        """
-        return element.__class__.__name__.split(".")[-1] == type
+        obj_with_name = WithName()
+        assert SysMLUtil.check_inherited_name(obj_with_name) == "TestName"

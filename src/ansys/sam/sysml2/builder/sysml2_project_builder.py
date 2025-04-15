@@ -26,16 +26,14 @@ from typing import List, Set
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
-from ansys.sam.sysml2.builder.classes.query.constraints_classes import (
-    CompositeConstraint,
-    PrimitiveConstraint,
-)
-from ansys.sam.sysml2.builder.classes.query.query_class import Query
-from ansys.sam.sysml2.builder.classes.query.query_enum import JoinOperator
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.builder.json_mapper import JsonMapper
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.dto.query.constraints_classes import CompositeConstraint, PrimitiveConstraint
+from ansys.sam.sysml2.dto.query.query_class import Query
+from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
+from ansys.sam.sysml2.observer.observer import ModificationObserver
 
 
 class SysML2ProjectBuilder:
@@ -73,6 +71,8 @@ class SysML2ProjectBuilder:
         project = ProjectImpl(project_id, project_info["name"])
         self._build_project_element(project)
         self._resolve_inherited_link(project)
+        self._add_write_access(project)
+        self._index_libraries(project)
         return project
 
     def _build_project_element(self, project: ProjectImpl):
@@ -128,7 +128,8 @@ class SysML2ProjectBuilder:
         """
         unresolved_fields = list()
         for element in elements:
-            mapped_element = self._mapper.map(project.get_name(), element)
+            existing_element = project.find_element_by_id(element["@id"])
+            mapped_element = self._mapper.map(project.get_name(), element, existing_element)
             project.add_element(mapped_element.get_element())
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
@@ -157,7 +158,7 @@ class SysML2ProjectBuilder:
                 project._unresolved_fields.remove(unresolved_field)
             else:
                 missing.add(element_id)
-        return missing
+        return set(x for x in missing if "/?" not in x)
 
     def _get_missing(self, project: ProjectImpl, missing_elements: Set[str]) -> List[dict]:
         """
@@ -204,6 +205,12 @@ class SysML2ProjectBuilder:
             Current project
         """
         for _, element in project._env.items():
+            [
+                delattr(element, x)
+                for x in dir(element)
+                if not x.startswith("_")
+                and x not in ["get_value", "parse_and_set_value", "set_value"]
+            ]
             all_element = self.__get_all_element(element)
             [setattr(element, getattr(x, "_name"), x) for x in all_element if hasattr(x, "_name")]
 
@@ -224,3 +231,48 @@ class SysML2ProjectBuilder:
         all_element = getattr(element, "_ownedElement", [])
         all_element.extend(getattr(element, "_inheritedFeature", []))
         return all_element
+
+    def _add_write_access(self, project: ProjectImpl):
+        """
+        Add Write rules access on the project.
+
+        Parameters
+        ----------
+        project : ProjectImpl
+            The project to update.
+        """
+        project_modification_observer = ModificationObserver(project, self._connector)
+        for _, element in project._env.items():
+            element._observer = project_modification_observer
+            element._IS_READ_ONLY = False  # For later
+
+    def _index_libraries(self, project: ProjectImpl):
+        """
+        Index libraries for future reload.
+
+        Parameters
+        ----------
+        project : ProjectImpl
+            Context project
+        """
+        libraries_elements = set()
+        for _, element in project._env.items():
+            if not getattr(element, "_qualifiedName", "").startswith(project._name):
+                libraries_elements.add(element._id)
+        project._libraries_ids = libraries_elements
+
+    def reload_project(self, modification_observer: ModificationObserver, project: ProjectImpl):
+        """
+        Reload the project and update elements.
+
+        Parameters
+        ----------
+        project : ProjectImpl
+            _description_
+        """
+        modification_observer.stop_observer()
+        self._build_project_element(project)
+        self._resolve_inherited_link(project)
+        self._add_write_access(project)
+        self._index_libraries(project)
+        modification_observer.start_observer()

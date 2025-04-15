@@ -20,62 +20,58 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Project Interface for users."""
+"""Commit Class module."""
 
+import json
 from typing import List
 
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 
 
-class Project:
-    """Project Interface for users."""
+class Commit:
+    """Commit Class module."""
 
-    def get_root(self) -> List[SysMLElement]:
+    project_id: str = None
+    changes: List[DataVersion]
+    previous_commit_id: str = "head"
+
+    def __init__(self, project_id: str):
         """
-        Return the list of root packages.
-
-        Returns
-        -------
-        List[SysMLElement]
-            List of roots elements
-        """
-
-    def get_root_package(self) -> List[SysMLElement]:
-        """
-        Return the list of root packages.
-
-        Returns
-        -------
-        List[SysMLElement]
-            List of roots elements
-        """
-
-    def find_element_by_id(self, element_id: str) -> SysMLElement:
-        """
-        Find element with id.
+        Construct new instance.
 
         Parameters
         ----------
-        element_id : str
-            Element Id
-
-        Returns
-        -------
-        SysMLElement
-            Founded Element
+        project_id : str
+            The context project id
         """
+        self.project_id = project_id
+        self.changes = list()
 
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
+    def add_change(self, change: DataVersion):
         """
-        Find all element with name.
+        Add a change into the commit.
 
         Parameters
         ----------
-        elements_name : str
-            Name if elements
+        change : DataVersion
+            The data version of the change.
+        """
+        self.changes.append(change)
+
+    def to_json(self):
+        """
+        Serialize the commit data into json.
 
         Returns
         -------
-        List[SysMLElement]
-            founded Element
+        Str
+            Json data
         """
+        return json.dumps(
+            {
+                "@type": "Commit",
+                "change": [x.to_json() for x in self.changes],
+                "owningProject": {"@id": self.project_id},
+                "previousCommit": {"@id": self.previous_commit_id},
+            }
+        )

@@ -20,27 +20,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Tool module for SysML elements."""
+from ansys.sam.sysml2.classes.feature_helper import FeatureHelper
 
 
-class SysMLTools:
-    """Static class for all sysml tools."""
+class TestFeatureHelper:
 
-    @staticmethod
-    def isinstance(element, type: str) -> bool:
-        """
-        Use this function to check type of an element.
+    def test_adapt_bool_value(self):
+        assert FeatureHelper._adapt_value(True) == "true"
+        assert FeatureHelper._adapt_value(False) == "false"
 
-        Parameters
-        ----------
-        element : SysMLElement
-            The element to check
-        type : str
-            SysML class name
+    def test_adapt_string_value(self):
+        assert FeatureHelper._adapt_value("hello") == '"hello"'
+        assert FeatureHelper._adapt_value("") == '""'
 
-        Returns
-        -------
-        bool
-            True if yes, False else
-        """
-        return element.__class__.__name__.split(".")[-1] == type
+    def test_adapt_numbers_value(self):
+        assert FeatureHelper._adapt_value(42) == "42"
+        assert FeatureHelper._adapt_value(3.14) == "3.14"
+
+    def test_adapt_none_value(self):
+        assert FeatureHelper._adapt_value(None) == "None"
+
+    def test_adapt_structure_value(self):
+        assert FeatureHelper._adapt_value([1, 2, 3]) == "[1, 2, 3]"
+        assert FeatureHelper._adapt_value({"a": 1}) == "{'a': 1}"
