@@ -20,62 +20,45 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Project Interface for users."""
+import pytest
 
-from typing import List
-
+from ansys.sam.sysml2.builder.classes.derived_list import DerivedList
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
-class Project:
-    """Project Interface for users."""
+class TestDerivedList:
 
-    def get_root(self) -> List[SysMLElement]:
-        """
-        Return the list of root packages.
+    @pytest.fixture
+    def element(self):
+        element = SysMLElement("")
+        element.data = DerivedList(element, "data", *[1, 2, 3])
+        element._IS_READ_ONLY = True
+        return element
 
-        Returns
-        -------
-        List[SysMLElement]
-            List of roots elements
-        """
+    #
+    # These tests check if the list attribute is protected in read-only mode
+    #
 
-    def get_root_package(self) -> List[SysMLElement]:
-        """
-        Return the list of root packages.
+    def test_direct_assignment(self, element):
+        element.data = [4, 5, 6]
+        # Should be unchanged
+        assert element.data == [1, 2, 3]
 
-        Returns
-        -------
-        List[SysMLElement]
-            List of roots elements
-        """
+    def test_setattr(self, element):
+        setattr(element, "data", [99])
+        assert element.data == [1, 2, 3]
 
-    def find_element_by_id(self, element_id: str) -> SysMLElement:
-        """
-        Find element with id.
+    def test_mutation_append(self, element):
+        assert len(element.data) == 3
+        element.data.append(4)
+        assert len(element.data) == 3
 
-        Parameters
-        ----------
-        element_id : str
-            Element Id
+    def test_mutation_setitem(self, element):
+        assert element.data[0] == 1
+        element.data[0] = 10
+        assert element.data[0] == 1
 
-        Returns
-        -------
-        SysMLElement
-            Founded Element
-        """
-
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
-        """
-        Find all element with name.
-
-        Parameters
-        ----------
-        elements_name : str
-            Name if elements
-
-        Returns
-        -------
-        List[SysMLElement]
-            founded Element
-        """
+    def test_mutation_delitem(self, element):
+        assert len(element.data) == 3
+        del element.data[1]
+        assert len(element.data) == 3

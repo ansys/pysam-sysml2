@@ -134,3 +134,20 @@ class SysML2APIConnector:
         dict
             Result of the query
         """
+
+    def create_commit(self, project_id: str, commit: str) -> dict:
+        """
+        Create a commit and send to the Standard API.
+
+        Parameters
+        ----------
+        project_id : str
+            Project Id
+        commit : str
+            Commit, in JSON format
+
+        Returns
+        -------
+        dict
+            Result of the commit
+        """

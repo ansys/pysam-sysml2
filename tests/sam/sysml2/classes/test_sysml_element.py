@@ -20,62 +20,27 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Project Interface for users."""
-
-from typing import List
+import pytest
 
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
-class Project:
-    """Project Interface for users."""
+class TestSysMLElement:
 
-    def get_root(self) -> List[SysMLElement]:
-        """
-        Return the list of root packages.
+    @pytest.fixture
+    def element(self):
+        element = SysMLElement("")
+        element._IS_READ_ONLY = True
+        return element
 
-        Returns
-        -------
-        List[SysMLElement]
-            List of roots elements
-        """
+    #
+    # functions below are testing the write access elements
+    #
 
-    def get_root_package(self) -> List[SysMLElement]:
-        """
-        Return the list of root packages.
+    def test_direct_assignment(self, element):
+        element.value = 42
+        assert not hasattr(element, "value")
 
-        Returns
-        -------
-        List[SysMLElement]
-            List of roots elements
-        """
-
-    def find_element_by_id(self, element_id: str) -> SysMLElement:
-        """
-        Find element with id.
-
-        Parameters
-        ----------
-        element_id : str
-            Element Id
-
-        Returns
-        -------
-        SysMLElement
-            Founded Element
-        """
-
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
-        """
-        Find all element with name.
-
-        Parameters
-        ----------
-        elements_name : str
-            Name if elements
-
-        Returns
-        -------
-        List[SysMLElement]
-            founded Element
-        """
+    def test_setattr(self, element):
+        setattr(element, "value", 99)
+        assert not hasattr(element, "value")

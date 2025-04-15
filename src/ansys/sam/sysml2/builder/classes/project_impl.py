@@ -22,7 +22,7 @@
 
 """Private implementation for Project."""
 
-from typing import List
+from typing import List, Set
 
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.classes.project import Project
@@ -34,9 +34,10 @@ class ProjectImpl(Project):
     """Private class for project building."""
 
     _id: str
-    _env: dict = dict()
+    _env: dict
     _root: List[SysMLElement]
     _unresolved_fields: List[UnresolvedField]
+    _libraries_ids: Set[str]
     _name: str
 
     def __init__(self, id: str, name: str):
@@ -53,6 +54,8 @@ class ProjectImpl(Project):
         self._root = list()
         self._name = name
         self._unresolved_fields = list()
+        self._libraries_ids = set()
+        self._env = dict()
 
     def add_element(self, element: SysMLElement):
         """
@@ -86,6 +89,17 @@ class ProjectImpl(Project):
             List of roots packages
         """
         return self._root
+
+    def get_root_package(self) -> List[SysMLElement]:
+        """
+        Return the list of root packages.
+
+        Returns
+        -------
+        List[SysMLElement]
+            List of roots packages
+        """
+        return [x for x in self._root if x.__class__.__name__ == "Package"][0]
 
     def get_name(self) -> str:
         """
@@ -131,3 +145,20 @@ class ProjectImpl(Project):
         return [
             el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == elements_name
         ]
+
+    def start_modification(self):
+        """Authorize user to write on the model."""
+        for _, element in self._env.items():
+            element._IS_READ_ONLY = False
+
+    def end_modification(self, reload: bool = False):
+        """
+        Commit all registered modification on the model.
+
+        Parameters
+        ----------
+        reload : bool, optional
+            Reload the model from server, by default False
+        """
+        for _, element in self._env.items():
+            element._IS_READ_ONLY = True

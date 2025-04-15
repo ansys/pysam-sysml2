@@ -22,22 +22,22 @@
 
 # -*- coding: utf-8 -*-
 """
-  Copyright (c) 2024 ANSYS, Inc.
-  Unauthorized use, distribution, or duplication is prohibited.
+ Copyright (c) 2024 ANSYS, Inc.
+ Unauthorized use, distribution, or duplication is prohibited.
 
- File <test_ansys_sysml_source.py> created on Thu Nov 28 2024
+File <test_ansys_sysml_source.py> created on Thu Nov 28 2024
 """
 
 import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-from ansys.sam.sysml2.builder.classes.query.constraints_classes import (
-    CompositeConstraint,
-    PrimitiveConstraint,
-)
-from ansys.sam.sysml2.builder.classes.query.query_class import Query
-from ansys.sam.sysml2.builder.classes.query.query_enum import JoinOperator
+from ansys.sam.sysml2.dto.commit.commit_class import Commit
+from ansys.sam.sysml2.dto.commit.data_version import DataVersion
+from ansys.sam.sysml2.dto.query.constraints_classes import CompositeConstraint, PrimitiveConstraint
+from ansys.sam.sysml2.dto.query.query_class import Query
+from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
 from ansys.sam.sysml2.exception.connector_exception import (
+    BadRequestConnectionException,
     ConnectorConnectionException,
     ElementNotFoundException,
     InvalidProjectNameException,
@@ -184,3 +184,74 @@ class TestSysML2APIConnector:
 
         with pytest.raises(InvalidQuery):
             valid_source.execute_query(PROJECT_ID_1, query.to_json())
+
+    def test_create_commit_successfull(self, valid_source: AnsysSysML2APIConnector):
+        commit = Commit(PROJECT_ID_1)
+        change = DataVersion()
+        change.identify("61ac5435-8537-4f46-aec7-43636dcbb36f")
+        change.add_change("name", "NewAttribute")
+        commit.add_change(change)
+
+        response = valid_source.create_commit(PROJECT_ID_1, commit.to_json())
+        assert response.get("message") == "Commit Successful"
+
+    def test_create_commit_with_invalid_identity(self, valid_source: AnsysSysML2APIConnector):
+        commit = Commit(PROJECT_ID_1)
+        change = DataVersion()
+        change.identify("12345678-1234-1234-1234-123456789012")
+        change.add_change("name", "NewAttribute")
+        commit.add_change(change)
+
+        with pytest.raises(BadRequestConnectionException) as exception:
+            valid_source.create_commit(PROJECT_ID_1, commit.to_json())
+        assert "Bad Request : Invalid Identity Id" == exception.value.args[0]
+
+    def test_create_commit_with_missing_type(self, valid_source: AnsysSysML2APIConnector):
+        commit = Commit(PROJECT_ID_1)
+        change = DataVersion()
+        change.add_change("@type", None)
+        commit.add_change(change)
+
+        with pytest.raises(BadRequestConnectionException) as exception:
+            valid_source.create_commit(PROJECT_ID_1, commit.to_json())
+        assert "Bad Request : No Type for New Element" == exception.value.args[0]
+
+    def test_create_commit_with_missing_payload(self, valid_source: AnsysSysML2APIConnector):
+        commit = Commit(PROJECT_ID_1)
+        change = DataVersion()
+        commit.add_change(change)
+
+        with pytest.raises(BadRequestConnectionException) as exception:
+            valid_source.create_commit(PROJECT_ID_1, commit.to_json())
+        assert "Bad Request : Invalid change data" == exception.value.args[0]
+
+    def test_create_commit_with_missing_dataversion(self, valid_source: AnsysSysML2APIConnector):
+        commit = Commit(PROJECT_ID_1)
+
+        with pytest.raises(BadRequestConnectionException) as exception:
+            valid_source.create_commit(PROJECT_ID_1, commit.to_json())
+        assert "Bad Request : Change can't be empty" == exception.value.args[0]
+
+    def test_create_commit_with_invalid_key(self, valid_source: AnsysSysML2APIConnector):
+        commit = Commit(PROJECT_ID_1)
+        change = DataVersion()
+        change.identify("61ac5435-8537-4f46-aec7-43636dcbb36f")
+        invalid_key = "zadazdazd"
+        change.add_change(invalid_key, "NewAttribute")
+        commit.add_change(change)
+
+        with pytest.raises(BadRequestConnectionException) as exception:
+            valid_source.create_commit(PROJECT_ID_1, commit.to_json())
+        assert f"Bad Request : Element: Invalid {invalid_key}" == exception.value.args[0]
+
+    def test_create_commit_with_invalid_type(self, valid_source: AnsysSysML2APIConnector):
+        commit = Commit(PROJECT_ID_1)
+        change = DataVersion()
+        change.identify("61ac5435-8537-4f46-aec7-43636dcbb36f")
+        key = "name"
+        change.add_change(key, ["NewAttribute"])
+        commit.add_change(change)
+
+        with pytest.raises(BadRequestConnectionException) as exception:
+            valid_source.create_commit(PROJECT_ID_1, commit.to_json())
+        assert f"Bad Request : Element: Invalid Type for {key}" == exception.value.args[0]

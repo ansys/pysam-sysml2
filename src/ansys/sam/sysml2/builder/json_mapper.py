@@ -25,10 +25,12 @@
 from io import UnsupportedOperation
 from typing import List, Union
 
+from ansys.sam.sysml2.builder.classes.derived_list import DerivedList
 from ansys.sam.sysml2.classes.mapped_element import MappedElement
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.exception.mapper_exception import InvalidProjectJSONMapperException
+from ansys.sam.sysml2.tool import SysMLTools
 
 TYPE_KEY = "@type"
 
@@ -38,7 +40,7 @@ class JsonMapper:
 
     class_cache = {}
 
-    def map(self, name_space: str, element: dict) -> MappedElement:
+    def map(self, name_space: str, element: dict, mapped_element: SysMLElement) -> MappedElement:
         """
         Map the json into a Python element.
 
@@ -57,9 +59,9 @@ class JsonMapper:
         if TYPE_KEY not in element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(name_space, element)
+        return self.__build_element(name_space, element, mapped_element)
 
-    def __build_element(self, name_space: str, data: dict) -> MappedElement:
+    def __build_element(self, name_space: str, data: dict, element: SysMLElement) -> MappedElement:
         """
         Map element data to Python Object.
 
@@ -76,12 +78,15 @@ class JsonMapper:
             MappedElement with the sysml element and his unresolved fields
         """
         unresolved_fields = list()
-        element = SysMLElement(id=data["@id"])
+        if element is None:
+            element = SysMLElement(id=data["@id"])
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
         self.__update_element_definition(data, element)
-        if not element._qualifiedName.startswith(name_space):
+        if not element._qualifiedName.startswith(name_space) and not SysMLTools.isinstance(
+            element, "FeatureValue"
+        ):
             unresolved_fields = list()
         return MappedElement(element, unresolved_fields)
 
@@ -100,7 +105,11 @@ class JsonMapper:
         try:
             element.__class__ = self.class_cache[element_type]
         except KeyError:
-            self.class_cache[element_type] = type(element_type, (SysMLElement,), {})
+            self.class_cache[element_type] = type(
+                element_type,
+                (SysMLElement,),
+                {},
+            )
             element.__class__ = self.class_cache[element_type]
 
     def __add_fields(
@@ -195,14 +204,14 @@ class JsonMapper:
             setattr(
                 element,
                 key,
-                [e["@id"] for e in value],
+                DerivedList(element, key, *[e["@id"] for e in value]),
             )
             return [UnresolvedField(element, key, e["@id"]) for e in value]
         elif not any(isinstance(e, dict) for e in value):
             setattr(
                 element,
                 key,
-                value,
+                DerivedList(element, key, *value),
             )
             return []
         else:

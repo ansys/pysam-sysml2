@@ -52,6 +52,7 @@ class MockedServer:
         @app.errorhandler(404)
         @app.errorhandler(403)
         @app.errorhandler(401)
+        @app.errorhandler(400)
         def handle_error(e):
             return (
                 jsonify(e.description),

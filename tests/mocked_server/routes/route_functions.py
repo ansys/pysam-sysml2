@@ -22,10 +22,10 @@
 
 # -*- coding: utf-8 -*-
 """
-  Copyright (c) 2024 ANSYS, Inc.
-  Unauthorized use, distribution, or duplication is prohibited.
+ Copyright (c) 2024 ANSYS, Inc.
+ Unauthorized use, distribution, or duplication is prohibited.
 
- File <server_route.py> created on Tue Nov 26 2024
+File <server_route.py> created on Tue Nov 26 2024
 """
 
 from collections import Counter
@@ -403,6 +403,76 @@ def route_create_project() -> str:
             "@id": str(uuid4()),
         }
     create_http_error(code=405)
+
+
+@authenticate
+@space_route
+@return_json
+def route_create_commit(project_id: str) -> dict:
+    """
+    route_create_commit _summary_
+
+    Parameters
+    ----------
+    project_id : str
+        _description_
+
+    Returns
+    -------
+    str
+        _description_
+    """
+    check_project_id(project_id)
+    project_data = load_project(project_id)
+    commit_request_body = loads(request.data)
+
+    _check_commit_validity(commit_request_body)
+    change = commit_request_body.get("change")[0]
+
+    payload = change.get("payload")
+    identity = change.get("identity", None)
+
+    element_changed = None
+    if identity is not None:
+        try:
+            element_changed = [
+                element for element in project_data if element.get("@id") == identity.get("@id")
+            ][0]
+        except IndexError:
+            create_http_error(code=400, message="Invalid Identity Id")
+
+    if element_changed is None:
+        if payload.get("@type", None) is None:
+            create_http_error(code=400, message="No Type for New Element")
+    else:
+        _check_existing_element(payload, element_changed)
+
+    return {"message": "Commit Successful"}
+
+
+def _check_commit_validity(commit):
+    change = None
+    if "change" in commit:
+        change = commit.get("change")
+        if len(change) == 0:
+            create_http_error(code=400, message="Change can't be empty")
+
+    change = commit.get("change")[0]
+
+    if len(change.get("payload")) == 0:
+        create_http_error(code=400, message="Invalid change data")
+
+    if change.get("@type", None) != "DataVersion":
+        create_http_error(code=400, message="No DataVersion found in commit")
+
+
+def _check_existing_element(payload, element_changed):
+    for key, value in payload.items():
+        if key not in element_changed:
+            create_http_error(code=400, message=f"Element: Invalid {key}")
+        else:
+            if not isinstance(value, type(element_changed[key])):
+                create_http_error(code=400, message=f"Element: Invalid Type for {key}")
 
 
 def _handle_constraint(constraint: dict, data: list) -> list:
