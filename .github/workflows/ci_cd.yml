@@ -54,16 +54,33 @@ jobs:
   compile:
     name: "Publishing Package"
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Compiling
-        run: |
-          pip install build
-          python -m build
-      - uses: ansys/actions/release-github@v8
+
+      - name: Install tox
+        run: pip install tox
+
+      - name: Run tests via tox
+        run: tox
+
+      - name: Install build module
+        run: pip install build
+
+      - name: Build package
+        run: python -m build
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          library-name: "ansys-sam-sysml2"
+          files: |
+            dist/*.tar.gz
+            dist/*.whl
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
