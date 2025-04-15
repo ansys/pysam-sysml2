@@ -24,6 +24,7 @@ concurrency:
 jobs:
   # Single deploy job since we're just deploying
   deploy:
+    name: "Publishing Doc"
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -49,3 +50,11 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  compile:
+    name: "Publishing Package"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ansys/actions/release-github@v8
+        with:
+          library-name: "ansys-sam-sysml2"
