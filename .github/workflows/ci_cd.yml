@@ -45,7 +45,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
           path: "_build/html"
       - name: Deploy to GitHub Pages
         id: deployment
@@ -54,7 +53,7 @@ jobs:
   compile:
     name: "Publishing Package"
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    # if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
