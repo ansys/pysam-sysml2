@@ -4,24 +4,26 @@
 Finding information
 ####################
 
-In this section, you will find guideline to find required information like the project ID or your Auth token.
+In this section, you will find instructions for finding required information such as the Project ID or your Auth token.
 
 
 
 .. _Info_P_Id_Section:
 
-Find Project Id
+Find Project ID
 ================
 
-You can find the project ID in different places:
+You can find the Project ID in different places:
 
-- Editor :
-  - Open the project in the editor, you will have the project ID in the web page URL :
+- **Editor**:
+
+  - Open the project in the editor, you will have the Project ID in the web page URL:
 
   .. figure:: /_static/images/projectIdEditor.png
 
-- Dashboard:
-  - Open the project view page, you will find the project ID in the web page URL :
+- **Dashboard**:
+
+  - Open the project view page, you will find the Project ID in the web page URL:
 
   .. figure:: /_static/images/projectIdDashboard.png
 
@@ -32,20 +34,18 @@ You can find the project ID in different places:
 Find Organization Id
 ====================
 
-TODO: Update with new dashboard
-
-To get your Organization ID, follow these steps :
+To get your Organization ID, follow these steps:
 
 - Go to your Dashboard
-- Click on your organization :
+- Click on your Organization:
 
    .. figure:: /_static/images/orga1.png
 
-- You can find your organization Id in the URL of the page:
+- You can find your Organization ID in the URL of the page:
 
     .. figure:: /_static/images/orga2.png
 
-✔️ You got your organization Id!
+✔️ You got your Organization ID!
 
 .. _Info_B_Token_Section:
 
@@ -59,16 +59,17 @@ Temporary token
 
 To get your Bearer Token, open the SAM Editor Dashboard on your browser. Then click on ``F12`` to open the developer console.
 
-Then, go to the `Network` tab, then reload the page.
+Then, go to the `Network` tab and reload the page.
 
-You will see a lot of requests, search for one of this list :
+You will see a lot of requests, search for one of these:
+
 - `me`
 - `organizations`
 - `access-rights`
 
 Then, click on it, and go to the `Headers` tab.
 
-You will find the `Authorization` header, with the value of your Bearer Token :
+You will find the `Authorization` header with the value of your Bearer Token.
 
 
 .. warning::

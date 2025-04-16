@@ -1,7 +1,7 @@
 User Guide
 ----------
 
-This sections will provide help for users of this library.
+These sections will provide help for users of this library.
 
 .. grid:: 2
 

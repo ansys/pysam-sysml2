@@ -1,16 +1,16 @@
-Bike Examples
+Bike Example
 #############
 
 First of all, we need a bike model to work on!
 
 Fortunately, we have one for you.
 
-Download this model : `Bike Model </_static/code/bike.xmi>`_
+Download this model : `Bike Model </_static/code/bike.xmi>`_.
 
-Open SAM Editor on your browser, and switch to the good organization (*MyOrga* for example).
-Then click on `New Project` > `SysMl V2` > `Import File`.
+Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
+Then, click on `New Project` > `SysMl V2` > `Import File`.
 Click on `Choose File`  in the  `File to import` input, and select the `bike.xmi` file you just downloaded.
-The name of the project will automatically be `bike`.
+The name of the project will automatically set to `bike`.
 Click on `Import` and wait for the project to be loaded.
 
 *✅ Congratulations, you now have a bike model to work on !*
@@ -22,11 +22,11 @@ Calculate the Bike weight
 
 Let's calculate the weight of the bike.
 
-When we look at the model, we can see that the weight of the bike is the sum of the weight of the frame and the weight of all elements of the wheels.
+When we look at the model, we can see that the weight of the bike is the sum of the weight of the frame and the weight of all elements of the wheel components.
 
 .. note::
 
-    So  we want to calculate the sum of all blue elements of the model:
+    In this case, we want to calculate the sum of all blue elements of the model:
 
 .. figure:: /_static/images/weightBike.png
 
@@ -37,11 +37,11 @@ Step 1: Load the project
 
 .. note::
 
-    We suppose that you have already installed the Library, if not, please refer to the :ref:`Installation <Installation_Section>` section.
+    We suppose that you have already installed the Library. If not, please refer to the :ref:`Installation <Installation_Section>` section.
 
 Before loading our project, we need to create a Connector and a Project Manager.
 
-See section  :ref:`Organiaztion Id <Info_O_Id_Section>` and :ref:`Bearer Token <Info_B_Token_Section>` to know how to get the required data.
+See section  :ref:`Organization Id <Info_O_Id_Section>` and :ref:`Bearer Token <Info_B_Token_Section>` to know how to get the required data.
 
 
 
@@ -61,19 +61,19 @@ See section  :ref:`Organiaztion Id <Info_O_Id_Section>` and :ref:`Bearer Token <
     project_manager = SysML2ProjectManager(connector=connector)
 
 
-Now, that you are logged, in you can load the project `bike`.
+Now, that you are logged in, you can load the project `bike`.
 
 .. note::
 
-    To load a project, we need his ID, you can find it in the URL of the Editor
+    To load a project, we need his ID. You can find it in the URL of the Editor.
 
 
 .. code:: python
 
-   myBikeProject = project_manager.get_project("<BIke project ID>")
+   myBikeProject = project_manager.get_project("<Bike Project ID>")
 
 
-`myBikeProject` is now the project we will work on. See the [The loaded project](#The-loaded-project) section for more details about the project object.
+`myBikeProject` is the project we will work on. See the :ref:`loaded project <L_Project>` section for more details about the project object.
 
 
 
@@ -81,14 +81,14 @@ Now, that you are logged, in you can load the project `bike`.
 Step 2: Calculate the weight
 ----------------------------
 
-Now that we have the project, we can calculate the weight of the bike.
+Now that we have loaded the project, we can calculate the weight of the bike.
 
 Let's get the Bike element!
 
 
 .. note::
 
-    There are many ways to get an element, here we will use the `.` method. See the [Getter](#Getter) section for more details.
+    There are many ways to get an element, here we will use the dot notation. See the :ref:`Getter <Getter>` section for more details.
 
 
 .. code:: python
@@ -99,9 +99,9 @@ Let's get the Bike element!
 
 For weight calculation, nothing more simpler than simple addition!
 
-.. note::
+.. .. note::
 
-    For access to different elements, we will use another method, dot notation. See the [Getter](#Getter) section for more details.
+..     For access to different elements, we will use another method, dot notation. See the :ref:`Getter <Getter>` section for more details.
 
 So, if we look at each piece of the bike, we have:
 
@@ -124,7 +124,7 @@ We use the int() function to cast the value to int.
         + bike.frame.weight.get_value()[0]
     )
 
-Ok so let's print the weight of the bike!
+And let's print the weight of the bike!
 
 
 .. code:: python
@@ -132,9 +132,9 @@ Ok so let's print the weight of the bike!
    print(bike_weight)
 
 
-✅ You have now the weight of the bike!
+✅ You have now the total weight of the bike!
 
 
 .. note::
 
-    📄 you can get the full code `Here </_static/code/weightBike.py>`_
+    📄 You can get the full code `Here </_static/code/weightBike.py>`_.

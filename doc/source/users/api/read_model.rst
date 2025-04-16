@@ -1,20 +1,22 @@
 Read your model
 ###############
 
-One of the goal of the lib is to be able to read and parse the model, through a Python script.
+One of the goal of the lib is to be able to read and parse the model through a Python script.
 
 The loaded model is stored in a :ref:`Project <L_Project>`.
+
+.. _Getter:
 
 Getter
 ======
 
-To parse the project, you can use different getter.
+To parse the project, you can use different getters.
 
 Dot access
 ----------
 
-Using the dot access, you can access to all direct named element of your Sysml element.
-Also, you can access to some useful top level function, like get_value
+Using the dot access, you can access all direct named element of your Sysml element.
+Also, you can access to some useful top level function, like `get_value` for example.
 
 
 
@@ -22,33 +24,33 @@ Also, you can access to some useful top level function, like get_value
 Sub elements
 ~~~~~~~~~~~~
 
-The script attach all element contained in `ownedElement` and `_inheritedFeature`, who has a name, to the container element.
+The script attaches all elements contained in `ownedElement` and `_inheritedFeature`, who has a name, to the container element.
 
 .. code:: python
 
     >>> myPart.subPart
     <class ParUsage>
 
-get value
+get_value
 ~~~~~~~~~
 
 .. warning::
 
     This function is only for SysML Features Element.
 
-This is a top level function, to help user to get the Value of the feature, without read the internal structure.
+This is a top level function to help user to get the Value of the feature without having to read the internal structure.
 
 .. code:: python
 
-    >>> myExpressionFeature.getValue()
-    (10,[kg])
-    >>> myIntFeature.getValue()
+    >>> myExpressionFeature.get_value()
+    (10, 'kg')
+    >>> myIntFeature.get_value()
     10
-    >>> myStringFeature.getValue()
+    >>> myStringFeature.get_value()
     "Hello"
-    >>> myBoolFeature.getValue()
+    >>> myBoolFeature.get_value()
     False
-    >>> myFloatFeature.getValue()
+    >>> myFloatFeature.get_value()
     10.56
 
 This function support :
@@ -73,7 +75,7 @@ Using the `_` access, you will find all Sysml Method :
 
 .. warning::
 
-    In this first version, only existing fields (with data) are linked, so it's possible to don't find a function, who exist in Sysml V2
+    In this first version, only existing fields (with data) are linked, so it's possible to don't find a function, which exist in Sysml V2
 
 
 .. grid:: 2
@@ -82,7 +84,7 @@ Using the `_` access, you will find all Sysml Method :
         :link: load_model
         :link-type: doc
 
-        Load you model
+        Load your model
 
     .. grid-item-card:: Next step :fa:`arrow-right`
         :link: write_model

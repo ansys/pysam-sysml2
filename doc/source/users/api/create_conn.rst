@@ -5,7 +5,7 @@ Use a connector
 
 
 A connector is the interface between the library and the SysML V2 Server.
-It's use the Standard API to load and publish information on a model.
+It uses the Standard API to load and publish information in a model.
 
 
 Connectors
@@ -28,8 +28,8 @@ You can find classes specification :ref:`Here <C_I_Section>`
 
     conn = AnsysSysML2APIConnector(
         server_url="https://127.0.0.1:8443", # The base URL of the Standard API
-        organization_id='8a06828c8e0a4d4a018e0a52513f0001', # Organization Id where is stored the project
-        token=token, # You Personal access token
+        organization_id="<Orga ID>", # Organization Id where is stored the project
+        token="<Token>", # Your Personal access token
         use_ssl=False, # If you need to verify HTTPS or not
     )
 
