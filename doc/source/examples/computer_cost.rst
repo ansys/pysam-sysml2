@@ -29,6 +29,7 @@ Let's calculate the cost of the Computer.
 .. code:: python
 
     from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
+    from ansys.sam.sysml2.tool import SysMLTools
     import requests
     from urllib3.exceptions import InsecureRequestWarning
 
