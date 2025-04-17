@@ -76,3 +76,31 @@ You will find the `Authorization` header with the value of your Bearer Token.
 
   Only take the Token, after "Bearer "
 
+PAT Token
+~~~~~~~~~
+
+To create a **Personal Access Token (PAT)**, you first need a valid **Bearer Token**. Follow the steps in the :ref:`Temporary Token <Info_B_Token_Section>` section to retrieve it using your browser's developer tools.
+
+Once you have your Bearer Token, navigate to the `Swagger UI` page.
+For example: `https://<SERVER-URL>/api/swagger-ui/index.html`
+
+Click on the **Authorize** button and paste your Bearer Token in the authentication field.
+
+.. figure:: /_static/images/authorize.png
+
+.. figure:: /_static/images/bearerAuth.png
+
+Once authorized, go to the top right of the page and open the `Select a definition` dropdown. Scroll down and select the **Personal Access Token API**.
+
+.. figure:: /_static/images/PAT.png
+
+Use the **POST** request to generate a new PAT. You can optionally define the number of days the token should remain valid (the default is 30 days).
+
+After submitting the request, your newly generated PAT will appear in the response body.
+
+.. figure:: /_static/images/getPAT.png
+
+.. note::
+
+  Make sure to save your PAT somewhere secure, as it may not be displayed again once you leave the page.
+  You can always generate a new one if needed.
