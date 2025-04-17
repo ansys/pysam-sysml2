@@ -4,13 +4,13 @@ Write in your model
 
 .. warning::
 
-    This feature is actually in beta version, and doesn't support a lot of function.
+    This feature is in beta version and doesn't support a lot of functions.
 
 
 Update feature value
 ====================
 
-There is two function to update value of a feature:
+There is two functions to update the value of a feature:
 
 - set_value()
 - parse_and_set_value()

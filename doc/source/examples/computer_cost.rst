@@ -5,12 +5,12 @@ First of all, we need a computer model to work on!
 
 Fortunately, we have one for you.
 
-Download this model : `Computer Model </_static/code/computer.xmi>`_
+Download this model : `Computer Model </_static/code/computer.xmi>`_.
 
-Open SAM Editor on your browser, and switch to the good organization (*MyOrga* for example).
-Then click on `New Project` > `SysMl V2` > `Import File`.
-Click on `Choose File`  in the  `File to import` input, and select the `bike.xmi` file you just downloaded.
-The name of the project will automatically be `computer`.
+Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
+Then, click on `New Project` > `SysMl V2` > `Import File`.
+Click on `Choose File`  in the  `File to import` input, and select the `computer.xmi` file you just downloaded.
+The name of the project will automatically set to `computer`.
 Click on `Import` and wait for the project to be loaded.
 
 *✅ Congratulations, you now have a computer model to work on !*
@@ -24,7 +24,7 @@ Let's calculate the cost of the Computer.
 
 .. note::
 
-    You need to change organization id, Server Url, Token, with your own data, see :ref:`This section for more information<Info_Section>`
+    You need to change `Organization ID`, `Server Url` and `Token` with your own data, see :ref:`This section for more information<Info_Section>`.
 
 .. code:: python
 
@@ -36,20 +36,16 @@ Let's calculate the cost of the Computer.
         InsecureRequestWarning
     )
 
-    token = "eyJraWQi..."
-
-
     conn = AnsysSysML2APIConnector(
-        server_url="https://127.0.0.1:8443",
-        organization_id="<Id>",
-        token=token,
-        use_ssl=False,
+        server_url="https://127.0.0.1:8443/", # Your Sam server base URL
+        organization_id="<Orga ID>", # The Organization ID
+        token="<Token>", # Your Auth Token (See section below)
+        use_ssl=False # If the server has a valid SSL
     )
-
 
     model_manager = SysML2ProjectManager(connector=conn)
 
-    project = model_manager.get_project("c22d73ac-470c-47c6-ad59-dbad31c600e1")
+    project = model_manager.get_project("<Computer Project ID>") # You can find it in the URL of the Editor
 
     realSystems = project.get_root_package().RealSystems
 

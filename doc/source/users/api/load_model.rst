@@ -4,23 +4,23 @@ Load a model
 To load a model, you need an instance of a SysML Connector (see :ref:`here <Create_C_Section>`).
 
 After this, you can create a SysML2ProjectManager.
-This class will help you to load model in Python, using the Sysml V2 Standard API.
+This class will help you to load a model in Python, using the Sysml V2 Standard API.
 
 .. code:: python
 
    model_manager = SysML2ProjectManager(connector=conn)
 
 
-You can find information about this classes :ref:`here <PM_Section>`.
+You can find information about this class :ref:`here <PM_Section>`.
 
-With this model manager, you can load project like this:
+With this model manager, you can load your project like this:
 
 .. code:: python
 
-   project = model_manager.get_project("ac00103a-8e4d-426d-bd5f-e1e6d360970c")
+   project = model_manager.get_project("<Project ID>") #You can find it in the URL of the Editor
 
 
-Once you got this project, you have a Python version of your model.
+Once you got this project variable, you have a Python version of your model.
 
 .. grid:: 2
 

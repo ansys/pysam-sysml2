@@ -3,7 +3,7 @@
 Examples
 ########
 
-In this section, we will see ways to use the API in some examples.
+In this section, we will see different ways to use the API with some examples.
 
 .. grid:: 2
 
@@ -11,13 +11,13 @@ In this section, we will see ways to use the API in some examples.
         :link: bike_weight
         :link-type: doc
 
-        Calculate the bike weight from his parts
+        Calculate the bike weight from his parts.
 
     .. grid-item-card:: Computer Price :fa:`laptop`
         :link: computer_cost
         :link-type: doc
 
-        Calculate the cost of you computer
+        Calculate the cost of one computer.
 
 
 
