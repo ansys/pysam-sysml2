@@ -33,16 +33,16 @@ You can find classes specification :ref:`Here <C_I_Section>`
         use_ssl=False, # If you need to verify HTTPS or not
     )
 
+.. only:: html
 
+    .. grid:: 2
 
-.. grid:: 2
+        .. grid-item-card::
+            :link: create_conn
+            :link-type: doc
 
-    .. grid-item-card::
-        :link: create_conn
-        :link-type: doc
+        .. grid-item-card:: Next step :fa:`arrow-right`
+            :link: load_model
+            :link-type: doc
 
-    .. grid-item-card:: Next step :fa:`arrow-right`
-        :link: load_model
-        :link-type: doc
-
-        Load a model
+            Load a model

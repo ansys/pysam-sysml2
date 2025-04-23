@@ -18,17 +18,30 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install tox
-        run: pip install tox
+      - name: Install system dependencies (for LaTeX)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-latex-base texlive-latex-recommended \
+            texlive-fonts-recommended texlive-latex-extra latexmk
+
+      - name: Install Python build dependencies
+        run: pip install tox build
 
       - name: Run tests via tox
         run: tox
 
-      - name: Install build module
-        run: pip install build
-
-      - name: Build package
+      - name: Build the package
         run: python -m build
+
+      - name: Install the built package
+        run: pip install dist/*.whl
+
+      - name: Install documentation requirements
+        run: pip install -r doc/requirements.txt
+
+      - name: Build Sphinx PDF documentation
+        run: make pdf
+        working-directory: ./doc
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
@@ -36,5 +49,6 @@ jobs:
           files: |
             dist/*.tar.gz
             dist/*.whl
+            doc/_build/latex/*.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

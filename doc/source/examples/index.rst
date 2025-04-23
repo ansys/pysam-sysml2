@@ -5,19 +5,21 @@ Examples
 
 In this section, we will see different ways to use the API with some examples.
 
-.. grid:: 2
+.. only:: html
 
-    .. grid-item-card:: The Bike :fa:`bicycle`
-        :link: bike_weight
-        :link-type: doc
+    .. grid:: 2
 
-        Calculate the bike weight from his parts.
+        .. grid-item-card:: The Bike :fa:`bicycle`
+            :link: bike_weight
+            :link-type: doc
 
-    .. grid-item-card:: Computer Price :fa:`laptop`
-        :link: computer_cost
-        :link-type: doc
+            Calculate the bike weight from his parts.
 
-        Calculate the cost of one computer.
+        .. grid-item-card:: Computer Price :fa:`laptop`
+            :link: computer_cost
+            :link-type: doc
+
+            Calculate the cost of one computer.
 
 
 
