@@ -188,8 +188,8 @@ class TestSysML2APIConnector:
     def test_create_commit_successfull(self, valid_source: AnsysSysML2APIConnector):
         commit = Commit(PROJECT_ID_1)
         change = DataVersion()
-        change.identify("61ac5435-8537-4f46-aec7-43636dcbb36f")
-        change.add_change("name", "NewAttribute")
+        change.identify("12ed6cd5-ae7e-489e-994d-980473ed0f2c")
+        change.add_change("name", "timoleon")
         commit.add_change(change)
 
         response = valid_source.create_commit(PROJECT_ID_1, commit.to_json())

@@ -182,6 +182,59 @@ def load_project(id: str) -> dict:
         )
 
 
+def load_project_data(id: str) -> dict:
+    """
+    Use this function to load project data.
+
+    Parameters
+    ----------
+    id : str
+        project id
+
+    Returns
+    -------
+    str
+        Project data
+    """
+    path = get_project_path(os.path.join(f"project_{id}", "project.json"))
+    try:
+        with open(path, "r") as file:
+            return loads(file.read())
+    except Exception:
+        create_http_error(
+            code=500,
+            title="JSON not found",
+            message="Make sure the file is named : project_<id>/project.json",
+        )
+
+
+def write_project(id: str, data: dict) -> None:
+    """
+    Use this function to write project data.
+
+    Parameters
+    ----------
+    id : str
+        Project ID
+    data : dict
+        Modified project data to save
+
+    Returns
+    -------
+    None
+    """
+    path = get_project_path(os.path.join(f"project_{id}", "elements.json"))
+    try:
+        with open(path, "w") as file:
+            file.write(dumps(data, indent=4))
+    except Exception as e:
+        create_http_error(
+            code=500,
+            title="Failed to write JSON",
+            message=f"Could not write to file: project_{id}/elements.json. Error: {str(e)}",
+        )
+
+
 def create_http_error(code: int = 404, title: str = "Error", message: str = ""):
     """
     Use this function to generate a HTTP error.
@@ -267,13 +320,7 @@ def route_get_project(project_id: str) -> str:
         Project information
     """
     check_project_id(project_id)
-    return {
-        "@type": "Project",
-        "defaultBranch": {"@id": "defaultBranch"},
-        "description": "",
-        "name": f"project {project_id}",
-        "@id": project_id,
-    }
+    return load_project_data(project_id)
 
 
 @authenticate
@@ -317,14 +364,20 @@ def route_get_element(project_id: str, element_id: str) -> str:
         Element information
     """
     check_project_id(project_id)
+    element = _find_element_by_id(project_id, element_id)
+    if element is None:
+        create_http_error(
+            title="resource-not-found",
+            message=f"Element {element_id}  not found in Project {project_id}",
+        )
+    return element
+
+
+def _find_element_by_id(project_id, element_id):
     data = load_project(project_id)
     for element in data:
         if element["@id"] == element_id:
             return element
-    create_http_error(
-        title="resource-not-found",
-        message=f"Element {element_id}  not found in Project {project_id}",
-    )
 
 
 @authenticate
@@ -440,14 +493,76 @@ def route_create_commit(project_id: str) -> dict:
             ][0]
         except IndexError:
             create_http_error(code=400, message="Invalid Identity Id")
-
-    if element_changed is None:
-        if payload.get("@type", None) is None:
-            create_http_error(code=400, message="No Type for New Element")
     else:
-        _check_existing_element(payload, element_changed)
+        element_changed = _create_new_element(project_id, project_data, payload)
+
+    updated_element = __update_element(payload, element_changed)
+
+    _save_updated_element(project_id, updated_element)
 
     return {"message": "Commit Successful"}
+
+
+def _save_updated_element(project_id, updated_element):
+    project_data = load_project(project_id)
+    index = project_data.index([x for x in project_data if x["@id"] == updated_element["@id"]][0])
+    project_data.pop(index) and project_data.insert(index, updated_element)
+    write_project(project_id, project_data)
+
+
+def _create_new_element(project_id, project_data, payload):
+    if payload.get("@type", None) is None:
+        create_http_error(code=400, message="No Type for New Element")
+
+    random_id = _generate_unique_id(project_data)
+    owner_ref = payload.get("owner", {})
+    owner_id = owner_ref.get("@id")
+    owner = _find_owner(project_data, owner_id)
+    owner_name = owner.get("qualifiedName")
+
+    payload.update(
+        {
+            "@id": random_id,
+            "identifier": random_id,
+            "qualifiedName": f"{owner_name}::{payload['name']}",
+        }
+    )
+    owner["ownedElement"].append(
+        {"@id": random_id},
+    )
+
+    project_data.append(payload)
+    write_project(project_id, project_data)
+    return _find_element_by_id(project_id, random_id)
+
+
+def _find_owner(project_data, owner_id):
+    try:
+        return [el for el in project_data if el.get("@id") == owner_id][0]
+    except IndexError:
+        create_http_error(code=400, message="Invalid Owner Id")
+
+
+def _generate_unique_id(project_data: list) -> str:
+    """
+    generate_unique_id Generate a UUID that doesn't exist in the current project data
+
+    Parameters
+    ----------
+    project_data : list
+        A list of dictionaries representing elements of the project
+
+    Returns
+    -------
+    str
+        A unique UUID string not present in any element's '@id' field
+    """
+    existing_ids = {element.get("@id") for element in project_data}
+
+    while True:
+        random_id = str(uuid4())
+        if random_id not in existing_ids:
+            return random_id
 
 
 def _check_commit_validity(commit):
@@ -466,13 +581,16 @@ def _check_commit_validity(commit):
         create_http_error(code=400, message="No DataVersion found in commit")
 
 
-def _check_existing_element(payload, element_changed):
+def __update_element(payload, element_changed):
     for key, value in payload.items():
         if key not in element_changed:
             create_http_error(code=400, message=f"Element: Invalid {key}")
         else:
             if not isinstance(value, type(element_changed[key])):
                 create_http_error(code=400, message=f"Element: Invalid Type for {key}")
+            else:
+                element_changed[key] = value
+    return element_changed
 
 
 def _handle_constraint(constraint: dict, data: list) -> list:

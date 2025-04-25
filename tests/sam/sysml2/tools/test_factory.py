@@ -22,36 +22,26 @@
 
 import pytest
 
+from ansys.sam.sysml2 import SysML2ProjectManager
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+
+# from ansys.sam.sysml2.exception.connector_exception import (
+#     BadRequestConnectionException,
+#     ConnectorConnectionException,
+#     ElementNotFoundException,
+#     InvalidProjectNameException,
+#     ProjectNotFoundException,
+# )
+from ansys.sam.sysml2.tools.factory import Factory
 from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import PROJECT_ID_1, VALID_ORGANIZATION, VALID_TOKEN
+from mocked_server.routes.const import PROJECT_ID_2, VALID_ORGANIZATION, VALID_TOKEN
 
 
-class TestSysMLElement:
+class TestFactory:
 
     @pytest.fixture
-    def element(self):
-        element = SysMLElement("")
-        element._IS_READ_ONLY = True
-        return element
-
-    #
-    # functions below are testing the write access elements
-    #
-
-    def test_direct_assignment(self, element):
-        element.value = 42
-        assert not hasattr(element, "value")
-
-    def test_setattr(self, element):
-        setattr(element, "value", 99)
-        assert not hasattr(element, "value")
-
-    def test_update_element(self):
-
-        project_manager = SysML2ProjectManager(
+    def project_manager(self) -> SysML2ProjectManager:
+        return SysML2ProjectManager(
             AnsysSysML2APIConnector(
                 server_url=MockedServer.get_url(),
                 organization_id=VALID_ORGANIZATION,
@@ -59,13 +49,23 @@ class TestSysMLElement:
             )
         )
 
-        project = project_manager.get_project(PROJECT_ID_1)
+    def test_create_elements(self, project_manager: SysML2ProjectManager):
+
+        project = project_manager.get_project(PROJECT_ID_2)
+
+        factory = Factory(project, project_manager._connector)
 
         project_root = project.get_root_package()
 
-        project_root.PartUsage.Attribute._name = "NewAttr"
+        new_attribute = factory.create_elements(
+            "AttributeUsage", name="new_attribute", owner=project_root
+        )
 
-        assert project_root.PartUsage.NewAttr._name == "NewAttr"
+        assert project_root.new_attribute._name == "new_attribute"
+
+        new_attribute._name = "NewAttr"
+
+        assert project_root.NewAttr._name == "NewAttr"
 
         with pytest.raises(AttributeError):
-            project_root.PartUsage.Attribute
+            project_root.new_attribute

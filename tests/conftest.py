@@ -22,17 +22,49 @@
 
 """File  created on Mon Dec 09 2024."""
 
+from pathlib import Path
+import shutil
+
 import pytest
 
 from mocked_server.mocked_server import MockedServer
+
+conftest_path = Path(__file__).resolve()
+base_dir = conftest_path.parent / "mocked_server"
+
+original_path = base_dir / "json"
+backup_path = base_dir / "json_backup"
 
 
 @pytest.fixture(scope="session", autouse=True)
 def start_server():
     """
-    Pytest call this function at the start of all test.
+    Pytest calls this function once at the start of all tests.
+    It backs up the mocked_server/json folder, starts the mock server,
+    and restores the json folder when tests are finished.
     """
     server = MockedServer()
+    create_projects_backup()
+
     server.start_server()
     yield
     server.stop_server()
+
+    restore_projects_backup()
+
+
+def create_projects_backup():
+    backup_path.parent.mkdir(parents=True, exist_ok=True)
+
+    if backup_path.exists():
+        shutil.rmtree(backup_path)
+
+    shutil.copytree(original_path, backup_path)
+
+
+def restore_projects_backup():
+    if original_path.exists():
+        shutil.rmtree(original_path)
+    shutil.copytree(backup_path, original_path)
+
+    shutil.rmtree(backup_path)

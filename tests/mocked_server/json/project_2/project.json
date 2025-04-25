@@ -1,0 +1,9 @@
+{
+    "@type": "Project",
+    "defaultBranch": {
+        "@id": "defaultBranch"
+    },
+    "description": "",
+    "name": "PySamTestProject",
+    "@id": "2"
+}
