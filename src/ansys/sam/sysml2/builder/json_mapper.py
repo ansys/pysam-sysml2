@@ -30,7 +30,7 @@ from ansys.sam.sysml2.classes.mapped_element import MappedElement
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.exception.mapper_exception import InvalidProjectJSONMapperException
-from ansys.sam.sysml2.tool import SysMLTools
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 TYPE_KEY = "@type"
 

@@ -62,7 +62,7 @@ class DataVersion:
 
         if isinstance(value, SysMLElement):
             self.payload[key] = {"@id": value._id}
-        elif isinstance(value, DerivedList):
+        elif isinstance(value, (DerivedList, list)):
             self.payload[key] = [
                 {"@id": x._id} if isinstance(x, SysMLElement) else x for x in value
             ]
