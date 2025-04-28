@@ -5,7 +5,7 @@ Examples
 
 In this section, we will see different ways to use the API with some examples.
 
-.. grid:: 2
+.. grid:: 3
 
     .. grid-item-card:: The Bike :fa:`bicycle`
         :link: bike_weight
@@ -19,6 +19,11 @@ In this section, we will see different ways to use the API with some examples.
 
         Calculate the cost of one computer.
 
+    .. grid-item-card:: Creating Elements :fa:`wrench`
+        :link: creating_elements
+        :link-type: doc
+
+        Create new elements in your project.
 
 
 .. toctree::
@@ -27,3 +32,4 @@ In this section, we will see different ways to use the API with some examples.
 
    bike_weight
    computer_cost
+   creating_elements
