@@ -24,15 +24,7 @@ import pytest
 
 from ansys.sam.sysml2 import SysML2ProjectManager
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-
-# from ansys.sam.sysml2.exception.connector_exception import (
-#     BadRequestConnectionException,
-#     ConnectorConnectionException,
-#     ElementNotFoundException,
-#     InvalidProjectNameException,
-#     ProjectNotFoundException,
-# )
-from ansys.sam.sysml2.tools.factory import Factory
+from ansys.sam.sysml2.tools import Factory
 from mocked_server.mocked_server import MockedServer
 from mocked_server.routes.const import PROJECT_ID_2, VALID_ORGANIZATION, VALID_TOKEN
 

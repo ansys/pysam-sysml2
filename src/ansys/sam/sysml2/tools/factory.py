@@ -35,7 +35,15 @@ class Factory:
     _conn: AnsysSysML2APIConnector
 
     def __init__(self, project: Project, conn: AnsysSysML2APIConnector) -> None:
+        """Construct Method for new instance.
 
+        Parameters
+        ----------
+        project : Project
+            The Project Context
+        conn : AnsysSysML2APIConnector
+            The SysML 2 connector.
+        """
         self._project_id = project._id
         self._project = project
         self._conn = conn
@@ -54,7 +62,7 @@ class Factory:
         SysMLElement
             The Created Element
         """
-        existing_elements = set(x for x, _ in self._project._env.items())
+        existing_elements = set(x for x in self._project._env.keys())
         commit = Commit(self._project_id)
         change = DataVersion()
 
@@ -85,17 +93,16 @@ class Factory:
         """
         from ansys.sam.sysml2.tools import SysMLTools
 
-        diff_elements = set(x for x, _ in self._project._env.items()).difference(existing_elements)
+        diff_elements = set(x for x in self._project._env.keys()).difference(existing_elements)
 
-        new_elements_ids = set(
+        new_elements_ids = list(
             x for x in diff_elements if SysMLTools.isinstance(self._project._env[x], element_type)
         )
 
         if len(new_elements_ids) > 1:
-            raise ValueError
+            raise ValueError("Too many elements of this type found on reload")
 
-        element_id = list(new_elements_ids)
-        return self._project._env[element_id[0]]
+        return self._project._env[new_elements_ids[0]]
 
     def reload_project(self):
         """Start the reload of the project."""

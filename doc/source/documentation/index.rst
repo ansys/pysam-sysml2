@@ -1,25 +1,27 @@
 Documentation
 #############
 
-.. grid:: 3
+.. only:: html
 
-    .. grid-item-card:: Connector Classes
-        :link: connector
-        :link-type: doc
+    .. grid:: 3
 
-        Connector Classes and Interfaces
+        .. grid-item-card:: Connector Classes
+            :link: connector
+            :link-type: doc
 
-    .. grid-item-card:: Project Manager
-        :link: connector
-        :link-type: doc
+            Connector Classes and Interfaces
 
-        Project Manager to load models
+        .. grid-item-card:: Project Manager
+            :link: connector
+            :link-type: doc
 
-    .. grid-item-card:: Project
-        :link: project
-        :link-type: doc
+            Project Manager to load models
 
-        The loaded project
+        .. grid-item-card:: Project
+            :link: project
+            :link-type: doc
+
+            The loaded project
 
 .. toctree::
    :hidden:

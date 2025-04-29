@@ -18,7 +18,7 @@ Click on `Import` and wait for the project to be loaded.
 Create an AttributeUsage for the Bicycle Frame Length
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This example shows how to create a new ``AttributeUsage`` element under the ``Bike`` structure and assign it a value.
+This example shows how to create a new ``AttributeUsage`` element inside the ``Bike`` and assign it a value.
 
 .. note::
 
@@ -27,7 +27,7 @@ This example shows how to create a new ``AttributeUsage`` element under the ``Bi
 .. code:: python
 
     from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
-    from ansys.sam.sysml2.tools.factory import Factory
+    from ansys.sam.sysml2.tools import Factory
 
     # Create your connector for the Sam Server
     connector = AnsysSysML2APIConnector(
@@ -45,11 +45,11 @@ This example shows how to create a new ``AttributeUsage`` element under the ``Bi
     factory = Factory(project, connector)
 
     new_bicycle_frame_length = factory.create_elements(
-        "AttributeUsage", name="Bicycle Frame Length", owner=bike
+        "AttributeUsage", name="length", owner=bike.frame
     )
 
     new_bicycle_frame_length.parse_and_set_value("60 [cm]")
 
-    print(new_bicycle_frame_length.get_value())
+    print(project.get_root_package().Structure.Bike.frame.length.get_value())
 
 ✅ You just created a new element and assigned a parsed value to it!

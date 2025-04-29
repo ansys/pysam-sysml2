@@ -75,23 +75,25 @@ The ``create_elements()`` method returns the newly created element.
         shortName="attrUsage01"
     )
 
-This will create a new ``AttributeUsage`` element with the given attributes under the ``Bike`` structure.
+This will create a new ``AttributeUsage`` element with the given attributes inside the ``Bike``.
 
 .. note::
 
     The list of accepted attributes depends on the type of element you are creating.
     For example ``name``, ``owner``, ``shortName``, and others defined by the metamodel.
 
-.. grid:: 2
+.. only:: html
 
-    .. grid-item-card::  :fa:`arrow-left` Previous step
-        :link: read_model
-        :link-type: doc
+    .. grid:: 2
 
-        Read a model
+        .. grid-item-card::  :fa:`arrow-left` Previous step
+            :link: read_model
+            :link-type: doc
 
-    .. grid-item-card:: Next step :fa:`arrow-right`
-        :link: information
-        :link-type: doc
+            Read a model
 
-        How to get some information
+        .. grid-item-card:: Next step :fa:`arrow-right`
+            :link: information
+            :link-type: doc
+
+            How to get some information
