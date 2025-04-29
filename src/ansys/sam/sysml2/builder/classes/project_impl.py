@@ -90,14 +90,14 @@ class ProjectImpl(Project):
         """
         return self._root
 
-    def get_root_package(self) -> List[SysMLElement]:
+    def get_root_package(self) -> SysMLElement:
         """
-        Return the list of root packages.
+        Return root package.
 
         Returns
         -------
-        List[SysMLElement]
-            List of roots packages
+        SysMLElement
+            Root element
         """
         return [x for x in self._root if x.__class__.__name__ == "Package"][0]
 

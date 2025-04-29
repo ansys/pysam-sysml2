@@ -40,14 +40,14 @@ class Project:
             List of roots elements
         """
 
-    def get_root_package(self) -> List[SysMLElement]:
+    def get_root_package(self) -> SysMLElement:
         """
-        Return the list of root packages.
+        Return root package.
 
         Returns
         -------
-        List[SysMLElement]
-            List of roots elements
+        SysMLElement
+            Root element
         """
 
     def find_element_by_id(self, element_id: str) -> SysMLElement:

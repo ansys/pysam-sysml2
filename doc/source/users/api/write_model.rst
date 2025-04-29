@@ -4,7 +4,7 @@ Write in your model
 
 .. warning::
 
-    This feature is in beta version and doesn't support a lot of functions.
+    This feature is in beta version and could have some issues.
 
 
 Update feature value
@@ -38,19 +38,49 @@ This function is for all primitive type :
 The model is updated after all set, to keep it the most accurate as possible.
 
 
-parse and set
--------------
+Create new elements
+===================
 
-This function is for more complex expression :
+You can create new elements in your model using the ``Factory`` class.
+
+.. tip::
+
+    A complete example is available :ref:`here <PM_Section>`.
 
 .. code::
 
-    >>> myFeature.parse_and_set_value("10 [m]")
-    >>> myFeature.get_value()
-    (10,"m")
-    >>> myFeature.parse_and_set_value("2 + 10 [kg]")
-    >>> myFeature.get_value()
-    Exception UnsupportedValueExpression raised
+    factory = Factory(project, connector)
+
+Then, use the ``create_elements()`` method to create a new model element.
+You must provide the type of the element, as well as any number of keyword arguments representing its attributes:
+
+.. code::
+
+    new_attribute_usage = factory.create_elements(
+        "AttributeUsage",
+        name="new_attribute_usage",
+    )
+
+This will create a new ``AttributeUsage`` element at the root of your project.
+The ``create_elements()`` method returns the newly created element.
+
+.. code::
+
+    bike = project.get_root_package().Structure.Bike
+
+    new_attribute_usage = factory.create_elements(
+        "AttributeUsage",
+        name="new_attribute_usage",
+        owner=bike,
+        shortName="attrUsage01"
+    )
+
+This will create a new ``AttributeUsage`` element with the given attributes inside the ``Bike``.
+
+.. note::
+
+    The list of accepted attributes depends on the type of element you are creating.
+    For example ``name``, ``owner``, ``shortName``, and others defined by the metamodel.
 
 .. only:: html
 

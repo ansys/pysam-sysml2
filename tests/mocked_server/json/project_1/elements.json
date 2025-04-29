@@ -26,7 +26,7 @@
         "@type": "PartUsage",
         "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c",
         "identifier": "12ed6cd5-ae7e-489e-994d-980473ed0f2c",
-        "name": "",
+        "name": "myPartUsage",
         "qualifiedName": "PySamTestProject::myPartUsage",
         "owner": {
             "@id": "0b5280f4-00ab-419f-84bd-146e4964ac7f"
