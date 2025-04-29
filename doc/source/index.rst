@@ -9,25 +9,27 @@ So you can manipulate models, browse through them, edit them, and push the modif
 
 This library intends to work first with `SAM <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_, the SysML2 modeling tool of Ansys.
 
-.. grid:: 3
+.. only:: html
 
-    .. grid-item-card:: Getting started :fa:`rocket`
-        :link: getting_started/index
-        :link-type: doc
+    .. grid:: 3
 
-        Get started with PySam! This section contains installation instructions and some simple examples.
+        .. grid-item-card:: Getting started :fa:`rocket`
+            :link: getting_started/index
+            :link-type: doc
 
-    .. grid-item-card:: User Guide :fa:`book-open-reader`
-        :link: users/index
-        :link-type: doc
+            Get started with PySam! This section contains installation instructions and some simple examples.
 
-        User Guide.
+        .. grid-item-card:: User Guide :fa:`book-open-reader`
+            :link: users/index
+            :link-type: doc
 
-    .. grid-item-card:: Documentation :fa:`book-open-reader`
-        :link: documentation/index
-        :link-type: doc
+            User Guide.
 
-        Full documentation for Users and Developers.
+        .. grid-item-card:: Documentation :fa:`book-open-reader`
+            :link: documentation/index
+            :link-type: doc
+
+            Full documentation for Users and Developers.
 
 
 

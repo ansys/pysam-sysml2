@@ -22,16 +22,18 @@ With this model manager, you can load your project like this:
 
 Once you got this project variable, you have a Python version of your model.
 
-.. grid:: 2
+.. only:: html
 
-    .. grid-item-card:: :fa:`arrow-left` Previous step
-        :link: create_conn
-        :link-type: doc
+    .. grid:: 2
 
-        Use a connector
+        .. grid-item-card:: :fa:`arrow-left` Previous step
+            :link: create_conn
+            :link-type: doc
 
-    .. grid-item-card:: Next step :fa:`arrow-right`
-        :link: read_model
-        :link-type: doc
+            Use a connector
 
-        Read a model
+        .. grid-item-card:: Next step :fa:`arrow-right`
+            :link: read_model
+            :link-type: doc
+
+            Read a model

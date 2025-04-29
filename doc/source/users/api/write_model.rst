@@ -81,17 +81,19 @@ This will create a new ``AttributeUsage`` element with the given attributes unde
 
     The list of accepted attributes depends on the type of element you are creating.
     For example ``name``, ``owner``, ``shortName``, and others defined by the metamodel.
+    
+.. only:: html
 
-.. grid:: 2
+    .. grid:: 2
 
-    .. grid-item-card::  :fa:`arrow-left` Previous step
-        :link: read_model
-        :link-type: doc
+        .. grid-item-card::  :fa:`arrow-left` Previous step
+            :link: read_model
+            :link-type: doc
 
-        Read a model
+            Read a model
 
-    .. grid-item-card:: Next step :fa:`arrow-right`
-        :link: information
-        :link-type: doc
+        .. grid-item-card:: Next step :fa:`arrow-right`
+            :link: information
+            :link-type: doc
 
-        How to get some information
+            How to get some information
