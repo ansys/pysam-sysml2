@@ -77,17 +77,18 @@ Using the `_` access, you will find all Sysml Method :
 
     In this first version, only existing fields (with data) are linked, so it's possible to don't find a function, which exist in Sysml V2
 
+.. only:: html
 
-.. grid:: 2
+    .. grid:: 2
 
-    .. grid-item-card:: :fa:`arrow-left` Previous step
-        :link: load_model
-        :link-type: doc
+        .. grid-item-card:: :fa:`arrow-left` Previous step
+            :link: load_model
+            :link-type: doc
 
-        Load your model
+            Load your model
 
-    .. grid-item-card:: Next step :fa:`arrow-right`
-        :link: write_model
-        :link-type: doc
+        .. grid-item-card:: Next step :fa:`arrow-right`
+            :link: write_model
+            :link-type: doc
 
-        Write in your model
+            Write in your model

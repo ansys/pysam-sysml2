@@ -19,6 +19,39 @@ switcher_version = get_version_match(__version__)
 html_theme = "ansys_sphinx_theme"
 html_short_title = html_title = "pysam-sysml2"
 
+latex_logo = "_static/images/pyansys_logo_transparent_white.png"
+
+latex_elements = {
+    "preamble": r"""
+% Empêche les images d’être coupées entre deux pages
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{capt-of}  % Si tu utilises des images hors figure
+\usepackage{etoolbox} % Pour patcher les inclusions d’images
+
+% Redimensionne automatiquement les images trop grandes
+\makeatletter
+\patchcmd{\Gin@setfile}
+  {\Gin@nat@width}
+  {\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+  {}{}
+\patchcmd{\Gin@setfile}
+  {\Gin@nat@height}
+  {\ifdim\Gin@nat@height>0.8\textheight0.8\textheight\else\Gin@nat@height\fi}
+  {}{}
+\makeatother
+
+% Empêche les flottants d'aller au-delà des sections
+\let\oldsection\section
+\renewcommand{\section}{\FloatBarrier\oldsection}
+
+% Style de placement par défaut des figures
+\floatplacement{figure}{H}
+""",
+}
+
+
 # specify the location of your github repo
 html_theme_options = {
     "github_url": "https://github.com/ansys/pysam-sysml2",
