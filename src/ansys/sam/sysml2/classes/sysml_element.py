@@ -74,7 +74,8 @@ class SysMLElement:
             Value
         """
         if not hasattr(self, "_valuation"):
-            print("""Could not found valuation field, please update value to the last version.""")
+            if hasattr(self, "_defaultValue"):
+                print("Old value structure found, please update the value in the editor.")
             return None
         value = self._valuation._value
         if hasattr(value, "_value"):
@@ -105,6 +106,8 @@ class SysMLElement:
                 ]
                 if len(unit_v) > 0 and hasattr(unit_v[0], "_shortName"):
                     return (value_v[0], unit_v[0]._shortName)
+                if len(unit_v) > 0 and hasattr(unit_v[0], "_name"):
+                    return (value_v[0], unit_v[0]._name)
 
         raise UnsupportedValueExpression("Expression not supported!")
 
