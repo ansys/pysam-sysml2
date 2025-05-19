@@ -48,7 +48,7 @@ class Factory:
         self._project = project
         self._conn = conn
 
-    def create_elements(self, element_type: str, **kwargs):
+    def create_element(self, element_type: str, **kwargs):
         """Create a new element in the model and return it to the User.
 
         Parameters
