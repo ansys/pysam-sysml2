@@ -30,11 +30,12 @@ File <server_route.py> created on Tue Nov 26 2024
 
 from collections import Counter
 from functools import wraps
+import json
 from json import dumps, loads
 import os
 from uuid import uuid4
 
-from flask import abort, request
+from flask import Response, abort, request
 
 from .const import VALID_ORGANIZATION, VALID_TOKEN
 
@@ -205,6 +206,32 @@ def load_project_data(id: str) -> dict:
             code=500,
             title="JSON not found",
             message="Make sure the file is named : project_<id>/project.json",
+        )
+
+
+def load_project_rest_data(id: str) -> dict:
+    """
+    Use this function to load project rest data.
+
+    Parameters
+    ----------
+    id : str
+        project id
+
+    Returns
+    -------
+    str
+        Project data
+    """
+    path = get_project_path(os.path.join(f"project_{id}", "api_rest.json"))
+    try:
+        with open(path, "r") as file:
+            return loads(file.read())
+    except Exception:
+        create_http_error(
+            code=500,
+            title="JSON not found",
+            message="Make sure the file is named : project_<id>/api_rest.json",
         )
 
 
@@ -591,6 +618,92 @@ def __update_element(payload, element_changed):
             else:
                 element_changed[key] = value
     return element_changed
+
+
+@authenticate
+@return_json
+def route_get_rest_json(project_id: str) -> str:
+    """
+    use this function to get all rest api json.
+
+    Parameters
+    ----------
+    project_id : str
+        Project id
+
+    Returns
+    -------
+    str
+        REST API JSON
+    """
+    check_project_id(project_id)
+    return load_project_rest_data(project_id)
+
+
+@authenticate
+def route_get_diagram_image(project_id: str, diagram_id: str, file_format: str) -> str:
+    """
+    use this function to get diagram images.
+
+    Parameters
+    ----------
+    project_id : str
+        Project id
+
+    Returns
+    -------
+    str
+        REST API JSON
+    """
+    check_project_id(project_id)
+    if diagram_id == "all":
+        return all_diagram_as_zip(project_id, file_format)
+    else:
+        return get_diagram_by_id(project_id, diagram_id, file_format)
+
+
+def get_diagram_by_id(project_id, diagram_id, file_format):
+    accepted_file_format = ["all", "jpg", "jpeg", "png", "svg"]
+
+    if file_format in accepted_file_format:
+        data = {
+            "success": 200,
+            "project_id": project_id,
+            "diagram_id": diagram_id,
+            "file_format": file_format,
+        }
+        if file_format == "svg":
+            file_format = "svg+xml"
+        return Response(
+            json.dumps(data).encode("utf-8"),
+            mimetype=f"image/{file_format}",
+            headers={"Content-Disposition": f'attachment; filename="diagrams.{file_format}"'},
+        )
+    else:
+        abort(404, description="File format not supported")
+
+
+def all_diagram_as_zip(project_id, file_format):
+    path = get_project_path(os.path.join(f"project_{project_id}", "number_of_diagrams.txt"))
+    with open(path) as f:
+        nb = int(f.read())
+
+    accepted_file_format = ["all", "jpg", "jpeg", "png", "svg"]
+
+    if file_format in accepted_file_format:
+        data = {
+            "success": 200,
+            "project_id": project_id,
+            "number_diagrams": nb,
+            "file_format": file_format,
+        }
+        return Response(
+            json.dumps(data).encode("utf-8"),
+            mimetype="application/zip",
+            headers={"Content-Disposition": 'attachment; filename="diagrams.zip"'},
+        )
+    else:
+        abort(404, description="File format not supported")
 
 
 def _handle_constraint(constraint: dict, data: list) -> list:

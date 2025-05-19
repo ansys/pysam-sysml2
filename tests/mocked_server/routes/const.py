@@ -27,6 +27,7 @@ VALID_TOKEN = "eVaLiDe-T0KeN"
 
 PROJECT_ID_1 = "1"
 PROJECT_ID_2 = "2"
+PROJECT_ID_3 = "3"
 
 # FROM json/project_1/elements.json
 PROJECT_1_PART_ID = "12ed6cd5-ae7e-489e-994d-980473ed0f2c"

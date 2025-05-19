@@ -22,42 +22,28 @@
 
 import pytest
 
-from ansys.sam.sysml2 import SysML2ProjectManager
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-from ansys.sam.sysml2.tools import Factory
+from ansys.sam.sysml2.diagrams.api import AnsysRestApiConnector
 from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import PROJECT_ID_2, VALID_ORGANIZATION, VALID_TOKEN
+from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
 
 
-class TestFactory:
+class TestAnsysRestApiConnector:
 
     @pytest.fixture
-    def project_manager(self) -> SysML2ProjectManager:
-        return SysML2ProjectManager(
-            AnsysSysML2APIConnector(
-                server_url=MockedServer.get_url(),
-                organization_id=VALID_ORGANIZATION,
-                token=VALID_TOKEN,
-            )
+    def connector(self) -> AnsysRestApiConnector:
+        connector = AnsysSysML2APIConnector(
+            server_url=MockedServer.get_url() + "/",
+            organization_id=VALID_ORGANIZATION,
+            token=VALID_TOKEN,
         )
+        return AnsysRestApiConnector(connector)
 
-    def test_create_element(self, project_manager: SysML2ProjectManager):
+    def test_get_project_data(self, connector: AnsysRestApiConnector):
+        data = connector.get_project_data(PROJECT_ID_3)
+        assert len(data) > 0
+        assert "eClass" in data
 
-        project = project_manager.get_project(PROJECT_ID_2)
-
-        factory = Factory(project, project_manager._connector)
-
-        project_root = project.get_root_package()
-
-        new_attribute = factory.create_element(
-            "AttributeUsage", name="new_attribute", owner=project_root
-        )
-
-        assert project_root.new_attribute._name == "new_attribute"
-
-        new_attribute._name = "NewAttr"
-
-        assert project_root.NewAttr._name == "NewAttr"
-
-        with pytest.raises(AttributeError):
-            project_root.new_attribute
+    def test_build_end_point(self, connector: AnsysRestApiConnector):
+        url = connector._build_endpoint(f"/projects/{PROJECT_ID_3}/json")
+        assert url.endswith("/json")

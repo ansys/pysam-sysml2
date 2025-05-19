@@ -31,6 +31,7 @@ from mocked_server.mocked_server import MockedServer
 
 conftest_path = Path(__file__).resolve()
 base_dir = conftest_path.parent / "mocked_server"
+tmp_dir = conftest_path.parent / "tmp"
 
 original_path = base_dir / "json"
 backup_path = base_dir / "json_backup"
@@ -45,11 +46,13 @@ def start_server():
     """
     server = MockedServer()
     create_projects_backup()
+    create_tmp_dir()
 
     server.start_server()
     yield
     server.stop_server()
 
+    delete_tmp_dir()
     restore_projects_backup()
 
 
@@ -68,3 +71,12 @@ def restore_projects_backup():
     shutil.copytree(backup_path, original_path)
 
     shutil.rmtree(backup_path)
+
+
+def create_tmp_dir():
+    tmp_dir.mkdir(parents=True, exist_ok=True)
+
+
+def delete_tmp_dir():
+    if tmp_dir.exists():
+        shutil.rmtree(tmp_dir)
