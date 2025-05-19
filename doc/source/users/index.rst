@@ -39,11 +39,11 @@ These sections will provide help for users of this library.
 
     .. grid:: 2
 
-        .. grid-item-card:: Develop a connector :fa:`rocket`
-            :link: api/dev_conn
+        .. grid-item-card:: Work with diagrams :fa:`project-diagram`
+            :link: api/diagram_model
             :link-type: doc
 
-            How to develop the connector for a Sysml V2 tool?
+            How to download and explore diagrams?
 
         .. grid-item-card:: How to find required information :fa:`info-circle`
             :link: api/information
@@ -51,14 +51,25 @@ These sections will provide help for users of this library.
 
             How to find required information like Organization id, Token, ...
 
+.. only:: html
+
+    .. grid:: 2
+
+        .. grid-item-card:: Develop a connector :fa:`rocket`
+            :link: api/dev_conn
+            :link-type: doc
+
+            How to develop the connector for a Sysml V2 tool?
+
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 7
    :hidden:
 
    api/create_conn
    api/load_model
    api/read_model
-   api/information
    api/write_model
+   api/diagram_model
+   api/information
    api/dev_conn
