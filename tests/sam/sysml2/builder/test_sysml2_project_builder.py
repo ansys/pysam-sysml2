@@ -42,4 +42,4 @@ class TestSysML2ProjectBuilder:
         builder = SysML2ProjectBuilder(valid_source)
         project = builder.build_project("1")
         assert len(project.get_root()) == 1
-        assert project.get_root()[0]._name == "PySamTestProject"
+        assert project.get_root()[0]._name == "PySamTestProject-COMPLET"

@@ -28,7 +28,7 @@ from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnec
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.diagrams.api import AnsysRestApiConnector
 from ansys.sam.sysml2.diagrams.builder import SysML2DiagramBuilder
-from ansys.sam.sysml2.diagrams.utils import bind_download_method
+from ansys.sam.sysml2.diagrams.utils.diagram_downloader import DiagramDownloader
 
 
 class SysML2DiagramManager:
@@ -64,19 +64,12 @@ class SysML2DiagramManager:
         model : Project
             The context model
         """
-        builder = SysML2DiagramBuilder(model, self._connector)
-        diagrams = builder.build_diagrams()
-
-        for diagram_list in diagrams.values():
-            for diagram in diagram_list:
-                bind_download_method(diagram, self, model)
-
-        builder._update_model(model, diagrams)
+        builder = SysML2DiagramBuilder(self._connector)
+        builder.build_diagrams(model)
 
     def download_all_diagrams(
         self,
         project: Project,
-        connector: AnsysRestApiConnector,
         path: Union[str, Path],
         file_format: str = "svg",
         filename: str = "",
@@ -88,12 +81,10 @@ class SysML2DiagramManager:
         ----------
         project : ProjectImpl
             The project instance.
-        connector: AnsysSysML2APIConnector
-            Connector instance providing access to the API.
         path : str or Path
             Destination directory or file path for the ZIP file.
         file_format : str, optional: default = "svg"
-            file_format of the diagrams (e.g., 'png', 'jpg', 'svg').
+            Format of the diagrams (e.g., 'png', 'jpg', 'svg').
         filename : str, optional: default = "{Project Name}_{Image Extension}_diagrams.zip"
             Name of the file.
 
@@ -102,3 +93,23 @@ class SysML2DiagramManager:
         dict
             Result of the operation with status and message.
         """
+        new_format = file_format
+        if file_format == "jpeg":
+            new_format = "jpg"
+        if filename == "":
+            filename = f"{project.get_name()}_{file_format}_diagrams.zip"
+
+        try:
+            file_path = DiagramDownloader.resolve_file_path(path, filename)
+            response = DiagramDownloader.get_diagram_zip(self._connector, project._id, new_format)
+
+            if response.status_code == 200:
+                DiagramDownloader.save_response_content(response, file_path)
+                return {"status": "success", "message": f"File saved to {file_path}"}
+            else:
+                return {
+                    "status": "error",
+                    "message": f"Download failed: {response.status_code} - {response.text}",
+                }
+        except Exception as e:
+            return {"status": "error", "message": str(e)}

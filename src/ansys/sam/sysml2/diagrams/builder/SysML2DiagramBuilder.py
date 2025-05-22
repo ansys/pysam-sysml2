@@ -28,50 +28,60 @@ from typing import Dict, List
 from ansys.sam.sysml2 import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.diagrams.builder import EMF2ObjectMapper
-from ansys.sam.sysml2.diagrams.classes.unresolved_field import UnresolvedField
+from ansys.sam.sysml2.diagrams.classes import UnresolvedField
+from ansys.sam.sysml2.diagrams.utils import DiagramDownloader
 
 
 class SysML2DiagramBuilder:
     """Diagram Builder class."""
 
     _mapper: EMF2ObjectMapper
-    _project: Project
 
-    def __init__(self, project: Project, connector: AnsysSysML2APIConnector):
+    def __init__(self, connector: AnsysSysML2APIConnector):
         """
         Construct method for new instance.
 
         Parameters
         ----------
-        project : Project
-            Context project
         connector : AnsysSysML2APIConnector
             The connector
         """
         self._connector = connector
-        self._project = project
         self._mapper = EMF2ObjectMapper()
 
-    def build_diagrams(self) -> Dict[str, list]:
+    def build_diagrams(self, project: Project) -> Dict[str, list]:
         """
         Call API and build the project from JSON.
+
+        Parameters
+        ----------
+        project : Project
+            The project context
 
         Returns
         -------
         Dict[str, list]
             List of Diagrams
         """
-        data = self._connector.get_project_data(self._project._id)
+        data = self._connector.get_project_data(project._id)
         diagrams_extracted = self.extract_diagrams(data)
-        return self._build_diagram_elements(diagrams_extracted)
+        diagrams = self._build_diagram_elements(diagrams_extracted, project)
 
-    def _build_diagram_elements(self, diagrams: dict) -> dict:
+        for diagram_list in diagrams.values():
+            for diagram in diagram_list:
+                DiagramDownloader.bind_download_method(diagram, self._connector, project)
+
+        self._update_model(project, diagrams)
+
+    def _build_diagram_elements(self, diagrams: dict, project: Project) -> dict:
         """Build all diagrams elements.
 
         Parameters
         ----------
         diagrams : dict
             Diagrams retrieved from API
+        project : Project
+            The project context
 
         Returns
         -------
@@ -85,34 +95,29 @@ class SysML2DiagramBuilder:
                 mapped = self._mapper.map(annotation)
                 elements.append(mapped.get_element())
                 unresolved = mapped.get_unresolved_fields()
-                self.__resolve_unresolved_fields(unresolved)
+                self.__resolve_unresolved_fields(project, unresolved)
             data[id] = elements
         return data
 
-    def __resolve_unresolved_fields(self, unresolved_fields: List[UnresolvedField]):
+    def __resolve_unresolved_fields(
+        self, project: Project, unresolved_fields: List[UnresolvedField]
+    ):
         """
         Resolve all fields.
 
         Parameters
         ----------
+        project : Project
+            The project context
         unresolved_fields : List[UnresolvedField]
             The unresolved fields
         """
         for field in unresolved_fields:
             target_id = field.get_id()
-            target_data = self._project.find_element_by_id(target_id)
+            target_data = project.find_element_by_id(target_id)
 
-            if target_data:
-                if isinstance(target_data, dict):
-                    mapped = self._mapper.map(target_data)
-                    resolved_element = mapped.get_element()
-
-                    field.resolve(resolved_element)
-
-                    if mapped.get_unresolved_fields():
-                        self.__resolve_unresolved_fields(mapped.get_unresolved_fields())
-                else:
-                    field.resolve(target_data)
+            if target_data is not None:
+                field.resolve(target_data)
 
     def extract_diagrams(self, data: dict) -> dict:
         """

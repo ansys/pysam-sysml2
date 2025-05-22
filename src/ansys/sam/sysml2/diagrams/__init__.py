@@ -23,4 +23,4 @@
 
 from .api import AnsysRestApiConnector
 from .builder import EMF2ObjectMapper, SysML2DiagramBuilder
-from .utils import diagram_utils
+from .utils import DiagramDownloader

@@ -24,6 +24,7 @@ import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.diagrams.api import AnsysRestApiConnector
+from ansys.sam.sysml2.exception.connector_exception import ConnectorConnectionException
 from mocked_server.mocked_server import MockedServer
 from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
 
@@ -47,3 +48,27 @@ class TestAnsysRestApiConnector:
     def test_build_end_point(self, connector: AnsysRestApiConnector):
         url = connector._build_endpoint(f"/projects/{PROJECT_ID_3}/json")
         assert url.endswith("/json")
+
+    def test_wrong_ansys_api_connector(self):
+        conn = AnsysSysML2APIConnector(
+            server_url="1234596/",
+            organization_id=VALID_ORGANIZATION,
+            token=VALID_TOKEN,
+        )
+
+        connector = AnsysRestApiConnector(conn)
+
+        with pytest.raises(ConnectorConnectionException) as exception:
+            connector.get_project_data(PROJECT_ID_3)
+        assert str(exception.value.args[0]).startswith(
+            "Invalid URL '1234596/api/rest/latest/projects/3/json': No scheme supplied."
+        )
+
+    def test_wrong_connector_class(self):
+
+        class FakeConnector: ...
+
+        conn = FakeConnector()
+
+        with pytest.raises(AttributeError):
+            AnsysRestApiConnector(conn)

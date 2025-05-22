@@ -1,25 +1,11 @@
 [
     {
         "@type": "Package",
-        "@id": "0b5280f4-00ab-419f-84bd-146e4964ac7f",
-        "identifier": "0b5280f4-00ab-419f-84bd-146e4964ac7f",
+        "@id": "9f8a65e8-89c1-4a44-9bb2-fa60232713cf",
+        "identifier": "9f8a65e8-89c1-4a44-9bb2-fa60232713cf",
+        "eAnnotations": [],
+        "ownedElement":[],
         "name": "PySamTestProject",
-        "ownedElement": [
-            {
-                "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c"
-            },
-            {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-            }
-        ],
-        "qualifiedName": "PySamTestProject",
-        "ownedMember": [
-            {
-                "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c"
-            },
-            {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-            }
-        ]
+        "qualifiedName": "PySamTestProject"
     }
 ]

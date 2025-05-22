@@ -19,53 +19,27 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+"""Name Utils class for PySam Diagram library."""
 
-"""Mapped Element class."""
-
-from typing import List
-
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
+import re
 
 
-class MappedElement:
-    """Mapped Element class."""
+class NameUtils:
+    """The NameUtils class is used to help standardize element names."""
 
-    _element: SysMLElement
-    _unresolved_fields: List[UnresolvedField]
-
-    def __init__(self, element: SysMLElement, unresolved_fields: List[UnresolvedField]):
+    @staticmethod
+    def to_snake_case(name: str) -> str:
         """
-        Construct Method for new instance.
+        Convert a camelCase or PascalCase string to snake_case.
 
         Parameters
         ----------
-        element : SysMLElement
-            The mapped Element
-        unresolved_fields : List[UnresolvedField]
-            List of all his unresolved fields=
-        """
-        self._element = element
-        self._unresolved_fields = unresolved_fields
-
-    def get_element(self) -> SysMLElement:
-        """
-        Getter for the mapped element.
+        name : str
+            The name to convert.
 
         Returns
         -------
-        SysMLElement
-            the mapped element
+        str
+            The converted snake_case string.
         """
-        return self._element
-
-    def get_unresolved_fields(self) -> List[UnresolvedField]:
-        """
-        Getter for the list of all unresolved Fields.
-
-        Returns
-        -------
-        List[UnresolvedField]
-            the list of all unresolved Fields
-        """
-        return self._unresolved_fields
+        return re.sub(r"(?<!^)(?=[A-Z])", "_", name).lower()

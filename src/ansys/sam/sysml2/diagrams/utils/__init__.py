@@ -21,4 +21,5 @@
 # SOFTWARE.
 """Utils module for PySam Diagram library."""
 
-from .diagram_utils import DiagramUtils, bind_download_method
+from .diagram_downloader import DiagramDownloader
+from .name_utils import NameUtils

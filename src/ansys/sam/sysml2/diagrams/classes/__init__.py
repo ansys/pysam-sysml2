@@ -21,7 +21,8 @@
 # SOFTWARE.
 """Classes module for PySam Diagram library."""
 
+from ansys.sam.sysml2.classes.mapped_element import MappedElement
+from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
+
 from .diagram_element import DiagramElement
-from .mapped_element import MappedElement
 from .plane import Plane
-from .unresolved_field import UnresolvedField
