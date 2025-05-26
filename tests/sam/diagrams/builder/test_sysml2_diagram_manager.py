@@ -28,6 +28,7 @@ from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnec
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.diagrams.SysML2DiagramManager import SysML2DiagramManager
+from ansys.sam.sysml2.exception.connector_exception import HTTPResponseException
 from conftest import tmp_dir
 from mocked_server.mocked_server import MockedServer
 from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
@@ -105,9 +106,8 @@ class TestSysML2DiagramManager:
             diagrams.load_diagrams(project_nb_3)
             response = diagrams.download_all_diagrams(project=project_nb_3, path=dl_path)
 
-        assert response["status"] == "success"
-        assert response["message"].startswith("File saved to ")
-        assert response["message"].endswith(expected_filename)
+        assert response.startswith("File saved to ")
+        assert response.endswith(expected_filename)
 
         assert expected_file_path.exists()
         assert expected_file_path.name == expected_filename
@@ -139,9 +139,8 @@ class TestSysML2DiagramManager:
                 project=project_nb_3, path=dl_path, file_format=expected_file_format
             )
 
-        assert response["status"] == "success"
-        assert response["message"].startswith("File saved to ")
-        assert response["message"].endswith(expected_filename)
+        assert response.startswith("File saved to ")
+        assert response.endswith(expected_filename)
 
         assert expected_file_path.exists()
         assert expected_file_path.name == expected_filename
@@ -169,13 +168,10 @@ class TestSysML2DiagramManager:
 
         with SysML2DiagramManager(valid_source) as diagrams:
             diagrams.load_diagrams(project_nb_3)
-            response = diagrams.download_all_diagrams(
-                project=project_nb_3, path=dl_path, file_format=expected_file_format
-            )
-
-        assert response["status"] == "error"
-        assert response["message"] == 'Download failed: 404 - "File format not supported"\n'
-
+            with pytest.raises(HTTPResponseException):
+                diagrams.download_all_diagrams(
+                    project=project_nb_3, path=dl_path, file_format=expected_file_format
+                )
         assert expected_file_path.exists() == False
 
     def test_download_all_diagrams_with_jpeg_format_gives_jpg(
@@ -194,9 +190,8 @@ class TestSysML2DiagramManager:
                 project=project_nb_3, path=dl_path, file_format=file_format
             )
 
-        assert response["status"] == "success"
-        assert response["message"].startswith("File saved to ")
-        assert response["message"].endswith(expected_filename)
+        assert response.startswith("File saved to ")
+        assert response.endswith(expected_filename)
 
         assert expected_file_path.exists()
         assert expected_file_path.name == expected_filename
@@ -226,9 +221,8 @@ class TestSysML2DiagramManager:
                 project=project_nb_3, path=dl_path, filename=expected_filename
             )
 
-        assert response["status"] == "success"
-        assert response["message"].startswith("File saved to ")
-        assert response["message"].endswith(expected_filename)
+        assert response.startswith("File saved to ")
+        assert response.endswith(expected_filename)
 
         assert expected_file_path.exists()
         assert expected_file_path.name == expected_filename
@@ -261,9 +255,8 @@ class TestSysML2DiagramManager:
                 filename=expected_filename,
             )
 
-        assert response["status"] == "success"
-        assert response["message"].startswith("File saved to ")
-        assert response["message"].endswith(expected_filename)
+        assert response.startswith("File saved to ")
+        assert response.endswith(expected_filename)
 
         assert expected_file_path.exists()
         assert expected_file_path.name == expected_filename

@@ -19,21 +19,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Name Utils class for PySam Diagram library."""
+"""Point class element."""
 
-import re
+from ansys.sam.sysml2.diagrams.classes.diagram_element import DiagramElement
 
 
-class NameUtils:
-    """The NameUtils class is used to help standardize element names."""
-
-    @staticmethod
-    def to_snake_case(string: str) -> str:
-        """Convert a camelCase or PascalCase string to snake_case."""
-        return re.sub(r"(?<!^)(?=[A-Z])", "_", string).lower()
-
-    @staticmethod
-    def to_key(string: str) -> str:
-        """Convert a camelCase or PascalCase string to _snake_case."""
-        attr = NameUtils.to_snake_case(string)
-        return f"_{attr}"
+class Point(DiagramElement):
+    """Point class."""

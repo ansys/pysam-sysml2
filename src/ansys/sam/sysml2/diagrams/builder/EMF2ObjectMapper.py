@@ -25,8 +25,15 @@ from typing import Dict, List, Tuple, Union
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.diagrams.classes import DiagramElement, MappedElement, Plane, UnresolvedField
+from ansys.sam.sysml2.diagrams.classes import (
+    DiagramElement,
+    MappedElement,
+    Plane,
+    Point,
+    UnresolvedField,
+)
 from ansys.sam.sysml2.diagrams.utils import NameUtils
+from ansys.sam.sysml2.exception.mapper_exception import InvalidProjectJSONMapperException
 
 TYPE_KEY = "eClass"
 
@@ -43,7 +50,7 @@ class EMF2ObjectMapper:
         """Construct Method for new EMF2ObjectMapper instance."""
         self.class_cache: Dict[str, type] = {}
 
-    def map(self, data: dict, mapped_element: DiagramElement = None) -> MappedElement:
+    def map(self, data: dict) -> MappedElement:
         """
         Convert JSON-like dictionary data into a DiagramElement.
 
@@ -59,14 +66,20 @@ class EMF2ObjectMapper:
         MappedElement
             An object containing the mapped DiagramElement and any unresolved references.
         """
-        return self.__build_element(data, mapped_element)
+        if "@id" not in data:
+            raise InvalidProjectJSONMapperException("Not valid JSON-like dictionary data")
 
-    def __build_element(self, data: dict, element: DiagramElement = None) -> MappedElement:
+        return self.__build_element(data)
+
+    def __build_element(self, data: dict) -> MappedElement:
         """Core implementation for mapping data into a DiagramElement."""
-        if element is None:
-            element = DiagramElement(id=data["@id"])
+        element = DiagramElement(id=data["@id"])
 
-        self.__assign_dynamic_class(element, data.get(TYPE_KEY, ""))
+        eclass = data.get(TYPE_KEY, None)
+        if eclass is not None:
+            self.__assign_dynamic_class(element, data.get(TYPE_KEY))
+        else:
+            element = Point(id=data["@id"])
 
         unresolved_fields = self.__map_plane_if_present(data, element)
         unresolved_fields.extend(self.__add_fields(data, element))
@@ -141,8 +154,7 @@ class EMF2ObjectMapper:
         List[UnresolvedField]
             List of unresolved references found during extraction.
         """
-        attr_snake = NameUtils.to_snake_case(attribute_name)
-        new_attr_name = f"_{attr_snake}"
+        new_attr_name = NameUtils.to_key(attribute_name)
         raw_value = plane_data.get(attribute_name, [])
         resolved, unresolved = self.__extract_reference(raw_value, plane, new_attr_name)
 
@@ -221,7 +233,7 @@ class EMF2ObjectMapper:
             unresolved_fields.append(UnresolvedField(owner, attr, ref_id))
             return [ref_id], unresolved_fields
 
-        mapped = self.__build_element(item)
+        mapped = self.map(item)
         return [mapped.get_element()], mapped.get_unresolved_fields()
 
     def __process_list_items(
@@ -336,7 +348,7 @@ class EMF2ObjectMapper:
             if key.startswith("@") or key in {"plane", TYPE_KEY}:
                 continue
 
-            attr_name = f"_{NameUtils.to_snake_case(key)}"
+            attr_name = NameUtils.to_key(key)
 
             if isinstance(value, dict):
                 unresolved_fields += self.__handle_dict_field(value, element, attr_name)

@@ -26,9 +26,8 @@ from typing import Union
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.diagrams.api import AnsysRestApiConnector
-from ansys.sam.sysml2.diagrams.builder import SysML2DiagramBuilder
-from ansys.sam.sysml2.diagrams.utils.diagram_downloader import DiagramDownloader
+from ansys.sam.sysml2.diagrams import AnsysRestApiConnector, DiagramDownloader, SysML2DiagramBuilder
+from ansys.sam.sysml2.exception.connector_exception import HTTPResponseException
 
 
 class SysML2DiagramManager:
@@ -73,7 +72,7 @@ class SysML2DiagramManager:
         path: Union[str, Path],
         file_format: str = "svg",
         filename: str = "",
-    ) -> dict:
+    ) -> str:
         """
         Download all diagrams as a ZIP archive.
 
@@ -99,17 +98,11 @@ class SysML2DiagramManager:
         if filename == "":
             filename = f"{project.get_name()}_{file_format}_diagrams.zip"
 
-        try:
-            file_path = DiagramDownloader.resolve_file_path(path, filename)
-            response = DiagramDownloader.get_diagram_zip(self._connector, project._id, new_format)
+        file_path = DiagramDownloader.resolve_file_path(path, filename)
+        response = DiagramDownloader.get_diagram_zip(self._connector, project._id, new_format)
 
-            if response.status_code == 200:
-                DiagramDownloader.save_response_content(response, file_path)
-                return {"status": "success", "message": f"File saved to {file_path}"}
-            else:
-                return {
-                    "status": "error",
-                    "message": f"Download failed: {response.status_code} - {response.text}",
-                }
-        except Exception as e:
-            return {"status": "error", "message": str(e)}
+        if response.status_code == 200:
+            DiagramDownloader.save_response_content(response, file_path)
+            return f"File saved to {file_path}"
+        else:
+            raise HTTPResponseException(response.text)

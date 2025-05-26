@@ -26,3 +26,4 @@ from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 
 from .diagram_element import DiagramElement
 from .plane import Plane
+from .point import Point
