@@ -27,7 +27,7 @@ Python Example
 
     from ansys.sam.sysml2 import SysML2ProjectManager, AnsysSysML2APIConnector
     from ansys.sam.sysml2.diagrams.SysML2DiagramManager import SysML2DiagramManager
-    from ansys.sam.diagrams.tools.diagram_utils import DiagramUtils
+    from ansys.sam.sysml2.diagrams.utils import DiagramDownloader
 
     conn = AnsysSysML2APIConnector(
         server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
@@ -51,6 +51,7 @@ Python Example
         ### Also, download_all_diagrams will only work in the `with` context
         print(
             diagrams.download_all_diagrams(
+                project=project,
                 path="C:/Diagrams/Images/",
                 file_format="jpeg",
                 filename="download_all_diagrams_with_args.zip",
@@ -63,9 +64,8 @@ Python Example
     first_diagram.download_diagram(file_format="svg", path="C:/Diagrams/Images/")
     print("🖼️ Diagram saved as SVG at: C:/Diagrams/Images/")
 
-    utils = DiagramUtils()
     png_content = first_diagram.get_content(file_format="png")
-    saved_path = utils.save_content(
+    saved_path = DiagramDownloader.save_content(
         content=png_content,
         path="C:/Diagrams/Images/",
         filename="first_diagram",

@@ -39,6 +39,7 @@ Once the diagrams are loaded, you can download **all diagrams** and save them in
 
         print(
             diagrams.download_all_diagrams(
+                project=myBikeProject
                 path="C:/Diagrams/Images/",
                 file_format="jpeg",
                 filename="download_all_diagrams_with_args.zip"
@@ -68,16 +69,15 @@ You can also download a specific diagram in a given format:
 Save Diagram from Content Bytes
 -------------------------------
 
-Diagram content can be extracted and saved using `DiagramUtils`:
+Diagram content can be extracted and saved using `DiagramDownloader`:
 
 .. code-block:: python
 
-    from ansys.sam.diagrams.tools.diagram_utils import DiagramUtils
+    from ansys.sam.sysml2.diagrams.utils import DiagramDownloader
 
     first_diagram = myBikeProject.get_root_package().__diagram[0]
-    utils = DiagramUtils()
     png_content = first_diagram.get_content(file_format="png")
-    saved_path = utils.save_content(content=png_content, path="C:/Diagrams/Images/", filename="first_diagram", file_format="png")
+    saved_path = DiagramDownloader.save_content(content=png_content, path="C:/Diagrams/Images/", filename="first_diagram", file_format="png")
     print(f"🖼️ Diagram saved as PNG at: C:/Diagrams/Images/")
 
 Download Diagrams in a Loop

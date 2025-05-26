@@ -61,3 +61,7 @@ class BadRequestConnectionException(ConnectorException):
 
 class ModelAsNotChangedException(ConnectorException):
     """Exception when the model has not changed."""
+
+
+class DiagramConnectorException(ConnectorException):
+    """Exception when trying to download diagrams."""

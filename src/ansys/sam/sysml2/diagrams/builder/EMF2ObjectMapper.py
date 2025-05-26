@@ -73,10 +73,9 @@ class EMF2ObjectMapper:
 
     def __build_element(self, data: dict) -> MappedElement:
         """Core implementation for mapping data into a DiagramElement."""
-        element = DiagramElement(id=data["@id"])
-
         eclass = data.get(TYPE_KEY, None)
         if eclass is not None:
+            element = DiagramElement(id=data["@id"])
             self.__assign_dynamic_class(element, data.get(TYPE_KEY))
         else:
             element = Point(id=data["@id"])
