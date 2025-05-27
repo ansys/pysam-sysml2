@@ -42,4 +42,4 @@ class TestSysML2ProjectManager:
         manager = SysML2ProjectManager(valid_source)
         project = manager.get_project("1")
         assert len(project.get_root()) == 1
-        assert project.get_root()[0]._name == "PySamTestProject"
+        assert project.get_root()[0]._name == "PySamTestProject-COMPLET"

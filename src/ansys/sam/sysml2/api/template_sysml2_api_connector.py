@@ -70,8 +70,8 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         list
             The list of all projects
         """
-        http_request = self.__build_http_request(endpoint="/projects")
-        return self.__send_request(http_request, requests.get)
+        http_request = self._build_http_request(endpoint="/projects")
+        return self._send_request(http_request, requests.get)
 
     @overrides
     def get_project_by_id(self, project_id: str) -> dict:
@@ -88,8 +88,8 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         dict
             Information of the project
         """
-        http_request = self.__build_http_request(endpoint=f"/projects/{project_id}")
-        return self.__send_request(
+        http_request = self._build_http_request(endpoint=f"/projects/{project_id}")
+        return self._send_request(
             http_request=http_request,
             call=requests.get,
         )
@@ -119,12 +119,12 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             raise InvalidProjectNameException(
                 "When creating a project, its name has to be non empty."
             )
-        http_request = self.__build_http_request(endpoint="/projects")
+        http_request = self._build_http_request(endpoint="/projects")
         http_request.json = {
             "name": project_name,
             "description": project_description,
         }
-        return self.__send_request(http_request=http_request, call=requests.post)
+        return self._send_request(http_request=http_request, call=requests.post)
 
     @overrides
     def get_all_elements(self, project_id: str) -> list:
@@ -141,10 +141,10 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         list
             The list of all elements
         """
-        http_request = self.__build_http_request(
+        http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/elements"
         )
-        return self.__send_request(
+        return self._send_request(
             http_request=http_request,
             call=requests.get,
         )
@@ -165,10 +165,10 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         dict
             Information of the element
         """
-        http_request = self.__build_http_request(
+        http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/elements/{element_id}"
         )
-        return self.__send_request(
+        return self._send_request(
             http_request=http_request,
             call=requests.get,
         )
@@ -188,10 +188,10 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         list
             All root elements
         """
-        http_request = self.__build_http_request(
+        http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/roots"
         )
-        return self.__send_request(http_request=http_request, call=requests.get)
+        return self._send_request(http_request=http_request, call=requests.get)
 
     @overrides
     def execute_query(self, project_id: str, query: str) -> dict:
@@ -210,9 +210,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         dict
             Result of the query
         """
-        http_request = self.__build_http_request(endpoint=f"/projects/{project_id}/query-results")
+        http_request = self._build_http_request(endpoint=f"/projects/{project_id}/query-results")
         http_request.json = json.loads(query)
-        return self.__send_request(http_request=http_request, call=requests.post)
+        return self._send_request(http_request=http_request, call=requests.post)
 
     @overrides
     def create_commit(self, project_id: str, commit: str) -> dict:
@@ -231,11 +231,11 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         dict
             Result of the commit
         """
-        http_request = self.__build_http_request(endpoint=f"/projects/{project_id}/commit")
+        http_request = self._build_http_request(endpoint=f"/projects/{project_id}/commit")
         http_request.json = json.loads(commit)
-        return self.__send_request(http_request=http_request, call=requests.post)
+        return self._send_request(http_request=http_request, call=requests.post)
 
-    def __build_http_request(self, endpoint: str) -> HttpRequest:
+    def _build_http_request(self, endpoint: str) -> HttpRequest:
         """
         Build a full HTTP Request to be sended, from API Endpoint.
 
@@ -253,7 +253,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = HttpRequest(url=url)
         return self._add_authentication_field(http_request=http_request)
 
-    def __send_request(self, http_request: HttpRequest, call: Callable) -> object:
+    def _send_request(self, http_request: HttpRequest, call: Callable) -> object:
         """
         Send_request send the http request throws the call function.
 
@@ -292,9 +292,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             except Exception as e:
                 raise InvalidElementJsonFoundException(f"Invalid JSON received : {e}")
         else:
-            self.__handle_http_error(response)
+            self._handle_http_error(response)
 
-    def __handle_http_error(self, response: requests.Response) -> None:
+    def _handle_http_error(self, response: requests.Response) -> None:
         """
         Handle HTTP errors and raise appropriate exceptions based on the response status code.
 
@@ -317,7 +317,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             case 500:
                 raise ConnectorConnectionException("Internal Server Error")
             case 404:
-                self.__handle_404_response(response)
+                self._handle_404_response(response)
             case 403:
                 raise ConnectorConnectionException(response.json()["message"])
             case 401:
@@ -331,7 +331,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             case _:
                 raise HTTPResponseException(response.content)
 
-    def __handle_404_response(self, response: requests.Response) -> None:
+    def _handle_404_response(self, response: requests.Response) -> None:
         """
         Handle 404 (Not Found) HTTP responses and raise appropriate exceptions.
 

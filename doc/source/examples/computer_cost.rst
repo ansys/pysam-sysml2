@@ -54,7 +54,7 @@ Let's calculate the cost of the Computer.
     def assess_cost(element):
         if hasattr(element, "cost") and (
             element.cost.get_value() is not None):
-            return element.cost.get_value()
+            return element.cost.get_value()[0]
         cost = 0
         for sub_element in element._ownedElement:
             if SysMLTools.isinstance(sub_element, "PartUsage"):

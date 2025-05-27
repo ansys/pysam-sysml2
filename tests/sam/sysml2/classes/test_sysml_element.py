@@ -63,9 +63,9 @@ class TestSysMLElement:
 
         project_root = project.get_root_package()
 
-        project_root.PartUsage.Attribute._name = "NewAttr"
+        project_root.myPartUsage.Attribute._name = "NewAttr"
 
-        assert project_root.PartUsage.NewAttr._name == "NewAttr"
+        assert project_root.myPartUsage.NewAttr._name == "NewAttr"
 
         with pytest.raises(AttributeError):
-            project_root.PartUsage.Attribute
+            project_root.myPartUsage.Attribute

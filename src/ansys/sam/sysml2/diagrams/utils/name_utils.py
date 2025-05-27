@@ -19,27 +19,21 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+"""Name Utils class for PySam Diagram library."""
 
-import pytest
-
-from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import VALID_ORGANIZATION, VALID_TOKEN
+import re
 
 
-class TestSysML2ProjectBuilder:
+class NameUtils:
+    """The NameUtils class is used to help standardize element names."""
 
-    @pytest.fixture
-    def valid_source(self) -> AnsysSysML2APIConnector:
-        return AnsysSysML2APIConnector(
-            server_url=MockedServer.get_url(),
-            organization_id=VALID_ORGANIZATION,
-            token=VALID_TOKEN,
-        )
+    @staticmethod
+    def to_snake_case(string: str) -> str:
+        """Convert a camelCase or PascalCase string to snake_case."""
+        return re.sub(r"(?<!^)(?=[A-Z])", "_", string).lower()
 
-    def test_build_project(self, valid_source: AnsysSysML2APIConnector):
-        builder = SysML2ProjectBuilder(valid_source)
-        project = builder.build_project("1")
-        assert len(project.get_root()) == 1
-        assert project.get_root()[0]._name == "PySamTestProject-COMPLET"
+    @staticmethod
+    def to_key(string: str) -> str:
+        """Convert a camelCase or PascalCase string to _snake_case."""
+        attr = NameUtils.to_snake_case(string)
+        return f"_{attr}"

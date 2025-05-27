@@ -1,0 +1,359 @@
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
+# SPDX-License-Identifier: MIT
+#
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+"""EMF2Object Mapper class."""
+
+from typing import Dict, List, Tuple, Union
+
+from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
+from ansys.sam.sysml2.classes.project import Project
+from ansys.sam.sysml2.diagrams.classes import (
+    DiagramElement,
+    MappedElement,
+    Plane,
+    Point,
+    UnresolvedField,
+)
+from ansys.sam.sysml2.diagrams.utils import NameUtils
+from ansys.sam.sysml2.exception.mapper_exception import InvalidProjectJSONMapperException
+
+TYPE_KEY = "eClass"
+
+
+class EMF2ObjectMapper:
+    """EMF2ObjectMapper class for Diagram Element."""
+
+    _connector: AnsysSysML2APIConnector
+    _project: Project
+    _project_id: str
+    class_cache: dict
+
+    def __init__(self):
+        """Construct Method for new EMF2ObjectMapper instance."""
+        self.class_cache: Dict[str, type] = {}
+
+    def map(self, data: dict) -> MappedElement:
+        """
+        Convert JSON-like dictionary data into a DiagramElement.
+
+        Parameters
+        ----------
+        data : dict
+            Input JSON data representing the element to map.
+        mapped_element : DiagramElement, optional
+            Existing element to update. If None, a new element is created.
+
+        Returns
+        -------
+        MappedElement
+            An object containing the mapped DiagramElement and any unresolved references.
+        """
+        if "@id" not in data:
+            raise InvalidProjectJSONMapperException("Not valid JSON-like dictionary data")
+
+        return self.__build_element(data)
+
+    def __build_element(self, data: dict) -> MappedElement:
+        """Core implementation for mapping data into a DiagramElement."""
+        eclass = data.get(TYPE_KEY, None)
+        if eclass is not None:
+            element = DiagramElement(id=data["@id"])
+            self.__assign_dynamic_class(element, data.get(TYPE_KEY))
+        else:
+            element = Point(id=data["@id"])
+
+        unresolved_fields = self.__map_plane_if_present(data, element)
+        unresolved_fields.extend(self.__add_fields(data, element))
+
+        return MappedElement(element, unresolved_fields)
+
+    def __assign_dynamic_class(self, element: DiagramElement, eclass: str):
+        """
+        Assign a dynamic class to the element based on the provided class name.
+
+        Parameters
+        ----------
+        element : DiagramElement
+            The element whose class will be updated.
+        eclass : str
+            The class name string, possibly namespaced (e.g., containing "//").
+        """
+        class_name = eclass.split("//")[-1] if "//" in eclass else eclass
+        if class_name and class_name not in self.class_cache:
+            self.class_cache[class_name] = type(class_name, (type(element),), {})
+        element.__class__ = self.class_cache.get(class_name, type(element))
+
+    def __map_plane_if_present(self, data: dict, element: DiagramElement) -> List[UnresolvedField]:
+        """
+        Map the 'plane' section of the data to a Plane object, extracting unresolved references.
+
+        Parameters
+        ----------
+        data : dict
+            The raw data potentially containing a 'plane' section.
+        element : DiagramElement
+            The element to which the Plane will be attached.
+
+        Returns
+        -------
+        List[UnresolvedField]
+            A list of unresolved references within the 'plane' section.
+        """
+        unresolved_fields = []
+
+        plane_data = data.get("plane")
+        if not plane_data:
+            return unresolved_fields
+
+        plane = Plane(id=plane_data.get("@id"))
+
+        unresolved_fields.extend(
+            self._extract_references_and_set_attributes("modelElement", plane_data, plane)
+            + self._extract_references_and_set_attributes("ownedDiagramElements", plane_data, plane)
+        )
+
+        element._plane = plane
+        return unresolved_fields
+
+    def _extract_references_and_set_attributes(
+        self, attribute_name: str, plane_data: dict, plane: DiagramElement
+    ) -> List[UnresolvedField]:
+        """
+        Extract refs from plane_data, assign to plane, return unresolved refs.
+
+        Parameters
+        ----------
+        attribute_name : str
+            The key in plane_data from which to extract references.
+        plane_data : dict
+            Dictionary containing data with potential references.
+        plane : DiagramElement
+            The target object on which to set the extracted references as an attribute.
+
+        Returns
+        -------
+        List[UnresolvedField]
+            List of unresolved references found during extraction.
+        """
+        new_attr_name = NameUtils.to_key(attribute_name)
+        raw_value = plane_data.get(attribute_name, [])
+        resolved, unresolved = self.__extract_reference(raw_value, plane, new_attr_name)
+
+        if isinstance(raw_value, list):
+            value_to_set = resolved
+        elif resolved is not None and len(resolved) > 0:
+            value_to_set = resolved[0]
+        else:
+            value_to_set = None
+
+        setattr(plane, new_attr_name, value_to_set)
+
+        return unresolved
+
+    def __extract_reference(
+        self,
+        data: Union[dict, list],
+        owner: DiagramElement,
+        attr: str,
+    ) -> Tuple[List, List[UnresolvedField]]:
+        """
+        Extract reference(s) from a dictionary or list of dictionaries.
+
+        Parameters
+        ----------
+        data : dict or list
+            A single dictionary or a list of items to inspect.
+        owner : DiagramElement
+            The object owning the attribute.
+        attr : str
+            The name of the attribute.
+
+        Returns
+        -------
+        tuple[list, list[UnresolvedField]]
+            A tuple containing:
+            - A list of resolved values
+            - A list of unresolved fields
+        """
+        if isinstance(data, dict):
+            return self.__process_single_item(data, owner, attr)
+
+        if isinstance(data, list):
+            return self.__process_list_items(data, owner, attr)
+
+        return [data], []
+
+    def __process_single_item(
+        self,
+        item: dict,
+        owner: DiagramElement,
+        attr: str,
+    ) -> Tuple[List, List[UnresolvedField]]:
+        """
+        Process a single dictionary item, resolving references or building nested elements.
+
+        Parameters
+        ----------
+        item : dict
+            A dictionary representing a single element, possibly containing a reference key "$ref".
+        owner : DiagramElement
+            The object that owns the attribute being set.
+        attr : str
+            The name of the attribute on the owner.
+
+        Returns
+        -------
+        tuple[list, list[UnresolvedField]]
+            - List containing exactly one resolved element or reference ID.
+            - List of unresolved references discovered during processing.
+        """
+        unresolved_fields = []
+
+        if "$ref" in item:
+            ref_id = item["$ref"]
+            unresolved_fields.append(UnresolvedField(owner, attr, ref_id))
+            return [ref_id], unresolved_fields
+
+        mapped = self.map(item)
+        return [mapped.get_element()], mapped.get_unresolved_fields()
+
+    def __process_list_items(
+        self,
+        items: list,
+        owner: DiagramElement,
+        attr: str,
+    ) -> Tuple[List, List[UnresolvedField]]:
+        """
+        Process a list of items, resolving references and building nested elements.
+
+        Parameters
+        ----------
+        items : list
+            A list containing dicts or simple values.
+        owner : DiagramElement
+            The object that owns the attribute being set.
+        attr : str
+            The name of the attribute on the owner.
+
+        Returns
+        -------
+        tuple[list, list[UnresolvedField]]
+            - List of resolved elements and/or simple values.
+            - List of unresolved references.
+        """
+        values = []
+        unresolved_fields: List[UnresolvedField] = []
+
+        for item in items:
+            if isinstance(item, dict):
+                extracted, new_unresolved = self.__process_single_item(item, owner, attr)
+                values.extend(extracted)
+                unresolved_fields.extend(new_unresolved)
+            else:
+                values.append(item)
+
+        return values, unresolved_fields
+
+    def __handle_dict_field(
+        self, value: dict, element: DiagramElement, attr: str
+    ) -> List[UnresolvedField]:
+        """
+        Assign a dictionary field to an element attribute, handling references and nested elements.
+
+        Parameters
+        ----------
+        value : dict
+            The dictionary value representing a single element or reference.
+        element : DiagramElement
+            The target element to update.
+        attr : str
+            The attribute name on the element to set.
+
+        Returns
+        -------
+        list[UnresolvedField]
+            List of unresolved references found while processing this dict.
+        """
+        extracted_value, unresolved = self.__extract_reference(value, element, attr)
+
+        if extracted_value is not None and len(extracted_value) > 0:
+            setattr(element, attr, extracted_value[0])
+        else:
+            setattr(element, attr, None)
+
+        return unresolved
+
+    def __handle_list_field(
+        self, items: list, element: DiagramElement, attr: str
+    ) -> List[UnresolvedField]:
+        """
+        Assign a list field to an element attribute, resolving references and nested elements.
+
+        Parameters
+        ----------
+        items : list
+            List of values.
+        element : DiagramElement
+            The target element to update.
+        attr : str
+            The attribute name on the element to set.
+
+        Returns
+        -------
+        list[UnresolvedField]
+            List of unresolved references found while processing the list.
+        """
+        extracted_value, unresolved = self.__extract_reference(items, element, attr)
+        setattr(element, attr, extracted_value)
+        return unresolved
+
+    def __add_fields(self, data: dict, element: DiagramElement) -> List[UnresolvedField]:
+        """
+        Map dynamic JSON fields onto a DiagramElement attributes, handling nested structures.
+
+        Parameters
+        ----------
+        data : dict
+            The JSON data to map.
+        element : DiagramElement
+            The target object to which attributes are set.
+
+        Returns
+        -------
+        List[UnresolvedField]
+            List of unresolved references found during the mapping.
+        """
+        unresolved_fields = []
+
+        for key, value in data.items():
+            if key.startswith("@") or key in {"plane", TYPE_KEY}:
+                continue
+
+            attr_name = NameUtils.to_key(key)
+
+            if isinstance(value, dict):
+                unresolved_fields += self.__handle_dict_field(value, element, attr_name)
+            elif isinstance(value, list):
+                unresolved_fields += self.__handle_list_field(value, element, attr_name)
+            else:
+                setattr(element, attr_name, value)
+
+        return unresolved_fields

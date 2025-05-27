@@ -44,7 +44,7 @@ This example shows how to create a new ``AttributeUsage`` element inside the ``B
 
     factory = Factory(project, connector)
 
-    new_bicycle_frame_length = factory.create_elements(
+    new_bicycle_frame_length = factory.create_element(
         "AttributeUsage", name="length", owner=bike.frame
     )
 

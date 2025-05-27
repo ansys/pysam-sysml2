@@ -71,6 +71,8 @@ from .route_class import (
 from .route_functions import *
 
 ANSYS_BASE_URI = "/api/spaces/<string:organization>/sysml2/"
+ANSYS_REST_URI = "/api/rest/latest/"
+ANSYS_IMAGE_URI = "/api/projects/"
 
 
 # Add HERE your new route
@@ -106,5 +108,14 @@ routes_list = [
     ServerPostRouteMapping(
         route=ANSYS_BASE_URI + "/projects/<string:project_id>/commit",
         controller_function=route_create_commit,
+    ),
+    ServerGetRouteMapping(
+        route=ANSYS_REST_URI + "/projects/<string:project_id>/json",
+        controller_function=route_get_rest_json,
+    ),
+    ServerGetRouteMapping(
+        route=ANSYS_IMAGE_URI
+        + "/<string:project_id>/diagrams/<string:diagram_id>/<string:file_format>",
+        controller_function=route_get_diagram_image,
     ),
 ]

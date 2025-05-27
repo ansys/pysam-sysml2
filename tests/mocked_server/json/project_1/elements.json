@@ -1,133 +1,143 @@
 [
     {
         "@type": "Package",
-        "@id": "0b5280f4-00ab-419f-84bd-146e4964ac7f",
-        "identifier": "0b5280f4-00ab-419f-84bd-146e4964ac7f",
-        "name": "PySamTestProject",
+        "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
+        "identifier": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
+        "eAnnotations": [],
+        "name": "PySamTestProject-COMPLET",
         "ownedElement": [
             {
-                "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c"
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
             },
             {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+                "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
             }
         ],
-        "qualifiedName": "PySamTestProject",
+        "qualifiedName": "PySamTestProject-COMPLET",
         "ownedMember": [
             {
-                "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c"
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
             },
             {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
+                "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
             }
         ]
-    },
-    {
-        "@type": "PartUsage",
-        "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c",
-        "identifier": "12ed6cd5-ae7e-489e-994d-980473ed0f2c",
-        "name": "myPartUsage",
-        "qualifiedName": "PySamTestProject::myPartUsage",
-        "owner": {
-            "@id": "0b5280f4-00ab-419f-84bd-146e4964ac7f"
-        },
-        "directedFeature": [],
-        "feature": [
-            {
-                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
-            }
-        ],
-        "inheritedFeature": [
-            {
-                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
-            }
-        ],
-        "isComposite": true,
-        "type": [
-            {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-            }
-        ],
-        "declaration": {
-            "@id": "12ed6cd5-ae7e-489e-994d-980473ed0f2c"
-        },
-        "definition": [
-            {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-            }
-        ],
-        "individualDefinition": {
-            "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-        },
-        "occurrenceDefinition": [
-            {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-            }
-        ],
-        "itemDefinition": [
-            {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-            }
-        ],
-        "partDefinition": [
-            {
-                "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-            }
-        ]
-    },
-    {
-        "@type": "AttributeUsage",
-        "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f",
-        "identifier": "61ac5435-8537-4f46-aec7-43636dcbb36f",
-        "name": "Attribute",
-        "qualifiedName": "PySamTestProject::PartUsage::Attribute",
-        "owner": {
-            "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d"
-        },
-        "isComposite": true,
-        "declaration": {
-            "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
-        }
     },
     {
         "@type": "PartDefinition",
-        "@id": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d",
-        "identifier": "a7d02b88-a92a-45e1-9f34-643ae1d0a22d",
-        "name": "PartUsage",
+        "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc",
+        "identifier": "6afc9e87-1079-4212-8fa4-99cd6b2004fc",
+        "name": "PartDefinition",
         "ownedElement": [
             {
-                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
             }
         ],
-        "qualifiedName": "PySamTestProject::PartUsage",
+        "qualifiedName": "PySamTestProject-COMPLET::PartDefinition",
         "owner": {
-            "@id": "0b5280f4-00ab-419f-84bd-146e4964ac7f"
+            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+        },
+        "owningNamespace": {
+            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
         },
         "ownedMember": [
             {
-                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
             }
         ],
         "ownedEndFeature": [],
         "ownedFeature": [
             {
-                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
             }
         ],
         "directedFeature": [],
         "feature": [
             {
-                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
             }
         ],
         "ownedUsage": [
             {
-                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
             }
         ],
         "ownedAttribute": [
             {
-                "@id": "61ac5435-8537-4f46-aec7-43636dcbb36f"
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ]
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "ecf75010-3603-4e1e-82d5-db312b093378",
+        "identifier": "ecf75010-3603-4e1e-82d5-db312b093378",
+        "name": "Attribute",
+        "qualifiedName": "PySamTestProject-COMPLET::PartDefinition::Attribute",
+        "owner": {
+            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+        },
+        "owningNamespace": {
+            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+        },
+        "isComposite": true,
+        "declaration": {
+            "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+        }
+    },
+    {
+        "@type": "PartUsage",
+        "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c",
+        "identifier": "fd36d11a-bc48-410e-bec9-b7f929666c4c",
+        "name": "myPartUsage",
+        "qualifiedName": "PySamTestProject-COMPLET::myPartUsage",
+        "owner": {
+            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+        },
+        "owningNamespace": {
+            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+        },
+        "directedFeature": [],
+        "feature": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "inheritedFeature": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "isComposite": true,
+        "type": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ],
+        "declaration": {
+            "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
+        },
+        "definition": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ],
+        "individualDefinition": {
+            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+        },
+        "occurrenceDefinition": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ],
+        "itemDefinition": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ],
+        "partDefinition": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
             }
         ]
     }

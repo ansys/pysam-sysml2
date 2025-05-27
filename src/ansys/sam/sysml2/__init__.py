@@ -28,3 +28,4 @@ __version__ = importlib_metadata.version(__name__.replace(".", "-"))
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+from ansys.sam.sysml2.diagrams.SysML2DiagramManager import SysML2DiagramManager

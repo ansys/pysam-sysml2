@@ -113,7 +113,7 @@ class TestSysML2APIConnector:
         part_usage_element = valid_source.get_element_by_id(PROJECT_ID_1, PROJECT_1_PART_ID)
 
         assert part_usage_element is not None
-        assert part_usage_element["@type"] == "PartUsage"
+        assert part_usage_element["@type"] == "PartDefinition"
 
         attribute_usage_element = valid_source.get_element_by_id(PROJECT_ID_1, PROJECT_1_ATTR_ID)
         assert attribute_usage_element is not None
@@ -188,7 +188,7 @@ class TestSysML2APIConnector:
     def test_create_commit_successfull(self, valid_source: AnsysSysML2APIConnector):
         commit = Commit(PROJECT_ID_1)
         change = DataVersion()
-        change.identify("12ed6cd5-ae7e-489e-994d-980473ed0f2c")
+        change.identify(PROJECT_1_PART_ID)
         change.add_change("name", "timoleon")
         commit.add_change(change)
 
@@ -235,7 +235,7 @@ class TestSysML2APIConnector:
     def test_create_commit_with_invalid_key(self, valid_source: AnsysSysML2APIConnector):
         commit = Commit(PROJECT_ID_1)
         change = DataVersion()
-        change.identify("61ac5435-8537-4f46-aec7-43636dcbb36f")
+        change.identify(PROJECT_1_ATTR_ID)
         invalid_key = "zadazdazd"
         change.add_change(invalid_key, "NewAttribute")
         commit.add_change(change)
@@ -247,7 +247,7 @@ class TestSysML2APIConnector:
     def test_create_commit_with_invalid_type(self, valid_source: AnsysSysML2APIConnector):
         commit = Commit(PROJECT_ID_1)
         change = DataVersion()
-        change.identify("61ac5435-8537-4f46-aec7-43636dcbb36f")
+        change.identify(PROJECT_1_ATTR_ID)
         key = "name"
         change.add_change(key, ["NewAttribute"])
         commit.add_change(change)

@@ -41,7 +41,7 @@ class TestFactory:
             )
         )
 
-    def test_create_elements(self, project_manager: SysML2ProjectManager):
+    def test_create_element(self, project_manager: SysML2ProjectManager):
 
         project = project_manager.get_project(PROJECT_ID_2)
 
@@ -49,7 +49,7 @@ class TestFactory:
 
         project_root = project.get_root_package()
 
-        new_attribute = factory.create_elements(
+        new_attribute = factory.create_element(
             "AttributeUsage", name="new_attribute", owner=project_root
         )
 

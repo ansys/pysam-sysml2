@@ -51,24 +51,24 @@ You can create new elements in your model using the ``Factory`` class.
 
     factory = Factory(project, connector)
 
-Then, use the ``create_elements()`` method to create a new model element.
+Then, use the ``create_element()`` method to create a new model element.
 You must provide the type of the element, as well as any number of keyword arguments representing its attributes:
 
 .. code::
 
-    new_attribute_usage = factory.create_elements(
+    new_attribute_usage = factory.create_element(
         "AttributeUsage",
         name="new_attribute_usage",
     )
 
 This will create a new ``AttributeUsage`` element at the root of your project.
-The ``create_elements()`` method returns the newly created element.
+The ``create_element()`` method returns the newly created element.
 
 .. code::
 
     bike = project.get_root_package().Structure.Bike
 
-    new_attribute_usage = factory.create_elements(
+    new_attribute_usage = factory.create_element(
         "AttributeUsage",
         name="new_attribute_usage",
         owner=bike,
@@ -93,7 +93,7 @@ This will create a new ``AttributeUsage`` element with the given attributes insi
             Read a model
 
         .. grid-item-card:: Next step :fa:`arrow-right`
-            :link: information
+            :link: diagram_model
             :link-type: doc
 
-            How to get some information
+            How to get use diagrams
