@@ -38,11 +38,11 @@ You can find classes specification :ref:`Here <C_I_Section>`
     .. grid:: 2
 
         .. grid-item-card::
-            :link: create_conn
+            :link: create-conn
             :link-type: doc
 
         .. grid-item-card:: Next step :fa:`arrow-right`
-            :link: load_model
+            :link: load-model
             :link-type: doc
 
             Load a model

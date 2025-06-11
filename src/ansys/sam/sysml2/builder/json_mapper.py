@@ -130,7 +130,7 @@ class JsonMapper:
         Returns
         -------
         List[UnresolvedField]
-            the list of all unresolved Fields
+            The list of all unresolved Fields
         """
         key = "_" + key
         if isinstance(value, list):
@@ -198,7 +198,7 @@ class JsonMapper:
         Returns
         -------
         List[UnresolvedField]
-            the list of all unresolved Fields created for the list elements.
+            The list of all unresolved Fields created for the list elements.
         """
         if all(isinstance(e, dict) for e in value):
             setattr(

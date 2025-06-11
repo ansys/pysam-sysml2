@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -63,7 +63,6 @@ class MockedServer:
 
     def start_server(self):
         """Use this method to start the Mocked Server."""
-
         server = make_server(
             "localhost",
             self._server_port,

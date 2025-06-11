@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -28,6 +28,15 @@
 File <test_ansys_sysml_source.py> created on Thu Nov 28 2024
 """
 
+from mocked_server.mocked_server import MockedServer
+from mocked_server.routes.const import (
+    PROJECT_1_ATTR_ID,
+    PROJECT_1_PART_ID,
+    PROJECT_ID_1,
+    PROJECT_ID_2,
+    VALID_ORGANIZATION,
+    VALID_TOKEN,
+)
 import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
@@ -44,19 +53,9 @@ from ansys.sam.sysml2.exception.connector_exception import (
     ProjectNotFoundException,
 )
 from ansys.sam.sysml2.exception.query_exception import InvalidQuery
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import (
-    PROJECT_1_ATTR_ID,
-    PROJECT_1_PART_ID,
-    PROJECT_ID_1,
-    PROJECT_ID_2,
-    VALID_ORGANIZATION,
-    VALID_TOKEN,
-)
 
 
 class TestSysML2APIConnector:
-
     RANDOM_PROJECT_ID = "Tim"
     RANDOM_ELEMENT_ID = "Oleon"
 

@@ -20,17 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from mocked_server.mocked_server import MockedServer
+from mocked_server.routes.const import PROJECT_ID_1, VALID_ORGANIZATION, VALID_TOKEN
 import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import PROJECT_ID_1, VALID_ORGANIZATION, VALID_TOKEN
 
 
 class TestSysMLElement:
-
     @pytest.fixture
     def element(self):
         element = SysMLElement("")
@@ -50,7 +49,6 @@ class TestSysMLElement:
         assert not hasattr(element, "value")
 
     def test_update_element(self):
-
         project_manager = SysML2ProjectManager(
             AnsysSysML2APIConnector(
                 server_url=MockedServer.get_url(),

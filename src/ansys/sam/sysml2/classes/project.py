@@ -77,5 +77,5 @@ class Project:
         Returns
         -------
         List[SysMLElement]
-            founded Element
+            The list of elements found.
         """

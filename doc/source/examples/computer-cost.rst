@@ -1,3 +1,5 @@
+.. _Computer_Example:
+
 Computer Example
 ################
 
@@ -29,7 +31,7 @@ Let's calculate the cost of the Computer.
 .. code:: python
 
     from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
-    from ansys.sam.sysml2.tool import SysMLTools
+    from ansys.sam.sysml2.tools import SysMLTools
     import requests
     from urllib3.exceptions import InsecureRequestWarning
 
@@ -54,7 +56,7 @@ Let's calculate the cost of the Computer.
     def assess_cost(element):
         if hasattr(element, "cost") and (
             element.cost.get_value() is not None):
-            return element.cost.get_value()[0]
+            return element.cost.get_value()
         cost = 0
         for sub_element in element._ownedElement:
             if SysMLTools.isinstance(sub_element, "PartUsage"):

@@ -140,7 +140,7 @@ class ProjectImpl(Project):
         Returns
         -------
         List[SysMLElement]
-            founded Element
+            The found element.
         """
         return [
             el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == elements_name

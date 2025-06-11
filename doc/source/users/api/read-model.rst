@@ -82,13 +82,13 @@ Using the `_` access, you will find all Sysml Method :
     .. grid:: 2
 
         .. grid-item-card:: :fa:`arrow-left` Previous step
-            :link: load_model
+            :link: load-model
             :link-type: doc
 
             Load your model
 
         .. grid-item-card:: Next step :fa:`arrow-right`
-            :link: write_model
+            :link: write-model
             :link-type: doc
 
             Write in your model

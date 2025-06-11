@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -25,9 +25,8 @@
 from pathlib import Path
 import shutil
 
-import pytest
-
 from mocked_server.mocked_server import MockedServer
+import pytest
 
 conftest_path = Path(__file__).resolve()
 base_dir = conftest_path.parent / "mocked_server"

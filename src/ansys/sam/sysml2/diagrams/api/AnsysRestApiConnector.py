@@ -21,7 +21,6 @@
 # SOFTWARE.
 """Specific Module for Ansys Sysml2 API connector."""
 
-
 import requests
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector

@@ -19,13 +19,13 @@ You can find the Project ID in different places:
 
   - Open the project in the editor, you will have the Project ID in the web page URL:
 
-  .. figure:: /_static/images/projectIdEditor.png
+  .. figure:: /_static/images/project-id-editor.png
 
 - **Dashboard**:
 
   - Open the project view page, you will find the Project ID in the web page URL:
 
-  .. figure:: /_static/images/projectIdDashboard.png
+  .. figure:: /_static/images/project-id-dashboard.png
 
 
 
@@ -39,11 +39,11 @@ To get your Organization ID, follow these steps:
 - Go to your Dashboard
 - Click on your Organization:
 
-   .. figure:: /_static/images/orga1.png
+   .. figure:: /_static/images/orga-1.png
 
 - You can find your Organization ID in the URL of the page:
 
-    .. figure:: /_static/images/orga2.png
+    .. figure:: /_static/images/orga-2.png
 
 ✔️ You got your Organization ID!
 
@@ -88,17 +88,17 @@ Click on the **Authorize** button and paste your Bearer Token in the authenticat
 
 .. figure:: /_static/images/authorize.png
 
-.. figure:: /_static/images/bearerAuth.png
+.. figure:: /_static/images/bearer-auth.png
 
 Once authorized, go to the top right of the page and open the `Select a definition` dropdown. Scroll down and select the **Personal Access Token API**.
 
-.. figure:: /_static/images/PAT.png
+.. figure:: /_static/images/pat.png
 
 Use the **POST** request to generate a new PAT. You can optionally define the number of days the token should remain valid (the default is 30 days).
 
 After submitting the request, your newly generated PAT will appear in the response body.
 
-.. figure:: /_static/images/getPAT.png
+.. figure:: /_static/images/get-pat.png
 
 .. note::
 

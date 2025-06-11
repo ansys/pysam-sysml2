@@ -24,7 +24,6 @@ from ansys.sam.sysml2.classes.feature_helper import FeatureHelper
 
 
 class TestFeatureHelper:
-
     def test_adapt_bool_value(self):
         assert FeatureHelper._adapt_value(True) == "true"
         assert FeatureHelper._adapt_value(False) == "false"

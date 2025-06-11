@@ -27,13 +27,13 @@ Once you got this project variable, you have a Python version of your model.
     .. grid:: 2
 
         .. grid-item-card:: :fa:`arrow-left` Previous step
-            :link: create_conn
+            :link: create-conn
             :link-type: doc
 
             Use a connector
 
         .. grid-item-card:: Next step :fa:`arrow-right`
-            :link: read_model
+            :link: read-model
             :link-type: doc
 
             Read a model

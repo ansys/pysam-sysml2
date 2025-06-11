@@ -25,7 +25,6 @@
 import json
 from typing import Callable
 
-from overrides import overrides
 import requests
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
@@ -60,7 +59,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         super().__init__()
         self._use_ssl = use_ssl
 
-    @overrides
     def get_projects(self) -> list:
         """
         Get_projects return all Project of the connected User.
@@ -73,7 +71,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(endpoint="/projects")
         return self._send_request(http_request, requests.get)
 
-    @overrides
     def get_project_by_id(self, project_id: str) -> dict:
         """
         Get_project_by_id return information for the given project.
@@ -94,7 +91,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             call=requests.get,
         )
 
-    @overrides
     def create_project(
         self,
         project_name: str,
@@ -126,7 +122,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         }
         return self._send_request(http_request=http_request, call=requests.post)
 
-    @overrides
     def get_all_elements(self, project_id: str) -> list:
         """
         Get_all_elements return all elements of the given project.
@@ -149,7 +144,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             call=requests.get,
         )
 
-    @overrides
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
         Get_element_by_id return information of the given element.
@@ -160,6 +154,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             Id of the project where the element is
         element_id : str
             Id of the wanted element
+
         Returns
         -------
         dict
@@ -173,7 +168,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             call=requests.get,
         )
 
-    @overrides
     def get_root_elements(self, project_id: str) -> list:
         """
         Get_root_elements return all root element of the project.
@@ -193,7 +187,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         )
         return self._send_request(http_request=http_request, call=requests.get)
 
-    @overrides
     def execute_query(self, project_id: str, query: str) -> dict:
         """
         Query send a query to the Standard API, using the connector.
@@ -214,7 +207,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request.json = json.loads(query)
         return self._send_request(http_request=http_request, call=requests.post)
 
-    @overrides
     def create_commit(self, project_id: str, commit: str) -> dict:
         """
         Create a commit and send to the Standard API.
@@ -313,7 +305,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         HTTPResponseException
             If the server returns any other unhandled status code.
         """
-        match (response.status_code):
+        match response.status_code:
             case 500:
                 raise ConnectorConnectionException("Internal Server Error")
             case 404:

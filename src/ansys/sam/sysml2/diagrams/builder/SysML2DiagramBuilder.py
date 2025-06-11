@@ -147,7 +147,7 @@ class SysML2DiagramBuilder:
         Returns
         -------
         dict
-            all diagrams, with container ID
+            Returns all diagrams, with container ID
         """
         diagrams = {}
         if "eAnnotations" in data:

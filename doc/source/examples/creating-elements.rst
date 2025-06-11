@@ -1,3 +1,5 @@
+.. _Creating_Example:
+
 Creating New Elements Example
 #############################
 
@@ -44,7 +46,7 @@ This example shows how to create a new ``AttributeUsage`` element inside the ``B
 
     factory = Factory(project, connector)
 
-    new_bicycle_frame_length = factory.create_element(
+    new_bicycle_frame_length = factory.create_elements(
         "AttributeUsage", name="length", owner=bike.frame
     )
 
@@ -53,3 +55,28 @@ This example shows how to create a new ``AttributeUsage`` element inside the ``B
     print(project.get_root_package().Structure.Bike.frame.length.get_value())
 
 ✅ You just created a new element and assigned a parsed value to it!
+
+.. note::
+
+    You can also assign a value directly when creating the element, without using ``set_value`` or ``parse_and_set_value``. There are two ways:
+
+    - Use ``value=...`` for simple values (e.g., numbers).
+    - Use ``expression="..."`` for values with units or expressions.
+
+    .. code:: python
+
+        new_bicycle_frame_length_with_value = factory.create_element(
+            "AttributeUsage",
+            name="lengthWithValue",
+            owner=bike.frame,
+            value=60
+        )
+
+        new_bicycle_frame_length_with_expression = factory.create_element(
+            "AttributeUsage",
+            name="lengthWithExpression",
+            owner=bike.frame,
+            expression="60 [cm]"
+        )
+
+    ✅ This lets you set values directly at creation time, depending on your data format.

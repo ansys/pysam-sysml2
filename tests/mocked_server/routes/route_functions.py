@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -74,12 +74,13 @@ def return_json(function):
 
 def authenticate(function):
     """
-    authenticate is a decorator who check the Bearer Token in headers.
+    Authenticate is a decorator who check the Bearer Token in headers.
 
     Parameters
     ----------
     function : Callable
         The function to protect
+
     Returns
     -------
     object
@@ -282,7 +283,6 @@ def check_project_id(project_id: str):
     """
     Use this method to check if the give project id is valid.
 
-
     Parameters
     ----------
     project_id : str
@@ -355,7 +355,7 @@ def route_get_project(project_id: str) -> str:
 @return_json
 def route_get_elements(project_id: str) -> str:
     """
-    use this function to get all elements of a project.
+    Use this function to get all elements of a project.
 
     Parameters
     ----------
@@ -428,7 +428,7 @@ def route_get_roots_elements(project_id: str) -> str:
     data = load_project(project_id)
     roots_elements = []
     for element in data:
-        if not "owner" in element:
+        if "owner" not in element:
             roots_elements.append(element)
     return roots_elements
 
@@ -455,7 +455,7 @@ def route_query(project_id: str) -> str:
     query = request.data
     try:
         query = loads(query)
-    except Exception as e:
+    except Exception:
         create_http_error(code=500)
 
     return _handle_constraint(query["where"], data)
@@ -624,7 +624,7 @@ def __update_element(payload, element_changed):
 @return_json
 def route_get_rest_json(project_id: str) -> str:
     """
-    use this function to get all rest api json.
+    Use this function to get all rest api json.
 
     Parameters
     ----------
@@ -643,7 +643,7 @@ def route_get_rest_json(project_id: str) -> str:
 @authenticate
 def route_get_diagram_image(project_id: str, diagram_id: str, file_format: str) -> str:
     """
-    use this function to get diagram images.
+    Use this function to get diagram images.
 
     Parameters
     ----------

@@ -20,17 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from mocked_server.mocked_server import MockedServer
+from mocked_server.routes.const import PROJECT_ID_2, VALID_ORGANIZATION, VALID_TOKEN
 import pytest
 
 from ansys.sam.sysml2 import SysML2ProjectManager
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.tools import Factory
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import PROJECT_ID_2, VALID_ORGANIZATION, VALID_TOKEN
 
 
 class TestFactory:
-
     @pytest.fixture
     def project_manager(self) -> SysML2ProjectManager:
         return SysML2ProjectManager(
@@ -42,7 +41,6 @@ class TestFactory:
         )
 
     def test_create_element(self, project_manager: SysML2ProjectManager):
-
         project = project_manager.get_project(PROJECT_ID_2)
 
         factory = Factory(project, project_manager._connector)

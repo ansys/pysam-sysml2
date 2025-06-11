@@ -1,0 +1,60 @@
+{
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams": {
+    "color": "indigo",
+    "badge": "○"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\api": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\api\\AnsysRestApiConnector.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\api\\__init__.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\builder": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\builder\\EMF2ObjectMapper.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\builder\\SysML2DiagramBuilder.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\builder\\__init__.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\classes": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\classes\\diagram_element.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\classes\\plane.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\classes\\point.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\classes\\__init__.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\SysML2DiagramManager.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\utils": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\utils\\diagram_downloader.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\utils\\name_utils.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\utils\\__init__.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  },
+  "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams\\__init__.py": {
+    "parent": "c:\\AnsysDev\\python\\PY_ANSYS_DOC\\pysam-sysml2\\src\\ansys\\sam\\sysml2\\diagrams"
+  }
+}

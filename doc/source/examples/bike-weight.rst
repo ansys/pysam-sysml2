@@ -1,3 +1,5 @@
+.. _Bike_Example:
+
 Bike Example
 #############
 
@@ -28,7 +30,7 @@ When we look at the model, we can see that the weight of the bike is the sum of 
 
     In this case, we want to calculate the sum of all blue elements of the model:
 
-.. figure:: /_static/images/weightBike.png
+.. figure:: /_static/images/weight-bike.png
 
 
 
@@ -106,7 +108,7 @@ For weight calculation, nothing more simpler than simple addition!
 So, if we look at each piece of the bike, we have:
 
 
-.. figure:: /_static/images/bikeAcess.png
+.. figure:: /_static/images/bike-access.png
 
 And to get the weight of each piece, we just need to use the `weight` accessor, with the dot notation.
 
@@ -137,4 +139,4 @@ And let's print the weight of the bike!
 
 .. note::
 
-    📄 You can get the full code `Here </_static/code/weightBike.py>`_.
+    📄 You can get the full code `Here </_static/code/weight-bike.py>`_.

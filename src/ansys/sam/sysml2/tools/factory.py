@@ -57,6 +57,7 @@ class Factory:
             Type of the element
         kwargs : Any
             Other parameters of the new element
+
         Returns
         -------
         SysMLElement
@@ -86,6 +87,7 @@ class Factory:
             Type of the element
         existing_elements : set
             Elements contained in the project environment
+
         Returns
         -------
         SysMLElement

@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -21,4 +21,5 @@
 # SOFTWARE.
 """Api module for PySam Diagram library."""
 
-from .AnsysRestApiConnector import AnsysRestApiConnector
+# pylint: disable=wrong-import-position
+from .AnsysRestApiConnector import AnsysRestApiConnector  # noqa as we export name

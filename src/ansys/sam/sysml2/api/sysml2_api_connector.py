@@ -97,6 +97,7 @@ class SysML2APIConnector:
             Id of the project where the element is
         element_id : str
             Id of the wanted element
+
         Returns
         -------
         dict

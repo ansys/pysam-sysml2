@@ -27,7 +27,6 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
 class TestDerivedList:
-
     @pytest.fixture
     def element(self):
         element = SysMLElement("")

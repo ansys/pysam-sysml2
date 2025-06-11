@@ -36,7 +36,9 @@ class DiagramDownloader:
 
     @staticmethod
     def bind_download_method(
-        diagram: DiagramElement, connector: AnsysSysML2APIConnector, project: ProjectImpl
+        diagram: DiagramElement,
+        connector: AnsysSysML2APIConnector,
+        project: ProjectImpl,
     ):
         """
         Bind utility methods to a single diagram instance.
@@ -115,7 +117,10 @@ class DiagramDownloader:
 
     @staticmethod
     def get_content_from_api(
-        connector: AnsysSysML2APIConnector, project_id: str, diagram_id: str, file_format: str
+        connector: AnsysSysML2APIConnector,
+        project_id: str,
+        diagram_id: str,
+        file_format: str,
     ) -> bytes:
         """
         Fetch a diagram as binary content in a specified format.

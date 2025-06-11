@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -21,5 +21,6 @@
 # SOFTWARE.
 """Utils module for PySam Diagram library."""
 
-from .diagram_downloader import DiagramDownloader
-from .name_utils import NameUtils
+# pylint: disable=wrong-import-position
+from .diagram_downloader import DiagramDownloader  # noqa as we export name
+from .name_utils import NameUtils  # noqa as we export name

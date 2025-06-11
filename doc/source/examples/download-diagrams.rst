@@ -1,3 +1,4 @@
+.. _Download_Example:
 
 Download Diagrams and Create New Elements
 #########################################
@@ -9,7 +10,7 @@ This example demonstrates how to work with the `Bike` model in a SysML v2 projec
 
 .. note::
 
-    If you have never used the PySAM library before, it is recommended to begin with a simpler example to understand how the library works (bike_weight, computer_cost).
+    If you have never used the PySAM library before, it is recommended to begin with a simpler example to understand how the library works (:ref:`bike_weight<Bike_Example>`, :ref:`computer_cost<Computer_Example>`).
 
 Prerequisites
 =============

@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -35,7 +35,7 @@ class Query:
 
     def to_json(self) -> str:
         """
-        to_json convert the class to JSON format.
+        Return a JSON representation of the class.
 
         Returns
         -------

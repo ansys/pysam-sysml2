@@ -3,7 +3,14 @@
 from datetime import datetime
 import os
 
-from ansys_sphinx_theme import get_version_match
+from ansys_sphinx_theme import (
+    ansys_favicon,
+    ansys_logo_white,
+    ansys_logo_white_cropped,
+    get_version_match,
+    watermark,
+)
+from ansys_sphinx_theme.latex import generate_preamble
 
 from ansys.sam.sysml2 import __version__
 
@@ -15,44 +22,11 @@ release = version = __version__
 cname = os.getenv("DOCUMENTATION_CNAME", "https://sam.docs.pyansys.com")
 switcher_version = get_version_match(__version__)
 
-# Select desired logo, theme, and declare the html title
-html_theme = "ansys_sphinx_theme"
+# Select desired favicon, logo, theme, and declare the html title
+html_favicon = ansys_favicon
 html_short_title = html_title = "pysam-sysml2"
 
-latex_logo = "_static/images/pyansys_logo_transparent_white.png"
-
-latex_elements = {
-    "preamble": r"""
-% Empêche les images d’être coupées entre deux pages
-\usepackage{float}
-\usepackage{graphicx}
-\usepackage{placeins}
-\usepackage{capt-of}  % Si tu utilises des images hors figure
-\usepackage{etoolbox} % Pour patcher les inclusions d’images
-
-% Redimensionne automatiquement les images trop grandes
-\makeatletter
-\patchcmd{\Gin@setfile}
-  {\Gin@nat@width}
-  {\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-  {}{}
-\patchcmd{\Gin@setfile}
-  {\Gin@nat@height}
-  {\ifdim\Gin@nat@height>0.8\textheight0.8\textheight\else\Gin@nat@height\fi}
-  {}{}
-\makeatother
-
-% Empêche les flottants d'aller au-delà des sections
-\let\oldsection\section
-\renewcommand{\section}{\FloatBarrier\oldsection}
-
-% Style de placement par défaut des figures
-\floatplacement{figure}{H}
-""",
-}
-
-
-# specify the location of your github repo
+html_theme = "ansys_sphinx_theme"
 html_theme_options = {
     "github_url": "https://github.com/ansys/pysam-sysml2",
     "show_prev_next": False,
@@ -68,14 +42,18 @@ html_theme_options = {
     "logo": "pyansys",
 }
 
+# Latex PDF generation parameters
+latex_additional_files = [watermark, ansys_logo_white, ansys_logo_white_cropped]
+latex_elements = {"preamble": (generate_preamble("PySam", copyright, datetime.now()))}
+
 # Sphinx extensions
 extensions = [
-    "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
     "numpydoc",
-    "sphinx.ext.intersphinx",
     "sphinx_copybutton",
     "sphinx_design",
+    "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
+    "sphinx.ext.intersphinx",
 ]
 
 # Intersphinx mapping
@@ -111,7 +89,6 @@ numpydoc_validation_checks = {
     "RT02",  # The first line of the Returns section should contain only the
     # type, unless multiple values are being returned"
 }
-
 
 # static path
 html_static_path = ["_static"]

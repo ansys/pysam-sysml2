@@ -15,7 +15,7 @@ There is two functions to update the value of a feature:
 - set_value()
 - parse_and_set_value()
 
-set value
+set_value
 ---------
 
 This function is for all primitive type :
@@ -37,6 +37,19 @@ This function is for all primitive type :
 
 The model is updated after all set, to keep it the most accurate as possible.
 
+parse_and_set_value
+-------------------
+
+This function is for more complex expression :
+
+.. code::
+
+    >>> myFeature.parse_and_set_value("10 [m]")
+    >>> myFeature.get_value()
+    (10,"m")
+    >>> myFeature.parse_and_set_value("2 + 10 [kg]")
+    >>> myFeature.get_value()
+    Exception UnsupportedValueExpression raised
 
 Create new elements
 ===================
@@ -82,18 +95,41 @@ This will create a new ``AttributeUsage`` element with the given attributes insi
     The list of accepted attributes depends on the type of element you are creating.
     For example ``name``, ``owner``, ``shortName``, and others defined by the metamodel.
 
+    You can also assign a value directly when creating the element. There are two ways:
+
+    - Use ``value=...`` for simple values (e.g., numbers).
+    - Use ``expression="..."`` for values with units or expressions.
+
+    .. code:: python
+
+        new_bicycle_frame_length_with_value = factory.create_element(
+            "AttributeUsage",
+            name="lengthWithValue",
+            owner=bike.frame,
+            value=60
+        )
+
+        new_bicycle_frame_length_with_expression = factory.create_element(
+            "AttributeUsage",
+            name="lengthWithExpression",
+            owner=bike.frame,
+            expression="60 [cm]"
+        )
+
+    ✅ This lets you set values directly at creation time, depending on your data format.
+
 .. only:: html
 
     .. grid:: 2
 
         .. grid-item-card::  :fa:`arrow-left` Previous step
-            :link: read_model
+            :link: read-model
             :link-type: doc
 
             Read a model
 
         .. grid-item-card:: Next step :fa:`arrow-right`
-            :link: diagram_model
+            :link: diagram-model
             :link-type: doc
 
             How to get use diagrams

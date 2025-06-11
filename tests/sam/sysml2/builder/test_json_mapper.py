@@ -27,7 +27,6 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
 class TestJsonMapper:
-
     @pytest.fixture
     def json_mapper(self):
         return JsonMapper()

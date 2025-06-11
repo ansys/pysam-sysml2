@@ -14,7 +14,7 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
     .. grid:: 3
 
         .. grid-item-card:: Getting started :fa:`rocket`
-            :link: getting_started/index
+            :link: getting-started/index
             :link-type: doc
 
             Get started with PySam! This section contains installation instructions and some simple examples.
@@ -37,7 +37,7 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
    :hidden:
    :maxdepth: 1
 
-   getting_started/index
+   getting-started/index
    users/index
    documentation/index
    examples/index

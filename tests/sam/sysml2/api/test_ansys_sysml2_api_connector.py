@@ -20,16 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from mocked_server.mocked_server import MockedServer
+from mocked_server.routes.const import VALID_ORGANIZATION, VALID_TOKEN
 import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.http_request import HttpRequest
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import VALID_ORGANIZATION, VALID_TOKEN
 
 
 class TestAnsysSysMl2APIConnector:
-
     @pytest.fixture
     def connector(self) -> AnsysSysML2APIConnector:
         return AnsysSysML2APIConnector(

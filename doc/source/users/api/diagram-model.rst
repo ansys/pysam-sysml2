@@ -6,7 +6,7 @@ This section describes how to **load**, **download**, and **navigate** diagrams 
 Load Diagrams
 =============
 
-Before interacting with diagrams, they must be loaded using the `SysML2DiagramManager` context manager.
+Before interacting with diagrams, they must be loaded using the :ref:`SysML2DiagramManager <D_M_Section>` context manager.
 
 Basic Usage
 -----------
@@ -25,7 +25,7 @@ This ensures proper setup and teardown of resources when working with diagrams.
 Download Diagrams
 =================
 
-Diagrams must be loaded inside a `SysML2DiagramManager` context before they can be downloaded.
+Diagrams must be loaded inside a :ref:`SysML2DiagramManager <D_M_Section>` context before they can be downloaded.
 
 Download All Diagrams
 ---------------------
@@ -69,7 +69,7 @@ You can also download a specific diagram in a given format:
 Save Diagram from Content Bytes
 -------------------------------
 
-Diagram content can be extracted and saved using `DiagramDownloader`:
+Diagram content can be extracted and saved using :ref:`DiagramDownloader <D_U_Section>`:
 
 .. code-block:: python
 
@@ -128,7 +128,7 @@ To print out names of diagrams from a section of the model:
     .. grid:: 2
 
         .. grid-item-card:: :fa:`arrow-left` Previous step
-            :link: write_model
+            :link: write-model
             :link-type: doc
 
             Write in your model

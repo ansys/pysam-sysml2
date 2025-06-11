@@ -21,7 +21,6 @@
 # SOFTWARE.
 """Python base Class for SysML Element."""
 
-
 from typing import Any, Union
 
 from ansys.sam.sysml2.classes.feature_helper import FeatureHelper

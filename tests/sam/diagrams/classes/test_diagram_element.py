@@ -20,15 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from conftest import tmp_dir
+from mocked_server.mocked_server import MockedServer
+from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
 import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.diagrams.SysML2DiagramManager import SysML2DiagramManager
-from conftest import tmp_dir
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
 
 
 def get_diagrams(element):
@@ -39,7 +39,6 @@ dl_path = tmp_dir / "images"
 
 
 class TestDiagramElement:
-
     @pytest.fixture
     def valid_source(self) -> AnsysSysML2APIConnector:
         return AnsysSysML2APIConnector(

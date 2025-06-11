@@ -22,6 +22,9 @@
 
 import json
 
+from conftest import tmp_dir
+from mocked_server.mocked_server import MockedServer
+from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
 import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
@@ -32,9 +35,6 @@ from ansys.sam.sysml2.exception.connector_exception import (
     DiagramConnectorException,
     HTTPResponseException,
 )
-from conftest import tmp_dir
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
 
 
 def get_diagrams(element):
@@ -45,7 +45,6 @@ dl_path = tmp_dir / "images"
 
 
 class TestSysML2DiagramManager:
-
     @pytest.fixture
     def valid_source(self) -> AnsysSysML2APIConnector:
         return AnsysSysML2APIConnector(

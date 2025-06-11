@@ -24,7 +24,6 @@ from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 
 
 class TestSysMLUtil:
-
     def test_check_inherited_name_with_string_input(self):
         assert SysMLUtil.check_inherited_name("test") == "::test"
 

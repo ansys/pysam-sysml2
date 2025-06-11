@@ -20,17 +20,16 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from mocked_server.mocked_server import MockedServer
+from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
 import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.diagrams.api import AnsysRestApiConnector
 from ansys.sam.sysml2.exception.connector_exception import ConnectorConnectionException
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import PROJECT_ID_3, VALID_ORGANIZATION, VALID_TOKEN
 
 
 class TestAnsysRestApiConnector:
-
     @pytest.fixture
     def connector(self) -> AnsysRestApiConnector:
         connector = AnsysSysML2APIConnector(
@@ -65,7 +64,6 @@ class TestAnsysRestApiConnector:
         )
 
     def test_wrong_connector_class(self):
-
         class FakeConnector: ...
 
         conn = FakeConnector()
