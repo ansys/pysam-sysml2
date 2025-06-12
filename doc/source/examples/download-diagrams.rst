@@ -59,11 +59,11 @@ Python example
             )
         )
 
-    print(f"✅ Loaded {len(project.get_root_package().__diagram)} diagrams.")
+    print(f"Loaded {len(project.get_root_package().__diagram)} diagrams.")
 
     first_diagram = project.get_root_package().__diagram[0]
     first_diagram.download_diagram(file_format="svg", path="C:/Diagrams/Images/")
-    print("🖼️ Diagram saved as SVG at: C:/Diagrams/Images/")
+    print("Diagram saved as SVG at: C:/Diagrams/Images/")
 
     png_content = first_diagram.get_content(file_format="png")
     saved_path = DiagramDownloader.save_content(
@@ -72,12 +72,12 @@ Python example
         filename="first_diagram",
         file_format="png",
     )
-    print(f"🖼️ Diagram saved as PNG at: C:/Diagrams/Images/")
+    print(f"Diagram saved as PNG at: C:/Diagrams/Images/")
 
     usage_diagrams = project.get_root_package().Usage.__diagram
     for i, diagram in enumerate(usage_diagrams, 1):
         diagram.download_diagram(file_format="svg", path="C:/Diagrams/Images/Usage")
-        print(f"🔽 Saved Usage diagram #{i}: {diagram._plane._model_element._name}")
+        print(f"Saved Usage diagram #{i}: {diagram._plane._model_element._name}")
 
     # -----------------------------------------
     # Navigate through Diagrams

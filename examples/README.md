@@ -27,4 +27,4 @@ The `code/` subfolder includes usage examples:
 5. The project name will auto-fill (e.g., `bike` or `computer`).
 6. Click `Import` and wait for the project to load.
 
-> ✅ You’re now ready to explore the model and run the examples!
+> You’re now ready to explore the model and run the examples!

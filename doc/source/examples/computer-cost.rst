@@ -15,7 +15,7 @@ Click on **Choose File** in the **File to import** input, and select the ``compu
 The name of the project is automatically set to ``computer``.
 Click on `Import` and wait for the project to be loaded.
 
-*✅ Congratulations, you now have a computer model to work on !*
+*Congratulations, you now have a computer model to work on !*
 
 
 Calculate the computer cost

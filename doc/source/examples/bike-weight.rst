@@ -15,7 +15,7 @@ Click on **Choose File** in the **File to import** input, and select the ``bike.
 The name of the project is automatically set to ``bike``.
 Click on **Import** and wait for the project to be loaded.
 
-*✅ Congratulations, you now have a bike model to work on*
+*Congratulations, you now have a bike model to work on*
 
 
 
@@ -101,10 +101,6 @@ Get the Bike element.
 
 For weight calculation, nothing more simpler than simple addition.
 
-.. .. note::
-
-..     For access to different elements, another method is used, dot notation. See the :ref:`Getter <Getter>` section for more details.
-
 So, if looking at each piece of the bike:
 
 
@@ -134,9 +130,9 @@ And print the weight of the bike.
    print(bike_weight)
 
 
-✅ You now have the total weight of the bike
+You now have the total weight of the bike
 
 
 .. note::
 
-    📄 You can get the full code `Here </_static/code/weight-bike.py>`_.
+    You can get the full code `Here </_static/code/weight-bike.py>`_.

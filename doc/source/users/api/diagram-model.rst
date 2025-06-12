@@ -87,7 +87,7 @@ You can iterate through diagrams inside a specific section of your model, for ex
     usage_diagrams = myBikeProject.get_root_package().Usage.__diagram
     for i, diagram in enumerate(usage_diagrams, 1):
         diagram.download_diagram(file_format="svg", path="C:/Diagrams/Images/")
-        print(f"🔽 Saved Usage diagram #{i}: {diagram._plane._model_element._name}")
+        print(f"Saved Usage diagram #{i}: {diagram._plane._model_element._name}")
 
 
 Navigate model from diagrams

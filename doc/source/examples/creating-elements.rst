@@ -13,7 +13,7 @@ Click on **Choose File** in the **File to import** input, and select the ``bike.
 The name of the project is automatically set to ``bike``.
 Click on **Import** and wait for the project to be loaded.
 
-*✅ Congratulations, you now have a bike model to work on !*
+*Congratulations, you now have a bike model to work on !*
 
 Create an attribute usage for the bicycle frame length
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -52,7 +52,7 @@ This example shows how to create a new ``AttributeUsage`` element inside the ``B
 
     print(project.get_root_package().Structure.Bike.frame.length.get_value())
 
-✅ You just created a new element and assigned a parsed value to it.
+You just created a new element and assigned a parsed value to it.
 
 .. note::
 
@@ -77,4 +77,4 @@ This example shows how to create a new ``AttributeUsage`` element inside the ``B
             expression="60 [cm]"
         )
 
-    ✅ This lets you set values directly at creation time, depending on your data format.
+    This lets you set values directly at creation time, depending on your data format.

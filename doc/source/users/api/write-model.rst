@@ -116,7 +116,7 @@ This creates a new ``AttributeUsage`` element with the given attributes inside t
             expression="60 [cm]"
         )
 
-    ✅ This lets you set values directly at creation time, depending on your data format.
+    This lets you set values directly at creation time, depending on your data format.
 
 .. only:: html
 
