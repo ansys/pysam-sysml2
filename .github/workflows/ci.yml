@@ -77,8 +77,7 @@ jobs:
         uses: ansys/actions/doc-build@v10.0
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
-          sphinxopts: -j auto -W
-          add-pdf-html-docs-as-assets: false
+          sphinxopts: -j auto -W --color --keep-going
 
   tests:
     name: "Testing library with different operating systems and Python versions"
