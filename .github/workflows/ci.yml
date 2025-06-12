@@ -71,7 +71,7 @@ jobs:
   doc-build:
     name: "Building library documentation"
     needs: doc-style
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       - name: "Run Ansys documentation building action"
         uses: ansys/actions/doc-build@v10.0
@@ -92,8 +92,7 @@ jobs:
       - name: "Run pytest"
         uses: ansys/actions/tests-pytest@v10.0
         with:
-          pytest-markers: "-k 'mocked'"
-          pytest-extra-args: "--cov= ${{ env.PACKAGE_NAMESPACE }} --cov-report=term --cov-report=html:.cov/html"
+          pytest-extra-args: "--cov=ansys.sam --cov-report=term --cov-report=html:.cov/html"
 
   release-github:
     name: "Release to GitHub"
