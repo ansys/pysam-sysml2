@@ -10,12 +10,12 @@ The loaded model is stored in a :ref:`Project <L_Project>`.
 Getter
 ======
 
-To parse the project, you can use different getters.
+To parse the project, you can use different access methods.
 
 Dot access
 ----------
 
-Using the dot access, you can access all direct named element of your Sysml element.
+Using the dot access, you can access all direct named element of your SysML element.
 Also, you can access to some useful top level function, like `get_value` for example.
 
 
@@ -24,15 +24,15 @@ Also, you can access to some useful top level function, like `get_value` for exa
 Sub elements
 ~~~~~~~~~~~~
 
-The script attaches all elements contained in `ownedElement` and `_inheritedFeature`, who has a name, to the container element.
+The script attaches all elements contained in ``ownedElement`` and ``_inheritedFeature``, who has a name, to the container element.
 
 .. code:: python
 
     >>> myPart.subPart
     <class ParUsage>
 
-get_value
-~~~~~~~~~
+Function ``get_value``
+~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning::
 
@@ -53,20 +53,19 @@ This is a top level function to help user to get the Value of the feature withou
     >>> myFloatFeature.get_value()
     10.56
 
-This function support :
+This function supports:
 
-- All primitive type : LiteralInteger, LiteralString, ... => Return the value directly
-- Simple expression : <value> [<unit>] => Return a tuple : (<value>,<unit short name>)
+- All primitive types: LiteralInteger, LiteralString, etc. - Returns the value directly
+- Simple expressions: <value> [<unit>] - Returns a tuple: (<value>,<unit short name>)
 
-Else, it will raise an exception.
-
+Otherwise, it raises an exception.
 
 Underscore access
 =================
 
-Using the `_` access, you will find all Sysml Method :
+Using the ``_`` access, you can find all SysML methods:
 
-.. code::
+.. code:: python
 
     >>> myPart._name
     myPart
@@ -75,7 +74,7 @@ Using the `_` access, you will find all Sysml Method :
 
 .. warning::
 
-    In this first version, only existing fields (with data) are linked, so it's possible to don't find a function, which exist in Sysml V2
+    In this first version, only existing fields (with data) are linked, so it's possible to don't find a function, which exist in SysML V2
 
 .. only:: html
 

@@ -1,6 +1,6 @@
 .. _C_I_Section:
 
-Connector Package
+Connector package
 #################
 
 .. note::
@@ -18,9 +18,6 @@ AnsysSysML2APIConnector
 
 SysML2APIConnector
 ~~~~~~~~~~~~~~~~~~
-
-This is the interface for all Sysml V2 Api Connector
-
 
 .. autoclass:: ansys.sam.sysml2.api.sysml2_api_connector.SysML2APIConnector
    :members: get_projects,get_project_by_id,create_project,get_all_elements,get_element_by_id,get_root_elements,execute_query

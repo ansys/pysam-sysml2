@@ -37,9 +37,9 @@ You can find classes specification :ref:`Here <C_I_Section>`
 
     .. grid:: 2
 
-        .. grid-item-card::
-            :link: create-conn
-            :link-type: doc
+        .. grid-item::
+
+
 
         .. grid-item-card:: Next step :fa:`arrow-right`
             :link: load-model

@@ -1,14 +1,14 @@
-Working with Diagrams
+Working with diagrams
 #####################
 
 This section describes how to **load**, **download**, and **navigate** diagrams from your SysML v2 project using the Ansys SAM API.
 
-Load Diagrams
+Load diagrams
 =============
 
 Before interacting with diagrams, they must be loaded using the :ref:`SysML2DiagramManager <D_M_Section>` context manager.
 
-Basic Usage
+Basic usage
 -----------
 
 To load diagrams from a project and make them available for further operations like downloading:
@@ -18,16 +18,15 @@ To load diagrams from a project and make them available for further operations l
     with SysML2DiagramManager(connector=connector) as diagrams:
         diagrams.load_diagrams(model=myBikeProject)
 
-Outside the ``with`` block, the ``diagrams`` manager is no longer active, and diagram-related operations such as ``download_all_diagrams()`` will **not work**.
+Outside the ``with`` block, the ``diagrams`` manager is no longer active, and diagram-related operations such as ``download_all_diagrams()`` **do not work**.
+This ensures proper setup and cleanup of resources when working with diagrams.
 
-This ensures proper setup and teardown of resources when working with diagrams.
-
-Download Diagrams
+Download diagrams
 =================
 
 Diagrams must be loaded inside a :ref:`SysML2DiagramManager <D_M_Section>` context before they can be downloaded.
 
-Download All Diagrams
+Download all diagrams
 ---------------------
 
 Once the diagrams are loaded, you can download **all diagrams** and save them into a zip archive:
@@ -48,14 +47,14 @@ Once the diagrams are loaded, you can download **all diagrams** and save them in
 
 **Default Parameters:**
 
-- ``file_format``: "svg"
+- ``file_format``: "SVG"
 - ``filename``: "<PackageName>_<FileFormat>_diagrams.zip"
 
-If not specified, these defaults will be used to name and format your download archive.
+If not specified, these defaults are used to name and format your download archive.
 
-``download_all_diagrams()`` will raise an error if used outside the `with` context where diagrams are not loaded.
+``download_all_diagrams()`` raises an error if used outside the `with` context where diagrams are not loaded.
 
-Download a Single Diagram
+Download a single diagram
 -------------------------
 
 You can also download a specific diagram in a given format:
@@ -64,9 +63,8 @@ You can also download a specific diagram in a given format:
 
     first_diagram = myBikeProject.get_root_package().__diagram[0]
     first_diagram.download_diagram(file_format="svg", path="C:/Diagrams/Images/")
-    print("🖼️ Diagram saved as SVG at: C:/Diagrams/Images/")
 
-Save Diagram from Content Bytes
+Save diagram from content bytes
 -------------------------------
 
 Diagram content can be extracted and saved using :ref:`DiagramDownloader <D_U_Section>`:
@@ -78,9 +76,8 @@ Diagram content can be extracted and saved using :ref:`DiagramDownloader <D_U_Se
     first_diagram = myBikeProject.get_root_package().__diagram[0]
     png_content = first_diagram.get_content(file_format="png")
     saved_path = DiagramDownloader.save_content(content=png_content, path="C:/Diagrams/Images/", filename="first_diagram", file_format="png")
-    print(f"🖼️ Diagram saved as PNG at: C:/Diagrams/Images/")
 
-Download Diagrams in a Loop
+Download diagrams in a loop
 ---------------------------
 
 You can iterate through diagrams inside a specific section of your model, for example, `Usage`:
@@ -93,12 +90,12 @@ You can iterate through diagrams inside a specific section of your model, for ex
         print(f"🔽 Saved Usage diagram #{i}: {diagram._plane._model_element._name}")
 
 
-Navigate Model from Diagrams
+Navigate model from diagrams
 ============================
 
 Each diagram object links to a model element, and you can access its name or other metadata:
 
-Get Diagram Metadata
+Get diagram metadata
 --------------------
 
 .. code-block:: python
@@ -108,7 +105,7 @@ Get Diagram Metadata
 
 This returns the name of the associated model element the diagram represents.
 
-Loop Through Diagrams
+Loop through diagrams
 ---------------------
 
 To print out names of diagrams from a section of the model:
@@ -120,7 +117,7 @@ To print out names of diagrams from a section of the model:
 
 .. note::
 
-    Navigating through `_plane` and `_model_element` and `_owned_diagram_elements` allows you to discover the logical elements the diagram is tied to.
+    Navigating through ``_plane`` and ``_model_element`` and ``_owned_diagram_elements`` allows you to discover the logical elements the diagram is tied to.
 
 
 .. only:: html

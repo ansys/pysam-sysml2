@@ -1,7 +1,7 @@
-User Guide
+User guide
 ----------
 
-These sections will provide help for users of this library.
+These sections provide help for users of this library.
 
 .. only:: html
 
@@ -51,16 +51,6 @@ These sections will provide help for users of this library.
 
             How to find required information like Organization id, Token, ...
 
-.. only:: html
-
-    .. grid:: 2
-
-        .. grid-item-card:: Develop a connector :fa:`rocket`
-            :link: api/dev-conn
-            :link-type: doc
-
-            How to develop the connector for a Sysml V2 tool?
-
 
 .. toctree::
    :maxdepth: 7
@@ -72,4 +62,3 @@ These sections will provide help for users of this library.
    api/write-model
    api/diagram-model
    api/information
-   api/dev-conn

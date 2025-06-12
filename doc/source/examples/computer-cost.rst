@@ -1,32 +1,29 @@
 .. _Computer_Example:
 
-Computer Example
+Computer example
 ################
 
-First of all, we need a computer model to work on!
+A computer model is required to get started.
 
-Fortunately, we have one for you.
+One is provided for your convenience.
 
 Download this model : `Computer Model </_static/code/computer.xmi>`_.
 
 Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
-Then, click on `New Project` > `SysMl V2` > `Import File`.
-Click on `Choose File`  in the  `File to import` input, and select the `computer.xmi` file you just downloaded.
-The name of the project will automatically set to `computer`.
+Then, click **New Project** > **SysML V2** > **Import File**.
+Click on **Choose File** in the **File to import** input, and select the ``computer.xmi`` file you just downloaded.
+The name of the project is automatically set to ``computer``.
 Click on `Import` and wait for the project to be loaded.
 
 *✅ Congratulations, you now have a computer model to work on !*
 
 
-Calculate the Computer cost
+Calculate the computer cost
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Let's calculate the cost of the Computer.
-
 
 .. note::
 
-    You need to change `Organization ID`, `Server Url` and `Token` with your own data, see :ref:`This section for more information<Info_Section>`.
+    You need to change `Organization ID`, `Server URL` and `Token` with your own data, see :ref:`This section for more information<Info_Section>`.
 
 .. code:: python
 

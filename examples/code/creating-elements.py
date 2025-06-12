@@ -39,7 +39,7 @@ bike = project.get_root_package().Structure.Bike
 factory = Factory(project, connector)
 
 new_bicycle_frame_length = factory.create_elements(
-    "AttributeUsage", name="length", owner=bike.frame
+    element_type="AttributeUsage", name="length", owner=bike.frame
 )
 
 new_bicycle_frame_length.parse_and_set_value("60 [cm]")

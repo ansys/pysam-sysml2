@@ -48,7 +48,7 @@ class TestFactory:
         project_root = project.get_root_package()
 
         new_attribute = factory.create_element(
-            "AttributeUsage", name="new_attribute", owner=project_root
+            element_type="AttributeUsage", name="new_attribute", owner=project_root
         )
 
         assert project_root.new_attribute._name == "new_attribute"

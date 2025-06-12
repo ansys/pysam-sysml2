@@ -4,7 +4,7 @@ Load a model
 To load a model, you need an instance of a SysML Connector (see :ref:`here <Create_C_Section>`).
 
 After this, you can create a SysML2ProjectManager.
-This class will help you to load a model in Python, using the Sysml V2 Standard API.
+This class helps you load a model in Python, using the SysML V2 Standard API.
 
 .. code:: python
 

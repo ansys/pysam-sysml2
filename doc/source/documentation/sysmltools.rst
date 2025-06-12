@@ -1,6 +1,6 @@
 .. _S_T_Section:
 
-Tools Package
+Tools package
 #############
 
 SysMLTools

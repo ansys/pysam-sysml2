@@ -1,30 +1,28 @@
 .. _Creating_Example:
 
-Creating New Elements Example
+Creating new element example
 #############################
 
-Let's create and configure a new element in an existing model.
-
-Make sure you have access to a valid server and a project containing the `Bike` structure.
+Make sure you have access to a valid server and a project containing the ``Bike`` structure.
 
 If not, you can download this model : `Bike Model </_static/code/bike.xmi>`_.
 
 Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
-Then, click on `New Project` > `SysMl V2` > `Import File`.
-Click on `Choose File`  in the  `File to import` input, and select the `bike.xmi` file you just downloaded.
-The name of the project will automatically set to `bike`.
-Click on `Import` and wait for the project to be loaded.
+Then, click **New Project** > **SysML V2** > **Import File**.
+Click on **Choose File** in the **File to import** input, and select the ``bike.xmi`` file you just downloaded.
+The name of the project is automatically set to ``bike``.
+Click on **Import** and wait for the project to be loaded.
 
 *✅ Congratulations, you now have a bike model to work on !*
 
-Create an AttributeUsage for the Bicycle Frame Length
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create an attribute usage for the bicycle frame length
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This example shows how to create a new ``AttributeUsage`` element inside the ``Bike`` and assign it a value.
 
 .. note::
 
-    You need to change `Organization ID`, `Server Url` and `Token` with your own data, see :ref:`This section for more information<Info_Section>`.
+    You need to change `Organization ID`, `Server URL` and `Token` with your own data, see :ref:`This section for more information<Info_Section>`.
 
 .. code:: python
 
@@ -47,14 +45,14 @@ This example shows how to create a new ``AttributeUsage`` element inside the ``B
     factory = Factory(project, connector)
 
     new_bicycle_frame_length = factory.create_elements(
-        "AttributeUsage", name="length", owner=bike.frame
+        element_type="AttributeUsage", name="length", owner=bike.frame
     )
 
     new_bicycle_frame_length.parse_and_set_value("60 [cm]")
 
     print(project.get_root_package().Structure.Bike.frame.length.get_value())
 
-✅ You just created a new element and assigned a parsed value to it!
+✅ You just created a new element and assigned a parsed value to it.
 
 .. note::
 
@@ -66,14 +64,14 @@ This example shows how to create a new ``AttributeUsage`` element inside the ``B
     .. code:: python
 
         new_bicycle_frame_length_with_value = factory.create_element(
-            "AttributeUsage",
+            element_type="AttributeUsage",
             name="lengthWithValue",
             owner=bike.frame,
             value=60
         )
 
         new_bicycle_frame_length_with_expression = factory.create_element(
-            "AttributeUsage",
+            element_type="AttributeUsage",
             name="lengthWithExpression",
             owner=bike.frame,
             expression="60 [cm]"

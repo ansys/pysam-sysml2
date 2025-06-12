@@ -1,6 +1,6 @@
 .. _F_Section:
 
-Tools Package
+Tools package
 #############
 
 Factory

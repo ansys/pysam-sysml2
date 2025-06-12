@@ -18,12 +18,14 @@ Installation
 Usage
 -----
 
-You can find more examples :ref:`here <Example>`.
+.. note::
+
+    You can find examples :ref:`here <Example>`.
 
 Connect to the tool
 ~~~~~~~~~~~~~~~~~~~
 
-Here, we will use the AnsysSysML2 API Connector. If you want to connect to any other SysMLV2 tool, please read developer guide.
+Here, the AnsysSysML2 API Connector is used. If you want to connect to any other SysMLV2 tool, please read the developer guide.
 
 
 First import the Connector and the Project manager.
@@ -32,7 +34,7 @@ First import the Connector and the Project manager.
 
     from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
 
-The connector will provide to the project manager, the access to the model.
+The connector provides the project manager with access to the model.
 
 Then create the connector :
 

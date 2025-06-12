@@ -15,12 +15,12 @@ There is two functions to update the value of a feature:
 - set_value()
 - parse_and_set_value()
 
-set_value
----------
+Function ``set_value``
+----------------------
 
 This function is for all primitive type :
 
-.. code::
+.. code:: python
 
     >>> myFeature.set_value(True)
     >>> myFeature.get_value()
@@ -37,12 +37,12 @@ This function is for all primitive type :
 
 The model is updated after all set, to keep it the most accurate as possible.
 
-parse_and_set_value
--------------------
+Function ``parse_and_set_value``
+--------------------------------
 
 This function is for more complex expression :
 
-.. code::
+.. code:: python
 
     >>> myFeature.parse_and_set_value("10 [m]")
     >>> myFeature.get_value()
@@ -58,42 +58,42 @@ You can create new elements in your model using the ``Factory`` class.
 
 .. tip::
 
-    A complete example is available :ref:`here <PM_Section>`.
+    A complete example is available :ref:`here <Creating_Example>`.
 
-.. code::
+.. code:: python
 
     factory = Factory(project, connector)
 
 Then, use the ``create_element()`` method to create a new model element.
 You must provide the type of the element, as well as any number of keyword arguments representing its attributes:
 
-.. code::
+.. code:: python
 
     new_attribute_usage = factory.create_element(
-        "AttributeUsage",
+        element_type="AttributeUsage",
         name="new_attribute_usage",
     )
 
-This will create a new ``AttributeUsage`` element at the root of your project.
+This creates a new ``AttributeUsage`` element at the root of your project.
 The ``create_element()`` method returns the newly created element.
 
-.. code::
+.. code:: python
 
     bike = project.get_root_package().Structure.Bike
 
     new_attribute_usage = factory.create_element(
-        "AttributeUsage",
+        element_type="AttributeUsage",
         name="new_attribute_usage",
         owner=bike,
         shortName="attrUsage01"
     )
 
-This will create a new ``AttributeUsage`` element with the given attributes inside the ``Bike``.
+This creates a new ``AttributeUsage`` element with the given attributes inside the ``Bike``.
 
 .. note::
 
     The list of accepted attributes depends on the type of element you are creating.
-    For example ``name``, ``owner``, ``shortName``, and others defined by the metamodel.
+    For example ``name``, ``owner``, ``shortName``, and others defined by the ``metamodel``.
 
     You can also assign a value directly when creating the element. There are two ways:
 
@@ -103,14 +103,14 @@ This will create a new ``AttributeUsage`` element with the given attributes insi
     .. code:: python
 
         new_bicycle_frame_length_with_value = factory.create_element(
-            "AttributeUsage",
+            element_type="AttributeUsage",
             name="lengthWithValue",
             owner=bike.frame,
             value=60
         )
 
         new_bicycle_frame_length_with_expression = factory.create_element(
-            "AttributeUsage",
+            element_type="AttributeUsage",
             name="lengthWithExpression",
             owner=bike.frame,
             expression="60 [cm]"

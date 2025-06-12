@@ -1,6 +1,6 @@
 .. _D_M_Section:
 
-Diagrams Package
+Diagrams package
 ################
 
 SysML2DiagramManager

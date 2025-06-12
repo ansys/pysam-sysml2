@@ -1,6 +1,6 @@
 .. _D_E_Section:
 
-Diagrams Classes Package
+Diagrams classes package
 ########################
 
 DiagramElement

@@ -1,8 +1,10 @@
 .. _PM_Section:
 
-Project Manager
+Project manager
 ###############
 
+SysML2ProjectManager
+~~~~~~~~~~~~~~~~~~~~
 
 .. autoclass:: ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager
    :members: __init__, get_project

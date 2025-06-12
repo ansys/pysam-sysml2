@@ -1,6 +1,6 @@
 .. _Download_Example:
 
-Download Diagrams and Create New Elements
+Download diagrams and create new elements
 #########################################
 
 This example demonstrates how to work with the `Bike` model in a SysML v2 project using the Ansys SAM API. It covers:
@@ -21,7 +21,7 @@ Ensure you have:
 2. A valid **Organization ID**, **Project ID**, and **Token**.
 3. The `bike.xmi` model imported into your project.
 
-Python Example
+Python example
 ==============
 
 .. code-block:: python
@@ -89,10 +89,9 @@ Python Example
     for diagram in project.get_root_package().Usage.__diagram:
         print("Diagram name:", diagram._name)
 
-Notes
-=====
+.. note::
 
-- Replace placeholder values with your actual SAM configuration.
-- Always use ``DiagramManager`` within a context manager (``with`` statement).
-- Diagram content can be retrieved in various formats: ``png``, ``svg``, etc.
+    - Replace placeholder values with your actual SAM configuration.
+    - Always use ``DiagramManager`` within a context manager (``with`` statement).
+    - Diagram content can be retrieved in various formats: ``png``, ``svg``, etc.
 

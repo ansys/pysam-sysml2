@@ -3,7 +3,7 @@
 Examples
 ########
 
-In this section, we will see different ways to use the API with some examples.
+This section shows different ways to use the API with some examples.
 
 .. only:: html
 

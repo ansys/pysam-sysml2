@@ -1,7 +1,7 @@
 .. _D_U_Section:
 
-Diagrams Utils Package
-######################
+Diagrams utilities package
+##########################
 
 DiagramDownloader
 ~~~~~~~~~~~~~~~~~
