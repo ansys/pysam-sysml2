@@ -90,7 +90,7 @@ Click on the **Authorize** button and paste your Bearer Token in the authenticat
 
 Once authorized, go to the top right of the page and open the `Select a definition` dropdown. Scroll down and select the **Personal Access Token API**.
 
-.. figure:: /_static/images/pat.png
+.. figure:: /_static/images/pat-dropdown.png
 
 Use the **POST** request to generate a new PAT. You can optionally define the number of days the token should remain valid (the default is 30 days).
 
