@@ -21,7 +21,6 @@
 # SOFTWARE.
 """Classes module for PySam Diagram library."""
 
-# pylint: disable=wrong-import-position
 from ansys.sam.sysml2.classes.mapped_element import MappedElement  # noqa as we export name
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField  # noqa as we export name
 

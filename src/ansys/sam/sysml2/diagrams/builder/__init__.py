@@ -21,6 +21,5 @@
 # SOFTWARE.
 """Builder module for PySam Diagram library."""
 
-# pylint: disable=wrong-import-position
 from .EMF2ObjectMapper import EMF2ObjectMapper  # noqa as we export name
 from .SysML2DiagramBuilder import SysML2DiagramBuilder  # noqa as we export name

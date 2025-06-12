@@ -21,6 +21,5 @@
 # SOFTWARE.
 """Tools module for PySam library."""
 
-# pylint: disable=wrong-import-position
 from .factory import Factory  # noqa as we export name
 from .sysmltools import SysMLTools  # noqa as we export name

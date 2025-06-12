@@ -21,12 +21,8 @@
 # SOFTWARE.
 """Base module for PySam library."""
 
-# import importlib.metadata as importlib_metadata
-
-# __version__ = importlib_metadata.version(__name__.replace(".", "-"))
 __version__ = "1.0.0"
 
-# pylint: disable=wrong-import-position
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector  # noqa as we export name
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager  # noqa as we export name
 from ansys.sam.sysml2.diagrams.SysML2DiagramManager import SysML2DiagramManager  # noqa as we export name

@@ -21,7 +21,6 @@
 # SOFTWARE.
 """Diagram module for PySam Diagram library."""
 
-# pylint: disable=wrong-import-position
 from .api import AnsysRestApiConnector  # noqa as we export name
 from .builder import EMF2ObjectMapper, SysML2DiagramBuilder  # noqa as we export name
 from .utils import DiagramDownloader  # noqa as we export name

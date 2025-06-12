@@ -21,5 +21,4 @@
 # SOFTWARE.
 """Api module for PySam Diagram library."""
 
-# pylint: disable=wrong-import-position
 from .AnsysRestApiConnector import AnsysRestApiConnector  # noqa as we export name

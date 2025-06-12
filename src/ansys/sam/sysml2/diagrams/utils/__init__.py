@@ -21,6 +21,5 @@
 # SOFTWARE.
 """Utils module for PySam Diagram library."""
 
-# pylint: disable=wrong-import-position
 from .diagram_downloader import DiagramDownloader  # noqa as we export name
 from .name_utils import NameUtils  # noqa as we export name
