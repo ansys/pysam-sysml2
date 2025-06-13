@@ -1,13 +1,13 @@
 """Sphinx documentation configuration file."""
 
 from datetime import datetime
-
 from ansys_sphinx_theme import (
     ansys_favicon,
     ansys_logo_white,
     ansys_logo_white_cropped,
     get_version_match,
     watermark,
+    pyansys_logo_black,
 )
 from ansys_sphinx_theme.latex import generate_preamble
 
@@ -41,9 +41,31 @@ html_theme_options = {
     "logo": "pyansys",
 }
 
+
+# LaTeX Compatible Paths
+def escape_latex_path(path):
+    """Escape paths for LaTeX."""
+    import os
+
+    abs_path = os.path.abspath(path)
+    latex_path = abs_path.replace("\\", "/")
+    latex_path = latex_path.replace(" ", "\\ ")
+    return latex_path
+
+
+watermark = escape_latex_path(watermark)
+ansys_logo_white = escape_latex_path(ansys_logo_white)
+ansys_logo_white_cropped = escape_latex_path(ansys_logo_white_cropped)
+pyansys_logo_black = escape_latex_path(pyansys_logo_black)
+
 # Latex PDF generation parameters
-latex_additional_files = [watermark, ansys_logo_white, ansys_logo_white_cropped]
-latex_elements = {"preamble": (generate_preamble("PySam", watermark, datetime.now()))}
+latex_additional_files = [
+    watermark,
+    ansys_logo_white,
+    ansys_logo_white_cropped,
+    pyansys_logo_black,
+]
+latex_elements = {"preamble": (generate_preamble("PySam", watermark))}
 
 # Sphinx extensions
 extensions = [
