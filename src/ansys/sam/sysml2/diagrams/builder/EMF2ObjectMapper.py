@@ -208,7 +208,7 @@ class EMF2ObjectMapper:
         attr: str,
     ) -> Tuple[List, List[UnresolvedField]]:
         """
-        Process a single dictionary item, resolving references or building nested elements.
+        Handle a single dictionary item, resolving references or building nested elements.
 
         Parameters
         ----------
@@ -242,7 +242,7 @@ class EMF2ObjectMapper:
         attr: str,
     ) -> Tuple[List, List[UnresolvedField]]:
         """
-        Process a list of items, resolving references and building nested elements.
+        Handle a list of items, resolving references and building nested elements.
 
         Parameters
         ----------

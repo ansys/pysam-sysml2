@@ -15,8 +15,8 @@ Installation
     python -m pip install ansys_sam_sysml2-<version>-py3-none-any.whl
 
 
-Usage
------
+Use
+---
 
 .. note::
 

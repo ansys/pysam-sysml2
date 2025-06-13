@@ -38,6 +38,7 @@ def mount_observer_and_access(function):
     """
 
     def wrapper(self, *args):
+        """Wrapper function for mount_observer_and_access."""
         if not self._owner._IS_READ_ONLY:
             val = function(self, *args)
             if self._owner._observer is not None:

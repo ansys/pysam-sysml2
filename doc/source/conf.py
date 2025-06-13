@@ -1,7 +1,6 @@
 """Sphinx documentation configuration file."""
 
 from datetime import datetime
-import os
 
 from ansys_sphinx_theme import (
     ansys_favicon,
@@ -16,11 +15,11 @@ from ansys.sam.sysml2 import __version__
 
 # Project information
 project = "ansys-sam-sysml2"
+release = version = __version__
+switcher_version = get_version_match(__version__)
+cname = "https://sam.docs.pyansys.com"
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
-release = version = __version__
-cname = os.getenv("DOCUMENTATION_CNAME", "https://sam.docs.pyansys.com")
-switcher_version = get_version_match(__version__)
 
 # Select desired favicon, logo, theme, and declare the html title
 html_favicon = ansys_favicon
@@ -44,7 +43,7 @@ html_theme_options = {
 
 # Latex PDF generation parameters
 latex_additional_files = [watermark, ansys_logo_white, ansys_logo_white_cropped]
-latex_elements = {"preamble": (generate_preamble("PySam", copyright, datetime.now()))}
+latex_elements = {"preamble": (generate_preamble("PySam", watermark, datetime.now()))}
 
 # Sphinx extensions
 extensions = [
@@ -53,6 +52,7 @@ extensions = [
     "sphinx_design",
     "sphinx.ext.autodoc",
     "sphinx.ext.autosummary",
+    "sphinx.ext.autosectionlabel",
     "sphinx.ext.intersphinx",
 ]
 
@@ -83,9 +83,9 @@ numpydoc_validation_checks = {
     "GL10",  # reST directives {directives} must be followed by two colons
     "SS01",  # No summary found
     "SS02",  # Summary does not start with a capital letter
-    # "SS03", # Summary does not end with a period
+    "SS03",  # Summary does not end with a period
     "SS04",  # Summary contains heading whitespaces
-    # "SS05", # Summary must start with infinitive verb, not third person
+    "SS05",  # Summary must start with infinitive verb, not third person
     "RT02",  # The first line of the Returns section should contain only the
     # type, unless multiple values are being returned"
 }

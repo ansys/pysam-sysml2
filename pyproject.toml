@@ -25,9 +25,21 @@ classifiers = [
 ]
 
 dependencies = [
-    "flask==3.1.0",
-    "requests==2.32.3",
-    "werkzeug==3.1.3"
+    # Indirect dependencies,
+    "certifi==2025.4.26",
+    "charset-normalizer==3.4.2",
+    "click==8.2.1",
+    "colorama==0.4.6",
+    "idna==3.10",
+    "itsdangerous==2.2.0",
+    "Jinja2==3.1.6",
+    "MarkupSafe==3.0.2",
+    "urllib3==2.4.0",
+    "Werkzeug==3.1.3",
+    # Direct dependencies,
+    "Flask==3.1.1",
+    "overrides==7.7.0",
+    "requests==2.32.4"
 ]
 
 [project.optional-dependencies]
@@ -116,7 +128,7 @@ checks = [
     "GL06", # 'Found unknown section "{section}". Allowed sections are: '
     # "{allowed_sections}",
     "GL07", # "Sections are in the wrong order. Correct order is: {correct_sections}",
-    # "GL08", # "The object does not have a docstring",
+    "GL08", # "The object does not have a docstring",
     "GL09", # "Deprecation warning should precede extended summary",
     "GL10", # "reST directives {directives} must be followed by two colons",
     "SS01", # "No summary found (a short summary in a single line should be "
@@ -124,7 +136,7 @@ checks = [
     "SS02", # "Summary does not start with a capital letter",
     "SS03", # "Summary does not end with a period",
     "SS04", # "Summary contains heading whitespaces",
-    # "SS05", # FIXME "Summary must start with infinitive verb, not third person "
+    "SS05", # FIXME "Summary must start with infinitive verb, not third person "
     # '(e.g. use "Generate" instead of "Generates")',
     "SS06", # "Summary should fit in a single line",
     # "ES01", # "No extended summary found",

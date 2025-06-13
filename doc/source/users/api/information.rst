@@ -44,7 +44,7 @@ To get your Organization ID, follow these steps:
 
     .. figure:: /_static/images/orga-2.png
 
-✔️ You got your Organization ID.
+You got your Organization ID.
 
 .. _Info_B_Token_Section:
 

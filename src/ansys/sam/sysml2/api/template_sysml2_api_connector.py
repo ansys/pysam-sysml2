@@ -60,31 +60,12 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         self._use_ssl = use_ssl
 
     def get_projects(self) -> list:
-        """
-        Get_projects return all Project of the connected User.
-
-        Returns
-        -------
-        list
-            The list of all projects
-        """
+        """Get all projects of the connected user."""
         http_request = self._build_http_request(endpoint="/projects")
         return self._send_request(http_request, requests.get)
 
     def get_project_by_id(self, project_id: str) -> dict:
-        """
-        Get_project_by_id return information for the given project.
-
-        Parameters
-        ----------
-        project_id : str
-            Id of the project
-
-        Returns
-        -------
-        dict
-            Information of the project
-        """
+        """Get project information for the given ID."""
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}")
         return self._send_request(
             http_request=http_request,
@@ -96,21 +77,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         project_name: str,
         project_description: str = "Project description",
     ) -> dict:
-        """
-        Create_project creates a project with the associated name and description.
-
-        Parameters
-        ----------
-        project_name : str
-            name of the project
-        project_description (optional) : str
-            description of the project
-
-        Returns
-        -------
-        dict
-            Project record
-        """
+        """Create a project with the associated name and description."""
         if project_name == "":
             raise InvalidProjectNameException(
                 "When creating a project, its name has to be non empty."
@@ -123,19 +90,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         return self._send_request(http_request=http_request, call=requests.post)
 
     def get_all_elements(self, project_id: str) -> list:
-        """
-        Get_all_elements return all elements of the given project.
-
-        Parameters
-        ----------
-        project_id : str
-            Project Id
-
-        Returns
-        -------
-        list
-            The list of all elements
-        """
+        """Get all elements of the given project."""
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/elements"
         )
@@ -146,7 +101,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
-        Get_element_by_id return information of the given element.
+        Get element by ID and return its information.
 
         Parameters
         ----------
@@ -169,19 +124,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         )
 
     def get_root_elements(self, project_id: str) -> list:
-        """
-        Get_root_elements return all root element of the project.
-
-        Parameters
-        ----------
-        project_id : str
-            Project id
-
-        Returns
-        -------
-        list
-            All root elements
-        """
+        """Get all root elements of the project."""
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/roots"
         )

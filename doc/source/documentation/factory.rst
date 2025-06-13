@@ -1,7 +1,7 @@
-.. _F_Section:
+.. _C_P_Section:
 
-Tools package
-#############
+Creation package
+################
 
 Factory
 ~~~~~~~

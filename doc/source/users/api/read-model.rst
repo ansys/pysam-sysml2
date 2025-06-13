@@ -7,8 +7,8 @@ The loaded model is stored in a :ref:`Project <L_Project>`.
 
 .. _Getter:
 
-Getter
-======
+Access methods
+==============
 
 To parse the project, you can use different access methods.
 

@@ -9,7 +9,12 @@ repos:
     hooks:
       - id: numpydoc-validation
         files: \.py$
-        exclude: ^tests/
+        exclude: |
+          (?x)^(
+              tests/|
+              doc/source/_static/code/|
+              examples/code/
+          )
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
     # Ruff version.
