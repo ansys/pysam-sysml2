@@ -71,7 +71,7 @@ jobs:
   doc-build:
     name: "Building library documentation"
     needs: doc-style
-    runs-on: ubuntu-latest
+    runs-on: [windows-latest]
     steps:
       - name: "Run Ansys documentation building action"
         uses: ansys/actions/doc-build@v10.0
