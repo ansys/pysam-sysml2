@@ -91,14 +91,7 @@ class ProjectImpl(Project):
         return self._root
 
     def get_root_package(self) -> SysMLElement:
-        """
-        Return root package.
-
-        Returns
-        -------
-        SysMLElement
-            Root element
-        """
+        """Return the root package."""
         return [x for x in self._root if x.__class__.__name__ == "Package"][0]
 
     def get_name(self) -> str:
@@ -124,7 +117,7 @@ class ProjectImpl(Project):
         Returns
         -------
         SysMLElement
-            Founded Element
+            The list of elements retrieved
         """
         return self._env.get(element_id, None)
 
@@ -140,25 +133,8 @@ class ProjectImpl(Project):
         Returns
         -------
         List[SysMLElement]
-            founded Element
+            The list of elements retrieved
         """
         return [
             el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == elements_name
         ]
-
-    def start_modification(self):
-        """Authorize user to write on the model."""
-        for _, element in self._env.items():
-            element._IS_READ_ONLY = False
-
-    def end_modification(self, reload: bool = False):
-        """
-        Commit all registered modification on the model.
-
-        Parameters
-        ----------
-        reload : bool, optional
-            Reload the model from server, by default False
-        """
-        for _, element in self._env.items():
-            element._IS_READ_ONLY = True

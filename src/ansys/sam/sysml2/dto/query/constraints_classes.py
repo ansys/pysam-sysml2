@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -19,13 +19,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-"""File  created on Mon Dec 16 2024."""
+"""Constraint Interface for SysML Queries."""
 
 from dataclasses import dataclass, field
 from typing import List
-
-from overrides import overrides
 
 from ansys.sam.sysml2.exception.query_exception import InvalidCompositeConstraint
 
@@ -37,7 +34,7 @@ class Constraint:
 
     def to_json(self) -> dict:
         """
-        to_json convert the class to JSON format.
+        Return a JSON representation of the class.
 
         Returns
         -------
@@ -66,10 +63,9 @@ class CompositeConstraint(Constraint):
     operator: JoinOperator = field(default=JoinOperator.AND)
     constraint: List[Constraint] = field(default_factory=list)
 
-    @overrides
     def to_json(self) -> dict:
         """
-        to_json convert the class to JSON format.
+        Return a JSON representation of the class.
 
         Returns
         -------

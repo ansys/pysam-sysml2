@@ -25,12 +25,14 @@
 from io import UnsupportedOperation
 from typing import List, Union
 
-from ansys.sam.sysml2.builder.classes.derived_list import DerivedList
 from ansys.sam.sysml2.classes.mapped_element import MappedElement
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
-from ansys.sam.sysml2.exception.mapper_exception import InvalidProjectJSONMapperException
-from ansys.sam.sysml2.tools import SysMLTools
+from ansys.sam.sysml2.data_structures.observed_list import ObservedList
+from ansys.sam.sysml2.exception.mapper_exception import (
+    InvalidProjectJSONMapperException,
+)
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 TYPE_KEY = "@type"
 
@@ -40,13 +42,15 @@ class JsonMapper:
 
     class_cache = {}
 
-    def map(self, name_space: str, element: dict, mapped_element: SysMLElement) -> MappedElement:
+    def map(
+        self, name_space: str, json_element: dict, mapped_element: SysMLElement
+    ) -> MappedElement:
         """
         Map the json into a Python element.
 
         Parameters
         ----------
-        element : dict
+        json_element : dict
             element data
         name_space: str
             project name space
@@ -56,10 +60,10 @@ class JsonMapper:
         MappedElement
             Mapped element
         """
-        if TYPE_KEY not in element:
+        if TYPE_KEY not in json_element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(name_space, element, mapped_element)
+        return self.__build_element(name_space, json_element, mapped_element)
 
     def __build_element(self, name_space: str, data: dict, element: SysMLElement) -> MappedElement:
         """
@@ -105,15 +109,14 @@ class JsonMapper:
         try:
             element.__class__ = self.class_cache[element_type]
         except KeyError:
-            self.class_cache[element_type] = type(
-                element_type,
-                (SysMLElement,),
-                {},
-            )
+            self.class_cache[element_type] = type(element_type, (SysMLElement,), {})
             element.__class__ = self.class_cache[element_type]
 
     def __add_fields(
-        self, element: SysMLElement, key: str, value: Union[dict | list | str]
+        self,
+        element: SysMLElement,
+        field_name: str,
+        field_values: Union[dict | list | str],
     ) -> List[UnresolvedField]:
         """
         Associate element and value with key.
@@ -122,25 +125,25 @@ class JsonMapper:
         ----------
         element : SysMLElement
             destination element
-        key : str
+        field_name : str
             field name
-        value : Union[dict  |  list  |  str]
+        field_values : Union[dict  |  list  |  str]
             field value
 
         Returns
         -------
         List[UnresolvedField]
-            the list of all unresolved Fields
+            The list of all unresolved Fields
         """
-        key = "_" + key
-        if isinstance(value, list):
-            return self.__add_list_to_field(element, key, value)
-        if isinstance(value, dict):
-            return self.__add_element_to_field(element, key, value)
+        field_name = "_" + field_name
+        if isinstance(field_values, list):
+            return self.__add_list_to_field(element, field_name, field_values)
+        if isinstance(field_values, dict):
+            return self.__add_element_to_field(element, field_name, field_values)
         else:
-            return self.__add_default_field(element, key, value)
+            return self.__add_default_field(element, field_name, field_values)
 
-    def __add_default_field(self, element: SysMLElement, key: str, value: str) -> List:
+    def __add_default_field(self, element: SysMLElement, field_name: str, field_value: str) -> List:
         """
         Adder for default type.
 
@@ -148,9 +151,9 @@ class JsonMapper:
         ----------
         element : SysMLElement
             destination element
-        key : str
+        field_name : str
             field name
-        value : Union[dict  |  list  |  str]
+        field_value : Union[dict  |  list  |  str]
             field value
 
         Returns
@@ -158,7 +161,7 @@ class JsonMapper:
         List
             Empty list because fields already resolved.
         """
-        setattr(element, key, value)
+        setattr(element, field_name, field_value)
         return []
 
     def __add_element_to_field(self, element: SysMLElement, key: str, value: dict):
@@ -182,7 +185,7 @@ class JsonMapper:
         setattr(element, key, value["@id"])
         return [UnresolvedField(element, key, value["@id"])]
 
-    def __add_list_to_field(self, element: SysMLElement, key: str, value: list):
+    def __add_list_to_field(self, element: SysMLElement, key: str, field_values: list):
         """
         Adder Function for list elements value.
 
@@ -198,20 +201,20 @@ class JsonMapper:
         Returns
         -------
         List[UnresolvedField]
-            the list of all unresolved Fields created for the list elements.
+            The list of all unresolved Fields created for the list elements.
         """
-        if all(isinstance(e, dict) for e in value):
+        if all(isinstance(value, dict) for value in field_values):
             setattr(
                 element,
                 key,
-                DerivedList(element, key, *[e["@id"] for e in value]),
+                ObservedList(element, key, *[value["@id"] for value in field_values]),
             )
-            return [UnresolvedField(element, key, e["@id"]) for e in value]
-        elif not any(isinstance(e, dict) for e in value):
+            return [UnresolvedField(element, key, value["@id"]) for value in field_values]
+        elif not any(isinstance(value, dict) for value in field_values):
             setattr(
                 element,
                 key,
-                DerivedList(element, key, *value),
+                ObservedList(element, key, *field_values),
             )
             return []
         else:

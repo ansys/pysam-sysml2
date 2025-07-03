@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -117,5 +117,13 @@ routes_list = [
         route=ANSYS_IMAGE_URI
         + "/<string:project_id>/diagrams/<string:diagram_id>/<string:file_format>",
         controller_function=route_get_diagram_image,
+    ),
+    ServerGetRouteMapping(
+        route=ANSYS_IMAGE_URI + "/<string:project_id>/diagrams",
+        controller_function=route_get_diagrams_info,
+    ),
+    ServerGetRouteMapping(
+        route=ANSYS_IMAGE_URI + "/<string:project_id>/diagrams/<string:diagram_id>",
+        controller_function=route_get_single_diagram_info,
     ),
 ]

@@ -21,9 +21,6 @@
 # SOFTWARE.
 """DiagramElement data class."""
 
-from pathlib import Path
-from typing import Union
-
 
 class DiagramElement:
     """DiagramElement Class."""
@@ -40,35 +37,3 @@ class DiagramElement:
             Diagram identifier.
         """
         self._id = id
-
-    def get_content(self, file_format: str) -> bytes:
-        """
-        Retrieve the diagram content in the specified format.
-
-        Parameters
-        ----------
-        file_format : str
-            Desired file format (e.g., 'png', 'svg').
-
-        Returns
-        -------
-        bytes
-            Binary content of the diagram.
-        """
-
-    def download_diagram(self, file_format: str, path: Union[str, Path]) -> dict:
-        """
-        Download and save this diagram to disk.
-
-        Parameters
-        ----------
-        file_format : str
-            Format to download the diagram in.
-        path : str or Path
-            Directory or file path to save the diagram.
-
-        Returns
-        -------
-        dict
-            Status and message about the download result.
-        """

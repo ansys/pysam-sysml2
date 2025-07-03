@@ -28,41 +28,23 @@ from typing import Any
 
 @dataclass
 class DataVersion:
-    """DataVersion class."""
+    """Class to edit or create a SysML Element."""
 
     payload: dict = field(default_factory=dict)
     identity: str = field(default=None)
 
     def identify(self, element_id: str):
-        """
-        Set the identity of the DataVersion.
-
-        Parameters
-        ----------
-        element_id : str
-            The element id
-        """
+        """Set the identity with the given element id of the DataVersion."""
         self.identity = element_id
 
     def add_change(self, key: str, value: Any):
-        """
-        Add the change into the DataVersion.
-
-        Also serialize the data if it's needed.
-
-        Parameters
-        ----------
-        key : str
-            The Key changed
-        value : Any
-            The new value
-        """
-        from ansys.sam.sysml2.builder.classes.derived_list import DerivedList
+        """Add the change into the DataVersion. Also serialize the data if it's needed."""
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+        from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
         if isinstance(value, SysMLElement):
             self.payload[key] = {"@id": value._id}
-        elif isinstance(value, (DerivedList, list)):
+        elif isinstance(value, (ObservedList, list)):
             self.payload[key] = [
                 {"@id": x._id} if isinstance(x, SysMLElement) else x for x in value
             ]
@@ -70,14 +52,7 @@ class DataVersion:
             self.payload[key] = value
 
     def to_json(self) -> dict:
-        """
-        Serialize the data into a json dict.
-
-        Returns
-        -------
-        dict
-            The data
-        """
+        """Serialize the data into a json dict."""
         data = {
             "@type": "DataVersion",
             "payload": self.payload,

@@ -21,10 +21,10 @@
 # SOFTWARE.
 """Python base Class for SysML Element."""
 
+from typing import Union
 
-from typing import Any, Union
-
-from ansys.sam.sysml2.classes.feature_helper import FeatureHelper
+from ansys.sam.sysml2.dto.commit.commit_class import Commit
+from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 
@@ -33,7 +33,6 @@ class SysMLElement:
     """Python Base class for all SysML Element."""
 
     _id: str
-    _IS_READ_ONLY: bool = False
     _observer: ModificationObserver = None
 
     def __init__(self, id: str) -> None:
@@ -57,93 +56,135 @@ class SysMLElement:
         value : object
             The value of the key
         """
-        if self._IS_READ_ONLY and name != "_IS_READ_ONLY":
-            print(f"You can't set element on this {self.__class__.__name__}")
-        else:
-            if self._observer is not None:
-                self._observer.notify(self._id, name, value)
-            super().__setattr__(name, value)
+        if name != "_observer" and getattr(self, "_observer", None) is not None:
+            self._observer.notify(self._id, name, value)
+        super().__setattr__(name, value)
 
-    def get_value(self) -> Any:
+    def get_value(self):
+        """Return the value of the feature."""
+        if hasattr(self, "_defaultValue"):
+            value = self._defaultValue
+            if hasattr(value, "_value"):
+                return value._value  # Literal
+            else:
+                return self._parse_expression(value, is_old_format=True)
+
+        if hasattr(self, "_valuation"):
+            value = self._valuation._value
+            if hasattr(value, "_value"):
+                return value._value  # Literal
+            else:
+                return self._parse_expression(value)
+
+        return None
+
+    def _parse_expression(self, value: dict, is_old_format: bool = False):
+        """Parse expression and return parsed value and unit using specified format."""
+        if getattr(value, "_operator", None) != "[":
+            raise UnsupportedValueExpression("Expression not supported!")
+
+        return self._parse_format(value, is_old_format)
+
+    def _parse_format(self, value: dict, is_old_format: bool):
         """
-        Return the value of the feature.
+        Parse an expression using the specified format type.
+
+        Parameters
+        ----------
+        value : dict
+            The expression object containing members and potentially an operator.
+        is_old_format : bool
+            Format of the expression. Must be either True for old format or False otherwise.
 
         Returns
         -------
-        Any
-            Value
+        tuple
+            A tuple of (value, unit_name or None).
+
+        Raises
+        ------
+        UnsupportedValueExpression
+            If no parsable values are found in the expression.
         """
-        if not hasattr(self, "_valuation"):
-            if hasattr(self, "_defaultValue"):
-                print("Old value structure found, please update the value in the editor.")
-            return None
-        value = self._valuation._value
-        if hasattr(value, "_value"):
-            return value._value  # Literal
+        owned_member = getattr(value, "_ownedMember", [])
+
+        if is_old_format:
+            values = [x._value for x in owned_member if hasattr(x, "_value")]
+            return self._format_result_with_unit(values, owned_member, is_old_format)
         else:
-            return self._parse_expression(value)
-
-    def _parse_expression(self, value):
-        """
-        Parse Complex expression and return if supported.
-
-        Parameters
-        ----------
-        value : Value object
-            The value object
-        """
-        if value._operator == "[":
-            value_v = [
-                x._defaultValue._value
-                for x in value._ownedMember
-                if hasattr(x, "_defaultValue") and hasattr(x._defaultValue, "_value")
+            elements = [
+                x
+                for x in owned_member
+                if hasattr(x, "_valuation") and hasattr(x._valuation, "_value")
             ]
-            if len(value_v) > 0:
-                unit_v = [
-                    x._defaultValue._referent
-                    for x in value._ownedMember
-                    if hasattr(x, "_defaultValue") and hasattr(x._defaultValue, "_referent")
-                ]
-                if len(unit_v) > 0 and hasattr(unit_v[0], "_shortName"):
-                    return (value_v[0], unit_v[0]._shortName)
-                if len(unit_v) > 0 and hasattr(unit_v[0], "_name"):
-                    return (value_v[0], unit_v[0]._name)
+            return self._format_result_with_unit(elements, owned_member, is_old_format)
 
-        raise UnsupportedValueExpression("Expression not supported!")
+    def _format_result_with_unit(self, elements: list, owned_member: list, is_old_format: bool):
+        """Format a parsed expression value along with its associated unit (if available)."""
+        if not elements:
+            raise UnsupportedValueExpression("No values found in expression")
+
+        try:
+            if is_old_format:
+                value = elements[0]
+                referents = [x._referent for x in owned_member if hasattr(x, "_referent")]
+            else:
+                value = elements[0]._valuation._value._value
+                referents = [
+                    x._valuation._value._referent
+                    for x in elements
+                    if hasattr(x._valuation._value, "_referent")
+                ]
+        except NameError:
+            raise UnsupportedValueExpression("No values found in expression")
+
+        return (value, self._extract_unit_name(referents))
+
+    def _extract_unit_name(self, referents):
+        """Extract the unit name from referents, if any, otherwise return None."""
+        if not referents:
+            return None
+
+        unit = referents[0]
+        if hasattr(unit, "_shortName"):
+            return unit._shortName
+        elif hasattr(unit, "_name"):
+            return unit._name
+
+        return None
 
     def parse_and_set_value(self, value: str):
-        """
-        Parse the Value and Set into the Feature.
+        """Parse the value and create the valuation part in the Feature."""
+        self.__set_or_update_value("operator", value)
 
-        Parameters
-        ----------
-        value : str
-            The value to parse
-        """
-        if not self._IS_READ_ONLY:
-            self.__set_or_update_value("operator", value)
+    def set_value(self, new_value: Union[str | int | float | bool]):
+        """Update the Feature value."""
+        self.__set_or_update_value(type(new_value), new_value)
 
-    def set_value(self, value: Union[str | int | float | bool]):
-        """
-        Update the Feature value.
+    def __set_or_update_value(self, value_type: type, new_value: Union[str | int | float | bool]):
+        """Create the commit to update the value of type value_type."""
+        self._create_value(value_type, new_value)
 
-        Parameters
-        ----------
-        value : Union[str  |  int  |  float  |  bool]
-            The new Value
-        """
-        if not self._IS_READ_ONLY:
-            self.__set_or_update_value(type(value), value)
+    def _create_value(self, value_type: type, new_value: Union[str | int | float | bool]):
+        """Create a new value of type value_type into the Feature."""
+        project_id = self._observer._project_id
+        commit = Commit(project_id)
+        change = DataVersion()
+        change.add_change("@type", "FeatureValue")
+        if value_type != "operator":
+            change.add_change("value", self._adapt_value(new_value))
+        else:
+            change.add_change("value", new_value)
+        change.add_change("owner", self)
+        commit.add_change(change)
+        self._observer._connector.create_commit(project_id, commit.to_json())
+        self._observer.reload_project()
 
-    def __set_or_update_value(self, type_v: type, value: Any):
-        """
-        Create the commit to update the value.
-
-        Parameters
-        ----------
-        type_v : str
-            The type of the value
-        value : Any
-            The value
-        """
-        FeatureHelper.create_value(self, type_v, value)
+    def _adapt_value(self, new_value: Union[str | int | float | bool]):
+        """Convert the value to JSON format."""
+        if isinstance(new_value, bool):
+            return "true" if new_value else "false"
+        if isinstance(new_value, str):
+            return f'"{new_value}"'
+        else:
+            return str(new_value)

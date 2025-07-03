@@ -1,0 +1,17 @@
+{
+    "@type": "Commit",
+    "change": [
+        {
+            "@type": "DataVersion",
+            "payload": {
+                "@type": null
+            }
+        }
+    ],
+    "owningProject": {
+        "@id": "1"
+    },
+    "previousCommit": {
+        "@id": "head"
+    }
+}

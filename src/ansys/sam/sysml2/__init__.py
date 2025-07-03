@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -21,11 +21,14 @@
 # SOFTWARE.
 """Base module for PySam library."""
 
-import importlib.metadata as importlib_metadata
+__version__ = "0.1.dev0"
 
-__version__ = importlib_metadata.version(__name__.replace(".", "-"))
-
-
-from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
-from ansys.sam.sysml2.diagrams.SysML2DiagramManager import SysML2DiagramManager
+from ansys.sam.sysml2.api.ansys_sysml2_api_connector import (
+    AnsysSysML2APIConnector,  # noqa as we export name
+)
+from ansys.sam.sysml2.builder.sysml2_project_manager import (
+    SysML2ProjectManager,  # noqa as we export name
+)
+from ansys.sam.sysml2.diagrams.sam_diagram_manager import (
+    SAMDiagramManager,  # noqa as we export name
+)

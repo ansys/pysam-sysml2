@@ -22,8 +22,6 @@
 
 """Specific Module for ANsy Sysml2 API connector."""
 
-from overrides import overrides
-
 from ansys.sam.sysml2.api.template_sysml2_api_connector import TemplateSysML2APIConnector
 from ansys.sam.sysml2.classes.http_request import HttpRequest
 
@@ -63,7 +61,6 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
         self._organization_id = organization_id
         self._token = token
 
-    @overrides
     def _build_endpoint(self, endpoint: str) -> str:
         """
         Build the full URL from the API Endpoint.
@@ -82,7 +79,6 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
             endpoint = "/" + endpoint
         return f"{self._server_url}/api/spaces/{self._organization_id}/sysml2{endpoint}"
 
-    @overrides
     def _add_authentication_field(self, http_request: HttpRequest) -> HttpRequest:
         """
         Update the HTTP Request with de correct auth field.

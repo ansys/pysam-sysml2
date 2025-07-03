@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -21,9 +21,8 @@
 # SOFTWARE.
 """Classes module for PySam Diagram library."""
 
-from ansys.sam.sysml2.classes.mapped_element import MappedElement
-from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
+from ansys.sam.sysml2.classes.mapped_element import MappedElement  # noqa as we export name
+from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField  # noqa as we export name
 
-from .diagram_element import DiagramElement
-from .plane import Plane
-from .point import Point
+from .diagram_element import DiagramElement  # noqa as we export name
+from .plane import Plane  # noqa as we export name

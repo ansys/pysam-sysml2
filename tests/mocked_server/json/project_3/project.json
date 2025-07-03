@@ -1,8 +1,9 @@
 {
-  "@type" : "Project",
-  "defaultBranch" : {
-    "@id" : "defaultBranch"
-  },
-  "name" : "bikeSample",
-  "@id" : "3"
+    "@type": "Project",
+    "defaultBranch": {
+        "@id": "defaultBranch"
+    },
+    "description": "",
+    "name": "ProjectWithAllFeatureTypes",
+    "@id": "3"
 }

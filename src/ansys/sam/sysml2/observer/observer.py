@@ -22,12 +22,9 @@
 
 """Observer class."""
 
-from typing import List
-
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
-from ansys.sam.sysml2.observer.observed_element import ObservedElement
 
 
 class ModificationObserver:
@@ -36,14 +33,12 @@ class ModificationObserver:
     _project_id: str = ""
     _project = None
     _connector: SysML2APIConnector
-    _modification_stack: List[ObservedElement]
 
     def __init__(self, project, connector: SysML2APIConnector):
         """Construct method for observer."""
         self._project_id = project._id
         self._project = project
         self._connector = connector
-        self._modification_stack = list()
         self._working_observer = True
 
     def notify(self, element_id: str, name: str, value: object):
@@ -59,7 +54,7 @@ class ModificationObserver:
         value : object
             Value of modified field
         """
-        if name != "_IS_READ_ONLY" and self._working_observer:
+        if self._working_observer:
             commit = Commit(self._project_id)
             change = DataVersion()
 
@@ -84,7 +79,7 @@ class ModificationObserver:
         list_content : _type_
             _description_
         """
-        if name != "_IS_READ_ONLY" and self._working_observer:
+        if self._working_observer:
             commit = Commit(self._project_id)
             change = DataVersion()
 

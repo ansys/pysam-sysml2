@@ -1,5 +1,5 @@
 PySam
-#####
+#########
 
 
 PySam provides a Python scripting interface for SysML2 models.
@@ -13,19 +13,19 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
 
     .. grid:: 3
 
-        .. grid-item-card:: Getting started :fa:`rocket`
-            :link: getting_started/index
+        .. grid-item-card:: Getting started :fa:`play-circle`
+            :link: getting-started/index
             :link-type: doc
 
             Get started with PySam! This section contains installation instructions and some simple examples.
 
-        .. grid-item-card:: User Guide :fa:`book-open-reader`
+        .. grid-item-card:: User Guide :fa:`compass`
             :link: users/index
             :link-type: doc
 
-            User Guide.
+            Comprehensive guide with examples, and best practices for using PySam effectively.
 
-        .. grid-item-card:: Documentation :fa:`book-open-reader`
+        .. grid-item-card:: Documentation :fa:`file-lines`
             :link: documentation/index
             :link-type: doc
 
@@ -37,7 +37,7 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
    :hidden:
    :maxdepth: 1
 
-   getting_started/index
+   getting-started/index
    users/index
    documentation/index
    examples/index

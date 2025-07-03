@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -30,7 +30,6 @@ File <server_route.py> created on Tue Nov 26 2024
 
 from collections import Counter
 from functools import wraps
-import json
 from json import dumps, loads
 import os
 from uuid import uuid4
@@ -38,6 +37,8 @@ from uuid import uuid4
 from flask import Response, abort, request
 
 from .const import VALID_ORGANIZATION, VALID_TOKEN
+
+TYPE = "@type"
 
 """
 
@@ -235,6 +236,37 @@ def load_project_rest_data(id: str) -> dict:
         )
 
 
+def load_project_diagrams_info(id: str, diagram_id: str = "") -> dict:
+    """
+    Use this function to load project rest data.
+
+    Parameters
+    ----------
+    id : str
+        project id
+    diagram_id
+        diagram_id if specified get the info for the specific diagram, all otherwise
+
+    Returns
+    -------
+    str
+        Project data
+    """
+    if diagram_id:
+        path = get_project_path(os.path.join(f"project_{id}", f"{diagram_id}_diagram_info.json"))
+    else:
+        path = get_project_path(os.path.join(f"project_{id}", "diagrams.json"))
+    try:
+        with open(path, "r") as file:
+            return loads(file.read())
+    except Exception:
+        create_http_error(
+            code=500,
+            title="JSON not found",
+            message="Make sure the file is named : project_<id>/diagrams.json",
+        )
+
+
 def write_project(id: str, data: dict) -> None:
     """
     Use this function to write project data.
@@ -304,13 +336,13 @@ def check_project_id(project_id: str):
 @authenticate
 @space_route
 @return_json
-def route_get_projects() -> str:
+def route_get_projects() -> list:
     """
     Use this function to render all project in ```../json/``
 
     Returns
     -------
-    str
+    list
         all projects
     """
     projects_root = get_project_path("")
@@ -319,7 +351,7 @@ def route_get_projects() -> str:
         for directory in dirs:
             projects.append(
                 {
-                    "@type": "Project",
+                    TYPE: "Project",
                     "defaultBranch": {"@id": "defaultBranch"},
                     "description": "",
                     "name": directory.replace("_", " "),
@@ -410,7 +442,7 @@ def _find_element_by_id(project_id, element_id):
 @authenticate
 @space_route
 @return_json
-def route_get_roots_elements(project_id: str) -> str:
+def route_get_roots_elements(project_id: str) -> list:
     """
     Return all roots elements (With no owner field).
 
@@ -421,14 +453,14 @@ def route_get_roots_elements(project_id: str) -> str:
 
     Returns
     -------
-    str
+    list
         All roots Elements
     """
     check_project_id(project_id)
     data = load_project(project_id)
     roots_elements = []
     for element in data:
-        if not "owner" in element:
+        if "owner" not in element:
             roots_elements.append(element)
     return roots_elements
 
@@ -455,7 +487,7 @@ def route_query(project_id: str) -> str:
     query = request.data
     try:
         query = loads(query)
-    except Exception as e:
+    except Exception:
         create_http_error(code=500)
 
     return _handle_constraint(query["where"], data)
@@ -464,19 +496,19 @@ def route_query(project_id: str) -> str:
 @authenticate
 @space_route
 @return_json
-def route_create_project() -> str:
+def route_create_project() -> dict:
     """
     route_create_project creates a project
 
     Returns
     -------
-    str
+    dict
         _description_
     """
     project_info = loads(request.data)
     if "name" in project_info and "description" in project_info:
         return {
-            "@type": "Project",
+            TYPE: "Project",
             "defaultBranch": {"@id": "defaultBranch"},
             "description": project_info["description"],
             "name": project_info["name"],
@@ -519,7 +551,7 @@ def route_create_commit(project_id: str) -> dict:
                 element for element in project_data if element.get("@id") == identity.get("@id")
             ][0]
         except IndexError:
-            create_http_error(code=400, message="Invalid Identity Id")
+            pass
     else:
         element_changed = _create_new_element(project_id, project_data, payload)
 
@@ -538,25 +570,41 @@ def _save_updated_element(project_id, updated_element):
 
 
 def _create_new_element(project_id, project_data, payload):
-    if payload.get("@type", None) is None:
+    if payload.get(TYPE, None) is None:
         create_http_error(code=400, message="No Type for New Element")
-
     random_id = _generate_unique_id(project_data)
-    owner_ref = payload.get("owner", {})
-    owner_id = owner_ref.get("@id")
+    owner_ref = payload.get("owner", None)
+    try:
+        owner_id = owner_ref.get("@id", None)
+    except Exception:
+        create_http_error(code=400, message="No Valid Owner Specified")
     owner = _find_owner(project_data, owner_id)
     owner_name = owner.get("qualifiedName")
 
-    payload.update(
-        {
-            "@id": random_id,
-            "identifier": random_id,
-            "qualifiedName": f"{owner_name}::{payload['name']}",
-        }
-    )
-    owner["ownedElement"].append(
-        {"@id": random_id},
-    )
+    if payload.get("@type") == "FeatureValue":
+        if "value" in payload:
+            value_id = _generate_unique_id(project_data)
+            payload["value"] = {"@id": value_id}
+
+        payload.update(
+            {
+                "@id": random_id,
+                "identifier": random_id,
+                "qualifiedName": "",
+            }
+        )
+    else:
+        payload.update(
+            {
+                "@id": random_id,
+                "identifier": random_id,
+                "qualifiedName": f"{owner_name}::{payload['name']}",
+            }
+        )
+
+    if "ownedElement" not in owner:
+        owner["ownedElement"] = []
+    owner["ownedElement"].append({"@id": random_id})
 
     project_data.append(payload)
     write_project(project_id, project_data)
@@ -565,7 +613,9 @@ def _create_new_element(project_id, project_data, payload):
 
 def _find_owner(project_data, owner_id):
     try:
-        return [el for el in project_data if el.get("@id") == owner_id][0]
+        return [
+            el for el in project_data if el.get("@id") is not None and el.get("@id") == owner_id
+        ][0]
     except IndexError:
         create_http_error(code=400, message="Invalid Owner Id")
 
@@ -604,7 +654,7 @@ def _check_commit_validity(commit):
     if len(change.get("payload")) == 0:
         create_http_error(code=400, message="Invalid change data")
 
-    if change.get("@type", None) != "DataVersion":
+    if change.get(TYPE, None) != "DataVersion":
         create_http_error(code=400, message="No DataVersion found in commit")
 
 
@@ -641,6 +691,22 @@ def route_get_rest_json(project_id: str) -> str:
 
 
 @authenticate
+@return_json
+def route_get_diagrams_info(project_id: str):
+    """Get list of diagrams for a project."""
+    check_project_id(project_id)
+    return load_project_diagrams_info(project_id)
+
+
+@authenticate
+@return_json
+def route_get_single_diagram_info(project_id: str, diagram_id: str):
+    """Get information for a single diagram."""
+    check_project_id(project_id)
+    return load_project_diagrams_info(project_id, diagram_id)
+
+
+@authenticate
 def route_get_diagram_image(project_id: str, diagram_id: str, file_format: str) -> str:
     """
     use this function to get diagram images.
@@ -663,7 +729,7 @@ def route_get_diagram_image(project_id: str, diagram_id: str, file_format: str) 
 
 
 def get_diagram_by_id(project_id, diagram_id, file_format):
-    accepted_file_format = ["all", "jpg", "jpeg", "png", "svg"]
+    accepted_file_format = ["all", "jpeg", "png", "svg"]
 
     if file_format in accepted_file_format:
         data = {
@@ -675,7 +741,7 @@ def get_diagram_by_id(project_id, diagram_id, file_format):
         if file_format == "svg":
             file_format = "svg+xml"
         return Response(
-            json.dumps(data).encode("utf-8"),
+            dumps(data).encode("utf-8"),
             mimetype=f"image/{file_format}",
             headers={"Content-Disposition": f'attachment; filename="diagrams.{file_format}"'},
         )
@@ -688,7 +754,7 @@ def all_diagram_as_zip(project_id, file_format):
     with open(path) as f:
         nb = int(f.read())
 
-    accepted_file_format = ["all", "jpg", "jpeg", "png", "svg"]
+    accepted_file_format = ["all", "jpeg", "png", "svg"]
 
     if file_format in accepted_file_format:
         data = {
@@ -698,7 +764,7 @@ def all_diagram_as_zip(project_id, file_format):
             "file_format": file_format,
         }
         return Response(
-            json.dumps(data).encode("utf-8"),
+            dumps(data).encode("utf-8"),
             mimetype="application/zip",
             headers={"Content-Disposition": 'attachment; filename="diagrams.zip"'},
         )
@@ -717,7 +783,7 @@ def _handle_constraint(constraint: dict, data: list) -> list:
     data : _type_
         _description_
     """
-    match constraint["@type"]:
+    match constraint[TYPE]:
         case "PrimitiveConstraint":
             return _handle_search(constraint, data)
         case "CompositeConstraint":
@@ -795,14 +861,14 @@ def _handle_search(constraint: dict, data: list) -> list:
 
     def check(e):
         if prop not in e:
-            e_type = e["@type"]
+            e_type = e[TYPE]
             create_http_error(
                 500,
                 title="SysML Error",
                 message=f"Invalid fields {prop} for element {e_type}",
             )
 
-        left = e[prop] if operator != "instanceOf" else e["@type"]
+        left = e[prop] if operator != "instanceOf" else e[TYPE]
         comparison = op_func(left, value) if op_func else left == value
         return not comparison if inverse else comparison
 

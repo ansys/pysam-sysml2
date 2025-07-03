@@ -20,31 +20,21 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import pytest
-
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.http_request import HttpRequest
-from mocked_server.mocked_server import MockedServer
 from mocked_server.routes.const import VALID_ORGANIZATION, VALID_TOKEN
+from parent_test_class import ParentTestClass
 
 
-class TestAnsysSysMl2APIConnector:
+class TestAnsysSysMl2APIConnector(ParentTestClass):
 
-    @pytest.fixture
-    def connector(self) -> AnsysSysML2APIConnector:
-        return AnsysSysML2APIConnector(
-            server_url=MockedServer.get_url() + "/",
-            organization_id=VALID_ORGANIZATION,
-            token=VALID_TOKEN,
-        )
-
-    def test_build_end_point(self, connector: AnsysSysML2APIConnector):
-        url = connector._build_endpoint("/project")
+    def test_build_end_point(self, valid_source: AnsysSysML2APIConnector):
+        url = valid_source._build_endpoint("/project")
         assert VALID_ORGANIZATION in url
         assert url.endswith("/project")
 
-    def test_auth_request(self, connector: AnsysSysML2APIConnector):
+    def test_auth_request(self, valid_source: AnsysSysML2APIConnector):
         http_request = HttpRequest("/project")
-        http_request = connector._add_authentication_field(http_request)
+        http_request = valid_source._add_authentication_field(http_request)
         assert "Authorization" in http_request.headers
         assert http_request.headers["Authorization"].endswith(VALID_TOKEN)

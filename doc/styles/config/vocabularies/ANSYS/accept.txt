@@ -4,3 +4,32 @@ isort
 Makefile
 py
 pytest
+get_value
+parse_and_set_value
+myExpressionFeature
+myIntFeature
+myStringFeature
+myBoolFeature
+myFloatFeature
+PySam
+AnsysSysML2APIConnector
+SysML2APIConnector
+DiagramDownloader
+DiagramElement
+SysML2DiagramManager
+Factory
+SysML2ProjectManager
+SysMLElement
+SysMLTools
+PAT
+SAM
+theme_contact_mail
+AnsysSysML2APIConnector
+SamRestApiConnector
+SAMDiagramManager
+API
+SamRestApiConnector
+Oops!
+SysML2
+Ansys SysML2 API Connector
+Sam Rest API Connector

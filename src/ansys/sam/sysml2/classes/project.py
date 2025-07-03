@@ -41,14 +41,7 @@ class Project:
         """
 
     def get_root_package(self) -> SysMLElement:
-        """
-        Return root package.
-
-        Returns
-        -------
-        SysMLElement
-            Root element
-        """
+        """Return the root package."""
 
     def find_element_by_id(self, element_id: str) -> SysMLElement:
         """
@@ -62,7 +55,7 @@ class Project:
         Returns
         -------
         SysMLElement
-            Founded Element
+            The list of elements retrieved
         """
 
     def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
@@ -77,5 +70,5 @@ class Project:
         Returns
         -------
         List[SysMLElement]
-            founded Element
+            The list of elements retrieved
         """

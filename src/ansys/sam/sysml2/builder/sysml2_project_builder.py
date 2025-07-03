@@ -65,7 +65,7 @@ class SysML2ProjectBuilder:
         Returns
         -------
         Project
-            built Project
+            Built Project
         """
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
@@ -146,7 +146,7 @@ class SysML2ProjectBuilder:
         Returns
         -------
         Set[str]
-            all missing ids
+            All missing ids
         """
         missing = set()
         unresolved_fields = project._unresolved_fields.copy()
@@ -196,14 +196,7 @@ class SysML2ProjectBuilder:
         return self._connector.execute_query(project._id, query.to_json())
 
     def _resolve_inherited_link(self, project: ProjectImpl):
-        """
-        Resolve all inherited element and add it as member.
-
-        Parameters
-        ----------
-        project : ProjectImpl
-            Current project
-        """
+        """Resolve all inherited element and add it as member."""
         for _, element in project._env.items():
             [
                 delattr(element, x)
@@ -226,35 +219,20 @@ class SysML2ProjectBuilder:
         Returns
         -------
         list
-            all owned element
+            All owned element
         """
         all_element = getattr(element, "_ownedElement", [])
         all_element.extend(getattr(element, "_inheritedFeature", []))
         return all_element
 
     def _add_write_access(self, project: ProjectImpl):
-        """
-        Add Write rules access on the project.
-
-        Parameters
-        ----------
-        project : ProjectImpl
-            The project to update.
-        """
+        """Add Write rules access on the project."""
         project_modification_observer = ModificationObserver(project, self._connector)
         for _, element in project._env.items():
             element._observer = project_modification_observer
-            element._IS_READ_ONLY = False  # For later
 
     def _index_libraries(self, project: ProjectImpl):
-        """
-        Index libraries for future reload.
-
-        Parameters
-        ----------
-        project : ProjectImpl
-            Context project
-        """
+        """Index libraries for future reload."""
         libraries_elements = set()
         for _, element in project._env.items():
             if not getattr(element, "_qualifiedName", "").startswith(project._name):
@@ -262,14 +240,7 @@ class SysML2ProjectBuilder:
         project._libraries_ids = libraries_elements
 
     def reload_project(self, modification_observer: ModificationObserver, project: ProjectImpl):
-        """
-        Reload the project and update elements.
-
-        Parameters
-        ----------
-        project : ProjectImpl
-            _description_
-        """
+        """Reload the project and update elements."""
         modification_observer.stop_observer()
         self._build_project_element(project)
         self._resolve_inherited_link(project)

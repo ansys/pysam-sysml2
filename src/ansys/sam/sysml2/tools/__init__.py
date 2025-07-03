@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -21,5 +21,5 @@
 # SOFTWARE.
 """Tools module for PySam library."""
 
-from .factory import Factory
-from .sysmltools import SysMLTools
+from .factory import Factory  # noqa as we export name
+from .sysmltools import SysMLTools  # noqa as we export name

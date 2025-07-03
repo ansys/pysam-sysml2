@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -21,6 +21,6 @@
 # SOFTWARE.
 """Diagram module for PySam Diagram library."""
 
-from .api import AnsysRestApiConnector
-from .builder import EMF2ObjectMapper, SysML2DiagramBuilder
-from .utils import DiagramDownloader
+from .api import SamRestApiConnector  # noqa as we export name
+from .sam_diagram_manager import SAMDiagramManager  # noqa as we export name
+from .tools import SamDiagramDownloader  # noqa as we export name

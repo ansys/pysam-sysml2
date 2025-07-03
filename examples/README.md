@@ -1,52 +1,31 @@
-# Example
+# 📁 Examples
 
-Here is an example which presents several functionalities of the Python library.
-```python
-from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
-from ansys.sam.sysml2.tool import SysMLTools
-import requests
-from urllib3.exceptions import InsecureRequestWarning
+This folder contains example `.xmi` models and Python scripts to demonstrate how to work with the SAM SysML v2 API.
 
-requests.packages.urllib3.disable_warnings(
-    InsecureRequestWarning
-)
+## 📦 Available Models
 
-token = "eyJraWQi..."
+- `bike.xmi`
+- `computer.xmi`
 
+These models can be imported into the SAM Editor.
 
-conn = AnsysSysML2APIConnector(
-    server_url="https://sam-testing.ansys.com:9050",
-    organization_id="1485632895474126574525orgaid",
-    token=token,
-    use_ssl=False,
-)
+## 🧪 Example Python Scripts (`code/`)
 
+The `code/` subfolder includes usage examples:
 
-model_manager = SysML2ProjectManager(connector=conn)
+- `computer-cost.py` – Compute the total cost of a computer system.
+- `creating-elements.py` – Create elements programmatically in a project.
+- `download-diagrams.py` – Download diagrams from a model.
+- `weight-bike.py` – Calculate the total weight of a bike.
+- `simplified-sam-project.py` – Show a simpler way to interact with SAM SysML2 Projects.
 
-project = model_manager.get_project("c22d73ac-470c-47c6-ad59-dbad31c600e1")
+## 🛠️ Importing an XMI Model into SAM Editor
 
-"""
-replace by your server_url, organization_id, project_id and token
-"""
+1. Open the SAM Editor in your browser.
+2. Select your organization (e.g., `MyOrga`).
+3. Click on `New Project` → `SysML V2` → `Import File`.
+4. In the `File to import` input, click `Choose File` and select the desired `.xmi` file.
+5. The project name will auto-fill (e.g., `bike` or `computer`).
+6. Click `Import` and wait for the project to load.
 
-realSystems = project._root[0].RealSystems
-
-
-def assess_cost(element):
-    if hasattr(element, "cost") and (
-        SysMLTools.extract_value(element.cost) is not None):
-        return int(SysMLTools.extract_value(element.cost))
-    cost = 0
-    for sub_element in element._ownedElement:
-        if SysMLTools.isinstance(sub_element, "PartUsage"):
-            cost += assess_cost(sub_element)
-    return cost
-
-
-for system in realSystems._ownedElement:
-    print(system._name, " : ", assess_cost(system))
-```
-
-You can use it by loading this [model](Computer.xmi) in your SAM server.
-For details about getting token, projectID and other stuff, see the [documentation](Documentation.pdf).
+> You’re now ready to explore the model and run the examples!

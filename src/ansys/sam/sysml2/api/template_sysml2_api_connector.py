@@ -25,7 +25,6 @@
 import json
 from typing import Callable
 
-from overrides import overrides
 import requests
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
@@ -37,7 +36,6 @@ from ansys.sam.sysml2.exception.connector_exception import (
     HTTPResponseException,
     InvalidElementJsonFoundException,
     InvalidProjectNameException,
-    ModelAsNotChangedException,
     ProjectNotFoundException,
     UnauthorizedConnectionException,
 )
@@ -60,10 +58,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         super().__init__()
         self._use_ssl = use_ssl
 
-    @overrides
     def get_projects(self) -> list:
         """
-        Get_projects return all Project of the connected User.
+        Return all projects of the connected user.
 
         Returns
         -------
@@ -73,10 +70,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(endpoint="/projects")
         return self._send_request(http_request, requests.get)
 
-    @overrides
     def get_project_by_id(self, project_id: str) -> dict:
         """
-        Get_project_by_id return information for the given project.
+        Return information for the given project.
 
         Parameters
         ----------
@@ -94,14 +90,13 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             call=requests.get,
         )
 
-    @overrides
     def create_project(
         self,
         project_name: str,
         project_description: str = "Project description",
     ) -> dict:
         """
-        Create_project creates a project with the associated name and description.
+        Create a project with the associated name and description.
 
         Parameters
         ----------
@@ -126,10 +121,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         }
         return self._send_request(http_request=http_request, call=requests.post)
 
-    @overrides
     def get_all_elements(self, project_id: str) -> list:
         """
-        Get_all_elements return all elements of the given project.
+        Return all elements of the given project.
 
         Parameters
         ----------
@@ -149,10 +143,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             call=requests.get,
         )
 
-    @overrides
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
-        Get_element_by_id return information of the given element.
+        Return information of the given element.
 
         Parameters
         ----------
@@ -173,10 +166,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             call=requests.get,
         )
 
-    @overrides
     def get_root_elements(self, project_id: str) -> list:
         """
-        Get_root_elements return all root element of the project.
+        Return all root elements of the project.
 
         Parameters
         ----------
@@ -193,10 +185,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         )
         return self._send_request(http_request=http_request, call=requests.get)
 
-    @overrides
     def execute_query(self, project_id: str, query: str) -> dict:
         """
-        Query send a query to the Standard API, using the connector.
+        Send a query to the Standard API using the connector.
 
         Parameters
         ----------
@@ -214,23 +205,8 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request.json = json.loads(query)
         return self._send_request(http_request=http_request, call=requests.post)
 
-    @overrides
     def create_commit(self, project_id: str, commit: str) -> dict:
-        """
-        Create a commit and send to the Standard API.
-
-        Parameters
-        ----------
-        project_id : str
-            Project Id
-        commit : str
-            Commit, in JSON format
-
-        Returns
-        -------
-        dict
-            Result of the commit
-        """
+        """Send a commit, provided as a JSON string, to the Standard API."""
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/commit")
         http_request.json = json.loads(commit)
         return self._send_request(http_request=http_request, call=requests.post)
@@ -313,7 +289,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         HTTPResponseException
             If the server returns any other unhandled status code.
         """
-        match (response.status_code):
+        match response.status_code:
             case 500:
                 raise ConnectorConnectionException("Internal Server Error")
             case 404:
@@ -324,10 +300,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
                 raise UnauthorizedConnectionException("Authentication failed")
             case 400:
                 message = response.json()["message"]
-                if message == "Model has not changed":
-                    raise ModelAsNotChangedException(f"Bad Request : {message}")
-                else:
-                    raise BadRequestConnectionException(f"Bad Request : {message}")
+                raise BadRequestConnectionException(f"Bad Request : {message}")
             case _:
                 raise HTTPResponseException(response.content)
 

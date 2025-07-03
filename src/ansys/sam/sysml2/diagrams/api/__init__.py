@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -19,6 +19,8 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Api module for PySam Diagram library."""
 
-from .AnsysRestApiConnector import AnsysRestApiConnector
+"""API Package for SysML V2 API connection."""
+
+from .sam_api_connector import SamApiConnector  # noqa as we export name
+from .sam_rest_api_connector import SamRestApiConnector  # noqa as we export name

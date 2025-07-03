@@ -27,69 +27,24 @@ class SysML2APIConnector:
     """API Connector Interface."""
 
     def get_projects(self) -> list:
-        """
-        Get_projects return all Project of the connected User.
-
-        Returns
-        -------
-        list
-            The list of all projects
-        """
+        """Get all projects of the connected user."""
 
     def get_project_by_id(self, project_id: str) -> dict:
-        """
-        Get_project_by_id return information for the given project.
-
-        Parameters
-        ----------
-        project_id : str
-            Id of the project
-
-        Returns
-        -------
-        dict
-            Information of the project
-        """
+        """Get project information for the given ID."""
 
     def create_project(
         self,
         project_name: str,
         project_description: str = "Project description",
     ) -> dict:
-        """
-        Create_project creates a project with the associated name and description.
-
-        Parameters
-        ----------
-        project_name : str
-            name of the project
-        project_description (optional) : str
-            description of the project
-
-        Returns
-        -------
-        dict
-            Project record
-        """
+        """Create a project with the associated name and description."""
 
     def get_all_elements(self, project_id: str) -> list:
-        """
-        Get_all_elements return all elements of the given project.
-
-        Parameters
-        ----------
-        project_id : str
-            Project Id
-
-        Returns
-        -------
-        list
-            The list of all elements
-        """
+        """Get all elements of the given project."""
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
-        Get_element_by_id return information of the given element.
+        Get element by ID and return its information.
 
         Parameters
         ----------
@@ -97,6 +52,7 @@ class SysML2APIConnector:
             Id of the project where the element is
         element_id : str
             Id of the wanted element
+
         Returns
         -------
         dict
@@ -104,23 +60,11 @@ class SysML2APIConnector:
         """
 
     def get_root_elements(self, project_id: str) -> list:
-        """
-        Get_root_elements return all root element of the project.
-
-        Parameters
-        ----------
-        project_id : str
-            Project id
-
-        Returns
-        -------
-        list
-            All root elements
-        """
+        """Get all root elements of the project."""
 
     def execute_query(self, project_id: str, query: str) -> dict:
         """
-        Query send a query to the Standard API, using the connector.
+        Send a query to the Standard API using the connector.
 
         Parameters
         ----------
@@ -137,7 +81,7 @@ class SysML2APIConnector:
 
     def create_commit(self, project_id: str, commit: str) -> dict:
         """
-        Create a commit and send to the Standard API.
+        Send a commit, provided as a JSON string, to the Standard API.
 
         Parameters
         ----------

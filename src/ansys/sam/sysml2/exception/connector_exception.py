@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -19,8 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
-"""File  created on Tue Dec 10 2024."""
+"""Custom exceptions for Connector-related errors."""
 
 
 class ConnectorException(Exception):
@@ -59,9 +58,9 @@ class BadRequestConnectionException(ConnectorException):
     """Exception when request is invalid."""
 
 
-class ModelAsNotChangedException(ConnectorException):
-    """Exception when the model has not changed."""
-
-
 class DiagramConnectorException(ConnectorException):
     """Exception when trying to download diagrams."""
+
+
+class DiagramNotAvailableException(ConnectorException):
+    """Exception when diagram functionality is not available for the project."""

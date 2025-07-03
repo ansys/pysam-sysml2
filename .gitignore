@@ -162,4 +162,5 @@ cython_debug/
 .scannerwork
 .reuse
 
-.vscode
+logs/
+pytest-logs.txt

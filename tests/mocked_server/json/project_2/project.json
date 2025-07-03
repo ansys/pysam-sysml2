@@ -3,7 +3,6 @@
     "defaultBranch": {
         "@id": "defaultBranch"
     },
-    "description": "",
-    "name": "PySamTestProject",
+    "name": "test-no-diagram",
     "@id": "2"
 }

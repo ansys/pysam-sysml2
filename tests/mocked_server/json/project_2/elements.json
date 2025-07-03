@@ -1,11 +1,33 @@
 [
     {
+        "@type": "PartDefinition",
+        "@id": "41813a00-4bc1-49ac-af01-3725095a455a",
+        "identifier": "41813a00-4bc1-49ac-af01-3725095a455a",
+        "name": "PartDefinition",
+        "qualifiedName": "test-no-diagram::PartDefinition",
+        "owner": {
+            "@id": "bcadd609-9309-4704-9ece-27179def642a"
+        },
+        "owningNamespace": {
+            "@id": "bcadd609-9309-4704-9ece-27179def642a"
+        }
+    },
+    {
         "@type": "Package",
-        "@id": "9f8a65e8-89c1-4a44-9bb2-fa60232713cf",
-        "identifier": "9f8a65e8-89c1-4a44-9bb2-fa60232713cf",
+        "@id": "bcadd609-9309-4704-9ece-27179def642a",
+        "identifier": "bcadd609-9309-4704-9ece-27179def642a",
         "eAnnotations": [],
-        "ownedElement":[],
-        "name": "PySamTestProject",
-        "qualifiedName": "PySamTestProject"
+        "name": "test-no-diagram",
+        "ownedElement": [
+            {
+                "@id": "41813a00-4bc1-49ac-af01-3725095a455a"
+            }
+        ],
+        "qualifiedName": "test-no-diagram",
+        "ownedMember": [
+            {
+                "@id": "41813a00-4bc1-49ac-af01-3725095a455a"
+            }
+        ]
     }
 ]

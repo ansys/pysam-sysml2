@@ -35,15 +35,7 @@ class Factory:
     _conn: AnsysSysML2APIConnector
 
     def __init__(self, project: Project, conn: AnsysSysML2APIConnector) -> None:
-        """Construct Method for new instance.
-
-        Parameters
-        ----------
-        project : Project
-            The Project Context
-        conn : AnsysSysML2APIConnector
-            The SysML 2 connector.
-        """
+        """Initialize Factory class."""
         self._project_id = project._id
         self._project = project
         self._conn = conn
@@ -62,22 +54,32 @@ class Factory:
         SysMLElement
             The Created Element
         """
-        existing_elements = set(x for x in self._project._env.keys())
+        existing_elements = set(self._project._env.keys())
         commit = Commit(self._project_id)
         change = DataVersion()
 
         change.add_change("@type", element_type)
+
+        if "owner" in kwargs:
+            change.add_change("owner", kwargs["owner"])
+
         for key, value in kwargs.items():
-            change.add_change(key, value)
+            if key != "owner":
+                change.add_change(key, value)
 
         commit.add_change(change)
 
         self._conn.create_commit(self._project_id, commit.to_json())
-        self.reload_project()
+        self._reload_project()
 
-        return self.extract_created_element(element_type, existing_elements)
+        element = self._extract_created_element(element_type, existing_elements)
+        if "value" in kwargs.keys():
+            element.set_value(kwargs.get("value"))
+        elif "expression" in kwargs.keys():
+            element.parse_and_set_value(kwargs.get("expression"))
+        return element
 
-    def extract_created_element(self, element_type: str, existing_elements: set):
+    def _extract_created_element(self, element_type: str, existing_elements: set):
         """Extract the newly created element.
 
         Parameters
@@ -93,7 +95,7 @@ class Factory:
         """
         from ansys.sam.sysml2.tools import SysMLTools
 
-        diff_elements = set(x for x in self._project._env.keys()).difference(existing_elements)
+        diff_elements = set(self._project._env.keys()).difference(existing_elements)
 
         new_elements_ids = list(
             x for x in diff_elements if SysMLTools.isinstance(self._project._env[x], element_type)
@@ -104,7 +106,7 @@ class Factory:
 
         return self._project._env[new_elements_ids[0]]
 
-    def reload_project(self):
+    def _reload_project(self):
         """Start the reload of the project."""
         from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 

@@ -55,7 +55,7 @@ class MappedElement:
         Returns
         -------
         SysMLElement
-            the mapped element
+            The mapped element
         """
         return self._element
 
@@ -66,6 +66,6 @@ class MappedElement:
         Returns
         -------
         List[UnresolvedField]
-            the list of all unresolved Fields
+            The list of all unresolved Fields
         """
         return self._unresolved_fields

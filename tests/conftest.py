@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2025 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2025 ANSYS, Inc. and/or its affiliates.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -80,3 +80,9 @@ def create_tmp_dir():
 def delete_tmp_dir():
     if tmp_dir.exists():
         shutil.rmtree(tmp_dir)
+
+
+def restore_projects_backup_between_tests():
+    if original_path.exists():
+        shutil.rmtree(original_path)
+    shutil.copytree(backup_path, original_path)

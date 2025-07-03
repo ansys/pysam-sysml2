@@ -1,0 +1,21 @@
+{
+    "@type": "Commit",
+    "change": [
+        {
+            "@type": "DataVersion",
+            "payload": {
+                "INVALID_KEY": "NewAttribute"
+            },
+            "identity": {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378",
+                "@type": "DataIdentity"
+            }
+        }
+    ],
+    "owningProject": {
+        "@id": "1"
+    },
+    "previousCommit": {
+        "@id": "head"
+    }
+}

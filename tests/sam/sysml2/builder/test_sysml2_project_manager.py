@@ -20,23 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import pytest
-
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
-from mocked_server.mocked_server import MockedServer
-from mocked_server.routes.const import VALID_ORGANIZATION, VALID_TOKEN
+from parent_test_class import ParentTestClass
 
 
-class TestSysML2ProjectManager:
-
-    @pytest.fixture
-    def valid_source(self) -> AnsysSysML2APIConnector:
-        return AnsysSysML2APIConnector(
-            server_url=MockedServer.get_url(),
-            organization_id=VALID_ORGANIZATION,
-            token=VALID_TOKEN,
-        )
+class TestSysML2ProjectManager(ParentTestClass):
 
     def test_load_project(self, valid_source: AnsysSysML2APIConnector):
         manager = SysML2ProjectManager(valid_source)

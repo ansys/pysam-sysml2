@@ -29,21 +29,14 @@ from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 
 
 class Commit:
-    """Commit Class module."""
+    """Class to create and structure a standard SysML commit."""
 
     project_id: str = None
     changes: List[DataVersion]
     previous_commit_id: str = "head"
 
     def __init__(self, project_id: str):
-        """
-        Construct new instance.
-
-        Parameters
-        ----------
-        project_id : str
-            The context project id
-        """
+        """Initialize class Commit."""
         self.project_id = project_id
         self.changes = list()
 
