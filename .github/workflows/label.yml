@@ -13,7 +13,6 @@ jobs:
 
   changelog-fragment:
     name: "Create changelog fragment"
-    needs: [labeler]
     permissions:
       contents: write
       pull-requests: write
