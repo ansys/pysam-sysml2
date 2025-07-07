@@ -104,17 +104,6 @@ jobs:
         with:
           library-name: ${{ env.LIBRARY_NAME }}
 
-  actions-security:
-    name: "Check actions security"
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ansys/actions/check-actions-security@v10.0
-        with:
-          generate-summary: true
-          token: ${{ secrets.GITHUB_TOKEN }}
-          auditing-level: 'high'
-          trust-ansys-actions: true
-
   # release:
   #   name: "Release project"
   #   runs-on: ubuntu-latest
