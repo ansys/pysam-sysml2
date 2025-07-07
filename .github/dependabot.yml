@@ -1,25 +1,13 @@
 version: 2
 updates:
-
   - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+
+  - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "daily"
     labels:
       - "maintenance"
-      - "dependencies"
-    commit-message:
-      prefix: "build"
-
-  - package-ecosystem: "github-actions"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    labels:
-      - "maintenance"
-    commit-message:
-      prefix: "ci"
-    groups:
-       actions:
-          patterns:
-            - "*"
