@@ -70,7 +70,10 @@ latex_additional_files = [
     ansys_logo_white_cropped,
     pyansys_logo_black,
 ]
-latex_elements = {"preamble": (generate_preamble("PySam", watermark))}
+latex_elements = {
+    "preamble": (generate_preamble("PySam", watermark)),
+    "printindex": "",
+}
 
 # Sphinx extensions
 extensions = [
