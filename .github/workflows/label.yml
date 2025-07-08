@@ -80,12 +80,12 @@ jobs:
         issue-number: ${{ github.event.pull_request.number }}
         body: |
           Please add one of the following labels to add this contribution to the Release Notes :point_down:
-          - [bug](https://github.com/ansys/ansys-templates/pulls?q=label%3Abug+)
-          - [documentation](https://github.com/ansys/ansys-templates/pulls?q=label%3Adocumentation+)
-          - [enhancement](https://github.com/ansys/ansys-templates/pulls?q=label%3Aenhancement+)
-          - [good first issue](https://github.com/ansys/ansys-templates/pulls?q=label%3Agood+first+issue)
-          - [maintenance](https://github.com/ansys/ansys-templates/pulls?q=label%3Amaintenance+)
-          - [release](https://github.com/ansys/ansys-templates/pulls?q=label%3Arelease+)
+          - [bug](https://github.com/ansys-internal/pysam-sysml2/pulls?q=label%3Abug+)
+          - [documentation](https://github.com/ansys-internal/pysam-sysml2/pulls?q=label%3Adocumentation+)
+          - [enhancement](https://github.com/ansys-internal/pysam-sysml2/pulls?q=label%3Aenhancement+)
+          - [good first issue](https://github.com/ansys-internal/pysam-sysml2/pulls?q=label%3Agood+first+issue)
+          - [maintenance](https://github.com/ansys-internal/pysam-sysml2/pulls?q=label%3Amaintenance+)
+          - [release](https://github.com/ansys-internal/pysam-sysml2/pulls?q=label%3Arelease+)
 
   changelog-fragment:
     name: "Create changelog fragment"
@@ -95,63 +95,18 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-        token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
-
-    - name: Prepare towncrier environment
+    - name: Force file permissions before action
       run: |
-        # Fixer les permissions
-        chmod 664 pyproject.toml
+        echo "Before: $(ls -la pyproject.toml)"
+        chmod 666 pyproject.toml
+        echo "After: $(ls -la pyproject.toml)"
+        echo "# Test write" >> pyproject.toml && echo "Write OK" || echo "Write FAILED"
+        sed -i '$ d' pyproject.toml
 
-        # Créer les répertoires nécessaires
-        mkdir -p doc/changelog.d
-        mkdir -p doc/source
-
-        # Créer le fichier changelog s'il n'existe pas
-        touch doc/source/changelog.rst
-        chmod 664 doc/source/changelog.rst
-
-        # Vérifier que Python peut écrire dans pyproject.toml
-        python3 -c "
-        import pathlib
-        try:
-            with open('pyproject.toml', 'r+') as f:
-                content = f.read()
-                print('✓ Can read/write pyproject.toml')
-        except Exception as e:
-            print('✗ Error with pyproject.toml:', e)
-            exit(1)
-        "
-
-        # Vérifier la configuration towncrier existante
-        python3 -c "
-        import tomllib
-        try:
-            with open('pyproject.toml', 'rb') as f:
-                config = tomllib.load(f)
-                towncrier_config = config.get('tool', {}).get('towncrier', {})
-                if towncrier_config:
-                    print('✓ Towncrier configuration found')
-                    print('  Package:', towncrier_config.get('package'))
-                    print('  Directory:', towncrier_config.get('directory'))
-                    print('  Filename:', towncrier_config.get('filename'))
-                    print('  Template:', towncrier_config.get('template'))
-                else:
-                    print('✗ No towncrier configuration found in pyproject.toml')
-                    exit(1)
-        except Exception as e:
-            print('✗ Error loading towncrier config:', e)
-            exit(1)
-        "
-
-    - name: Generate changelog fragment
-      uses: ansys/actions/doc-changelog@v10
+    - uses: ansys/actions/doc-changelog@v8
       with:
         token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
         use-conventional-commits: true
-        use-default-towncrier-config: false
+        use-default-towncrier-config: true
         bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
         bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
