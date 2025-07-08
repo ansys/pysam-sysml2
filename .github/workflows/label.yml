@@ -1,10 +1,6 @@
 name: Labeler
 on:
   pull_request:
-    # opened, reopened, and synchronize are default for pull_request
-    # edited - when PR title or body is changed
-    # labeled - when labels are added to PR
-    types: [opened, reopened, synchronize, edited, labeled]
   push:
     branches: [ main ]
     paths:
@@ -38,7 +34,7 @@ jobs:
     - name: Label based on changed files
       uses: actions/labeler@v5
       with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
 
     # Label based on branch name
     - uses: actions-ecosystem/action-add-labels@v1
@@ -95,21 +91,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
-
-    - name: Force file permissions before action
-      run: |
-        echo "Files in directory: $(ls -la)"
-        echo "Before: $(ls -la pyproject.toml)"
-        chmod 666 pyproject.toml
-        echo "After: $(ls -la pyproject.toml)"
-        echo "# Test write" >> pyproject.toml && echo "Write OK" || echo "Write FAILED"
-        sed -i '$ d' pyproject.toml
-
-    - uses: ansys/actions/doc-changelog@v8
+    - uses: ansys/actions/doc-changelog@v10
       with:
         token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
         use-conventional-commits: true
