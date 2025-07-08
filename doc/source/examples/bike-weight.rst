@@ -48,7 +48,7 @@ See section  :ref:`Organization Id <Info_O_Id_Section>` and :ref:`Bearer Token <
 
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 1-16
+    :lines: 3-18
     :language: python
     :caption: Import libraries and create connection to SysML2 API server
 
@@ -61,7 +61,7 @@ Now, that you are logged in, you can load the project ``bike``.
 
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 20
+    :lines: 22
     :language: python
     :caption: Get the bike project
 
@@ -85,7 +85,7 @@ Get the Bike element.
 
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 24
+    :lines: 26
     :language: python
     :caption: Get the bike part definition from the project structure
 
@@ -100,7 +100,7 @@ And to get the weight of each piece, just use the ``weight`` attribute, with the
 
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 26-32
+    :lines: 28-34
     :language: python
     :caption: Calculate total bike weight by summing component weights
 
@@ -108,7 +108,7 @@ And print the weight of the bike.
 
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 33
+    :lines: 35
     :language: python
     :caption: Print the calculated bike weight
 

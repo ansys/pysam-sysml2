@@ -46,10 +46,10 @@ html_theme_options = {
 # LaTeX Compatible Paths
 def escape_latex_path(path):
     """Escape paths for LaTeX."""
-    import os
+    from pathlib import Path
 
-    abs_path = os.path.abspath(path)
-    latex_path = abs_path.replace("\\", "/")
+    abs_path = Path(path).resolve()
+    latex_path = str(abs_path).replace("\\", "/")
     latex_path = latex_path.replace(" ", "\\ ")
     return latex_path
 

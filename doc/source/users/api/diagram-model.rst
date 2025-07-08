@@ -14,7 +14,7 @@ Basic usage
 First, create a SAM REST API Connector:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 19-23
+    :lines: 21-25
     :language: python
     :caption: Create SAM REST API Connector
 
@@ -22,7 +22,7 @@ First, create a SAM REST API Connector:
 To load diagrams from a project and make them available for further operations like downloading:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 33-34
+    :lines: 35-36
     :language: python
     :caption: Load diagrams using SAMDiagramManager
 
@@ -37,7 +37,7 @@ Diagrams must be loaded inside a :ref:`SAMDiagramManager <D_M_Section>` context 
 Also, instantiate a :ref:`SamDiagramDownloader <D_U_Section>`:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 38
+    :lines: 40
     :language: python
     :caption: Create a SamDiagramDownloader
 
@@ -47,7 +47,7 @@ Download all diagrams
 Once the diagrams are loaded, you can download **all diagrams** and save them into a zip archive:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 46-51
+    :lines: 48-53
     :language: python
     :caption: Download all diagrams with custom parameters
 
@@ -64,12 +64,12 @@ Download a single diagram
 You can also download a specific diagram in a given format:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 54-55
+    :lines: 56-57
     :language: python
     :caption: Get desired Diagram
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 57-62
+    :lines: 59-64
     :language: python
     :caption: Download a single diagram
 
@@ -79,12 +79,12 @@ Download diagrams in a loop
 You can iterate through diagrams inside a specific section of your model, for example, `Usage`:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 65
+    :lines: 67
     :language: python
     :caption: Get desired Diagrams
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 66-70
+    :lines: 68-72
     :language: python
     :caption: Download diagrams from Usage section in a loop
 
@@ -97,12 +97,12 @@ Get diagram metadata
 --------------------
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 65
+    :lines: 67
     :language: python
     :caption: Get desired Diagram
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 76
+    :lines: 78
     :language: python
     :caption: Get diagram metadata from model element
 
@@ -114,12 +114,12 @@ Loop through diagrams
 To print out names of diagrams from a section of the model:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 65
+    :lines: 67
     :language: python
     :caption: Get desired Diagrams
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 78-79
+    :lines: 80-81
     :language: python
     :caption: Loop through diagrams and print names
 

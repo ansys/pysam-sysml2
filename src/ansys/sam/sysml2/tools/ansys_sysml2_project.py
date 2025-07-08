@@ -21,13 +21,12 @@
 """Ansys SysML2 Project to facilitate use of PySam library."""
 
 from pathlib import Path
-from typing import List, Optional, Set, Union
+from typing import Union
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
 from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
 from ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader import SamDiagramDownloader
@@ -54,6 +53,8 @@ class AnsysSysML2Project(ProjectImpl):
     """
 
     _project_id: str
+    _downloader: SamDiagramDownloader
+    _factory: Factory
 
     def __init__(
         self,
@@ -88,168 +89,53 @@ class AnsysSysML2Project(ProjectImpl):
         ProjectNotFoundError
             If the specified project does not exist.
         """
-        # Store connection parameters
-        self.server_url = server_url
-        self.token = token
-        self.organization_id = organization_id
         self._project_id = project_id
-        self.use_ssl = use_ssl
+        self.__diagrams_available = False
+        self._initialize_components(server_url, token, organization_id, use_ssl)
 
-        # Initialize connectors
-        self._sysml2_connector: Optional[AnsysSysML2APIConnector] = None
-        self._sam_connector: Optional[SamRestApiConnector] = None
-        self._project_manager: Optional[SysML2ProjectManager] = None
-        self._downloader: Optional[SamDiagramDownloader] = None
-        self._factory: Optional[Factory] = None
-        self._diagrams_available = False
-
-        # Initialize all components
-        self._initialize_components()
-
-    def _initialize_components(self) -> None:
-        """
-        Initialize all internal components and establish connections.
-
-        Raises
-        ------
-        ConnectionError
-            If unable to establish connection to any of the services.
-        ProjectNotFoundError
-            If the specified project cannot be loaded.
-        """
-        # Initialize SysML2 API connector
-        self._sysml2_connector = AnsysSysML2APIConnector(
-            server_url=self.server_url,
-            organization_id=self.organization_id,
-            token=self.token,
-            use_ssl=self.use_ssl,
+    def _initialize_components(
+        self,
+        server_url: str,
+        token: str,
+        organization_id: str,
+        use_ssl: bool = True,
+    ) -> None:
+        """Initialize all internal components and establish connections."""
+        sysml2_connector = AnsysSysML2APIConnector(
+            server_url=server_url,
+            organization_id=organization_id,
+            token=token,
+            use_ssl=use_ssl,
         )
 
-        # Initialize SAM API connector
-        self._sam_connector = SamRestApiConnector(
-            server_url=self.server_url, token=self.token, use_ssl=self.use_ssl
+        self.__sam_connector = SamRestApiConnector(
+            server_url=server_url, token=token, use_ssl=use_ssl
         )
 
-        # Initialize project manager and load project
-        self._project_manager = SysML2ProjectManager(connector=self._sysml2_connector)
-        self._project = self._project_manager.get_project(self._project_id)
+        project_manager = SysML2ProjectManager(connector=sysml2_connector)
+        project = project_manager.get_project(self._project_id)
 
-        # Initialize factory
-        self._factory = Factory(project=self, conn=self._sysml2_connector)
+        for attr_name, attr_value in project.__dict__.items():
+            if attr_name.startswith("_"):
+                setattr(self, attr_name, attr_value)
 
-        # Initialize diagram functionality with error handling
+        self._factory = Factory(project=self, conn=sysml2_connector)
+
         self._initialize_diagram_capabilities()
 
     def _initialize_diagram_capabilities(self) -> None:
         """Initialize diagram download capabilities with graceful error handling."""
         try:
-            # Initialize diagram manager
-            with SAMDiagramManager(connector=self._sam_connector) as diagram_manager:
-                diagram_manager.load_diagrams(model=self._project)
+            with SAMDiagramManager(connector=self.__sam_connector) as diagram_manager:
+                diagram_manager.load_diagrams(model=self)
 
-            # Initialize diagram downloader
             self._downloader = SamDiagramDownloader(
-                connector=self._sam_connector, project_id=self._project._id
+                connector=self.__sam_connector, project_id=self._project_id
             )
-            self._diagrams_available = True
+            self.__diagrams_available = True
         except Exception:
-            print(f"No diagrams found for project {self._project_id}")
             self._downloader = None
-            self._diagrams_available = False
-
-    # === Properties to access and update project attributes ===
-
-    @property
-    def _id(self) -> str:
-        """Get the project identifier."""
-        return self._project._id
-
-    @_id.setter
-    def _id(self, value: str) -> None:
-        """Set the project identifier."""
-        self._project._id = value
-
-    @property
-    def _name(self) -> str:
-        """Get the project name."""
-        return self._project._name
-
-    @_name.setter
-    def _name(self, value: str) -> None:
-        """Set the project name."""
-        self._project._name = value
-
-    @property
-    def _env(self) -> dict:
-        """Get the project environment configuration."""
-        return self._project._env
-
-    @_env.setter
-    def _env(self, value: dict) -> None:
-        """Set the project environment configuration."""
-        self._project._env = value
-
-    @property
-    def _root(self) -> List[SysMLElement]:
-        """Get the list of root SysML elements."""
-        return self._project._root
-
-    @_root.setter
-    def _root(self, value: List[SysMLElement]) -> None:
-        """Set the list of root SysML elements."""
-        self._project._root = value
-
-    @property
-    def _unresolved_fields(self) -> List[UnresolvedField]:
-        """Get the list of unresolved fields."""
-        return self._project._unresolved_fields
-
-    @_unresolved_fields.setter
-    def _unresolved_fields(self, value: List[UnresolvedField]) -> None:
-        """Set the list of unresolved fields."""
-        self._project._unresolved_fields = value
-
-    @property
-    def _libraries_ids(self) -> Set[str]:
-        """Get the set of library identifiers."""
-        return self._project._libraries_ids
-
-    @_libraries_ids.setter
-    def _libraries_ids(self, value: Set[str]) -> None:
-        """Set the set of library identifiers."""
-        self._project._libraries_ids = value
-
-    # === ProjectImpl methods delegation ===
-
-    def add_element(self, element: SysMLElement):
-        """Add an element to the project env."""
-        return self._project.add_element(element)
-
-    def update_unresolved_fields(self, unresolved_fields: List[UnresolvedField]):
-        """Update all unresolved field."""
-        return self._project.update_unresolved_fields(unresolved_fields)
-
-    def get_root(self) -> List[SysMLElement]:
-        """Return the list of root packages."""
-        return self._project.get_root()
-
-    def get_root_package(self) -> SysMLElement:
-        """Return the root package."""
-        return self._project.get_root_package()
-
-    def get_name(self) -> str:
-        """Getter for name."""
-        return self._project.get_name()
-
-    def find_element_by_id(self, element_id: str) -> SysMLElement:
-        """Find element with id."""
-        return self._project.find_element_by_id(element_id)
-
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
-        """Find all element with name."""
-        return self._project.find_elements_by_name(elements_name)
-
-    # === AnsysSysML2Project specific methods ===
+            self.__diagrams_available = False
 
     def download_diagram(
         self,
@@ -284,7 +170,7 @@ class AnsysSysML2Project(ProjectImpl):
         DiagramConnectorException
             If the download fails or HTTP response is not 200.
         """
-        if not self._diagrams_available:
+        if not self.__diagrams_available:
             raise DiagramNotAvailableException(
                 f"Diagram functionality not available for project {self._project_id}"
             )
@@ -323,7 +209,7 @@ class AnsysSysML2Project(ProjectImpl):
         DiagramConnectorException
             If the download fails or HTTP response is not 200.
         """
-        if not self._diagrams_available:
+        if not self.__diagrams_available:
             raise DiagramNotAvailableException(
                 f"Diagram functionality not available for project {self._project_id}"
             )
@@ -341,7 +227,7 @@ class AnsysSysML2Project(ProjectImpl):
         bool
             True if diagrams can be downloaded, False otherwise.
         """
-        return self._diagrams_available
+        return self.__diagrams_available
 
     def get_project_diagrams_info(self) -> dict:
         """
@@ -357,12 +243,12 @@ class AnsysSysML2Project(ProjectImpl):
         DiagramNotAvailableException
             If diagram functionality is not available for this project.
         """
-        if not self._diagrams_available:
+        if not self.__diagrams_available:
             raise DiagramNotAvailableException(
                 f"Diagram functionality not available for project {self._project_id}"
             )
 
-        return self._sam_connector.get_diagrams_info(self._project_id)
+        return self.__sam_connector.get_diagrams_info(self._project_id)
 
     def get_single_diagram_info(self, diagram_id: str) -> dict:
         """
@@ -383,12 +269,12 @@ class AnsysSysML2Project(ProjectImpl):
         DiagramNotAvailableException
             If diagram functionality is not available for this project.
         """
-        if not self._diagrams_available:
+        if not self.__diagrams_available:
             raise DiagramNotAvailableException(
                 f"Diagram functionality not available for project {self._project_id}"
             )
 
-        return self._sam_connector.get_single_diagram_info(self._project_id, diagram_id)
+        return self.__sam_connector.get_single_diagram_info(self._project_id, diagram_id)
 
     def create_element(self, element_type: str, **kwargs) -> SysMLElement:
         """

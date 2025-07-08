@@ -28,7 +28,7 @@ Connect to the tool
 Here, the AnsysSysML2 API Connector is used. If you want to connect to any other SysMLV2 tool, please read the developer guide.
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 5
+    :lines: 7
     :language: python
     :caption: Import the Connector and the Project manager
 
@@ -37,13 +37,13 @@ The connector provides the project manager with access to the model.
 Then create the connector :
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 11-16
+    :lines: 13-18
     :language: python
     :caption: Connect to the SysML2 API server
 
 Then, you can create the project manager and load a project:
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 18-20
+    :lines: 20-22
     :language: python
     :caption: Create the project manager and load a project

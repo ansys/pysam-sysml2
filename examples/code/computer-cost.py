@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""Computer Cost Example for PySam."""
+
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
@@ -42,7 +44,7 @@ project = project_manager.get_project(
     "<Computer Project ID>"
 )  # You can find it in the URL of the Editor
 
-realSystems = project.get_root_package().RealSystems
+real_systems = project.get_root_package().RealSystems
 
 
 def assess_cost(element):
@@ -56,5 +58,5 @@ def assess_cost(element):
     return cost
 
 
-for system in realSystems._ownedElement:
+for system in real_systems._ownedElement:
     print(system._name, " : ", assess_cost(system))

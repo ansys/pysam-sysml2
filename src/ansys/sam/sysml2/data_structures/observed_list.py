@@ -38,7 +38,7 @@ def mount_observer_and_access(function):
     """
 
     def wrapper(self, *args):
-        """Wrapper to notify observer."""
+        """Notify observer."""
         if self._owner._observer is not None:
             self._owner._observer.list_notify(self._owner._id, self._name, self)
         val = function(self, *args)

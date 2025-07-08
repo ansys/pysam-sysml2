@@ -22,7 +22,7 @@ Ansys SysML2 API Connector
 It uses the Standard API to load and publish information in a model.
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 12-17
+    :lines: 14-19
     :language: python
     :caption: Connect to the SysML2 API server
 
@@ -32,7 +32,7 @@ Sam Rest API Connector
 It uses the SAM REST API to retrieve diagrams in the model.
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 19-23
+    :lines: 21-25
     :language: python
     :caption: Connect to the SAM REST API server
 

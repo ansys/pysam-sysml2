@@ -20,6 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""Weight Bike Example for PySam."""
+
 # Import Connector and Model Manager
 import requests
 from urllib3.exceptions import InsecureRequestWarning
@@ -39,11 +41,11 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-myBikeProject = project_manager.get_project("<Bike Project ID>")
+my_bike_project = project_manager.get_project("<Bike Project ID>")
 
 
 # Then we can use the following code to get the PartDefinition of the bike
-bike = myBikeProject.get_root_package().Structure.Bike
+bike = my_bike_project.get_root_package().Structure.Bike
 
 bike_weight = (
     bike.frontWheel.rim.weight.get_value()[0]

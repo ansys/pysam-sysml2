@@ -61,7 +61,7 @@ You can create new elements in your model using the ``Factory`` class.
     A complete example is available :ref:`here <Creating_Example>`.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
-    :lines: 23
+    :lines: 25
     :language: python
     :caption: Create a Factory instance
 
@@ -79,7 +79,7 @@ This creates a new ``AttributeUsage`` element at the root of your project.
 The ``create_element()`` method returns the newly created element.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
-    :lines: 25-27
+    :lines: 27-29
     :language: python
     :caption: Create a new AttributeUsage element with owner
 
