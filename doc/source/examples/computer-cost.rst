@@ -7,7 +7,7 @@ A computer model is required to get started.
 
 One is provided for your convenience.
 
-Download this model : `Computer Model </_static/code/computer.xmi>`_.
+Download this model : :download:`Computer Model <../_static/code/computer.xmi>`.
 
 Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
 Then, click **New Project** > **SysML V2** > **Import File**.

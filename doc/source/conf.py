@@ -26,6 +26,10 @@ author = "ANSYS, Inc."
 html_favicon = ansys_favicon
 html_short_title = html_title = "pysam-sysml2"
 
+linkcheck_ignore = [
+    r"https://www\.ansys\.com/.*",
+]
+
 html_theme = "ansys_sphinx_theme"
 html_theme_options = {
     "github_url": "https://github.com/ansys/pysam-sysml2",
