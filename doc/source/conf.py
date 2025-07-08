@@ -130,6 +130,7 @@ linkcheck_ignore = [
     "https://github.com/ansys-internal/pysam-sysml2/*",
     "https://sam.docs.pyansys.com/version/stable/*",
     "https://pypi.org/project/ansys-sam-sysml2",
+    r"https://www\.ansys\.com/.*",
 ]
 
 # If we are on a release, we have to ignore the "release" URLs, since it is not

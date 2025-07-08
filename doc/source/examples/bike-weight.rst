@@ -7,7 +7,7 @@ First of all, a bike model is required to work on.
 
 Fortunately, one is provided for you.
 
-Download this model : `Bike Model </_static/code/bike.xmi>`_.
+Download this model : :download:`Bike Model <../_static/code/bike.xmi>`.
 
 Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
 Then, click **New Project** > **SysML V2** > **Import File**.
@@ -118,4 +118,4 @@ You now have the total weight of the bike.
 
 .. note::
 
-    You can get the full code `Here </_static/code/weight-bike.py>`_.
+    You can get the full code :download:`Here <../_static/code/weight-bike.py>`.

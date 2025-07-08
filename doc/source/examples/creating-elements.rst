@@ -5,7 +5,7 @@ Creating new element example
 
 Make sure you have access to a valid server and a project containing the ``Bike`` structure.
 
-If not, you can download this model : `Bike Model </_static/code/bike.xmi>`_.
+If not, you can download this model : :download:`Bike Model <../_static/code/bike.xmi>`.
 
 Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
 Then, click **New Project** > **SysML V2** > **Import File**.
