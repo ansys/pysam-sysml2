@@ -207,6 +207,11 @@ jobs:
         git config user.name "${{ secrets.PYANSYS_CI_BOT_USERNAME }}"
         git config user.email "${{ secrets.PYANSYS_CI_BOT_EMAIL }}"
 
+        # Checkout and update the pull request branch
+        git fetch origin ${{ github.head_ref }}
+        git checkout ${{ github.head_ref }}
+        git pull origin ${{ github.head_ref }}
+
         # Stage the changelog fragment
         git add doc/changelog.d/
 
@@ -220,7 +225,7 @@ jobs:
           Title: $CLEAN_TITLE"
 
           # Push changes to the pull request branch
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin ${{ github.head_ref }}
           echo "Changelog fragment committed and pushed successfully"
         else
           echo "No changelog fragment changes to commit"
