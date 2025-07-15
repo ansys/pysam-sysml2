@@ -1,0 +1,12 @@
+{
+    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Package",
+    "@id": "bcadd609-9309-4704-9ece-27179def642a",
+    "name": "test-no-diagram",
+    "ownedMember": [
+        {
+            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+            "@id": "41813a00-4bc1-49ac-af01-3725095a455a",
+            "name": "PartDefinition"
+        }
+    ]
+}

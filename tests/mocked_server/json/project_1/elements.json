@@ -1,0 +1,144 @@
+[
+    {
+        "@type": "Package",
+        "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
+        "identifier": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
+        "eAnnotations": [],
+        "name": "PySamTestProject-COMPLET",
+        "ownedElement": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            },
+            {
+                "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
+            }
+        ],
+        "qualifiedName": "PySamTestProject-COMPLET",
+        "ownedMember": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            },
+            {
+                "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
+            }
+        ]
+    },
+    {
+        "@type": "PartDefinition",
+        "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc",
+        "identifier": "6afc9e87-1079-4212-8fa4-99cd6b2004fc",
+        "name": "PartDefinition",
+        "ownedElement": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "qualifiedName": "PySamTestProject-COMPLET::PartDefinition",
+        "owner": {
+            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+        },
+        "owningNamespace": {
+            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+        },
+        "ownedMember": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "ownedEndFeature": [],
+        "ownedFeature": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "directedFeature": [],
+        "feature": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "ownedUsage": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "ownedAttribute": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ]
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "ecf75010-3603-4e1e-82d5-db312b093378",
+        "identifier": "ecf75010-3603-4e1e-82d5-db312b093378",
+        "name": "Attribute",
+        "qualifiedName": "PySamTestProject-COMPLET::PartDefinition::Attribute",
+        "owner": {
+            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+        },
+        "owningNamespace": {
+            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+        },
+        "isComposite": true,
+        "declaration": {
+            "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+        }
+    },
+    {
+        "@type": "PartUsage",
+        "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c",
+        "identifier": "fd36d11a-bc48-410e-bec9-b7f929666c4c",
+        "name": "myPartUsage",
+        "qualifiedName": "PySamTestProject-COMPLET::myPartUsage",
+        "owner": {
+            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+        },
+        "owningNamespace": {
+            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+        },
+        "directedFeature": [],
+        "feature": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "inheritedFeature": [
+            {
+                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+            }
+        ],
+        "isComposite": true,
+        "type": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ],
+        "declaration": {
+            "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
+        },
+        "definition": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ],
+        "individualDefinition": {
+            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+        },
+        "occurrenceDefinition": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ],
+        "itemDefinition": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ],
+        "partDefinition": [
+            {
+                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            }
+        ]
+    }
+]

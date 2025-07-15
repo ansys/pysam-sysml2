@@ -1,0 +1,10 @@
+{
+    "@type": "Commit",
+    "change": [],
+    "owningProject": {
+        "@id": "1"
+    },
+    "previousCommit": {
+        "@id": "head"
+    }
+}
