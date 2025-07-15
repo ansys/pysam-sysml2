@@ -1,0 +1,1488 @@
+{
+    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Package",
+    "@id": "f424639f-6d13-4c36-9cc0-1ad85568ea96",
+    "eAnnotations": [
+        {
+            "@id": "243dc712-8bcf-412a-a6ad-4b3796b568ef",
+            "source": "genmymodel",
+            "contents": [
+                {
+                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleDiagram",
+                    "@id": "ae11d5ed-0f61-44a1-b4a7-f727d5bddccd",
+                    "plane": {
+                        "@id": "82631f62-6b80-4f42-b493-e0f47d1f29f0",
+                        "modelElement": {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Package",
+                            "$ref": "f424639f-6d13-4c36-9cc0-1ad85568ea96"
+                        },
+                        "ownedDiagramElements": [
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//Path",
+                                "@id": "de3e8275-c8fe-47af-a143-e2bfdd7e3e3d",
+                                "source": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "934955e7-121a-4b43-8b91-b3e4efa7b459"
+                                },
+                                "target": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "93d36c52-7394-46e8-9a19-1669138e8977"
+                                },
+                                "points": [
+                                    {
+                                        "@id": "cfe4e62f-f170-43e1-b4a2-8bf8940ff483",
+                                        "x": 520,
+                                        "y": 576
+                                    },
+                                    {
+                                        "@id": "e4270c12-b101-43d4-8210-9786675c98a7",
+                                        "x": 520,
+                                        "y": 601
+                                    },
+                                    {
+                                        "@id": "7676257a-d4d1-4a03-8dc3-7769da1d6af8",
+                                        "x": 520,
+                                        "y": 626
+                                    },
+                                    {
+                                        "@id": "4fba2973-689a-412f-b80a-dbf30d565296",
+                                        "x": 520,
+                                        "y": 651
+                                    }
+                                ],
+                                "orientation": "VERTICAL",
+                                "feature": "ownedMember"
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//Path",
+                                "@id": "f539e26e-ae27-41c4-951a-046ba8391915",
+                                "source": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "934955e7-121a-4b43-8b91-b3e4efa7b459"
+                                },
+                                "target": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "1ff066e5-23cb-470a-a9fe-d746e5ff1fb1"
+                                },
+                                "points": [
+                                    {
+                                        "@id": "1779d8f9-06e4-4b5a-9f76-2917f9544933",
+                                        "x": 630,
+                                        "y": 576
+                                    },
+                                    {
+                                        "@id": "a5b3e127-91fd-47e7-a18a-182278e1af17",
+                                        "x": 630,
+                                        "y": 601
+                                    },
+                                    {
+                                        "@id": "6b4ba841-6e40-47b5-beb9-bab08f055324",
+                                        "x": 630,
+                                        "y": 626
+                                    },
+                                    {
+                                        "@id": "6e1466e3-0e85-4975-ac71-623176362947",
+                                        "x": 630,
+                                        "y": 651
+                                    }
+                                ],
+                                "orientation": "VERTICAL",
+                                "feature": "ownedMember"
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                "@id": "5538d866-bda1-4e23-af0c-a795523c1d21",
+                                "modelElement": {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                    "$ref": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+                                },
+                                "ownedDiagramElements": [
+                                    {
+                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                        "@id": "6131b74d-da50-4423-b05c-f37039ef94f0",
+                                        "modelElement": {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                            "$ref": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+                                        },
+                                        "ownedDiagramElements": [
+                                            {
+                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                "@id": "7544ec83-8e1f-4794-8f9f-abf891b9ef93",
+                                                "modelElement": {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                    "$ref": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+                                                },
+                                                "width": 170,
+                                                "height": 15,
+                                                "constraintPosition": "Y_AXIS",
+                                                "deltaY": 20
+                                            }
+                                        ],
+                                        "width": 170,
+                                        "height": 60,
+                                        "constraintPosition": "COMPARTMENT",
+                                        "deltaY": 30,
+                                        "kind": "attributes"
+                                    }
+                                ],
+                                "width": 170,
+                                "height": 90,
+                                "constraintPosition": "CONTAINED_POSITION",
+                                "deltaY": 27,
+                                "deltaX": 607
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                "@id": "357bbbbc-4038-48ab-8236-ba098ecc5ffa",
+                                "modelElement": {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                    "$ref": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+                                },
+                                "width": 170,
+                                "height": 90,
+                                "constraintPosition": "CONTAINED_POSITION",
+                                "deltaY": 204,
+                                "deltaX": 412
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                "@id": "0fc1180e-d7df-4c62-807c-5651345da1d7",
+                                "modelElement": {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                    "$ref": "967a1131-ff29-4eb9-84db-0d920165cead"
+                                },
+                                "width": 170,
+                                "height": 90,
+                                "constraintPosition": "CONTAINED_POSITION",
+                                "deltaY": 204,
+                                "deltaX": 607
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                "@id": "41ffd495-72a2-4f83-a6db-23e98f27f00d",
+                                "modelElement": {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                    "$ref": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+                                },
+                                "width": 170,
+                                "height": 90,
+                                "constraintPosition": "CONTAINED_POSITION",
+                                "deltaY": 204,
+                                "deltaX": 828
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//Path",
+                                "@id": "bd8c1fda-91b1-42f5-8365-8a46b54f047d",
+                                "source": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "5538d866-bda1-4e23-af0c-a795523c1d21"
+                                },
+                                "target": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "357bbbbc-4038-48ab-8236-ba098ecc5ffa"
+                                },
+                                "points": [
+                                    {
+                                        "@id": "335f03e7-530d-46e4-8560-3d5c07ab4c08",
+                                        "x": 692,
+                                        "y": 117
+                                    },
+                                    {
+                                        "@id": "332d8395-6be5-468e-911c-5183d2136809",
+                                        "x": 692,
+                                        "y": 161
+                                    },
+                                    {
+                                        "@id": "4bf7029f-2856-4b49-bf0b-c8e969938da0",
+                                        "x": 497,
+                                        "y": 161
+                                    },
+                                    {
+                                        "@id": "5af760a3-0679-4a12-b864-b81f428191f0",
+                                        "x": 497,
+                                        "y": 204
+                                    }
+                                ],
+                                "orientation": "VERTICAL",
+                                "feature": "ownedMember"
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//Path",
+                                "@id": "e574e221-f322-4ff3-8ec9-ad07ab5086f9",
+                                "source": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "5538d866-bda1-4e23-af0c-a795523c1d21"
+                                },
+                                "target": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "0fc1180e-d7df-4c62-807c-5651345da1d7"
+                                },
+                                "points": [
+                                    {
+                                        "@id": "7c656a21-28e6-463b-b358-2144e4227062",
+                                        "x": 692,
+                                        "y": 117
+                                    },
+                                    {
+                                        "@id": "f4ddea66-445e-4adf-b415-e018b5828db9",
+                                        "x": 692,
+                                        "y": 146
+                                    },
+                                    {
+                                        "@id": "98154c03-3a4a-4d61-86c9-5e7388edb742",
+                                        "x": 692,
+                                        "y": 175
+                                    },
+                                    {
+                                        "@id": "e7826ce0-2c92-4065-868b-0c6cb44a399b",
+                                        "x": 692,
+                                        "y": 204
+                                    }
+                                ],
+                                "orientation": "VERTICAL",
+                                "feature": "ownedMember"
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//Path",
+                                "@id": "ca98a6c3-e6c2-4398-86c1-110e4d4c5606",
+                                "source": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "5538d866-bda1-4e23-af0c-a795523c1d21"
+                                },
+                                "target": {
+                                    "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                    "$ref": "41ffd495-72a2-4f83-a6db-23e98f27f00d"
+                                },
+                                "points": [
+                                    {
+                                        "@id": "74d09a3f-5113-4b16-9044-1e7117cbb71d",
+                                        "x": 692,
+                                        "y": 117
+                                    },
+                                    {
+                                        "@id": "cbd043fb-add5-45e9-a371-a53170fad109",
+                                        "x": 692,
+                                        "y": 161
+                                    },
+                                    {
+                                        "@id": "e6c7ffe0-2399-4540-ad20-4aa462231940",
+                                        "x": 913,
+                                        "y": 161
+                                    },
+                                    {
+                                        "@id": "cd1b131b-ceb6-4ad3-88d0-49f05d074431",
+                                        "x": 913,
+                                        "y": 204
+                                    }
+                                ],
+                                "orientation": "VERTICAL",
+                                "feature": "ownedMember"
+                            },
+                            {
+                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                "@id": "d6dfc181-f000-430c-8332-249b8bb6f4bf",
+                                "modelElement": {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Package",
+                                    "$ref": "bddea054-4206-4e84-b05c-b4494e002084"
+                                },
+                                "ownedDiagramElements": [
+                                    {
+                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                        "@id": "7d76298f-903b-4261-8942-29ebfa7d6336",
+                                        "modelElement": {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Package",
+                                            "$ref": "bddea054-4206-4e84-b05c-b4494e002084"
+                                        },
+                                        "ownedDiagramElements": [
+                                            {
+                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                "@id": "75be2e29-59b4-4cdb-83cc-435616418633",
+                                                "modelElement": {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                    "$ref": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+                                                },
+                                                "ownedDiagramElements": [
+                                                    {
+                                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                        "@id": "f2ad832d-bc21-4686-bbc3-0ccb52f500cb",
+                                                        "modelElement": {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                            "$ref": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+                                                        },
+                                                        "ownedDiagramElements": [
+                                                            {
+                                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                "@id": "70dd547e-a81a-44ab-bbae-eb47cde720ee",
+                                                                "modelElement": {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                    "$ref": "ae8205c5-4303-44ef-8346-60558de82035"
+                                                                },
+                                                                "width": 170,
+                                                                "height": 15,
+                                                                "constraintPosition": "Y_AXIS",
+                                                                "deltaY": 20
+                                                            }
+                                                        ],
+                                                        "width": 170,
+                                                        "height": 60,
+                                                        "constraintPosition": "COMPARTMENT",
+                                                        "deltaY": 30,
+                                                        "kind": "attributes"
+                                                    }
+                                                ],
+                                                "width": 170,
+                                                "height": 90,
+                                                "constraintPosition": "CONTAINED_POSITION",
+                                                "deltaY": 311,
+                                                "deltaX": 59
+                                            },
+                                            {
+                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                "@id": "ed3bf27d-a333-47bf-ba11-34de2184ab94",
+                                                "modelElement": {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                    "$ref": "668e8738-e822-4645-acc3-68c4025946db"
+                                                },
+                                                "ownedDiagramElements": [
+                                                    {
+                                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                        "@id": "33bd84a2-90b9-46e2-bd7f-8fb7e26734ac",
+                                                        "modelElement": {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                            "$ref": "668e8738-e822-4645-acc3-68c4025946db"
+                                                        },
+                                                        "ownedDiagramElements": [
+                                                            {
+                                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                "@id": "7696890b-6b75-4226-85fa-a27c85d40f97",
+                                                                "modelElement": {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                    "$ref": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+                                                                },
+                                                                "width": 170,
+                                                                "height": 15,
+                                                                "constraintPosition": "Y_AXIS",
+                                                                "deltaY": 20
+                                                            }
+                                                        ],
+                                                        "width": 170,
+                                                        "height": 60,
+                                                        "constraintPosition": "COMPARTMENT",
+                                                        "deltaY": 30,
+                                                        "kind": "attributes"
+                                                    }
+                                                ],
+                                                "width": 170,
+                                                "height": 90,
+                                                "constraintPosition": "CONTAINED_POSITION",
+                                                "deltaY": 24,
+                                                "deltaX": 399
+                                            },
+                                            {
+                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                "@id": "486bd119-7b15-4c29-b6c3-d87048b50862",
+                                                "modelElement": {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                    "$ref": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+                                                },
+                                                "ownedDiagramElements": [
+                                                    {
+                                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                        "@id": "eecf0eb5-3e19-4151-9dcb-58f1a9399d3a",
+                                                        "modelElement": {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                            "$ref": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+                                                        },
+                                                        "ownedDiagramElements": [
+                                                            {
+                                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                "@id": "02063b2f-5351-477b-96fe-e78601ede0a6",
+                                                                "modelElement": {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                    "$ref": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+                                                                },
+                                                                "width": 206,
+                                                                "height": 15,
+                                                                "constraintPosition": "Y_AXIS",
+                                                                "deltaY": 20
+                                                            }
+                                                        ],
+                                                        "width": 206,
+                                                        "height": 60,
+                                                        "constraintPosition": "COMPARTMENT",
+                                                        "deltaY": 30,
+                                                        "kind": "attributes"
+                                                    },
+                                                    {
+                                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                        "@id": "e36ea4f6-490f-4b6a-a317-47f79226da87",
+                                                        "modelElement": {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                            "$ref": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+                                                        },
+                                                        "ownedDiagramElements": [
+                                                            {
+                                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                "@id": "5b1e8ec0-f10e-49bc-9be2-283d7f2b1823",
+                                                                "modelElement": {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                                    "$ref": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+                                                                },
+                                                                "ownedDiagramElements": [
+                                                                    {
+                                                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                        "@id": "aa738f57-44d2-4019-b993-03bbce0f214f",
+                                                                        "modelElement": {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                                            "$ref": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+                                                                        },
+                                                                        "ownedDiagramElements": [
+                                                                            {
+                                                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                                "@id": "4cfe0f90-0d23-45ff-af68-cab42932e548",
+                                                                                "modelElement": {
+                                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                                    "$ref": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+                                                                                },
+                                                                                "width": 170,
+                                                                                "height": 15,
+                                                                                "constraintPosition": "Y_AXIS",
+                                                                                "deltaY": 20
+                                                                            }
+                                                                        ],
+                                                                        "width": 170,
+                                                                        "height": 60,
+                                                                        "constraintPosition": "COMPARTMENT",
+                                                                        "deltaY": 30,
+                                                                        "kind": "attributes"
+                                                                    }
+                                                                ],
+                                                                "width": 170,
+                                                                "height": 90,
+                                                                "constraintPosition": "CONTAINED_POSITION",
+                                                                "deltaY": 22,
+                                                                "deltaX": 15
+                                                            }
+                                                        ],
+                                                        "width": 206,
+                                                        "height": 131,
+                                                        "constraintPosition": "COMPARTMENT",
+                                                        "deltaY": 90,
+                                                        "kind": "structure"
+                                                    }
+                                                ],
+                                                "width": 206,
+                                                "height": 221,
+                                                "constraintPosition": "CONTAINED_POSITION",
+                                                "deltaY": 52,
+                                                "deltaX": 44
+                                            },
+                                            {
+                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                "@id": "934955e7-121a-4b43-8b91-b3e4efa7b459",
+                                                "modelElement": {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                    "$ref": "49f2420f-2973-4da8-8223-8867d8bb4227"
+                                                },
+                                                "ownedDiagramElements": [
+                                                    {
+                                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                        "@id": "6a0d6a3e-9181-48d8-9211-64a968ab013e",
+                                                        "modelElement": {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                                            "$ref": "49f2420f-2973-4da8-8223-8867d8bb4227"
+                                                        },
+                                                        "ownedDiagramElements": [
+                                                            {
+                                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                "@id": "51f05a9f-48d9-49d6-b8e9-691150d70438",
+                                                                "modelElement": {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                    "$ref": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+                                                                },
+                                                                "width": 170,
+                                                                "height": 15,
+                                                                "constraintPosition": "Y_AXIS",
+                                                                "deltaY": 20
+                                                            }
+                                                        ],
+                                                        "width": 170,
+                                                        "height": 60,
+                                                        "constraintPosition": "COMPARTMENT",
+                                                        "deltaY": 30,
+                                                        "kind": "attributes"
+                                                    }
+                                                ],
+                                                "width": 170,
+                                                "height": 90,
+                                                "constraintPosition": "CONTAINED_POSITION",
+                                                "deltaY": 128,
+                                                "deltaX": 399
+                                            },
+                                            {
+                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                "@id": "1ff066e5-23cb-470a-a9fe-d746e5ff1fb1",
+                                                "modelElement": {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                    "$ref": "ecd89418-7e15-4207-9748-cef2256e45e5"
+                                                },
+                                                "ownedDiagramElements": [
+                                                    {
+                                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                        "@id": "79250b8e-4ee0-4b94-adac-5f328f881f7c",
+                                                        "modelElement": {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                            "$ref": "ecd89418-7e15-4207-9748-cef2256e45e5"
+                                                        },
+                                                        "ownedDiagramElements": [
+                                                            {
+                                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                "@id": "947b30ff-18ea-46c8-8ffa-70286d3cad0a",
+                                                                "modelElement": {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                    "$ref": "/?ecd89418-7e15-4207-9748-cef2256e45e5/?ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+                                                                },
+                                                                "width": 170,
+                                                                "height": 15,
+                                                                "constraintPosition": "Y_AXIS",
+                                                                "deltaY": 20
+                                                            }
+                                                        ],
+                                                        "width": 170,
+                                                        "height": 60,
+                                                        "constraintPosition": "COMPARTMENT",
+                                                        "deltaY": 30,
+                                                        "kind": "attributes"
+                                                    }
+                                                ],
+                                                "width": 170,
+                                                "height": 90,
+                                                "constraintPosition": "CONTAINED_POSITION",
+                                                "deltaY": 293,
+                                                "deltaX": 496
+                                            },
+                                            {
+                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                "@id": "93d36c52-7394-46e8-9a19-1669138e8977",
+                                                "modelElement": {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                    "$ref": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+                                                },
+                                                "ownedDiagramElements": [
+                                                    {
+                                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                        "@id": "cd8437d2-3038-4e1b-8770-5135f903c22b",
+                                                        "modelElement": {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                            "$ref": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+                                                        },
+                                                        "ownedDiagramElements": [
+                                                            {
+                                                                "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                                                "@id": "d14aad98-465f-457a-a84b-62c625b02d59",
+                                                                "modelElement": {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                    "$ref": "/?387ee3b0-aa58-4c34-9cb7-531bf92e540f/?ae8205c5-4303-44ef-8346-60558de82035"
+                                                                },
+                                                                "width": 170,
+                                                                "height": 15,
+                                                                "constraintPosition": "Y_AXIS",
+                                                                "deltaY": 20
+                                                            }
+                                                        ],
+                                                        "width": 170,
+                                                        "height": 60,
+                                                        "constraintPosition": "COMPARTMENT",
+                                                        "deltaY": 30,
+                                                        "kind": "attributes"
+                                                    }
+                                                ],
+                                                "width": 170,
+                                                "height": 90,
+                                                "constraintPosition": "CONTAINED_POSITION",
+                                                "deltaY": 293,
+                                                "deltaX": 276
+                                            }
+                                        ],
+                                        "width": 800,
+                                        "height": 441,
+                                        "constraintPosition": "COMPARTMENT",
+                                        "deltaY": 30,
+                                        "kind": "structure"
+                                    }
+                                ],
+                                "width": 800,
+                                "height": 471,
+                                "constraintPosition": "CONTAINED_POSITION",
+                                "deltaY": 328,
+                                "deltaX": 97
+                            }
+                        ]
+                    },
+                    "name": "general diagram",
+                    "width": 1312,
+                    "height": 1430
+                }
+            ]
+        }
+    ],
+    "name": "bikeSample",
+    "ownedMember": [
+        {
+            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Package",
+            "@id": "bddea054-4206-4e84-b05c-b4494e002084",
+            "name": "structure",
+            "ownedMember": [
+                {
+                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                    "@id": "49f2420f-2973-4da8-8223-8867d8bb4227",
+                    "name": "Wheel",
+                    "ownedMember": [
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                            "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214",
+                            "name": "weight",
+                            "ownedMember": [
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//OperatorExpression",
+                                    "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3",
+                                    "eAnnotations": [
+                                        {
+                                            "@id": "e7a772df-fb99-4f07-af5c-46aa152c440b",
+                                            "source": "ansys-sam",
+                                            "details": {
+                                                "type": "sysml2-membership"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                    "@id": "15b25161-2fab-4133-abd1-7fe1e5b05082"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "ownedMember": [
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                            "@id": "9d71f91d-8b28-4141-9e94-81d83d916433",
+                                            "ownedMember": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureChainExpression",
+                                                    "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee",
+                                                    "eAnnotations": [
+                                                        {
+                                                            "@id": "312595bb-cfad-40ee-af16-0e875eceff6c",
+                                                            "source": "ansys-sam",
+                                                            "details": {
+                                                                "type": "sysml2-membership"
+                                                            },
+                                                            "contents": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                    "@id": "90a73644-79cd-41b0-973a-5766cf0a73f7"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "ownedMember": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                            "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13",
+                                                            "ownedMember": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                    "@id": "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
+                                                                },
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureReferenceExpression",
+                                                                    "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29",
+                                                                    "eAnnotations": [
+                                                                        {
+                                                                            "@id": "2e008636-4d1d-49d8-871e-6448039ea963",
+                                                                            "source": "ansys-sam",
+                                                                            "details": {
+                                                                                "type": "sysml2-membership"
+                                                                            },
+                                                                            "contents": [
+                                                                                {
+                                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                                    "@id": "b9e38a71-394b-44ef-87ac-a31c15d47952"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ],
+                                                                    "ownedMember": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                            "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64",
+                                                                            "direction": "out"
+                                                                        }
+                                                                    ],
+                                                                    "member": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                                            "$ref": "ecd89418-7e15-4207-9748-cef2256e45e5"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "direction": "in"
+                                                        },
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                            "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9",
+                                                            "name": "result",
+                                                            "direction": "out"
+                                                        }
+                                                    ],
+                                                    "member": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                            "$ref": "/?ecd89418-7e15-4207-9748-cef2256e45e5/?ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "direction": "in"
+                                        },
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                            "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c",
+                                            "ownedMember": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureChainExpression",
+                                                    "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed",
+                                                    "eAnnotations": [
+                                                        {
+                                                            "@id": "55de72bb-d338-4c43-a839-380193a2a978",
+                                                            "source": "ansys-sam",
+                                                            "details": {
+                                                                "type": "sysml2-membership"
+                                                            },
+                                                            "contents": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                    "@id": "8922e6e2-e4b2-4de0-a1e6-01f4d8e3e4a2"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "ownedMember": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                            "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333",
+                                                            "ownedMember": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                    "@id": "d47fdafe-a6b6-4c39-872e-69d60005d847"
+                                                                },
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureReferenceExpression",
+                                                                    "@id": "266412f0-0281-420a-bba7-f3be5059bd6b",
+                                                                    "eAnnotations": [
+                                                                        {
+                                                                            "@id": "429de1bd-f4bc-44da-9688-77ec55c4cb6b",
+                                                                            "source": "ansys-sam",
+                                                                            "details": {
+                                                                                "type": "sysml2-membership"
+                                                                            },
+                                                                            "contents": [
+                                                                                {
+                                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                                    "@id": "f94c808a-3a78-4df8-9eda-e46bf0ae47db"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ],
+                                                                    "ownedMember": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                            "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b",
+                                                                            "direction": "out"
+                                                                        }
+                                                                    ],
+                                                                    "member": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                                            "$ref": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "direction": "in"
+                                                        },
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                            "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f",
+                                                            "name": "result",
+                                                            "direction": "out"
+                                                        }
+                                                    ],
+                                                    "member": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                            "$ref": "/?387ee3b0-aa58-4c34-9cb7-531bf92e540f/?ae8205c5-4303-44ef-8346-60558de82035"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "direction": "in"
+                                        },
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                            "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7",
+                                            "name": "result",
+                                            "direction": "out"
+                                        }
+                                    ],
+                                    "operator": "+"
+                                }
+                            ],
+                            "isComposite": true
+                        },
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                            "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f",
+                            "name": "rim",
+                            "isComposite": true,
+                            "type": [
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                    "$ref": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+                                }
+                            ]
+                        },
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                            "@id": "ecd89418-7e15-4207-9748-cef2256e45e5",
+                            "name": "tire",
+                            "isComposite": true,
+                            "type": [
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                    "$ref": "668e8738-e822-4645-acc3-68c4025946db"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                    "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599",
+                    "name": "Frame",
+                    "ownedMember": [
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                            "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c",
+                            "name": "weight",
+                            "ownedMember": [
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//LiteralInteger",
+                                    "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c",
+                                    "eAnnotations": [
+                                        {
+                                            "@id": "eb8ab6c7-5fbe-4a15-84c9-742f77a9ed21",
+                                            "source": "ansys-sam",
+                                            "details": {
+                                                "type": "sysml2-membership"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                    "@id": "4a1993e6-d640-4f96-881a-bc4b3c1677f5",
+                                                    "isInitial": false,
+                                                    "isDefault": false
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "ownedMember": [
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                            "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a",
+                                            "name": "result",
+                                            "direction": "out"
+                                        }
+                                    ],
+                                    "value": 5
+                                }
+                            ],
+                            "isComposite": true
+                        },
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                            "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8",
+                            "name": "suspension",
+                            "ownedMember": [
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                    "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585",
+                                    "name": "weight",
+                                    "ownedMember": [
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//LiteralInteger",
+                                            "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b",
+                                            "eAnnotations": [
+                                                {
+                                                    "@id": "e453ebbe-6aa6-4047-b970-879a01e2431c",
+                                                    "source": "ansys-sam",
+                                                    "details": {
+                                                        "type": "sysml2-membership"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                            "@id": "2f2f8c63-4999-4e5b-8d66-7f107afa3698"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "ownedMember": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                    "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8",
+                                                    "name": "result",
+                                                    "direction": "out"
+                                                }
+                                            ],
+                                            "value": 1
+                                        }
+                                    ],
+                                    "isComposite": true
+                                }
+                            ],
+                            "isComposite": true
+                        }
+                    ]
+                },
+                {
+                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                    "@id": "668e8738-e822-4645-acc3-68c4025946db",
+                    "name": "Tire",
+                    "ownedMember": [
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                            "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402",
+                            "name": "weight",
+                            "ownedMember": [
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//LiteralInteger",
+                                    "@id": "34a07f53-117f-4665-8976-2e71175716c6",
+                                    "eAnnotations": [
+                                        {
+                                            "@id": "2b129151-a2dc-4fde-9423-407204b01ab0",
+                                            "source": "ansys-sam",
+                                            "details": {
+                                                "type": "sysml2-membership"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                    "@id": "2482a4d8-336d-4def-96e6-844f34387949"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "ownedMember": [
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                            "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5",
+                                            "name": "result",
+                                            "direction": "out"
+                                        }
+                                    ],
+                                    "value": 5
+                                }
+                            ],
+                            "isComposite": true
+                        }
+                    ]
+                },
+                {
+                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                    "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212",
+                    "name": "Rim",
+                    "ownedMember": [
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                            "@id": "ae8205c5-4303-44ef-8346-60558de82035",
+                            "name": "weight",
+                            "ownedMember": [
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//LiteralInteger",
+                                    "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f",
+                                    "eAnnotations": [
+                                        {
+                                            "@id": "d3dea639-071c-4b86-a0c9-3c5166e613eb",
+                                            "source": "ansys-sam",
+                                            "details": {
+                                                "type": "sysml2-membership"
+                                            },
+                                            "contents": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                    "@id": "03e401a4-62ff-4c85-ad1a-0264f6f53dcb"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "ownedMember": [
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                            "@id": "9b9f49c4-1edd-4667-b99d-885293511eda",
+                                            "name": "result",
+                                            "direction": "out"
+                                        }
+                                    ],
+                                    "value": 5
+                                }
+                            ],
+                            "isComposite": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+            "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03",
+            "eAnnotations": [
+                {
+                    "@id": "1b825308-d85b-4676-ab40-724bf32736df",
+                    "source": "genmymodel",
+                    "contents": [
+                        {
+                            "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleDiagram",
+                            "@id": "390709cb-f016-443c-9be5-1749d5ba7955",
+                            "plane": {
+                                "@id": "4051bf2e-f2cc-4f55-8ec2-eea097549258",
+                                "modelElement": {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                                    "$ref": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+                                },
+                                "ownedDiagramElements": [
+                                    {
+                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                        "@id": "14e0a015-d014-48ff-b4c5-ee10280b6165",
+                                        "modelElement": {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                            "$ref": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+                                        },
+                                        "width": 170,
+                                        "height": 90,
+                                        "constraintPosition": "CONTAINED_POSITION",
+                                        "deltaY": 374,
+                                        "deltaX": 195
+                                    },
+                                    {
+                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                        "@id": "41d4d880-4645-4707-8156-321917f0f365",
+                                        "modelElement": {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                            "$ref": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+                                        },
+                                        "width": 170,
+                                        "height": 90,
+                                        "constraintPosition": "CONTAINED_POSITION",
+                                        "deltaY": 374,
+                                        "deltaX": 428
+                                    },
+                                    {
+                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                        "@id": "df2a2560-b947-470d-a059-9a911c59185e",
+                                        "modelElement": {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                            "$ref": "967a1131-ff29-4eb9-84db-0d920165cead"
+                                        },
+                                        "width": 170,
+                                        "height": 90,
+                                        "constraintPosition": "CONTAINED_POSITION",
+                                        "deltaY": 374,
+                                        "deltaX": 639
+                                    },
+                                    {
+                                        "eClass": "http://com.genmymodel.ecoreonline.graphic/2.0#//SimpleNode",
+                                        "@id": "a4a210fd-6972-464f-ab66-96929fadb972",
+                                        "modelElement": {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                            "$ref": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+                                        },
+                                        "width": 170,
+                                        "height": 90,
+                                        "constraintPosition": "CONTAINED_POSITION",
+                                        "deltaY": 171,
+                                        "deltaX": 428
+                                    }
+                                ]
+                            },
+                            "name": "general diagram",
+                            "width": 1200,
+                            "height": 800,
+                            "kind": "block-diagram"
+                        }
+                    ]
+                }
+            ],
+            "name": "Bike",
+            "ownedMember": [
+                {
+                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                    "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d",
+                    "name": "front",
+                    "isComposite": true,
+                    "type": [
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                            "$ref": "49f2420f-2973-4da8-8223-8867d8bb4227"
+                        }
+                    ]
+                },
+                {
+                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                    "@id": "967a1131-ff29-4eb9-84db-0d920165cead",
+                    "name": "rear",
+                    "isComposite": true,
+                    "type": [
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                            "$ref": "49f2420f-2973-4da8-8223-8867d8bb4227"
+                        }
+                    ]
+                },
+                {
+                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                    "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367",
+                    "name": "frame",
+                    "isComposite": true,
+                    "type": [
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartDefinition",
+                            "$ref": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+                        }
+                    ]
+                },
+                {
+                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                    "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f",
+                    "name": "weight",
+                    "ownedMember": [
+                        {
+                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//OperatorExpression",
+                            "@id": "8b808d51-7119-4918-9331-7e9d46e768a1",
+                            "eAnnotations": [
+                                {
+                                    "@id": "f2433db1-bdc4-411f-88d7-b4e47611e140",
+                                    "source": "ansys-sam",
+                                    "details": {
+                                        "type": "sysml2-membership"
+                                    },
+                                    "contents": [
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                            "@id": "3655676a-2704-4b60-83b7-15bb1ce0216a",
+                                            "isInitial": false,
+                                            "isDefault": false
+                                        }
+                                    ]
+                                }
+                            ],
+                            "ownedMember": [
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                    "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666",
+                                    "ownedMember": [
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//OperatorExpression",
+                                            "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848",
+                                            "eAnnotations": [
+                                                {
+                                                    "@id": "a09a9ee2-7a7b-4ee7-ae69-bcaec36f55da",
+                                                    "source": "ansys-sam",
+                                                    "details": {
+                                                        "type": "sysml2-membership"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                            "@id": "a425a28b-b4a0-4022-845e-f51b375671e7"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "ownedMember": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                    "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043",
+                                                    "ownedMember": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureChainExpression",
+                                                            "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f",
+                                                            "eAnnotations": [
+                                                                {
+                                                                    "@id": "75cf1919-55d7-44d7-9c99-d21af1605722",
+                                                                    "source": "ansys-sam",
+                                                                    "details": {
+                                                                        "type": "sysml2-membership"
+                                                                    },
+                                                                    "contents": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                            "@id": "393a74c6-4852-4194-9943-f603eda5c436"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "ownedMember": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                    "@id": "54adeb7c-6c56-420c-91e3-9742d9376225",
+                                                                    "ownedMember": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                            "@id": "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
+                                                                        },
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureReferenceExpression",
+                                                                            "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400",
+                                                                            "eAnnotations": [
+                                                                                {
+                                                                                    "@id": "464e1812-8fa0-4ab4-80bf-7db9acfab583",
+                                                                                    "source": "ansys-sam",
+                                                                                    "details": {
+                                                                                        "type": "sysml2-membership"
+                                                                                    },
+                                                                                    "contents": [
+                                                                                        {
+                                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                                            "@id": "7e7d4eb9-6b13-4afb-923d-21f7d159b863"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ],
+                                                                            "ownedMember": [
+                                                                                {
+                                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                                    "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed",
+                                                                                    "direction": "out"
+                                                                                }
+                                                                            ],
+                                                                            "member": [
+                                                                                {
+                                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                                                    "$ref": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ],
+                                                                    "direction": "in"
+                                                                },
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                    "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452",
+                                                                    "name": "result",
+                                                                    "direction": "out"
+                                                                }
+                                                            ],
+                                                            "member": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                    "$ref": "/?8728f83c-c850-4bf1-b7a9-55df66abd367/?639c512d-ad6a-4871-b92f-366c6a2f383c"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "direction": "in"
+                                                },
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                    "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698",
+                                                    "ownedMember": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureChainExpression",
+                                                            "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6",
+                                                            "eAnnotations": [
+                                                                {
+                                                                    "@id": "9d1e0a63-acff-4a78-b7e7-cc815a4f55fe",
+                                                                    "source": "ansys-sam",
+                                                                    "details": {
+                                                                        "type": "sysml2-membership"
+                                                                    },
+                                                                    "contents": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                            "@id": "4500c3f5-6d1b-4f50-bdc8-a8930192bfd2"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "ownedMember": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                    "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8",
+                                                                    "ownedMember": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                            "@id": "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
+                                                                        },
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureReferenceExpression",
+                                                                            "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa",
+                                                                            "eAnnotations": [
+                                                                                {
+                                                                                    "@id": "dc7ab9f3-ca0c-4f90-aa9d-847cb144c3f9",
+                                                                                    "source": "ansys-sam",
+                                                                                    "details": {
+                                                                                        "type": "sysml2-membership"
+                                                                                    },
+                                                                                    "contents": [
+                                                                                        {
+                                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                                            "@id": "ab0ad196-c9b4-441e-b353-ef03efd639d3"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            ],
+                                                                            "ownedMember": [
+                                                                                {
+                                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                                    "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996",
+                                                                                    "direction": "out"
+                                                                                }
+                                                                            ],
+                                                                            "member": [
+                                                                                {
+                                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                                                    "$ref": "967a1131-ff29-4eb9-84db-0d920165cead"
+                                                                                }
+                                                                            ]
+                                                                        }
+                                                                    ],
+                                                                    "direction": "in"
+                                                                },
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                    "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49",
+                                                                    "name": "result",
+                                                                    "direction": "out"
+                                                                }
+                                                            ],
+                                                            "member": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                                    "$ref": "/?967a1131-ff29-4eb9-84db-0d920165cead/?de20a74f-54a6-4eb4-afa9-a050bef62214"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "direction": "in"
+                                                },
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                    "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac",
+                                                    "name": "result",
+                                                    "direction": "out"
+                                                }
+                                            ],
+                                            "operator": "+"
+                                        }
+                                    ],
+                                    "direction": "in"
+                                },
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                    "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c",
+                                    "ownedMember": [
+                                        {
+                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureChainExpression",
+                                            "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f",
+                                            "eAnnotations": [
+                                                {
+                                                    "@id": "a1291f4a-6eb9-49ad-bd45-2b8266524eab",
+                                                    "source": "ansys-sam",
+                                                    "details": {
+                                                        "type": "sysml2-membership"
+                                                    },
+                                                    "contents": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                            "@id": "f9671b4f-a9e0-4705-b383-bc1c8f8988ea"
+                                                        }
+                                                    ]
+                                                }
+                                            ],
+                                            "ownedMember": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                    "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43",
+                                                    "ownedMember": [
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                            "@id": "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
+                                                        },
+                                                        {
+                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureReferenceExpression",
+                                                            "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb",
+                                                            "eAnnotations": [
+                                                                {
+                                                                    "@id": "a2896fa7-b6f8-429c-b3af-0626e50302ca",
+                                                                    "source": "ansys-sam",
+                                                                    "details": {
+                                                                        "type": "sysml2-membership"
+                                                                    },
+                                                                    "contents": [
+                                                                        {
+                                                                            "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//FeatureValue",
+                                                                            "@id": "1006571a-ad4b-4e08-9d62-7ed549057ef5"
+                                                                        }
+                                                                    ]
+                                                                }
+                                                            ],
+                                                            "ownedMember": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                                    "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4",
+                                                                    "direction": "out"
+                                                                }
+                                                            ],
+                                                            "member": [
+                                                                {
+                                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//PartUsage",
+                                                                    "$ref": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+                                                                }
+                                                            ]
+                                                        }
+                                                    ],
+                                                    "direction": "in"
+                                                },
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                                    "@id": "de766395-15b9-47d7-af71-fdddf5fcb802",
+                                                    "name": "result",
+                                                    "direction": "out"
+                                                }
+                                            ],
+                                            "member": [
+                                                {
+                                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//AttributeUsage",
+                                                    "$ref": "/?87a4954f-3f63-4a8f-a74d-f0defc681e2d/?de20a74f-54a6-4eb4-afa9-a050bef62214"
+                                                }
+                                            ]
+                                        }
+                                    ],
+                                    "direction": "in"
+                                },
+                                {
+                                    "eClass": "http://www.omg.org/spec/sysml/2.0/beta#//Feature",
+                                    "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0",
+                                    "name": "result",
+                                    "direction": "out"
+                                }
+                            ],
+                            "operator": "+"
+                        }
+                    ],
+                    "isComposite": true
+                }
+            ]
+        }
+    ]
+}

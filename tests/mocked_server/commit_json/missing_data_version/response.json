@@ -1,0 +1,6 @@
+{
+    "title": "bad-request",
+    "detail": "Model has not changed",
+    "instance": "random_instance",
+    "message": "Model has not changed"
+}

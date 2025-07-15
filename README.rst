@@ -1,90 +1,80 @@
-Pysam sysml2
+PySam SysML2
 ============
-|pyansys| |python| |pypi| |GH-CI| |codecov| |MIT| |black|
+|pyansys| |GH-CI| |black| |MIT|
+
+.. .. |python| |pypi| |codecov|
 
 .. |pyansys| image:: https://img.shields.io/badge/Py-Ansys-ffc107.svg?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAABDklEQVQ4jWNgoDfg5mD8vE7q/3bpVyskbW0sMRUwofHD7Dh5OBkZGBgW7/3W2tZpa2tLQEOyOzeEsfumlK2tbVpaGj4N6jIs1lpsDAwMJ278sveMY2BgCA0NFRISwqkhyQ1q/Nyd3zg4OBgYGNjZ2ePi4rB5loGBhZnhxTLJ/9ulv26Q4uVk1NXV/f///////69du4Zdg78lx//t0v+3S88rFISInD59GqIH2esIJ8G9O2/XVwhjzpw5EAam1xkkBJn/bJX+v1365hxxuCAfH9+3b9/+////48cPuNehNsS7cDEzMTAwMMzb+Q2u4dOnT2vWrMHu9ZtzxP9vl/69RVpCkBlZ3N7enoDXBwEAAA+YYitOilMVAAAAAElFTkSuQmCC
    :target: https://docs.pyansys.com/
    :alt: PyAnsys
 
-.. |python| image:: https://img.shields.io/pypi/pyversions/ansys-sam-sysml2?logo=pypi
-   :target: https://pypi.org/project/ansys-sam-sysml2/
-   :alt: Python
+.. .. |python| image:: https://img.shields.io/pypi/pyversions/ansys-sam-sysml2?logo=pypi
+..    :target: https://pypi.org/project/ansys-sam-sysml2/
+..    :alt: Python
 
-.. |pypi| image:: https://img.shields.io/pypi/v/ansys-sam-sysml2.svg?logo=python&logoColor=white
-   :target: https://pypi.org/project/ansys-sam-sysml2
-   :alt: PyPI
+.. .. |pypi| image:: https://img.shields.io/pypi/v/ansys-sam-sysml2.svg?logo=python&logoColor=white
+..    :target: https://pypi.org/project/ansys-sam-sysml2
+..    :alt: PyPI
 
-.. |codecov| image:: https://codecov.io/gh/ansys/pysam-sysml2/branch/main/graph/badge.svg
-   :target: https://codecov.io/gh/ansys/pysam-sysml2
-   :alt: Codecov
+.. .. |codecov| image:: https://codecov.io/gh/ansys/pysam-sysml2/branch/main/graph/badge.svg
+..    :target: https://codecov.io/gh/ansys/pysam-sysml2
+..    :alt: Codecov
 
-.. |GH-CI| image:: https://github.com/ansys/pysam-sysml2/actions/workflows/ci_cd.yml/badge.svg
-   :target: https://github.com/ansys/pysam-sysml2/actions/workflows/ci_cd.yml
+.. |GH-CI| image:: https://github.com/ansys-internal/pysam-sysml2/actions/workflows/ci.yml/badge.svg
+   :target: https://github.com/ansys-internal/pysam-sysml2/actions/workflows/ci.yml
    :alt: GH-CI
-
-.. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
-   :target: https://opensource.org/licenses/MIT
-   :alt: MIT
 
 .. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg?style=flat
    :target: https://github.com/psf/black
    :alt: Black
 
+.. |MIT| image:: https://img.shields.io/badge/License-MIT-yellow.svg
+   :target: https://opensource.org/licenses/MIT
+   :alt: MIT License
 
 Overview
---------
+========
 
-Python library for SysML2 model manipulation
+PySam provides a Python scripting interface for SysML2 models.
+You can load models from any SysML2 tools who provide an implementation of the standard API.
+The loaded model is mapped into Python object.
+So you can manipulate models, browse through them, edit them, and push the modification inside your modeling tool.
 
-.. contribute_start
+This library intends to work first with `SAM <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_, the SysML2 modeling tool of Ansys.
 
-Installation
-^^^^^^^^^^^^
+Prerequisites
+=============
 
-You can use `pip <https://pypi.org/project/pip/>`_ to install Pysam sysml2.
+PySam SysML2 requires `Python <https://www.python.org/downloads/>`_  with at least the 3.10 version installed.
 
-.. code:: bash
+Documentation
+=============
 
-    pip install ansys-sam-sysml2
+There are four different parts in our web documentation:
 
-To install the latest development version, run these commands:
+1. `Getting started`_.
+The Getting Started section provides all the necessary information to install the `pysam-sysml2` library.
+It also includes a quick tutorial to help you set up your PySam project, along with everything required to load and initialize a project properly.
 
-.. code:: bash
+2. `User guide`_.
+The User Guide offers step-by-step instructions on how to interact with your project and model — from loading your model to writing data into it.
+It also explains how to access and retrieve the necessary elements to effectively manipulate and navigate your project.
 
-    git clone https://github.com/ansys/pysam-sysml2
-    cd pysam-sysml2
-    pip install -e .
+3. `Documentation`_.
+The Documentation section presents a detailed overview of the key classes and methods that power the `pysam-sysml2` library.
+Each component is fully documented to help you understand its purpose.
 
-For more information, see `Getting Started`_.
+4. `Examples`_.
+The Examples section provides practical code snippets and complete scripts demonstrating how to use the library in various scenarios.
+These examples illustrate how to access, and modify your project, and serve as a reference for common use cases.
 
-Basic usage
-^^^^^^^^^^^
+License
+=======
 
-This code shows how to import Pysam sysml2 and use some basic capabilities:
+The license of the PySam SysML2 project is MIT. Read the full text of the license
+in the `MIT <https://opensource.org/licenses/MIT/>`_ file.
 
-.. code:: python
-
-    print("Put sample code here")
-
-For comprehensive usage information, see `Examples`_ in the `Pysam sysml2 documentation`_.
-
-Documentation and issues
-^^^^^^^^^^^^^^^^^^^^^^^^
-Documentation for the latest stable release of Pysam sysml2 is hosted at `Pysam sysml2 documentation`_.
-
-In the upper right corner of the documentation's title bar, there is an option for switching from
-viewing the documentation for the latest stable release to viewing the documentation for the
-development version or previously released versions.
-
-On the `Pysam sysml2 Issues <https://github.com/ansys/pysam-sysml2/issues>`_ page,
-you can create issues to report bugs and request new features. On the `Pysam sysml2 Discussions
-<https://github.com/ansys/pysam-sysml2/discussions>`_ page or the `Discussions <https://discuss.ansys.com/>`_
-page on the Ansys Developer portal, you can post questions, share ideas, and get community feedback.
-
-To reach the project support team, email `pyansys.core@ansys.com <mailto:pyansys.core@ansys.com>`_.
-
-
-.. LINKS AND REFERENCES
-.. _Getting Started: https://sam.docs.pyansys.com/version/stable/getting_started/index.html
-.. _Examples: https://sam.docs.pyansys.com/version/stable/examples.html
-.. _Pysam sysml2 documentation: https://sam.docs.pyansys.com/version/stable/index.html
+.. _getting started: ...
+.. _user guide: ...
+.. _api reference: ...
+.. _examples: ...

@@ -1,0 +1,9 @@
+{
+    "@type": "Project",
+    "defaultBranch": {
+        "@id": "defaultBranch"
+    },
+    "description": "",
+    "name": "ProjectWithAllFeatureTypes",
+    "@id": "3"
+}

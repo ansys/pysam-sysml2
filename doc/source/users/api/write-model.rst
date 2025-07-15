@@ -1,0 +1,143 @@
+Write in your model
+###################
+
+
+.. warning::
+
+    This feature is in beta version and could have some issues.
+
+
+Update feature value
+====================
+
+There are two functions to update the value of a feature:
+
+- set_value()
+- parse_and_set_value()
+
+Function ``set_value``
+----------------------
+
+This function is for all primitive types:
+
+.. code:: python
+
+    >>> myFeature.set_value(True)
+    >>> myFeature.get_value()
+    True
+    >>> myFeature.set_value(10)
+    >>> myFeature.get_value()
+    10
+    >>> myFeature.set_value("Hello")
+    >>> myFeature.get_value()
+    Hello
+    >>> myFeature.set_value(10.5)
+    >>> myFeature.get_value()
+    10.5
+
+The model is updated after all set, to keep it as accurate as possible.
+
+Function ``parse_and_set_value``
+--------------------------------
+
+This function is for more complex expressions:
+
+.. code:: python
+
+    >>> myFeature.parse_and_set_value("10 [m]")
+    >>> myFeature.get_value()
+    (10,"m")
+    >>> myFeature.parse_and_set_value("2 + 10 [kg]")
+    >>> myFeature.get_value()
+    Exception UnsupportedValueExpression raised
+
+Create new elements
+===================
+
+You can create new elements in your model using the ``Factory`` class.
+
+.. tip::
+
+    A complete example is available :ref:`here <Creating_Example>`.
+
+.. literalinclude:: ../../_static/code/creating-elements.py
+    :lines: 25
+    :language: python
+    :caption: Create a Factory instance
+
+Then, use the ``create_element()`` method to create a new model element.
+You must provide the type of the element, as well as any number of keyword arguments representing its attributes:
+
+.. code:: python
+
+    new_attribute_usage = factory.create_element(
+        element_type="AttributeUsage",
+        name="new_attribute_usage",
+    )
+
+This creates a new ``AttributeUsage`` element at the root of your project.
+The ``create_element()`` method returns the newly created element.
+
+.. literalinclude:: ../../_static/code/creating-elements.py
+    :lines: 27-29
+    :language: python
+    :caption: Create a new AttributeUsage element with owner
+
+This creates a new ``AttributeUsage`` element with the given attributes inside the ``Bike`` frame.
+
+.. note::
+
+    The list of accepted attributes depends on the type of element you are creating.
+    For example ``name``, ``owner``, ``shortName``, and others defined by the ``metamodel``.
+
+    You can also assign a value directly when creating the element. There are two ways:
+
+    - Use ``value=...`` for simple values (e.g., numbers).
+    - Use ``expression="..."`` for values with units or expressions.
+
+    .. code:: python
+
+        new_bicycle_frame_length_with_value = factory.create_element(
+            element_type="AttributeUsage",
+            name="lengthWithValue",
+            owner=bike.frame,
+            value=60
+        )
+
+        new_bicycle_frame_length_with_expression = factory.create_element(
+            element_type="AttributeUsage",
+            name="lengthWithExpression",
+            owner=bike.frame,
+            expression="60 [cm]"
+        )
+
+    This lets you set values directly at creation time, depending on your data format.
+
+Direct attribute modification
+-----------------------------
+
+You can also make modifications directly to attributes using a simple assignment. This is particularly useful for changing properties like names.
+
+.. code:: python
+
+    >>> my_attribute = factory.create_element(element_type="Attribute", name="OriginalName")
+    >>> my_attribute._name = "New Name"
+    New Name
+
+This allows for quick and direct updates to element properties.
+
+.. only:: html
+
+    .. grid:: 2
+
+        .. grid-item-card:: :fa:`arrow-left` Previous step
+            :link: read-model
+            :link-type: doc
+
+            Read a model
+
+        .. grid-item-card:: Next step :fa:`arrow-right`
+            :link: diagram-model
+            :link-type: doc
+
+            How to get use diagrams

@@ -1,0 +1,26 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "explorer.excludeGitIgnore": false,
+    "autoDocstring.docstringFormat": "numpy",
+    "autoDocstring.includeName": true,
+    "autoDocstring.generateDocstringOnEnter": true,
+    "autoDocstring.startOnNewLine": true,
+    "python.analysis.typeCheckingMode": "off",
+    "python.analysis.autoImportCompletions": true,
+    "python.testing.pytestArgs": [
+        "tests",
+        "--cov=ansys"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+}
+// This settings.json is the base config VScode for PySam developers

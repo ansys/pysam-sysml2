@@ -1,0 +1,118 @@
+[
+    {
+        "links": [
+            {
+                "rel": "diagrams",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams"
+            },
+            {
+                "rel": "self",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/85f84746-3bbc-4b65-8b9c-503d736655eb"
+            },
+            {
+                "rel": "svg",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/85f84746-3bbc-4b65-8b9c-503d736655eb/svg"
+            },
+            {
+                "rel": "jpeg",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/85f84746-3bbc-4b65-8b9c-503d736655eb/jpeg"
+            },
+            {
+                "rel": "png",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/85f84746-3bbc-4b65-8b9c-503d736655eb/png"
+            }
+        ],
+        "projectId": "dd2e4b9b-a290-4511-a892-aafd0ede597a",
+        "diagramId": "85f84746-3bbc-4b65-8b9c-503d736655eb",
+        "name": "Bike",
+        "kind": "SimpleDiagram",
+        "numberOfElements": 22
+    },
+    {
+        "links": [
+            {
+                "rel": "diagrams",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams"
+            },
+            {
+                "rel": "self",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/693680ed-5642-433d-858a-bfc72ba17b98"
+            },
+            {
+                "rel": "svg",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/693680ed-5642-433d-858a-bfc72ba17b98/svg"
+            },
+            {
+                "rel": "jpeg",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/693680ed-5642-433d-858a-bfc72ba17b98/jpeg"
+            },
+            {
+                "rel": "png",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/693680ed-5642-433d-858a-bfc72ba17b98/png"
+            }
+        ],
+        "projectId": "dd2e4b9b-a290-4511-a892-aafd0ede597a",
+        "diagramId": "693680ed-5642-433d-858a-bfc72ba17b98",
+        "name": "myBikeInheritance",
+        "kind": "SimpleDiagram",
+        "numberOfElements": 3
+    },
+    {
+        "links": [
+            {
+                "rel": "diagrams",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams"
+            },
+            {
+                "rel": "self",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/be26b39a-7c90-4fb4-9934-3d4efe16b707"
+            },
+            {
+                "rel": "svg",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/be26b39a-7c90-4fb4-9934-3d4efe16b707/svg"
+            },
+            {
+                "rel": "jpeg",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/be26b39a-7c90-4fb4-9934-3d4efe16b707/jpeg"
+            },
+            {
+                "rel": "png",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/be26b39a-7c90-4fb4-9934-3d4efe16b707/png"
+            }
+        ],
+        "projectId": "dd2e4b9b-a290-4511-a892-aafd0ede597a",
+        "diagramId": "be26b39a-7c90-4fb4-9934-3d4efe16b707",
+        "name": "myBikeRedef",
+        "kind": "SimpleDiagram",
+        "numberOfElements": 5
+    },
+    {
+        "links": [
+            {
+                "rel": "diagrams",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams"
+            },
+            {
+                "rel": "self",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/d71cff92-115c-4735-8a7c-409929e2db0a"
+            },
+            {
+                "rel": "svg",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/d71cff92-115c-4735-8a7c-409929e2db0a/svg"
+            },
+            {
+                "rel": "jpeg",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/d71cff92-115c-4735-8a7c-409929e2db0a/jpeg"
+            },
+            {
+                "rel": "png",
+                "href": "https://127.0.0.1:8443/api/projects/dd2e4b9b-a290-4511-a892-aafd0ede597a/diagrams/d71cff92-115c-4735-8a7c-409929e2db0a/png"
+            }
+        ],
+        "projectId": "dd2e4b9b-a290-4511-a892-aafd0ede597a",
+        "diagramId": "d71cff92-115c-4735-8a7c-409929e2db0a",
+        "name": "Redef & inheritance",
+        "kind": "SimpleDiagram",
+        "numberOfElements": 12
+    }
+]

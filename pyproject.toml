@@ -1,0 +1,201 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+# Check https://flit.readthedocs.io/en/latest/pyproject_toml.html for all available sections
+name = "ansys-sam-sysml2"
+dynamic = ["version"]
+description = "Python library for sysml2 model manipulation"
+readme = "README.rst"
+requires-python = ">=3.10,<4.0"
+license = { file = "LICENSE" }
+authors = [{ name = "ANSYS, Inc.", email = "pyansys.core@ansys.com" }]
+maintainers = [{ name = "ANSYS, Inc.", email = "pyansys.core@ansys.com" }]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Topic :: Software Development :: Libraries",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+
+dependencies = [
+    # Indirect dependencies,
+    # Direct dependencies,
+    "certifi==2025.4.26",
+    "charset-normalizer==3.4.2",
+    "click==8.2.1",
+    "colorama==0.4.6",
+    "Flask==3.1.1",
+    "idna==3.10",
+    "itsdangerous==2.2.0",
+    "Jinja2==3.1.6",
+    "MarkupSafe==3.0.2",
+    "requests==2.32.4",
+    "urllib3==2.4.0",
+    "Werkzeug==3.1.3",
+]
+
+[project.optional-dependencies]
+tests = ["pytest>=7.1.0", "pytest-cov>=3.0.0"]
+doc = [
+    "ansys-sphinx-theme==1.2.4",
+    "sphinx-design==0.6.1",
+    "numpydoc==1.8.0",
+    "sphinx==8.1.3",
+    "sphinx-copybutton==0.5.2",
+]
+checks = ["codespell==2.2.6", "ruff==0.8.2", "vale==3.9.1", "pre-commit==4.0.1"]
+
+[project.urls]
+Source = "https://github.com/ansys/pysam-sysml2"
+Tracker = "https://github.com/ansys/pysam-sysml2/issues"
+Homepage = "https://github.com/ansys/pysam-sysml2"
+# Documentation = "https://sam.docs.pyansys.com"
+
+[tool.flit.module]
+name = "ansys.sam.sysml2"
+
+[tool.codespell]
+skip = './tests'
+ignore-words = "./doc/styles/config/vocabularies/ANSYS/accept.txt"
+quiet-level = 3
+
+[tool.coverage.run]
+source = ["ansys.sam"]
+
+[tool.coverage.report]
+show_missing = true
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+log_file = "logs/pytest-logs.txt"
+
+[tool.ruff]
+line-length = 100
+fix = true
+exclude = ["tests"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle, see https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+    "D",   # pydocstyle, see https://docs.astral.sh/ruff/rules/#pydocstyle-d
+    "F",   # pyflakes, see https://docs.astral.sh/ruff/rules/#pyflakes-f
+    "I",   # isort, see https://docs.astral.sh/ruff/rules/#isort-i
+    "N",   # pep8-naming, see https://docs.astral.sh/ruff/rules/#pep8-naming-n
+    "PTH", # flake8-use-pathlib, https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
+    "TD",  # flake8-todos, https://docs.astral.sh/ruff/rules/#flake8-todos-td
+]
+ignore = ["F402", "F403", "N818"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.numpydoc_validation]
+checks = [
+    #"all",   # report on all checks, except the below
+    #"GL01", # "Docstring text (summary) should start in the line immediately "
+    # "after the opening quotes (not in the same line, or leaving a "
+    # "blank line in between)",
+    # "GL02", # "Closing quotes should be placed in the line after the last text "
+    # "in the docstring (do not close the quotes in the same line as "
+    # "the text, or leave a blank line between the last text and the "
+    # "quotes)",
+    # "GL03", # "Double line break found; please use only one blank line to "
+    # "separate sections or paragraphs, and do not leave blank lines "
+    # "at the end of docstrings",
+    "GL05", # 'Tabs found at the start of line "{line_with_tabs}", please use '
+    # "whitespace only",
+    "GL06", # 'Found unknown section "{section}". Allowed sections are: '
+    # "{allowed_sections}",
+    "GL07", # "Sections are in the wrong order. Correct order is: {correct_sections}",
+    "GL08", # "The object does not have a docstring",
+    "GL09", # "Deprecation warning should precede extended summary",
+    "GL10", # "reST directives {directives} must be followed by two colons",
+    "SS01", # "No summary found (a short summary in a single line should be "
+    # "present at the beginning of the docstring)",
+    "SS02", # "Summary does not start with a capital letter",
+    "SS03", # "Summary does not end with a period",
+    "SS04", # "Summary contains heading whitespaces",
+    "SS05", # FIXME "Summary must start with infinitive verb, not third person "
+    # '(e.g. use "Generate" instead of "Generates")',
+    "SS06", # "Summary should fit in a single line",
+    # "ES01", # "No extended summary found",
+    # "PR01", # FIXME "Parameters {missing_params} not documented",
+    # "PR02", # "Unknown parameters {unknown_params}",
+    "PR03", # "Wrong parameters order. Actual: {actual_params}. "
+    # "Documented: {documented_params}",
+    # "PR04", # 'Parameter "{param_name}" has no type',
+    "PR05", # 'Parameter "{param_name}" type should not finish with "."',
+    "PR06", # 'Parameter "{param_name}" type should use "{right_type}" instead '
+    # 'of "{wrong_type}"',
+    # "PR07", # FIXME 'Parameter "{param_name}" has no description',
+    # "PR08", # FIXME 'Parameter "{param_name}" description should start with a '
+    # "capital letter",
+    # "PR09", # 'Parameter "{param_name}" description should finish with "."',
+    # "PR10", # 'Parameter "{param_name}" requires a space before the colon '
+    # "separating the parameter name and type",
+    # "RT01", # "No Returns section found",
+    "RT02", # "The first line of the Returns section should contain only the "
+    # "type, unless multiple values are being returned",
+    "RT03", # "Return value has no description",
+    "RT04", # "Return value description should start with a capital letter",
+    # "RT05", # 'Return value description should finish with "."',
+    "YD01", # "No Yields section found",
+    # "SA01", # "See Also section not found",
+    "SA02", # "Missing period at end of description for See Also "
+    # '"{reference_name}" reference',
+    "SA03", # "Description should be capitalized for See Also "
+    # '"{reference_name}" reference',
+    "SA04", # 'Missing description for See Also "{reference_name}" reference',
+    # "EX01", # "No examples section found",
+]
+exclude = ['\.__repr__$', '\.__str__$', '\.__init__$']
+
+[tool.towncrier]
+package = "ansys.sam.sysml2"
+directory = "doc/changelog.d"
+filename = "doc/source/changelog.rst"
+start_string = ".. towncrier release notes start\n"
+template = "doc/changelog.d/changelog_template.jinja"
+title_format = "`{version} <https://github.com/ansys/ansys-sam-sysml2/releases/tag/v{version}>`_ - {project_date}"
+issue_format = "`#{issue} <https://github.com/ansys/ansys-sam-sysml2/pull/{issue}>`_"
+
+[[tool.towncrier.type]]
+directory = "added"
+name = "Added"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "changed"
+name = "Changed"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "fixed"
+name = "Fixed"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "dependencies"
+name = "Dependencies"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "miscellaneous"
+name = "Miscellaneous"
+showcontent = true
