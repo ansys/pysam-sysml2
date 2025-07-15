@@ -30,11 +30,11 @@ Documentation
 
             Utility to download diagrams
 
-        .. grid-item-card:: 🧊 Diagram Element
-            :link: diagram-element
+        .. grid-item-card:: 📦 Ansys SysML2 Project
+            :link: ansys-sysml2-project
             :link-type: doc
 
-            Representing diagram components
+            Complete Ansys SysML2 project implementation
 
         .. grid-item-card:: ⚙️ Factory
             :link: factory
@@ -62,15 +62,15 @@ Documentation
 
 
 .. toctree::
-   :hidden:
-   :maxdepth: 3
+    :hidden:
+    :maxdepth: 3
 
-   connector
-   diagram-downloader
-   diagram-element
-   diagram-manager
-   factory
-   loader
-   project
-   sysmlelement
-   sysmltools
+    connector
+    diagram-downloader
+    ansys-sysml2-project
+    diagram-manager
+    factory
+    loader
+    project
+    sysmlelement
+    sysmltools

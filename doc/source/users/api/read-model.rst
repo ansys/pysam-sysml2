@@ -18,9 +18,6 @@ Dot access
 Using the dot access, you can access all direct named element of your SysML element.
 Also, you can access to some useful top level function, like `get_value` for example.
 
-
-
-
 Sub elements
 ~~~~~~~~~~~~
 
@@ -30,6 +27,14 @@ The script attaches all elements contained in ``ownedElement`` and ``_inheritedF
 
     >>> myPart.subPart
     <class ParUsage>
+
+.. warning::
+
+    **Limitations of dot access for sub-elements:**
+
+    - **Duplicate names**: If multiple elements have the same name, only one is accessible through dot access. You cannot differentiate between elements with identical names using this method.
+
+    - **Names with spaces**: Elements with spaces in their names (for example, "bike frame") cannot be accessed using dot notation. Python identifiers cannot contain spaces.
 
 Function ``get_value``
 ~~~~~~~~~~~~~~~~~~~~~~

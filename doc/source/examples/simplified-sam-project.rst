@@ -3,7 +3,7 @@
 Simplified SAM project initialization
 #####################################
 
-This example demonstrates how to use the simplified ``AnsysSysML2Project`` class to work with a SysML v2 project on SAM. This approach reduces boilerplate code by automatically initializing all necessary connectors. It covers:
+This example demonstrates how to use the simplified :ref:`AnsysSysML2Project<A_S_P_Section>` class to work with a SysML v2 project on SAM. This approach reduces boilerplate code by automatically initializing all necessary connectors. It covers:
 
 - Simplified project initialization with a single class.
 - Downloading diagrams (single and batch).

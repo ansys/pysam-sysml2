@@ -11,7 +11,7 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
 
 .. only:: html
 
-    .. grid:: 3
+    .. grid:: 4
 
         .. grid-item-card:: Getting started :fa:`play-circle`
             :link: getting-started/index
@@ -30,6 +30,12 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
             :link-type: doc
 
             Full documentation for Users and Developers.
+
+        .. grid-item-card:: Examples :fa:`code`
+            :link: examples/index
+            :link-type: doc
+
+            Practical examples and code snippets to help you learn PySam through hands-on tutorials.
 
 
 

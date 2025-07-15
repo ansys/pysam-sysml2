@@ -10,7 +10,7 @@ Write in your model
 Update feature value
 ====================
 
-There is two functions to update the value of a feature:
+There are two functions to update the value of a feature:
 
 - set_value()
 - parse_and_set_value()
@@ -18,7 +18,7 @@ There is two functions to update the value of a feature:
 Function ``set_value``
 ----------------------
 
-This function is for all primitive type :
+This function is for all primitive types:
 
 .. code:: python
 
@@ -35,12 +35,12 @@ This function is for all primitive type :
     >>> myFeature.get_value()
     10.5
 
-The model is updated after all set, to keep it the most accurate as possible.
+The model is updated after all set, to keep it as accurate as possible.
 
 Function ``parse_and_set_value``
 --------------------------------
 
-This function is for more complex expression :
+This function is for more complex expressions:
 
 .. code:: python
 
@@ -113,11 +113,24 @@ This creates a new ``AttributeUsage`` element with the given attributes inside t
 
     This lets you set values directly at creation time, depending on your data format.
 
+Direct attribute modification
+-----------------------------
+
+You can also make modifications directly to attributes using a simple assignment. This is particularly useful for changing properties like names.
+
+.. code:: python
+
+    >>> my_attribute = factory.create_element(element_type="Attribute", name="OriginalName")
+    >>> my_attribute._name = "New Name"
+    New Name
+
+This allows for quick and direct updates to element properties.
+
 .. only:: html
 
     .. grid:: 2
 
-        .. grid-item-card::  :fa:`arrow-left` Previous step
+        .. grid-item-card:: :fa:`arrow-left` Previous step
             :link: read-model
             :link-type: doc
 

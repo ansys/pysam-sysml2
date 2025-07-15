@@ -253,7 +253,9 @@ def load_project_diagrams_info(id: str, diagram_id: str = "") -> dict:
         Project data
     """
     if diagram_id:
-        path = get_project_path(os.path.join(f"project_{id}", f"{diagram_id}_diagram_info.json"))
+        path = get_project_path(
+            os.path.join(f"project_{id}", f"{diagram_id}_diagram_info.json")
+        )
     else:
         path = get_project_path(os.path.join(f"project_{id}", "diagrams.json"))
     try:
@@ -286,6 +288,7 @@ def write_project(id: str, data: dict) -> None:
     try:
         with open(path, "w") as file:
             file.write(dumps(data, indent=4))
+            file.flush()
     except Exception as e:
         create_http_error(
             code=500,
@@ -548,7 +551,9 @@ def route_create_commit(project_id: str) -> dict:
     if identity is not None:
         try:
             element_changed = [
-                element for element in project_data if element.get("@id") == identity.get("@id")
+                element
+                for element in project_data
+                if element.get("@id") == identity.get("@id")
             ][0]
         except IndexError:
             pass
@@ -564,7 +569,9 @@ def route_create_commit(project_id: str) -> dict:
 
 def _save_updated_element(project_id, updated_element):
     project_data = load_project(project_id)
-    index = project_data.index([x for x in project_data if x["@id"] == updated_element["@id"]][0])
+    index = project_data.index(
+        [x for x in project_data if x["@id"] == updated_element["@id"]][0]
+    )
     project_data.pop(index) and project_data.insert(index, updated_element)
     write_project(project_id, project_data)
 
@@ -614,7 +621,9 @@ def _create_new_element(project_id, project_data, payload):
 def _find_owner(project_data, owner_id):
     try:
         return [
-            el for el in project_data if el.get("@id") is not None and el.get("@id") == owner_id
+            el
+            for el in project_data
+            if el.get("@id") is not None and el.get("@id") == owner_id
         ][0]
     except IndexError:
         create_http_error(code=400, message="Invalid Owner Id")
@@ -743,14 +752,18 @@ def get_diagram_by_id(project_id, diagram_id, file_format):
         return Response(
             dumps(data).encode("utf-8"),
             mimetype=f"image/{file_format}",
-            headers={"Content-Disposition": f'attachment; filename="diagrams.{file_format}"'},
+            headers={
+                "Content-Disposition": f'attachment; filename="diagrams.{file_format}"'
+            },
         )
     else:
         abort(404, description="File format not supported")
 
 
 def all_diagram_as_zip(project_id, file_format):
-    path = get_project_path(os.path.join(f"project_{project_id}", "number_of_diagrams.txt"))
+    path = get_project_path(
+        os.path.join(f"project_{project_id}", "number_of_diagrams.txt")
+    )
     with open(path) as f:
         nb = int(f.read())
 
@@ -819,7 +832,10 @@ def _apply_join(constraint: dict, result: list) -> list:
         final_res = []
 
         for element in result:
-            if id_counter[element["@id"]] == required_count and element["@id"] not in seen_ids:
+            if (
+                id_counter[element["@id"]] == required_count
+                and element["@id"] not in seen_ids
+            ):
                 final_res.append(element)
                 seen_ids.add(element["@id"])
 

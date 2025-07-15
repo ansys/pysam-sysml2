@@ -1,6 +1,11 @@
 Working with diagrams
 #####################
 
+.. warning::
+
+    The functionalities described in this section (loading, downloading, and navigating diagrams) are **only available for projects of type SAM**.
+
+
 This section describes how to **load**, **download**, and **navigate** diagrams from your SysML v2 project using the SAM REST API.
 
 Load diagrams
