@@ -20,8 +20,8 @@ PySam SysML2
 ..    :target: https://codecov.io/gh/ansys/pysam-sysml2
 ..    :alt: Codecov
 
-.. |GH-CI| image:: https://github.com/ansys-internal/pysam-sysml2/actions/workflows/deploy.yml/badge.svg
-   :target: https://github.com/ansys-internal/pysam-sysml2/actions/workflows/deploy.yml
+.. |GH-CI| image:: https://github.com/ansys-internal/pysam-sysml2/actions/workflows/ci.yml/badge.svg
+   :target: https://github.com/ansys-internal/pysam-sysml2/actions/workflows/ci.yml
    :alt: GH-CI
 
 .. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg?style=flat

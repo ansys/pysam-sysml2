@@ -1,4 +1,4 @@
-Documentation
+API reference
 #############
 
 .. only:: html
