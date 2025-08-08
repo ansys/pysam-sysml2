@@ -27,7 +27,7 @@ classifiers = [
 dependencies = [
     # Indirect dependencies,
     # Direct dependencies,
-    "certifi==2025.4.26",
+    "certifi==2025.7.14",
     "charset-normalizer==3.4.2",
     "click==8.2.1",
     "colorama==0.4.6",
@@ -37,13 +37,13 @@ dependencies = [
     "Jinja2==3.1.6",
     "MarkupSafe==3.0.2",
     "requests==2.32.4",
-    "urllib3==2.4.0",
+    "urllib3==2.5.0",
     "Werkzeug==3.1.3",
 ]
 
 [project.optional-dependencies]
 doc = [
-    "ansys-sphinx-theme==1.2.4",
+    "ansys-sphinx-theme==1.5.3",
     "sphinx-design==0.6.1",
     "numpydoc==1.8.0",
     "sphinx==8.1.3",
@@ -58,7 +58,7 @@ tests=[
     "sphinx-copybutton==0.5.2",
     "sphinx-design==0.6.1",
     "urllib3==2.4.0",
-    "vale==3.9.1",
+    "vale==3.12.0.0",
     "Werkzeug==3.1.3",
 ]
 checks = [
@@ -72,7 +72,7 @@ checks = [
     "numpydoc==1.8.0",
     "ruff==0.8.2",
     "vale==3.9.1",
-    "pre-commit==4.0.1",
+    "pre-commit==4.2.0",
 ]
 
 [project.urls]
