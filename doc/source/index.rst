@@ -1,32 +1,32 @@
 PySam
-#########
+#####
 
 
-PySam provides a Python scripting interface for SysML2 models.
-You can load models from any SysML2 tools who provide an implementation of the standard API.
-The loaded model is mapped into Python object.
-So you can manipulate models, browse through them, edit them, and push the modification inside your modeling tool.
+PySam offers a Python scripting interface for working with SysML2 models.
+It enables loading models from any SysML2 tool that implements the standard API.
+Models are mapped to Python objects, allowing you to browse, edit, and synchronize changes directly
+with your modeling tool.
 
-This library intends to work first with `SAM <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_, the SysML2 modeling tool of Ansys.
+This library intends to work first with `SAM <sam_presentation>`_, the SysML2 modeling tool of Ansys.
 
 .. only:: html
 
     .. grid:: 4
 
         .. grid-item-card:: Getting started :fa:`play-circle`
-            :link: getting-started/index
+            :link: getting_started/index
             :link-type: doc
 
             Get started with PySam! This section contains installation instructions and some simple examples.
 
         .. grid-item-card:: User Guide :fa:`compass`
-            :link: users/index
+            :link: user_guide/index
             :link-type: doc
 
             Comprehensive guide with examples, and best practices for using PySam effectively.
 
         .. grid-item-card:: API reference :fa:`file-lines`
-            :link: api-reference/index
+            :link: api/index
             :link-type: doc
 
             Full documentation for API references.
@@ -43,8 +43,8 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
    :hidden:
    :maxdepth: 1
 
-   getting-started/index
-   users/index
-   api-reference/index
+   getting_started/index
+   user_guide/index
+   api/index
    examples/index
-   changelog
+   changelog.rst
