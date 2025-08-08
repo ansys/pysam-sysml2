@@ -1,7 +1,7 @@
 """Sphinx documentation configuration file."""
-import os
 
 from datetime import datetime
+import os
 
 from ansys_sphinx_theme import (
     ansys_favicon,
