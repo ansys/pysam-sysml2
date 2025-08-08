@@ -25,11 +25,11 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
 
             Comprehensive guide with examples, and best practices for using PySam effectively.
 
-        .. grid-item-card:: Documentation :fa:`file-lines`
-            :link: documentation/index
+        .. grid-item-card:: API reference :fa:`file-lines`
+            :link: api-reference/index
             :link-type: doc
 
-            Full documentation for Users and Developers.
+            Full documentation for API references.
 
         .. grid-item-card:: Examples :fa:`code`
             :link: examples/index
@@ -45,6 +45,6 @@ This library intends to work first with `SAM <https://www.ansys.com/products/con
 
    getting-started/index
    users/index
-   documentation/index
+   api-reference/index
    examples/index
    changelog
