@@ -73,7 +73,7 @@ jobs:
       - name: "Build a wheelhouse of the Python library"
         uses: ansys/actions/build-wheelhouse@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
         with:
-          library-name: "<ansys-product-library>"
+          library-name: ${{ env.LIBRARY_NAME }}
           operating-system: ${{ matrix.os }}
           python-version: ${{ matrix.python-version }}
 
