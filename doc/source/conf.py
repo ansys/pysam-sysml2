@@ -1,4 +1,5 @@
 """Sphinx documentation configuration file."""
+import os
 
 from datetime import datetime
 
@@ -18,7 +19,7 @@ from ansys.sam.sysml2 import __version__
 project = "ansys-sam-sysml2"
 release = version = __version__
 switcher_version = get_version_match(__version__)
-cname = "https://sam.docs.pyansys.com"
+cname = os.getenv("DOCUMENTATION_CNAME", "sam.docs.pyansys.com")
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
 
@@ -28,7 +29,7 @@ html_short_title = html_title = "pysam-sysml2"
 
 html_theme = "ansys_sphinx_theme"
 html_theme_options = {
-    "github_url": "https://github.com/ansys/pysam-sysml2",
+    "github_url": "https://github.com/ansys-internal/pysam-sysml2",
     "show_prev_next": False,
     "show_breadcrumbs": True,
     "additional_breadcrumbs": [
