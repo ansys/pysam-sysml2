@@ -1,6 +1,6 @@
 
 # Documentation dependencies
-ansys-sphinx-theme==1.2.4
+ansys-sphinx-theme==1.5.3
 # Core dependencies
 certifi==2025.7.14
 charset-normalizer==3.4.2
