@@ -146,6 +146,7 @@ linkcheck_ignore = [
     "https://github.com/ansys-internal/pysam-sysml2/*",
     "https://sam.docs.pyansys.com/version/stable/*",
     "https://pypi.org/project/ansys-sam-sysml2",
+    "https://www.ansys.com/*",  # to be removed -- user_agent is supposed to handle this
 ]
 
 # User agent
