@@ -139,8 +139,9 @@ linkcheck_ignore = [
     "https://github.com/ansys-internal/pysam-sysml2/*",
     "https://sam.docs.pyansys.com/version/stable/*",
     "https://pypi.org/project/ansys-sam-sysml2",
-    r"https://www\.ansys\.com/.*",
 ]
+# User agent
+user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.2420.81"  # noqa: E501
 
 # If we are on a release, we have to ignore the "release" URLs, since it is not
 # available until the release is published.
