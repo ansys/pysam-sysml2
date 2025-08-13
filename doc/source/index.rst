@@ -7,7 +7,7 @@ It enables loading models from any SysML2 tool that implements the standard API.
 Models are mapped to Python objects, allowing you to browse, edit, and synchronize changes directly
 with your modeling tool.
 
-This library intends to work first with `SAM <sam_presentation>`_, the SysML2 modeling tool of Ansys.
+This library intends to work first with `SAM <sam_presentation_>`_, the SysML2 modeling tool of Ansys.
 
 .. only:: html
 
