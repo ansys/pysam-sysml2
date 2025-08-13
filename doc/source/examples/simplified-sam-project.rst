@@ -3,7 +3,10 @@
 Simplified SAM project initialization
 #####################################
 
-This example demonstrates how to use the simplified :ref:`AnsysSysML2Project<A_S_P_Section>` class to work with a SysML v2 project on SAM. This approach reduces boilerplate code by automatically initializing all necessary connectors. It covers:
+This example demonstrates how to use the simplified
+:class:`ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project` class to work with a SysML
+v2 project on SAM. This approach reduces boilerplate code by automatically initializing all
+necessary connectors. It covers:
 
 - Simplified project initialization with a single class.
 - Downloading diagrams (single and batch).
@@ -13,7 +16,9 @@ This example demonstrates how to use the simplified :ref:`AnsysSysML2Project<A_S
 
 .. note::
 
-    The ``AnsysSysML2Project`` class is specifically designed for SAM projects and automatically handles the initialization of ``AnsysSysML2APIConnector``, ``SamRestApiConnector``, ``SysML2ProjectManager``, and ``SAMDiagramManager``.
+    The ``AnsysSysML2Project`` class is specifically designed for SAM projects and automatically
+    handles the initialization of ``AnsysSysML2APIConnector``, ``SamRestApiConnector``,
+    ``SysML2ProjectManager``, and ``SAMDiagramManager``.
 
 Prerequisites for simplified SAM
 ================================
@@ -35,15 +40,19 @@ Simplified python example
 Key advantages
 ==============
 
-Compared to the traditional approach (:ref:`download_diagrams<Download_Example>`), this simplified method offers:
+Compared to the traditional approach (:ref:`download_diagrams<Download_Example>`), this simplified
+method offers:
 
 - **Single initialization**: One class handles all connectors automatically.
 - **Built-in diagram management**: No need to manually create and manage ``SAMDiagramManager``.
-- **Streamlined API**: Direct access to project operations without managing multiple connector instances.
-- **Integrated feature**: Combines project management, diagram operations, and element creation in one interface.
+- **Streamlined API**: Direct access to project operations without managing multiple connector
+  instances.
+- **Integrated feature**: Combines project management, diagram operations, and element creation in
+  one interface.
 
 .. note::
 
     - Replace placeholder values with your actual SAM configuration.
-    - The ``AnsysSysML2Project`` class automatically manages diagram loading and connector lifecycle.
+    - The ``AnsysSysML2Project`` class automatically manages diagram loading and connector
+      lifecycle.
     - All diagram formats (``png``, ``svg``, ``jpeg``) are supported for downloads.

@@ -41,6 +41,21 @@ html_theme_options = {
     },
     "check_switcher": False,
     "logo": "pyansys",
+        "icon_links": [
+        {
+            "name": "Support",
+            "url": "https://github.com/ansys/pyansys-geometry/discussions",
+            "icon": "fa fa-comment fa-fw",
+        },
+    ],
+    "ansys_sphinx_theme_autoapi": {
+        "project": project,
+    },
+    "static_search": {
+        "threshold": 0.5,
+        "minMatchCharLength": 2,
+        "ignoreLocation": True,
+    },
 }
 
 
@@ -74,11 +89,11 @@ latex_elements = {
 
 # Sphinx extensions
 extensions = [
+    "ansys_sphinx_theme.extension.autoapi",
     "numpydoc",
     "sphinx_copybutton",
     "sphinx_design",
     "sphinx.ext.autodoc",
-    "sphinx.ext.autosummary",
     "sphinx.ext.autosectionlabel",
     "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
@@ -134,6 +149,15 @@ source_suffix = ".rst"
 
 # The master toctree document.
 master_doc = "index"
+
+# Configuration for Sphinx autoapi
+suppress_warnings = [
+    "autoapi.python_import_resolution",
+    "design.grid",
+    "config.cache",
+    "design.fa-build",
+    "toc.not_included",  # Caused by the autoapi extension and the "_grpc" folder
+]
 
 # make rst_epilog a variable, so you can add other epilog parts to it
 rst_epilog = ""

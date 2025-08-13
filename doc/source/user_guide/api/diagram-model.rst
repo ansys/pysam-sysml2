@@ -3,15 +3,19 @@ Working with diagrams
 
 .. warning::
 
-    The functionalities described in this section (loading, downloading, and navigating diagrams) are **only available for projects of type SAM**.
+    The functionalities described in this section (loading, downloading, and navigating diagrams)
+    are **only available for projects of type SAM**.
 
 
-This section describes how to **load**, **download**, and **navigate** diagrams from your SysML v2 project using the SAM REST API.
+This section describes how to **load**, **download**, and **navigate** diagrams from your SysML v2
+project using the SAM REST API.
 
 Load diagrams
 =============
 
-Before interacting with diagrams, they must be loaded using the :ref:`SAMDiagramManager <D_M_Section>` context manager which needs a :ref:`SamRestApiConnector <C_I_Section>`.
+Before interacting with diagrams, they must be loaded using the
+:class:`ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader` context
+manager which needs a :mod:`ansys.sam.sysml2.api` connector.
 
 Basic usage
 -----------
@@ -37,9 +41,12 @@ This ensures proper setup and cleanup of resources when working with diagrams.
 Download diagrams
 =================
 
-Diagrams must be loaded inside a :ref:`SAMDiagramManager <D_M_Section>` context before they can be downloaded.
+Diagrams must be loaded inside a
+:class:`ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager` context before they can be
+downloaded.
 
-Also, instantiate a :ref:`SamDiagramDownloader <D_U_Section>`:
+Also, instantiate a
+:class:`ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader` object:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
     :lines: 40
@@ -130,7 +137,8 @@ To print out names of diagrams from a section of the model:
 
 .. note::
 
-    Navigating through ``_plane`` and ``_model_element`` and ``_owned_diagram_elements`` allows you to discover the logical elements the diagram is tied to.
+    Navigating through ``_plane`` and ``_model_element`` and ``_owned_diagram_elements`` allows you
+   to discover the logical elements the diagram is tied to.
 
 
 .. only:: html

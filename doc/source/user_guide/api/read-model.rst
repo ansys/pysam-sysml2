@@ -3,7 +3,7 @@ Read your model
 
 One of the goal of the lib is to be able to read and parse the model through a Python script.
 
-The loaded model is stored in a :ref:`Project <L_Project>`.
+The loaded model is stored in a :class:`ansys.sam.sysml2.classes.project.Project` object.
 
 .. _Getter:
 
@@ -21,7 +21,8 @@ Also, you can access to some useful top level function, like `get_value` for exa
 Sub elements
 ~~~~~~~~~~~~
 
-The script attaches all elements contained in ``ownedElement`` and ``_inheritedFeature``, who has a name, to the container element.
+The script attaches all elements contained in ``ownedElement`` and ``_inheritedFeature``, who has a
+name, to the container element.
 
 .. code:: python
 
@@ -32,9 +33,11 @@ The script attaches all elements contained in ``ownedElement`` and ``_inheritedF
 
     **Limitations of dot access for sub-elements:**
 
-    - **Duplicate names**: If multiple elements have the same name, only one is accessible through dot access. You cannot differentiate between elements with identical names using this method.
+    - **Duplicate names**: If multiple elements have the same name, only one is accessible through
+      dot access. You cannot differentiate between elements with identical names using this method.
 
-    - **Names with spaces**: Elements with spaces in their names (for example, "bike frame") cannot be accessed using dot notation. Python identifiers cannot contain spaces.
+    - **Names with spaces**: Elements with spaces in their names (for example, "bike frame") cannot
+      be accessed using dot notation. Python identifiers cannot contain spaces.
 
 Function ``get_value``
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -43,9 +46,10 @@ Function ``get_value``
 
     This function is only for SysML Features Element.
 
-This is a top level function to help user to get the Value of the feature without having to read the internal structure.
+This is a top level function to help user to get the Value of the feature without having to read
+the internal structure.
 
-.. code:: python
+.. code:: bash
 
     >>> myExpressionFeature.get_value()
     (10, 'kg')
@@ -79,7 +83,8 @@ Using the ``_`` access, you can find all SysML methods:
 
 .. warning::
 
-    In this first version, only existing fields (with data) are linked, so it's possible to don't find a function, which exist in SysML V2
+    In this first version, only existing fields (with data) are linked, so it's possible to don't
+    find a function, which exist in SysML V2
 
 .. only:: html
 
