@@ -22,27 +22,25 @@
 """Exception module for PySam library."""
 
 from .connector_exception import (
-    ConnectorException, 
-    ConnectorConnectionException, 
-    UnauthorizedConnectionException, 
-    HTTPResponseException,
-    InvalidElementJsonFoundException,
-    ProjectNotFoundException,
-    ElementNotFoundException,
-    InvalidProjectNameException,
-    BadRequestConnectionException,
-    DiagramConnectorException,
-    DiagramNotAvailableException,
+    BadRequestConnectionException as BadRequestConnectionException,
+    ConnectorConnectionException as ConnectorConnectionException,
+    ConnectorException as ConnectorException,
+    DiagramConnectorException as DiagramConnectorException,
+    DiagramNotAvailableException as DiagramNotAvailableException,
+    ElementNotFoundException as ElementNotFoundException,
+    HTTPResponseException as HTTPResponseException,
+    InvalidElementJsonFoundException as InvalidElementJsonFoundException,
+    InvalidProjectNameException as InvalidProjectNameException,
+    ProjectNotFoundException as ProjectNotFoundException,
+    UnauthorizedConnectionException as UnauthorizedConnectionException,
 )
 from .mapper_exception import (
-    MapperException,
-    InvalidProjectJSONMapperException,
+    InvalidProjectJSONMapperException as InvalidProjectJSONMapperException,
+    MapperException as MapperException,
 )
-
 from .query_exception import (
-    QueryException,
-    InvalidQuery,
-    InvalidCompositeConstraint,
+    InvalidCompositeConstraint as InvalidCompositeConstraint,
+    InvalidQuery as InvalidQuery,
+    QueryException as QueryException,
 )
-
-from .runtime_exception import UnsupportedValueExpression
+from .runtime_exception import UnsupportedValueExpression as UnsupportedValueExpression

@@ -2,6 +2,7 @@
 
 from datetime import datetime
 import os
+from pathlib import Path
 
 from ansys_sphinx_theme import (
     ansys_favicon,
@@ -41,7 +42,7 @@ html_theme_options = {
     },
     "check_switcher": False,
     "logo": "pyansys",
-        "icon_links": [
+    "icon_links": [
         {
             "name": "Support",
             "url": "https://github.com/ansys/pyansys-geometry/discussions",
@@ -165,7 +166,7 @@ suppress_warnings = [
 # make rst_epilog a variable, so you can add other epilog parts to it
 rst_epilog = ""
 # Read link all targets from file
-with open("links.rst") as f:
+with Path.open("links.rst") as f:
     rst_epilog += f.read()
 
 # Keep these while the repository is private
