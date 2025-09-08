@@ -138,7 +138,7 @@ To print out names of diagrams from a section of the model:
 .. note::
 
     Navigating through ``_plane`` and ``_model_element`` and ``_owned_diagram_elements`` allows you
-   to discover the logical elements the diagram is tied to.
+    to discover the logical elements the diagram is tied to.
 
 
 .. only:: html

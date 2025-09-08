@@ -13,8 +13,7 @@ Connectors
 .. note::
 
     To find all required data (Ids, token,..) see :ref:`Here <Info_Section>`.
-
-    Also, you can find classes specification :module:`ansys.sam.sysml2.api`.
+    Also, you can find classes specification :mod:`ansys.sam.sysml2.api`.
 
 Ansys SysML2 API Connector
 --------------------------

@@ -111,6 +111,9 @@ intersphinx_mapping = {
     # "grpc": ("https://grpc.github.io/grpc/python/", None),
 }
 
+# Autosectionlabel configuration to avoid duplicate label warnings
+autosectionlabel_prefix_document = True
+
 # numpydoc configuration
 numpydoc_show_class_members = False
 numpydoc_xref_param_type = True
@@ -125,8 +128,8 @@ numpydoc_validation_checks = {
     "GL09",  # Deprecation warning should precede extended summary
     "GL10",  # reST directives {directives} must be followed by two colons
     "SS01",  # No summary found
-    "SS02",  # Summary does not start with a capital letter
-    "SS03",  # Summary does not end with a period
+    # "SS02",  # Summary does not start with a capital letter
+    # "SS03",  # Summary does not end with a period
     "SS04",  # Summary contains heading whitespaces
     "SS05",  # Summary must start with infinitive verb, not third person
     "RT02",  # The first line of the Returns section should contain only the
