@@ -1,12 +1,8 @@
 # Contributing
 
-If you’re interested in contributing to **PySam**, great!
+Overall guidance on contributing to a PyAnsys library appears in the
+[Contributing] topic in the *PyAnsys developer's guide*. Ensure that you
+are thoroughly familiar with this guide before attempting to contribute to
+PySam.
 
-Before you get started, we strongly recommend reviewing the official
-[PyAnsys contributing guide]. It provides all the essential practices,
-conventions, and tools to follow when contributing to any PyAnsys library.
-
-Taking the time to read it will ensure your contributions are consistent
-with the broader PyAnsys ecosystem.
-
-[PyAnsys contributing guide]: https://dev.docs.pyansys.com/how-to/contributing.html
+[Contributing]: https://dev.docs.pyansys.com/how-to/contributing.html
