@@ -13,7 +13,8 @@ on:
 env:
   MAIN_PYTHON_VERSION: "3.10"
   LIBRARY_NAME: "ansys-sam-sysml2"
-  DOCUMENTATION_CNAME: "probable-doodle-z27n1yp.pages.github.io" # TO BE MODIFIED IN "sam.docs.pyansys.com"
+  DOCUMENTATION_CNAME: "probable-doodle-z27n1yp.pages.github.io" # TO-DO: Update to "sam.docs.pyansys.com" when ready
+  PACKAGE_NAME: "ansys-sam-sysml2"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -53,21 +54,10 @@ jobs:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
 
-  build-library:
-    name: "Build library basic example"
-    runs-on: ubuntu-latest
-    needs: code-style
-    steps:
-      - name: "Build library source and wheel artifacts"
-        uses: ansys/actions/build-library@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
-        with:
-          library-name: ${{ env.LIBRARY_NAME }}
-
-
   smoke-tests:
     name: "Build and Smoke tests"
     runs-on: ${{ matrix.os }}
-    needs: [build-library, code-style]
+    needs: [code-style]
     strategy:
       matrix:
           os: [ubuntu-latest, windows-latest]
@@ -100,8 +90,8 @@ jobs:
           uses: ansys/actions/doc-build@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
 
 
-  tests:
-    name: "Testing library with different operating systems and Python versions"
+  build-tests:
+    name: "Build and unit tests"
     runs-on: ${{ matrix.os }}
     needs: [smoke-tests]
     strategy:
@@ -118,7 +108,7 @@ jobs:
 
   package:
     name: "Package library"
-    needs: [tests,doc-build]
+    needs: [build-tests,doc-build]
     runs-on: ubuntu-latest
     steps:
       - name: Build library source and wheel artifacts
@@ -128,7 +118,7 @@ jobs:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
 
-  release:
+  release-gh:
     name: "Release project to GitHub"
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     needs: [package, update-changelog]
@@ -151,7 +141,7 @@ jobs:
   release-pypi:
     name: "Release project to PyPI"
     if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
-    needs: package
+    needs: [package, release-gh]
     runs-on: ubuntu-latest
     environment: release
     permissions:
@@ -193,7 +183,7 @@ jobs:
     name: "Upload release documentation"
     # Deploy release documentation when creating a new tag
     runs-on: ubuntu-latest
-    needs: [release, release-pypi]
+    needs: [release-pypi]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     steps:
       - uses: ansys/actions/doc-deploy-stable@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
