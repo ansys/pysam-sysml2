@@ -45,7 +45,7 @@ html_theme_options = {
     "icon_links": [
         {
             "name": "Support",
-            "url": "https://github.com/ansys/pyansys-geometry/discussions",
+            "url": "https://github.com/ansys/pysam-sysml2/discussions",
             "icon": "fa fa-comment fa-fw",
         },
     ],

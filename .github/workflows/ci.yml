@@ -44,6 +44,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+
   code-style:
     name: "Running code style checks"
     runs-on: ubuntu-latest
