@@ -1,7 +1,5 @@
 name: GitHub CI
 on:
-  schedule:
-    - cron: '0 0 * * *' # Every day at midnight UTC
   pull_request:
   push:
     tags:
