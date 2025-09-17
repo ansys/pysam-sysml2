@@ -19,8 +19,8 @@ Download the bike model used in this example and import it into a new project to
 
 You can now work on this bike model.
 
-Calculate bike weight
-~~~~~~~~~~~~~~~~~~~~~
+Calculate weight
+~~~~~~~~~~~~~~~~
 
 The bike weight is the sum of the frame weight and the weight of all wheel component elements. Thus, calculate the sum of all blue elements in the model:
 
