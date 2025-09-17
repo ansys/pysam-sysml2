@@ -18,8 +18,8 @@ Dot access
 Using the dot access, you can access all direct named elements of your SysML element.
 Also, you can access some useful top-level functions, such as ``get_value``.
 
-Subelements
-~~~~~~~~~~~
+Sub-elements
+~~~~~~~~~~~~
 
 The script attaches all elements contained in ``ownedElement`` and ``_inheritedFeature``, which have names, to the container element.
 
@@ -30,7 +30,7 @@ The script attaches all elements contained in ``ownedElement`` and ``_inheritedF
 
 .. warning::
 
-    **Limitations of dot access for subelements:**
+    **Limitations of dot access for sub-elements:**
 
     - **Duplicate names**: If multiple elements have the same name, only one is accessible through dot access. You cannot differentiate between elements with identical names using this method.
 
