@@ -1,121 +1,90 @@
 .. _Bike_Example:
 
-Bike example
-############
+Calculate bike weight
+#####################
 
-First of all, a bike model is required to work on.
+Download the bike model used in this example and import it into a new project to work on.
 
-Fortunately, one is provided for you.
+#. Download the model: :download:`Bike Model <../_static/code/bike.xmi>`.
 
-Download this model : :download:`Bike Model <../_static/code/bike.xmi>`.
+#. Open the SAM Editor in your browser and select the desired organization (for example, *MyOrga*).
 
-Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
-Then, click **New Project** > **SysML V2** > **Import File**.
-Click on **Choose File** in the **File to import** input, and select the ``bike.xmi`` file you just downloaded.
-The name of the project is automatically set to ``bike``.
-Click on **Import** and wait for the project to be loaded.
+#. Select **New Project** > **SysML V2** > **Import File**.
 
-*Congratulations, you now have a bike model to work on*
+#. Select **Choose File** for the **File to import** input.
 
+#. Select the ``bike.xmi`` file that you just downloaded. The project name is automatically set to ``bike``.
 
+#. Click **Import** and wait for the project to load.
 
-Calculate the bike weight
-~~~~~~~~~~~~~~~~~~~~~~~~~
+You can now work on this bike model.
 
-Calculate the weight of the bike.
+Calculate bike weight
+~~~~~~~~~~~~~~~~~~~~~
 
-When looking at the model, the weight of the bike is the sum of the weight of the frame and the weight of all elements of the wheel components.
-
-.. note::
-
-    In this case, calculate the sum of all blue elements of the model:
+The bike weight is the sum of the frame weight and the weight of all wheel component elements. Thus, calculate the sum of all blue elements in the model:
 
 .. figure:: /_static/images/weight-bike.png
-
-
 
 Step 1: Load the project
 ------------------------
 
 .. note::
 
-    This assumes that you have already installed the Library. If not, please refer to the :ref:`Installation <Installation_Section>` section.
+    Ensure that you have installed PySam SysML. If not, see :ref:`Installation <Installation_Section>`.
 
-Before loading the project, create a Connector and a Project Manager.
+Before loading the project, create a connector and a project manager.
 
-See section  :ref:`Organization Id <Info_O_Id_Section>` and :ref:`Bearer Token <Info_B_Token_Section>` to know how to get the required data.
-
-
+To obtain the required data, see :ref:`Find organization ID <Info_O_Id_Section>` and :ref:`Find bearer token <Info_B_Token_Section>`.
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 3-18
     :language: python
-    :caption: Import libraries and create connection to SysML2 API server
+    :caption: Import libraries and create a connection to the SysML2 API server
 
-
-Now, that you are logged in, you can load the project ``bike``.
+After logging in, load the ``bike`` project.
 
 .. note::
 
-    To load a project, its ID is needed. You can find it in the URL of the Editor.
-
+    To load a project, you need its ID. Find it in the editor's URL.
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 22
     :language: python
-    :caption: Get the bike project
+    :caption: Load the bike project
 
+For more information about the project object, see :class:`ansys.sam.sysml2.classes.project.Project` in the API reference documentation.
 
-``myBikeProject`` is the project to work on. See the :class:`ansys.sam.sysml2.classes.project.Project` section for more details about the project object.
+Step 2: Calculate bike weight
+-----------------------------
 
-
-
-
-Step 2: Calculate the weight
-----------------------------
-
-Now that the project has been loaded, calculate the weight of the bike.
-
-Get the Bike element.
-
-
-.. note::
-
-    There are many ways to get an element, here the dot notation is used. See the :ref:`Getter <Getter>` section for more details.
-
+After loading the project, get the ``Bike`` element. As explained in :ref:`Access methods <Getter>`, there are many ways to get an element. This code uses dot notation.
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 26
     :language: python
-    :caption: Get the bike part definition from the project structure
+    :caption: Get the bike element from the project structure
 
-
-For weight calculation, nothing more simpler than simple addition.
-
-So, if looking at each piece of the bike:
+To calculate the bike weight, sum the weight of all blue elements in the model:
 
 .. figure:: /_static/images/bike-access.png
 
-And to get the weight of each piece, just use the ``weight`` attribute, with the dot notation.
-
+To get the weight of each piece, use the ``weight`` attribute with dot notation:
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 28-34
     :language: python
     :caption: Calculate total bike weight by summing component weights
 
-And print the weight of the bike.
-
+Print the bike weight:
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 35
     :language: python
     :caption: Print the calculated bike weight
 
-
-You now have the total weight of the bike.
-
+You now have the total bike weight.
 
 .. note::
 
-    You can get the full code :download:`Here <../_static/code/weight-bike.py>`.
+    :download:`Download <../_static/code/weight-bike.py>` the full code.

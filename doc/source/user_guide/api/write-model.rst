@@ -1,24 +1,23 @@
 Write in your model
 ###################
 
-
 .. warning::
 
-    This feature is in beta version and could have some issues.
+    This is a beta feature and may have some issues.
 
 
-Update feature value
-====================
+Update a feature value
+======================
 
-There are two functions to update the value of a feature:
+There are two functions for updating the value of a feature:
 
-- set_value()
-- parse_and_set_value()
+- ``set_value()``
+- ``parse_and_set_value()``
 
 Function ``set_value``
 ----------------------
 
-This function is for all primitive types:
+The ``set_value`` function works for all primitive types:
 
 .. code:: python
 
@@ -35,18 +34,18 @@ This function is for all primitive types:
     >>> myFeature.get_value()
     10.5
 
-The model is updated after all set, to keep it as accurate as possible.
+The model updates after all values are set to ensure accuracy.
 
 Function ``parse_and_set_value``
 --------------------------------
 
-This function is for more complex expressions:
+The ``parse_and_set_value`` function handles more complex expressions:
 
 .. code:: python
 
     >>> myFeature.parse_and_set_value("10 [m]")
     >>> myFeature.get_value()
-    (10,"m")
+    (10, "m")
     >>> myFeature.parse_and_set_value("2 + 10 [kg]")
     >>> myFeature.get_value()
     Exception UnsupportedValueExpression raised
@@ -54,19 +53,18 @@ This function is for more complex expressions:
 Create new elements
 ===================
 
-You can create new elements in your model using the ``Factory`` class.
+Create new elements in your model using the ``Factory`` class.
 
 .. tip::
 
-    A complete example is available :ref:`here <Creating_Example>`.
+    For a complete example, see :ref:`Creating new element example <Creating_Example>`.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
     :lines: 25
     :language: python
     :caption: Create a Factory instance
 
-Then, use the ``create_element()`` method to create a new model element.
-You must provide the type of the element, as well as any number of keyword arguments representing its attributes:
+Use the ``create_element()`` method to create a new model element. Provide the type of the element and any number of keyword arguments representing its attributes:
 
 .. code:: python
 
@@ -75,8 +73,7 @@ You must provide the type of the element, as well as any number of keyword argum
         name="new_attribute_usage",
     )
 
-This creates a new ``AttributeUsage`` element at the root of your project.
-The ``create_element()`` method returns the newly created element.
+This creates a new ``AttributeUsage`` element at the root of your project. The ``create_element()`` method returns the newly created element.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
     :lines: 27-29
@@ -87,13 +84,12 @@ This creates a new ``AttributeUsage`` element with the given attributes inside t
 
 .. note::
 
-    The list of accepted attributes depends on the type of element you are creating.
-    For example ``name``, ``owner``, ``shortName``, and others defined by the ``metamodel``.
+    The list of accepted attributes depends on the type of element you are creating. For example, ``name``, ``owner``, ``shortName``, and others are defined by the ``metamodel``.
 
     You can also assign a value directly when creating the element. There are two ways:
 
-    - Use ``value=...`` for simple values (e.g., numbers).
-    - Use ``expression="..."`` for values with units or expressions.
+    - ``value=...`` for simple values (such as numbers).
+    - ``expression="..."`` for values with units or expressions.
 
     .. code:: python
 
@@ -116,15 +112,13 @@ This creates a new ``AttributeUsage`` element with the given attributes inside t
 Direct attribute modification
 -----------------------------
 
-You can also make modifications directly to attributes using a simple assignment. This is particularly useful for changing properties like names.
+Update element properties directly using simple assignment. This is useful for quickly changing properties like names.
 
 .. code:: python
 
     >>> my_attribute = factory.create_element(element_type="Attribute", name="OriginalName")
     >>> my_attribute._name = "New Name"
     New Name
-
-This allows for quick and direct updates to element properties.
 
 .. only:: html
 
@@ -134,10 +128,10 @@ This allows for quick and direct updates to element properties.
             :link: read-model
             :link-type: doc
 
-            Read a model
+            Read your model
 
         .. grid-item-card:: Next step :fa:`arrow-right`
             :link: diagram-model
             :link-type: doc
 
-            How to get use diagrams
+            Work with diagrams

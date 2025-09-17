@@ -12,7 +12,7 @@ Connectors
 .. note::
 
     To find all required data, such as organization IDs and tokens, see :ref:`Find information <Info_Section>`.
-    Also, you can find API member descriptions in :mod:`ansys.sam.sysml2.api`.
+    Also, for API member descriptions, see `Connector package <C_I_Section_Section>`.
 
 Ansys SysML2 API Connector
 --------------------------
