@@ -10,8 +10,9 @@ on:
 
 env:
   MAIN_PYTHON_VERSION: "3.10"
-  PACKAGE_NAMESPACE: "ansys.sam.sysml2"
   LIBRARY_NAME: "ansys-sam-sysml2"
+  DOCUMENTATION_CNAME: "probable-doodle-z27n1yp.pages.github.io" # TO-DO: Update to "sam.docs.pyansys.com" when ready
+  PACKAGE_NAME: "ansys-sam-sysml2"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -26,69 +27,72 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: ansys/actions/doc-deploy-changelog@v10.0
+      - uses: ansys/actions/doc-deploy-changelog@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
         with:
           token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
           bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
           bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
 
+
   check-pr-title:
     name: "Check pull-request title follows conventional commits"
     runs-on: ubuntu-latest
     steps:
-      - uses: ansys/actions/check-pr-title@v10.0
+      - uses: ansys/actions/check-pr-title@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+
 
   code-style:
     name: "Running code style checks"
     runs-on: ubuntu-latest
     steps:
       - name: "Run PyAnsys code style checks"
-        uses: ansys/actions/code-style@v10.0
+        uses: ansys/actions/code-style@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
-  build-library:
-    name: "Build library basic example"
-    runs-on: ubuntu-latest
+
+  smoke-tests:
+    name: "Build and Smoke tests"
+    runs-on: ${{ matrix.os }}
+    needs: [code-style]
+    strategy:
+      matrix:
+          os: [ubuntu-latest, windows-latest]
+          python-version: ['3.10', '3.11', '3.12', '3.13']
     steps:
-      - name: "Build library source and wheel artifacts"
-        uses: ansys/actions/build-library@v10.0
+      - name: "Build a wheelhouse of the Python library"
+        uses: ansys/actions/build-wheelhouse@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
         with:
           library-name: ${{ env.LIBRARY_NAME }}
+          operating-system: ${{ matrix.os }}
+          python-version: ${{ matrix.python-version }}
+
 
   doc-style:
     name: "Running documentation style checks"
     runs-on: ubuntu-latest
     steps:
       - name: "Running documentation style checks"
-        uses: ansys/actions/doc-style@v10.0
+        uses: ansys/actions/doc-style@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-  # doc-build:
-  #   name: "Building library documentation"
-  #   needs: doc-style
-  #   runs-on: [windows-latest]
-  #   steps:
-  #     - name: "Run Ansys documentation building action"
-  #       uses: ansys/actions/doc-build@v10.0
-  #       with:
-  #         python-version: ${{ env.MAIN_PYTHON_VERSION }}
-  #         sphinxopts: -j auto -W --color --keep-going
 
   doc-build:
       name: Doc building
       runs-on: ubuntu-latest
-      needs: doc-style
+      needs: [doc-style]
       steps:
         - name: "Run Ansys documentation building action"
-          uses: ansys/actions/doc-build@v10
+          uses: ansys/actions/doc-build@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
 
-  tests:
-    name: "Testing library with different operating systems and Python versions"
+
+  build-tests:
+    name: "Build and unit tests"
     runs-on: ${{ matrix.os }}
+    needs: [smoke-tests]
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
@@ -96,70 +100,95 @@ jobs:
       fail-fast: false
     steps:
       - name: "Run pytest"
-        uses: ansys/actions/tests-pytest@v10.0
+        uses: ansys/actions/tests-pytest@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
         with:
           pytest-extra-args: "--cov=ansys.sam --cov-report=term --cov-report=html:.cov/html"
 
-  release-github:
-    name: "Release to GitHub"
+
+  package:
+    name: "Package library"
+    needs: [build-tests,doc-build]
     runs-on: ubuntu-latest
-    needs: [build-library]
+    steps:
+      - name: Build library source and wheel artifacts
+        uses: ansys/actions/build-library@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        with:
+          library-name: ${{ env.PACKAGE_NAME }}
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+
+
+  release-gh:
+    name: "Release project to GitHub"
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    needs: [package, update-changelog]
+    runs-on: ubuntu-latest
+    # Specifying a GitHub environment is optional, but strongly encouraged
+    environment: release
+    permissions:
+      id-token: write
+      contents: write
     steps:
       - name: "Release to GitHub"
-        uses: ansys/actions/release-github@v10.0
+        uses: ansys/actions/release-github@1096998b81f7ebdea116b683e11f3a8bda759ca6 # v10.0.14
         with:
-          library-name: ${{ env.LIBRARY_NAME }}
-
-  # release:
-  #   name: "Release project"
-  #   runs-on: ubuntu-latest
-  #   needs: [build-library]
-  #   permissions:
-  #     id-token: write
-  #     contents: write
-  #   if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
-  #   steps:
-
-  #     - name: "Release to public PyPI"
-  #       uses: ansys/actions/release-pypi-public@v8
-  #       with:
-  #         library-name: ${{ env.LIBRARY_NAME }}
-  #         use-trusted-publisher: true
-
-  #     - name: "Release to GitHub"
-  #       uses: ansys/actions/release-github@v8
-  #       with:
-  #         library-name: ${{ env.LIBRARY_NAME }}
-  #         additional-artifacts: 'examples'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          library-name: ${{ env.PACKAGE_NAME }}
+          add-artifact-attestation-notes: true
+          changelog-release-notes: true
 
 
-    # doc-deploy-development:
-    # name: Doc dev version deploy
-    # if: github.event_name == 'push'
-    # runs-on: ubuntu-latest
-    # needs: build-library
-    # steps:
-    #   - name: "Deploy developers documentation"
-    #     uses: ansys/actions/doc-deploy-dev@v8
-    #     with:
-    #       cname: ${{ env.DOCUMENTATION_CNAME }}
-    #       token: ${{ secrets.GITHUB_TOKEN }}
-    #       bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
-    #       bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
+  release-pypi:
+    name: "Release project to PyPI"
+    if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
+    needs: [package, release-gh]
+    runs-on: ubuntu-latest
+    environment: release
+    permissions:
+      id-token: write
+      contents: write
+    steps:
+
+      - name: "Download the library artifacts from build-library step"
+        uses: actions/download-artifact@cc203385981b70ca67e1cc392babf9cc229d5806 # v4.1.9
+        with:
+          name: ${{ env.PACKAGE_NAME }}-artifacts
+          path: ${{ env.PACKAGE_NAME }}-artifacts
+
+      - name: "Upload artifacts to PyPI using trusted publisher"
+        uses: pypa/gh-action-pypi-publish@76f52bc884231f62b9a034ebfe128415bbaabdfc # v1.12.4
+        with:
+          repository-url: "https://upload.pypi.org/legacy/"
+          print-hash: true
+          packages-dir: ${{ env.PACKAGE_NAME }}-artifacts
+          skip-existing: false
 
 
-  # doc-deploy-stable:
-  #   name: "Deploy stable documentation"
-  #   # Deploy release documentation when creating a new tag
-  #   runs-on: ubuntu-latest
-  #   needs: [release]
-  #   if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
-  #   steps:
-  #     - uses: ansys/actions/doc-deploy-stable@v8
-  #       with:
-  #         doc-artifact-name: 'documentation-html'
-  #         cname: ${{ env.DOCUMENTATION_CNAME }}
-  #         token: ${{ secrets.GITHUB_TOKEN }}
-  #         bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
-  #         bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
+  doc-deploy-development:
+    name: "Upload developers documentation"
+    runs-on: ubuntu-latest
+    needs: [package]
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: "Deploy developers documentation"
+        uses: ansys/actions/doc-deploy-dev@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        with:
+          cname: ${{ env.DOCUMENTATION_CNAME }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
+          bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
+
+
+  doc-deploy-stable:
+    name: "Upload release documentation"
+    # Deploy release documentation when creating a new tag
+    runs-on: ubuntu-latest
+    needs: [release-pypi]
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    steps:
+      - uses: ansys/actions/doc-deploy-stable@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        with:
+          doc-artifact-name: 'documentation-html'
+          cname: ${{ env.DOCUMENTATION_CNAME }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
+          bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}

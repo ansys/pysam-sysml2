@@ -11,7 +11,8 @@ This class helps you load a model in Python, using the SysML V2 Standard API.
     :language: python
     :caption: Create SysML2 Project Manager
 
-You can find information about this class :ref:`here <PM_Section>`.
+Please refer to the :class:`ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager`
+documentation for more information.
 
 With this project manager, you can load your project like this:
 

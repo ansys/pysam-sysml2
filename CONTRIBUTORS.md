@@ -1,6 +1,6 @@
 # Contributors
 
-## Project Lead or Owner
+## Project Lead
 
 * [Xavier Le Pallec](https://github.com/ansxlepallec)
 

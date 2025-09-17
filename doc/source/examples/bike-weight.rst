@@ -66,7 +66,7 @@ Now, that you are logged in, you can load the project ``bike``.
     :caption: Get the bike project
 
 
-``myBikeProject`` is the project to work on. See the :ref:`loaded project <L_Project>` section for more details about the project object.
+``myBikeProject`` is the project to work on. See the :class:`ansys.sam.sysml2.classes.project.Project` section for more details about the project object.
 
 
 
