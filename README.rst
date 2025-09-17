@@ -35,44 +35,29 @@ PySam SysML2
 Overview
 ========
 
-PySam provides a Python scripting interface for SysML2 models.
-You can load models from any SysML2 tools who provide an implementation of the standard API.
-The loaded model is mapped into Python object.
-So you can manipulate models, browse through them, edit them, and push the modification inside your modeling tool.
+PySam SysML2 provides a Python scripting interface for SysML2 models. It loads models from any SysML2 tool that implements the standard API. The loaded model maps into a Python object, allowing you to manipulate, browse, and edit it. You can then push modifications back to your modeling tool.
 
-This library intends to work first with `SAM <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_, the SysML2 modeling tool of Ansys.
+PySam SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architecture Modeler (SAM) <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_.
 
 Prerequisites
 =============
 
-PySam SysML2 requires `Python <https://www.python.org/downloads/>`_  with at least the 3.10 version installed.
+PySam SysML2 requires `Python <https://www.python.org/downloads/>`_ 3.10 or later.
 
 Documentation
 =============
 
-There are four different parts in our web documentation:
+The PySam SysML2 documentation includes four sections:
 
-1. `Getting started`_.
-The Getting Started section provides all the necessary information to install the `pysam-sysml2` library.
-It also includes a quick tutorial to help you set up your PySam project, along with everything required to load and initialize a project properly.
-
-2. `User guide`_.
-The User Guide offers step-by-step instructions on how to interact with your project and model — from loading your model to writing data into it.
-It also explains how to access and retrieve the necessary elements to effectively manipulate and navigate your project.
-
-3. `Documentation`_.
-The Documentation section presents a detailed overview of the key classes and methods that power the `pysam-sysml2` library.
-Each component is fully documented to help you understand its purpose.
-
-4. `Examples`_.
-The Examples section provides practical code snippets and complete scripts demonstrating how to use the library in various scenarios.
-These examples illustrate how to access, and modify your project, and serve as a reference for common use cases.
+- `Getting started`_: Shows how to install PySam SysML2 and set up a project, including loading and initializing it.
+- `User guide`_: Explains how to interact with your project and model, from loading your model to writing data into it. This section also explains how to access and retrieve elements to manipulate and navigate your project.
+- `API reference`_: Describes PySam SysML2 functions, classes, and methods to help you use it effectively.
+- `Examples`_: Provides code snippets and scripts that demonstrate how to use the library in various scenarios. This section also shows how to access and modify your project and serves as references for common use cases.
 
 License
 =======
 
-The license of the PySam SysML2 project is MIT. Read the full text of the license
-in the `MIT <https://opensource.org/licenses/MIT/>`_ file.
+The PySam SysML2 project uses the MIT license. Read the full text of the license in the `MIT <https://opensource.org/licenses/MIT/>`_ file.
 
 .. _getting started: ...
 .. _user guide: ...

@@ -1,34 +1,33 @@
 .. _Create_C_Section:
 
 Use a connector
-##################
+###############
 
 
-A connector is the interface between the library and the SysML V2 Server.
-
+A connector is the interface between PySam SysML2 and the SysML V2 server.
 
 Connectors
 ==========
 
 .. note::
 
-    To find all required data (Ids, token,..) see :ref:`Here <Info_Section>`.
-    Also, you can find classes specification :mod:`ansys.sam.sysml2.api`.
+    To find all required data, such as organization IDs and tokens, see :ref:`Find information <Info_Section>`.
+    Also, you can find API member descriptions in :mod:`ansys.sam.sysml2.api`.
 
 Ansys SysML2 API Connector
 --------------------------
 
-It uses the Standard API to load and publish information in a model.
+PySam SysML2 uses the standard API to load and publish information in a model.
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
     :lines: 14-19
     :language: python
     :caption: Connect to the SysML2 API server
 
-Sam Rest API Connector
+SAM REST API Connector
 ----------------------
 
-It uses the SAM REST API to retrieve diagrams in the model.
+PySam SysML2 uses the SAM REST API to retrieve diagrams in the model.
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
     :lines: 21-25

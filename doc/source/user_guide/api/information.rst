@@ -1,9 +1,9 @@
 .. _Info_Section:
 
-Finding information
-###################
+Find information
+################
 
-This section contains instructions for finding required information such as the Project ID or your Auth token.
+This section contains instructions for finding required information such as the project ID or your authorization token.
 
 
 .. _Info_P_Id_Section:
