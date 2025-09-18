@@ -26,7 +26,7 @@ The script attaches all elements contained in ``ownedElement`` and ``_inheritedF
 
     >>> myPart.subPart
     <class PartUsage>
-    
+
 .. warning::
 
 .. warning::

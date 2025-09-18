@@ -39,7 +39,7 @@ You just created a new element and assigned a parsed value to it.
 
     - ``value=...`` for simple values (such as numbers).
     - ``expression="..."`` for values with units or expressions.
-    
+
     .. code:: python
 
         new_bicycle_frame_length_with_value = factory.create_element(
