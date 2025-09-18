@@ -15,8 +15,7 @@ To parse the project, you can use different access methods.
 Dot access
 ----------
 
-Using the dot access, you can access all direct named elements of your SysML element.
-Also, you can access some useful top-level functions, such as ``get_value``.
+Using the dot access, you can access all direct named elements of your SysML element. Also, you can access some useful top-level functions, such as ``get_value``.
 
 Sub-elements
 ~~~~~~~~~~~~
@@ -26,7 +25,9 @@ The script attaches all elements contained in ``ownedElement`` and ``_inheritedF
 .. code:: python
 
     >>> myPart.subPart
-    <class ParUsage>
+    <class PartUsage>
+    
+.. warning::
 
 .. warning::
 

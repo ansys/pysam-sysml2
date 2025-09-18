@@ -34,8 +34,8 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 # Create your connector for the Sam server
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
     server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
-    organization_id="<Orga ID>",  # The Organization ID
-    token="<Token>",  # Your Auth Token (See section below)
+    organization_id="<Orga ID>",  # The organization ID
+    token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL
 )
 
@@ -44,7 +44,7 @@ project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 my_bike_project = project_manager.get_project("<Bike Project ID>")
 
 
-# Then use the following code to get the PartDefinition of the bike
+# Use the following code to get the PartDefinition of the bike
 bike = my_bike_project.get_root_package().Structure.Bike
 
 bike_weight = (

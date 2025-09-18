@@ -5,11 +5,10 @@ Write in your model
 
     This is a beta feature and may have some issues.
 
-
 Update a feature value
 ======================
 
-There are two functions for updating the value of a feature:
+You have two functions for updating the value of a feature:
 
 - ``set_value()``
 - ``parse_and_set_value()``
@@ -17,7 +16,7 @@ There are two functions for updating the value of a feature:
 Function ``set_value``
 ----------------------
 
-The ``set_value`` function works for all primitive types:
+The ``set_value`` function supports all primitive types:
 
 .. code:: python
 
@@ -34,7 +33,7 @@ The ``set_value`` function works for all primitive types:
     >>> myFeature.get_value()
     10.5
 
-The model updates after all values are set to ensure accuracy.
+The model updates after you set all values to ensure accuracy.
 
 Function ``parse_and_set_value``
 --------------------------------
@@ -64,7 +63,7 @@ Create new elements in your model using the ``Factory`` class.
     :language: python
     :caption: Create a Factory instance
 
-Use the ``create_element()`` method to create a new model element. Provide the type of the element and any number of keyword arguments representing its attributes:
+Use the ``create_element()`` method to create a new model element. Provide the element type and any number of keyword arguments representing its attributes:
 
 .. code:: python
 
@@ -80,11 +79,11 @@ This creates a new ``AttributeUsage`` element at the root of your project. The `
     :language: python
     :caption: Create a new AttributeUsage element with owner
 
-This creates a new ``AttributeUsage`` element with the given attributes inside the ``Bike`` frame.
+This creates a new ``AttributeUsage`` element with the specified attributes inside the ``Bike`` frame.
 
 .. note::
 
-    The list of accepted attributes depends on the type of element you are creating. For example, ``name``, ``owner``, ``shortName``, and others are defined by the ``metamodel``.
+    The list of accepted attributes depends on the element type you are creating. For example, ``name``, ``owner``, ``shortName``, and others are defined by the ``metamodel``.
 
     You can also assign a value directly when creating the element. There are two ways:
 
@@ -109,8 +108,8 @@ This creates a new ``AttributeUsage`` element with the given attributes inside t
 
     This lets you set values directly at creation time, depending on your data format.
 
-Direct attribute modification
------------------------------
+Modify attributes directly
+--------------------------
 
 Update element properties directly using simple assignment. This is useful for quickly changing properties like names.
 

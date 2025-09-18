@@ -1,43 +1,45 @@
 .. _Creating_Example:
 
-Creating new element example
-#############################
+Create a new element
+####################
 
-Make sure you have access to a valid server and a project containing the ``Bike`` structure.
+Make sure that you have access to a valid server and a project containing the ``Bike`` structure. If you do not have a project containing the ``Bike`` structure, perform the following steps:
 
-If not, you can download this model : :download:`Bike Model <../_static/code/bike.xmi>`.
+#. Download the model: :download:`Bike Model <../_static/code/bike.xmi>`.
 
-Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
-Then, click **New Project** > **SysML V2** > **Import File**.
-Click on **Choose File** in the **File to import** input, and select the ``bike.xmi`` file you just downloaded.
-The name of the project is automatically set to ``bike``.
-Click on **Import** and wait for the project to be loaded.
+#. Open the SAM Editor in your browser and select the desired organization (for example, *MyOrga*).
 
-*Congratulations, you now have a bike model to work on !*
+#. Select **New Project** > **SysML V2** > **Import File**.
+
+#. Select **Choose File** for the **File to import** option.
+
+#. Select the ``bike.xmi`` file that you just downloaded. The project name is automatically set to ``bike``.
+
+#. Click **Import** and wait for the project to load.
 
 Create an attribute usage for the bicycle frame length
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This example shows how to create a new ``AttributeUsage`` element inside the ``Bike`` and assign it a value.
+The following code shows how to create a new ``AttributeUsage`` element inside the ``Bike`` structure and assign it a value.
 
 .. note::
 
-    You need to change `Organization ID`, `Server URL` and `Token` with your own data, see :ref:`this section for more information<Info_Section>`.
+    You need to replace the organization ID, server URL, and token with your own data. For more information, see :ref:`Finding information<Info_Section>`.
 
 .. literalinclude:: ../_static/code/creating-elements.py
     :language: python
-    :caption: Creating a new AttributeUsage element using the Factory class
+    :caption: Create a new AttributeUsage element using the Factory class
     :linenos:
 
 You just created a new element and assigned a parsed value to it.
 
 .. note::
 
-    You can also assign a value directly when creating the element, without using ``set_value`` or ``parse_and_set_value``. There are two ways:
+    You can also assign a value directly when creating the element, without using the ``set_value`` or ``parse_and_set_value`` method. There are two ways:
 
-    - Use ``value=...`` for simple values (e.g., numbers).
-    - Use ``expression="..."`` for values with units or expressions.
-
+    - ``value=...`` for simple values (such as numbers).
+    - ``expression="..."`` for values with units or expressions.
+    
     .. code:: python
 
         new_bicycle_frame_length_with_value = factory.create_element(

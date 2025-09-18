@@ -1,31 +1,33 @@
 .. _Computer_Example:
 
-Computer example
-################
+Calculate computer cost
+#######################
 
-A computer model is required to get started.
+Download the computer model used in this example and import it into a new project to work on.
 
-One is provided for your convenience.
+#. Download the model: :download:`Computer Model <../_static/code/computer.xmi>`.
 
-Download this model : :download:`Computer Model <../_static/code/computer.xmi>`.
+#. Open the SAM Editor in your browser and select the desired organization (for example, *MyOrga*).
 
-Open SAM Editor on your browser, and select the wanted organization (*MyOrga* for example).
-Then, click **New Project** > **SysML V2** > **Import File**.
-Click on **Choose File** in the **File to import** input, and select the ``computer.xmi`` file you just downloaded.
-The name of the project is automatically set to ``computer``.
-Click on `Import` and wait for the project to be loaded.
+#. Select **New Project** > **SysML V2** > **Import File**.
 
-*Congratulations, you now have a computer model to work on !*
+#. Select **Choose File** for the **File to import** option.
+
+#. Select the ``computer.xmi`` file that you just downloaded. The project name is automatically set to ``computer``.
+
+#. Click **Import** and wait for the project to load.
+
+You can now work on this computer model.
 
 
-Calculate the computer cost
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Calculate cost
+~~~~~~~~~~~~~~
 
 .. note::
 
-    You need to change `Organization ID`, `Server URL` and `Token` with your own data, see :ref:`this section for more information<Info_Section>`.
+    You need to replace the organization ID, server URL, and token with your own data., For more information, see :ref:`Finding information<Info_Section>`.
 
 .. literalinclude:: ../_static/code/computer-cost.py
     :language: python
-    :caption: Assessing system cost using recursive traversal
+    :caption: Calculate computer cost using recursive traversal
     :linenos:

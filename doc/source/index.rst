@@ -25,13 +25,13 @@ PySam SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architectu
             :link: api/index
             :link-type: doc
 
-            Describes PySam SysML2 functions, classes, and methods to help you use it effectively.
+            Describes PySam SysML2 functions, classes, and methods.
 
         .. grid-item-card:: Examples :fa:`code`
             :link: examples/index
             :link-type: doc
 
-            Provides code snippets and scripts that demonstrate how to use the library in various scenarios. This section also shows how to access and modify your project and serves as references for common use cases.
+            Provides some examples of how to use PySam SysML2.
 
 .. toctree::
    :hidden:

@@ -11,7 +11,7 @@ Download the bike model used in this example and import it into a new project to
 
 #. Select **New Project** > **SysML V2** > **Import File**.
 
-#. Select **Choose File** for the **File to import** input.
+#. Select **Choose File** for the **File to import** option.
 
 #. Select the ``bike.xmi`` file that you just downloaded. The project name is automatically set to ``bike``.
 
@@ -22,7 +22,7 @@ You can now work on this bike model.
 Calculate weight
 ~~~~~~~~~~~~~~~~
 
-The bike weight is the sum of the frame weight and the weight of all wheel component elements. Thus, calculate the sum of all blue elements in the model:
+The bike weight is the sum of the frame weight and the weight of all wheel component elements. Thus, you want to calculate the sum of all blue elements in the model:
 
 .. figure:: /_static/images/weight-bike.png
 
