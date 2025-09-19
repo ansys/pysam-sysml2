@@ -34,7 +34,7 @@ The following code attaches all elements contained in ``ownedElement`` and ``_in
 - **Names with spaces**: You cannot access elements with spaces in their names (for example, "bike frame") using dot notation. Python identifiers cannot contain spaces.
 
 Function ``get_value()``
-~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``get_value()`` function works only for the SysML ``Feature`` element. Use this top-level function to get the value of the feature without reading the internal structure:
 

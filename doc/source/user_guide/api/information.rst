@@ -89,13 +89,13 @@ Follow these steps to generate a PAT from your account settings:
    .. figure:: /_static/images/personal-access-token.png
       :alt: Personal access tokens option
 
-3.  **Generate new token:**
+#.  **Generate new token:**
    Click the **Generate new token** button.
 
    .. figure:: /_static/images/generate-new-token.png
       :alt: Generate new token button
 
-4. **Configure token details:**
+#. **Configure token details:**
    Enter a descriptive label for your token in the **Token label** field and set the expiration date. Click the **Generate token** button.
 
    .. figure:: /_static/images/generate-token.png

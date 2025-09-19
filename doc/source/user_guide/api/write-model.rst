@@ -14,7 +14,7 @@ You have two functions for updating the value of a feature:
 - ``parse_and_set_value()``
 
 Function ``set_value()``
-----------------------
+------------------------
 
 The ``set_value()`` function supports all primitive types:
 
@@ -36,7 +36,7 @@ The ``set_value()`` function supports all primitive types:
 The model updates after you set all values to ensure accuracy.
 
 Function ``parse_and_set_value()``
---------------------------------
+----------------------------------
 
 The ``parse_and_set_value`` function handles more complex expressions:
 
