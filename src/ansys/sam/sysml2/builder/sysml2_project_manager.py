@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Provides the director class for project building."""
+"""Director class for project building."""
 
 from typing import Dict
 
@@ -49,7 +49,7 @@ class SysML2ProjectManager:
 
     def get_project(self, project_id: str) -> Project:
         """
-        Get a project to load from the API in a Python object.
+        Get a project from the API to load into a Python object.
 
         Parameters
         ----------

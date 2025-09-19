@@ -27,7 +27,7 @@ from ansys.sam.sysml2.classes.http_request import HttpRequest
 
 
 class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
-    """Connector for Ansys SysML2 connector."""
+    """Provides the Ansys SysML2 connector."""
 
     _server_url: str
     _organization_id: str

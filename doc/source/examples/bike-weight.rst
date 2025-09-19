@@ -58,7 +58,7 @@ For more information about the project object, see :class:`ansys.sam.sysml2.clas
 Step 2: Calculate bike weight
 -----------------------------
 
-After loading the project, get the ``Bike`` element. As explained in :ref:`Access methods <Getter>`, there are many ways to get an element. This code uses dot notation.
+After loading the project, get the ``Bike`` element. As explained in :ref:`Access methods <Getter>`, there are many ways to get an element. This code uses dot notation:
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 26

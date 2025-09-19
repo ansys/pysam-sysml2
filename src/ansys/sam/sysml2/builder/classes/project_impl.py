@@ -59,7 +59,7 @@ class ProjectImpl(Project):
 
     def add_element(self, element: SysMLElement):
         """
-        Add an element to the project env.
+        Add an element to the project environment.
 
         Parameters
         ----------
@@ -70,7 +70,7 @@ class ProjectImpl(Project):
 
     def update_unresolved_fields(self, unresolved_fields: List[UnresolvedField]):
         """
-        Update all unresolved field.
+        Update all unresolved fields.
 
         Parameters
         ----------
@@ -81,7 +81,7 @@ class ProjectImpl(Project):
 
     def get_root(self) -> List[SysMLElement]:
         """
-        Get the list of root packages.
+        Get a list of root packages.
 
         Returns
         -------

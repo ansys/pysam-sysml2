@@ -25,7 +25,7 @@ Calculate cost
 
 .. note::
 
-    You need to replace the organization ID, server URL, and token with your own data., For more information, see :ref:`Finding information<Info_Section>`.
+    You need to replace the organization ID, server URL, and token with your own data. For more information, see :ref:`Find information<Info_Section>`.
 
 .. literalinclude:: ../_static/code/computer-cost.py
     :language: python

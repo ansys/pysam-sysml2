@@ -1,7 +1,7 @@
 User guide
 ----------
 
-This section explains how to interact with your project and model, from loading your model to writing data into it. It also explains how to access and retrieve elements to manipulate and navigate your project.
+This section explains how to connect to PySam SysML2, work with models and diagrams, and find required information.
 
 .. only:: html
 

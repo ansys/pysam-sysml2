@@ -72,7 +72,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def get_project_by_id(self, project_id: str) -> dict:
         """
-        Get information for the given project.
+        Get information for a given project.
 
         Parameters
         ----------
@@ -123,7 +123,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def get_all_elements(self, project_id: str) -> list:
         """
-        Get all elements of the given project.
+        Get all elements of a given project.
 
         Parameters
         ----------
@@ -145,14 +145,14 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
-        Get information of the given element.
+        Get information of a given element.
 
         Parameters
         ----------
         project_id : str
             ID of the project where the element is located.
         element_id : str
-            ID of the wanted element.
+            ID of the given element.
 
         Returns
         -------

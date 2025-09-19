@@ -25,7 +25,7 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
 class SysMLUtil:
-    """Provides SysML utility class."""
+    """Provides the SysML utility class."""
 
     @staticmethod
     def check_inherited_name(element: SysMLElement) -> str:

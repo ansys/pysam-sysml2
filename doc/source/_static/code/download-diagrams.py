@@ -1,4 +1,4 @@
-"""Download Diagrams Example for PySam."""
+"""Download diagrams example for PySam SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning
@@ -12,15 +12,15 @@ from ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader import SamDiagramDow
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
-    organization_id="<Orga ID>",  # The Organization ID
-    token="<Token>",  # Your Auth Token (See section below)
+    server_url="https://127.0.0.1:8443/",  # Your SAM server base URL
+    organization_id="<Orga ID>",  # The organization ID
+    token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL
 )
 
 sam_rest_api_connector = SamRestApiConnector(
-    server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
-    token="<Token>",  # Your Auth Token (See section below)
+    server_url="https://127.0.0.1:8443/",  # Your SAM server base URL
+    token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL
 )
 
@@ -29,7 +29,7 @@ project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 project = project_manager.get_project("<Bike Project ID>")
 
 # -----------------------------------------
-# Work with Diagrams
+# Work with diagrams
 # -----------------------------------------
 
 with SAMDiagramManager(connector=sam_rest_api_connector) as diagrams:
@@ -40,11 +40,11 @@ print(f"Loaded {len(project.get_root_package().__diagram)} diagrams.")
 downloader = SamDiagramDownloader(connector=sam_rest_api_connector, project_id=project._id)
 
 # -----------------------------------------
-# Download Diagrams
+# Download diagrams
 # -----------------------------------------
 
-### You can specify the file_format and the filename,
-### But as default: file_format="svg", filename="<PackageName>_<FileFormat>_diagrams.zip"
+### You can specify the file format and the filename.
+### The defaults are file_format="svg" and filename="<PackageName>_<FileFormat>_diagrams.zip"
 path = downloader.download_all_diagrams(
     path="C:/Diagrams/Images/",
     file_format="jpeg",
@@ -72,7 +72,7 @@ for i, diagram in enumerate(usage_diagrams, 1):
     print(f"> Saved Usage diagram #{i}: {diagram._plane._model_element._name}")
 
 # -----------------------------------------
-# Navigate through Diagrams
+# Navigate through diagrams
 # -----------------------------------------
 
 print(first_diagram._plane._model_element._name)

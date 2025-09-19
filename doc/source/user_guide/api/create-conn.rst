@@ -3,16 +3,11 @@
 Use a connector
 ###############
 
-
 A connector is the interface between PySam SysML2 and the SysML V2 server.
-
-Connectors
-==========
 
 .. note::
 
     To find all required data, such as organization IDs and tokens, see :ref:`Find information <Info_Section>`.
-    Also, for API member descriptions, see `Connector package <C_I_Section_Section>`.
 
 Ansys SysML2 API Connector
 --------------------------

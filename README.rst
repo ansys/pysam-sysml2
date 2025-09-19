@@ -49,8 +49,8 @@ Documentation
 
 The PySam SysML2 documentation includes four sections:
 
-- `Getting started`_: Shows how to install PySam SysML2 and set up a project, including loading and initializing it.
-- `User guide`_: Explains how to interact with your project and model, from loading your model to writing data into it. This section also explains how to access and retrieve elements to manipulate and navigate your project.
+- `Getting started`_: Explains how to install PySam SysML2 and set up a project.
+- `User guide`_: Explains how to connect to PySam SysML2, work with models and diagrams, and find required information.
 - `API reference`_: Describes PySam SysML2 functions, classes, and methods.
 - `Examples`_: Provides some examples of how to use PySam SysML2.
 

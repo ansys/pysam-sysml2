@@ -10,10 +10,10 @@ This example shows how to work with the ``Bike`` model in a SysML v2 project usi
 
 .. note::
 
-    If you have never used PySam SysML2 before, start with one of these simpler examples to understand how the library works:
+    If you have never used PySam SysML2 before, start with one of these simpler examples to understand how this library works:
 
-    - :ref:`bike_weight<Bike_Example>`
-    - :ref:`computer_cost<Computer_Example>`
+    - :ref:`Calculate bike weight<Bike_Example>`
+    - :ref:`Calculate computer cost<Computer_Example>`
 
 Prerequisites
 =============
@@ -22,8 +22,8 @@ Ensure that you meet these prerequisites:
 
 - A running SAM server instance.
 - A valid organization ID, project ID, and token.
-- The `bike.xmi` model imported into a project.
-
+- The ``bike.xmi`` model imported into a project.
+`
 Python example
 ==============
 

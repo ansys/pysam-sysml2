@@ -13,10 +13,10 @@ You have two functions for updating the value of a feature:
 - ``set_value()``
 - ``parse_and_set_value()``
 
-Function ``set_value``
+Function ``set_value()``
 ----------------------
 
-The ``set_value`` function supports all primitive types:
+The ``set_value()`` function supports all primitive types:
 
 .. code:: python
 
@@ -35,7 +35,7 @@ The ``set_value`` function supports all primitive types:
 
 The model updates after you set all values to ensure accuracy.
 
-Function ``parse_and_set_value``
+Function ``parse_and_set_value()``
 --------------------------------
 
 The ``parse_and_set_value`` function handles more complex expressions:
@@ -52,11 +52,11 @@ The ``parse_and_set_value`` function handles more complex expressions:
 Create new elements
 ===================
 
-Create new elements in your model using the ``Factory`` class.
+Use the ``Factory`` class to create new elements in your model.
 
 .. tip::
 
-    For a complete example, see :ref:`Creating new element example <Creating_Example>`.
+    For a comprehensive example, see :ref:`Create a new element <Creating_Example>`.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
     :lines: 25
@@ -108,7 +108,7 @@ This creates a new ``AttributeUsage`` element with the specified attributes insi
 
     This lets you set values directly at creation time, depending on your data format.
 
-Modify attributes directly
+Update attributes directly
 --------------------------
 
 Update element properties directly using simple assignment. This is useful for quickly changing properties like names.

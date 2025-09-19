@@ -98,7 +98,7 @@ class SysML2ProjectBuilder:
 
     def extract_root_and_check_names(self, project: ProjectImpl):
         """
-        Extract root element and update names.
+        Extract the root element and update names.
 
         Parse all project elements and update names.
         Also check if it's a root element.

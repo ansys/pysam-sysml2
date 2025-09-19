@@ -13,13 +13,13 @@ PySam SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architectu
             :link: getting_started/index
             :link-type: doc
 
-            Shows how to install PySam SysML2 and set up a project, including loading and initializing it.
+            Explains how to install PySam SysML2 and set up a project.
 
         .. grid-item-card:: User guide :fa:`compass`
             :link: user_guide/index
             :link-type: doc
 
-            Explains how to interact with your project and model, from loading your model to writing data into it. This section also explains how to access and retrieve elements to manipulate and navigate your project.
+            Explains how to connect to PySam SysML2, work with models and diagrams, and find required information.
 
         .. grid-item-card:: API reference :fa:`file-lines`
             :link: api/index

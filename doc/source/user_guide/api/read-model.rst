@@ -10,17 +10,17 @@ The loaded model is stored in a :class:`ansys.sam.sysml2.classes.project.Project
 Access methods
 ==============
 
-To parse the project, you can use different access methods.
+To parse the project, you can use dot access or underscore access.
 
 Dot access
 ----------
 
-Using the dot access, you can access all direct named elements of your SysML element. Also, you can access some useful top-level functions, such as ``get_value``.
+With dot access, you can access all direct named elements of your SysML element. Also, you can access some useful top-level functions, such as ``get_value()``.
 
 Sub-elements
 ~~~~~~~~~~~~
 
-The script attaches all elements contained in ``ownedElement`` and ``_inheritedFeature``, which have names, to the container element.
+The following code attaches all elements contained in ``ownedElement`` and ``_inheritedFeature``, which have names, to the container element.
 
 .. code:: python
 
@@ -33,10 +33,10 @@ The script attaches all elements contained in ``ownedElement`` and ``_inheritedF
 
 - **Names with spaces**: You cannot access elements with spaces in their names (for example, "bike frame") using dot notation. Python identifiers cannot contain spaces.
 
-Function ``get_value``
+Function ``get_value()``
 ~~~~~~~~~~~~~~~~~~~~~~
 
-The ``get_value`` function works only for the SysML ``Feature`` element. Use this top-level function to get the value of the feature without reading the internal structure:
+The ``get_value()`` function works only for the SysML ``Feature`` element. Use this top-level function to get the value of the feature without reading the internal structure:
 
 .. code:: bash
 
@@ -53,13 +53,13 @@ The ``get_value`` function works only for the SysML ``Feature`` element. Use thi
 
 The ``get_value`` function supports:
 
-- All primitive types: LiteralInteger, LiteralString, etc. - Returns the value directly.
-- Simple expressions: <value> [<unit>] - Returns a tuple: (<value>,<unit short name>).
+- All primitive types, such as LiteralInteger and LiteralString. - Returns the value directly.
+- Simple expressions, such as ``<value> [<unit>]`` - Returns a tuple: ``(<value>,<unit short name>)``.
 
 Underscore access
 =================
 
-Using underscore (``_``) access, you can find all SysML methods:
+With underscore (``_``) access, you can find all SysML methods:
 
 .. code:: python
 

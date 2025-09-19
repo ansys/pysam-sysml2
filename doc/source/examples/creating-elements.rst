@@ -17,14 +17,14 @@ Make sure that you have access to a valid server and a project containing the ``
 
 #. Click **Import** and wait for the project to load.
 
-Create an attribute usage for the bicycle frame length
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create an attribute usage element for the bicycle frame length
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following code shows how to create a new ``AttributeUsage`` element inside the ``Bike`` structure and assign it a value.
 
 .. note::
 
-    You need to replace the organization ID, server URL, and token with your own data. For more information, see :ref:`Finding information<Info_Section>`.
+    You need to replace the organization ID, server URL, and token with your own data. For more information, see :ref:`Find information<Info_Section>`.
 
 .. literalinclude:: ../_static/code/creating-elements.py
     :language: python
@@ -35,7 +35,7 @@ You just created a new element and assigned a parsed value to it.
 
 .. note::
 
-    You can also assign a value directly when creating the element, without using the ``set_value`` or ``parse_and_set_value`` method. There are two ways:
+    You can also assign a value directly when creating the element, without using the ``set_value()`` or ``parse_and_set_value()`` method. There are two ways:
 
     - ``value=...`` for simple values (such as numbers).
     - ``expression="..."`` for values with units or expressions.

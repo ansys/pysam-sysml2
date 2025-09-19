@@ -25,7 +25,7 @@ Ensure that you meet these prerequisites:
 
 - A running SAM server instance.
 - A valid organization ID, project ID, and token.
-- The `bike.xmi` model imported into your project.
+- The ``bike.xmi`` model imported into your project.
 
 Simplified Python example
 =========================
@@ -38,7 +38,7 @@ Simplified Python example
 Key advantages
 ==============
 
-Compared to the traditional approach described in (:ref:`Download diagrams and create new elements<Download_Example>`), using the simplified
+Compared to the traditional approach described in :ref:`Download diagrams and create new elements<Download_Example>`, using the simplified
 :class:`ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project` class offers these advantages:
 
 - **Single initialization**: One class automatically handles all connectors.
