@@ -27,24 +27,16 @@ The script attaches all elements contained in ``ownedElement`` and ``_inheritedF
     >>> myPart.subPart
     <class PartUsage>
 
-.. warning::
+**Limitations of dot access for sub-elements:**
 
-.. warning::
+- **Duplicate names**: If multiple elements have the same name, only one is accessible through dot access. You cannot differentiate between elements with identical names using this method.
 
-    **Limitations of dot access for sub-elements:**
-
-    - **Duplicate names**: If multiple elements have the same name, only one is accessible through dot access. You cannot differentiate between elements with identical names using this method.
-
-    - **Names with spaces**: You cannot access elements with spaces in their names (for example, "bike frame") using dot notation. Python identifiers cannot contain spaces.
+- **Names with spaces**: You cannot access elements with spaces in their names (for example, "bike frame") using dot notation. Python identifiers cannot contain spaces.
 
 Function ``get_value``
 ~~~~~~~~~~~~~~~~~~~~~~
 
-.. warning::
-
-    The ``get_value`` function works only for the SysML ``Feature`` element.
-
-Use this top-level function to get the value of the feature without reading the internal structure:
+The ``get_value`` function works only for the SysML ``Feature`` element. Use this top-level function to get the value of the feature without reading the internal structure:
 
 .. code:: bash
 
@@ -59,7 +51,7 @@ Use this top-level function to get the value of the feature without reading the 
     >>> myFloatFeature.get_value()
     10.56
 
-This function supports:
+The ``get_value`` function supports:
 
 - All primitive types: LiteralInteger, LiteralString, etc. - Returns the value directly.
 - Simple expressions: <value> [<unit>] - Returns a tuple: (<value>,<unit short name>).
@@ -76,7 +68,7 @@ Using underscore (``_``) access, you can find all SysML methods:
     >>> myItem._ownedElement
     [<class portUsage>,...]
 
-.. warning::
+.. note::
 
     In this first PySam SysML2 version, only existing fields (with data) are linked, which means that you might not find a function that exists in SysML V2.
 
