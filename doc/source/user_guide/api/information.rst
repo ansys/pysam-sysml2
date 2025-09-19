@@ -135,7 +135,7 @@ If you are using an older server version that does not support the direct accoun
 
    .. figure:: /_static/images/pat-dropdown.png
       :alt: Select Personal Access Token API from dropdown
-      
+
 #. **Generate PAT via POST request:**
    Use the **POST** request to generate a new PAT. Optionally, define the number of days the token remains valid. The default is 30 days.
 

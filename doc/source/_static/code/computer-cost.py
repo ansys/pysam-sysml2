@@ -12,7 +12,7 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
     server_url="https://127.0.0.1:8443/",  # Your SSAMam server base URL
     organization_id="<Orga ID>",  # The organization ID
-    token="<Token>",  # Your authorization token 
+    token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL
 )
 

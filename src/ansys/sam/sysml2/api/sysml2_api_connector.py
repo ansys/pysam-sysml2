@@ -78,7 +78,6 @@ class SysML2APIConnector:
         dict
             Result of the query.
         """
-
         pass
 
     def create_commit(self, project_id: str, commit: str) -> dict:
