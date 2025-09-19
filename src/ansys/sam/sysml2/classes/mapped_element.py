@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Mapped Element class."""
+"""Mapped element class."""
 
 from typing import List
 
@@ -29,43 +29,43 @@ from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 
 
 class MappedElement:
-    """Mapped Element class."""
+    """Provides a mapped element class."""
 
     _element: SysMLElement
     _unresolved_fields: List[UnresolvedField]
 
     def __init__(self, element: SysMLElement, unresolved_fields: List[UnresolvedField]):
         """
-        Construct Method for new instance.
+        Construct a new instance.
 
         Parameters
         ----------
         element : SysMLElement
-            The mapped Element
-        _unresolved_fields : List[UnresolvedField]
-            List of all his unresolved fields=
+            Mapped element.
+        unresolved_fields : List[UnresolvedField]
+            List of all unresolved fields.
         """
         self._element = element
         self._unresolved_fields = unresolved_fields
 
     def get_element(self) -> SysMLElement:
         """
-        Getter for the mapped element.
+        Get the mapped element.
 
         Returns
         -------
         SysMLElement
-            The mapped element
+            Mapped element.
         """
         return self._element
 
     def get_unresolved_fields(self) -> List[UnresolvedField]:
         """
-        Getter for the list of all unresolved Fields.
+        Get a list of all unresolved fields.
 
         Returns
         -------
         List[UnresolvedField]
-            The list of all unresolved Fields
+            List of all unresolved fields.
         """
         return self._unresolved_fields

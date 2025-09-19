@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Main class of the lib."""
+"""Main class of PySam SysML2."""
 
 from typing import Dict
 
@@ -30,12 +30,12 @@ from ansys.sam.sysml2.exception.connector_exception import DiagramNotAvailableEx
 
 
 class SAMDiagramManager:
-    """Diagram Manager class."""
+    """Provides the SAM Diagram Manager."""
 
     _connector: SamApiConnector
 
     def __init__(self, connector: SamApiConnector):
-        """Construct for new instance."""
+        """Construct a new instance."""
         self._connector = connector
 
     def __enter__(self):
@@ -52,7 +52,7 @@ class SAMDiagramManager:
         diagrams = builder.extract_and_build_diagrams(model)
         if diagrams == {}:
             raise DiagramNotAvailableException(
-                f"Diagram functionality not available for project {model._id}"
+                f"Diagram functionality is not available for project {model._id}."
             )
         self._update_model(model, diagrams)
 
@@ -63,7 +63,7 @@ class SAMDiagramManager:
         Parameters
         ----------
         model : Project
-            The context model
+            Context model
         diagrams : Dict[str,dict]
             Diagrams
         """

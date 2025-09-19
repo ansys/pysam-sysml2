@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Commit Class module."""
+"""Commit module."""
 
 import json
 from typing import List
@@ -29,36 +29,36 @@ from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 
 
 class Commit:
-    """Class to create and structure a standard SysML commit."""
+    """Creates and structures a standard PySam SysML2 commit."""
 
     project_id: str = None
     changes: List[DataVersion]
     previous_commit_id: str = "head"
 
     def __init__(self, project_id: str):
-        """Initialize class Commit."""
+        """Initialize an instance."""
         self.project_id = project_id
         self.changes = list()
 
     def add_change(self, change: DataVersion):
         """
-        Add a change into the commit.
+        Add a change to the commit.
 
         Parameters
         ----------
         change : DataVersion
-            The data version of the change.
+            Data version of the change.
         """
         self.changes.append(change)
 
     def to_json(self):
         """
-        Serialize the commit data into json.
+        Serialize the commit data into JSON data.
 
         Returns
         -------
-        Str
-            Json data
+        str
+            JSON data.
         """
         return json.dumps(
             {

@@ -28,14 +28,14 @@ from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 
 
 class ModificationObserver:
-    """Modification Observer class for SysML Elements."""
+    """Modification observer for SysML elements."""
 
     _project_id: str = ""
     _project = None
     _connector: SysML2APIConnector
 
     def __init__(self, project, connector: SysML2APIConnector):
-        """Construct method for observer."""
+        """Construct a new instance."""
         self._project_id = project._id
         self._project = project
         self._connector = connector
@@ -48,11 +48,11 @@ class ModificationObserver:
         Parameters
         ----------
         element_id : str
-            Modified Element Id
+            Modified element ID.
         name : str
-            Key of modified field
+            Key of the modified field.
         value : object
-            Value of modified field
+            Value of the modified field.
         """
         if self._working_observer:
             commit = Commit(self._project_id)
@@ -68,7 +68,7 @@ class ModificationObserver:
 
     def list_notify(self, element_id, name, list_content):
         """
-        Catch modification on list.
+        Catch modification on a list.
 
         Parameters
         ----------
@@ -92,7 +92,7 @@ class ModificationObserver:
             self.reload_project()
 
     def reload_project(self):
-        """Start the reload of the project."""
+        """Reload of the project."""
         from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 
         builder = SysML2ProjectBuilder(self._connector)

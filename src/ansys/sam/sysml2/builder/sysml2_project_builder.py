@@ -37,35 +37,35 @@ from ansys.sam.sysml2.observer.observer import ModificationObserver
 
 
 class SysML2ProjectBuilder:
-    """SysML 2 Project builder class."""
+    """Provides the SysML2 project builder."""
 
     _connector: SysML2APIConnector
     _mapper: JsonMapper = JsonMapper()
 
     def __init__(self, connector: SysML2APIConnector):
         """
-        Construct Method for new instance.
+        Construct a new instance.
 
         Parameters
         ----------
         connector : SysML2APIConnector
-            The SysML2 Connector.
+            SysML2 API connector.
         """
         self._connector = connector
 
     def build_project(self, project_id: str) -> Project:
         """
-        Call API and build the project from JSON.
+        Call the API and build the project from JSON.
 
         Parameters
         ----------
         project_id : str
-            Project ID
+            Project ID.
 
         Returns
         -------
         Project
-            Built Project
+            Built project.
         """
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
@@ -82,7 +82,7 @@ class SysML2ProjectBuilder:
         Parameters
         ----------
         project : ProjectImpl
-            The project to build
+            Project to build.
         """
         elements = self._connector.get_all_elements(project_id=project._id)
         self._map_element_in_project(project, elements)
@@ -100,7 +100,7 @@ class SysML2ProjectBuilder:
         """
         Extract root element and update names.
 
-        Parse all project elements and update name.
+        Parse all project elements and update names.
         Also check if it's a root element.
 
         Parameters
@@ -122,7 +122,7 @@ class SysML2ProjectBuilder:
         Parameters
         ----------
         project : ProjectImpl
-            Context project
+            Context project.
         elements : list
             All element to map.
         """
@@ -136,17 +136,17 @@ class SysML2ProjectBuilder:
 
     def _resolve_fields(self, project: ProjectImpl) -> Set[str]:
         """
-        Resolve all fields and return missing ids.
+        Resolve all fields and return missing IDs.
 
         Parameters
         ----------
         project : ProjectImpl
-            The context project
+            Context project.
 
         Returns
         -------
         Set[str]
-            All missing ids
+            All missing IDs.
         """
         missing = set()
         unresolved_fields = project._unresolved_fields.copy()
@@ -162,19 +162,19 @@ class SysML2ProjectBuilder:
 
     def _get_missing(self, project: ProjectImpl, missing_elements: Set[str]) -> List[dict]:
         """
-        Get all missing element from the API.
+        Get all missing elements from the API.
 
         Parameters
         ----------
         project : ProjectImpl
-            current context
+            Current context.
         missing_elements : Set[str]
-            All missing element id
+            All missing element IDs.
 
         Returns
         -------
         List[dict]
-            New element
+            New element.
         """
         query = Query(None)
         cp = None
@@ -196,7 +196,7 @@ class SysML2ProjectBuilder:
         return self._connector.execute_query(project._id, query.to_json())
 
     def _resolve_inherited_link(self, project: ProjectImpl):
-        """Resolve all inherited element and add it as member."""
+        """Resolve all inherited elements and add them as members."""
         for _, element in project._env.items():
             [
                 delattr(element, x)
@@ -209,24 +209,24 @@ class SysML2ProjectBuilder:
 
     def __get_all_element(self, element: SysMLElement) -> list:
         """
-        Parse all definition and collect owned elements.
+        Parse all definitions and collect owned elements.
 
         Parameters
         ----------
         element : SysMLElement
-            base Element
+            Base element.
 
         Returns
         -------
         list
-            All owned element
+            All owned elements.
         """
         all_element = getattr(element, "_ownedElement", [])
         all_element.extend(getattr(element, "_inheritedFeature", []))
         return all_element
 
     def _add_write_access(self, project: ProjectImpl):
-        """Add Write rules access on the project."""
+        """Add write rules access on the project."""
         project_modification_observer = ModificationObserver(project, self._connector)
         for _, element in project._env.items():
             element._observer = project_modification_observer

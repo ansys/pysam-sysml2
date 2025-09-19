@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""EMFJSON Mapper class."""
+"""EMFJSON mapper class."""
 
 from typing import Dict, List, Tuple, Union
 
@@ -39,19 +39,19 @@ TYPE_KEY = "eClass"
 
 
 class EMFJSONMapper:
-    """EMFJSONMapper class for Diagram Element."""
+    """Provides the EMFJSON mapper for a diagram element."""
 
     _project: Project
     _project_id: str
     class_cache: dict
 
     def __init__(self):
-        """Construct Method for new EMF2ObjectMapper instance."""
+        """Construct a new instance."""
         self.class_cache: Dict[str, type] = {}
 
     def map(self, data: dict) -> MappedElement:
         """
-        Convert JSON-like dictionary data into a DiagramElement.
+        Convert JSON-like dictionary data into a diagram element.
 
         Parameters
         ----------
@@ -61,15 +61,15 @@ class EMFJSONMapper:
         Returns
         -------
         MappedElement
-            An object containing the mapped DiagramElement and any unresolved references.
+            Object containing the mapped diagram element and any unresolved references.
         """
         if "@id" not in data:
-            raise InvalidProjectJSONMapperException("Not valid JSON-like dictionary data")
+            raise InvalidProjectJSONMapperException("Not valid JSON-like dictionary data.")
 
         return self.__build_element(data)
 
     def __build_element(self, data: dict) -> MappedElement:
-        """Core implementation for mapping data into a DiagramElement."""
+        """Core implementation for mapping data into a diagram element."""
         eclass = data.get(TYPE_KEY, None)
 
         element = DiagramElement(id=data["@id"])
@@ -89,9 +89,9 @@ class EMFJSONMapper:
         Parameters
         ----------
         element : DiagramElement
-            The element whose class will be updated.
+            Element whose class is to be updated.
         eclass : str
-            The class name string, possibly namespaced (e.g., containing "//").
+            Class name string, possibly namespaced (for example, containing "//").
         """
         class_name = eclass.split("//")[-1] if "//" in eclass else eclass
         if class_name and class_name not in self.class_cache:
@@ -100,19 +100,19 @@ class EMFJSONMapper:
 
     def __map_plane_if_present(self, data: dict, element: DiagramElement) -> List[UnresolvedField]:
         """
-        Map the 'plane' section of the data to a Plane object, extracting unresolved references.
+        Map the plane section of the data to a Plane object, extracting unresolved references.
 
         Parameters
         ----------
         data : dict
-            The raw data potentially containing a 'plane' section.
+            Raw data potentially containing a plane section.
         element : DiagramElement
-            The element to which the Plane will be attached.
+            Element to attach the plane to.
 
         Returns
         -------
         List[UnresolvedField]
-            A list of unresolved references within the 'plane' section.
+            List of unresolved references within the plane section.
         """
         unresolved_fields = []
 
@@ -136,16 +136,16 @@ class EMFJSONMapper:
         self, attribute_name: str, plane_data: dict, plane: DiagramElement
     ) -> List[UnresolvedField]:
         """
-        Extract refs from plane_data, assign to plane, return unresolved refs.
+        Extract references from plane data, assign to a plane, and return unresolved references.
 
         Parameters
         ----------
         attribute_name : str
-            The key in plane_data from which to extract references.
+            Key in the plane data to extract references from.
         plane_data : dict
             Dictionary containing data with potential references.
         plane : DiagramElement
-            The target object on which to set the extracted references as an attribute.
+            Target object for setting the extracted references on as an attribute.
 
         Returns
         -------
@@ -177,25 +177,26 @@ class EMFJSONMapper:
         original_key: str = None,
     ) -> Tuple[List, List[UnresolvedField]]:
         """
-        Extract reference(s) from a dictionary or list of dictionaries.
+        Extract references from a dictionary or list of dictionaries.
 
         Parameters
         ----------
         data : dict or list
-            A single dictionary or a list of items to inspect.
+            Single dictionary or a list of items to inspect.
         owner : DiagramElement
-            The object owning the attribute.
+            Object owning the attribute.
         attr : str
-            The name of the attribute.
+            Name of the attribute.
         original_key : str, optional
-            The original key for context propagation.
+            Original key for context propagation.
 
         Returns
         -------
         tuple[list, list[UnresolvedField]]
-            A tuple containing:
-            - A list of resolved values
-            - A list of unresolved fields
+            Tuple containing:
+
+            - A list of resolved values.
+            - A list of unresolved fields.
         """
         if isinstance(data, dict):
             return self.__process_single_item(data, owner, attr, original_key)
@@ -218,13 +219,13 @@ class EMFJSONMapper:
         Parameters
         ----------
         item : dict
-            A dictionary representing a single element, possibly containing a reference key "$ref".
+            Dictionary representing a single element, possibly containing a reference key "$ref".
         owner : DiagramElement
-            The object that owns the attribute being set.
+            Object that owns the attribute being set.
         attr : str
-            The name of the attribute on the owner.
+            Name of the attribute on the owner.
         original_key : str, optional
-            The original key for context propagation.
+            Original key for context propagation.
 
         Returns
         -------
@@ -260,17 +261,18 @@ class EMFJSONMapper:
         Parameters
         ----------
         items : list
-            A list containing dicts or simple values.
+            List containing dictionaries or simple values.
         owner : DiagramElement
-            The object that owns the attribute being set.
+            Oobject that owns the attribute being set.
         attr : str
-            The name of the attribute on the owner.
-        original_key : str, optional
-            The original key for context propagation.
+            Name of the attribute on the owner.
+        original_key : str, default: None
+            Original key for context propagation.
 
         Returns
         -------
         tuple[list, list[UnresolvedField]]
+
             - List of resolved elements and/or simple values.
             - List of unresolved references.
         """
@@ -298,16 +300,16 @@ class EMFJSONMapper:
         Parameters
         ----------
         value : dict
-            The dictionary value representing a single element or reference.
+            Dictionary value representing a single element or reference.
         element : DiagramElement
-            The target element to update.
+            Target element to update.
         attr : str
-            The attribute name on the element to set.
+            Attribute name on the element to set.
 
         Returns
         -------
         list[UnresolvedField]
-            List of unresolved references found while processing this dict.
+            List of unresolved references found while processing this dictionary.
         """
         extracted_value, unresolved = self.__extract_reference(value, element, attr)
 
@@ -329,11 +331,11 @@ class EMFJSONMapper:
         items : list
             List of values.
         element : DiagramElement
-            The target element to update.
+            Target element to update.
         attr : str
-            The attribute name on the element to set.
+            Attribute name on the element to set.
         original_key : str
-            The original key from JSON for context propagation.
+            Original key from JSON data for context propagation.
 
         Returns
         -------
@@ -346,14 +348,14 @@ class EMFJSONMapper:
 
     def __add_fields(self, data: dict, element: DiagramElement) -> List[UnresolvedField]:
         """
-        Map dynamic JSON fields onto a DiagramElement attributes, handling nested structures.
+        Map dynamic JSON fields onto a diagram element's attributes, handling nested structures.
 
         Parameters
         ----------
         data : dict
-            The JSON data to map.
+            JSON data to map.
         element : DiagramElement
-            The target object to which attributes are set.
+            Target object to set attributes on.
 
         Returns
         -------

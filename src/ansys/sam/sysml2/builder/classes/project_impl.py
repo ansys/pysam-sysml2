@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Private implementation for Project."""
+"""Private implementation for a project."""
 
 from typing import List, Set
 
@@ -31,7 +31,7 @@ from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 
 
 class ProjectImpl(Project):
-    """Private class for project building."""
+    """Provides a private class for project building."""
 
     _id: str
     _env: dict
@@ -42,12 +42,12 @@ class ProjectImpl(Project):
 
     def __init__(self, id: str, name: str):
         """
-        Construct Method for new instance.
+        Construct a new instance.
 
         Parameters
         ----------
         id : str
-            project id.
+            Project ID.
         """
         super().__init__()
         self._id = id
@@ -64,7 +64,7 @@ class ProjectImpl(Project):
         Parameters
         ----------
         element : SysMLElement
-            The element to add.
+            Element to add.
         """
         self._env[element._id] = element
 
@@ -75,65 +75,65 @@ class ProjectImpl(Project):
         Parameters
         ----------
         unresolved_fields : List[UnresolvedField]
-            All new fields
+            List of all new fields.
         """
         self._unresolved_fields.extend(unresolved_fields)
 
     def get_root(self) -> List[SysMLElement]:
         """
-        Return the list of root packages.
+        Get the list of root packages.
 
         Returns
         -------
         List[SysMLElement]
-            List of roots packages
+            List of root packages.
         """
         return self._root
 
     def get_root_package(self) -> SysMLElement:
-        """Return the root package."""
+        """Get the root package."""
         return [x for x in self._root if x.__class__.__name__ == "Package"][0]
 
     def get_name(self) -> str:
         """
-        Getter for name.
+        Get the project name.
 
         Returns
         -------
         str
-            Project name
+            Project name.
         """
         return self._name
 
     def find_element_by_id(self, element_id: str) -> SysMLElement:
         """
-        Find element with id.
+        Find an element by its ID.
 
         Parameters
         ----------
         element_id : str
-            Element Id
+            Element ID.
 
         Returns
         -------
         SysMLElement
-            The list of elements retrieved
+            List of elements retrieved.
         """
         return self._env.get(element_id, None)
 
     def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
         """
-        Find all element with name.
+        Find all elements by name.
 
         Parameters
         ----------
         elements_name : str
-            Name if elements
+            Name of elements.
 
         Returns
         -------
         List[SysMLElement]
-            The list of elements retrieved
+            List of elements retrieved.
         """
         return [
             el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == elements_name

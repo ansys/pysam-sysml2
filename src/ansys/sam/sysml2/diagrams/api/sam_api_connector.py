@@ -25,19 +25,19 @@ from abc import ABC, abstractmethod
 
 
 class SamApiConnector(ABC):
-    """SAM API Connector Interface."""
+    """Provides the SAM API connector interface."""
 
     @abstractmethod
     def get_project_data(self, model_id: str) -> dict:
-        """Retrieve project data from the SAM API using the project identifier."""
+        """Get project data from the SAM API using the project ID."""
 
     @abstractmethod
     def get_diagrams_info(self, project_id: str) -> dict:
-        """Fetch metadata and information for all diagrams within a specific project."""
+        """Get metadata and information for all diagrams within a specific project."""
 
     @abstractmethod
     def get_single_diagram_info(self, project_id: str, diagram_id: str) -> dict:
-        """Retrieve detailed information for a single diagram within a project."""
+        """Get detailed information for a single diagram within a project."""
 
     @abstractmethod
     def get_diagram_image_as_svg(self, project_id: str, diagram_id: str) -> bytes:

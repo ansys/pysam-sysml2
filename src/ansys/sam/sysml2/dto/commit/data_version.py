@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""DataVersion Module."""
+"""Data version module."""
 
 from dataclasses import dataclass, field
 from typing import Any
@@ -28,17 +28,17 @@ from typing import Any
 
 @dataclass
 class DataVersion:
-    """Class to edit or create a SysML Element."""
+    """Edits or creates a SysML element."""
 
     payload: dict = field(default_factory=dict)
     identity: str = field(default=None)
 
     def identify(self, element_id: str):
-        """Set the identity with the given element id of the DataVersion."""
+        """Set the identity with the given element ID of the data version."""
         self.identity = element_id
 
     def add_change(self, key: str, value: Any):
-        """Add the change into the DataVersion. Also serialize the data if it's needed."""
+        """Add the change into the data version. Also serialize the data if it's needed."""
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
         from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
@@ -52,7 +52,7 @@ class DataVersion:
             self.payload[key] = value
 
     def to_json(self) -> dict:
-        """Serialize the data into a json dict."""
+        """Serialize the data into a JSON dict."""
         data = {
             "@type": "DataVersion",
             "payload": self.payload,

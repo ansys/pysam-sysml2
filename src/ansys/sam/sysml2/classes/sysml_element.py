@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Python base Class for SysML Element."""
+"""Python base class for SysML elements."""
 
 from typing import Union
 
@@ -30,18 +30,18 @@ from ansys.sam.sysml2.observer.observer import ModificationObserver
 
 
 class SysMLElement:
-    """Python Base class for all SysML Element."""
+    """Provides the Python base class for all SysML elements."""
 
     _id: str
     _observer: ModificationObserver = None
 
     def __init__(self, id: str) -> None:
-        """Init method construct new Instance.
+        """Construct a new instance.
 
         Parameters
         ----------
         id : str
-            Element id
+            Element ID.
         """
         self._id = id
 
@@ -51,17 +51,17 @@ class SysMLElement:
 
         Parameters
         ----------
-        name : Key name
-            The name of the key
+        name : str
+            Name of the key.
         value : object
-            The value of the key
+            Value of the key.
         """
         if name != "_observer" and getattr(self, "_observer", None) is not None:
             self._observer.notify(self._id, name, value)
         super().__setattr__(name, value)
 
     def get_value(self):
-        """Return the value of the feature."""
+        """Get the value of the feature."""
         if hasattr(self, "_defaultValue"):
             value = self._defaultValue
             if hasattr(value, "_value"):
@@ -79,9 +79,9 @@ class SysMLElement:
         return None
 
     def _parse_expression(self, value: dict, is_old_format: bool = False):
-        """Parse expression and return parsed value and unit using specified format."""
+        """Parse expression and return parsed value and unit using specified format type."""
         if getattr(value, "_operator", None) != "[":
-            raise UnsupportedValueExpression("Expression not supported!")
+            raise UnsupportedValueExpression("Expression not supported.")
 
         return self._parse_format(value, is_old_format)
 
@@ -92,14 +92,15 @@ class SysMLElement:
         Parameters
         ----------
         value : dict
-            The expression object containing members and potentially an operator.
+            Expression object containing members and potentially an operator.
         is_old_format : bool
-            Format of the expression. Must be either True for old format or False otherwise.
+            Whether the expression is in the old format of the expression. Use ``True`` if
+            it is in the old format or ``False`` otherwise.
 
         Returns
         -------
         tuple
-            A tuple of (value, unit_name or None).
+            Tuple of (value, unit_name or None).
 
         Raises
         ------
@@ -122,7 +123,7 @@ class SysMLElement:
     def _format_result_with_unit(self, elements: list, owned_member: list, is_old_format: bool):
         """Format a parsed expression value along with its associated unit (if available)."""
         if not elements:
-            raise UnsupportedValueExpression("No values found in expression")
+            raise UnsupportedValueExpression("No values found in expression.")
 
         try:
             if is_old_format:
@@ -136,12 +137,12 @@ class SysMLElement:
                     if hasattr(x._valuation._value, "_referent")
                 ]
         except NameError:
-            raise UnsupportedValueExpression("No values found in expression")
+            raise UnsupportedValueExpression("No values found in expression.")
 
         return (value, self._extract_unit_name(referents))
 
     def _extract_unit_name(self, referents):
-        """Extract the unit name from referents, if any, otherwise return None."""
+        """Extract the unit name from referents, if any. Otherwise, return ``None``."""
         if not referents:
             return None
 
@@ -154,19 +155,19 @@ class SysMLElement:
         return None
 
     def parse_and_set_value(self, value: str):
-        """Parse the value and create the valuation part in the Feature."""
+        """Parse the value and create the valuation part in the feature."""
         self.__set_or_update_value("operator", value)
 
     def set_value(self, new_value: Union[str | int | float | bool]):
-        """Update the Feature value."""
+        """Update the feature value."""
         self.__set_or_update_value(type(new_value), new_value)
 
     def __set_or_update_value(self, value_type: type, new_value: Union[str | int | float | bool]):
-        """Create the commit to update the value of type value_type."""
+        """Create the commit to update the value of type ``value_type``."""
         self._create_value(value_type, new_value)
 
     def _create_value(self, value_type: type, new_value: Union[str | int | float | bool]):
-        """Create a new value of type value_type into the Feature."""
+        """Create a new value of type ``value_type`` in the feature."""
         project_id = self._observer._project_id
         commit = Commit(project_id)
         change = DataVersion()

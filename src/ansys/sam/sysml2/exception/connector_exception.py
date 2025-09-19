@@ -19,15 +19,15 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Custom exceptions for Connector-related errors."""
+"""Custom exceptions for connector-related errors."""
 
 
 class ConnectorException(Exception):
-    """Top level exception for Connector classes."""
+    """Provides top-level exceptions for connectors."""
 
 
 class ConnectorConnectionException(ConnectorException):
-    """Exception when connection information are invalid."""
+    """Exception when connection information is invalid."""
 
 
 class UnauthorizedConnectionException(ConnectorException):
@@ -35,19 +35,19 @@ class UnauthorizedConnectionException(ConnectorException):
 
 
 class HTTPResponseException(ConnectorException):
-    """Exception when connection return other than 200."""
+    """Exception when the connection returns other than 200."""
 
 
 class InvalidElementJsonFoundException(ConnectorException):
-    """Exception when the receive JSON is invalid."""
+    """Exception when the received JSON data is invalid."""
 
 
 class ProjectNotFoundException(ConnectorException):
-    """Exception when the asked projects is not found."""
+    """Exception when the requested project is not found."""
 
 
 class ElementNotFoundException(ConnectorException):
-    """Exception when the wanted elements is not found."""
+    """Exception when the requested element is not found."""
 
 
 class InvalidProjectNameException(ConnectorException):

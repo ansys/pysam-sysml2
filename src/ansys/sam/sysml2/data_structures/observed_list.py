@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Observed List for SysMl List."""
+"""Observed list for SysMl list."""
 
 from typing import Any
 
@@ -34,7 +34,7 @@ def mount_observer_and_access(function):
     Parameters
     ----------
     function : callable
-        Function to watch
+        Function to watch.
     """
 
     def wrapper(self, *args):
@@ -48,21 +48,21 @@ def mount_observer_and_access(function):
 
 
 class ObservedList(list):
-    """React (Notification) on each list operation."""
+    """React (notification) on each list operation."""
 
     _content: list
     _name: str
     _owner: SysMLElement
 
     def __init__(self, owner: SysMLElement, name: str, *args):
-        """Initialize class ObservedList.
+        """Construct new instance.
 
         Parameters
         ----------
         owner : SysMLElement
-            Owner of this list.
+            Owner of the list.
         name : str
-            Name of the structural feature.(eg ownedElement)
+            Name of the structural feature (owned element).
         """
         if len(args) > 0:
             super().extend(args)

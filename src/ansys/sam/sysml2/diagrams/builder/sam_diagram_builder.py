@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Diagram Builder."""
+"""Diagram builder."""
 
 from typing import List
 
@@ -30,12 +30,12 @@ from ansys.sam.sysml2.diagrams.classes import UnresolvedField
 
 
 class SamDiagramBuilder:
-    """Diagram Builder class with integrated extraction capabilities."""
+    """Provides the diagram builder with integrated extraction capabilities."""
 
     _mapper: EMFJSONMapper
 
     def __init__(self, connector: SamApiConnector):
-        """Construct method for new instance."""
+        """Construct a new instance."""
         self._connector = connector
         self._mapper = EMFJSONMapper()
 
@@ -50,7 +50,7 @@ class SamDiagramBuilder:
         return self.__filter_diagrams(self.__extract_e_annotations(data))
 
     def __build_diagrams(self, diagrams_extracted: dict, project: Project) -> dict:
-        """Build all diagrams elements."""
+        """Build all diagram elements."""
         data = {}
         for id, annotations in diagrams_extracted.items():
             elements = []
@@ -69,12 +69,12 @@ class SamDiagramBuilder:
         Parameters
         ----------
         data : dict
-            The model data
+            Model data.
 
         Returns
         -------
         dict
-            All diagrams, with container ID
+            All diagrams, with container ID.
         """
         diagrams = {}
         if "eAnnotations" in data:
@@ -86,7 +86,7 @@ class SamDiagramBuilder:
 
     def __filter_diagrams(self, e_annotations: dict) -> dict:
         """
-        Filter given e_annotation list to keep diagrams.
+        Filter a given eAnnotations list to keep diagrams.
 
         Parameters
         ----------
@@ -96,7 +96,7 @@ class SamDiagramBuilder:
         Returns
         -------
         dict
-            Only Diagrams eAnnotation
+            Only diagram eAnnotations.
         """
         res = {}
         for id, annotations in e_annotations.items():
@@ -116,9 +116,9 @@ class SamDiagramBuilder:
         Parameters
         ----------
         project : Project
-            The project context
+            Project context
         unresolved_fields : List[UnresolvedField]
-            The unresolved fields
+            Unresolved fields.
         """
         for field in unresolved_fields:
             target_id = field.get_id()

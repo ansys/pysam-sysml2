@@ -20,8 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""File for Runtime exception."""
+"""Runtime exception."""
 
 
 class UnsupportedValueExpression(Exception):
-    """When the requested expression is not value [unit]."""
+    """Exception when the requested expression is not value [unit]."""

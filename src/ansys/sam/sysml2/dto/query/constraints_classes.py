@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Constraint Interface for SysML Queries."""
+"""Constraint interface for SysML queries."""
 
 from dataclasses import dataclass, field
 from typing import List
@@ -30,7 +30,7 @@ from .query_enum import JoinOperator, Operator
 
 
 class Constraint:
-    """Constraint Interface."""
+    """Provides the constraint interface."""
 
     def to_json(self) -> dict:
         """
@@ -39,7 +39,7 @@ class Constraint:
         Returns
         -------
         dict
-            The class adapted to JSON Format
+            Class adapted to JSON format.
         """
         data = {"@type": self.__class__.__name__}
         data.update(dict((k, v) for k, v in self.__dict__.items() if not k.startswith("_")))
@@ -48,7 +48,7 @@ class Constraint:
 
 @dataclass
 class PrimitiveConstraint(Constraint):
-    """PrimitiveConstraint for simple Query constraint."""
+    """Provides a primitive constraint for a simple query constraint."""
 
     property: str
     value: str
@@ -58,19 +58,19 @@ class PrimitiveConstraint(Constraint):
 
 @dataclass
 class CompositeConstraint(Constraint):
-    """CompositeConstraint for multiple Query constraint."""
+    """Provides a composite constraint for multiple query constraints."""
 
     operator: JoinOperator = field(default=JoinOperator.AND)
     constraint: List[Constraint] = field(default_factory=list)
 
     def to_json(self) -> dict:
         """
-        Return a JSON representation of the class.
+        Get a JSON representation of the class.
 
         Returns
         -------
         dict
-            The class adapted to JSON Format
+            Class adapted to JSON format.
         """
         data = super().to_json()
         end_data = data.copy()
@@ -78,5 +78,5 @@ class CompositeConstraint(Constraint):
         for c in data["constraint"]:
             end_data["constraint"].append(c.to_json())
         if len(end_data["constraint"]) < 2:
-            raise InvalidCompositeConstraint("Not enough constraint")
+            raise InvalidCompositeConstraint("Not enough constraints.")
         return end_data

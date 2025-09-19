@@ -38,7 +38,7 @@ TYPE_KEY = "@type"
 
 
 class JsonMapper:
-    """JSON Mapper class for Sysml Element."""
+    """Provides the JSON mapper class for a SysML element."""
 
     class_cache = {}
 
@@ -46,40 +46,40 @@ class JsonMapper:
         self, name_space: str, json_element: dict, mapped_element: SysMLElement
     ) -> MappedElement:
         """
-        Map the json into a Python element.
+        Map the JSON into a Python element.
 
         Parameters
         ----------
         json_element : dict
-            element data
+            Element data.
         name_space: str
-            project name space
+            Project name space.
 
         Returns
         -------
         MappedElement
-            Mapped element
+            Mapped element.
         """
         if TYPE_KEY not in json_element:
-            raise InvalidProjectJSONMapperException("Not valid sysml element data")
+            raise InvalidProjectJSONMapperException("Not valid SysML2 element data.")
 
         return self.__build_element(name_space, json_element, mapped_element)
 
     def __build_element(self, name_space: str, data: dict, element: SysMLElement) -> MappedElement:
         """
-        Map element data to Python Object.
+        Map element data to a Python object.
 
         Parameters
         ----------
         data : dict
-            Element data
+            Element data.
         name_space: str
-            project name space
+            Project name space.
 
         Returns
         -------
         MappedElement
-            MappedElement with the sysml element and his unresolved fields
+            MappedElement with the Sysml element and its unresolved fields.
         """
         unresolved_fields = list()
         if element is None:
@@ -96,14 +96,14 @@ class JsonMapper:
 
     def __update_element_definition(self, data: dict, element: SysMLElement) -> None:
         """
-        Update the default SysML Element definition to the SysML Element.
+        Update the default SysML2 element definition to the SysML2 element.
 
         Parameters
         ----------
         data : dict
-            element data
+            Element data.
         element : SysMLElement
-            The associated element
+            Associated element.
         """
         element_type = data[TYPE_KEY]
         try:
@@ -119,21 +119,21 @@ class JsonMapper:
         field_values: Union[dict | list | str],
     ) -> List[UnresolvedField]:
         """
-        Associate element and value with key.
+        Associate the element and value with a key.
 
         Parameters
         ----------
         element : SysMLElement
-            destination element
+            Destination element.
         field_name : str
-            field name
+            Field name.
         field_values : Union[dict  |  list  |  str]
-            field value
+            Field value.
 
         Returns
         -------
         List[UnresolvedField]
-            The list of all unresolved Fields
+            List of all unresolved fields.
         """
         field_name = "_" + field_name
         if isinstance(field_values, list):
@@ -145,63 +145,63 @@ class JsonMapper:
 
     def __add_default_field(self, element: SysMLElement, field_name: str, field_value: str) -> List:
         """
-        Adder for default type.
+        Adder function for default type.
 
         Parameters
         ----------
         element : SysMLElement
-            destination element
+            Destination element.
         field_name : str
-            field name
+            Field name.
         field_value : Union[dict  |  list  |  str]
-            field value
+            Field value.
 
         Returns
         -------
         List
-            Empty list because fields already resolved.
+            Empty list because fields are already resolved.
         """
         setattr(element, field_name, field_value)
         return []
 
     def __add_element_to_field(self, element: SysMLElement, key: str, value: dict):
         """
-        Adder for simple element field.
+        Adder function for simple element field.
 
         Parameters
         ----------
         element : SysMLElement
-            destination element
+            Destination element.
         key : str
-            field name
+            Field name.
         value : Union[dict  |  list  |  str]
-            field value
+            Field value.
 
         Returns
         -------
         List[UnresolvedField]
-            A list with the unresolved Field
+            List with the unresolved fields.
         """
         setattr(element, key, value["@id"])
         return [UnresolvedField(element, key, value["@id"])]
 
     def __add_list_to_field(self, element: SysMLElement, key: str, field_values: list):
         """
-        Adder Function for list elements value.
+        Adder function for list elements value.
 
         Parameters
         ----------
         element : SysMLElement
-            destination element
+            Destination element.
         key : str
-            field name
-        value : Union[dict  |  list  |  str]
-            field value
+            Field name.
+        field_values : Union[dict  |  list  |  str]
+            Field values.
 
         Returns
         -------
         List[UnresolvedField]
-            The list of all unresolved Fields created for the list elements.
+            List of all unresolved fields created for the list elements.
         """
         if all(isinstance(value, dict) for value in field_values):
             setattr(

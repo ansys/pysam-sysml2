@@ -23,12 +23,12 @@
 
 
 class QueryException(Exception):
-    """QueryException is top exception for Queries."""
+    """Top exception for queries."""
 
 
 class InvalidQuery(QueryException):
-    """InvalidQuery raised when the JSON query is invalid."""
+    """Exception when the JSON query is invalid."""
 
 
 class InvalidCompositeConstraint(InvalidQuery):
-    """InvalidCompositeConstraint raised when constraint is invalid."""
+    """Exception when the composite constraint is invalid."""

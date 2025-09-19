@@ -20,12 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Exception file for Mappers."""
+"""Exception file for mappers."""
 
 
 class MapperException(Exception):
-    """Top level exception for Mapper exception."""
+    """Top-level exception for mapper exception."""
 
 
 class InvalidProjectJSONMapperException(MapperException):
-    """Exception throws when the give project json is invalid."""
+    """Exception when the give project JSON is invalid."""

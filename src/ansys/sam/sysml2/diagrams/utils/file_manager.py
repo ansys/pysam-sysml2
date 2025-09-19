@@ -28,7 +28,7 @@ import requests
 
 
 class FileManager:
-    """Class to handle file operations and path management."""
+    """Handles file operations and path management."""
 
     @staticmethod
     def save_binary_content(
@@ -40,13 +40,13 @@ class FileManager:
         Parameters
         ----------
         content : bytes
-            The binary content to write.
+            Binary content to write.
         path : str or Path
             Path to a file or directory.
         filename : str
-            Name of the file to be saved.
+            Name of the file to save.
         file_format : str
-            The format requested.
+            Format requested.
 
         Returns
         -------
@@ -74,11 +74,11 @@ class FileManager:
         Parameters
         ----------
         response : requests.Response
-            Response object containing streamed data.
+            Response object containing the streamed data.
         path : str or Path
             Path to a file or directory.
         filename : str
-            Name of the file to be saved.
+            Name of the file to save.
 
         Returns
         -------
@@ -100,14 +100,14 @@ class FileManager:
         """
         Resolve a valid file path from the given path and default filename.
 
-        If a file is specified, uses its parent directory and concatenates with filename.
+        If a file is specified, use its parent directory and concatenate with the filename.
 
         Parameters
         ----------
         path : str or Path
-            A directory or file path.
+            Directory or file path.
         filename : str
-            Default filename if path is a directory,
+            Default filename if path is a directory
             or filename to use with parent directory if path is a file.
 
         Returns
@@ -121,7 +121,7 @@ class FileManager:
             If the path cannot be resolved properly.
         """
         if not path or (isinstance(path, str) and path.strip() == ""):
-            raise ValueError("Cannot resolve path: empty or invalid path provided")
+            raise ValueError("Cannot resolve path: Empty or invalid path is provided.")
 
         path = Path(path)
 
@@ -140,7 +140,7 @@ class FileManager:
     @staticmethod
     def ensure_directory_exists(directory_path: Path) -> None:
         """
-        Ensure that a directory exists; create it if needed.
+        Ensure that a directory exists. Create it if needed.
 
         Parameters
         ----------

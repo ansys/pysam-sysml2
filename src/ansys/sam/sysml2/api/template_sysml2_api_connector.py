@@ -42,47 +42,47 @@ from ansys.sam.sysml2.exception.connector_exception import (
 
 
 class TemplateSysML2APIConnector(SysML2APIConnector):
-    """Abstract class with SysML methods."""
+    """Provides the abstract class with SysML methods."""
 
     _use_ssl: bool
 
     def __init__(self, use_ssl: bool = True):
         """
-        Abstract Construct Method for new instance.
+        Abstract construct method for a new instance.
 
         Parameters
         ----------
-        use_ssl : bool, optional
-            If the server use SSL (valid HTTPS), by default True
+        use_ssl : bool, default: True
+            Whether the server use SSL (valid HTTPS).
         """
         super().__init__()
         self._use_ssl = use_ssl
 
     def get_projects(self) -> list:
         """
-        Return all projects of the connected user.
+        Get all projects of the connected user.
 
         Returns
         -------
         list
-            The list of all projects
+            List of all projects of the connected user.
         """
         http_request = self._build_http_request(endpoint="/projects")
         return self._send_request(http_request, requests.get)
 
     def get_project_by_id(self, project_id: str) -> dict:
         """
-        Return information for the given project.
+        Get information for the given project.
 
         Parameters
         ----------
         project_id : str
-            Id of the project
+            ID of the project.
 
         Returns
         -------
         dict
-            Information of the project
+            Information for the project.
         """
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}")
         return self._send_request(
@@ -96,23 +96,23 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         project_description: str = "Project description",
     ) -> dict:
         """
-        Create a project with the associated name and description.
+        Create a project with a given name and description.
 
         Parameters
         ----------
         project_name : str
-            name of the project
+            Name of the project.
         project_description (optional) : str
-            description of the project
+            Description of the project.
 
         Returns
         -------
         dict
-            Project record
+            Project record.
         """
         if project_name == "":
             raise InvalidProjectNameException(
-                "When creating a project, its name has to be non empty."
+                "When creating a project, its name must be non-empty."
             )
         http_request = self._build_http_request(endpoint="/projects")
         http_request.json = {
@@ -123,17 +123,17 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def get_all_elements(self, project_id: str) -> list:
         """
-        Return all elements of the given project.
+        Get all elements of the given project.
 
         Parameters
         ----------
         project_id : str
-            Project Id
+            ID of the project.
 
         Returns
         -------
         list
-            The list of all elements
+            List of all elements.
         """
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/elements"
@@ -145,19 +145,19 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
-        Return information of the given element.
+        Get information of the given element.
 
         Parameters
         ----------
         project_id : str
-            Id of the project where the element is
+            ID of the project where the element is located.
         element_id : str
-            Id of the wanted element
+            ID of the wanted element.
 
         Returns
         -------
         dict
-            Information of the element
+            Information of the element.
         """
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/elements/{element_id}"
@@ -169,17 +169,17 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def get_root_elements(self, project_id: str) -> list:
         """
-        Return all root elements of the project.
+        Get all root elements of the project.
 
         Parameters
         ----------
         project_id : str
-            Project id
+            ID of the project.
 
         Returns
         -------
         list
-            All root elements
+            All root elements.
         """
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/roots"
@@ -188,43 +188,43 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def execute_query(self, project_id: str, query: str) -> dict:
         """
-        Send a query to the Standard API using the connector.
+        Send a query to the standard API using the connector.
 
         Parameters
         ----------
         project_id : str
-            Project id
+            ID of the project.
         query : str
-            The query, in JSON format
+            Query in JSON format.
 
         Returns
         -------
         dict
-            Result of the query
+            Result of the query.
         """
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/query-results")
         http_request.json = json.loads(query)
         return self._send_request(http_request=http_request, call=requests.post)
 
     def create_commit(self, project_id: str, commit: str) -> dict:
-        """Send a commit, provided as a JSON string, to the Standard API."""
+        """Send a commit, provided as a JSON string, to the standard API."""
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/commit")
         http_request.json = json.loads(commit)
         return self._send_request(http_request=http_request, call=requests.post)
 
     def _build_http_request(self, endpoint: str) -> HttpRequest:
         """
-        Build a full HTTP Request to be sended, from API Endpoint.
+        Build a full HTTP request to send from the API endpoint.
 
         Parameters
         ----------
         endpoint : str
-            API Endpoint
+            API endpoint.
 
         Returns
         -------
         HttpRequest
-            Full configured HTTP Request.
+            Full configured HTTP request.
         """
         url = self._build_endpoint(endpoint)
         http_request = HttpRequest(url=url)
@@ -237,25 +237,25 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         Parameters
         ----------
         http_request : HttpRequest
-            The request to send
+            Request to send.
         call : Callable
-            THe call function to send the request
+            Call function for sending the request.
         exception_dict : dict
-            Association of exception for http return code
+            Association of exception for HTTP return code.
 
         Returns
         -------
         object
-            JSON object (as Dict or list)
+            JSON object (as a dictionary or list).
 
         Raises
         ------
         ConnectorConnectionException
-            When the connection fail
+            If the connection fails.
         ConnectorConnectionException
-            When provided information are false
+            If provided information is false.
         InvalidElementJsonFoundException
-            If the server return invalid element
+            If the server returns an invalid element.
         """
         response = None
         try:
@@ -278,7 +278,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         Parameters
         ----------
         response : Response
-            The HTTP response object received from the server.
+            HTTP response object received from the server.
 
         Raises
         ------
@@ -315,7 +315,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         Parameters
         ----------
         response : Response
-            The HTTP response object with a 404 status code.
+            HTTP response object with a 404 status code.
 
         Raises
         ------
@@ -340,30 +340,30 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def _build_endpoint(self, endpoint: str) -> str:
         """
-        Build the full URL from the API Endpoint.
+        Build the full URL from the API endpoint.
 
         Parameters
         ----------
         endpoint : str
-            The API Endpoint
+            API endpoint.
 
         Returns
         -------
         str
-            The full API URL
+            Full API URL.
         """
 
     def _add_authentication_field(self, http_request: HttpRequest) -> HttpRequest:
         """
-        Update the HTTP Request with de correct auth field.
+        Update the HTTP request with the correct authentication field.
 
         Parameters
         ----------
         http_request : HttpRequest
-            The request to be auth
+            HTTP request to authenticate.
 
         Returns
         -------
         HttpRequest
-            Authenticated request
+            Authenticated request.
         """

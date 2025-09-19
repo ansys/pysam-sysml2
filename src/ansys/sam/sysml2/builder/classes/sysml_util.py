@@ -19,13 +19,13 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""SysML Util class."""
+"""SysML utility class."""
 
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
 class SysMLUtil:
-    """SysML Util class."""
+    """Provides SysML utility class."""
 
     @staticmethod
     def check_inherited_name(element: SysMLElement) -> str:
@@ -35,12 +35,12 @@ class SysMLUtil:
         Parameters
         ----------
         element : SysMLElement
-            Element
+            Element.
 
         Returns
         -------
         str
-            The Name
+           Name.
         """
         if isinstance(element, str):
             return "::" + element
