@@ -1,4 +1,4 @@
-"""Creating element example for PySam SysML2."""
+"""Creating element example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning

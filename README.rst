@@ -1,4 +1,4 @@
-PySam SysML2
+PySAM SysML2
 ============
 |pyansys| |GH-CI| |black| |MIT|
 
@@ -35,29 +35,29 @@ PySam SysML2
 Overview
 ========
 
-PySam SysML2 provides a Python scripting interface for SysML2 models. It loads models from any SysML2 tool that implements the standard API. The loaded model maps into a Python object, allowing you to manipulate, browse, and edit it. You can then push modifications back to your modeling tool.
+PySAM SysML2 provides a Python scripting interface for SysML2 models. It loads models from any SysML2 tool that implements the standard API. The loaded model maps into a Python object, allowing you to manipulate, browse, and edit it. You can then push modifications back to your modeling tool.
 
-PySam SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architecture Modeler (SAM) <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_.
+PySAM SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architecture Modeler (SAM) <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_.
 
 Prerequisites
 =============
 
-PySam SysML2 requires `Python <https://www.python.org/downloads/>`_ 3.10 or later.
+PySAM SysML2 requires `Python <https://www.python.org/downloads/>`_ 3.10 or later.
 
 Documentation
 =============
 
-The PySam SysML2 documentation includes four sections:
+The PySAM SysML2 documentation includes four sections:
 
-- `Getting started`_: Explains how to install PySam SysML2 and set up a project.
-- `User guide`_: Explains how to connect to PySam SysML2, work with models and diagrams, and find required information.
-- `API reference`_: Describes PySam SysML2 functions, classes, and methods.
-- `Examples`_: Provides some examples of how to use PySam SysML2.
+- `Getting started`_: Explains how to install PySAM SysML2 and set up a project.
+- `User guide`_: Explains how to connect to PySAM SysML2, work with models and diagrams, and find required information.
+- `API reference`_: Describes PySAM SysML2 functions, classes, and methods.
+- `Examples`_: Provides some examples of how to use PySAM SysML2.
 
 License
 =======
 
-The PySam SysML2 project uses the MIT license. Read the full text of the license in the `MIT <https://opensource.org/licenses/MIT/>`_ file.
+The PySAM SysML2 project uses the MIT license. Read the full text of the license in the `MIT <https://opensource.org/licenses/MIT/>`_ file.
 
 .. _getting started: ...
 .. _user guide: ...

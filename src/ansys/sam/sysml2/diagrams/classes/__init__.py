@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Classes module for the PySam SysML2 diagram library."""
+"""Classes module for the PySAM SysML2 diagram library."""
 
 from ansys.sam.sysml2.classes.mapped_element import MappedElement  # noqa as we export name
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField  # noqa as we export name

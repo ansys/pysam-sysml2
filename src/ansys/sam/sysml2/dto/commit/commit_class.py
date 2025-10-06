@@ -29,7 +29,7 @@ from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 
 
 class Commit:
-    """Creates and structures a standard PySam SysML2 commit."""
+    """Creates and structures a standard PySAM SysML2 commit."""
 
     project_id: str = None
     changes: List[DataVersion]

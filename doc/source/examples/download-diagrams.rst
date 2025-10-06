@@ -10,7 +10,7 @@ This example shows how to work with the ``Bike`` model in a SysML v2 project usi
 
 .. note::
 
-    If you have never used PySam SysML2 before, start with one of these simpler examples to understand how this library works:
+    If you have never used PySAM SysML2 before, start with one of these simpler examples to understand how this library works:
 
     - :ref:`Calculate bike weight<Bike_Example>`
     - :ref:`Calculate computer cost<Computer_Example>`

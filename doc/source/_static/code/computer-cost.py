@@ -1,4 +1,4 @@
-"""Computer cost example for PySam SysML2."""
+"""Computer cost example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning
@@ -10,7 +10,7 @@ from ansys.sam.sysml2.tools import SysMLTools
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="https://127.0.0.1:8443/",  # Your SSAMam server base URL
+    server_url="https://127.0.0.1:8443/",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The organization ID
     token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL

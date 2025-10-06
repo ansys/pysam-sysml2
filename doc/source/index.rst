@@ -1,9 +1,9 @@
-PySam SysML2
+PySAM SysML2
 #############
 
-PySam SysML2 provides a Python scripting interface for SysML2 models. It loads models from any SysML2 tool that implements the standard API. The loaded model maps into a Python object, allowing you to manipulate, browse, and edit it. You can then push modifications back to your modeling tool.
+PySAM SysML2 provides a Python scripting interface for SysML2 models. It loads models from any SysML2 tool that implements the standard API. The loaded model maps into a Python object, allowing you to manipulate, browse, and edit it. You can then push modifications back to your modeling tool.
 
-PySam SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architecture Modeler (SAM) <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_.
+PySAM SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architecture Modeler (SAM) <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_.
 
 .. only:: html
 
@@ -13,25 +13,25 @@ PySam SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architectu
             :link: getting_started/index
             :link-type: doc
 
-            Explains how to install PySam SysML2 and set up a project.
+            Explains how to install PySAM SysML2 and set up a project.
 
         .. grid-item-card:: User guide :fa:`compass`
             :link: user_guide/index
             :link-type: doc
 
-            Explains how to connect to PySam SysML2, work with models and diagrams, and find required information.
+            Explains how to connect to PySAM SysML2, work with models and diagrams, and find required information.
 
         .. grid-item-card:: API reference :fa:`file-lines`
             :link: api/index
             :link-type: doc
 
-            Describes PySam SysML2 functions, classes, and methods.
+            Describes PySAM SysML2 functions, classes, and methods.
 
         .. grid-item-card:: Examples :fa:`code`
             :link: examples/index
             :link-type: doc
 
-            Provides some examples of how to use PySam SysML2.
+            Provides some examples of how to use PySAM SysML2.
 
 .. toctree::
    :hidden:

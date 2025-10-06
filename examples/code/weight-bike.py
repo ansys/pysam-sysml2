@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Bike weight example for PySam SysML2."""
+"""Weight Bike Example for PySam."""
 
 # Import connector and model manager
 import requests
@@ -31,9 +31,9 @@ from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
 # Used to disable warnings
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-# Create your connector for the Sam server
+# Create your connector for the SAM Server
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
+    server_url="https://127.0.0.1:8443/",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The organization ID
     token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL
@@ -44,7 +44,7 @@ project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 my_bike_project = project_manager.get_project("<Bike Project ID>")
 
 
-# Use the following code to get the PartDefinition of the bike
+# Then we can use the following code to get the PartDefinition of the bike
 bike = my_bike_project.get_root_package().Structure.Bike
 
 bike_weight = (

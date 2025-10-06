@@ -3,7 +3,7 @@
 Use a connector
 ###############
 
-A connector is the interface between PySam SysML2 and the SysML V2 server.
+A connector is the interface between PySAM SysML2 and the SysML V2 server.
 
 .. note::
 
@@ -12,7 +12,7 @@ A connector is the interface between PySam SysML2 and the SysML V2 server.
 Ansys SysML2 API Connector
 --------------------------
 
-PySam SysML2 uses the standard API to load and publish information in a model.
+PySAM SysML2 uses the standard API to load and publish information in a model.
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
     :lines: 14-19
@@ -22,7 +22,7 @@ PySam SysML2 uses the standard API to load and publish information in a model.
 SAM REST API Connector
 ----------------------
 
-PySam SysML2 uses the SAM REST API to retrieve diagrams in the model.
+PySAM SysML2 uses the SAM REST API to retrieve diagrams in the model.
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
     :lines: 21-25

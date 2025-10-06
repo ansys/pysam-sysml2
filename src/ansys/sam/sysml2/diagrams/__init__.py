@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Diagram module for PySam SysML2 diagram library."""
+"""Diagram module for PySAM SysML2 diagram library."""
 
 from .api import SamRestApiConnector  # noqa as we export name
 from .sam_diagram_manager import SAMDiagramManager  # noqa as we export name

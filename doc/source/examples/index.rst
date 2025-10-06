@@ -3,7 +3,7 @@
 Examples
 ########
 
-This section provides some examples of how to use PySam SysML2.
+This section provides some examples of how to use PySAM SysML2.
 
 .. only:: html
 

@@ -1,4 +1,4 @@
-"""Download diagrams example for PySam SysML2."""
+"""Download diagrams example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning

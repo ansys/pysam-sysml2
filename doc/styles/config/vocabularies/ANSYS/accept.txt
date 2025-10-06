@@ -34,4 +34,5 @@ SamRestApiConnector
 Oops!
 SysML2
 Ansys SysML2 API Connector
-Sam Rest API Connector
+SAM Rest API Connector
+PySAM SysML2

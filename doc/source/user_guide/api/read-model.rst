@@ -1,7 +1,7 @@
 Read your model
 ###############
 
-PySam SysML2 lets you read and parse the model through a Python script.
+PySAM SysML2 lets you read and parse the model through a Python script.
 
 The loaded model is stored in a :class:`ansys.sam.sysml2.classes.project.Project` object.
 
@@ -70,7 +70,7 @@ With underscore (``_``) access, you can find all SysML methods:
 
 .. note::
 
-    In this first PySam SysML2 version, only existing fields (with data) are linked, which means that you might not find a function that exists in SysML V2.
+    In this first PySAM SysML2 version, only existing fields (with data) are linked, which means that you might not find a function that exists in SysML V2.
 
 .. only:: html
 

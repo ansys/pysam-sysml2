@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Builder module for the PySam SysML2 diagram library."""
+"""Builder module for the PySAM SysML2 diagram library."""
 
 from .emf_json_mapper import EMFJSONMapper  # noqa as we export name
 from .sam_diagram_builder import SamDiagramBuilder  # noqa as we export name

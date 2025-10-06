@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Computer cost example for PySam SysML2."""
+"""Computer cost example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning
@@ -32,7 +32,7 @@ from ansys.sam.sysml2.tools import SysMLTools
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
+    server_url="https://127.0.0.1:8443/",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The organization ID
     token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL
@@ -42,7 +42,7 @@ project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
 project = project_manager.get_project(
     "<Computer Project ID>"
-)  # You can find it in the URL of the editor
+)  # You can find your project ID in the URL of the editor.
 
 real_systems = project.get_root_package().RealSystems
 
