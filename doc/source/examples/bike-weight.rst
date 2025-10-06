@@ -7,7 +7,7 @@ Download the bike model used in this example and import it into a new project to
 
 #. Download the model: :download:`Bike Model <../_static/code/bike.xmi>`.
 
-#. Open the SAM Editor in your browser and select the desired organization (for example, *MyOrga*).
+#. Open the SAM editor in your browser and select the desired organization (for example, *MyOrga*).
 
 #. Select **New Project** > **SysML V2** > **Import File**.
 

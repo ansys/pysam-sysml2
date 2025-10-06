@@ -7,7 +7,7 @@ Make sure that you have access to a valid server and a project containing the ``
 
 #. Download the model: :download:`Bike Model <../_static/code/bike.xmi>`.
 
-#. Open the SAM Editor in your browser and select the desired organization (for example, *MyOrga*).
+#. Open the SAM editor in your browser and select the desired organization (for example, *MyOrga*).
 
 #. Select **New Project** > **SysML V2** > **Import File**.
 
