@@ -26,7 +26,7 @@ from dataclasses import dataclass, field
 
 @dataclass
 class HttpRequest:
-    """HttpRequest class store data for a future HTTP request."""
+    """Stores data for a future HTTP request."""
 
     url: str
     data: dict = field(default_factory=dict)
@@ -37,11 +37,11 @@ class HttpRequest:
 
     def explode(self) -> dict:
         """
-        Explode function return all information to build a request.
+        Get all information for building an HTTP request.
 
         Returns
         -------
         dict
-            Information
+            Information.
         """
         return dict((x, y) for x, y in self.__dict__.items() if not x.startswith("_"))

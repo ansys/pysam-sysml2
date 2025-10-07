@@ -29,17 +29,17 @@ from .constraints_classes import Constraint
 
 @dataclass
 class Query:
-    """Dataclass for Query."""
+    """Provides a data class for a query."""
 
     where: Constraint = None
 
     def to_json(self) -> str:
         """
-        Return a JSON representation of the class.
+        Get a JSON representation of the class.
 
         Returns
         -------
         str
-            The class adapted to JSON Format
+            Class adapted to JSON format.
         """
         return dumps({"@type": "Query", "where": self.where.to_json()})

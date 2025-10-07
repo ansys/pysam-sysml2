@@ -7,7 +7,7 @@ This folder contains example `.xmi` models and Python scripts to demonstrate how
 - `bike.xmi`
 - `computer.xmi`
 
-These models can be imported into the SAM Editor.
+These models can be imported into the SAM editor.
 
 ## 🧪 Example Python Scripts (`code/`)
 
@@ -19,9 +19,9 @@ The `code/` subfolder includes usage examples:
 - `weight-bike.py` – Calculate the total weight of a bike.
 - `simplified-sam-project.py` – Show a simpler way to interact with SAM SysML2 Projects.
 
-## 🛠️ Importing an XMI Model into SAM Editor
+## 🛠️ Importing an XMI Model into SAM editor
 
-1. Open the SAM Editor in your browser.
+1. Open the SAM editor in your browser.
 2. Select your organization (e.g., `MyOrga`).
 3. Click on `New Project` → `SysML V2` → `Import File`.
 4. In the `File to import` input, click `Choose File` and select the desired `.xmi` file.

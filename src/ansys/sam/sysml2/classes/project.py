@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Project Interface for users."""
+"""Project interface for users."""
 
 from typing import List
 
@@ -28,47 +28,49 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
 class Project:
-    """Project Interface for users."""
+    """Provides the project interface for users."""
 
     def get_root(self) -> List[SysMLElement]:
         """
-        Return the list of root packages.
+        Get a list of root packages.
 
         Returns
         -------
         List[SysMLElement]
-            List of roots elements
+            List of root elements.
         """
+        return []
 
     def get_root_package(self) -> SysMLElement:
-        """Return the root package."""
+        """Get the root package."""
 
     def find_element_by_id(self, element_id: str) -> SysMLElement:
         """
-        Find element with id.
+        Find an element by ID.
 
         Parameters
         ----------
         element_id : str
-            Element Id
+            Element ID.
 
         Returns
         -------
         SysMLElement
-            The list of elements retrieved
+            Element retrieved.
         """
 
     def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
         """
-        Find all element with name.
+        Find all elements by name.
 
         Parameters
         ----------
         elements_name : str
-            Name if elements
+            Name of elements.
 
         Returns
         -------
         List[SysMLElement]
-            The list of elements retrieved
+            List of elements retrieved.
         """
+        return []

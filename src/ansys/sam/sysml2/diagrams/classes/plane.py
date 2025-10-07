@@ -19,10 +19,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Generic class for Graphic element."""
+"""Generic class for diagram elements."""
 
 from ansys.sam.sysml2.diagrams.classes.diagram_element import DiagramElement
 
 
 class Plane(DiagramElement):
-    """Plane class."""
+    """Provides planes."""

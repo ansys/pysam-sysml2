@@ -20,14 +20,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Specific Module for ANsy Sysml2 API connector."""
+"""Module for Ansy SysML2 API connector."""
 
 from ansys.sam.sysml2.api.template_sysml2_api_connector import TemplateSysML2APIConnector
 from ansys.sam.sysml2.classes.http_request import HttpRequest
 
 
 class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
-    """Specific connector class for Ansys SysML 2 Connector."""
+    """Provides the Ansys SysML2 connector."""
 
     _server_url: str
     _organization_id: str
@@ -41,18 +41,18 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
         use_ssl: bool = True,
     ):
         """
-        Construct Method for new instance.
+        Construct a new instance.
 
         Parameters
         ----------
         server_url : str
-            The server URL
+            Server URL.
         token : str
-            Authentication token
+            Authentication token.
         organization_id : str
-            Project organization id
-        use_ssl : bool, optional
-            if the server url SSL (valid HTTPS), by default True
+            Project organization ID.
+        use_ssl : bool, default: True
+            Whether the server URL uses SSL (valid HTTPS).
         """
         super().__init__(use_ssl)
         if server_url.endswith("/"):
@@ -63,17 +63,17 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
 
     def _build_endpoint(self, endpoint: str) -> str:
         """
-        Build the full URL from the API Endpoint.
+        Build the full URL from the API endpoint.
 
         Parameters
         ----------
         endpoint : str
-            The API Endpoint
+            API endpoint.
 
         Returns
         -------
         str
-            The full API URL
+            Full API URL.
         """
         if not endpoint.startswith("/"):
             endpoint = "/" + endpoint
@@ -81,17 +81,17 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
 
     def _add_authentication_field(self, http_request: HttpRequest) -> HttpRequest:
         """
-        Update the HTTP Request with de correct auth field.
+        Update the HTTP request with the correct authentication field.
 
         Parameters
         ----------
         http_request : HttpRequest
-            The request to be auth
+            Request to authenticate.
 
         Returns
         -------
         HttpRequest
-            Authenticated request
+            Authenticated request.
         """
         http_request.headers["Authorization"] = "Bearer " + self._token
         return http_request

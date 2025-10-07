@@ -4,6 +4,7 @@ isort
 Makefile
 py
 pytest
+Python
 get_value
 parse_and_set_value
 myExpressionFeature
@@ -22,6 +23,7 @@ SysML2ProjectManager
 SysMLElement
 SysMLTools
 PAT
+Personal Access Token
 SAM
 theme_contact_mail
 AnsysSysML2APIConnector
@@ -32,4 +34,5 @@ SamRestApiConnector
 Oops!
 SysML2
 Ansys SysML2 API Connector
-Sam Rest API Connector
+SAM Rest API Connector
+PySAM SysML2

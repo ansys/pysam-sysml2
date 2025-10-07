@@ -1,7 +1,7 @@
 User guide
 ----------
 
-These sections provide help for users of this library.
+This section explains how to connect to PySAM SysML2, work with models and diagrams, and find required information.
 
 .. only:: html
 
@@ -11,13 +11,13 @@ These sections provide help for users of this library.
             :link: api/create-conn
             :link-type: doc
 
-            How to use the connector for your SAM Tool?
+            Explains how to use a connector, which is the interface between PySAM SysML2 and the SysML V2 server.
 
         .. grid-item-card:: Load a model :fa:`cloud-download`
             :link: api/load-model
             :link-type: doc
 
-            How to load a Model from the server?
+            Explains how to load a model from the SysML V2 server.
 
 .. only:: html
 
@@ -27,13 +27,13 @@ These sections provide help for users of this library.
             :link: api/read-model
             :link-type: doc
 
-            How to read and parse your model?
+            Explains how to read and parse your model.
 
         .. grid-item-card:: Write in your model :fa:`pencil`
             :link: api/write-model
             :link-type: doc
 
-            How to write and publish in your model?
+            Explains how to write and publish in your model.
 
 .. only:: html
 
@@ -43,13 +43,13 @@ These sections provide help for users of this library.
             :link: api/diagram-model
             :link-type: doc
 
-            How to download and explore diagrams?
+            Explains how to download and explore diagrams.
 
-        .. grid-item-card:: How to find required information :fa:`info-circle`
+        .. grid-item-card:: Find required information :fa:`info-circle`
             :link: api/information
             :link-type: doc
 
-            How to find required information like Organization id, Token, ...
+            Explains how to find required information, such as organization IDs and tokens.
 
 
 .. toctree::

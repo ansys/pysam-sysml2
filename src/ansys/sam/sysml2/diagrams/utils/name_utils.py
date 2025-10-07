@@ -19,13 +19,13 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Name Utils class for PySam Diagram library."""
+"""Name utilities class for the PySAM SysML2 diagram library."""
 
 import re
 
 
 class NameUtils:
-    """The NameUtils class is used to help standardize element names."""
+    """Helps standardize element names."""
 
     @staticmethod
     def to_snake_case(string: str) -> str:

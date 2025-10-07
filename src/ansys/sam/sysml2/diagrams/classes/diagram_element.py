@@ -19,21 +19,21 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""DiagramElement data class."""
+"""Diagram element data."""
 
 
 class DiagramElement:
-    """DiagramElement Class."""
+    """Provides diagram element data."""
 
     _id: str
 
     def __init__(self, id: str):
         """
-        Construct a new Diagram instance.
+        Construct a new diagram instance.
 
         Parameters
         ----------
         id : str
-            Diagram identifier.
+            Diagram ID.
         """
         self._id = id

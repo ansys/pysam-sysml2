@@ -18,7 +18,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Ansys SysML2 Project to facilitate use of PySam library."""
+"""Ansys SysML2 project to facilitate use of PySAM SysML2."""
 
 from pathlib import Path
 from typing import Union
@@ -36,7 +36,7 @@ from ansys.sam.sysml2.tools.factory import Factory
 
 class AnsysSysML2Project(ProjectImpl):
     """
-    Complete Ansys SysML2 project implementation with integrated capabilities.
+    Provides a complete Ansys SysML2 project implementation with integrated capabilities.
 
     Parameters
     ----------
@@ -45,11 +45,11 @@ class AnsysSysML2Project(ProjectImpl):
     token : str
         Authentication token for API access.
     organization_id : str
-        Unique identifier of the organization.
+        Unique ID of the organization.
     project_id : str
-        Unique identifier of the project to manage.
-    use_ssl : bool, optional
-        Whether to use SSL/TLS for connections. Default is True.
+        Unique ID of the project to manage.
+    use_ssl : bool, default: True
+        Whether to use SSL/TLS for connections.
     """
 
     _project_id: str
@@ -65,7 +65,7 @@ class AnsysSysML2Project(ProjectImpl):
         use_ssl: bool = True,
     ) -> None:
         """
-        Initialize the AnsysSysML2Project with connection parameters.
+        Initialize the Ansys SysML2 project with connection parameters.
 
         Parameters
         ----------
@@ -74,11 +74,11 @@ class AnsysSysML2Project(ProjectImpl):
         token : str
             Authentication token for API access.
         organization_id : str
-            Unique identifier of the organization.
+            Unique ID of the organization.
         project_id : str
-            Unique identifier of the project to manage.
-        use_ssl : bool, optional
-            Whether to use SSL/TLS for connections. Default is True.
+            Unique ID of the project to manage.
+        use_ssl : bool, default: True
+            Whether to use SSL/TLS for connections.
 
         Raises
         ------
@@ -150,18 +150,18 @@ class AnsysSysML2Project(ProjectImpl):
         Parameters
         ----------
         diagram_id : str
-            The diagram id to download.
+            Diagram ID to download.
         path : str or Path
             Destination file or directory.
         file_format : str
-            Format of the diagram (e.g., 'svg', 'png', 'jpeg').
-        filename : str, optional
-            Name of the file. Default is diagram ID.
+            Format of the diagram (``'svg'``, ``'png'``, or ``'jpeg'``).
+        filename : str, default: ""
+            Name of the file. The default is the diagram ID.
 
         Returns
         -------
         str
-            Return the path of the file created.
+            Path of the file created.
 
         Raises
         ------
@@ -191,16 +191,16 @@ class AnsysSysML2Project(ProjectImpl):
         Parameters
         ----------
         path : str or Path
-            Destination directory or file path for the ZIP file.
-        file_format : str, optional
-            Format of the diagrams (e.g., 'png', 'jpeg', 'svg'). Default is "svg".
-        filename : str, optional
-            Name of the file. Default is "{Project Name}_{Image Extension}_diagrams.zip".
+            Destination directory or file path for the ZIP archive.
+        file_format : str, default: ``'svg'``
+            Format of the diagrams (``'png'``, ``'jpeg'``, or ``'svg'``).
+        filename : str, default: ""
+            Name of the file. The default is ``"{Project Name}_{Image Extension}_diagrams.zip"``.
 
         Returns
         -------
         str
-            Path to the saved ZIP file.
+            Path to the saved ZIP archive.
 
         Raises
         ------
@@ -211,7 +211,7 @@ class AnsysSysML2Project(ProjectImpl):
         """
         if not self.__diagrams_available:
             raise DiagramNotAvailableException(
-                f"Diagram functionality not available for project {self._project_id}"
+                f"Diagram functionality is not available for project {self._project_id}."
             )
 
         return self._downloader.download_all_diagrams(
@@ -225,7 +225,7 @@ class AnsysSysML2Project(ProjectImpl):
         Returns
         -------
         bool
-            True if diagrams can be downloaded, False otherwise.
+            ``True`` if diagrams can be downloaded, ``False`` otherwise.
         """
         return self.__diagrams_available
 
@@ -245,7 +245,7 @@ class AnsysSysML2Project(ProjectImpl):
         """
         if not self.__diagrams_available:
             raise DiagramNotAvailableException(
-                f"Diagram functionality not available for project {self._project_id}"
+                f"Diagram functionality is not available for project {self._project_id}."
             )
 
         return self.__sam_connector.get_diagrams_info(self._project_id)
@@ -257,7 +257,7 @@ class AnsysSysML2Project(ProjectImpl):
         Parameters
         ----------
         diagram_id: str
-            ID of the diagram we want info about.
+            ID of the diagram.
 
         Returns
         -------
@@ -271,7 +271,7 @@ class AnsysSysML2Project(ProjectImpl):
         """
         if not self.__diagrams_available:
             raise DiagramNotAvailableException(
-                f"Diagram functionality not available for project {self._project_id}"
+                f"Diagram functionality is not available for project {self._project_id}."
             )
 
         return self.__sam_connector.get_single_diagram_info(self._project_id, diagram_id)
@@ -290,12 +290,12 @@ class AnsysSysML2Project(ProjectImpl):
         Returns
         -------
         SysMLElement
-            The newly created SysML element instance.
+            Newly created SysML element instance.
 
         Raises
         ------
         ValueError
-            If element_type is not supported or required parameters are missing.
+            If element type is not supported or required parameters are missing.
         ConnectionError
             If unable to commit the new element to the server.
         """

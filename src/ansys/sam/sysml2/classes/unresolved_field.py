@@ -20,13 +20,13 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""UnResolved Field class."""
+"""Unresolved field class."""
 
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
 class UnresolvedField:
-    """UnResolved Field class."""
+    """Provides for resolving unresolved fields."""
 
     _owner: SysMLElement
     _owning_feature: str
@@ -34,16 +34,16 @@ class UnresolvedField:
 
     def __init__(self, owner: SysMLElement, owning_feature: str, element_id: str):
         """
-        Construct Method for new instance.
+        Construct a new instance.
 
         Parameters
         ----------
         owner : SysMLElement
-            Owner element of the unresolved Field
+            Owner element of the unresolved field.
         owning_feature : str
-            Name of the unresolved Feature
+            Name of the owning feature.
         element_id : str
-            Id of the missing element
+            ID of the missing element.
         """
         self._owner = owner
         self._owning_feature = owning_feature
@@ -51,12 +51,12 @@ class UnresolvedField:
 
     def get_id(self) -> str:
         """
-        Getter for the missing element ID.
+        Get the missing element ID.
 
         Returns
         -------
         str
-            The missing element ID
+            Missing element ID.
         """
         return self._element_id
 
@@ -67,7 +67,7 @@ class UnresolvedField:
         Parameters
         ----------
         element : SysMLElement
-            The missing element.
+            Missing element.
         """
         field = getattr(self._owner, self._owning_feature, None)
         if isinstance(field, list):

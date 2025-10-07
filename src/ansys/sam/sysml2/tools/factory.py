@@ -28,32 +28,32 @@ from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 
 
 class Factory:
-    """Python Factory class for creating new SysMLElements."""
+    """Provides the Python factory class for creating new SysML elements."""
 
     _project_id: str
     _project: Project
     _conn: AnsysSysML2APIConnector
 
     def __init__(self, project: Project, conn: AnsysSysML2APIConnector) -> None:
-        """Initialize Factory class."""
+        """Initialize a new instance."""
         self._project_id = project._id
         self._project = project
         self._conn = conn
 
     def create_element(self, element_type: str, **kwargs):
-        """Create a new element in the model and return it to the User.
+        """Create a new element in the model and return it.
 
         Parameters
         ----------
         element_type : str
-            Type of the element
+            Type of the element.
         kwargs : Any
-            Other parameters of the new element
+            Other parameters of the new element.
 
         Returns
         -------
         SysMLElement
-            The Created Element
+            Created element.
         """
         existing_elements = set(self._project._env.keys())
         commit = Commit(self._project_id)
@@ -86,14 +86,14 @@ class Factory:
         Parameters
         ----------
         element_type : str
-            Type of the element
+            Type of the element.
         existing_elements : set
-            Elements contained in the project environment
+            Elements contained in the project environment.
 
         Returns
         -------
         SysMLElement
-            The Created Element
+            Created element.
         """
         from ansys.sam.sysml2.tools import SysMLTools
 
@@ -109,7 +109,7 @@ class Factory:
         return self._project._env[new_elements_ids[0]]
 
     def _reload_project(self):
-        """Start the reload of the project."""
+        """Reload the project."""
         from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 
         builder = SysML2ProjectBuilder(self._conn)

@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Director class for Project build."""
+"""Director class for project building."""
 
 from typing import Dict
 
@@ -30,36 +30,36 @@ from ansys.sam.sysml2.classes.project import Project
 
 
 class SysML2ProjectManager:
-    """Director class for project load."""
+    """Provides the director class for loading a project."""
 
     _connector: SysML2APIConnector
     _constructed_project: Dict[(str, Project)]
 
     def __init__(self, connector: SysML2APIConnector):
         """
-        Construct Method for new instance.
+        Construct a new instance.
 
         Parameters
         ----------
         connector : SysML2APIConnector
-            The SysML 2 connector.
+            SysML2 API connector.
         """
         self._connector = connector
         self._constructed_project = dict()
 
     def get_project(self, project_id: str) -> Project:
         """
-        Getter to load a project from API in Python Object.
+        Get a project from the API to load into a Python object.
 
         Parameters
         ----------
         project_id : str
-            The project ID
+            Project ID.
 
         Returns
         -------
         Project
-            Mapped Project.
+            Mapped project.
         """
         project = self._constructed_project.get(project_id, None)
         if project is None:

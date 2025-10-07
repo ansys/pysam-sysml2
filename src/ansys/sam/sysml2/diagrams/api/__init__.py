@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""API Package for SysML V2 API connection."""
+"""API package for the SAM API connector."""
 
 from .sam_api_connector import SamApiConnector  # noqa as we export name
 from .sam_rest_api_connector import SamRestApiConnector  # noqa as we export name

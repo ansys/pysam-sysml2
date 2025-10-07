@@ -1,8 +1,7 @@
 API reference
 =============
 
-This section describes ansys-sam-sysml2 endpoints, their capabilities, and how
-to interact with them programmatically.
+This section describes PySAM SysML2 functions, classes, and methods.
 
 .. toctree::
    :titlesonly:

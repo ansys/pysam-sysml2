@@ -3,41 +3,41 @@
 Examples
 ########
 
-This section shows different ways to use the API with some examples.
+This section provides some examples of how to use PySAM SysML2.
 
 .. only:: html
 
     .. grid:: 5
 
-        .. grid-item-card:: The Bike :fa:`bicycle`
+        .. grid-item-card:: Calculate bike weight :fa:`bicycle`
             :link: bike-weight
             :link-type: doc
 
-            Calculate the bike weight from his parts.
+            Calculate the weight of a bike from its parts.
 
-        .. grid-item-card:: Computer Price :fa:`laptop`
+        .. grid-item-card:: Calculate computer cost :fa:`laptop`
             :link: computer-cost
             :link-type: doc
 
             Calculate the cost of one computer.
 
-        .. grid-item-card:: Creating Elements :fa:`wrench`
+        .. grid-item-card:: Create elements :fa:`wrench`
             :link: creating-elements
             :link-type: doc
 
             Create new elements in your project.
 
-        .. grid-item-card:: Download Diagrams :fa:`download`
+        .. grid-item-card:: Download diagrams :fa:`download`
             :link: download-diagrams
             :link-type: doc
 
-            Download, explore and save project diagrams.
+            Download, explore, and save project diagrams.
 
-        .. grid-item-card:: Simplified SAM :fa:`rocket`
+        .. grid-item-card:: Streamline initialization and operations :fa:`rocket`
             :link: simplified-sam-project
             :link-type: doc
 
-            Streamlined SAM project initialization and operations.
+            Streamline SAM project initialization and operations.
 
 .. toctree::
    :maxdepth: 4

@@ -36,12 +36,12 @@ from ansys.sam.sysml2.exception.connector_exception import (
 
 
 class SamRestApiConnector(SamApiConnector):
-    """SAM REST API Connector implementation."""
+    """Provides the SAM REST API connector."""
 
     _server_url: str
 
     def __init__(self, server_url: str, token: str, use_ssl: bool = True):
-        """Initialize the connector with server URL and authentication token."""
+        """Initialize the connector with a server URL and authentication token."""
         if server_url.endswith("/"):
             server_url = server_url[:-1]
         self._server_url = server_url
@@ -49,17 +49,17 @@ class SamRestApiConnector(SamApiConnector):
         self._use_ssl = use_ssl
 
     def get_project_data(self, model_id: str) -> dict:
-        """Retrieve project data from the SAM API using the project identifier."""
+        """Get project data from the SAM API using the project ID."""
         http_request = self._build_rest_http_request(endpoint=f"/projects/{model_id}/json")
         return self._send_request(http_request=http_request, call=requests.get)
 
     def get_diagrams_info(self, project_id: str) -> dict:
-        """Fetch metadata and information for all diagrams within a specific project."""
+        """Get metadata and information for all diagrams within a specific project."""
         http_request = self._build_image_http_request(endpoint=f"/projects/{project_id}/diagrams")
         return self._send_request(http_request=http_request, call=requests.get)
 
     def get_single_diagram_info(self, project_id: str, diagram_id: str) -> dict:
-        """Retrieve detailed information for a single diagram within a project."""
+        """Get detailed information for a single diagram within a project."""
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}"
         )
@@ -94,7 +94,7 @@ class SamRestApiConnector(SamApiConnector):
         return self._send_request_binary(http_request=http_request, call=requests.get, stream=True)
 
     def _send_request(self, http_request: HttpRequest, call: Callable) -> object:
-        """Send HTTP request and parse JSON response with error handling."""
+        """Send an HTTP request and parse JSON response with error handling."""
         response = None
         try:
             response = call(**http_request.explode(), verify=self._use_ssl)
@@ -112,7 +112,7 @@ class SamRestApiConnector(SamApiConnector):
     def _send_request_binary(
         self, http_request: HttpRequest, call: Callable, stream: bool = False
     ) -> Union[bytes, requests.Response]:
-        """Send HTTP request and return binary content or response object for file downloads."""
+        """Send an HTTP request and return binary content or response object for file downloads."""
         try:
             response = call(**http_request.explode(), verify=self._use_ssl, stream=stream)
             response.raise_for_status()
@@ -135,7 +135,7 @@ class SamRestApiConnector(SamApiConnector):
         return self._add_authentication_field(http_request=http_request)
 
     def _build_image_http_request(self, endpoint: str) -> HttpRequest:
-        """Build HTTP request for Image API endpoints."""
+        """Build HTTP request for image API endpoints."""
         url = self._build_image_endpoint(endpoint)
         http_request = HttpRequest(url=url)
         return self._add_authentication_field(http_request=http_request)
@@ -147,7 +147,7 @@ class SamRestApiConnector(SamApiConnector):
         return f"{self._server_url}/api/rest/latest{endpoint}"
 
     def _build_image_endpoint(self, endpoint: str) -> str:
-        """Build the complete URL for Image API endpoints."""
+        """Build the complete URL for image API endpoints."""
         if not endpoint.startswith("/"):
             endpoint = "/" + endpoint
         return f"{self._server_url}/api{endpoint}"

@@ -1,49 +1,45 @@
 Getting started
 ===============
 
-This section's scope is about user installation.
-
+This section explains how to install PySAM SysML2 and set up a project, including loading and initializing it.
 
 .. _Installation_Section:
 
-Installation
--------------
-
+Install PySAM SysML2
+--------------------
 
 .. code:: bash
 
     python -m pip install ansys_sam_sysml2-<version>-py3-none-any.whl
 
-
-Use
----
-
-.. note::
-
-    You can find examples :ref:`here <Example>`.
-
 Connect to the tool
-~~~~~~~~~~~~~~~~~~~
+-------------------
 
-Here, the AnsysSysML2 API Connector is used. If you want to connect to any other SysMLV2 tool, please read the developer guide.
+The following code connects to PySAM SysML2 using the AnsysSysML2 API connector.
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 7
     :language: python
-    :caption: Import the Connector and the Project manager
+    :caption: Import the connector and project manager
 
-The connector provides the project manager with access to the model.
+The connector gives the project manager access to the model.
 
-Then create the connector :
+Create the connector
+--------------------
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 13-18
     :language: python
     :caption: Connect to the SysML2 API server
 
-Then, you can create the project manager and load a project:
+Create the project manager and load a project
+---------------------------------------------
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 20-22
     :language: python
     :caption: Create the project manager and load a project
+
+.. note::
+
+    For more comprehensive examples on using PySAM SysML2, see :ref:`Examples <Example>`.

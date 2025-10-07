@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Diagram downloader class for PySam Diagram library."""
+"""Diagram downloader for PySAM SysML2 diagram library."""
 
 from pathlib import Path
 from typing import Union
@@ -30,18 +30,18 @@ from ansys.sam.sysml2.exception.connector_exception import DiagramConnectorExcep
 
 
 class SamDiagramDownloader:
-    """Class to manage and download diagrams."""
+    """Provides for managing and downloading diagrams."""
 
     def __init__(self, connector: SamApiConnector, project_id: str):
         """
-        Initialize the SamDiagramDownloader.
+        Initialize the SAM diagram downloader.
 
         Parameters
         ----------
         connector : SamApiConnector
-            The connector providing API access.
+            Connector providing API access.
         project : str
-            The project instance id.
+            Project instance ID.
         """
         self._connector = connector
         self._project_id = project_id
@@ -59,13 +59,13 @@ class SamDiagramDownloader:
         Parameters
         ----------
         diagram_id : str
-            The diagram id to download.
+            ID of the diagram to download.
         path : str or Path
             Destination file or directory.
         file_format : str
-            Format of the diagram (e.g., 'svg', 'png', 'jpeg').
+            Format of the diagram (``'svg'``, ``'png'``, or ``'jpeg'``).
         filename : str, optional
-            Name of the file. Default is diagram ID.
+            Name of the file. The default is the diagram ID.
 
         Returns
         -------
@@ -110,16 +110,16 @@ class SamDiagramDownloader:
         Parameters
         ----------
         path : str or Path
-            Destination directory or file path for the ZIP file.
-        file_format : str, optional
-            Format of the diagrams (e.g., 'png', 'jpeg', 'svg'). Default is "svg".
+            Destination directory or file path for the ZIP archive.
+        file_format : str, default: 'svg'
+            Format of the diagrams (``'png'``, ``'jpeg'``, or ``'svg'``).
         filename : str, optional
-            Name of the file. Default is "{Project Name}_{Image Extension}_diagrams.zip".
+            Name of the file. The default is ``'{Project Name}_{Image Extension}_diagrams.zip``'.
 
         Returns
         -------
         str
-            Path to the saved ZIP file.
+            Path to the saved ZIP archive.
 
         Raises
         ------

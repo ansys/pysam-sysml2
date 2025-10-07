@@ -19,11 +19,11 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Enum classes for SysML Queries."""
+"""Enum classes for PySAM SysML2 queries."""
 
 
 class Operator:
-    """Operator Enum."""
+    """Provides the operator enum."""
 
     EQUALS: str = "="
     INSTANCE_OF: str = "instanceOf"
@@ -35,7 +35,7 @@ class Operator:
 
 
 class JoinOperator:
-    """AND - OR enum."""
+    """Provides the join operators enum."""
 
     AND: str = "and"
     OR: str = "or"

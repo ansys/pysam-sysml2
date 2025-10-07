@@ -20,11 +20,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Top level interface module for SysML2 api."""
+"""Top-level interface module for SysML2 API."""
 
 
 class SysML2APIConnector:
-    """API Connector Interface."""
+    """Provides the ysML2 API Connector interface."""
 
     def get_projects(self) -> list:
         """Get all projects of the connected user."""
@@ -44,19 +44,19 @@ class SysML2APIConnector:
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
-        Get element by ID and return its information.
+        Get an element by ID and return its information.
 
         Parameters
         ----------
         project_id : str
-            Id of the project where the element is
+            ID of the project where the element is located.
         element_id : str
-            Id of the wanted element
+            ID of the wanted element.
 
         Returns
         -------
         dict
-            Information of the element
+            Information of the element.
         """
 
     def get_root_elements(self, project_id: str) -> list:
@@ -64,34 +64,35 @@ class SysML2APIConnector:
 
     def execute_query(self, project_id: str, query: str) -> dict:
         """
-        Send a query to the Standard API using the connector.
+        Send a query to the standard API using the connector.
 
         Parameters
         ----------
         project_id : str
-            Project id
+            Project ID.
         query : str
-            The query, in JSON format
+            Query in JSON format.
 
         Returns
         -------
         dict
-            Result of the query
+            Result of the query.
         """
+        pass
 
     def create_commit(self, project_id: str, commit: str) -> dict:
         """
-        Send a commit, provided as a JSON string, to the Standard API.
+        Send a commit, provided as a JSON string, to the standard API.
 
         Parameters
         ----------
         project_id : str
-            Project Id
+            Project ID.
         commit : str
-            Commit, in JSON format
+            Commit, in JSON format.
 
         Returns
         -------
         dict
-            Result of the commit
+            Result of the commit.
         """

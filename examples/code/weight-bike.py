@@ -22,7 +22,7 @@
 
 """Weight Bike Example for PySam."""
 
-# Import Connector and Model Manager
+# Import connector and model manager
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
@@ -31,11 +31,11 @@ from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
 # Used to disable warnings
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-# Create your connector for the Sam Server
+# Create your connector for the SAM Server
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
-    organization_id="<Orga ID>",  # The Organization ID
-    token="<Token>",  # Your Auth Token (See section below)
+    server_url="https://127.0.0.1:8443/",  # Your SAM server base URL
+    organization_id="<Orga ID>",  # The organization ID
+    token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL
 )
 
