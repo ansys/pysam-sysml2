@@ -11,9 +11,9 @@ Load diagrams
 =============
 
 Before interacting with diagrams, load them using the
-:class:`ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader` context manager, which requires an :mod:`ansys.sam.sysml2.api` connector.
+:class:`SamDiagramDownloader <ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader>` context manager, which requires an :mod:`API <ansys.sam.sysml2.api>` connector.
 
-Create a SAM REST API connector:
+Create a :class:`SamRestApiConnector <ansys.sam.sysml2.diagrams.api.sam_rest_api_connector.SamRestApiConnector>` :
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
     :lines: 21-25
@@ -27,16 +27,16 @@ Load diagrams from a project and make them available for further operations like
     :language: python
     :caption: Load diagrams using SAM diagram manager
 
-Outside the ``with`` block, the ``SamDiagramDownloader`` context manager is no longer active. This ensures proper setup and cleanup of resources when working with diagrams.
+Outside the ``with`` block, the :class:`SamDiagramDownloader <ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader>` context manager is no longer active. This ensures proper setup and cleanup of resources when working with diagrams.
 
 Download diagrams
 =================
 
 Load diagrams inside an
-:class:`ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager` context before downloading them.
+:class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>` context before downloading them.
 
 Also, instantiate an
-:class:`ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader` object:
+:class:`SamDiagramDownloader <ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader>` object:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
     :lines: 40

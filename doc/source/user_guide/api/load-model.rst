@@ -3,7 +3,7 @@ Load a model
 
 To load a model, you need an instance of a SysML Connector. For more information, (see :ref:`Use a connector <Create_C_Section>`).
 
-You can then create a SysML2 project manager.
+You can then create a :class:`SysML2ProjectManager <ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager>`.
 This class helps you load a model in Python, using the SysML V2 Standard API.
 
 .. literalinclude:: ../../_static/code/computer-cost.py
@@ -11,7 +11,7 @@ This class helps you load a model in Python, using the SysML V2 Standard API.
     :language: python
     :caption: Create SysML2 project manager
 
-For more information, see the :class:`ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager` class.
+For more information, see the :class:`SysML2ProjectManager <ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager>` class.
 
 With the project manager, you can load your project like this:
 

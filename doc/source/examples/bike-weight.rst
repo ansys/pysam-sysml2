@@ -53,7 +53,7 @@ After logging in, load the ``bike`` project.
     :language: python
     :caption: Load the bike project
 
-For more information about the project object, see :class:`ansys.sam.sysml2.classes.project.Project` in the API reference documentation.
+For more information about the project object, see :class:`Project <ansys.sam.sysml2.classes.project.Project>` in the API reference documentation.
 
 Step 2: Calculate bike weight
 -----------------------------

@@ -35,5 +35,5 @@ Python example
 .. note::
 
     - Replace placeholder values with your actual SAM configuration.
-    - Always use the ``SAMDiagramManager`` class within a context manager (``with`` statement).
+    - Always use the :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>` class within a context manager (``with`` statement).
     - Retrieve diagram content in various formats, such as ``png`` and ``svg``.

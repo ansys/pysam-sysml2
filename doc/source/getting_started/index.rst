@@ -15,7 +15,7 @@ Install PySAM SysML2
 Connect to the tool
 -------------------
 
-The following code connects to PySAM SysML2 using the AnsysSysML2 API connector.
+The following code connects to PySAM SysML2 using the :class:`AnsysSysML2APIConnector <ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector>`.
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 7

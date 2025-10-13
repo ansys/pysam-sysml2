@@ -10,13 +10,15 @@ Update a feature value
 
 You have two functions for updating the value of a feature:
 
-- ``set_value()``
-- ``parse_and_set_value()``
+.. currentmodule:: ansys.sam.sysml2.classes.sysml_element
 
-Function ``set_value()``
-------------------------
+- :meth:`set_value() <SysMLElement.set_value>`
+- :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
 
-The ``set_value()`` function supports all primitive types:
+Function :meth:`set_value() <SysMLElement.set_value>`
+------------------------------------------------------
+
+The :meth:`set_value() <SysMLElement.set_value>` function supports all primitive types:
 
 .. code:: python
 
@@ -35,10 +37,10 @@ The ``set_value()`` function supports all primitive types:
 
 The model updates after you set all values to ensure accuracy.
 
-Function ``parse_and_set_value()``
-----------------------------------
+Function :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
+--------------------------------------------------------------------------
 
-The ``parse_and_set_value`` function handles more complex expressions:
+The :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` function handles more complex expressions:
 
 .. code:: python
 
@@ -52,7 +54,9 @@ The ``parse_and_set_value`` function handles more complex expressions:
 Create new elements
 ===================
 
-Use the ``Factory`` class to create new elements in your model.
+.. currentmodule:: ansys.sam.sysml2.tools.factory
+
+Use the :class:`Factory` class to create new elements in your model.
 
 .. tip::
 
@@ -63,7 +67,7 @@ Use the ``Factory`` class to create new elements in your model.
     :language: python
     :caption: Create a Factory instance
 
-Use the ``create_element()`` method to create a new model element. Provide the element type and any number of keyword arguments representing its attributes:
+Use the :meth:`create_element() <Factory.create_element>` method to create a new model element. Provide the element type and any number of keyword arguments representing its attributes:
 
 .. code:: python
 
@@ -72,7 +76,7 @@ Use the ``create_element()`` method to create a new model element. Provide the e
         name="new_attribute_usage",
     )
 
-This creates a new ``AttributeUsage`` element at the root of your project. The ``create_element()`` method returns the newly created element.
+This creates a new ``AttributeUsage`` element at the root of your project. The :meth:`create_element() <Factory.create_element>` method returns the newly created element.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
     :lines: 27-29

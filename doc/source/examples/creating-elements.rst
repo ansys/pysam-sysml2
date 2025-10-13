@@ -20,6 +20,8 @@ Make sure that you have access to a valid server and a project containing the ``
 Create an attribute usage element for the bicycle frame length
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. currentmodule:: ansys.sam.sysml2.tools.factory
+
 The following code shows how to create a new ``AttributeUsage`` element inside the ``Bike`` structure and assign it a value.
 
 .. note::
@@ -28,14 +30,16 @@ The following code shows how to create a new ``AttributeUsage`` element inside t
 
 .. literalinclude:: ../_static/code/creating-elements.py
     :language: python
-    :caption: Create a new AttributeUsage element using the Factory class
+    :caption: Create a new AttributeUsage element using the :class:`Factory` class
     :linenos:
 
 You just created a new element and assigned a parsed value to it.
 
+.. currentmodule:: ansys.sam.sysml2.classes.sysml_element
+
 .. note::
 
-    You can also assign a value directly when creating the element, without using the ``set_value()`` or ``parse_and_set_value()`` method. There are two ways:
+    You can also assign a value directly when creating the element, without using the :meth:`set_value() <SysMLElement.set_value>` or :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` method. There are two ways:
 
     - ``value=...`` for simple values (such as numbers).
     - ``expression="..."`` for values with units or expressions.
