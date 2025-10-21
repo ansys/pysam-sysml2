@@ -1,7 +1,8 @@
 User guide
 ----------
 
-This section explains how to connect to PySAM SysML2, work with models and diagrams, and find required information.
+This section explains how to connect to PySAM SysML2, work with models and diagrams, and find
+required information.
 
 .. only:: html
 
@@ -11,7 +12,8 @@ This section explains how to connect to PySAM SysML2, work with models and diagr
             :link: api/create-conn
             :link-type: doc
 
-            Explains how to use a connector, which is the interface between PySAM SysML2 and the SysML V2 server.
+            Explains how to use a connector, which is the interface between PySAM SysML2 and the
+            SysML V2 server.
 
         .. grid-item-card:: Load a model :fa:`cloud-download`
             :link: api/load-model

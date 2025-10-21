@@ -40,7 +40,8 @@ The model updates after you set all values to ensure accuracy.
 Function :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
 --------------------------------------------------------------------------
 
-The :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` function handles more complex expressions:
+The :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` function handles more complex
+expressions:
 
 .. code:: python
 
@@ -67,7 +68,8 @@ Use the :class:`Factory` class to create new elements in your model.
     :language: python
     :caption: Create a Factory instance
 
-Use the :meth:`create_element() <Factory.create_element>` method to create a new model element. Provide the element type and any number of keyword arguments representing its attributes:
+Use the :meth:`create_element() <Factory.create_element>` method to create a new model element.
+Provide the element type and any number of keyword arguments representing its attributes:
 
 .. code:: python
 
@@ -76,18 +78,21 @@ Use the :meth:`create_element() <Factory.create_element>` method to create a new
         name="new_attribute_usage",
     )
 
-This creates a new ``AttributeUsage`` element at the root of your project. The :meth:`create_element() <Factory.create_element>` method returns the newly created element.
+This creates a new ``AttributeUsage`` element at the root of your project. The
+:meth:`create_element() <Factory.create_element>` method returns the newly created element.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
     :lines: 27-29
     :language: python
     :caption: Create a new AttributeUsage element with owner
 
-This creates a new ``AttributeUsage`` element with the specified attributes inside the ``Bike`` frame.
+This creates a new ``AttributeUsage`` element with the specified attributes inside the ``Bike``
+frame.
 
 .. note::
 
-    The list of accepted attributes depends on the element type you are creating. For example, ``name``, ``owner``, ``shortName``, and others are defined by the ``metamodel``.
+    The list of accepted attributes depends on the element type you are creating. For example,
+    ``name``, ``owner``, ``shortName``, and others are defined by the ``metamodel``.
 
     You can also assign a value directly when creating the element. There are two ways:
 
@@ -115,7 +120,8 @@ This creates a new ``AttributeUsage`` element with the specified attributes insi
 Update attributes directly
 --------------------------
 
-Update element properties directly using simple assignment. This is useful for quickly changing properties like names.
+Update element properties directly using simple assignment. This is useful for quickly changing
+properties like names.
 
 .. code:: python
 

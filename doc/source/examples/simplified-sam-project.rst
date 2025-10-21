@@ -52,12 +52,16 @@ offers these advantages:
 
 - **Single initialization**: One class automatically handles all connectors.
 - **Built-in diagram management**: Removes the need to manually create and manage the
-  :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>` class.
-- **Streamlined API**: Provides direct access to project operations without managing multiple connector instances.
-- **Integrated features**: Combines project management, diagram operations, and element creation in one interface.
+  :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>`
+  class.
+- **Streamlined API**: Provides direct access to project operations without managing multiple
+  connector instances.
+- **Integrated features**: Combines project management, diagram operations, and element creation in
+  one interface.
 
 .. note::
 
   - Replace placeholder values with your actual SAM configuration.
-  - The :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` class automatically manages diagram loading and the connector lifecycle.
+  - The :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>`
+    class automatically manages diagram loading and the connector lifecycle.
   - The class supports all diagram formats (``png``, ``svg``, ``jpeg``) for downloads.
