@@ -33,8 +33,8 @@ class TestSysML2ProjectBuilder(ParentTestClass):
         builder = SysML2ProjectBuilder(valid_source)
         project = builder.build_project(PROJECT_ID_1)
         assert len(project.get_root()) == 1
-        assert project.get_root()[0]._name == "PySamTestProject-COMPLET"
-        assert project.get_root_package()._name == "PySamTestProject-COMPLET"
+        assert project.get_root()[0]._name == "PySAMSysML2TestProject-COMPLET"
+        assert project.get_root_package()._name == "PySAMSysML2TestProject-COMPLET"
 
     def test_find_element_by_id(self, valid_source: AnsysSysML2APIConnector):
         builder = SysML2ProjectBuilder(valid_source)

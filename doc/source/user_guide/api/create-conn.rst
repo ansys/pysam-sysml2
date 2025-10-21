@@ -7,7 +7,8 @@ A connector is the interface between PySAM SysML2 and the SysML V2 server.
 
 .. note::
 
-    To find all required data, such as organization IDs and tokens, see :ref:`Find information <Info_Section>`.
+    To find all required data, such as organization IDs and tokens, see
+    :ref:`Find information <Info_Section>`.
 
 :class:`AnsysSysML2APIConnector <ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector>`
 ----------------------------------------------------------------------------------------------------------

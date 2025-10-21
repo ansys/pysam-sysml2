@@ -4,7 +4,7 @@
         "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
         "identifier": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
         "eAnnotations": [],
-        "name": "PySamTestProject-COMPLET",
+        "name": "PySAMSysML2TestProject-COMPLET",
         "ownedElement": [
             {
                 "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
@@ -13,7 +13,7 @@
                 "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
             }
         ],
-        "qualifiedName": "PySamTestProject-COMPLET",
+        "qualifiedName": "PySAMSysML2TestProject-COMPLET",
         "ownedMember": [
             {
                 "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
@@ -33,7 +33,7 @@
                 "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
             }
         ],
-        "qualifiedName": "PySamTestProject-COMPLET::PartDefinition",
+        "qualifiedName": "PySAMSysML2TestProject-COMPLET::PartDefinition",
         "owner": {
             "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
         },
@@ -73,7 +73,7 @@
         "@id": "ecf75010-3603-4e1e-82d5-db312b093378",
         "identifier": "ecf75010-3603-4e1e-82d5-db312b093378",
         "name": "Attribute",
-        "qualifiedName": "PySamTestProject-COMPLET::PartDefinition::Attribute",
+        "qualifiedName": "PySAMSysML2TestProject-COMPLET::PartDefinition::Attribute",
         "owner": {
             "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
         },
@@ -90,7 +90,7 @@
         "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c",
         "identifier": "fd36d11a-bc48-410e-bec9-b7f929666c4c",
         "name": "myPartUsage",
-        "qualifiedName": "PySamTestProject-COMPLET::myPartUsage",
+        "qualifiedName": "PySAMSysML2TestProject-COMPLET::myPartUsage",
         "owner": {
             "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
         },

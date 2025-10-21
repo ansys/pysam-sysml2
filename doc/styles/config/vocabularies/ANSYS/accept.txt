@@ -1,38 +1,35 @@
 ANSYS
 [Aa]nsys
-isort
-Makefile
-py
-pytest
-Python
-get_value
-parse_and_set_value
-myExpressionFeature
-myIntFeature
-myStringFeature
-myBoolFeature
-myFloatFeature
-PySam
 AnsysSysML2APIConnector
-SysML2APIConnector
+AnsysSysML2APIConnector
+API
 DiagramDownloader
 DiagramElement
-SysML2DiagramManager
 Factory
+get_value
+isort
+Makefile
+myBoolFeature
+myExpressionFeature
+myFloatFeature
+myIntFeature
+myStringFeature
+Oops!
+parse_and_set_value
+PAT
+Personal Access Token
+py
+PySAM
+pytest
+Python
+SAM
+SAMDiagramManager
+SamRestApiConnector
+SamRestApiConnector
+SysML2
+SysML2APIConnector
+SysML2DiagramManager
 SysML2ProjectManager
 SysMLElement
 SysMLTools
-PAT
-Personal Access Token
-SAM
 theme_contact_mail
-AnsysSysML2APIConnector
-SamRestApiConnector
-SAMDiagramManager
-API
-SamRestApiConnector
-Oops!
-SysML2
-Ansys SysML2 API Connector
-SAM Rest API Connector
-PySAM SysML2

@@ -31,7 +31,7 @@ Step 1: Load the project
 
 .. note::
 
-    Ensure that you have installed PySam SysML. If not, see :ref:`Installation <Installation_Section>`.
+    Ensure that you have installed PySAM SysML2. If not, see :ref:`Installation <Installation_Section>`.
 
 Before loading the project, create a connector and a project manager.
 

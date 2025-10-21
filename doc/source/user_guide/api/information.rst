@@ -3,7 +3,8 @@
 Find information
 ################
 
-This page explains how to find required information, such as the project ID or your authorization token.
+This page explains how to find required information, such as the project ID or your authorization
+token.
 
 .. _Info_P_Id_Section:
 
@@ -43,7 +44,8 @@ Follow these steps to find your organization ID:
 Find authorization token
 ========================
 
-For authorization, you can either use a bearer (temporary) token for quick access or create a Personal Access Token (PAT) for longer-term use.
+For authorization, you can either use a bearer (temporary) token for quick access or create a
+Personal Access Token (PAT) for longer-term use.
 
 Bearer token
 ~~~~~~~~~~~~
@@ -71,7 +73,8 @@ The **Authorization** header shows the value of your bearer token.
 Personal Access Token (PAT)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Creating a Personal Access Token (PAT) is the recommended method for authentication with PySAM due to its longer validity.
+Creating a Personal Access Token (PAT) is the recommended method for authentication with
+PySAM SysML2 due to its longer validity.
 
 **New method (recommended for current servers)**
 
