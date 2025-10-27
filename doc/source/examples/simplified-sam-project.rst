@@ -20,10 +20,11 @@ initializing all necessary connectors. It explains how to perform these tasks:
     :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>`
     class is specifically designed for SAM projects and automatically handles the initialization
     of these classes:
-    :class:`AnsysSysML2APIConnector <ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector>`,
-    :class:`SamRestApiConnector <ansys.sam.sysml2.diagrams.api.sam_rest_api_connector.SamRestApiConnector>`,
-    :class:`SysML2ProjectManager <ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager>`,
-    and :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>`.
+
+    - :class:`AnsysSysML2APIConnector <ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector>`,
+    - :class:`SamRestApiConnector <ansys.sam.sysml2.diagrams.api.sam_rest_api_connector.SamRestApiConnector>`,
+    - :class:`SysML2ProjectManager <ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager>`,
+    - :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>`.
 
 Prerequisites for simplified SAM
 ================================

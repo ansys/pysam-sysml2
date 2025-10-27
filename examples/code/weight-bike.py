@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Weight Bike Example for PySAM SysML2."""
+"""Weight bike example for PySAM SysML2."""
 
 # Import connector and model manager
 import requests

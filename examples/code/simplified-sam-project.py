@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""AnsysSysML2Project Example for PySAM SysML2."""
+"""Ansys SysML2 project example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning
