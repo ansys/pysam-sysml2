@@ -13,7 +13,8 @@ Download the bike model used in this example and import it into a new project to
 
 #. Select **Choose File** for the **File to import** option.
 
-#. Select the ``bike.xmi`` file that you just downloaded. The project name is automatically set to ``bike``.
+#. Select the ``bike.xmi`` file that you just downloaded. The project name is automatically set to
+   ``bike``.
 
 #. Click **Import** and wait for the project to load.
 
@@ -22,7 +23,8 @@ You can now work on this bike model.
 Calculate weight
 ~~~~~~~~~~~~~~~~
 
-The bike weight is the sum of the frame weight and the weight of all wheel component elements. Thus, you want to calculate the sum of all blue elements in the model:
+The bike weight is the sum of the frame weight and the weight of all wheel component elements.
+Thus, you want to calculate the sum of all blue elements in the model:
 
 .. figure:: /_static/images/weight-bike.png
 
@@ -31,11 +33,13 @@ Step 1: Load the project
 
 .. note::
 
-    Ensure that you have installed PySam SysML. If not, see :ref:`Installation <Installation_Section>`.
+    Ensure that you have installed PySAM SysML2. If not, see
+    :ref:`Installation <Installation_Section>`.
 
 Before loading the project, create a connector and a project manager.
 
-To obtain the required data, see :ref:`Find organization ID <Info_O_Id_Section>` and :ref:`Find bearer token <Info_B_Token_Section>`.
+To obtain the required data, see :ref:`Find organization ID <Info_O_Id_Section>` and
+:ref:`Find bearer token <Info_B_Token_Section>`.
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 3-18
@@ -53,12 +57,14 @@ After logging in, load the ``bike`` project.
     :language: python
     :caption: Load the bike project
 
-For more information about the project object, see :class:`ansys.sam.sysml2.classes.project.Project` in the API reference documentation.
+For more information about the project object, see
+:class:`Project <ansys.sam.sysml2.classes.project.Project>` in the API reference documentation.
 
 Step 2: Calculate bike weight
 -----------------------------
 
-After loading the project, get the ``Bike`` element. As explained in :ref:`Access methods <Getter>`, there are many ways to get an element. This code uses dot notation:
+After loading the project, get the ``Bike`` element. As explained in
+:ref:`Access methods <Getter>`, there are many ways to get an element. This code uses dot notation:
 
 .. literalinclude:: ../_static/code/weight-bike.py
     :lines: 26

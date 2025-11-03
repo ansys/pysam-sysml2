@@ -23,4 +23,4 @@
     "python.testing.unittestEnabled": false,
     "python.testing.pytestEnabled": true,
 }
-// This settings.json is the base config VScode for PySam developers
+// This settings.json is the base config VScode for PySAM SysML2 developers

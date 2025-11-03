@@ -3,14 +3,16 @@
 Download diagrams and create new elements
 #########################################
 
-This example shows how to work with the ``Bike`` model in a SysML v2 project using the Ansys SAM API. It explains how to perform these tasks:
+This example shows how to work with the ``Bike`` model in a SysML v2 project using the
+Ansys SAM API. It explains how to perform these tasks:
 
 - Load and download diagrams.
 - Navigate and save diagram content.
 
 .. note::
 
-    If you have never used PySAM SysML2 before, start with one of these simpler examples to understand how this library works:
+    If you have never used PySAM SysML2 before, start with one of these simpler examples to
+    understand how this library works:
 
     - :ref:`Calculate bike weight<Bike_Example>`
     - :ref:`Calculate computer cost<Computer_Example>`
@@ -35,5 +37,7 @@ Python example
 .. note::
 
     - Replace placeholder values with your actual SAM configuration.
-    - Always use the ``SAMDiagramManager`` class within a context manager (``with`` statement).
+    - Always use the
+      :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>`
+      class within a context manager (``with`` statement).
     - Retrieve diagram content in various formats, such as ``png`` and ``svg``.

@@ -1,4 +1,4 @@
-"""AnsysSysML2Project Example for PySam."""
+"""AnsysSysML2Project Example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning

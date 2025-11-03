@@ -84,7 +84,7 @@ latex_additional_files = [
     pyansys_logo_black,
 ]
 latex_elements = {
-    "preamble": (generate_preamble("PySam", watermark)),
+    "preamble": (generate_preamble("PySAM SysML2", watermark)),
     "printindex": "",
 }
 

@@ -1,7 +1,7 @@
 API reference
 =============
 
-This section describes PySAM SysML2 functions, classes, and methods.
+This section describes how to interact with the PySAM SysML2 API programmatically.
 
 .. toctree::
    :titlesonly:

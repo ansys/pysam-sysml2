@@ -204,7 +204,7 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
 
         bike = project.get_root_package()
 
-        assert bike._name == "PySamTestProject-COMPLET"
+        assert bike._name == "PySAMSysML2TestProject-COMPLET"
 
         bike._name = "TEST"
 

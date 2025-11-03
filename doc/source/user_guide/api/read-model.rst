@@ -3,7 +3,7 @@ Read your model
 
 PySAM SysML2 lets you read and parse the model through a Python script.
 
-The loaded model is stored in a :class:`ansys.sam.sysml2.classes.project.Project` object.
+The loaded model is stored in a :class:`Project <ansys.sam.sysml2.classes.project.Project>` object.
 
 .. _Getter:
 
@@ -15,12 +15,16 @@ To parse the project, you can use dot access or underscore access.
 Dot access
 ----------
 
-With dot access, you can access all direct named elements of your SysML element. Also, you can access some useful top-level functions, such as ``get_value()``.
+.. currentmodule:: ansys.sam.sysml2.classes.sysml_element
+
+With dot access, you can access all direct named elements of your SysML element. Also, you can
+access some useful top-level functions, such as :meth:`get_value() <SysMLElement.get_value>`.
 
 Sub-elements
 ~~~~~~~~~~~~
 
-The following code attaches all elements contained in ``ownedElement`` and ``_inheritedFeature``, which have names, to the container element.
+The following code attaches all elements contained in ``ownedElement`` and ``_inheritedFeature``,
+which have names, to the container element.
 
 .. code:: python
 
@@ -29,14 +33,18 @@ The following code attaches all elements contained in ``ownedElement`` and ``_in
 
 **Limitations of dot access for sub-elements:**
 
-- **Duplicate names**: If multiple elements have the same name, only one is accessible through dot access. You cannot differentiate between elements with identical names using this method.
+- **Duplicate names**: If multiple elements have the same name, only one is accessible through dot
+  access. You cannot differentiate between elements with identical names using this method.
 
-- **Names with spaces**: You cannot access elements with spaces in their names (for example, "bike frame") using dot notation. Python identifiers cannot contain spaces.
+- **Names with spaces**: You cannot access elements with spaces in their names (for example, "bike
+  frame") using dot notation. Python identifiers cannot contain spaces.
 
-Function ``get_value()``
-~~~~~~~~~~~~~~~~~~~~~~~~
+Function :meth:`get_value() <SysMLElement.get_value>`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The ``get_value()`` function works only for the SysML ``Feature`` element. Use this top-level function to get the value of the feature without reading the internal structure:
+The :meth:`get_value() <SysMLElement.get_value>` function works only for the SysML ``Feature``
+element. Use this top-level function to get the value of the feature without reading the internal
+structure:
 
 .. code:: bash
 
@@ -51,10 +59,11 @@ The ``get_value()`` function works only for the SysML ``Feature`` element. Use t
     >>> myFloatFeature.get_value()
     10.56
 
-The ``get_value`` function supports:
+The :meth:`get_value() <SysMLElement.get_value>` function supports:
 
-- All primitive types, such as LiteralInteger and LiteralString. - Returns the value directly.
-- Simple expressions, such as ``<value> [<unit>]`` - Returns a tuple: ``(<value>,<unit short name>)``.
+- All primitive types, such as LiteralInteger and LiteralString - Returns the value directly.
+- Simple expressions, such as ``<value> [<unit>]`` - Returns a tuple:
+  ``(<value>,<unit short name>)``.
 
 Underscore access
 =================
@@ -70,7 +79,8 @@ With underscore (``_``) access, you can find all SysML methods:
 
 .. note::
 
-    In this first PySAM SysML2 version, only existing fields (with data) are linked, which means that you might not find a function that exists in SysML V2.
+    In this first PySAM SysML2 version, only existing fields (with data) are linked, which means
+    that you might not find a function that exists in SysML V2.
 
 .. only:: html
 

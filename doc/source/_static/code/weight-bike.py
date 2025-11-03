@@ -1,4 +1,4 @@
-"""Weight Bike Example for PySam."""
+"""Weight Bike Example for PySAM SysML2."""
 
 # Import connector and model manager
 import requests

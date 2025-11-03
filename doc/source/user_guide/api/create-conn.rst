@@ -7,7 +7,8 @@ A connector is the interface between PySAM SysML2 and the SysML V2 server.
 
 .. note::
 
-    To find all required data, such as organization IDs and tokens, see :ref:`Find information <Info_Section>`.
+    To find all required data, such as organization IDs and tokens, see
+    :ref:`Find information <Info_Section>`.
 
 Ansys SysML2 API Connector
 --------------------------
@@ -22,7 +23,7 @@ PySAM SysML2 uses the standard API to load and publish information in a model.
 SAM REST API Connector
 ----------------------
 
-PySAM SysML2 uses the SAM REST API to retrieve diagrams in the model.
+PySAM SysML2 uses the :class:`SamRestApiConnector <ansys.sam.sysml2.diagrams.api.sam_rest_api_connector.SamRestApiConnector>` to retrieve diagrams in the model.
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
     :lines: 21-25
