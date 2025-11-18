@@ -1,10 +1,14 @@
 ANSYS
 [Aa]nsys
+[Cc]onnector
+ANSYS
 AnsysSysML2APIConnector
 AnsysSysML2APIConnector
 API
 DiagramDownloader
 DiagramElement
+downloader
+Enum
 Factory
 get_value
 isort
@@ -22,6 +26,7 @@ py
 PySAM
 pytest
 Python
+REST
 SAM
 SAMDiagramManager
 SamRestApiConnector
