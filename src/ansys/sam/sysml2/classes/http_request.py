@@ -36,12 +36,5 @@ class HttpRequest:
     cookies: dict = field(default_factory=dict)
 
     def explode(self) -> dict:
-        """
-        Get all information for building an HTTP request.
-
-        Returns
-        -------
-        dict
-            Information.
-        """
+        """Get all information for building an HTTP request."""
         return dict((x, y) for x, y in self.__dict__.items() if not x.startswith("_"))

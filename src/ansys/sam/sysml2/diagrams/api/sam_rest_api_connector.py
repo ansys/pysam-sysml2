@@ -41,7 +41,18 @@ class SamRestApiConnector(SamApiConnector):
     _server_url: str
 
     def __init__(self, server_url: str, token: str, use_ssl: bool = True):
-        """Initialize the connector with a server URL and authentication token."""
+        """
+        Initialize the connector with a server URL and authentication token.
+
+        Parameters
+        ----------
+        server_url : str
+            Server URL.
+        token : str
+            Authentication token.
+        use_ssl : bool, default: True
+            Whether the server URL uses SSL (valid HTTPS).
+        """
         if server_url.endswith("/"):
             server_url = server_url[:-1]
         self._server_url = server_url
@@ -59,42 +70,108 @@ class SamRestApiConnector(SamApiConnector):
         return self._send_request(http_request=http_request, call=requests.get)
 
     def get_single_diagram_info(self, project_id: str, diagram_id: str) -> dict:
-        """Get detailed information for a single diagram within a project."""
+        """
+        Get detailed information for a single diagram within a project.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        diagram_id: str
+            Diagram ID of the diagram you want to get information on.
+        """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}"
         )
         return self._send_request(http_request=http_request, call=requests.get)
 
     def get_diagram_image_as_svg(self, project_id: str, diagram_id: str) -> bytes:
-        """Download a diagram rendered as SVG format."""
+        """
+        Download a diagram rendered as SVG format.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        diagram_id: str
+            Diagram ID of the diagram you want to download.
+        """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/svg"
         )
         return self._send_request_binary(http_request=http_request, call=requests.get)
 
     def get_diagram_image_as_png(self, project_id: str, diagram_id: str) -> bytes:
-        """Download a diagram rendered as PNG format."""
+        """
+        Download a diagram rendered as PNG format.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        diagram_id: str
+            Diagram ID of the diagram you want to download.
+        """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/png"
         )
         return self._send_request_binary(http_request=http_request, call=requests.get)
 
     def get_diagram_image_as_jpeg(self, project_id: str, diagram_id: str) -> bytes:
-        """Download a diagram rendered as JPEG format."""
+        """
+        Download a diagram rendered as JPEG format.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        diagram_id: str
+            Diagram ID of the diagram you want to download.
+        """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/jpeg"
         )
         return self._send_request_binary(http_request=http_request, call=requests.get)
 
     def get_all_diagram_image_from_project(self, project_id: str, file_format: str) -> bytes:
-        """Download all diagrams from a project as a compressed ZIP archive."""
+        """
+        Download all diagrams from a project as a compressed ZIP archive.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        file_format: str
+            File format of the diagram images contained in the ZIP archive.
+        """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/all/{file_format}"
         )
         return self._send_request_binary(http_request=http_request, call=requests.get, stream=True)
 
     def _send_request(self, http_request: HttpRequest, call: Callable) -> object:
-        """Send an HTTP request and parse JSON response with error handling."""
+        """
+        Send an HTTP request and parse JSON response with error handling.
+
+        Parameters
+        ----------
+        http_request : HttpRequest
+            Request object containing URL, headers, and body.
+        call : Callable
+            HTTP method function (e.g., requests.get, requests.post).
+
+        Returns
+        -------
+        object
+            Parsed JSON response as a Python object.
+
+        Raises
+        ------
+        ConnectorConnectionException
+            If the connection fails.
+        InvalidElementJsonFoundException
+            If the response contains invalid JSON.
+        """
         response = None
         try:
             response = call(**http_request.explode(), verify=self._use_ssl)
@@ -112,7 +189,28 @@ class SamRestApiConnector(SamApiConnector):
     def _send_request_binary(
         self, http_request: HttpRequest, call: Callable, stream: bool = False
     ) -> Union[bytes, requests.Response]:
-        """Send an HTTP request and return binary content or response object for file downloads."""
+        """
+        Send an HTTP request and return binary content or response object.
+
+        Parameters
+        ----------
+        http_request : HttpRequest
+            Request object containing URL, headers, and body.
+        call : Callable
+            HTTP method function (e.g., requests.get, requests.post).
+        stream : bool, optional
+            If True, return the response object for streaming. Default is False.
+
+        Returns
+        -------
+        bytes or requests.Response
+            Binary content if stream is False, otherwise the response object.
+
+        Raises
+        ------
+        ConnectorConnectionException
+            If the connection or request fails.
+        """
         try:
             response = call(**http_request.explode(), verify=self._use_ssl, stream=stream)
             response.raise_for_status()

@@ -37,20 +37,65 @@ class SamApiConnector(ABC):
 
     @abstractmethod
     def get_single_diagram_info(self, project_id: str, diagram_id: str) -> dict:
-        """Get detailed information for a single diagram within a project."""
+        """
+        Get detailed information for a single diagram within a project.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        diagram_id: str
+            Diagram ID of the diagram you want to get information on.
+        """
 
     @abstractmethod
     def get_diagram_image_as_svg(self, project_id: str, diagram_id: str) -> bytes:
-        """Download a diagram rendered as SVG format."""
+        """
+        Download a diagram rendered as SVG format.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        diagram_id: str
+            Diagram ID of the diagram you want to download.
+        """
 
     @abstractmethod
     def get_diagram_image_as_png(self, project_id: str, diagram_id: str) -> bytes:
-        """Download a diagram rendered as PNG format."""
+        """
+        Download a diagram rendered as PNG format.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        diagram_id: str
+            Diagram ID of the diagram you want to download.
+        """
 
     @abstractmethod
     def get_diagram_image_as_jpeg(self, project_id: str, diagram_id: str) -> bytes:
-        """Download a diagram rendered as JPEG format."""
+        """
+        Download a diagram rendered as JPEG format.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        diagram_id: str
+            Diagram ID of the diagram you want to download.
+        """
 
     @abstractmethod
     def get_all_diagram_image_from_project(self, project_id: str, file_format: str) -> bytes:
-        """Download all diagrams from a project as a compressed ZIP archive."""
+        """
+        Download all diagrams from a project as a compressed ZIP archive.
+
+        Parameters
+        ----------
+        project_id: str
+            Project ID of the project containing the diagram.
+        file_format: str
+            File format of the diagram images contained in the ZIP archive.
+        """

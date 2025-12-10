@@ -263,7 +263,7 @@ class EMFJSONMapper:
         items : list
             List containing dictionaries or simple values.
         owner : DiagramElement
-            Oobject that owns the attribute being set.
+            Object that owns the attribute being set.
         attr : str
             Name of the attribute on the owner.
         original_key : str, default: None

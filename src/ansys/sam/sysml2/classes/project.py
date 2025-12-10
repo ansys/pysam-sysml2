@@ -31,14 +31,7 @@ class Project:
     """Provides the project interface for users."""
 
     def get_root(self) -> List[SysMLElement]:
-        """
-        Get a list of root packages.
-
-        Returns
-        -------
-        List[SysMLElement]
-            List of root elements.
-        """
+        """Get a list of root packages."""
         return []
 
     def get_root_package(self) -> SysMLElement:

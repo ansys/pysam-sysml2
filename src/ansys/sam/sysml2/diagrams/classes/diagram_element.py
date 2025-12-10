@@ -28,12 +28,5 @@ class DiagramElement:
     _id: str
 
     def __init__(self, id: str):
-        """
-        Construct a new diagram instance.
-
-        Parameters
-        ----------
-        id : str
-            Diagram ID.
-        """
+        """Construct a new diagram instance with its id provided."""
         self._id = id

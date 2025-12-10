@@ -49,23 +49,9 @@ class MappedElement:
         self._unresolved_fields = unresolved_fields
 
     def get_element(self) -> SysMLElement:
-        """
-        Get the mapped element.
-
-        Returns
-        -------
-        SysMLElement
-            Mapped element.
-        """
+        """Get the mapped element."""
         return self._element
 
     def get_unresolved_fields(self) -> List[UnresolvedField]:
-        """
-        Get a list of all unresolved fields.
-
-        Returns
-        -------
-        List[UnresolvedField]
-            List of all unresolved fields.
-        """
+        """Get a list of all unresolved fields."""
         return self._unresolved_fields
