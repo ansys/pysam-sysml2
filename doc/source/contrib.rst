@@ -1,10 +1,10 @@
 .. _ref_contributing:
 
-============
-Contributing
-============
+==========
+Contribute
+==========
 
-PySAM SysML2 is a Python library dedicated to make access to SysML V2 standard API easier. It is developed by the R&D team dedicated to Ansys SAM. For now, the only tested implementation of the SysML V2 standard API is the one proposed by SAM.
+PySAM SysML2 is a Python library that makes accessing the SysML V2 standard API easier. It is developed by the R&D team dedicated to Ansys SAM. For now, the only tested implementation of the SysML V2 standard API is the one proposed by SAM.
 
 Contributing to PySAM SysML2 is welcomed and can be in the form of discussions, code,
 documentation, or issue reports.
@@ -12,7 +12,7 @@ documentation, or issue reports.
 
 Overall guidance on contributing to a PyAnsys library appears in the
 `Contributing <https://dev.docs.pyansys.com/>`_ topic
-in the *PyAnsys Developer's Guide*. Ensure that you are thoroughly familiar
+in the *PyAnsys developer's guide*. Ensure that you are thoroughly familiar
 with it and all style guidelines before attempting to contribute to PySAM SysML2.
 
 The following contribution information is specific to PySAM SysML2.
@@ -20,11 +20,11 @@ The following contribution information is specific to PySAM SysML2.
 PySAM SysML2 documentation
 --------------------------
 Documentation for the latest stable release of PySAM SysML2 is hosted at
-`PySAM SysML2 Documentation <https://probable-doodle-z27n1yp.pages.github.io>`_.
+`PySAM SysML2 documentation <https://probable-doodle-z27n1yp.pages.github.io>`_.
 
 .. update to https://sam.docs.pyansys.com when ready
 
-This version is automatically kept up to date via GitHub actions.
+This version is automatically kept up to date with GitHub actions.
 
 
 Posting Issues
@@ -38,15 +38,15 @@ use one of the existing templates.
 
 To reach the project support team, email `pyansys.core@ansys.com <pyansys.core@ansys.com>`_.
 
-Contributing code
------------------
+Contribute code
+---------------
 
 .. Note::
-   As PySAM SysML2 is associated to the SysML V2 standard API and so strongly related to SAM, any contribution is analyzed and possibly
-   integrated by the SAM development team.
+   As PySAM SysML2 is associated with the SysML V2 standard API and strongly related to SAM,
+   any contribution is analyzed and possibly integrated by the SAM development team.
 
-Getting the source code
-^^^^^^^^^^^^^^^^^^^^^^^
+Source code
+^^^^^^^^^^^^
 Run this code to clone and install the latest version of PySAM SysML2 in development mode:
 
 .. code::
@@ -70,20 +70,21 @@ Run this code to clone and install the latest version of PySAM SysML2 in develop
 
 Code style
 ^^^^^^^^^^
-PySAM SysML2 follows PEP8 standard as outlined in the `PyAnsys Development Guide
-<https://dev.docs.pyansys.com>`_. Code style is enforced using ``ruff`` for linting.
+PySAM SysML2 follows the PEP8 standard as outlined in the `PyAnsys development guide
+<https://dev.docs.pyansys.com>`_. Code style is enforced using `Ruff <https://github.com/astral-sh/ruff>`_ for linting.
 
 
 Testing
 ^^^^^^^
 
-PySAM SysML2 uses `pytest`. In the main directory use:
+PySAM SysML2 uses `pytest <https://docs.pytest.org/en/stable/>`_.
+In the main directory, run this command:
 
 .. code::
 
     pytest
 
-Tests are in `tests` folder. Please add your own tests for non-regression.
+Tests are in the ``tests`` folder. Add your own tests for non-regression.
 
 To run tests with coverage:
 
@@ -96,8 +97,8 @@ This generates a coverage report in ``htmlcov/index.html``.
 Documentation
 ^^^^^^^^^^^^^
 
-Building the documentation
-"""""""""""""""""""""""""""
+Build the documentation
+""""""""""""""""""""""""
 
 PySAM SysML2 uses Sphinx for documentation generation. To build the documentation:
 
@@ -112,7 +113,8 @@ To generate a PDF version:
 
     .\make.bat pdf
 
-The generated HTML documentation is available in ``doc/_build/html`` and can be viewed locally:
+The generated HTML documentation is in the ``doc/_build/html`` directory
+and can be viewed locally:
 
 .. code::
 
@@ -121,13 +123,14 @@ The generated HTML documentation is available in ``doc/_build/html`` and can be 
 
 Then open your browser to ``http://localhost:8000``.
 
-The PDF is generated in ``doc/_build/latex``.
+The PDF is generated in the ``doc/_build/latex`` directory.
 
-Vale documentation linting
-""""""""""""""""""""""""""
+Run Vale
+""""""""
 
 Vale is used to enforce documentation style guidelines and ensure consistency across the documentation.
-It checks for grammar, style, and terminology compliance with the Google and Ansys style guides.
+It checks for grammar, style, and terminology compliance with the Google developer and
+Ansys style guides.
 
 Before running Vale, you must download the style definitions:
 
@@ -136,7 +139,7 @@ Before running Vale, you must download the style definitions:
     cd doc
     vale sync
 
-This downloads the required style guides defined in ``.vale.ini``.
+This downloads the required style guides defined in the ``.vale.ini`` file
 
 To check documentation files:
 
@@ -158,7 +161,7 @@ To install the pre-commit hooks:
 
     pre-commit install
 
-Once installed, the hooks run automatically on ``git commit``. The pre-commit configuration is defined in ``.pre-commit-config.yaml``.
+Once installed, the hooks run automatically when you run the ``git commit`` command. The pre-commit configuration is defined in the ``.pre-commit-config.yaml`` file.
 
 To manually run all pre-commit hooks on all files:
 
@@ -181,7 +184,7 @@ Before submitting a pull request, ensure all quality checks pass:
 5. **Check documentation style**: ``cd doc; vale sync; vale .``
 6. **Run pre-commit checks**: ``pre-commit run --all-files``
 
-The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, 3.13) when you submit your pull request.
+The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, and 3.13) when you submit your pull request.
 
 .. note::
    While you can run tests locally on your installed Python version, the CI/CD pipeline ensures compatibility across all supported Python versions.
