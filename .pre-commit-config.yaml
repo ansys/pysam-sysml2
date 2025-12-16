@@ -2,9 +2,9 @@ repos:
   - repo: https://github.com/ansys/pre-commit-hooks
     rev: v0.5.2
     hooks:
-    - id: add-license-headers
-      args:
-      - --start_year=2024
+      - id: add-license-headers
+        args:
+          - --start_year=2024
 
   - repo: https://github.com/numpy/numpydoc
     rev: v1.8.0
@@ -38,7 +38,6 @@ repos:
     rev: v4.6.0
     hooks:
       - id: check-merge-conflict
-      - id: requirements-txt-fixer
       - id: trailing-whitespace
 
   - repo: https://github.com/python-jsonschema/check-jsonschema

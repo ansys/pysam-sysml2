@@ -1,7 +1,7 @@
 [Aa]nsys
+[Cc]onnector
 ANSYS
 Ansys SysML2 API Connector
-AnsysSysML2APIConnector
 AnsysSysML2APIConnector
 API
 DiagramDownloader
@@ -25,10 +25,10 @@ py
 PySAM
 pytest
 Python
+REST
 SAM
 SAM REST API Connector
 SAMDiagramManager
-SamRestApiConnector
 SamRestApiConnector
 SysML2
 SysML2APIConnector
@@ -37,3 +37,4 @@ SysML2ProjectManager
 SysMLElement
 SysMLTools
 theme_contact_mail
+Vale

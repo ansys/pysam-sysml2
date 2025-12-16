@@ -1,5 +1,5 @@
-PySAM SysML2
-#############
+PySAM SysML2 documentation (v |version|)
+########################################
 
 PySAM SysML2 provides a Python scripting interface for SysML2 models. It loads models from any
 SysML2 tool that implements the standard API. The loaded model maps into a Python object, allowing
@@ -10,7 +10,7 @@ PySAM SysML2 works with the Ansys SysML2 modeling tool,
 
 .. only:: html
 
-    .. grid:: 4
+    .. grid:: 5
 
         .. grid-item-card:: Getting started :fa:`play-circle`
             :link: getting_started/index
@@ -37,6 +37,13 @@ PySAM SysML2 works with the Ansys SysML2 modeling tool,
 
             Provides some examples of how to use PySAM SysML2.
 
+        .. grid-item-card:: Contribute :fa:`users`
+            :link: ref_contributing
+            :link-type: ref
+
+            Learn how to contribute to the PySAM SysML2 codebase
+            or documentation.
+
 .. toctree::
    :hidden:
    :maxdepth: 1
@@ -45,4 +52,5 @@ PySAM SysML2 works with the Ansys SysML2 modeling tool,
    user_guide/index
    api/index
    examples/index
-   changelog.rst
+   contrib
+   changelog
