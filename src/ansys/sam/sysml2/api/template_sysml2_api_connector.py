@@ -339,19 +339,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             raise HTTPResponseException(response.content)
 
     def _build_endpoint(self, endpoint: str) -> str:
-        """
-        Build the full URL from the API endpoint.
-
-        Parameters
-        ----------
-        endpoint : str
-            API endpoint.
-
-        Returns
-        -------
-        str
-            Full API URL.
-        """
+        """Build the full URL from the API endpoint."""
 
     def _add_authentication_field(self, http_request: HttpRequest) -> HttpRequest:
         """

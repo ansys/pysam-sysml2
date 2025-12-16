@@ -35,12 +35,12 @@ class SamDiagramBuilder:
     _mapper: EMFJSONMapper
 
     def __init__(self, connector: SamApiConnector):
-        """Construct a new instance."""
+        """Construct a new instance with the SAM API Connector instance specified."""
         self._connector = connector
         self._mapper = EMFJSONMapper()
 
     def extract_and_build_diagrams(self, project: Project) -> dict:
-        """Extract and build all diagrams from model data."""
+        """Extract and build all diagrams from a project."""
         data = self._connector.get_project_data(project._id)
         diagrams_extracted = self.__extract_diagrams(data)
         return self.__build_diagrams(diagrams_extracted, project)
@@ -50,7 +50,21 @@ class SamDiagramBuilder:
         return self.__filter_diagrams(self.__extract_e_annotations(data))
 
     def __build_diagrams(self, diagrams_extracted: dict, project: Project) -> dict:
-        """Build all diagram elements."""
+        """
+        Build all diagram elements from extracted annotations.
+
+        Parameters
+        ----------
+        diagrams_extracted : dict
+            Dictionary mapping diagram IDs to their annotation lists.
+        project : Project
+            Project instance used for resolving unresolved fields.
+
+        Returns
+        -------
+        dict
+            Dictionary mapping diagram IDs to their built element lists.
+        """
         data = {}
         for id, annotations in diagrams_extracted.items():
             elements = []

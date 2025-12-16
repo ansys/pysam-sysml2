@@ -100,7 +100,20 @@ class AnsysSysML2Project(ProjectImpl):
         organization_id: str,
         use_ssl: bool = True,
     ) -> None:
-        """Initialize all internal components and establish connections."""
+        """
+        Initialize all internal components and establish connections.
+
+        Parameters
+        ----------
+        server_url : str
+            Base URL of the SysML2 server.
+        token : str
+            Authentication token for API access.
+        organization_id : str
+            Unique ID of the organization.
+        use_ssl : bool, default: True
+            Whether to use SSL/TLS for connections.
+        """
         sysml2_connector = AnsysSysML2APIConnector(
             server_url=server_url,
             organization_id=organization_id,

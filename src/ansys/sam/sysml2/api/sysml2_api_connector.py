@@ -24,7 +24,7 @@
 
 
 class SysML2APIConnector:
-    """Provides the ysML2 API Connector interface."""
+    """Provides the SysML2 API Connector interface."""
 
     def get_projects(self) -> list:
         """Get all projects of the connected user."""
@@ -37,7 +37,21 @@ class SysML2APIConnector:
         project_name: str,
         project_description: str = "Project description",
     ) -> dict:
-        """Create a project with the associated name and description."""
+        """
+        Create a project with the associated name and description.
+
+        Parameters
+        ----------
+        project_name : str
+            Name of the project.
+        project_description : str, default: ``"Project description"``
+            Description of the project.
+
+        Returns
+        -------
+        dict
+            Project record.
+        """
 
     def get_all_elements(self, project_id: str) -> list:
         """Get all elements of the given project."""

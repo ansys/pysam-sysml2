@@ -33,14 +33,7 @@ class Constraint:
     """Provides the constraint interface."""
 
     def to_json(self) -> dict:
-        """
-        Return a JSON representation of the class.
-
-        Returns
-        -------
-        dict
-            Class adapted to JSON format.
-        """
+        """Return a JSON representation of the class."""
         data = {"@type": self.__class__.__name__}
         data.update(dict((k, v) for k, v in self.__dict__.items() if not k.startswith("_")))
         return data
@@ -64,14 +57,7 @@ class CompositeConstraint(Constraint):
     constraint: List[Constraint] = field(default_factory=list)
 
     def to_json(self) -> dict:
-        """
-        Get a JSON representation of the class.
-
-        Returns
-        -------
-        dict
-            Class adapted to JSON format.
-        """
+        """Get a JSON representation of the class."""
         data = super().to_json()
         end_data = data.copy()
         end_data["constraint"] = list()

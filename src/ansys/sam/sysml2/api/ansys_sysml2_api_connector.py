@@ -22,7 +22,9 @@
 
 """Module for Ansy SysML2 API connector."""
 
-from ansys.sam.sysml2.api.template_sysml2_api_connector import TemplateSysML2APIConnector
+from ansys.sam.sysml2.api.template_sysml2_api_connector import (
+    TemplateSysML2APIConnector,
+)
 from ansys.sam.sysml2.classes.http_request import HttpRequest
 
 
@@ -62,19 +64,7 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
         self._token = token
 
     def _build_endpoint(self, endpoint: str) -> str:
-        """
-        Build the full URL from the API endpoint.
-
-        Parameters
-        ----------
-        endpoint : str
-            API endpoint.
-
-        Returns
-        -------
-        str
-            Full API URL.
-        """
+        """Build the full URL from the API endpoint."""
         if not endpoint.startswith("/"):
             endpoint = "/" + endpoint
         return f"{self._server_url}/api/spaces/{self._organization_id}/sysml2{endpoint}"

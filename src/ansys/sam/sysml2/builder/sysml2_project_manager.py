@@ -36,31 +36,12 @@ class SysML2ProjectManager:
     _constructed_project: Dict[(str, Project)]
 
     def __init__(self, connector: SysML2APIConnector):
-        """
-        Construct a new instance.
-
-        Parameters
-        ----------
-        connector : SysML2APIConnector
-            SysML2 API connector.
-        """
+        """Construct a new instance with a specified SysML2 API Connector."""
         self._connector = connector
         self._constructed_project = dict()
 
     def get_project(self, project_id: str) -> Project:
-        """
-        Get a project from the API to load into a Python object.
-
-        Parameters
-        ----------
-        project_id : str
-            Project ID.
-
-        Returns
-        -------
-        Project
-            Mapped project.
-        """
+        """Get a project with its ID from the API and map it in a Python object."""
         project = self._constructed_project.get(project_id, None)
         if project is None:
             project = SysML2ProjectBuilder(self._connector).build_project(project_id)

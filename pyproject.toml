@@ -47,7 +47,7 @@ doc = [
     "sphinx==8.1.3",
     "sphinx-copybutton==0.5.2",
 ]
-tests=[
+tests = [
     "pytest==8.4.1",
     "pytest-cov==6.2.1",
     "requests==2.32.4",
@@ -56,7 +56,7 @@ tests=[
     "sphinx-copybutton==0.5.2",
     "sphinx-design==0.6.1",
     "urllib3==2.5.0",
-    "vale==3.12.0.0",
+    "vale==3.12.0",
     "Werkzeug==3.1.3",
 ]
 checks = [
@@ -69,7 +69,7 @@ checks = [
     "MarkupSafe==3.0.2",
     "numpydoc==1.8.0",
     "ruff==0.8.2",
-    "vale==3.9.1",
+    "vale==3.12.0",
     "pre-commit==4.2.0",
 ]
 

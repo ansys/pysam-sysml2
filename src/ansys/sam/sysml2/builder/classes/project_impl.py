@@ -48,6 +48,8 @@ class ProjectImpl(Project):
         ----------
         id : str
             Project ID.
+        name : str
+            Project name.
         """
         super().__init__()
         self._id = id
@@ -58,14 +60,7 @@ class ProjectImpl(Project):
         self._env = dict()
 
     def add_element(self, element: SysMLElement):
-        """
-        Add an element to the project environment.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            Element to add.
-        """
+        """Add an element to the project environment."""
         self._env[element._id] = element
 
     def update_unresolved_fields(self, unresolved_fields: List[UnresolvedField]):
@@ -95,14 +90,7 @@ class ProjectImpl(Project):
         return [x for x in self._root if x.__class__.__name__ == "Package"][0]
 
     def get_name(self) -> str:
-        """
-        Get the project name.
-
-        Returns
-        -------
-        str
-            Project name.
-        """
+        """Get the project name."""
         return self._name
 
     def find_element_by_id(self, element_id: str) -> SysMLElement:

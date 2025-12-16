@@ -54,6 +54,8 @@ class JsonMapper:
             Element data.
         name_space: str
             Project name space.
+        mapped_element: SysMLElement
+            SysMLElement.
 
         Returns
         -------
@@ -75,6 +77,8 @@ class JsonMapper:
             Element data.
         name_space: str
             Project name space.
+        element: SysMLElement
+            SysMLElement.
 
         Returns
         -------
@@ -153,7 +157,7 @@ class JsonMapper:
             Destination element.
         field_name : str
             Field name.
-        field_value : Union[dict  |  list  |  str]
+        field_value : str
             Field value.
 
         Returns
@@ -164,7 +168,9 @@ class JsonMapper:
         setattr(element, field_name, field_value)
         return []
 
-    def __add_element_to_field(self, element: SysMLElement, key: str, value: dict):
+    def __add_element_to_field(
+        self, element: SysMLElement, key: str, value: dict
+    ) -> List[UnresolvedField]:
         """
         Adder function for simple element field.
 
@@ -174,7 +180,7 @@ class JsonMapper:
             Destination element.
         key : str
             Field name.
-        value : Union[dict  |  list  |  str]
+        value : dict
             Field value.
 
         Returns
@@ -185,7 +191,9 @@ class JsonMapper:
         setattr(element, key, value["@id"])
         return [UnresolvedField(element, key, value["@id"])]
 
-    def __add_list_to_field(self, element: SysMLElement, key: str, field_values: list):
+    def __add_list_to_field(
+        self, element: SysMLElement, key: str, field_values: list
+    ) -> List[UnresolvedField]:
         """
         Adder function for list elements value.
 
@@ -195,7 +203,7 @@ class JsonMapper:
             Destination element.
         key : str
             Field name.
-        field_values : Union[dict  |  list  |  str]
+        field_values : list
             Field values.
 
         Returns
