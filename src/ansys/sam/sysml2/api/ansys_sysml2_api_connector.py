@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Module for Ansy SysML2 API connector."""
+"""Module for Ansys SysML2 API connector."""
 
 from ansys.sam.sysml2.api.template_sysml2_api_connector import (
     TemplateSysML2APIConnector,

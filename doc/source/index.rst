@@ -1,5 +1,5 @@
-PySAM SysML2
-#############
+PySAM SysML2 documentation (v |version|)
+########################################
 
 PySAM SysML2 provides a Python scripting interface for SysML2 models. It loads models from any
 SysML2 tool that implements the standard API. The loaded model maps into a Python object, allowing

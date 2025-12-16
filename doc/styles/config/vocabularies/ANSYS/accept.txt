@@ -37,3 +37,4 @@ SysML2ProjectManager
 SysMLElement
 SysMLTools
 theme_contact_mail
+Vale
