@@ -41,7 +41,7 @@ class ModificationObserver:
         Parameters
         ----------
         project : ProjectImpl
-            Project instance to be observed.
+            Project instance to observe.
         connector: SysML2APIConnector
             SysML2 API Connector to make API calls.
         """

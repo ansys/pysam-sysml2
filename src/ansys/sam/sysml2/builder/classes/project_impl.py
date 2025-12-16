@@ -49,7 +49,7 @@ class ProjectImpl(Project):
         id : str
             Project ID.
         name : str
-            Project Name.
+            Project name.
         """
         super().__init__()
         self._id = id

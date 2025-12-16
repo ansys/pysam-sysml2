@@ -44,8 +44,8 @@ class SysML2APIConnector:
         ----------
         project_name : str
             Name of the project.
-        project_description : str
-            Description of the project, by default : "Project description".
+        project_description : str, default: ``"Project description"``
+            Description of the project.
 
         Returns
         -------

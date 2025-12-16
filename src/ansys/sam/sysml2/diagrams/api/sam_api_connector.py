@@ -45,7 +45,7 @@ class SamApiConnector(ABC):
         project_id: str
             Project ID of the project containing the diagram.
         diagram_id: str
-            Diagram ID of the diagram you want to get information on.
+            Diagram ID of the diagram to get information on.
         """
 
     @abstractmethod
@@ -58,7 +58,7 @@ class SamApiConnector(ABC):
         project_id: str
             Project ID of the project containing the diagram.
         diagram_id: str
-            Diagram ID of the diagram you want to download.
+            Diagram ID of the diagram to download.
         """
 
     @abstractmethod
@@ -71,7 +71,7 @@ class SamApiConnector(ABC):
         project_id: str
             Project ID of the project containing the diagram.
         diagram_id: str
-            Diagram ID of the diagram you want to download.
+            Diagram ID of the diagram to download.
         """
 
     @abstractmethod
@@ -84,7 +84,7 @@ class SamApiConnector(ABC):
         project_id: str
             Project ID of the project containing the diagram.
         diagram_id: str
-            Diagram ID of the diagram you want to download.
+            Diagram ID of the diagram to download.
         """
 
     @abstractmethod

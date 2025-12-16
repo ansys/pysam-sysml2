@@ -46,11 +46,11 @@ class SysML2ProjectBuilder:
     _mapper: JsonMapper = JsonMapper()
 
     def __init__(self, connector: SysML2APIConnector):
-        """Construct a new instance with a specified SysML2APIConnector."""
+        """Construct a new instance with a specified SysML2 API Connector."""
         self._connector = connector
 
     def build_project(self, project_id: str) -> Project:
-        """Call the API with the specified project id and build the Project from JSON."""
+        """Call the API with the specified project ID and build the project from JSON."""
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
         self._build_project_element(project)
@@ -74,7 +74,7 @@ class SysML2ProjectBuilder:
         self.extract_root_and_check_names(project)
 
     def extract_root_and_check_names(self, project: ProjectImpl):
-        """Parse all project elements, extract the root element and update names."""
+        """Parse all project elements, extract the root element, and update names."""
         roots = list()
         for _, element in project._env.items():
             setattr(element, "_name", SysMLUtil.check_inherited_name(element))
@@ -175,7 +175,7 @@ class SysML2ProjectBuilder:
             [setattr(element, getattr(x, "_name"), x) for x in all_element if hasattr(x, "_name")]
 
     def __get_all_element(self, element: SysMLElement) -> list:
-        """Parse all definitions from the element and return it's owned elements."""
+        """Parse all definitions from the element and return its owned elements."""
         all_element = getattr(element, "_ownedElement", [])
         all_element.extend(getattr(element, "_inheritedFeature", []))
         return all_element

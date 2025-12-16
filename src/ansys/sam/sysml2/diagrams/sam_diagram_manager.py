@@ -35,7 +35,7 @@ class SAMDiagramManager:
     _connector: SamApiConnector
 
     def __init__(self, connector: SamApiConnector):
-        """Construct a new instance with SamApiConnector instance specified."""
+        """Construct a new instance with the SAM API Connector instance specified."""
         self._connector = connector
 
     def __enter__(self):

@@ -78,7 +78,7 @@ class SamRestApiConnector(SamApiConnector):
         project_id: str
             Project ID of the project containing the diagram.
         diagram_id: str
-            Diagram ID of the diagram you want to get information on.
+            Diagram ID of the diagram to get information on.
         """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}"
@@ -94,7 +94,7 @@ class SamRestApiConnector(SamApiConnector):
         project_id: str
             Project ID of the project containing the diagram.
         diagram_id: str
-            Diagram ID of the diagram you want to download.
+            Diagram ID of the diagram to download.
         """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/svg"
@@ -110,7 +110,7 @@ class SamRestApiConnector(SamApiConnector):
         project_id: str
             Project ID of the project containing the diagram.
         diagram_id: str
-            Diagram ID of the diagram you want to download.
+            Diagram ID of the diagram to download.
         """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/png"
@@ -126,7 +126,7 @@ class SamRestApiConnector(SamApiConnector):
         project_id: str
             Project ID of the project containing the diagram.
         diagram_id: str
-            Diagram ID of the diagram you want to download.
+            Diagram ID of the diagram to download.
         """
         http_request = self._build_image_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/jpeg"
@@ -158,7 +158,7 @@ class SamRestApiConnector(SamApiConnector):
         http_request : HttpRequest
             Request object containing URL, headers, and body.
         call : Callable
-            HTTP method function (e.g., requests.get, requests.post).
+            HTTP method function (such a ``requests.get`` or ``requests.post``).
 
         Returns
         -------
@@ -197,14 +197,14 @@ class SamRestApiConnector(SamApiConnector):
         http_request : HttpRequest
             Request object containing URL, headers, and body.
         call : Callable
-            HTTP method function (e.g., requests.get, requests.post).
-        stream : bool, optional
-            If True, return the response object for streaming. Default is False.
+            HTTP method function (such a ``requests.get`` or ``requests.post``).
+        stream : bool, default: False
+            Whether to return the response object for streaming.
 
         Returns
         -------
         bytes or requests.Response
-            Binary content if stream is False, otherwise the response object.
+            Binary content if the stream is ``False``. Otherwise, the response object.
 
         Raises
         ------
