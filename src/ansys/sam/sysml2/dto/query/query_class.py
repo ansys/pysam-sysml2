@@ -34,12 +34,5 @@ class Query:
     where: Constraint = None
 
     def to_json(self) -> str:
-        """
-        Get a JSON representation of the class.
-
-        Returns
-        -------
-        str
-            Class adapted to JSON format.
-        """
+        """Get a JSON representation of the class."""
         return dumps({"@type": "Query", "where": self.where.to_json()})

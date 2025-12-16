@@ -29,19 +29,7 @@ class SysMLUtil:
 
     @staticmethod
     def check_inherited_name(element: SysMLElement) -> str:
-        """
-        Check and return the name.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            Element.
-
-        Returns
-        -------
-        str
-           Name.
-        """
+        """Check and return the name of the element."""
         if isinstance(element, str):
             return "::" + element
         if hasattr(element, "_name"):

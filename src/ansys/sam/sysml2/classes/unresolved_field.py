@@ -50,14 +50,7 @@ class UnresolvedField:
         self._element_id = element_id
 
     def get_id(self) -> str:
-        """
-        Get the missing element ID.
-
-        Returns
-        -------
-        str
-            Missing element ID.
-        """
+        """Get the missing element ID."""
         return self._element_id
 
     def resolve(self, element: SysMLElement):

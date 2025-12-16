@@ -36,13 +36,7 @@ class SysMLElement:
     _observer: ModificationObserver = None
 
     def __init__(self, id: str) -> None:
-        """Construct a new instance.
-
-        Parameters
-        ----------
-        id : str
-            Element ID.
-        """
+        """Construct a new SysML element instance with its ID specified."""
         self._id = id
 
     def __setattr__(self, name: str, value: object):
@@ -163,11 +157,29 @@ class SysMLElement:
         self.__set_or_update_value(type(new_value), new_value)
 
     def __set_or_update_value(self, value_type: type, new_value: Union[str | int | float | bool]):
-        """Create the commit to update the value of type ``value_type``."""
+        """
+        Create the commit to set or update the value of type ``value_type``.
+
+        Parameters
+        ----------
+        value_type : type
+            Value type of the new value.
+        new_value : Union[str | int | float | bool]
+            New value to update to.
+        """
         self._create_value(value_type, new_value)
 
     def _create_value(self, value_type: type, new_value: Union[str | int | float | bool]):
-        """Create a new value of type ``value_type`` in the feature."""
+        """
+        Create a new value of type ``value_type`` in the feature.
+
+        Parameters
+        ----------
+        value_type : type
+            Value type of the new value.
+        new_value : Union[str | int | float | bool]
+            New value to create.
+        """
         project_id = self._observer._project_id
         commit = Commit(project_id)
         change = DataVersion()

@@ -38,7 +38,16 @@ class DataVersion:
         self.identity = element_id
 
     def add_change(self, key: str, value: Any):
-        """Add the change into the data version. Also serialize the data if it's needed."""
+        """
+        Add the change into the data version. Also serialize the data if it's needed.
+
+        Parameters
+        ----------
+        key: str
+            Key of the change.
+        value: Any
+            Value of the change.
+        """
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
         from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 

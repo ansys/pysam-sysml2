@@ -35,7 +35,15 @@ class Factory:
     _conn: AnsysSysML2APIConnector
 
     def __init__(self, project: Project, conn: AnsysSysML2APIConnector) -> None:
-        """Initialize a new instance."""
+        """Initialize a new instance.
+
+        Parameters
+        ----------
+        project: Project
+            Project to be modified by the factory.
+        conn: AnsysSysML2APIConnector
+            Connector to make API calls.
+        """
         self._project_id = project._id
         self._project = project
         self._conn = conn

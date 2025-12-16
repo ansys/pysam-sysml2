@@ -30,7 +30,10 @@ from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.builder.json_mapper import JsonMapper
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-from ansys.sam.sysml2.dto.query.constraints_classes import CompositeConstraint, PrimitiveConstraint
+from ansys.sam.sysml2.dto.query.constraints_classes import (
+    CompositeConstraint,
+    PrimitiveConstraint,
+)
 from ansys.sam.sysml2.dto.query.query_class import Query
 from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
 from ansys.sam.sysml2.observer.observer import ModificationObserver
@@ -43,30 +46,11 @@ class SysML2ProjectBuilder:
     _mapper: JsonMapper = JsonMapper()
 
     def __init__(self, connector: SysML2APIConnector):
-        """
-        Construct a new instance.
-
-        Parameters
-        ----------
-        connector : SysML2APIConnector
-            SysML2 API connector.
-        """
+        """Construct a new instance with a specified SysML2 API Connector."""
         self._connector = connector
 
     def build_project(self, project_id: str) -> Project:
-        """
-        Call the API and build the project from JSON.
-
-        Parameters
-        ----------
-        project_id : str
-            Project ID.
-
-        Returns
-        -------
-        Project
-            Built project.
-        """
+        """Call the API with the specified project ID and build the project from JSON."""
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
         self._build_project_element(project)
@@ -76,14 +60,7 @@ class SysML2ProjectBuilder:
         return project
 
     def _build_project_element(self, project: ProjectImpl):
-        """
-        Build all project elements.
-
-        Parameters
-        ----------
-        project : ProjectImpl
-            Project to build.
-        """
+        """Build all project elements in the project."""
         elements = self._connector.get_all_elements(project_id=project._id)
         self._map_element_in_project(project, elements)
         missing_elements = self._resolve_fields(project)
@@ -97,17 +74,7 @@ class SysML2ProjectBuilder:
         self.extract_root_and_check_names(project)
 
     def extract_root_and_check_names(self, project: ProjectImpl):
-        """
-        Extract the root element and update names.
-
-        Parse all project elements and update names.
-        Also check if it's a root element.
-
-        Parameters
-        ----------
-        project : ProjectImpl
-            Context project.
-        """
+        """Parse all project elements, extract the root element, and update names."""
         roots = list()
         for _, element in project._env.items():
             setattr(element, "_name", SysMLUtil.check_inherited_name(element))
@@ -208,19 +175,7 @@ class SysML2ProjectBuilder:
             [setattr(element, getattr(x, "_name"), x) for x in all_element if hasattr(x, "_name")]
 
     def __get_all_element(self, element: SysMLElement) -> list:
-        """
-        Parse all definitions and collect owned elements.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            Base element.
-
-        Returns
-        -------
-        list
-            All owned elements.
-        """
+        """Parse all definitions from the element and return its owned elements."""
         all_element = getattr(element, "_ownedElement", [])
         all_element.extend(getattr(element, "_inheritedFeature", []))
         return all_element
@@ -232,7 +187,7 @@ class SysML2ProjectBuilder:
             element._observer = project_modification_observer
 
     def _index_libraries(self, project: ProjectImpl):
-        """Index libraries for future reload."""
+        """Index libraries of the project for future reload."""
         libraries_elements = set()
         for _, element in project._env.items():
             if not getattr(element, "_qualifiedName", "").startswith(project._name):
@@ -240,7 +195,16 @@ class SysML2ProjectBuilder:
         project._libraries_ids = libraries_elements
 
     def reload_project(self, modification_observer: ModificationObserver, project: ProjectImpl):
-        """Reload the project and update elements."""
+        """
+        Reload the project and update all its elements.
+
+        Parameters
+        ----------
+        modification_observer : ModificationObserver
+            Observer instance.
+        project : ProjectImpl
+            Project instance to reload.
+        """
         modification_observer.stop_observer()
         self._build_project_element(project)
         self._resolve_inherited_link(project)

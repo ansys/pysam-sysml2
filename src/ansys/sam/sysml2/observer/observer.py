@@ -35,7 +35,16 @@ class ModificationObserver:
     _connector: SysML2APIConnector
 
     def __init__(self, project, connector: SysML2APIConnector):
-        """Construct a new instance."""
+        """
+        Construct a new instance.
+
+        Parameters
+        ----------
+        project : ProjectImpl
+            Project instance to observe.
+        connector: SysML2APIConnector
+            SysML2 API Connector to make API calls.
+        """
         self._project_id = project._id
         self._project = project
         self._connector = connector
@@ -66,18 +75,18 @@ class ModificationObserver:
             self._connector.create_commit(self._project_id, commit.to_json())
             self.reload_project()
 
-    def list_notify(self, element_id, name, list_content):
+    def list_notify(self, element_id: str, name: str, list_content):
         """
         Catch modification on a list.
 
         Parameters
         ----------
-        element_id : _type_
-            _description_
-        name : _type_
-            _description_
-        list_content : _type_
-            _description_
+        element_id : str
+            Modified element ID.
+        name : str
+            Key of the modified field.
+        list_content : Any
+            Updated content of the modified list field.
         """
         if self._working_observer:
             commit = Commit(self._project_id)
