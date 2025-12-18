@@ -52,5 +52,5 @@ PySAM SysML2 works with the Ansys SysML2 modeling tool,
    user_guide/index
    api/index
    examples/index
-   contrib
+   contributing
    changelog
