@@ -27,7 +27,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: ansys/actions/doc-deploy-changelog@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+      - uses: ansys/actions/doc-deploy-changelog@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
           bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
@@ -38,7 +38,7 @@ jobs:
     name: "Check pull-request title follows conventional commits"
     runs-on: ubuntu-latest
     steps:
-      - uses: ansys/actions/check-pr-title@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+      - uses: ansys/actions/check-pr-title@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Run PyAnsys code style checks"
-        uses: ansys/actions/code-style@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        uses: ansys/actions/code-style@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
@@ -63,7 +63,7 @@ jobs:
           python-version: ['3.10', '3.11', '3.12', '3.13']
     steps:
       - name: "Build a wheelhouse of the Python library"
-        uses: ansys/actions/build-wheelhouse@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        uses: ansys/actions/build-wheelhouse@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           library-name: ${{ env.LIBRARY_NAME }}
           operating-system: ${{ matrix.os }}
@@ -75,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Running documentation style checks"
-        uses: ansys/actions/doc-style@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        uses: ansys/actions/doc-style@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -86,7 +86,7 @@ jobs:
       needs: [doc-style]
       steps:
         - name: "Run Ansys documentation building action"
-          uses: ansys/actions/doc-build@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+          uses: ansys/actions/doc-build@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
 
 
   build-tests:
@@ -100,7 +100,7 @@ jobs:
       fail-fast: false
     steps:
       - name: "Run pytest"
-        uses: ansys/actions/tests-pytest@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        uses: ansys/actions/tests-pytest@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           pytest-extra-args: "--cov=ansys.sam --cov-report=term --cov-report=html:.cov/html"
 
@@ -111,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build library source and wheel artifacts
-        uses: ansys/actions/build-library@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        uses: ansys/actions/build-library@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           library-name: ${{ env.PACKAGE_NAME }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
@@ -129,7 +129,7 @@ jobs:
       contents: write
     steps:
       - name: "Release to GitHub"
-        uses: ansys/actions/release-github@1096998b81f7ebdea116b683e11f3a8bda759ca6 # v10.0.14
+        uses: ansys/actions/release-github@41f86da4c9ead510db9135e428e33df9cc6f92e1 # v10.2.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           library-name: ${{ env.PACKAGE_NAME }}
@@ -170,7 +170,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     steps:
       - name: "Deploy developers documentation"
-        uses: ansys/actions/doc-deploy-dev@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+        uses: ansys/actions/doc-deploy-dev@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           cname: ${{ env.DOCUMENTATION_CNAME }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -185,7 +185,7 @@ jobs:
     needs: [release-pypi]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     steps:
-      - uses: ansys/actions/doc-deploy-stable@1096998b81f7ebdea116b683e11f3a8bda759ca6 #v10.0.14
+      - uses: ansys/actions/doc-deploy-stable@41f86da4c9ead510db9135e428e33df9cc6f92e1 #v10.2.3
         with:
           doc-artifact-name: 'documentation-html'
           cname: ${{ env.DOCUMENTATION_CNAME }}
