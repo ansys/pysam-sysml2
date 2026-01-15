@@ -70,7 +70,7 @@ checks = [
     "numpydoc==1.8.0",
     "ruff==0.8.2",
     "vale==3.12.0",
-    "pre-commit==4.2.0",
+    "pre-commit==4.5.1",
 ]
 
 [project.urls]
