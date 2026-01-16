@@ -62,7 +62,7 @@ tests = [
 checks = [
     "codespell==2.4.1",
     "colorama==0.4.6",
-    "idna==3.10",
+    "idna==3.11",
     "itsdangerous==2.2.0",
     "Jinja2==3.1.6",
     "Flask==3.1.1",
