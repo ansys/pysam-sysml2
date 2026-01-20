@@ -65,7 +65,7 @@ checks = [
     "idna==3.11",
     "itsdangerous==2.2.0",
     "Jinja2==3.1.6",
-    "Flask==3.1.1",
+    "Flask==3.1.2",
     "MarkupSafe==3.0.3",
     "numpydoc==1.10.0",
     "ruff==0.14.13",
