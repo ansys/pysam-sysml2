@@ -56,7 +56,7 @@ tests = [
     "sphinx-copybutton==0.5.2",
     "sphinx-design==0.6.1",
     "urllib3==2.6.3",
-    "vale==3.12.0",
+    "vale==3.13.0.0",
     "Werkzeug==3.1.5",
 ]
 checks = [
@@ -69,7 +69,7 @@ checks = [
     "MarkupSafe==3.0.3",
     "numpydoc==1.10.0",
     "ruff==0.14.13",
-    "vale==3.12.0",
+    "vale==3.13.0.0",
     "pre-commit==4.5.1",
 ]
 
