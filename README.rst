@@ -6,7 +6,7 @@ PySAM SysML2
    :target: https://docs.pyansys.com/
    :alt: PyAnsys
 
-.. |doc| image:: https://img.shields.io/badge/docs-pysam-green.svg?style=flat
+.. |doc| image:: https://img.shields.io/badge/docs-PySAM-green.svg?style=flat
    :target: https://probable-doodle-z27n1yp.pages.github.io/
    :alt: Doc
 
