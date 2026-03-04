@@ -20,7 +20,7 @@ from ansys.sam.sysml2 import __version__
 project = "ansys-sam-sysml2"
 release = version = __version__
 switcher_version = get_version_match(__version__)
-cname = os.getenv("DOCUMENTATION_CNAME", "sam.docs.pyansys.com")
+cname = os.getenv("DOCUMENTATION_CNAME", "sysml2.docs.pyansys.com")
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
 
@@ -30,7 +30,7 @@ html_short_title = html_title = "pysam-sysml2"
 
 html_theme = "ansys_sphinx_theme"
 html_theme_options = {
-    "github_url": "https://github.com/ansys-internal/pysam-sysml2",
+    "github_url": "https://github.com/ansys/pysam-sysml2",
     "show_prev_next": False,
     "show_breadcrumbs": True,
     "additional_breadcrumbs": [
@@ -166,13 +166,13 @@ suppress_warnings = [
 # make rst_epilog a variable, so you can add other epilog parts to it
 rst_epilog = ""
 # Read link all targets from file
-with Path.open("links.rst") as f:
+with (Path(__file__).parent / "links.rst").open() as f:
     rst_epilog += f.read()
 
 # Keep these while the repository is private
 linkcheck_ignore = [
-    "https://github.com/ansys-internal/pysam-sysml2/*",
-    "https://sam.docs.pyansys.com/version/stable/*",
+    "https://github.com/ansys/pysam-sysml2/*",
+    "https://sysml2.docs.pyansys.com/version/stable/*",
     "https://pypi.org/project/ansys-sam-sysml2",
     "https://www.ansys.com/*",  # to be removed -- user_agent is supposed to handle this
 ]

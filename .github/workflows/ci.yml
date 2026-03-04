@@ -9,23 +9,46 @@ on:
   workflow_dispatch:
 
 env:
-  MAIN_PYTHON_VERSION: "3.10"
-  LIBRARY_NAME: "ansys-sam-sysml2"
-  DOCUMENTATION_CNAME: "probable-doodle-z27n1yp.pages.github.io" # TO-DO: Update to "sam.docs.pyansys.com" when ready
+  MAIN_PYTHON_VERSION: "3.14"
+  DOCUMENTATION_CNAME: "sysml2.docs.pyansys.com"
   PACKAGE_NAME: "ansys-sam-sysml2"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Default permission for all jobs, can be overridden at the job level
+permissions:
+  contents: read
+
 jobs:
+  vulnerabilities:
+    name: Vulnerabilities
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ansys/actions/check-vulnerabilities@3931ac9351b13ae11b1203c2ef6b51e5c75502ea # v10.2.5
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
+          python-package-name: ${{ env.PACKAGE_NAME }}
+          token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
+          dev-mode: ${{ github.ref != 'refs/heads/main' }}
+
+  actions-security:
+    name: Actions security
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ansys/actions/check-actions-security@3931ac9351b13ae11b1203c2ef6b51e5c75502ea # v10.2.5
+        with:
+          generate-summary: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
   update-changelog:
     name: "Update CHANGELOG for new tag"
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     runs-on: ubuntu-latest
     permissions:
-      contents: write
-      pull-requests: write
+      contents: write # Required to create the changelog on the release branch
+      pull-requests: write # Required to create on main the associated PR with the changelog
     steps:
       - uses: ansys/actions/doc-deploy-changelog@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
@@ -36,6 +59,8 @@ jobs:
   check-pr-title:
     name: "Check pull-request title follows conventional commits"
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read  # Required to read PR title
     steps:
       - uses: ansys/actions/check-pr-title@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
@@ -57,12 +82,13 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+      fail-fast: false
     steps:
       - name: "Build a wheelhouse of the Python library"
         uses: ansys/actions/build-wheelhouse@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
-          library-name: ${{ env.LIBRARY_NAME }}
+          library-name: ${{ env.PACKAGE_NAME }}
           operating-system: ${{ matrix.os }}
           python-version: ${{ matrix.python-version }}
 
@@ -82,6 +108,8 @@ jobs:
     steps:
       - name: "Run Ansys documentation building action"
         uses: ansys/actions/doc-build@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
   build-tests:
     name: "Build and unit tests"
@@ -90,24 +118,30 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest]
-        python-version: ["3.10", "3.11", "3.12", "3.13"]
+        python-version: ["3.10", "3.11", "3.12", "3.13", "3.14"]
       fail-fast: false
     steps:
       - name: "Run pytest"
         uses: ansys/actions/tests-pytest@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
+          python-version: ${{ matrix.python-version }}
           pytest-extra-args: "--cov=ansys.sam --cov-report=term --cov-report=html:.cov/html"
 
   package:
     name: "Package library"
     needs: [build-tests, doc-build]
     runs-on: ubuntu-latest
+    permissions:
+      attestations: write # Required to upload provenance attestations
+      id-token: write # Required for OIDC authentication to upload provenance attestations
+      contents: read
     steps:
       - name: Build library source and wheel artifacts
         uses: ansys/actions/build-library@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
           library-name: ${{ env.PACKAGE_NAME }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
+          attest-provenance: true
 
   release-gh:
     name: "Release project to GitHub"
@@ -117,8 +151,8 @@ jobs:
     # Specifying a GitHub environment is optional, but strongly encouraged
     environment: release
     permissions:
-      id-token: write
-      contents: write
+      id-token: write # Required for GitHub release
+      contents: write # Required for GitHub release
     steps:
       - name: "Release to GitHub"
         uses: ansys/actions/release-github@3931ac9351b13ae11b1203c2ef6b51e5c75502ea # v10.2.5
@@ -131,12 +165,12 @@ jobs:
   release-pypi:
     name: "Release project to PyPI"
     if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
-    needs: [package, release-gh]
+    needs: [package, update-changelog]
     runs-on: ubuntu-latest
     environment: release
     permissions:
-      id-token: write
-      contents: write
+      id-token: write # Required for OIDC authentication with PyPI
+      contents: write # Required for OIDC authentication with PyPI
     steps:
       - name: "Download the library artifacts from build-library step"
         uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0
@@ -170,7 +204,7 @@ jobs:
     name: "Upload release documentation"
     # Deploy release documentation when creating a new tag
     runs-on: ubuntu-latest
-    needs: [release-pypi]
+    needs: [release-pypi, release-gh]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
     steps:
       - uses: ansys/actions/doc-deploy-stable@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5

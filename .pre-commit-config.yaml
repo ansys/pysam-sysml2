@@ -1,3 +1,8 @@
+ci:
+  autofix_commit_msg: 'chore: auto fixes from pre-commit hooks'
+  autoupdate_commit_msg: 'chore: pre-commit automatic update'
+  autoupdate_schedule: weekly
+
 repos:
   - repo: https://github.com/ansys/pre-commit-hooks
     rev: v0.5.2
@@ -7,7 +12,7 @@ repos:
           - --start_year=2024
 
   - repo: https://github.com/numpy/numpydoc
-    rev: v1.8.0
+    rev: v1.10.0
     hooks:
       - id: numpydoc-validation
         files: \.py$
@@ -19,28 +24,31 @@ repos:
           )
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    # Ruff version.
-    rev: v0.9.1
+    rev: v0.15.4
     hooks:
-      # Run the linter.
-      - id: ruff
-        args: [--fix]
-      # Run the formatter.
+      - id: ruff-check
       - id: ruff-format
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.6
+    rev: v2.4.1
     hooks:
       - id: codespell
         args: [-L THIRDPARTY] # Configuration word needed in pyproject.toml
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v6.0.0
     hooks:
       - id: check-merge-conflict
       - id: trailing-whitespace
+      - id: check-yaml
+      - id: trailing-whitespace
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.31.0
+    rev: 0.37.0
     hooks:
       - id: check-github-workflows
+
+  - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
+    rev: v1.6.1
+    hooks:
+      - id: check-pre-commit-ci-config
