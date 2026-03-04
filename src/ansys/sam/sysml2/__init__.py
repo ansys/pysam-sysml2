@@ -21,7 +21,17 @@
 # SOFTWARE.
 """Base module for PySAM SysML2."""
 
-__version__ = "0.1.dev0"
+# Version
+# ------------------------------------------------------------------------------
+
+import importlib.metadata as importlib_metadata
+
+__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+"""PySAM SysML2 version."""
+
+# Ease import statements
+# ------------------------------------------------------------------------------
+
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import (
     AnsysSysML2APIConnector,  # noqa as we export name
