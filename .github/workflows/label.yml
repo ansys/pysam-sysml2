@@ -71,6 +71,7 @@ jobs:
           labels: bug
 
   commenter:
+    name: Suggest labels
     runs-on: ubuntu-latest
     permissions:
       contents: read

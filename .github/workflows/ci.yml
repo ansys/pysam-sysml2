@@ -17,6 +17,11 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+# Default permission for all jobs, can be overridden at the job level
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   vulnerabilities:
     name: Vulnerabilities
@@ -55,6 +60,9 @@ jobs:
   check-pr-title:
     name: "Check pull-request title follows conventional commits"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: read
     steps:
       - uses: ansys/actions/check-pr-title@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
