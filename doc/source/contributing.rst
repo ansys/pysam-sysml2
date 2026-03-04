@@ -182,7 +182,7 @@ Before submitting a pull request, ensure all quality checks pass:
 5. **Check documentation style**: ``cd doc; vale sync; vale .``
 6. **Run pre-commit checks**: ``pre-commit run --all-files``
 
-The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, and 3.13) when you submit your pull request.
+The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, 3.13, and 3.14) when you submit your pull request.
 
 .. note::
    While you can run tests locally on your installed Python version, the CI/CD pipeline ensures compatibility across all supported Python versions.
