@@ -60,7 +60,7 @@ jobs:
     name: "Check pull-request title follows conventional commits"
     runs-on: ubuntu-latest
     permissions:
-      contents: read  # Required to read PR title
+      pull-requests: read  # Required to read PR title
     steps:
       - uses: ansys/actions/check-pr-title@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
