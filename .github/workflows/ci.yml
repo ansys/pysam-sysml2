@@ -107,6 +107,8 @@ jobs:
     steps:
       - name: "Run Ansys documentation building action"
         uses: ansys/actions/doc-build@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        with:
+          python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
   build-tests:
     name: "Build and unit tests"
@@ -121,6 +123,7 @@ jobs:
       - name: "Run pytest"
         uses: ansys/actions/tests-pytest@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
+          python-version: ${{ matrix.python-version }}
           pytest-extra-args: "--cov=ansys.sam --cov-report=term --cov-report=html:.cov/html"
 
   package:
