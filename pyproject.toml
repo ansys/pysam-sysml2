@@ -102,13 +102,13 @@ select = [
     "W191", # tabs in indentation
     "W291", # trailing whitespace
     "W293", # blank line contains whitespace
-    "W391", # blank line at end of file
-    "D",    # pydocstyle, see https://docs.astral.sh/ruff/rules/#pydocstyle-d
-    "F",    # pyflakes, see https://docs.astral.sh/ruff/rules/#pyflakes-f
-    "I",    # isort, see https://docs.astral.sh/ruff/rules/#isort-i
-    "N",    # pep8-naming, see https://docs.astral.sh/ruff/rules/#pep8-naming-n
-    "PTH",  # flake8-use-pathlib, https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
-    "TD",   # flake8-todos, https://docs.astral.sh/ruff/rules/#flake8-todos-td
+    # "W391", # blank line at end of file
+    "D",   # pydocstyle, see https://docs.astral.sh/ruff/rules/#pydocstyle-d
+    "F",   # pyflakes, see https://docs.astral.sh/ruff/rules/#pyflakes-f
+    "I",   # isort, see https://docs.astral.sh/ruff/rules/#isort-i
+    "N",   # pep8-naming, see https://docs.astral.sh/ruff/rules/#pep8-naming-n
+    "PTH", # flake8-use-pathlib, https://docs.astral.sh/ruff/rules/#flake8-use-pathlib-pth
+    "TD",  # flake8-todos, https://docs.astral.sh/ruff/rules/#flake8-todos-td
 ]
 ignore = ["F402", "F403", "N818"]
 

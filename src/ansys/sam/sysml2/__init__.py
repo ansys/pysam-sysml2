@@ -33,12 +33,18 @@ __version__ = importlib_metadata.version(__name__.replace(".", "-"))
 # ------------------------------------------------------------------------------
 
 
-from ansys.sam.sysml2.api.ansys_sysml2_api_connector import (
-    AnsysSysML2APIConnector,  # noqa as we export name
+from ansys.sam.sysml2.api.ansys_sysml2_api_connector import (  # noqa: E402 as we export name
+    AnsysSysML2APIConnector,
 )
-from ansys.sam.sysml2.builder.sysml2_project_manager import (
-    SysML2ProjectManager,  # noqa as we export name
+from ansys.sam.sysml2.builder.sysml2_project_manager import (  # noqa: E402 as we export name
+    SysML2ProjectManager,
 )
-from ansys.sam.sysml2.diagrams.sam_diagram_manager import (
-    SAMDiagramManager,  # noqa as we export name
+from ansys.sam.sysml2.diagrams.sam_diagram_manager import (  # noqa: E402 as we export name
+    SAMDiagramManager,
 )
+
+__all__ = [
+    "AnsysSysML2APIConnector",
+    "SAMDiagramManager",
+    "SysML2ProjectManager",
+]
