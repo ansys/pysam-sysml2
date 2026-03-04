@@ -5,23 +5,24 @@ build-backend = "flit_core.buildapi"
 [project]
 # Check https://flit.readthedocs.io/en/latest/pyproject_toml.html for all available sections
 name = "ansys-sam-sysml2"
-dynamic = ["version"]
+version = "0.1.dev0"
 description = "Python library for Sysml2 model manipulation"
 readme = "README.rst"
 requires-python = ">=3.10,<4.0"
-license = { file = "LICENSE" }
+license = "MIT"
+license-files = ["LICENSE"]
 authors = [{ name = "ANSYS, Inc.", email = "pyansys.core@ansys.com" }]
 maintainers = [{ name = "ANSYS, Inc.", email = "pyansys.core@ansys.com" }]
 
 classifiers = [
     "Development Status :: 4 - Beta",
     "Topic :: Software Development :: Libraries",
-    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
 ]
 
 dependencies = [
@@ -41,43 +42,31 @@ dependencies = [
 
 [project.optional-dependencies]
 doc = [
-    "ansys-sphinx-theme[autoapi]==1.7.1",
-    "sphinx-design==0.7.0",
+    "ansys-sphinx-theme[autoapi]==1.7.2",
     "numpydoc==1.10.0",
-    "sphinx==8.1.3",
+    "sphinx==9.1.0",
     "sphinx-copybutton==0.5.2",
 ]
 tests = [
     "pytest==9.0.2",
     "pytest-cov==7.0.0",
-    "requests==2.32.5",
-    "ruff==0.15.1",
-    "sphinx==8.1.3",
-    "sphinx-copybutton==0.5.2",
-    "sphinx-design==0.7.0",
-    "urllib3==2.6.3",
-    "vale==3.13.0.0",
-    "Werkzeug==3.1.5",
-]
-checks = [
-    "codespell==2.4.1",
     "colorama==0.4.6",
+    "Flask==3.1.3",
     "idna==3.11",
     "itsdangerous==2.2.0",
     "Jinja2==3.1.6",
-    "Flask==3.1.3",
     "MarkupSafe==3.0.3",
-    "numpydoc==1.10.0",
-    "ruff==0.15.1",
-    "vale==3.13.0.0",
-    "pre-commit==4.5.1",
+    "requests==2.32.5",
+    "urllib3==2.6.3",
+    "Werkzeug==3.1.5",
 ]
+checks = ["pre-commit==4.5.1"]
 
 [project.urls]
-Source = "https://github.com/ansys-internal/pysam-sysml2"
-Tracker = "https://github.com/ansys-internal/pysam-sysml2/issues"
-Homepage = "https://github.com/ansys-internal/pysam-sysml2"
-# Documentation = "https://sam.docs.pyansys.com"
+Source = "https://github.com/ansys/pysam-sysml2"
+Tracker = "https://github.com/ansys/pysam-sysml2/issues"
+Homepage = "https://github.com/ansys/pysam-sysml2"
+Documentation = "https://sysml2.docs.pyansys.com"
 
 [tool.flit.module]
 name = "ansys.sam.sysml2"
@@ -109,7 +98,11 @@ indent-style = "space"
 
 [tool.ruff.lint]
 select = [
-    "E",   # pycodestyle, see https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+    "E",    # pycodestyle, see https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+    "W191", # tabs in indentation
+    "W291", # trailing whitespace
+    "W293", # blank line contains whitespace
+    # "W391", # blank line at end of file
     "D",   # pydocstyle, see https://docs.astral.sh/ruff/rules/#pydocstyle-d
     "F",   # pyflakes, see https://docs.astral.sh/ruff/rules/#pyflakes-f
     "I",   # isort, see https://docs.astral.sh/ruff/rules/#isort-i
@@ -219,4 +212,19 @@ showcontent = true
 [[tool.towncrier.type]]
 directory = "miscellaneous"
 name = "Miscellaneous"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "documentation"
+name = "Documentation"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "maintenance"
+name = "Maintenance"
+showcontent = true
+
+[[tool.towncrier.type]]
+directory = "test"
+name = "Test"
 showcontent = true

@@ -20,9 +20,7 @@ The following contribution information is specific to PySAM SysML2.
 PySAM SysML2 documentation
 --------------------------
 Documentation for the latest stable release of PySAM SysML2 is hosted at
-`PySAM SysML2 documentation <https://probable-doodle-z27n1yp.pages.github.io>`_.
-
-.. update to https://sam.docs.pyansys.com when ready
+`PySAM SysML2 documentation <https://sysml2.docs.pyansys.com>`_.
 
 This version is automatically kept up to date with GitHub actions.
 
@@ -30,7 +28,7 @@ This version is automatically kept up to date with GitHub actions.
 Posting Issues
 --------------
 
-Use the `PySAM SysML2 Issues <https://github.com/ansys-internal/pysam-sysml2/issues>`_
+Use the `PySAM SysML2 Issues <https://github.com/ansys/pysam-sysml2/issues>`_
 page to submit questions, report bugs, and request new features. When possible,
 use one of the existing templates.
 
@@ -58,7 +56,7 @@ Run this code to clone and install the latest version of PySAM SysML2 in develop
     pysam-dev-env\Scripts\activate
 
     # Clone the repository and install
-    git clone https://github.com/ansys-internal/pysam-sysml2.git
+    git clone https://github.com/ansys/pysam-sysml2.git
     cd pysam-sysml2
 
     # Update pip and install the project with all dependencies including optional ones
@@ -184,7 +182,7 @@ Before submitting a pull request, ensure all quality checks pass:
 5. **Check documentation style**: ``cd doc; vale sync; vale .``
 6. **Run pre-commit checks**: ``pre-commit run --all-files``
 
-The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, and 3.13) when you submit your pull request.
+The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, 3.13, and 3.14) when you submit your pull request.
 
 .. note::
    While you can run tests locally on your installed Python version, the CI/CD pipeline ensures compatibility across all supported Python versions.
