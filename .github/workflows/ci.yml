@@ -11,7 +11,7 @@ on:
 env:
   MAIN_PYTHON_VERSION: "3.10"
   LIBRARY_NAME: "ansys-sam-sysml2"
-  DOCUMENTATION_CNAME: "probable-doodle-z27n1yp.pages.github.io" # TO-DO: Update to "sam.docs.pyansys.com" when ready
+  DOCUMENTATION_CNAME: "sam.docs.pyansys.com"
   PACKAGE_NAME: "ansys-sam-sysml2"
 
 concurrency:

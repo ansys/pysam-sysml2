@@ -20,9 +20,7 @@ The following contribution information is specific to PySAM SysML2.
 PySAM SysML2 documentation
 --------------------------
 Documentation for the latest stable release of PySAM SysML2 is hosted at
-`PySAM SysML2 documentation <https://probable-doodle-z27n1yp.pages.github.io>`_.
-
-.. update to https://sam.docs.pyansys.com when ready
+`PySAM SysML2 documentation <https://sam.docs.pyansys.com>`_.
 
 This version is automatically kept up to date with GitHub actions.
 
