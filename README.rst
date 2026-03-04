@@ -7,7 +7,7 @@ PySAM SysML2
    :alt: PyAnsys
 
 .. |doc| image:: https://img.shields.io/badge/docs-PySAM-green.svg?style=flat
-   :target: https://sam.docs.pyansys.com/
+   :target: https://sysml2.docs.pyansys.com/
    :alt: Doc
 
 .. |ruff| image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json

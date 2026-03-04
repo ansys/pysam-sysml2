@@ -20,7 +20,7 @@ from ansys.sam.sysml2 import __version__
 project = "ansys-sam-sysml2"
 release = version = __version__
 switcher_version = get_version_match(__version__)
-cname = os.getenv("DOCUMENTATION_CNAME", "sam.docs.pyansys.com")
+cname = os.getenv("DOCUMENTATION_CNAME", "sysml2.docs.pyansys.com")
 copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = "ANSYS, Inc."
 
@@ -172,7 +172,7 @@ with Path.open("links.rst") as f:
 # Keep these while the repository is private
 linkcheck_ignore = [
     "https://github.com/ansys-internal/pysam-sysml2/*",
-    "https://sam.docs.pyansys.com/version/stable/*",
+    "https://sysml2.docs.pyansys.com/version/stable/*",
     "https://pypi.org/project/ansys-sam-sysml2",
     "https://www.ansys.com/*",  # to be removed -- user_agent is supposed to handle this
 ]

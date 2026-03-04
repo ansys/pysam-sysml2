@@ -10,7 +10,7 @@ on:
 
 env:
   MAIN_PYTHON_VERSION: "3.10"
-  DOCUMENTATION_CNAME: "sam.docs.pyansys.com"
+  DOCUMENTATION_CNAME: "sysml2.docs.pyansys.com"
   PACKAGE_NAME: "ansys-sam-sysml2"
 
 concurrency:
