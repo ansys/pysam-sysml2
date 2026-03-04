@@ -50,7 +50,7 @@ jobs:
       contents: write # Required to create the changelog on the release branch
       pull-requests: write # Required to create on main the associated PR with the changelog
     steps:
-      - uses: ansys/actions/doc-deploy-changelog@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+      - uses: ansys/actions/doc-deploy-changelog@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           token: ${{ secrets.PYANSYS_CI_BOT_TOKEN }}
           bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
@@ -62,7 +62,7 @@ jobs:
     permissions:
       pull-requests: read  # Required to read PR title
     steps:
-      - uses: ansys/actions/check-pr-title@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+      - uses: ansys/actions/check-pr-title@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -71,7 +71,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Run PyAnsys code style checks"
-        uses: ansys/actions/code-style@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        uses: ansys/actions/code-style@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
@@ -86,7 +86,7 @@ jobs:
       fail-fast: false
     steps:
       - name: "Build a wheelhouse of the Python library"
-        uses: ansys/actions/build-wheelhouse@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        uses: ansys/actions/build-wheelhouse@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           library-name: ${{ env.PACKAGE_NAME }}
           operating-system: ${{ matrix.os }}
@@ -97,7 +97,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Running documentation style checks"
-        uses: ansys/actions/doc-style@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        uses: ansys/actions/doc-style@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -107,7 +107,7 @@ jobs:
     needs: [doc-style]
     steps:
       - name: "Run Ansys documentation building action"
-        uses: ansys/actions/doc-build@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        uses: ansys/actions/doc-build@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
@@ -122,7 +122,7 @@ jobs:
       fail-fast: false
     steps:
       - name: "Run pytest"
-        uses: ansys/actions/tests-pytest@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        uses: ansys/actions/tests-pytest@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           python-version: ${{ matrix.python-version }}
           pytest-extra-args: "--cov=ansys.sam --cov-report=term --cov-report=html:.cov/html"
@@ -137,7 +137,7 @@ jobs:
       contents: read
     steps:
       - name: Build library source and wheel artifacts
-        uses: ansys/actions/build-library@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        uses: ansys/actions/build-library@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           library-name: ${{ env.PACKAGE_NAME }}
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
@@ -155,7 +155,7 @@ jobs:
       contents: write # Required for GitHub release
     steps:
       - name: "Release to GitHub"
-        uses: ansys/actions/release-github@3931ac9351b13ae11b1203c2ef6b51e5c75502ea # v10.2.5
+        uses: ansys/actions/release-github@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 # v10.2.7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           library-name: ${{ env.PACKAGE_NAME }}
@@ -195,7 +195,7 @@ jobs:
       contents: write # Required to push to the documentation branch (gh-pages)
     steps:
       - name: "Deploy developers documentation"
-        uses: ansys/actions/doc-deploy-dev@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+        uses: ansys/actions/doc-deploy-dev@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           cname: ${{ env.DOCUMENTATION_CNAME }}
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -211,7 +211,7 @@ jobs:
     permissions:
       contents: write # Required to push to the documentation branch (gh-pages)
     steps:
-      - uses: ansys/actions/doc-deploy-stable@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
+      - uses: ansys/actions/doc-deploy-stable@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
           doc-artifact-name: "documentation-html"
           cname: ${{ env.DOCUMENTATION_CNAME }}
