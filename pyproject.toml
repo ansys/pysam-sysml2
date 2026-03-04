@@ -110,6 +110,10 @@ indent-style = "space"
 [tool.ruff.lint]
 select = [
     "E",   # pycodestyle, see https://docs.astral.sh/ruff/rules/#pycodestyle-e-w
+    "W191", # tabs in indentation
+    "W291", # trailing whitespace
+    "W293", # blank line contains whitespace
+    "W391", # blank line at end of file
     "D",   # pydocstyle, see https://docs.astral.sh/ruff/rules/#pydocstyle-d
     "F",   # pyflakes, see https://docs.astral.sh/ruff/rules/#pyflakes-f
     "I",   # isort, see https://docs.astral.sh/ruff/rules/#isort-i
