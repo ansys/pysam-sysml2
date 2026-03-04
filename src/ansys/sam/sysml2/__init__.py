@@ -47,4 +47,5 @@ __all__ = [
     "AnsysSysML2APIConnector",
     "SAMDiagramManager",
     "SysML2ProjectManager",
+    "__version__",
 ]
