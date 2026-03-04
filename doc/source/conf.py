@@ -30,7 +30,7 @@ html_short_title = html_title = "pysam-sysml2"
 
 html_theme = "ansys_sphinx_theme"
 html_theme_options = {
-    "github_url": "https://github.com/ansys-internal/pysam-sysml2",
+    "github_url": "https://github.com/ansys/pysam-sysml2",
     "show_prev_next": False,
     "show_breadcrumbs": True,
     "additional_breadcrumbs": [
@@ -171,7 +171,7 @@ with Path.open("links.rst") as f:
 
 # Keep these while the repository is private
 linkcheck_ignore = [
-    "https://github.com/ansys-internal/pysam-sysml2/*",
+    "https://github.com/ansys/pysam-sysml2/*",
     "https://sysml2.docs.pyansys.com/version/stable/*",
     "https://pypi.org/project/ansys-sam-sysml2",
     "https://www.ansys.com/*",  # to be removed -- user_agent is supposed to handle this

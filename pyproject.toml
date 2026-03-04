@@ -74,9 +74,9 @@ checks = [
 ]
 
 [project.urls]
-Source = "https://github.com/ansys-internal/pysam-sysml2"
-Tracker = "https://github.com/ansys-internal/pysam-sysml2/issues"
-Homepage = "https://github.com/ansys-internal/pysam-sysml2"
+Source = "https://github.com/ansys/pysam-sysml2"
+Tracker = "https://github.com/ansys/pysam-sysml2/issues"
+Homepage = "https://github.com/ansys/pysam-sysml2"
 Documentation = "https://sysml2.docs.pyansys.com"
 
 [tool.flit.module]

@@ -28,7 +28,7 @@ This version is automatically kept up to date with GitHub actions.
 Posting Issues
 --------------
 
-Use the `PySAM SysML2 Issues <https://github.com/ansys-internal/pysam-sysml2/issues>`_
+Use the `PySAM SysML2 Issues <https://github.com/ansys/pysam-sysml2/issues>`_
 page to submit questions, report bugs, and request new features. When possible,
 use one of the existing templates.
 
@@ -56,7 +56,7 @@ Run this code to clone and install the latest version of PySAM SysML2 in develop
     pysam-dev-env\Scripts\activate
 
     # Clone the repository and install
-    git clone https://github.com/ansys-internal/pysam-sysml2.git
+    git clone https://github.com/ansys/pysam-sysml2.git
     cd pysam-sysml2
 
     # Update pip and install the project with all dependencies including optional ones
