@@ -59,6 +59,8 @@ jobs:
   check-pr-title:
     name: "Check pull-request title follows conventional commits"
     runs-on: ubuntu-latest
+    permissions:
+      contents: read  # Required to read PR title
     steps:
       - uses: ansys/actions/check-pr-title@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
         with:
@@ -128,6 +130,7 @@ jobs:
     permissions:
       attestations: write # Required to upload provenance attestations
       id-token: write # Required for OIDC authentication to upload provenance attestations
+      contents: read
     steps:
       - name: Build library source and wheel artifacts
         uses: ansys/actions/build-library@3931ac9351b13ae11b1203c2ef6b51e5c75502ea #v10.2.5
