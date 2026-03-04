@@ -21,14 +21,24 @@
 # SOFTWARE.
 """Base module for PySAM SysML2."""
 
-__version__ = "0.1.dev0"
+# Version
+# ------------------------------------------------------------------------------
 
-from ansys.sam.sysml2.api.ansys_sysml2_api_connector import (
-    AnsysSysML2APIConnector,  # noqa as we export name
+import importlib.metadata as importlib_metadata
+
+__version__ = importlib_metadata.version(__name__.replace(".", "-"))
+"""PySAM SysML2 version."""
+
+# Ease import statements
+# ------------------------------------------------------------------------------
+
+
+from ansys.sam.sysml2.api.ansys_sysml2_api_connector import (  # noqa: F401, E402 as we export name
+    AnsysSysML2APIConnector,
 )
-from ansys.sam.sysml2.builder.sysml2_project_manager import (
-    SysML2ProjectManager,  # noqa as we export name
+from ansys.sam.sysml2.builder.sysml2_project_manager import (  # noqa: F401, E402 as we export name
+    SysML2ProjectManager,
 )
-from ansys.sam.sysml2.diagrams.sam_diagram_manager import (
-    SAMDiagramManager,  # noqa as we export name
+from ansys.sam.sysml2.diagrams.sam_diagram_manager import (  # noqa: F401, E402 as we export name
+    SAMDiagramManager,
 )
