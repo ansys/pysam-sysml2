@@ -191,6 +191,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [package]
     if: github.ref == 'refs/heads/main'
+    permissions:
+      contents: write # Required to push to the documentation branch (gh-pages)
     steps:
       - name: "Deploy developers documentation"
         uses: ansys/actions/doc-deploy-dev@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
@@ -206,6 +208,8 @@ jobs:
     runs-on: ubuntu-latest
     needs: [release-pypi, release-gh]
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags')
+    permissions:
+      contents: write # Required to push to the documentation branch (gh-pages)
     steps:
       - uses: ansys/actions/doc-deploy-stable@1f4f0896a8e49d3aec2f02ced215b04a32c85f28 #v10.2.7
         with:
