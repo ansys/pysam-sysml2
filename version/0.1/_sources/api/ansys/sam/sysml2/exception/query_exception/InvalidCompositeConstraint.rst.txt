@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`InvalidCompositeConstraint`
+===================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.query_exception.InvalidCompositeConstraint
+
+   Bases: :py:obj:`InvalidQuery`
+
+
+   
+   Exception when the composite constraint is invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.query_exception import InvalidCompositeConstraint
+
+
+
+
+

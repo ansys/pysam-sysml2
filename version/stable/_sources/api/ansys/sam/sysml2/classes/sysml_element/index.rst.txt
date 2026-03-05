@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sysml_element.py`` module
+===============================
+
+.. py:module:: ansys.sam.sysml2.classes.sysml_element
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sysml_element
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.sysml_element.SysMLElement`
+            - Provides the Python base class for all SysML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SysMLElement</api/ansys/sam/sysml2/classes/sysml_element/SysMLElement>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Python base class for SysML elements.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

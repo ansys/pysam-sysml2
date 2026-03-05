@@ -1,0 +1,130 @@
+
+
+
+
+
+
+The ``diagrams`` package
+============================
+
+.. py:module:: ansys.sam.sysml2.diagrams
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: diagrams
+.. tab-set::
+
+    .. tab-item:: Subpackages
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.api`
+            - API package for the SAM API connector.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.builder`
+            - Builder module for the PySAM SysML2 diagram library.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.classes`
+            - Classes module for the PySAM SysML2 diagram library.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.tools`
+            - Tools module for the PySAM SysML2 diagram library.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.utils`
+            - Utilities module for the PySAM SysML2 diagram library.
+
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.sam_diagram_manager`
+            - Main class of PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-package"></span> api</api/ansys/sam/sysml2/diagrams/api/index>
+    <span class="nf nf-md-package"></span> builder</api/ansys/sam/sysml2/diagrams/builder/index>
+    <span class="nf nf-md-package"></span> classes</api/ansys/sam/sysml2/diagrams/classes/index>
+    <span class="nf nf-md-package"></span> tools</api/ansys/sam/sysml2/diagrams/tools/index>
+    <span class="nf nf-md-package"></span> utils</api/ansys/sam/sysml2/diagrams/utils/index>
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> sam_diagram_manager</api/ansys/sam/sysml2/diagrams/sam_diagram_manager/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Diagram module for PySAM SysML2 diagram library.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
