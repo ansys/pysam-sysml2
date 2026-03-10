@@ -8,10 +8,10 @@ from ansys.sam.sysml2.tools.ansys_sysml2_project import AnsysSysML2Project
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 project = AnsysSysML2Project(
-    server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
+    server_url="<SAM Server URL>",  # Your Sam server base URL
     organization_id="<Orga ID>",  # The Organization ID
     token="<Token>",  # Your Auth Token (See section below)
-    use_ssl=False,  # IF the server has a valid SSL
+    use_ssl=False,  # IF the server hasn't a valid SSL
     project_id="<Bike Project ID>",  # The Project ID
 )
 

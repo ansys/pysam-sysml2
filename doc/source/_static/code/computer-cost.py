@@ -10,10 +10,10 @@ from ansys.sam.sysml2.tools import SysMLTools
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="https://127.0.0.1:8443/",  # Your SAM server base URL
+    server_url="<SAM Server URL>",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The organization ID
     token="<Token>",  # Your authorization token
-    use_ssl=False,  # If the server has a valid SSL
+    use_ssl=False,  # If the server hasn't a valid SSL
 )
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
