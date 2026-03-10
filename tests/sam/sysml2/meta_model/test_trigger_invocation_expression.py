@@ -1,0 +1,26 @@
+"""Generated  test class from metamodel."""
+
+from __future__ import annotations
+
+import pytest
+
+from ansys.sam.sysml2.meta_model.trigger_invocation_expression import TriggerInvocationExpression
+
+
+class TestTriggerInvocationExpression:
+    """Test class for Java class 'com.ansys.medini.metamodel.sysml.TriggerInvocationExpression'."""
+
+    @pytest.fixture
+    def element(self):
+        """Create test element with ID."""
+        return TriggerInvocationExpression("element_id")
+
+    def test_id_set(self, element):
+        """Test element ID is correctly set."""
+        assert element.id == "element_id"
+
+    def test_kind(self, element):
+        """Test getter and setter for kind property."""
+        value = None
+        element.kind = value
+        assert element.kind == value
