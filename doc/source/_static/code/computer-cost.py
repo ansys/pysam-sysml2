@@ -18,7 +18,7 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-project = project_manager.get_project(
+project = project_manager.get_scripting_project(
     "<Computer Project ID>"
 )  # You can find your project ID in the URL of the editor.
 

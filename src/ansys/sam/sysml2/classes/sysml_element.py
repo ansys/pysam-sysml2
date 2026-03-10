@@ -23,9 +23,7 @@
 
 from typing import Union
 
-from ansys.sam.sysml2.dto.commit.commit_class import Commit
-from ansys.sam.sysml2.dto.commit.data_version import DataVersion
-from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
+from ansys.sam.sysml2.classes.value_helper import ValueHelper
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 
 
@@ -56,148 +54,18 @@ class SysMLElement:
 
     def get_value(self):
         """Get the value of the feature."""
-        if hasattr(self, "_defaultValue"):
-            value = self._defaultValue
-            if hasattr(value, "_value"):
-                return value._value  # Literal
-            else:
-                return self._parse_expression(value, is_old_format=True)
-
-        if hasattr(self, "_valuation"):
-            value = self._valuation._value
-            if hasattr(value, "_value"):
-                return value._value  # Literal
-            else:
-                return self._parse_expression(value)
-
-        return None
-
-    def _parse_expression(self, value: dict, is_old_format: bool = False):
-        """Parse expression and return parsed value and unit using specified format type."""
-        if getattr(value, "_operator", None) != "[":
-            raise UnsupportedValueExpression("Expression not supported.")
-
-        return self._parse_format(value, is_old_format)
-
-    def _parse_format(self, value: dict, is_old_format: bool):
-        """
-        Parse an expression using the specified format type.
-
-        Parameters
-        ----------
-        value : dict
-            Expression object containing members and potentially an operator.
-        is_old_format : bool
-            Whether the expression is in the old format of the expression. Use ``True`` if
-            it is in the old format or ``False`` otherwise.
-
-        Returns
-        -------
-        tuple
-            Tuple of (value, unit_name or None).
-
-        Raises
-        ------
-        UnsupportedValueExpression
-            If no parsable values are found in the expression.
-        """
-        owned_member = getattr(value, "_ownedMember", [])
-
-        if is_old_format:
-            values = [x._value for x in owned_member if hasattr(x, "_value")]
-            return self._format_result_with_unit(values, owned_member, is_old_format)
-        else:
-            elements = [
-                x
-                for x in owned_member
-                if hasattr(x, "_valuation") and hasattr(x._valuation, "_value")
-            ]
-            return self._format_result_with_unit(elements, owned_member, is_old_format)
-
-    def _format_result_with_unit(self, elements: list, owned_member: list, is_old_format: bool):
-        """Format a parsed expression value along with its associated unit (if available)."""
-        if not elements:
-            raise UnsupportedValueExpression("No values found in expression.")
-
-        try:
-            if is_old_format:
-                value = elements[0]
-                referents = [x._referent for x in owned_member if hasattr(x, "_referent")]
-            else:
-                value = elements[0]._valuation._value._value
-                referents = [
-                    x._valuation._value._referent
-                    for x in elements
-                    if hasattr(x._valuation._value, "_referent")
-                ]
-        except NameError:
-            raise UnsupportedValueExpression("No values found in expression.")
-
-        return (value, self._extract_unit_name(referents))
-
-    def _extract_unit_name(self, referents):
-        """Extract the unit name from referents, if any. Otherwise, return ``None``."""
-        if not referents:
-            return None
-
-        unit = referents[0]
-        if hasattr(unit, "_shortName"):
-            return unit._shortName
-        elif hasattr(unit, "_name"):
-            return unit._name
-
-        return None
+        return ValueHelper.get_value_for_scripting_element(self)
 
     def parse_and_set_value(self, value: str):
         """Parse the value and create the valuation part in the feature."""
-        self.__set_or_update_value("operator", value)
+        ValueHelper.set_or_update_value(self, "operator", value)
 
     def set_value(self, new_value: Union[str | int | float | bool]):
         """Update the feature value."""
-        self.__set_or_update_value(type(new_value), new_value)
+        ValueHelper.set_or_update_value(self, type(new_value), new_value)
 
-    def __set_or_update_value(self, value_type: type, new_value: Union[str | int | float | bool]):
-        """
-        Create the commit to set or update the value of type ``value_type``.
-
-        Parameters
-        ----------
-        value_type : type
-            Value type of the new value.
-        new_value : Union[str | int | float | bool]
-            New value to update to.
-        """
-        self._create_value(value_type, new_value)
-
-    def _create_value(self, value_type: type, new_value: Union[str | int | float | bool]):
-        """
-        Create a new value of type ``value_type`` in the feature.
-
-        Parameters
-        ----------
-        value_type : type
-            Value type of the new value.
-        new_value : Union[str | int | float | bool]
-            New value to create.
-        """
-        project_id = self._observer._project_id
-        commit = Commit(project_id)
-        change = DataVersion()
-        change.add_change("@type", "FeatureValue")
-        if value_type != "operator":
-            change.add_change("value", self._adapt_value(new_value))
-        else:
-            change.add_change("value", new_value)
-        change.add_change("owner", self)
-        commit.add_change(change)
-        self._observer._connector.create_commit(project_id, commit.to_json())
-        self._observer.reload_project()
-
-    def _adapt_value(self, new_value: Union[str | int | float | bool]):
-        """Convert the value to JSON format."""
-        if isinstance(new_value, bool):
-            return "true" if new_value else "false"
-        if isinstance(new_value, str):
-            return f'"{new_value}"'
-        else:
-            return str(new_value)
+    def delete(self):
+        """Delete the element from the model."""
+        if self._observer is not None:
+            self._observer.delete_element(self._id)
+        del self

@@ -24,7 +24,7 @@ import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
-from ansys.sam.sysml2.classes.project import Project
+from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
 from ansys.sam.sysml2.exception.connector_exception import ConnectorConnectionException
@@ -51,9 +51,11 @@ class TestAnsysRestApiConnector:
         return connector
 
     @pytest.fixture
-    def project_nb_5(self, valid__sysml2_source: AnsysSysML2APIConnector) -> Project:
+    def project_nb_5(
+        self, valid__sysml2_source: AnsysSysML2APIConnector
+    ) -> ScriptingProject:
         manager = SysML2ProjectManager(valid__sysml2_source)
-        project = manager.get_project(PROJECT_ID_5)
+        project = manager.get_scripting_project(PROJECT_ID_5)
         return project
 
     def test_get_project_data(self, connector: SamApiConnector):
@@ -73,14 +75,24 @@ class TestAnsysRestApiConnector:
         url = connector._build_rest_endpoint(f"projects/{PROJECT_ID_5}/json")
         assert url.endswith("/json")
 
-    def test_get_diagrams_info(self, connector: SamRestApiConnector, project_nb_5: Project):
+    def test_get_diagrams_info(
+        self, connector: SamRestApiConnector, project_nb_5: ScriptingProject
+    ):
         diagrams_info = connector.get_diagrams_info(project_nb_5._id)
 
         expected_diagrams = [
             {"name": "Bike", "numberOfElements": 22, "kind": "SimpleDiagram"},
-            {"name": "myBikeInheritance", "numberOfElements": 3, "kind": "SimpleDiagram"},
+            {
+                "name": "myBikeInheritance",
+                "numberOfElements": 3,
+                "kind": "SimpleDiagram",
+            },
             {"name": "myBikeRedef", "numberOfElements": 5, "kind": "SimpleDiagram"},
-            {"name": "Redef & inheritance", "numberOfElements": 12, "kind": "SimpleDiagram"},
+            {
+                "name": "Redef & inheritance",
+                "numberOfElements": 12,
+                "kind": "SimpleDiagram",
+            },
         ]
 
         assert len(diagrams_info) == len(expected_diagrams)
@@ -91,12 +103,16 @@ class TestAnsysRestApiConnector:
             assert actual["numberOfElements"] == expected["numberOfElements"]
             assert actual["kind"] == expected["kind"]
 
-    def test_get_single_diagram_info(self, connector: SamRestApiConnector, project_nb_5: Project):
+    def test_get_single_diagram_info(
+        self, connector: SamRestApiConnector, project_nb_5: ScriptingProject
+    ):
         diagram_id = "85f84746-3bbc-4b65-8b9c-503d736655eb"
 
         diagram_info = connector.get_single_diagram_info(project_nb_5._id, diagram_id)
 
-        assert isinstance(diagram_info, dict), "Single diagram info should be a dictionary"
+        assert isinstance(
+            diagram_info, dict
+        ), "Single diagram info should be a dictionary"
 
         expected_data = {
             "projectId": "dd2e4b9b-a290-4511-a892-aafd0ede597a",
@@ -113,7 +129,7 @@ class TestAnsysRestApiConnector:
         assert diagram_info["numberOfElements"] == expected_data["numberOfElements"]
 
     def test_get_single_diagram_info_with_unknown_diagram_id(
-        self, connector: SamApiConnector, project_nb_5: Project
+        self, connector: SamApiConnector, project_nb_5: ScriptingProject
     ):
         diagram_id = "unknown"
         with pytest.raises(ConnectorConnectionException):

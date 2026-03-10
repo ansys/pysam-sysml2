@@ -64,7 +64,8 @@ class UnresolvedField:
         """
         field = getattr(self._owner, self._owning_feature, None)
         if isinstance(field, list):
-            field.remove(self._element_id)
+            if self._element_id in field:
+                field.remove(self._element_id)
             field.append(element)
         else:
             field = element

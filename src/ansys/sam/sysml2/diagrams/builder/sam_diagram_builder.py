@@ -23,7 +23,7 @@
 
 from typing import List
 
-from ansys.sam.sysml2.classes.project import Project
+from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.diagrams.api import SamApiConnector
 from ansys.sam.sysml2.diagrams.builder import EMFJSONMapper
 from ansys.sam.sysml2.diagrams.classes import UnresolvedField
@@ -39,7 +39,7 @@ class SamDiagramBuilder:
         self._connector = connector
         self._mapper = EMFJSONMapper()
 
-    def extract_and_build_diagrams(self, project: Project) -> dict:
+    def extract_and_build_diagrams(self, project: ScriptingProject) -> dict:
         """Extract and build all diagrams from a project."""
         data = self._connector.get_project_data(project._id)
         diagrams_extracted = self.__extract_diagrams(data)
@@ -49,7 +49,7 @@ class SamDiagramBuilder:
         """Extract all diagrams from the model data."""
         return self.__filter_diagrams(self.__extract_e_annotations(data))
 
-    def __build_diagrams(self, diagrams_extracted: dict, project: Project) -> dict:
+    def __build_diagrams(self, diagrams_extracted: dict, project: ScriptingProject) -> dict:
         """
         Build all diagram elements from extracted annotations.
 
@@ -57,8 +57,8 @@ class SamDiagramBuilder:
         ----------
         diagrams_extracted : dict
             Dictionary mapping diagram IDs to their annotation lists.
-        project : Project
-            Project instance used for resolving unresolved fields.
+        project : ScriptingProject
+            Scripting project instance used for resolving unresolved fields.
 
         Returns
         -------
@@ -122,15 +122,15 @@ class SamDiagramBuilder:
         return res
 
     def __resolve_unresolved_fields(
-        self, project: Project, unresolved_fields: List[UnresolvedField]
+        self, project: ScriptingProject, unresolved_fields: List[UnresolvedField]
     ):
         """
         Resolve all fields.
 
         Parameters
         ----------
-        project : Project
-            Project context
+        project : ScriptingProject
+            Project context.
         unresolved_fields : List[UnresolvedField]
             Unresolved fields.
         """

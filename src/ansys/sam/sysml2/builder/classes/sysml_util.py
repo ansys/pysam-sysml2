@@ -21,7 +21,11 @@
 # SOFTWARE.
 """SysML utility class."""
 
+import importlib
+
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.meta_model.e_object import EObject
+from ansys.sam.sysml2.meta_model.element import Element
 
 
 class SysMLUtil:
@@ -41,3 +45,37 @@ class SysMLUtil:
             return SysMLUtil.check_inherited_name(redefined_feature)
         else:
             return element.__class__.__name__.split(".")[-1] + "::" + element._id
+
+    @staticmethod
+    def check_sysml_inherited_name(element: Element) -> str:
+        """Check and return the name of the element."""
+        if isinstance(element, str):
+            return "::" + element
+        if hasattr(element, "name"):
+            return getattr(element, "name")
+        elif hasattr(element, "_redefinedFeature"):
+            redefined_feature = getattr(element, "redefinedFeature", [])
+            if isinstance(redefined_feature, list) and len(redefined_feature) > 0:
+                redefined_feature = getattr(element, "redefinedFeature")[0]
+            return SysMLUtil.check_inherited_name(redefined_feature)
+        else:
+            return element.__class__.__name__.split(".")[-1] + "::" + element.id
+
+    @staticmethod
+    def get_sysml_constructor(element_type: str) -> EObject:
+        """Get the class constructor from type."""
+        from ansys.sam.sysml2.tools.name_utils import NameUtils
+
+        try:
+            name = NameUtils.to_snake_case(element_type)
+            module_name = f"ansys.sam.sysml2.meta_model.{name}"
+            module = importlib.import_module(module_name)
+
+            class_ = getattr(module, element_type)
+            return class_
+        except ModuleNotFoundError:
+            raise ImportError(
+                f"Unable to found '{module_name}'  in ansys.sam.sysml2.meta_model. package."
+            )
+        except AttributeError:
+            raise ImportError(f"'{element_type}' class not found in module '{module_name}'.")

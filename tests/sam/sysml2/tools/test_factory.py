@@ -33,16 +33,18 @@ from parent_test_class import ParentTestClass
 class TestFactory(ParentTestClass):
 
     @pytest.fixture
-    def project_manager(self, valid_source: AnsysSysML2APIConnector) -> SysML2ProjectManager:
+    def project_manager(
+        self, valid_source: AnsysSysML2APIConnector
+    ) -> SysML2ProjectManager:
         return SysML2ProjectManager(valid_source)
 
     def test_create_element(self, project_manager: SysML2ProjectManager):
-        project = project_manager.get_project(PROJECT_ID_2)
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
         factory = Factory(project, project_manager._connector)
 
         project_root = project.get_root_package()
-        new_attribute = factory.create_element(
-            element_type="AttributeUsage", name="new_attribute", owner=project_root
+        new_attribute = factory.create_attribute_usage(
+            name="new_attribute", owner=project_root
         )
 
         assert project_root.new_attribute._name == "new_attribute"
@@ -55,74 +57,87 @@ class TestFactory(ParentTestClass):
             project_root.new_attribute
 
     def test_create_element_with_no_type(self, project_manager: SysML2ProjectManager):
-        project = project_manager.get_project(PROJECT_ID_2)
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
         factory = Factory(project, project_manager._connector)
 
         with pytest.raises(BadRequestConnectionException) as exception:
-            factory.create_element(element_type=None, name="new_attribute")
+            factory._create_element(element_type=None, name="new_attribute")
         assert "Bad Request : No Type for New Element" == exception.value.args[0]
 
-    def test_create_element_with_unknown_owner(self, project_manager: SysML2ProjectManager):
-        project = project_manager.get_project(PROJECT_ID_2)
+    def test_create_element_with_unknown_owner(
+        self, project_manager: SysML2ProjectManager
+    ):
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
         factory = Factory(project, project_manager._connector)
 
         with pytest.raises(BadRequestConnectionException) as exception:
-            factory.create_element(element_type="AttributeUsage", name="new_attribute")
+            factory.create_attribute_usage(name="new_attribute")
         assert "Bad Request : No Valid Owner Specified" == exception.value.args[0]
 
-    def test_create_element_with_invalid_owner(self, project_manager: SysML2ProjectManager):
-        project = project_manager.get_project(PROJECT_ID_2)
+    def test_create_element_with_invalid_owner(
+        self, project_manager: SysML2ProjectManager
+    ):
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
         factory = Factory(project, project_manager._connector)
 
         with pytest.raises(BadRequestConnectionException) as exception:
-            factory.create_element(
-                element_type="AttributeUsage", name="new_attribute", owner="INVALID_OWNER"
+            factory.create_attribute_usage(
+                name="new_attribute",
+                owner="INVALID_OWNER",
             )
         assert "Bad Request : No Valid Owner Specified" == exception.value.args[0]
 
-    def test_create_element_with_invalid_owner_attr(self, project_manager: SysML2ProjectManager):
-        project = project_manager.get_project(PROJECT_ID_2)
+    def test_create_element_with_invalid_owner_attr(
+        self, project_manager: SysML2ProjectManager
+    ):
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
         factory = Factory(project, project_manager._connector)
 
         project_root = project.get_root_package()
 
         with pytest.raises(AttributeError) as error:
-            factory.create_element(
-                element_type="AttributeUsage",
+            factory.create_attribute_usage(
                 name="new_attribute",
                 owner=project_root.UNDEFINED_ELEMENT,
             )
-        assert "'Package' object has no attribute 'UNDEFINED_ELEMENT'" == error.value.args[0]
+        assert (
+            "'Package' object has no attribute 'UNDEFINED_ELEMENT'"
+            == error.value.args[0]
+        )
 
-    def test_create_element_with_owned_element(self, project_manager: SysML2ProjectManager):
-        project = project_manager.get_project(PROJECT_ID_2)
+    def test_create_element_with_owned_element(
+        self, project_manager: SysML2ProjectManager
+    ):
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
         factory = Factory(project, project_manager._connector)
 
         project_root = project.get_root_package()
 
-        new_attribute = factory.create_element(
-            element_type="AttributeUsage", name="new_attribute", owner=project_root
+        new_attribute = factory.create_attribute_usage(
+            name="new_attribute", owner=project_root
         )
 
-        new_part_definition = factory.create_element(
-            element_type="PartDefinition",
+        new_part_definition = factory.create_part_definition(
             name="new_part_def",
             owner=project_root,
             owned_elements=[new_attribute],
         )
 
-        assert len(new_part_definition._owned_elements) == 1
-        assert new_part_definition._owned_elements[0]._name == new_attribute._name
+        assert len(new_part_definition._ownedElements) == 1
+        assert new_part_definition._ownedElements[0]._name == new_attribute._name
 
-    def test_create_element_with_invalid_type(self, project_manager: SysML2ProjectManager):
-        project = project_manager.get_project(PROJECT_ID_2)
+    def test_create_element_with_invalid_type(
+        self, project_manager: SysML2ProjectManager
+    ):
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
         factory = Factory(project, project_manager._connector)
 
         project_root = project.get_root_package()
 
         with pytest.raises(TypeError) as error:
-            factory.create_element(
-                element_type="AttributeUsage", name=["new_attribute"], owner=project_root
+            factory.create_attribute_usage(
+                name=["new_attribute"],
+                owner=project_root,
             )
 
         assert error.value.args[0].startswith("attribute name must be string")

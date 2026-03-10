@@ -21,8 +21,6 @@
 # SOFTWARE.
 """Name utilities class for the PySAM SysML2 diagram library."""
 
-import re
-
 
 class NameUtils:
     """Helps standardize element names."""
@@ -30,10 +28,35 @@ class NameUtils:
     @staticmethod
     def to_snake_case(string: str) -> str:
         """Convert a camelCase or PascalCase string to snake_case."""
-        return re.sub(r"(?<!^)(?=[A-Z])", "_", string).lower()
+        out = ""
+        for i, ch in enumerate(string):
+            if ch.isupper() and i > 0:
+                out += "_" + ch.lower()
+            else:
+                out += ch.lower()
+        if out in ["class", "import", "type"]:
+            out += "_"
+        return out
 
     @staticmethod
     def to_key(string: str) -> str:
         """Convert a camelCase or PascalCase string to _snake_case."""
         attr = NameUtils.to_snake_case(string)
         return f"_{attr}"
+
+    @staticmethod
+    def snake_to_camel(key: str) -> str:
+        """Convert a snake_case string to camelCase."""
+        out = ""
+        to_upper = False
+        for i, ch in enumerate(key):
+            if ch == "_":
+                to_upper = True
+                continue
+
+            if to_upper:
+                out += ch.upper()
+                to_upper = False
+            else:
+                out += ch.lower()
+        return out

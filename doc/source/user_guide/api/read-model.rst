@@ -7,6 +7,42 @@ The loaded model is stored in a :class:`Project <ansys.sam.sysml2.classes.projec
 
 .. _Getter:
 
+Read SysML2 project
+===================
+
+SysML2 properties
+-----------------
+
+All SysML2 properties are accessible using dot notation.
+
+.. code:: python
+
+    >>> package.owned_element
+    [..,..]
+
+The utility function ``get_value`` extracts the value from a feature element.
+
+.. code:: python
+
+    >>> myFeature.get_value()
+    5
+
+
+Model elements
+--------------
+
+To retrieve a model element by name, use the ``get`` function. It returns the element if found, or ``None`` otherwise.
+
+.. code:: python
+
+    >>> my_element.get("my Element")
+    <sysml.PartUsage>
+
+
+Read scripting project
+======================
+
+
 Access methods
 ==============
 

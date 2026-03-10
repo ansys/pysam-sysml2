@@ -13,7 +13,26 @@ This class helps you load a model in Python, using the SysML V2 standard API.
 
 For more information, see the :class:`SysML2ProjectManager <ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager>` class.
 
-With the project manager, you can load your project like this:
+
+With the project manager, you can load two types of projects:
+
+SysML2 project
+==============
+
+SysML projects use a Python-based metamodel, enabling static completion for all SysML properties.
+
+.. code:: python
+
+    project = project_manager.get_sysml_project(
+        "<Computer Project ID>"
+    )  # You can find your project ID in the URL of the editor.
+
+Once you provide the project ID, you get a Python version of your model.
+
+Scripting project
+=================
+
+Scripting projects use a dynamic class generation approach. This offers flexibility but does not provide autocompletion.
 
 .. literalinclude:: ../../_static/code/computer-cost.py
     :lines: 21-23

@@ -19,11 +19,11 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Main class of PySAM SysML2."""
+"""Main diagram class of PySAM SysML2."""
 
 from typing import Dict
 
-from ansys.sam.sysml2.classes.project import Project
+from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.diagrams.builder import SamDiagramBuilder
 from ansys.sam.sysml2.exception.connector_exception import DiagramNotAvailableException
@@ -46,7 +46,7 @@ class SAMDiagramManager:
         """Exit method for context manager."""
         ...
 
-    def load_diagrams(self, model: Project) -> None:
+    def load_diagrams(self, model: ScriptingProject) -> None:
         """Load diagrams into a model."""
         builder = SamDiagramBuilder(self._connector)
         diagrams = builder.extract_and_build_diagrams(model)
@@ -56,14 +56,14 @@ class SAMDiagramManager:
             )
         self._update_model(model, diagrams)
 
-    def _update_model(self, model: Project, diagrams: Dict[str, dict]):
+    def _update_model(self, model: ScriptingProject, diagrams: Dict[str, dict]):
         """
         Update the model with the given diagrams.
 
         Parameters
         ----------
         model : Project
-            Context model
+            Context model.
         diagrams : Dict[str,dict]
             Diagrams
         """
