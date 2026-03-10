@@ -26,8 +26,9 @@ from typing import List, Set
 
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
+from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.meta_model.package import Package
 
 
 class ProjectImpl(Project):
@@ -35,7 +36,7 @@ class ProjectImpl(Project):
 
     _id: str
     _env: dict
-    _root: List[SysMLElement]
+    _root: List[Element]
     _unresolved_fields: List[UnresolvedField]
     _libraries_ids: Set[str]
     _name: str
@@ -59,9 +60,9 @@ class ProjectImpl(Project):
         self._libraries_ids = set()
         self._env = dict()
 
-    def add_element(self, element: SysMLElement):
+    def add_element(self, element: Element):
         """Add an element to the project environment."""
-        self._env[element._id] = element
+        self._env[element.id] = element
 
     def update_unresolved_fields(self, unresolved_fields: List[UnresolvedField]):
         """
@@ -74,26 +75,26 @@ class ProjectImpl(Project):
         """
         self._unresolved_fields.extend(unresolved_fields)
 
-    def get_root(self) -> List[SysMLElement]:
+    def get_root(self) -> List[Package]:
         """
         Get a list of root packages.
 
         Returns
         -------
-        List[SysMLElement]
+        List[Package]
             List of root packages.
         """
         return self._root
 
-    def get_root_package(self) -> SysMLElement:
+    def get_root_package(self) -> Package:
         """Get the root package."""
-        return [x for x in self._root if x.__class__.__name__ == "Package"][0]
+        return [x for x in self._root if isinstance(x, Package) and x.name == self._name][0]
 
     def get_name(self) -> str:
         """Get the project name."""
         return self._name
 
-    def find_element_by_id(self, element_id: str) -> SysMLElement:
+    def find_element_by_id(self, element_id: str) -> Element:
         """
         Find an element by its ID.
 
@@ -104,12 +105,12 @@ class ProjectImpl(Project):
 
         Returns
         -------
-        SysMLElement
-            List of elements retrieved.
+        Element
+            Element retrieved.
         """
         return self._env.get(element_id, None)
 
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
+    def find_elements_by_name(self, elements_name: str) -> List[Element]:
         """
         Find all elements by name.
 
@@ -120,7 +121,7 @@ class ProjectImpl(Project):
 
         Returns
         -------
-        List[SysMLElement]
+        List[Element]
             List of elements retrieved.
         """
         return [

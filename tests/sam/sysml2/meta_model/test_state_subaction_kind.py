@@ -19,21 +19,36 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Name utilities class for the PySAM SysML2 diagram library."""
 
-import re
+"""Generated  test class from metamodel."""
+
+from __future__ import annotations
+
+import pytest
+
+from ansys.sam.sysml2.meta_model.state_subaction_kind import StateSubactionKind
 
 
-class NameUtils:
-    """Helps standardize element names."""
+class TestStateSubactionKind:
+    """Test class for Java class 'com.ansys.medini.metamodel.sysml.StateSubactionKind'."""
 
-    @staticmethod
-    def to_snake_case(string: str) -> str:
-        """Convert a camelCase or PascalCase string to snake_case."""
-        return re.sub(r"(?<!^)(?=[A-Z])", "_", string).lower()
+    @pytest.fixture
+    def element(self):
+        """Create test element."""
+        return StateSubactionKind()
 
-    @staticmethod
-    def to_key(string: str) -> str:
-        """Convert a camelCase or PascalCase string to _snake_case."""
-        attr = NameUtils.to_snake_case(string)
-        return f"_{attr}"
+    def test_name(self, element):
+        """Test getter for name property."""
+        _ = element.name
+
+    def test_value(self, element):
+        """Test getter for value property."""
+        _ = element.value
+
+    def test_by_name(self, element):
+        """Test getter for by name property."""
+        _ = element.by_name
+
+    def test_literal(self, element):
+        """Test getter for literal property."""
+        _ = element.literal

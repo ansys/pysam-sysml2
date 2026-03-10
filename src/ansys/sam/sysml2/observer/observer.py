@@ -68,7 +68,9 @@ class ModificationObserver:
             change = DataVersion()
 
             change.identify(element_id)
-            change.add_change(name[1:], value)
+            if name.startswith("_"):
+                name = name[1:]
+            change.add_change(name, value)
 
             commit.add_change(change)
 
@@ -93,12 +95,43 @@ class ModificationObserver:
             change = DataVersion()
 
             change.identify(element_id)
-            change.add_change(name[1:], list_content)
+            if name.startswith("_"):
+                name = name[1:]
+            change.add_change(name, list_content)
 
             commit.add_change(change)
-
             self._connector.create_commit(self._project_id, commit.to_json())
             self.reload_project()
+
+    def delete_element(self, element_id: str):
+        """
+        Delete function for observer.
+
+        Parameters
+        ----------
+        element_id : str
+            The ID of the element to delete.
+        """
+        if self._working_observer:
+            self._commit_deletion(element_id)
+
+    def _commit_deletion(self, element_id: str):
+        """
+        Commit direct delete command.
+
+        Parameters
+        ----------
+        element_id : str
+            The element's ID to delete
+        """
+        commit = Commit(self._project_id)
+        change = DataVersion()
+
+        change.identify(element_id)
+        commit.add_change(change)
+
+        self._connector.create_commit(self._project_id, commit.to_json())
+        self.reload_project()
 
     def reload_project(self):
         """Reload of the project."""

@@ -2,8 +2,7 @@
     "@type": "Commit",
     "change": [
         {
-            "@type": "DataVersion",
-            "payload": {}
+            "@type": "DataVersion"
         }
     ],
     "owningProject": {

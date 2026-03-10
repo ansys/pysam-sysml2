@@ -31,14 +31,14 @@ class TestSysML2ProjectBuilder(ParentTestClass):
 
     def test_build_project(self, valid_source: AnsysSysML2APIConnector):
         builder = SysML2ProjectBuilder(valid_source)
-        project = builder.build_project(PROJECT_ID_1)
+        project = builder.build_scripting_project(PROJECT_ID_1)
         assert len(project.get_root()) == 1
         assert project.get_root()[0]._name == "PySAMSysML2TestProject-COMPLET"
         assert project.get_root_package()._name == "PySAMSysML2TestProject-COMPLET"
 
     def test_find_element_by_id(self, valid_source: AnsysSysML2APIConnector):
         builder = SysML2ProjectBuilder(valid_source)
-        project = builder.build_project(PROJECT_ID_1)
+        project = builder.build_scripting_project(PROJECT_ID_1)
         element_id = PROJECT_1_ATTR_ID
         element_found = project.find_element_by_id(element_id)
 
@@ -46,7 +46,7 @@ class TestSysML2ProjectBuilder(ParentTestClass):
 
     def test_find_elements_by_name(self, valid_source: AnsysSysML2APIConnector):
         builder = SysML2ProjectBuilder(valid_source)
-        project = builder.build_project(PROJECT_ID_1)
+        project = builder.build_scripting_project(PROJECT_ID_1)
         element_name = "Attribute"
         elements_found = project.find_elements_by_name(element_name)
 

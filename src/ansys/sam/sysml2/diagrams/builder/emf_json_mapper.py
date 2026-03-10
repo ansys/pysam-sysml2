@@ -23,14 +23,13 @@
 
 from typing import Dict, List, Tuple, Union
 
-from ansys.sam.sysml2.classes.project import Project
+from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.diagrams.classes import (
     DiagramElement,
     MappedElement,
     Plane,
     UnresolvedField,
 )
-from ansys.sam.sysml2.diagrams.utils import NameUtils
 from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
@@ -41,7 +40,7 @@ TYPE_KEY = "eClass"
 class EMFJSONMapper:
     """Provides the EMFJSON mapper for a diagram element."""
 
-    _project: Project
+    _project: ScriptingProject
     _project_id: str
     class_cache: dict
 
@@ -152,6 +151,8 @@ class EMFJSONMapper:
         List[UnresolvedField]
             List of unresolved references found during extraction.
         """
+        from ansys.sam.sysml2.tools.name_utils import NameUtils
+
         new_attr_name = NameUtils.to_key(attribute_name)
         raw_value = plane_data.get(attribute_name, [])
         resolved, unresolved = self.__extract_reference(
@@ -272,7 +273,6 @@ class EMFJSONMapper:
         Returns
         -------
         tuple[list, list[UnresolvedField]]
-
             - List of resolved elements and/or simple values.
             - List of unresolved references.
         """
@@ -362,6 +362,8 @@ class EMFJSONMapper:
         List[UnresolvedField]
             List of unresolved references found during the mapping.
         """
+        from ansys.sam.sysml2.tools.name_utils import NameUtils
+
         unresolved_fields = []
 
         for key, value in data.items():

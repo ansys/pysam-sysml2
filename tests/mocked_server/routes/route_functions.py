@@ -544,7 +544,7 @@ def route_create_commit(project_id: str) -> dict:
     _check_commit_validity(commit_request_body)
     change = commit_request_body.get("change")[0]
 
-    payload = change.get("payload")
+    payload = change.get("payload", None)
     identity = change.get("identity", None)
 
     element_changed = None
@@ -560,11 +560,23 @@ def route_create_commit(project_id: str) -> dict:
     else:
         element_changed = _create_new_element(project_id, project_data, payload)
 
-    updated_element = __update_element(payload, element_changed)
+    if payload is None and identity is not None:
+        __delete_element(element_changed, project_id)
+    else:
+        updated_element = __update_element(payload, element_changed)
 
-    _save_updated_element(project_id, updated_element)
+        _save_updated_element(project_id, updated_element)
 
     return {"message": "Commit Successful"}
+
+
+def __delete_element(element, project_id):
+    project_data = load_project(project_id)
+    index = project_data.index(
+        [x for x in project_data if x["@id"] == element["@id"]][0]
+    )
+    project_data.pop(index)
+    write_project(project_id, project_data)
 
 
 def _save_updated_element(project_id, updated_element):
@@ -660,7 +672,7 @@ def _check_commit_validity(commit):
 
     change = commit.get("change")[0]
 
-    if len(change.get("payload")) == 0:
+    if "payload" in change and len(change.get("payload")) == 0:
         create_http_error(code=400, message="Invalid change data")
 
     if change.get(TYPE, None) != "DataVersion":

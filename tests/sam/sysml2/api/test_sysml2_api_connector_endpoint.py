@@ -34,9 +34,13 @@ import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
-from ansys.sam.sysml2.dto.query.constraints_classes import CompositeConstraint, PrimitiveConstraint
+from ansys.sam.sysml2.dto.query.constraints_classes import (
+    CompositeConstraint,
+    PrimitiveConstraint,
+)
 from ansys.sam.sysml2.dto.query.query_class import Query
 from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
 from ansys.sam.sysml2.exception.connector_exception import (
@@ -69,7 +73,9 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
         restore_projects_backup_between_tests()
 
     def test_create_project(self, valid_source: AnsysSysML2APIConnector):
-        project_data = valid_source.create_project("newProjectName", "newProjectDescription")
+        project_data = valid_source.create_project(
+            "newProjectName", "newProjectDescription"
+        )
         assert project_data is not None
         assert project_data["name"] == "newProjectName"
         assert project_data["description"] == "newProjectDescription"
@@ -110,12 +116,16 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
             valid_source.get_all_elements(self.RANDOM_PROJECT_ID)
 
     def test_get_element(self, valid_source: AnsysSysML2APIConnector):
-        part_usage_element = valid_source.get_element_by_id(PROJECT_ID_1, PROJECT_1_PART_ID)
+        part_usage_element = valid_source.get_element_by_id(
+            PROJECT_ID_1, PROJECT_1_PART_ID
+        )
 
         assert part_usage_element is not None
         assert part_usage_element["@type"] == "PartUsage"
 
-        attribute_usage_element = valid_source.get_element_by_id(PROJECT_ID_1, PROJECT_1_ATTR_ID)
+        attribute_usage_element = valid_source.get_element_by_id(
+            PROJECT_ID_1, PROJECT_1_ATTR_ID
+        )
         assert attribute_usage_element is not None
         assert attribute_usage_element["@type"] == "AttributeUsage"
 
@@ -140,11 +150,15 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
         assert len(roots) == 1
         assert not any("owner" in element for element in roots)
 
-    def test_get_root_elements_invalid_project(self, valid_source: AnsysSysML2APIConnector):
+    def test_get_root_elements_invalid_project(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         with pytest.raises(ProjectNotFoundException):
             valid_source.get_root_elements(self.RANDOM_PROJECT_ID)
 
-    def test_query_primitive_constraint_valid(self, valid_source: AnsysSysML2APIConnector):
+    def test_query_primitive_constraint_valid(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         query = Query()
         query.where = PrimitiveConstraint("@id", PROJECT_1_PART_ID)
 
@@ -153,7 +167,9 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
         assert len(result) == 1
         assert result[0]["@id"] == PROJECT_1_PART_ID
 
-    def test_query_composite_constraint_valid(self, valid_source: AnsysSysML2APIConnector):
+    def test_query_composite_constraint_valid(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         query = Query()
         pc_1 = PrimitiveConstraint("@id", PROJECT_1_PART_ID)
         pc_2 = PrimitiveConstraint("@id", PROJECT_1_ATTR_ID)
@@ -168,14 +184,18 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
         assert any(x["@id"] == PROJECT_1_ATTR_ID for x in result)
         assert any(x["@id"] == PROJECT_1_PART_ID for x in result)
 
-    def test_query_primitive_constraint_invalid(self, valid_source: AnsysSysML2APIConnector):
+    def test_query_primitive_constraint_invalid(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         query = Query()
         query.where = PrimitiveConstraint("NoSysMLMethod", "value")
 
         with pytest.raises(ConnectorConnectionException):
             valid_source.execute_query(PROJECT_ID_1, query.to_json())
 
-    def test_query_composite_constraint_invalid_count(self, valid_source: AnsysSysML2APIConnector):
+    def test_query_composite_constraint_invalid_count(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         query = Query()
         pc_1 = PrimitiveConstraint("@id", PROJECT_1_PART_ID)
         cc = CompositeConstraint(operator=JoinOperator.OR)
@@ -200,7 +220,7 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
     ):
         model_manager = SysML2ProjectManager(connector=valid_source)
 
-        project = model_manager.get_project(PROJECT_ID_1)
+        project = model_manager.get_scripting_project(PROJECT_ID_1)
 
         bike = project.get_root_package()
 
@@ -210,7 +230,9 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
 
         assert bike._name == "TEST"
 
-    def test_create_commit_with_missing_type(self, valid_source: AnsysSysML2APIConnector):
+    def test_create_commit_with_missing_type(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         commit = Commit(PROJECT_ID_1)
         change = DataVersion()
         change.add_change("@type", None)
@@ -226,22 +248,9 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
             valid_source.create_commit(PROJECT_ID_1, commit.to_json())
         assert "Bad Request : No Type for New Element" == exception.value.args[0]
 
-    def test_create_commit_with_missing_payload(self, valid_source: AnsysSysML2APIConnector):
-        commit = Commit(PROJECT_ID_1)
-        change = DataVersion()
-        commit.add_change(change)
-
-        commit_json_str = commit.to_json()
-        commit_json = json.loads(commit_json_str)
-
-        expected_json = self.load_json_from_case("missing_payload")
-        assert commit_json == expected_json
-
-        with pytest.raises(BadRequestConnectionException) as exception:
-            valid_source.create_commit(PROJECT_ID_1, commit.to_json())
-        assert "Bad Request : Invalid change data" == exception.value.args[0]
-
-    def test_create_commit_with_missing_dataversion(self, valid_source: AnsysSysML2APIConnector):
+    def test_create_commit_with_missing_dataversion(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         commit = Commit(PROJECT_ID_1)
 
         commit_json_str = commit.to_json()
@@ -254,38 +263,44 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
             valid_source.create_commit(PROJECT_ID_1, commit.to_json())
         assert "Bad Request : Change can't be empty" == exception.value.args[0]
 
-    def test_create_commit_with_invalid_key(self, valid_source: AnsysSysML2APIConnector):
+    def test_create_commit_with_invalid_key(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         commit = Commit(PROJECT_ID_1)
         change = DataVersion()
         change.identify(PROJECT_1_ATTR_ID)
-        invalid_key = "INVALID_KEY"
+        invalid_key = "invalidKey"
         change.add_change(invalid_key, "NewAttribute")
         commit.add_change(change)
 
         commit_json_str = commit.to_json()
         commit_json = json.loads(commit_json_str)
 
-        expected_json = self.load_json_from_case("invalid_key")
+        expected_json = self.load_json_from_case("invalidKey")
         assert commit_json == expected_json
 
         with pytest.raises(BadRequestConnectionException) as exception:
             valid_source.create_commit(PROJECT_ID_1, commit.to_json())
-        assert f"Bad Request : Element: Invalid {invalid_key}" == exception.value.args[0]
+        assert (
+            f"Bad Request : Element: Invalid {invalid_key}" == exception.value.args[0]
+        )
 
     def test_create_commit_with_invalid_key_with_set_attribute(
         self, valid_source: AnsysSysML2APIConnector
     ):
         model_manager = SysML2ProjectManager(connector=valid_source)
 
-        project = model_manager.get_project(PROJECT_ID_1)
+        project = model_manager.get_scripting_project(PROJECT_ID_1)
 
         bike = project.get_root_package()
 
         with pytest.raises(BadRequestConnectionException) as exception:
-            bike._INVALID_KEY = "NewAttribute"
-        assert "Bad Request : Element: Invalid INVALID_KEY" == exception.value.args[0]
+            bike._invalidKey = "NewAttribute"
+        assert "Bad Request : Element: Invalid invalidKey" == exception.value.args[0]
 
-    def test_create_commit_with_invalid_type(self, valid_source: AnsysSysML2APIConnector):
+    def test_create_commit_with_invalid_type(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         commit = Commit(PROJECT_ID_1)
         change = DataVersion()
         change.identify(PROJECT_1_ATTR_ID)
@@ -301,14 +316,16 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
 
         with pytest.raises(BadRequestConnectionException) as exception:
             valid_source.create_commit(PROJECT_ID_1, commit.to_json())
-        assert f"Bad Request : Element: Invalid Type for {key}" == exception.value.args[0]
+        assert (
+            f"Bad Request : Element: Invalid Type for {key}" == exception.value.args[0]
+        )
 
     def test_create_commit_with_invalid_type_with_set_attribute(
         self, valid_source: AnsysSysML2APIConnector
     ):
         model_manager = SysML2ProjectManager(connector=valid_source)
 
-        project = model_manager.get_project(PROJECT_ID_1)
+        project = model_manager.get_scripting_project(PROJECT_ID_1)
 
         bike = project.get_root_package()
 
@@ -316,7 +333,9 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
             bike._name = ["NewAttribute"]
         assert "Bad Request : Element: Invalid Type for name" == exception.value.args[0]
 
-    def test_create_commit_replacing_list_successful(self, valid_source: AnsysSysML2APIConnector):
+    def test_create_commit_replacing_list_successful(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
         commit = Commit(PROJECT_ID_1)
         change = DataVersion()
         change.identify(PROJECT_1_PACK_ID)
@@ -332,8 +351,8 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
     ):
         model_manager = SysML2ProjectManager(connector=valid_source)
 
-        project = model_manager.get_project(PROJECT_ID_1)
+        project = model_manager.get_scripting_project(PROJECT_ID_1)
 
         package = project.get_root_package()
-
-        package._ownedElement.append("VALID_ELEMENT")
+        VALID_ELEMENT = SysMLElement("valid_id")
+        package._ownedElement.append(VALID_ELEMENT)

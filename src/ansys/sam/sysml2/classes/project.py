@@ -20,24 +20,27 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Project interface for users."""
+"""Project Interface for users."""
 
 from typing import List
 
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.meta_model.package import Package
 
 
 class Project:
     """Provides the project interface for users."""
 
-    def get_root(self) -> List[SysMLElement]:
+    def get_root(self) -> List[Package]:
         """Get a list of root packages."""
-        return []
 
-    def get_root_package(self) -> SysMLElement:
+    def get_name(self) -> str:
+        """Get the project name."""
+
+    def get_root_package(self) -> Package:
         """Get the root package."""
 
-    def find_element_by_id(self, element_id: str) -> SysMLElement:
+    def find_element_by_id(self, element_id: str) -> Element:
         """
         Find an element by ID.
 
@@ -48,11 +51,11 @@ class Project:
 
         Returns
         -------
-        SysMLElement
+        Element
             Element retrieved.
         """
 
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
+    def find_elements_by_name(self, elements_name: str) -> List[Element]:
         """
         Find all elements by name.
 
@@ -63,7 +66,6 @@ class Project:
 
         Returns
         -------
-        List[SysMLElement]
-            List of elements retrieved.
+        List[Element]
+            The list of elements retrieved
         """
-        return []

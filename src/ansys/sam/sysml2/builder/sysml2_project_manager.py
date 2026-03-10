@@ -27,23 +27,32 @@ from typing import Dict
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 from ansys.sam.sysml2.classes.project import Project
+from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 
 
 class SysML2ProjectManager:
     """Provides the director class for loading a project."""
 
     _connector: SysML2APIConnector
-    _constructed_project: Dict[(str, Project)]
+    _constructed_project: Dict[(str, ScriptingProject)]
 
     def __init__(self, connector: SysML2APIConnector):
         """Construct a new instance with a specified SysML2 API Connector."""
         self._connector = connector
         self._constructed_project = dict()
 
-    def get_project(self, project_id: str) -> Project:
-        """Get a project with its ID from the API and map it in a Python object."""
+    def get_sysml_project(self, project_id: str) -> Project:
+        """Get a SysML project with its ID from the API and map it in a Python object."""
         project = self._constructed_project.get(project_id, None)
         if project is None:
-            project = SysML2ProjectBuilder(self._connector).build_project(project_id)
+            project = SysML2ProjectBuilder(self._connector).build_sysml_project(project_id)
+            self._constructed_project[project_id] = project
+        return project
+
+    def get_scripting_project(self, project_id: str) -> ScriptingProject:
+        """Get a scripting project with its ID from the API and map it in a Python object."""
+        project = self._constructed_project.get(project_id, None)
+        if project is None:
+            project = SysML2ProjectBuilder(self._connector).build_scripting_project(project_id)
             self._constructed_project[project_id] = project
         return project

@@ -40,7 +40,7 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-project = project_manager.get_project(
+project = project_manager.get_scripting_project(
     "<Computer Project ID>"
 )  # You can find your project ID in the URL of the editor.
 
@@ -50,7 +50,12 @@ real_systems = project.get_root_package().RealSystems
 def assess_cost(element):
     """Calculate the cost of element."""
     if hasattr(element, "cost") and (element.cost.get_value() is not None):
-        return element.cost.get_value()
+        cost = element.cost.get_value()
+        if type(cost) is int:
+            return cost
+        elif type(cost) is tuple:  # a tuple means an int value and a unit
+            return cost[0]
+        raise ValueError(f"Problem of value type for the cost of {element._name}")
     cost = 0
     for sub_element in element._ownedElement:
         if SysMLTools.isinstance(sub_element, "PartUsage"):

@@ -4,6 +4,8 @@ ANSYS
 Ansys SysML2 API Connector
 AnsysSysML2APIConnector
 API
+boolean
+class
 DiagramDownloader
 DiagramElement
 downloader
@@ -11,13 +13,20 @@ Enum
 Factory
 get_value
 isort
+IN
+INOUT
+INPUT
 Makefile
+metaclass
+metamodel
 myBoolFeature
 myExpressionFeature
 myFloatFeature
 myIntFeature
 myStringFeature
+namespace
 Oops!
+OUT
 parse_and_set_value
 PAT
 Personal Access Token
@@ -30,6 +39,8 @@ SAM
 SAM REST API Connector
 SAMDiagramManager
 SamRestApiConnector
+subaction
+subsetting
 SysML2
 SysML2APIConnector
 SysML2DiagramManager

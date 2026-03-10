@@ -1,0 +1,64 @@
+# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
+# SPDX-License-Identifier: MIT
+#
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+"""Generated  test class from metamodel."""
+
+from __future__ import annotations
+
+import pytest
+
+from ansys.sam.sysml2.meta_model.case_usage import CaseUsage
+
+
+class TestCaseUsage:
+    """Test class for Java class 'com.ansys.medini.metamodel.sysml.CaseUsage'."""
+
+    @pytest.fixture
+    def element(self):
+        """Create test element with ID."""
+        return CaseUsage("element_id")
+
+    def test_id_set(self, element):
+        """Test element ID is correctly set."""
+        assert element.id == "element_id"
+
+    def test_case_definition(self, element):
+        """Test getter and setter for case definition property."""
+        value = "test_value"
+        element.case_definition = value
+        assert element.case_definition == value
+
+    def test_actor_parameter(self, element):
+        """Test getter for actor parameter property."""
+        _ = element.actor_parameter
+
+    def test_objective_requirement(self, element):
+        """Test getter and setter for objective requirement property."""
+        value = None
+        element.objective_requirement = value
+        assert element.objective_requirement == value
+
+    def test_subject_parameter(self, element):
+        """Test getter and setter for subject parameter property."""
+        value = "test_value"
+        element.subject_parameter = value
+        assert element.subject_parameter == value

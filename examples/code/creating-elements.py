@@ -33,23 +33,21 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 # Create your connector for the SAM server
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
+    server_url="https://127.0.0.1:8443/",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The organization ID
     token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server has a valid SSL
 )
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
-project = project_manager.get_project("<Bike Project ID>")
+project = project_manager.get_scripting_project("<Bike Project ID>")
 
 bike = project.get_root_package().Structure.Bike
 
 factory = Factory(project, ansyssysml2apiconnector)
 
-new_bicycle_frame_length = factory.create_elements(
-    element_type="AttributeUsage", name="length", owner=bike.frame
-)
+new_bicycle_frame_length = factory.create_attribute_usage(name="length", owner=bike.frame)
 
-new_bicycle_frame_length.parse_and_set_value("60 [cm]")
+bike.frame.length.parse_and_set_value("60 [cm]")
 
 print(project.get_root_package().Structure.Bike.frame.length.get_value())
