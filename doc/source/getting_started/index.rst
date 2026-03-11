@@ -11,7 +11,7 @@ Install PySAM SysML2
 
 .. code:: bash
 
-    python -m pip install ansys_sam_sysml2-<version>-py3-none-any.whl
+    python -m pip install ansys-sam-sysml2
 
 Connect to the tool
 -------------------

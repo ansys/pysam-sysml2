@@ -30,10 +30,10 @@ from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 project = AnsysScriptingProject(
-    server_url="Your SAM server base URL",
+    server_url="<SAM Server URL>",
     organization_id="<Orga ID>",  # The organization ID
     token="<Token>",  # Your authorization token
-    use_ssl=False,  # If the server has a valid SSL
+    use_ssl=False,  # If the server hasn't a valid SSL
     project_id="<Bike Project ID>",  # The project ID
 )
 
