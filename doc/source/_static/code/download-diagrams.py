@@ -26,7 +26,7 @@ sam_rest_api_connector = SamRestApiConnector(
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-project = project_manager.get_project("<Bike Project ID>")
+project = project_manager.get_scripting_project("<Bike Project ID>")
 
 # -----------------------------------------
 # Work with diagrams

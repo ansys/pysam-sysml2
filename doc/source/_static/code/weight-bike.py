@@ -19,7 +19,7 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-my_bike_project = project_manager.get_project("<Bike Project ID>")
+my_bike_project = project_manager.get_scripting_project("<Bike Project ID>")
 
 
 # Then we can use the following code to get the PartDefinition of the bike

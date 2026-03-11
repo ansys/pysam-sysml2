@@ -1,14 +1,14 @@
-"""AnsysSysML2Project Example for PySAM SysML2."""
+"""Ansys SysML2 project example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
-from ansys.sam.sysml2.tools.ansys_sysml2_project import AnsysSysML2Project
+from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 project = AnsysSysML2Project(
-    server_url="<SAM Server URL>",  # Your Sam server base URL
+    server_url="<SAM Server URL>",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The Organization ID
     token="<Token>",  # Your Auth Token (See section below)
     use_ssl=False,  # IF the server hasn't a valid SSL
@@ -61,7 +61,7 @@ for diagram in project.get_root_package().Usage.__diagram:
 # Create Element
 # -----------------------------------------
 
-project.create_element(element_type="AttributeUsage", name="NewAttr")
+project.factory.create_attribute_usage(name="NewAttr")
 
 # -----------------------------------------
 # Get Diagrams Info

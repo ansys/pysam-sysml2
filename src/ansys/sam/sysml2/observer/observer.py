@@ -22,6 +22,8 @@
 
 """Observer class."""
 
+from typing import Any, Dict, List, Tuple
+
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
@@ -33,6 +35,7 @@ class ModificationObserver:
     _project_id: str = ""
     _project = None
     _connector: SysML2APIConnector
+    _stack: Dict[str, List[Tuple[str, Any]]]
 
     def __init__(self, project, connector: SysML2APIConnector):
         """
@@ -49,6 +52,25 @@ class ModificationObserver:
         self._project = project
         self._connector = connector
         self._working_observer = True
+        self._stack = {}
+        self._is_transactional_mode = False
+
+    def set_transactional_mode(self, state: bool):
+        """
+        Set the new value for transactional mode.
+
+        Parameters
+        ----------
+        state : bool
+            The new value.
+        """
+        if self._is_transactional_mode and not state:
+            self._commit_stack()
+
+        if state and not self._is_transactional_mode:
+            self._stack = {}
+
+        self._is_transactional_mode = state
 
     def notify(self, element_id: str, name: str, value: object):
         """
@@ -64,18 +86,56 @@ class ModificationObserver:
             Value of the modified field.
         """
         if self._working_observer:
-            commit = Commit(self._project_id)
-            change = DataVersion()
+            if self._is_transactional_mode:
+                self._register_change(element_id, name, value)
+            else:
+                self._commit_change(element_id, name, value)
 
-            change.identify(element_id)
-            change.add_change(name[1:], value)
+    def _commit_change(self, element_id: str, name: str, value: Any):
+        """
+        Commit current change on the element.
 
-            commit.add_change(change)
+        Parameters
+        ----------
+        element_id : str
+            ID of the changed element.
+        name : str
+            Name of the field updated.
+        value : Any
+            New value for the field.
+        """
+        commit = Commit(self._project_id)
+        change = DataVersion()
 
-            self._connector.create_commit(self._project_id, commit.to_json())
-            self.reload_project()
+        change.identify(element_id)
+        if name.startswith("_"):
+            name = name[1:]
+        change.add_change(name, value)
 
-    def list_notify(self, element_id: str, name: str, list_content):
+        commit.add_change(change)
+
+        self._connector.create_commit(self._project_id, commit.to_json())
+        self.reload_project()
+
+    def _register_change(self, element_id: str, name: str, value: Any):
+        """
+        Register current change on the element in the stack.
+
+        Parameters
+        ----------
+        element_id : str
+            ID of the changed element.
+        name : str
+            Name of the field updated.
+        value : Any
+            New value for the field.
+        """
+        if element_id in self._stack:
+            self._stack[element_id].append((name, value))
+        else:
+            self._stack[element_id] = [(name, value)]
+
+    def list_notify(self, element_id: str, name: str, list_content: List):
         """
         Catch modification on a list.
 
@@ -89,16 +149,100 @@ class ModificationObserver:
             Updated content of the modified list field.
         """
         if self._working_observer:
-            commit = Commit(self._project_id)
-            change = DataVersion()
+            if self._is_transactional_mode:
+                self._register_list_change(element_id, name, list_content)
+            else:
+                self._commit_list_change(element_id, name, list_content)
 
-            change.identify(element_id)
-            change.add_change(name[1:], list_content)
+    def _commit_list_change(self, element_id: str, name: str, list_content: List):
+        """
+        Commit current change on a list.
 
-            commit.add_change(change)
+        Parameters
+        ----------
+        element_id : str
+            Modified element ID.
+        name : str
+            Name of the list.
+        list_content : List
+            New content of the list.
+        """
+        commit = Commit(self._project_id)
+        change = DataVersion()
 
-            self._connector.create_commit(self._project_id, commit.to_json())
-            self.reload_project()
+        change.identify(element_id)
+        if name.startswith("_"):
+            name = name[1:]
+        change.add_change(name, list_content)
+
+        commit.add_change(change)
+        self._connector.create_commit(self._project_id, commit.to_json())
+        self.reload_project()
+
+    def _register_list_change(self, element_id: str, name: str, list_content: List):
+        """
+        Register current change on a list in the stack.
+
+        Parameters
+        ----------
+        element_id : str
+            Modified element ID.
+        name : str
+            Name of the list.
+        list_content : List
+            New content of the list.
+        """
+        if element_id in self._stack:
+            if any(x[0] == name for x in self._stack[element_id]):
+                current_list = [x for x in self._stack[element_id] if x[0] == name][0]
+                self._stack[element_id].remove(current_list)
+            self._stack[element_id].append((name, list_content))
+        else:
+            self._stack[element_id] = [(name, list_content)]
+
+    def delete_element(self, element_id: str):
+        """
+        Delete function for observer.
+
+        Parameters
+        ----------
+        element_id : str
+            The ID of the element to delete.
+        """
+        if self._working_observer:
+            if self._is_transactional_mode:
+                self._register_deletion(element_id)
+            else:
+                self._commit_deletion(element_id)
+
+    def _register_deletion(self, element_id: str):
+        """
+        Register delete command.
+
+        Parameters
+        ----------
+        element_id : str
+            The element's ID to delete.
+        """
+        self._stack[element_id] = []
+
+    def _commit_deletion(self, element_id: str):
+        """
+        Commit direct delete command.
+
+        Parameters
+        ----------
+        element_id : str
+            The element's ID to delete
+        """
+        commit = Commit(self._project_id)
+        change = DataVersion()
+
+        change.identify(element_id)
+        commit.add_change(change)
+
+        self._connector.create_commit(self._project_id, commit.to_json())
+        self.reload_project()
 
     def reload_project(self):
         """Reload of the project."""
@@ -114,3 +258,16 @@ class ModificationObserver:
     def start_observer(self):
         """Connect the observer."""
         self._working_observer = True
+
+    def _commit_stack(self):
+        """Commit all stacked changes."""
+        commit = Commit(self._project_id)
+        for key, changes in self._stack.items():
+            change = DataVersion()
+            if not key.startswith("value:"):
+                change.identify(key)
+            for field in changes:
+                change.add_change(field[0], field[1])
+            commit.add_change(change)
+        self._connector.create_commit(self._project_id, commit.to_json())
+        self.reload_project()

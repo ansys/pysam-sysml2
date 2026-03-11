@@ -22,9 +22,9 @@
 
 """Observed list for SysMl list."""
 
-from typing import Any
+from __future__ import annotations
 
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from typing import Any, Union
 
 
 def mount_observer_and_access(function):
@@ -39,9 +39,12 @@ def mount_observer_and_access(function):
 
     def wrapper(self, *args):
         """Notify observer."""
-        if self._owner._observer is not None:
-            self._owner._observer.list_notify(self._owner._id, self._name, self)
         val = function(self, *args)
+        if hasattr(self._owner, "_observer") and self._owner._observer is not None:
+            owner_id = getattr(self._owner, "_id", None)
+            if owner_id is None:
+                owner_id = getattr(self._owner, "id")
+            self._owner._observer.list_notify(owner_id, self._name, self)
         return val
 
     return wrapper
@@ -52,15 +55,20 @@ class ObservedList(list):
 
     _content: list
     _name: str
-    _owner: SysMLElement
+    _owner: Union["Element" | "SysMLElement"]  # noqa: F821
 
-    def __init__(self, owner: SysMLElement, name: str, *args):
+    def __init__(
+        self,
+        owner: Union["Element" | "SysMLElement"],  #  noqa: F821
+        name: str,
+        *args,
+    ):
         """Construct new instance.
 
         Parameters
         ----------
-        owner : SysMLElement
-            Owner of the list.
+        owner : Union[Element | SysMLElement]
+            Owner of this list.
         name : str
             Name of the structural feature (owned element).
         """

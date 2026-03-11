@@ -25,34 +25,34 @@
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
-from ansys.sam.sysml2.tools.ansys_sysml2_project import AnsysSysML2Project
+from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-project = AnsysSysML2Project(
-    server_url="https://127.0.0.1:8443/",  # Your Sam server base URL
-    organization_id="<Orga ID>",  # The Organization ID
-    token="<Token>",  # Your Auth Token (See section below)
-    use_ssl=False,  # IF the server has a valid SSL
-    project_id="<Bike Project ID>",  # The Project ID
+project = AnsysScriptingProject(
+    server_url="Your SAM server base URL",
+    organization_id="<Orga ID>",  # The organization ID
+    token="<Token>",  # Your authorization token
+    use_ssl=False,  # If the server has a valid SSL
+    project_id="<Bike Project ID>",  # The project ID
 )
 
 diagrams_status = project.is_diagrams_available()
 print(f"Diagrams Status : {'Available' if diagrams_status else 'Unavailable'}", end="\n\n")
 
-SAVE_IMAGE_PATH = "C:/Diagrams/Images/"
+SAVE_IMAGE_PATH = "The path of the directory you want to save your diagrams into"
 first_diagram = project.get_root_package().__diagram[0]
 first_diagram_id = first_diagram._id
 
 # -----------------------------------------
-# Download ZIP file containing Diagrams
+# Download ZIP file containing diagrams
 # -----------------------------------------
 
 response = project.download_all_diagrams(path=SAVE_IMAGE_PATH, file_format="png", filename="png")
 print(f"> ZIP saved at: {response}\n")
 
 # -----------------------------------------
-# Download single Diagram
+# Download single diagram
 # -----------------------------------------
 
 path = project.download_diagram(
@@ -66,12 +66,12 @@ print(f"> Diagram saved at: {path}\n")
 usage_diagrams = project.get_root_package().Usage.__diagram
 for i, diagram in enumerate(usage_diagrams, 1):
     project.download_diagram(
-        diagram_id=diagram._id, file_format="png", path="C:/Diagrams/Images/Usage"
+        diagram_id=diagram._id, file_format="png", path=SAVE_IMAGE_PATH + "/Usage"
     )
     print(f"> Saved Usage diagram #{i}: {diagram._plane._model_element._name}\n")
 
 # -----------------------------------------
-# Navigate through Diagrams
+# Navigate through diagrams
 # -----------------------------------------
 
 print(first_diagram._plane._model_element._name, end="\n")
@@ -80,13 +80,13 @@ for diagram in project.get_root_package().Usage.__diagram:
     print("Diagram name:", diagram._name, end="\n")
 
 # -----------------------------------------
-# Create Element
+# Create element
 # -----------------------------------------
 
-project.create_element(element_type="AttributeUsage", name="NewAttr")
+project.factory.create_attribute_usage(name="NewAttr")
 
 # -----------------------------------------
-# Get Diagrams Info
+# Get diagrams information
 # -----------------------------------------
 
 print(project.get_project_diagrams_info(), end="\n\n")

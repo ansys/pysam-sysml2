@@ -50,12 +50,25 @@ class DataVersion:
         """
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
         from ansys.sam.sysml2.data_structures.observed_list import ObservedList
+        from ansys.sam.sysml2.meta_model.element import Element
+        from ansys.sam.sysml2.tools.name_utils import NameUtils
 
+        if "_" in key:
+            key = NameUtils.snake_to_camel(key)
         if isinstance(value, SysMLElement):
             self.payload[key] = {"@id": value._id}
+        elif isinstance(value, Element):
+            self.payload[key] = {"@id": value.id}
         elif isinstance(value, (ObservedList, list)):
             self.payload[key] = [
-                {"@id": x._id} if isinstance(x, SysMLElement) else x for x in value
+                (
+                    {"@id": x._id}
+                    if isinstance(x, SysMLElement)
+                    else {"@id": x.id}
+                    if isinstance(x, Element)
+                    else x
+                )
+                for x in value
             ]
         else:
             self.payload[key] = value
@@ -64,8 +77,9 @@ class DataVersion:
         """Serialize the data into a JSON dict."""
         data = {
             "@type": "DataVersion",
-            "payload": self.payload,
         }
+        if self.payload != {}:
+            data["payload"] = self.payload
         if self.identity is not None:
             data["identity"] = {"@id": self.identity, "@type": "DataIdentity"}
         return data

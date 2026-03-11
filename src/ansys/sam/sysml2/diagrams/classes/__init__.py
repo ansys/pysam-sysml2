@@ -21,8 +21,12 @@
 # SOFTWARE.
 """Classes module for the PySAM SysML2 diagram library."""
 
-from ansys.sam.sysml2.classes.mapped_element import MappedElement  # noqa as we export name
-from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField  # noqa as we export name
+from ansys.sam.sysml2.classes.mapped_element import (
+    MappedElement as MappedElement,
+)  # noqa as we export name
+from ansys.sam.sysml2.classes.unresolved_field import (
+    UnresolvedField as UnresolvedField,
+)  # noqa as we export name
 
 from .diagram_element import DiagramElement  # noqa as we export name
 from .plane import Plane  # noqa as we export name

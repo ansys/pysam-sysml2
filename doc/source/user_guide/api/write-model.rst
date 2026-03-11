@@ -68,18 +68,17 @@ Use the :class:`Factory` class to create new elements in your model.
     :language: python
     :caption: Create a Factory instance
 
-Use the :meth:`create_element() <Factory.create_element>` method to create a new model element.
+Use the :meth:`create_<element_type>()` method to create a new model element.
 Provide the element type and any number of keyword arguments representing its attributes:
 
 .. code:: python
 
-    new_attribute_usage = factory.create_element(
-        element_type="AttributeUsage",
+    new_attribute_usage = factory.create_attribute_usage(
         name="new_attribute_usage",
     )
 
 This creates a new ``AttributeUsage`` element at the root of your project. The
-:meth:`create_element() <Factory.create_element>` method returns the newly created element.
+:meth:`create_<element_type>()` method returns the newly created element.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
     :lines: 27-29
@@ -101,15 +100,13 @@ frame.
 
     .. code:: python
 
-        new_bicycle_frame_length_with_value = factory.create_element(
-            element_type="AttributeUsage",
+        new_bicycle_frame_length_with_value = factory.create_attribute_usage(
             name="lengthWithValue",
             owner=bike.frame,
             value=60
         )
 
-        new_bicycle_frame_length_with_expression = factory.create_element(
-            element_type="AttributeUsage",
+        new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
             name="lengthWithExpression",
             owner=bike.frame,
             expression="60 [cm]"
@@ -125,8 +122,10 @@ properties like names.
 
 .. code:: python
 
-    >>> my_attribute = factory.create_element(element_type="Attribute", name="OriginalName")
-    >>> my_attribute._name = "New Name"
+    >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+    >>> my_attribute._name = "New Name" # for scripting approach
+    New Name
+    >>> my_attribute.name = "New Name" # for static approach / sysml project
     New Name
 
 .. only:: html

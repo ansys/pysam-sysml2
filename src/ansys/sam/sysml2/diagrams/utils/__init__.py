@@ -22,4 +22,3 @@
 """Utilities module for the PySAM SysML2 diagram library."""
 
 from .file_manager import FileManager  # noqa as we export name
-from .name_utils import NameUtils  # noqa as we export name

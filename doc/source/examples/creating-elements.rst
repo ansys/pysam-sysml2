@@ -53,15 +53,13 @@ You just created a new element and assigned a parsed value to it.
 
     .. code:: python
 
-        new_bicycle_frame_length_with_value = factory.create_element(
-            element_type="AttributeUsage",
+        new_bicycle_frame_length_with_value = factory.create_attribute_usage(
             name="lengthWithValue",
             owner=bike.frame,
             value=60
         )
 
-        new_bicycle_frame_length_with_expression = factory.create_element(
-            element_type="AttributeUsage",
+        new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
             name="lengthWithExpression",
             owner=bike.frame,
             expression="60 [cm]"

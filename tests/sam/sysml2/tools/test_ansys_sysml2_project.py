@@ -25,14 +25,17 @@ from pathlib import Path
 
 import pytest
 
-from ansys.sam.sysml2 import SysML2ProjectManager
 from ansys.sam.sysml2.exception.connector_exception import (
-    BadRequestConnectionException,
     DiagramNotAvailableException,
 )
 from ansys.sam.sysml2.tools.ansys_sysml2_project import AnsysSysML2Project
 from conftest import tmp_dir
-from mocked_server.routes.const import PROJECT_ID_2, PROJECT_ID_5, VALID_ORGANIZATION, VALID_TOKEN
+from mocked_server.routes.const import (
+    PROJECT_ID_2,
+    PROJECT_ID_5,
+    VALID_ORGANIZATION,
+    VALID_TOKEN,
+)
 from parent_test_class import ParentTestClass
 from mocked_server.mocked_server import MockedServer
 
@@ -44,7 +47,7 @@ def get_diagrams(element):
 dl_path = tmp_dir / "images"
 
 
-class TestAnsysSysml2Project(ParentTestClass):
+class TestAnsysSysML2Project(ParentTestClass):
 
     @pytest.fixture
     def ansyssysml2project_5(self) -> AnsysSysML2Project:
@@ -57,33 +60,31 @@ class TestAnsysSysml2Project(ParentTestClass):
         )
         return project
 
-    def test_create_element(self, ansyssysml2project_5: SysML2ProjectManager):
+    def test_create_element(self, ansyssysml2project_5: AnsysSysML2Project):
 
         project_root = ansyssysml2project_5.get_root_package()
-        new_attribute = ansyssysml2project_5.create_element(
-            element_type="AttributeUsage", name="new_attribute", owner=project_root
+        new_attribute = ansyssysml2project_5.factory.create_attribute_usage(
+            name="new_attribute", owner=project_root
         )
 
-        assert project_root.new_attribute._name == "new_attribute"
+        assert project_root.get("new_attribute").name == "new_attribute"
 
-        new_attribute._name = "NewAttr"
+        new_attribute.name = "NewAttr"
 
-        assert project_root.NewAttr._name == "NewAttr"
+        assert project_root.get("NewAttr").name == "NewAttr"
 
         with pytest.raises(AttributeError):
             project_root.new_attribute
 
-    def test_create_element_with_no_type(self, ansyssysml2project_5: SysML2ProjectManager):
-
-        with pytest.raises(BadRequestConnectionException) as exception:
-            ansyssysml2project_5.create_element(element_type=None, name="new_attribute")
-        assert "Bad Request : No Type for New Element" == exception.value.args[0]
-
-    def test_working_dowload_diagram_in_png(self, ansyssysml2project_5: SysML2ProjectManager):
+    def test_working_dowload_diagram_in_png(
+        self, ansyssysml2project_5: AnsysSysML2Project
+    ):
         package = ansyssysml2project_5.get_root_package()
 
         expected_file_format = "png"
-        expected_filename = f"ae11d5ed-0f61-44a1-b4a7-f727d5bddccd.{expected_file_format}"
+        expected_filename = (
+            f"ae11d5ed-0f61-44a1-b4a7-f727d5bddccd.{expected_file_format}"
+        )
         expected_file_path = dl_path / expected_filename
 
         assert ansyssysml2project_5.is_diagrams_available() == True
@@ -99,9 +100,13 @@ class TestAnsysSysml2Project(ParentTestClass):
         assert expected_file_path.exists()
         assert response_path.name == expected_filename
 
-    def test_download_all_diagrams_without_args(self, ansyssysml2project_5: SysML2ProjectManager):
+    def test_download_all_diagrams_without_args(
+        self, ansyssysml2project_5: AnsysSysML2Project
+    ):
         expected_file_format = "svg"
-        expected_filename = f"{ansyssysml2project_5._id}_{expected_file_format}_diagrams.zip"
+        expected_filename = (
+            f"{ansyssysml2project_5._id}_{expected_file_format}_diagrams.zip"
+        )
         expected_file_path = dl_path / expected_filename
 
         assert ansyssysml2project_5.is_diagrams_available() == True
@@ -126,14 +131,22 @@ class TestAnsysSysml2Project(ParentTestClass):
 
         assert data == expected_data
 
-    def test_get_diagrams_info(self, ansyssysml2project_5: SysML2ProjectManager):
+    def test_get_diagrams_info(self, ansyssysml2project_5: AnsysSysML2Project):
         diagrams_info = ansyssysml2project_5.get_project_diagrams_info()
 
         expected_diagrams = [
             {"name": "Bike", "numberOfElements": 22, "kind": "SimpleDiagram"},
-            {"name": "myBikeInheritance", "numberOfElements": 3, "kind": "SimpleDiagram"},
+            {
+                "name": "myBikeInheritance",
+                "numberOfElements": 3,
+                "kind": "SimpleDiagram",
+            },
             {"name": "myBikeRedef", "numberOfElements": 5, "kind": "SimpleDiagram"},
-            {"name": "Redef & inheritance", "numberOfElements": 12, "kind": "SimpleDiagram"},
+            {
+                "name": "Redef & inheritance",
+                "numberOfElements": 12,
+                "kind": "SimpleDiagram",
+            },
         ]
 
         assert len(diagrams_info) == len(expected_diagrams)
@@ -144,12 +157,14 @@ class TestAnsysSysml2Project(ParentTestClass):
             assert actual["numberOfElements"] == expected["numberOfElements"]
             assert actual["kind"] == expected["kind"]
 
-    def test_get_single_diagram_info(self, ansyssysml2project_5: SysML2ProjectManager):
+    def test_get_single_diagram_info(self, ansyssysml2project_5: AnsysSysML2Project):
         diagram_id = "85f84746-3bbc-4b65-8b9c-503d736655eb"
 
         diagram_info = ansyssysml2project_5.get_single_diagram_info(diagram_id)
 
-        assert isinstance(diagram_info, dict), "Single diagram info should be a dictionary"
+        assert isinstance(
+            diagram_info, dict
+        ), "Single diagram info should be a dictionary"
 
         expected_data = {
             "projectId": "dd2e4b9b-a290-4511-a892-aafd0ede597a",

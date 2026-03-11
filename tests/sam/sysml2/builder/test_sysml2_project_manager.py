@@ -29,6 +29,6 @@ class TestSysML2ProjectManager(ParentTestClass):
 
     def test_load_project(self, valid_source: AnsysSysML2APIConnector):
         manager = SysML2ProjectManager(valid_source)
-        project = manager.get_project("1")
+        project = manager.get_scripting_project("1")
         assert len(project.get_root()) == 1
         assert project.get_root()[0]._name == "PySAMSysML2TestProject-COMPLET"
