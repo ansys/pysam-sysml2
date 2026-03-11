@@ -7,12 +7,12 @@ from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-project = AnsysSysML2Project(
+project = AnsysScriptingProject(
     server_url="<SAM Server URL>",  # Your SAM server base URL
-    organization_id="<Orga ID>",  # The Organization ID
-    token="<Token>",  # Your Auth Token (See section below)
-    use_ssl=False,  # IF the server hasn't a valid SSL
-    project_id="<Bike Project ID>",  # The Project ID
+    organization_id="<Orga ID>",  # The organization ID
+    token="<Token>",  # Your authorization token
+    use_ssl=False,  # If the server hasn't a valid SSL
+    project_id="<Bike Project ID>",  # The project ID
 )
 
 diagrams_status = project.is_diagrams_available()
@@ -23,14 +23,14 @@ first_diagram = project.get_root_package().__diagram[0]
 first_diagram_id = first_diagram._id
 
 # -----------------------------------------
-# Download ZIP file containing Diagrams
+# Download ZIP file containing diagrams
 # -----------------------------------------
 
 response = project.download_all_diagrams(path=SAVE_IMAGE_PATH, file_format="png", filename="png")
 print(f"> ZIP saved at: {response}\n")
 
 # -----------------------------------------
-# Download single Diagram
+# Download single diagram
 # -----------------------------------------
 
 path = project.download_diagram(
@@ -49,7 +49,7 @@ for i, diagram in enumerate(usage_diagrams, 1):
     print(f"> Saved Usage diagram #{i}: {diagram._plane._model_element._name}\n")
 
 # -----------------------------------------
-# Navigate through Diagrams
+# Navigate through diagrams
 # -----------------------------------------
 
 print(first_diagram._plane._model_element._name, end="\n")
@@ -58,13 +58,13 @@ for diagram in project.get_root_package().Usage.__diagram:
     print("Diagram name:", diagram._name, end="\n")
 
 # -----------------------------------------
-# Create Element
+# Create element
 # -----------------------------------------
 
 project.factory.create_attribute_usage(name="NewAttr")
 
 # -----------------------------------------
-# Get Diagrams Info
+# Get diagrams information
 # -----------------------------------------
 
 print(project.get_project_diagrams_info(), end="\n\n")

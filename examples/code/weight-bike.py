@@ -36,7 +36,7 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
     server_url="<SAM Server URL>",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The organization ID
     token="<Token>",  # Your authorization token
-    use_ssl=False,  # If the server has a valid SSL
+    use_ssl=False,  # If the server hasn't a valid SSL
 )
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)

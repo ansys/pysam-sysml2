@@ -47,7 +47,7 @@ PySAM SysML2 works with the Ansys SysML2 modeling tool,
             or documentation.
 
         .. grid-item-card:: Useful links :fa:`link`
-            
+
             - `PyPI release <https://pypi.org/project/ansys-sam-sysml2/>`_
             - `Releases on GitHub release <https://github.com/ansys/pysam-sysml2/releases>`_
             - `Stable documentation <https://sysml2.docs.pyansys.com/version/stable/index.html>`_
