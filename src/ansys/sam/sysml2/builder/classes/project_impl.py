@@ -127,3 +127,23 @@ class ProjectImpl(Project):
         return [
             el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == elements_name
         ]
+
+    def start_transactional_mode(self):
+        """
+        Start a transactional mode for model edition.
+
+        This method will stop direct update for the model,
+        and register all changes until you commit or stop the transactional mode.
+
+        Warning, all calculated modifications will not be applied,
+        until the commit of all changes.
+        """
+        self.get_root_package()._observer.set_transactional_mode(True)
+
+    def stop_transactional_mode(self):
+        """
+        Stop the current transaction.
+
+        This method will close the current transaction and commit all changes to the server.
+        """
+        self.get_root_package()._observer.set_transactional_mode(False)
