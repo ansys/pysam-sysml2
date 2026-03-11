@@ -276,6 +276,7 @@ class SysML2ProjectBuilder:
         self,
         project: Union[ScriptingProject, Project],
         element: Union[SysMLElement | Element],
+        use_owned_element: bool = False,
     ):
         """
         Resolve all inherited elements into mirrors.
@@ -288,13 +289,17 @@ class SysML2ProjectBuilder:
             Element to resolve.
         """
         if isinstance(project, ScriptingProjectImpl):
-            all_inherited_element = getattr(element, "_inheritedFeature", [])
+            all_inherited_element = getattr(element, "_inheritedFeature", []).copy()
+            if use_owned_element:
+                all_inherited_element.extend(getattr(element, "_ownedElement", []))
             base_element = SysMLElement
             base_id = "/?" + element._id if not element._id.startswith("/?") else element._id
             copy_function = self._copy_scripting_data
             update_element = self._update_scripting_element
         else:
-            all_inherited_element = getattr(element, "_owned_inherited_feature", [])
+            all_inherited_element = getattr(element, "_owned_inherited_feature", []).copy()
+            if use_owned_element:
+                all_inherited_element.extend(getattr(element, "_owned_element", []))
             base_element = Element
             base_id = "/?" + element.id if not element.id.startswith("/?") else element.id
             copy_function = self._copy_sysml_data
@@ -317,7 +322,7 @@ class SysML2ProjectBuilder:
                 name = copy_function(inherited_element, mirror_element)
                 result[name] = mirror_element
 
-            self._resolve_inherited_elements(project, mirror_element)
+            self._resolve_inherited_elements(project, mirror_element, use_owned_element=True)
         update_element(element, result)
 
     def _copy_sysml_data(self, source: Element, target: Element) -> str:
