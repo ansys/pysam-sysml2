@@ -1,0 +1,125 @@
+
+
+
+
+
+
+The ``builder`` package
+===========================
+
+.. py:module:: ansys.sam.sysml2.builder
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: builder
+.. tab-set::
+
+    .. tab-item:: Subpackages
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.classes`
+            - Classes module for builder module projects in PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.mapper`
+            - Mapper module for PySAM SysML2.
+
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.json_mapper`
+            - JSON Mapper class.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.sysml2_project_builder`
+            - Project builder.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.sysml2_project_manager`
+            - Director class for project building.
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-package"></span> classes</api/ansys/sam/sysml2/builder/classes/index>
+    <span class="nf nf-md-package"></span> mapper</api/ansys/sam/sysml2/builder/mapper/index>
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> json_mapper</api/ansys/sam/sysml2/builder/json_mapper/index>
+    <span class="nf nf-fa-file"></span> sysml2_project_builder</api/ansys/sam/sysml2/builder/sysml2_project_builder/index>
+    <span class="nf nf-fa-file"></span> sysml2_project_manager</api/ansys/sam/sysml2/builder/sysml2_project_manager/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Builder module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

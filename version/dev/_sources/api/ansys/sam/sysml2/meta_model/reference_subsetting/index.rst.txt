@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``reference_subsetting.py`` module
+======================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.reference_subsetting
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: reference_subsetting
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.reference_subsetting.ReferenceSubsetting`
+            - Java class 'com.ansys.medini.metamodel.sysml.ReferenceSubsetting'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ReferenceSubsetting</api/ansys/sam/sysml2/meta_model/reference_subsetting/ReferenceSubsetting>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated reference subsetting class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

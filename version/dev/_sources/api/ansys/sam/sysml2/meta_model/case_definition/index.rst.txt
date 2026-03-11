@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``case_definition.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.case_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: case_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.case_definition.CaseDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.CaseDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> CaseDefinition</api/ansys/sam/sysml2/meta_model/case_definition/CaseDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated case definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

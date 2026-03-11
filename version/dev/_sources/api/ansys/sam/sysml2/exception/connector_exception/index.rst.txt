@@ -1,0 +1,128 @@
+
+
+
+
+
+
+The ``connector_exception.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.exception.connector_exception
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: connector_exception
+.. tab-set::
+
+
+
+
+
+
+    .. tab-item:: Exceptions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.ConnectorException`
+            - Provides top-level exceptions for connectors.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.ConnectorConnectionException`
+            - Exception when connection information is invalid.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.UnauthorizedConnectionException`
+            - Exception when the connection is not authorized.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.HTTPResponseException`
+            - Exception when the connection returns other than 200.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.InvalidElementJsonFoundException`
+            - Exception when the received JSON data is invalid.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.ProjectNotFoundException`
+            - Exception when the requested project is not found.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.ElementNotFoundException`
+            - Exception when the requested element is not found.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.InvalidProjectNameException`
+            - Exception when the name given for a project is not correct.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.BadRequestConnectionException`
+            - Exception when request is invalid.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.DiagramConnectorException`
+            - Exception when trying to download diagrams.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception.DiagramNotAvailableException`
+            - Exception when diagram functionality is not available for the project.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-lightning_bolt"></span> ConnectorException</api/ansys/sam/sysml2/exception/connector_exception/ConnectorException>
+    <span class="nf nf-md-lightning_bolt"></span> ConnectorConnectionException</api/ansys/sam/sysml2/exception/connector_exception/ConnectorConnectionException>
+    <span class="nf nf-md-lightning_bolt"></span> UnauthorizedConnectionException</api/ansys/sam/sysml2/exception/connector_exception/UnauthorizedConnectionException>
+    <span class="nf nf-md-lightning_bolt"></span> HTTPResponseException</api/ansys/sam/sysml2/exception/connector_exception/HTTPResponseException>
+    <span class="nf nf-md-lightning_bolt"></span> InvalidElementJsonFoundException</api/ansys/sam/sysml2/exception/connector_exception/InvalidElementJsonFoundException>
+    <span class="nf nf-md-lightning_bolt"></span> ProjectNotFoundException</api/ansys/sam/sysml2/exception/connector_exception/ProjectNotFoundException>
+    <span class="nf nf-md-lightning_bolt"></span> ElementNotFoundException</api/ansys/sam/sysml2/exception/connector_exception/ElementNotFoundException>
+    <span class="nf nf-md-lightning_bolt"></span> InvalidProjectNameException</api/ansys/sam/sysml2/exception/connector_exception/InvalidProjectNameException>
+    <span class="nf nf-md-lightning_bolt"></span> BadRequestConnectionException</api/ansys/sam/sysml2/exception/connector_exception/BadRequestConnectionException>
+    <span class="nf nf-md-lightning_bolt"></span> DiagramConnectorException</api/ansys/sam/sysml2/exception/connector_exception/DiagramConnectorException>
+    <span class="nf nf-md-lightning_bolt"></span> DiagramNotAvailableException</api/ansys/sam/sysml2/exception/connector_exception/DiagramNotAvailableException>
+
+
+
+
+
+
+
+Description
+-----------
+
+Custom exceptions for connector-related errors.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

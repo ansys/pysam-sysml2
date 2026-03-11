@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``diagram_element.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.diagrams.classes.diagram_element
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: diagram_element
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.classes.diagram_element.DiagramElement`
+            - Provides diagram element data.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> DiagramElement</api/ansys/sam/sysml2/diagrams/classes/diagram_element/DiagramElement>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Diagram element data.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

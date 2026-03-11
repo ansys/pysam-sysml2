@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`InvalidProjectNameException`
+====================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.InvalidProjectNameException
+
+   Bases: :py:obj:`ConnectorException`
+
+
+   
+   Exception when the name given for a project is not correct.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import InvalidProjectNameException
+
+
+
+
+
