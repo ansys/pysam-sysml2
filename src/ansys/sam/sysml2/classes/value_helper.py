@@ -23,6 +23,7 @@
 """Value helper class for Feature's value."""
 
 from typing import Union
+from uuid import uuid4
 
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
@@ -66,7 +67,31 @@ class ValueHelper:
             New value to update to.
         """
         instance = ValueHelper("")
-        instance._direct_update_value(element, value_type, new_value)
+        if element._observer._is_transactional_mode:
+            instance._add_to_stack(element, value_type, new_value)
+        else:
+            instance._direct_update_value(element, value_type, new_value)
+
+    def _add_to_stack(self, element, value_type, new_value):
+        """
+        Add the value update to stack.
+
+        Parameters
+        ----------
+        element : [SysMLElement|Element]
+            Feature of the container.
+        value_type : str
+            Value type of the new value.
+        new_value : Any
+            New value to update to.
+        """
+        value_id = "value:" + str(uuid4())
+        element._observer.notify(value_id, "@type", "FeatureValue")
+        if value_type != "operator":
+            element._observer.notify(value_id, "value", self._adapt_value(new_value))
+        else:
+            element._observer.notify(value_id, "value", new_value)
+        element._observer.notify(value_id, "owner", element)
 
     def _direct_update_value(self, element, value_type, new_value):
         """

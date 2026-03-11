@@ -69,3 +69,21 @@ class Project:
         List[Element]
             The list of elements retrieved
         """
+
+    def start_transactional_mode(self):
+        """
+        Start a transactional mode for model edition.
+
+        This method will stop direct update for the model,
+        and register all changes until you commit or stop the transactional mode.
+
+        Warning, all calculated modifications will not be applied,
+        until the commit of all changes.
+        """
+
+    def stop_transactional_mode(self):
+        """
+        Stop the current transaction.
+
+        This method will close the current transaction and commit all changes to the server.
+        """

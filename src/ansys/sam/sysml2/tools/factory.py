@@ -22,6 +22,7 @@
 """Factory class to create new elements."""
 
 from typing import Union
+from uuid import uuid4
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.project import Project
@@ -1769,6 +1770,64 @@ class Factory:
         Returns
         -------
         Union[Element|SysMLElement]
+            Created element.
+        """
+        if self._project.get_root_package()._observer._is_transactional_mode:
+            return self._create_local_element_and_stack(element_type, **kwargs)
+        else:
+            return self._direct_create_element(element_type, **kwargs)
+
+    def _create_local_element_and_stack(self, element_type, **kwargs):
+        """
+        Create a new local element in the stack.
+
+        Parameters
+        ----------
+        element_type : str
+            Type of the element.
+
+        Returns
+        -------
+        [SysMLElement|Element]
+            Created element.
+        """
+        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+
+        element_id = str(uuid4())
+        if isinstance(self._project, Project):
+            constructor = SysMLUtil.get_sysml_constructor(element_type)
+            instance = constructor(element_id)
+        else:
+            instance = SysMLElement(element_id)
+            instance.__class__ = type(element_type, (SysMLElement,), {})
+
+        instance._observer = self._project.get_root_package()._observer
+        instance._observer.notify(element_id, "@type", element_type)
+        for key, value in kwargs.items():
+            if isinstance(value, list):
+                if not hasattr(instance, key):
+                    from ansys.sam.sysml2.data_structures.observed_list import (
+                        ObservedList,
+                    )
+
+                    setattr(instance, key, ObservedList(owner=instance, name=key))
+                getattr(instance, key).extend(value)
+            else:
+                setattr(instance, key, value)
+        return instance
+
+    def _direct_create_element(self, element_type, **kwargs):
+        """
+        Create a new element from the API.
+
+        Parameters
+        ----------
+        element_type : str
+            Type of the element.
+
+        Returns
+        -------
+        [SysMLElement|Element]
             Created element.
         """
         existing_elements = set(self._project._env.keys())
