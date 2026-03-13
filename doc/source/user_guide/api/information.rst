@@ -42,7 +42,7 @@ Follow these steps to find your organization ID:
 .. _Info_B_Token_Section:
 
 Find authentication token
-========================
+=========================
 
 For authentication, you can either use a bearer (temporary) token for quick access or create a
 Personal Access Token (PAT) for longer-term use.

@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Creating element example for PySAM SysML2."""
+"""Creating element static example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning
@@ -39,14 +39,14 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 )
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
-project = project_manager.get_scripting_project("<Bike Project ID>")
+project = project_manager.get_sysml_project("<Bike Project ID>")
 
-bike = project.get_root_package().Structure.Bike
+bike = project.get_root_package().get("Structure").get("Bike")
 
 factory = Factory(project, ansyssysml2apiconnector)
 
-new_bicycle_frame_length = factory.create_attribute_usage(name="length", owner=bike.frame)
+new_bicycle_frame_length = factory.create_attribute_usage(name="length", owner=bike.get("frame"))
 
 new_bicycle_frame_length.parse_and_set_value("60 [cm]")
 
-print(project.get_root_package().Structure.Bike.frame.length.get_value())
+print(bike.get("frame").get("length").get_value())
