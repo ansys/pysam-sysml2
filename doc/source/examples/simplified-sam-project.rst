@@ -4,7 +4,7 @@ Simplify SAM project initialization
 ###################################
 
 This example shows how to use the simplified
-:class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` class
+:class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` / :class:`AnsysScriptingProject <ansys.sam.sysml2.tools.ansys_scripting_project.AnsysScriptingProject>` class
 to work with a SysML v2 project on SAM. This approach reduces boilerplate code by automatically
 initializing all necessary connectors. It explains how to perform these tasks:
 
@@ -17,7 +17,7 @@ initializing all necessary connectors. It explains how to perform these tasks:
 .. note::
 
     The
-    :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>`
+    :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` / :class:`AnsysScriptingProject <ansys.sam.sysml2.tools.ansys_scripting_project.AnsysScriptingProject>`
     class is specifically designed for SAM projects and automatically handles the initialization
     of these classes:
 
@@ -38,17 +38,29 @@ Ensure that you meet these prerequisites:
 Simplified Python example
 =========================
 
-.. literalinclude:: ../_static/code/simplified-sam-project.py
-    :language: python
-    :caption: Simplified example using AnsysSysML2Project for SAM projects
-    :linenos:
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. literalinclude:: ../_static/code/simplified-sam-project.py
+          :language: python
+          :caption: Simplified example using AnsysScriptingProject for SAM projects
+          :linenos:
+
+    .. tab-item:: Static approach
+
+        .. literalinclude:: ../_static/code/simplified-sam-project-static.py
+          :language: python
+          :caption: Simplified example using AnsysSysML2Project for SAM projects
+          :linenos:
+
 
 Key advantages
 ==============
 
 Compared to the traditional approach described in
 :ref:`Download diagrams and create new elements<Download_Example>`, using the simplified
-:class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` class
+:class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` / :class:`AnsysScriptingProject <ansys.sam.sysml2.tools.ansys_scripting_project.AnsysScriptingProject>` class
 offers these advantages:
 
 - **Single initialization**: One class automatically handles all connectors.
@@ -63,6 +75,6 @@ offers these advantages:
 .. note::
 
   - Replace placeholder values with your actual SAM configuration.
-  - The :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>`
+  - The :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` / :class:`AnsysScriptingProject <ansys.sam.sysml2.tools.ansys_scripting_project.AnsysScriptingProject>`
     class automatically manages diagram loading and the connector lifecycle.
   - The class supports all diagram formats (``png``, ``svg``, ``jpeg``) for downloads.

@@ -7,7 +7,7 @@ You can then create an instance of the :class:`SysML2ProjectManager <ansys.sam.s
 This class helps you load a model in Python, using the SysML V2 standard API.
 
 .. literalinclude:: ../../_static/code/computer-cost.py
-    :lines: 19
+    :lines: 41
     :language: python
     :caption: Create a SysML2 project manager instance
 
@@ -16,10 +16,10 @@ For more information, see the :class:`SysML2ProjectManager <ansys.sam.sysml2.bui
 
 With the project manager, you can load two types of projects:
 
-SysML2 project
-==============
+SysML2 project (Static approach)
+================================
 
-SysML projects use a Python-based metamodel, enabling static completion for all SysML properties.
+SysML2 projects use a Python-based metamodel, enabling static completion for all SysML2 properties.
 
 .. code:: python
 
@@ -29,13 +29,13 @@ SysML projects use a Python-based metamodel, enabling static completion for all 
 
 Once you provide the project ID, you get a Python version of your model.
 
-Scripting project
-=================
+Scripting project (Dynamic approach)
+====================================
 
 Scripting projects use a dynamic class generation approach. This offers flexibility but does not provide autocompletion.
 
 .. literalinclude:: ../../_static/code/computer-cost.py
-    :lines: 21-23
+    :lines: 43-45
     :language: python
     :caption: Get the project using the project ID
 

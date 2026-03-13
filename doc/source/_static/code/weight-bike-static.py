@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Weight bike example for PySAM SysML2."""
+"""Weight bike static example for PySAM SysML2."""
 
 # Import connector and model manager
 import requests
@@ -41,17 +41,18 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-my_bike_project = project_manager.get_scripting_project("<Bike Project ID>")
+my_bike_project = project_manager.get_sysml_project("<Bike Project ID>")
 
+bike = my_bike_project.get_root_package().get("Structure").get("Bike")
 
-# Then we can use the following code to get the PartDefinition of the bike
-bike = my_bike_project.get_root_package().Structure.Bike
+# see computer-cost-static.py for a computation of weight
+# through a recursive way (replace "cost" with "weight")
 
 bike_weight = (
-    bike.frontWheel.rim.weight.get_value()[0]
-    + bike.frontWheel.tire.weight.get_value()[0]
-    + bike.rearWheel.rim.weight.get_value()[0]
-    + bike.rearWheel.tire.weight.get_value()[0]
-    + bike.frame.weight.get_value()[0]
+    bike.get("frontWheel").get("rim").get("weight").get_value()[0]
+    + bike.get("frontWheel").get("tire").get("weight").get_value()[0]
+    + bike.get("rearWheel").get("rim").get("weight").get_value()[0]
+    + bike.get("rearWheel").get("tire").get("weight").get_value()[0]
+    + bike.get("frame").get("weight").get_value()[0]
 )
 print(bike_weight)

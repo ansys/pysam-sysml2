@@ -29,10 +29,21 @@ Ensure that you meet these prerequisites:
 Python example
 ==============
 
-.. literalinclude:: ../_static/code/download-diagrams.py
-    :language: python
-    :caption: Work with diagrams using SAMDiagramManager
-    :linenos:
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. literalinclude:: ../_static/code/download-diagrams.py
+            :language: python
+            :caption: Work with diagrams using SAMDiagramManager
+            :linenos:
+
+    .. tab-item:: Static approach
+
+        .. literalinclude:: ../_static/code/download-diagrams-static.py
+            :language: python
+            :caption: Work with diagrams using SAMDiagramManager
+            :linenos:
 
 .. note::
 
