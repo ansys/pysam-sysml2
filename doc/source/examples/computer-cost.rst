@@ -29,7 +29,19 @@ Calculate cost
     You need to replace the organization ID, server URL, and token with your own data. For more
     information, see :ref:`Find information<Info_Section>`.
 
-.. literalinclude:: ../_static/code/computer-cost.py
-    :language: python
-    :caption: Calculate computer cost using recursive traversal
-    :linenos:
+.. tab-set::
+    
+    .. tab-item:: Scripting approach
+        
+        .. literalinclude:: ../_static/code/computer-cost.py
+            :language: python
+            :caption: Calculate computer cost using recursive traversal
+            :linenos:
+    
+    .. tab-item:: Static approach
+        
+        .. literalinclude:: ../_static/code/computer-cost-static.py
+            :language: python
+            :caption: Calculate computer cost using recursive traversal
+            :linenos:
+        
