@@ -30,18 +30,17 @@ Calculate cost
     information, see :ref:`Find information<Info_Section>`.
 
 .. tab-set::
-    
-    .. tab-item:: Scripting approach
-        
+
+    .. tab-item:: Dynamic approach
+
         .. literalinclude:: ../_static/code/computer-cost.py
             :language: python
             :caption: Calculate computer cost using recursive traversal
             :linenos:
-    
+
     .. tab-item:: Static approach
-        
+
         .. literalinclude:: ../_static/code/computer-cost-static.py
             :language: python
             :caption: Calculate computer cost using recursive traversal
             :linenos:
-        

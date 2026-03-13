@@ -35,7 +35,7 @@ structure and assign it a value.
 
 .. tab-set::
 
-    .. tab-item:: Scripting approach
+    .. tab-item:: Dynamic approach
 
         .. literalinclude:: ../_static/code/creating-elements.py
             :language: python
@@ -67,7 +67,7 @@ You just created a new element and assigned a parsed value to it.
 
     .. tab-set::
 
-        .. tab-item:: Scripting approach
+        .. tab-item:: Dynamic approach
 
             .. code:: python
 

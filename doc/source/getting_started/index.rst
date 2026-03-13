@@ -20,7 +20,7 @@ The following code connects to PySAM SysML2 using the
 :class:`AnsysSysML2APIConnector <ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector>`.
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 7
+    :lines: 29
     :language: python
     :caption: Import the connector and project manager
 
@@ -30,17 +30,31 @@ Create the connector
 --------------------
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 13-18
+    :lines: 35-40
     :language: python
     :caption: Connect to the SysML2 API server
 
 Create the project manager and load a project
 ---------------------------------------------
 
-.. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 20-22
-    :language: python
-    :caption: Create the project manager and load a project
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. literalinclude:: ../_static/code/weight-bike.py
+            :lines: 42-44
+            :language: python
+            :caption: Create the project manager and load a project
+
+    .. tab-item:: Static approach
+
+        .. literalinclude:: ../_static/code/weight-bike-static.py
+            :lines: 42-44
+            :language: python
+            :caption: Create the project manager and load a project
+
+
 
 .. note::
 

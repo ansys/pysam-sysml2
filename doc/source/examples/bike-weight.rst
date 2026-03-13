@@ -55,7 +55,7 @@ After logging in, load the ``bike`` project.
 
 .. tab-set::
 
-   .. tab-item:: Scripting approach
+   .. tab-item:: Dynamic approach
 
       .. literalinclude:: ../_static/code/weight-bike.py
          :lines: 42-44
@@ -80,7 +80,7 @@ After loading the project, get the ``Bike`` element. As explained in
 
 .. tab-set::
 
-    .. tab-item:: Scripting approach
+    .. tab-item:: Dynamic approach
 
         .. literalinclude:: ../_static/code/weight-bike.py
             :lines: 48
@@ -101,16 +101,16 @@ To calculate the bike weight, sum the weight of all blue elements in the model:
 To get the weight of each piece, use the ``weight`` attribute with dot notation:
 
 .. tab-set::
-    
-    .. tab-item:: Scripting approach
-        
+
+    .. tab-item:: Dynamic approach
+
         .. literalinclude:: ../_static/code/weight-bike.py
             :lines: 50-56
             :language: python
             :caption: Calculate total bike weight by summing component weights
-    
+
     .. tab-item:: Static approach
-        
+
         .. literalinclude:: ../_static/code/weight-bike-static.py
             :lines: 51-57
             :language: python
@@ -128,11 +128,11 @@ You now have the total bike weight.
 .. note::
 
     .. tab-set::
-        
-        .. tab-item:: Scripting approach
-            
+
+        .. tab-item:: Dynamic approach
+
             :download:`Download <../_static/code/weight-bike.py>` the full code.
-        
+
         .. tab-item:: Static approach
-            
+
             :download:`Download <../_static/code/weight-bike-static.py>` the full code.

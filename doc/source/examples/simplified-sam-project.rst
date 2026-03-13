@@ -40,7 +40,7 @@ Simplified Python example
 
 .. tab-set::
 
-    .. tab-item:: Scripting approach
+    .. tab-item:: Dynamic approach
 
         .. literalinclude:: ../_static/code/simplified-sam-project.py
           :language: python

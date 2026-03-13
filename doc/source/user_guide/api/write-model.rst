@@ -64,7 +64,7 @@ Use the :class:`Factory` class to create new elements in your model.
     For a comprehensive example, see :ref:`Create a new element <Creating_Example>`.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
-    :lines: 25
+    :lines: 46
     :language: python
     :caption: Create a Factory instance
 
@@ -81,7 +81,7 @@ This creates a new ``AttributeUsage`` element at the root of your project. The
 :meth:`create_<element_type>()` method returns the newly created element.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
-    :lines: 27-29
+    :lines: 48-50
     :language: python
     :caption: Create a new AttributeUsage element with owner
 
@@ -98,19 +98,39 @@ frame.
     - ``value=...`` for simple values (such as numbers).
     - ``expression="..."`` for values with units or expressions.
 
-    .. code:: python
+    .. tab-set::
 
-        new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-            name="lengthWithValue",
-            owner=bike.frame,
-            value=60
-        )
+        .. tab-item:: Dynamic approach
 
-        new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-            name="lengthWithExpression",
-            owner=bike.frame,
-            expression="60 [cm]"
-        )
+            .. code:: python
+
+                new_bicycle_frame_length_with_value = factory.create_attribute_usage(
+                    name="lengthWithValue",
+                    owner=bike.frame,
+                    value=60
+                )
+
+                new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
+                    name="lengthWithExpression",
+                    owner=bike.frame,
+                    expression="60 [cm]"
+                )
+
+        .. tab-item:: Static approach
+
+            .. code:: python
+
+                new_bicycle_frame_length_with_value = factory.create_attribute_usage(
+                    name="lengthWithValue",
+                    owner=bike.get("frame"),
+                    value=60
+                )
+
+                new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
+                    name="lengthWithExpression",
+                    owner=bike.get("frame"),
+                    expression="60 [cm]"
+                )
 
     This lets you set values directly at creation time, depending on your data format.
 
@@ -120,13 +140,24 @@ Update attributes directly
 Update element properties directly using simple assignment. This is useful for quickly changing
 properties like names.
 
-.. code:: python
 
-    >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
-    >>> my_attribute._name = "New Name" # for scripting approach
-    New Name
-    >>> my_attribute.name = "New Name" # for static approach / sysml project
-    New Name
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+            >>> my_attribute._name = "New Name"
+            New Name
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+            >>> my_attribute.name = "New Name"
+            New Name
 
 .. only:: html
 

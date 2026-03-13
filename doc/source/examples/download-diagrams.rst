@@ -31,7 +31,7 @@ Python example
 
 .. tab-set::
 
-    .. tab-item:: Scripting approach
+    .. tab-item:: Dynamic approach
 
         .. literalinclude:: ../_static/code/download-diagrams.py
             :language: python
