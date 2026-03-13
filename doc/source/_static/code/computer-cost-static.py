@@ -20,18 +20,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Weight bike example for PySAM SysML2."""
+"""Computer cost static example for PySAM SysML2."""
 
-# Import connector and model manager
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
 from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
+from ansys.sam.sysml2.meta_model.attribute_usage import AttributeUsage
+from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.meta_model.package import Package
+from ansys.sam.sysml2.meta_model.part_usage import PartUsage
 
 # Used to disable warnings
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-# Create your connector for the SAM Server
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
     server_url="<SAM Server URL>",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The organization ID
@@ -41,17 +43,29 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-my_bike_project = project_manager.get_scripting_project("<Bike Project ID>")
+project = project_manager.get_sysml_project(
+    "<Computer Project ID>"
+)  # You can find your project ID in the URL of the editor.
+
+real_systems: Package = project.get_root_package().get("RealSystems")
 
 
-# Then we can use the following code to get the PartDefinition of the bike
-bike = my_bike_project.get_root_package().Structure.Bike
+def assess_cost(element: Element):
+    """Calculate the cost of element."""
+    cost_attribute: AttributeUsage = element.get("cost")
+    if (cost_attribute is not None) and (cost_attribute.get_value() is not None):
+        cost = cost_attribute.get_value()
+        if type(cost) is int:
+            return cost
+        elif type(cost) is tuple:  # a tuple means an int value and a unit
+            return cost[0]
+        raise ValueError(f"Problem of value type for the cost of {element._name}")
+    cost = 0
+    for sub_element in element.owned_element:
+        if isinstance(sub_element, PartUsage):
+            cost += assess_cost(sub_element)
+    return cost
 
-bike_weight = (
-    bike.frontWheel.rim.weight.get_value()[0]
-    + bike.frontWheel.tire.weight.get_value()[0]
-    + bike.rearWheel.rim.weight.get_value()[0]
-    + bike.rearWheel.tire.weight.get_value()[0]
-    + bike.frame.weight.get_value()[0]
-)
-print(bike_weight)
+
+for system in real_systems.owned_element:
+    print(system.name, " : ", assess_cost(system))
