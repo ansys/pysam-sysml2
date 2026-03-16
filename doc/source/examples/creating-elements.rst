@@ -32,10 +32,24 @@ structure and assign it a value.
     You need to replace the organization ID, server URL, and token with your own data. For more
     information, see :ref:`Find information<Info_Section>`.
 
-.. literalinclude:: ../_static/code/creating-elements.py
-    :language: python
-    :caption: Create a new AttributeUsage element using the :class:`Factory` class
-    :linenos:
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. literalinclude:: ../_static/code/creating-elements.py
+            :language: python
+            :caption: Create a new AttributeUsage element using the :class:`Factory` class
+            :linenos:
+
+    .. tab-item:: Static approach
+
+        .. literalinclude:: ../_static/code/creating-elements-static.py
+            :language: python
+            :caption: Create a new AttributeUsage element using the :class:`Factory` class
+            :linenos:
+
+
 
 You just created a new element and assigned a parsed value to it.
 
@@ -51,18 +65,38 @@ You just created a new element and assigned a parsed value to it.
     - ``value=...`` for simple values (such as numbers).
     - ``expression="..."`` for values with units or expressions.
 
-    .. code:: python
+    .. tab-set::
 
-        new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-            name="lengthWithValue",
-            owner=bike.frame,
-            value=60
-        )
+        .. tab-item:: Dynamic approach
 
-        new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-            name="lengthWithExpression",
-            owner=bike.frame,
-            expression="60 [cm]"
-        )
+            .. code:: python
+
+                new_bicycle_frame_length_with_value = factory.create_attribute_usage(
+                    name="lengthWithValue",
+                    owner=bike.frame,
+                    value=60
+                )
+
+                new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
+                    name="lengthWithExpression",
+                    owner=bike.frame,
+                    expression="60 [cm]"
+                )
+
+        .. tab-item:: Static approach
+
+            .. code:: python
+
+                new_bicycle_frame_length_with_value = factory.create_attribute_usage(
+                    name="lengthWithValue",
+                    owner=bike.get("frame"),
+                    value=60
+                )
+
+                new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
+                    name="lengthWithExpression",
+                    owner=bike.get("frame"),
+                    expression="60 [cm]"
+                )
 
     This lets you set values directly at creation time, depending on your data format.

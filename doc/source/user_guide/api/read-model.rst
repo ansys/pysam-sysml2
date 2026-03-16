@@ -1,3 +1,5 @@
+.. _Read_Model_Section:
+
 Read your model
 ###############
 
@@ -7,8 +9,8 @@ The loaded model is stored in a :class:`Project <ansys.sam.sysml2.classes.projec
 
 .. _Getter:
 
-Read SysML2 project
-===================
+Read SysML2 project (Static approach)
+=====================================
 
 SysML2 properties
 -----------------
@@ -39,8 +41,8 @@ To retrieve a model element by name, use the ``get`` function. It returns the el
     <sysml.PartUsage>
 
 
-Read scripting project
-======================
+Read scripting project (Dynamic approach)
+=========================================
 
 
 Access methods
@@ -104,7 +106,7 @@ The :meth:`get_value() <SysMLElement.get_value>` function supports:
 Underscore access
 =================
 
-With underscore (``_``) access, you can find all SysML methods:
+With underscore (``_``) access, you can find all SysML2 methods:
 
 .. code:: python
 
@@ -132,4 +134,4 @@ With underscore (``_``) access, you can find all SysML methods:
             :link: write-model
             :link-type: doc
 
-            Write in your model
+            Write data to your model

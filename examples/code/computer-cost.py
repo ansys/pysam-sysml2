@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Computer cost example for PySAM SysML2."""
+"""Computer cost scripting example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning

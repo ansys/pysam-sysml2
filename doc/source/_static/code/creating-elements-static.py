@@ -19,19 +19,18 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+"""Creating element static example for PySAM SysML2."""
 
-"""Weight bike example for PySAM SysML2."""
-
-# Import connector and model manager
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
 from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
+from ansys.sam.sysml2.tools import Factory
 
 # Used to disable warnings
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
-# Create your connector for the SAM Server
+# Create your connector for the SAM server
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
     server_url="<SAM Server URL>",  # Your SAM server base URL
     organization_id="<Orga ID>",  # The organization ID
@@ -40,18 +39,14 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 )
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
+project = project_manager.get_sysml_project("<Bike Project ID>")
 
-my_bike_project = project_manager.get_scripting_project("<Bike Project ID>")
+bike = project.get_root_package().get("Structure").get("Bike")
 
+factory = Factory(project, ansyssysml2apiconnector)
 
-# Then we can use the following code to get the PartDefinition of the bike
-bike = my_bike_project.get_root_package().Structure.Bike
+new_bicycle_frame_length = factory.create_attribute_usage(name="length", owner=bike.get("frame"))
 
-bike_weight = (
-    bike.frontWheel.rim.weight.get_value()[0]
-    + bike.frontWheel.tire.weight.get_value()[0]
-    + bike.rearWheel.rim.weight.get_value()[0]
-    + bike.rearWheel.tire.weight.get_value()[0]
-    + bike.frame.weight.get_value()[0]
-)
-print(bike_weight)
+new_bicycle_frame_length.parse_and_set_value("60 [cm]")
+
+print(bike.get("frame").get("length").get_value())

@@ -1,9 +1,10 @@
-Write in your model
-###################
+.. _Write_Model_Section:
 
-.. warning::
+Write data to your model
+########################
 
-    This is a beta feature and may have some issues.
+.. note:: To avoid performance issues, don't forget to use `Transaction mode`_. See the bottom of this page for details.
+
 
 Update a feature value
 ======================
@@ -64,7 +65,7 @@ Use the :class:`Factory` class to create new elements in your model.
     For a comprehensive example, see :ref:`Create a new element <Creating_Example>`.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
-    :lines: 25
+    :lines: 46
     :language: python
     :caption: Create a Factory instance
 
@@ -81,7 +82,7 @@ This creates a new ``AttributeUsage`` element at the root of your project. The
 :meth:`create_<element_type>()` method returns the newly created element.
 
 .. literalinclude:: ../../_static/code/creating-elements.py
-    :lines: 27-29
+    :lines: 48-50
     :language: python
     :caption: Create a new AttributeUsage element with owner
 
@@ -98,19 +99,39 @@ frame.
     - ``value=...`` for simple values (such as numbers).
     - ``expression="..."`` for values with units or expressions.
 
-    .. code:: python
+    .. tab-set::
 
-        new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-            name="lengthWithValue",
-            owner=bike.frame,
-            value=60
-        )
+        .. tab-item:: Dynamic approach
 
-        new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-            name="lengthWithExpression",
-            owner=bike.frame,
-            expression="60 [cm]"
-        )
+            .. code:: python
+
+                new_bicycle_frame_length_with_value = factory.create_attribute_usage(
+                    name="lengthWithValue",
+                    owner=bike.frame,
+                    value=60
+                )
+
+                new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
+                    name="lengthWithExpression",
+                    owner=bike.frame,
+                    expression="60 [cm]"
+                )
+
+        .. tab-item:: Static approach
+
+            .. code:: python
+
+                new_bicycle_frame_length_with_value = factory.create_attribute_usage(
+                    name="lengthWithValue",
+                    owner=bike.get("frame"),
+                    value=60
+                )
+
+                new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
+                    name="lengthWithExpression",
+                    owner=bike.get("frame"),
+                    expression="60 [cm]"
+                )
 
     This lets you set values directly at creation time, depending on your data format.
 
@@ -120,13 +141,79 @@ Update attributes directly
 Update element properties directly using simple assignment. This is useful for quickly changing
 properties like names.
 
-.. code:: python
 
-    >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
-    >>> my_attribute._name = "New Name" # for scripting approach
-    New Name
-    >>> my_attribute.name = "New Name" # for static approach / sysml project
-    New Name
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+            >>> my_attribute._name = "New Name"
+            New Name
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+            >>> my_attribute.name = "New Name"
+            New Name
+
+Moving elements
+---------------
+
+Use ``append()`` - on the owned element property - to move an element to a different container.
+The element is automatically removed from its current container.
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            new_container._owned_element.append(element_to_move)
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            new_container.owned_element.append(element_to_move)
+
+Removing elements
+-----------------
+
+| If you use the ``remove()`` method of the owned element property, the element is deleted from the model.
+| Please use this with caution: if a diagram displays this removed element, the diagram will display errors.
+
+Transaction mode
+----------------
+When you perform write operations, the model is updated after each operation to ensure accuracy. However, if you want to perform multiple write operations without intermediate updates, you can use the transaction mode. In transaction mode, the model updates only after you complete all your operations. This can improve performance when making multiple changes to the model, but be aware that the model will not reflect any changes until you exit the transaction mode.
+
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            my_bike_project.start_transactional_mode()
+
+            bike.frontWheel.rim.weight.parse_and_set_value("0.5 [kg]")
+            bike.rearWheel.rim.weight.parse_and_set_value("0.8 [kg]")
+
+            my_bike_project.stop_transactional_mode()
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            my_bike_project.start_transactional_mode()
+
+            bike.get("frontWheel").get("rim").get("weight").parse_and_set_value("0.5 [kg]")
+            bike.get("rearWheel").get("rim").get("weight").parse_and_set_value("0.8 [kg]")
+
+            my_bike_project.stop_transactional_mode()
 
 .. only:: html
 

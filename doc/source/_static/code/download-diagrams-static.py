@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Download diagrams example for PySAM SysML2."""
+"""Download diagrams static example for PySAM SysML2."""
 
 import requests
 from urllib3.exceptions import InsecureRequestWarning
@@ -47,7 +47,7 @@ sam_rest_api_connector = SamRestApiConnector(
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-project = project_manager.get_scripting_project("<Bike Project ID>")
+project = project_manager.get_sysml_project("<Bike Project ID>")
 
 # -----------------------------------------
 # Work with diagrams
@@ -87,7 +87,7 @@ path = downloader.download_diagram(
 print(f"Diagram saved at: {path}")
 
 
-usage_diagrams = project.get_root_package().Usage.__diagram
+usage_diagrams = project.get_root_package().get("Usage").__diagram
 for i, diagram in enumerate(usage_diagrams, 1):
     downloader.download_diagram(
         diagram_id=diagram._id, file_format="png", path=SAVE_IMAGE_PATH + "/Usage"
