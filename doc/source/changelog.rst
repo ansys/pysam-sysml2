@@ -9,6 +9,61 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.2.0 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.2.0>`_ - March 16, 2026
+=====================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Added
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Static approach
+          - `#110 <https://github.com/ansys/pysam-sysml2/pull/110>`_
+
+        * - Support inherited elements (#112)
+          - `#113 <https://github.com/ansys/pysam-sysml2/pull/113>`_
+
+        * - Add support for transactional mode (#114)
+          - `#115 <https://github.com/ansys/pysam-sysml2/pull/115>`_
+
+
+  .. tab-item:: Dependencies
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Bump ansys/actions from 10.2.5 to 10.2.7
+          - `#109 <https://github.com/ansys/pysam-sysml2/pull/109>`_
+
+
+  .. tab-item:: Documentation
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Some changes about install, links and parameters in code (#107)
+          - `#111 <https://github.com/ansys/pysam-sysml2/pull/111>`_
+
+        * - Fit the documentation for the new release 0.2.0
+          - `#117 <https://github.com/ansys/pysam-sysml2/pull/117>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Update CHANGELOG for v0.1.0
+          - `#106 <https://github.com/ansys/pysam-sysml2/pull/106>`_
+
+
 `0.1.0 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.1.0>`_ - March 04, 2026
 =====================================================================================
 
