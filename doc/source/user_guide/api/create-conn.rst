@@ -36,10 +36,8 @@ PySAM SysML2 uses the :class:`SamRestApiConnector <ansys.sam.sysml2.diagrams.api
 
         .. grid-item::
 
-
-
         .. grid-item-card:: Next step :fa:`arrow-right`
-            :link: load-model
+            :link: approaches
             :link-type: doc
 
-            Load a model
+            Dynamic vs static approaches

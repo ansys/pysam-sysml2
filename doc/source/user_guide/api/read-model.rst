@@ -132,4 +132,4 @@ With underscore (``_``) access, you can find all SysML2 methods:
             :link: write-model
             :link-type: doc
 
-            Write in your model
+            Write data to your model

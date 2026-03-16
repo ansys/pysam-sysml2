@@ -148,7 +148,7 @@ Print the names of diagrams from a section of the model:
             :link: write-model
             :link-type: doc
 
-            Write in your model
+            Write data to your model
 
         .. grid-item-card:: Next step :fa:`arrow-right`
             :link: information

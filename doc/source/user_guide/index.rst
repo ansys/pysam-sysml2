@@ -15,7 +15,7 @@ required information.
             Explains how to use a connector, which is the interface between PySAM SysML2 and the
             SysML V2 server.
 
-        .. grid-item-card:: Approaches dynamic and static
+        .. grid-item-card:: Approaches dynamic and static :fa:`exchange`
             :link: api/approaches
             :link-type: doc
 
@@ -41,7 +41,7 @@ required information.
 
     .. grid:: 2
 
-        .. grid-item-card:: Write in your model :fa:`pencil`
+        .. grid-item-card:: Write data to your model :fa:`pencil`
             :link: api/write-model
             :link-type: doc
 
@@ -68,6 +68,7 @@ required information.
    :hidden:
 
    api/create-conn
+   api/approaches
    api/load-model
    api/read-model
    api/write-model
