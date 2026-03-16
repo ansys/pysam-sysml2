@@ -1,3 +1,5 @@
+.. _Approaches_Section:
+
 Dynamic versus static approaches
 ################################
 
@@ -105,6 +107,8 @@ Choose the approach that best fits your development workflow:
 
 - Use **dynamic** when exploring models interactively and navigating object hierarchies.
 - Use **static** when writing production code in a traditional IDE with type hints and static analysis.
+
+You can find other examples of read/write instructions in :ref:`Read your Model <Read_Model_Section>` and :ref:`Write data to your Model <Write_Model_Section>`.
 
 .. only:: html
 

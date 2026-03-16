@@ -14,7 +14,7 @@ This class helps you load a model in Python, using the SysML2 standard API.
 For more information, see the :class:`SysML2ProjectManager <ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager>` class.
 
 
-With the project manager, you can load two types of projects:
+With the project manager, and the ID of the project you want, you can load two types of projects:
 
 SysML2 project (Static approach)
 ================================
@@ -27,8 +27,6 @@ SysML2 projects use a Python-based metamodel, enabling static completion for all
         "<Computer Project ID>"
     )  # You can find your project ID in the URL of the editor.
 
-Once you provide the project ID, you get a Python version of your model.
-
 Scripting project (Dynamic approach)
 ====================================
 
@@ -39,7 +37,9 @@ Scripting projects use a dynamic class generation approach. This offers flexibil
     :language: python
     :caption: Get the project using the project ID
 
-Once you provide the project ID, you get a Python version of your model.
+Both of the approaches will give you a Python version of your model.
+
+See :ref:`Approaches dynamic and static <Approaches_Section>` for more information about the differences between these approaches and when to use each of them.
 
 .. only:: html
 

@@ -1,9 +1,10 @@
+.. _Write_Model_Section:
+
 Write data to your model
 ########################
 
-.. warning::
+.. note:: To avoid performance issues, don't forget to use `Transaction mode`_. See the bottom of this page for details.
 
-    This is a beta feature and may have some issues.
 
 Update a feature value
 ======================
@@ -158,6 +159,61 @@ properties like names.
             >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
             >>> my_attribute.name = "New Name"
             New Name
+
+Moving Elements
+---------------
+
+Use ``append()`` - on the owned element property - to move an element to a different container.
+The element is automatically removed from its current container.
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            new_container._owned_element.append(element_to_move)
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            new_container.owned_element.append(element_to_move)
+
+Removing Elements
+-----------------
+
+| If you use the ``remove()`` method of the owned element property, the element is deleted from the model.
+| Please use this with caution: if a diagram displays this removed element, the diagram will display errors.
+
+Transaction mode
+----------------
+When you perform write operations, the model is updated after each operation to ensure accuracy. However, if you want to perform multiple write operations without intermediate updates, you can use the transaction mode. In transaction mode, the model updates only after you complete all your operations. This can improve performance when making multiple changes to the model, but be aware that the model will not reflect any changes until you exit the transaction mode.
+
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            my_bike_project.start_transactional_mode()
+
+            bike.frontWheel.rim.weight.parse_and_set_value("0.5 [kg]")
+            bike.rearWheel.rim.weight.parse_and_set_value("0.8 [kg]")
+
+            my_bike_project.stop_transactional_mode()
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            my_bike_project.start_transactional_mode()
+
+            bike.get("frontWheel").get("rim").get("weight").parse_and_set_value("0.5 [kg]")
+            bike.get("rearWheel").get("rim").get("weight").parse_and_set_value("0.8 [kg]")
+
+            my_bike_project.stop_transactional_mode()
 
 .. only:: html
 

@@ -1,3 +1,5 @@
+.. _Read_Model_Section:
+
 Read your model
 ###############
 
