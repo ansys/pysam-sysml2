@@ -37,7 +37,7 @@ Scripting projects use a dynamic class generation approach. This offers flexibil
     :language: python
     :caption: Get the project using the project ID
 
-Both of the approaches will give you a Python version of your model.
+Both of the approaches give you a Python version of your model.
 
 See :ref:`Approaches dynamic and static <Approaches_Section>` for more information about the differences between these approaches and when to use each of them.
 

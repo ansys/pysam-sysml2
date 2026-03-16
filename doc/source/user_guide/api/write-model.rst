@@ -160,7 +160,7 @@ properties like names.
             >>> my_attribute.name = "New Name"
             New Name
 
-Moving Elements
+Moving elements
 ---------------
 
 Use ``append()`` - on the owned element property - to move an element to a different container.
@@ -180,7 +180,7 @@ The element is automatically removed from its current container.
 
             new_container.owned_element.append(element_to_move)
 
-Removing Elements
+Removing elements
 -----------------
 
 | If you use the ``remove()`` method of the owned element property, the element is deleted from the model.
