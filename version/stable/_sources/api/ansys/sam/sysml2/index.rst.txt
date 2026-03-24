@@ -1,0 +1,177 @@
+
+
+
+
+
+
+The ``ansys.sam.sysml2`` library
+================================
+
+.. py:module:: ansys.sam.sysml2
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sysml2
+.. tab-set::
+
+    .. tab-item:: Subpackages
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.api`
+            - API package for SysML V2 API connection.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder`
+            - Builder module for PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes`
+            - Classes module for PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.data_structures`
+            - Data structures module for PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams`
+            - Diagram module for PySAM SysML2 diagram library.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto`
+            - Data Transfer Objects (DTO) module for PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception`
+            - Exception module for PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model`
+            - Metamodel package.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.observer`
+            - Observer package.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools`
+            - Tools module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+    .. tab-item:: Attributes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~__version__`
+            - PySAM SysML2 version.
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-package"></span> api</api/ansys/sam/sysml2/api/index>
+    <span class="nf nf-md-package"></span> builder</api/ansys/sam/sysml2/builder/index>
+    <span class="nf nf-md-package"></span> classes</api/ansys/sam/sysml2/classes/index>
+    <span class="nf nf-md-package"></span> data_structures</api/ansys/sam/sysml2/data_structures/index>
+    <span class="nf nf-md-package"></span> diagrams</api/ansys/sam/sysml2/diagrams/index>
+    <span class="nf nf-md-package"></span> dto</api/ansys/sam/sysml2/dto/index>
+    <span class="nf nf-md-package"></span> exception</api/ansys/sam/sysml2/exception/index>
+    <span class="nf nf-md-package"></span> meta_model</api/ansys/sam/sysml2/meta_model/index>
+    <span class="nf nf-md-package"></span> observer</api/ansys/sam/sysml2/observer/index>
+    <span class="nf nf-md-package"></span> tools</api/ansys/sam/sysml2/tools/index>
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Base module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: __version__
+
+   
+   PySAM SysML2 version.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+

@@ -1,0 +1,261 @@
+
+
+
+
+
+
+:class:`OccurrenceUsage`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.usage.Usage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.OccurrenceUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: OccurrenceUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~portion_kind`
+            - Get the portion kind property.
+          * - :py:attr:`~set_is_individual`
+            - Get the set is individual property.
+          * - :py:attr:`~is_individual`
+            - Get the is individual property.
+          * - :py:attr:`~portioning_feature`
+            - Get the portioning feature property.
+          * - :py:attr:`~occurrence_definition`
+            - Get the occurrence definition property.
+          * - :py:attr:`~individual_definition`
+            - Get the individual definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.occurrence_usage import OccurrenceUsage
+
+Property detail
+---------------
+
+.. py:property:: portion_kind
+   :type: None
+
+
+   
+   Get the portion kind property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property portion kind.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_individual
+   :type: bool
+
+
+   
+   Get the set is individual property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is individual.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_individual
+   :type: None
+
+
+   
+   Get the is individual property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property is individual.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: portioning_feature
+   :type: None
+
+
+   
+   Get the portioning feature property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property portioning feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: occurrence_definition
+   :type: List[Class]
+
+
+   
+   Get the occurrence definition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Class"]
+           Value of property occurrence definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: individual_definition
+   :type: OccurrenceDefinition
+
+
+   
+   Get the individual definition property.
+
+
+
+
+
+   :Returns:
+
+       "OccurrenceDefinition"
+           Value of property individual definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

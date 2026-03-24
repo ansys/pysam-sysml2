@@ -1,0 +1,88 @@
+
+
+
+
+
+
+The ``query_exception.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.exception.query_exception
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: query_exception
+.. tab-set::
+
+
+
+
+
+
+    .. tab-item:: Exceptions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.query_exception.QueryException`
+            - Top exception for queries.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.query_exception.InvalidQuery`
+            - Exception when the JSON query is invalid.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.query_exception.InvalidCompositeConstraint`
+            - Exception when the composite constraint is invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-lightning_bolt"></span> QueryException</api/ansys/sam/sysml2/exception/query_exception/QueryException>
+    <span class="nf nf-md-lightning_bolt"></span> InvalidQuery</api/ansys/sam/sysml2/exception/query_exception/InvalidQuery>
+    <span class="nf nf-md-lightning_bolt"></span> InvalidCompositeConstraint</api/ansys/sam/sysml2/exception/query_exception/InvalidCompositeConstraint>
+
+
+
+
+
+
+
+Description
+-----------
+
+Query exception module.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

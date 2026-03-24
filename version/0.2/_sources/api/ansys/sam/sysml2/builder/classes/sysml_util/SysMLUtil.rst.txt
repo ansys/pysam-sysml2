@@ -1,0 +1,156 @@
+
+
+
+
+
+
+:class:`SysMLUtil`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.builder.classes.sysml_util.SysMLUtil
+
+   
+   Provides the SysML utility class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+.. py:currentmodule:: SysMLUtil
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+
+   .. tab-item:: Static methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~check_inherited_name`
+            - Check and return the name of the element.
+          * - :py:attr:`~check_sysml_inherited_name`
+            - Check and return the name of the element.
+          * - :py:attr:`~get_sysml_constructor`
+            - Get the class constructor from type.
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+
+
+
+Method detail
+-------------
+
+.. py:method:: check_inherited_name(element: ansys.sam.sysml2.classes.sysml_element.SysMLElement) -> str
+   :staticmethod:
+
+
+   
+   Check and return the name of the element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: check_sysml_inherited_name(element: ansys.sam.sysml2.meta_model.element.Element) -> str
+   :staticmethod:
+
+
+   
+   Check and return the name of the element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_sysml_constructor(element_type: str) -> ansys.sam.sysml2.meta_model.e_object.EObject
+   :staticmethod:
+
+
+   
+   Get the class constructor from type.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

@@ -1,0 +1,83 @@
+
+
+
+
+
+
+The ``mapper_exception.py`` module
+==================================
+
+.. py:module:: ansys.sam.sysml2.exception.mapper_exception
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: mapper_exception
+.. tab-set::
+
+
+
+
+
+
+    .. tab-item:: Exceptions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.mapper_exception.MapperException`
+            - Top-level exception for mapper exception.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.mapper_exception.InvalidProjectJSONMapperException`
+            - Exception when the give project JSON is invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-lightning_bolt"></span> MapperException</api/ansys/sam/sysml2/exception/mapper_exception/MapperException>
+    <span class="nf nf-md-lightning_bolt"></span> InvalidProjectJSONMapperException</api/ansys/sam/sysml2/exception/mapper_exception/InvalidProjectJSONMapperException>
+
+
+
+
+
+
+
+Description
+-----------
+
+Exception file for mappers.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+
