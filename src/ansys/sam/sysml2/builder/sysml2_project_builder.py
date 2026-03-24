@@ -263,7 +263,7 @@ class SysML2ProjectBuilder:
                 [
                     setattr(element, getattr(x, "_name"), x)
                     for x in all_element
-                    if hasattr(x, "_name")
+                    if hasattr(x, "_name") and getattr(x, "_name") is not None
                 ]
                 self._resolve_inherited_elements(project, element)
         else:
@@ -396,7 +396,8 @@ class SysML2ProjectBuilder:
             Contained inherited elements.
         """
         for name, inherited_element in inherited_elements.items():
-            setattr(element, name, inherited_element)
+            if name is not None:
+                setattr(element, name, inherited_element)
 
     def __get_all_element(self, element: SysMLElement) -> list:
         """Parse all definitions from the element and return its owned elements."""
