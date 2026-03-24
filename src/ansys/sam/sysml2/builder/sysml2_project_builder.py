@@ -263,7 +263,7 @@ class SysML2ProjectBuilder:
                 [
                     setattr(element, getattr(x, "_name"), x)
                     for x in all_element
-                    if hasattr(x, "_name")
+                    if hasattr(x, "_name") and getattr(x, "_name") is not None
                 ]
                 self._resolve_inherited_elements(project, element)
         else:
