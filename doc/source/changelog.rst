@@ -9,6 +9,32 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.2.1 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.2.1>`_ - March 24, 2026
+=====================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Fixed
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Improve attribute assignment condition for inherited elements #120
+          - `#121 <https://github.com/ansys/pysam-sysml2/pull/121>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Update CHANGELOG for v0.2.0
+          - `#118 <https://github.com/ansys/pysam-sysml2/pull/118>`_
+
+
 `0.2.0 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.2.0>`_ - March 16, 2026
 =====================================================================================
 
