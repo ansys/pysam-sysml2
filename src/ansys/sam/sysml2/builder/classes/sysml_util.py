@@ -53,11 +53,11 @@ class SysMLUtil:
             return "::" + element
         if hasattr(element, "name"):
             return getattr(element, "name")
-        elif hasattr(element, "_redefinedFeature"):
-            redefined_feature = getattr(element, "redefinedFeature", [])
+        elif hasattr(element, "redefined_feature"):
+            redefined_feature = getattr(element, "redefined_feature", [])
             if isinstance(redefined_feature, list) and len(redefined_feature) > 0:
-                redefined_feature = getattr(element, "redefinedFeature")[0]
-            return SysMLUtil.check_inherited_name(redefined_feature)
+                redefined_feature = getattr(element, "redefined_feature")[0]
+            return SysMLUtil.check_sysml_inherited_name(redefined_feature)
         else:
             return element.__class__.__name__.split(".")[-1] + "::" + element.id
 
