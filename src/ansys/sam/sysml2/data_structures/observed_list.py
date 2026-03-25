@@ -53,7 +53,6 @@ def mount_observer_and_access(function):
 class ObservedList(list):
     """React (notification) on each list operation."""
 
-    _content: list
     _name: str
     _owner: Union["Element" | "SysMLElement"]  # noqa: F821
 
@@ -125,4 +124,4 @@ class ObservedList(list):
     @mount_observer_and_access
     def __delitem__(self, key):
         """Override the list __delitem__ method."""
-        return super().__delattr__(key)
+        return super().__delitem__(key)

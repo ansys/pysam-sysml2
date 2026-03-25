@@ -67,9 +67,9 @@ class SAMDiagramManager:
         diagrams : Dict[str,dict]
             Diagrams
         """
-        model.get_root_package()._observer.stop_observer()
+        model.get_root_package()._observer.stop()
         for id, element in diagrams.items():
             model_element = model.find_element_by_id(id)
             if model_element is not None:
                 setattr(model_element, "__diagram", element)
-        model.get_root_package()._observer.start_observer()
+        model.get_root_package()._observer.start()

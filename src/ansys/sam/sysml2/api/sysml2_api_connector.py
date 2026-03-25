@@ -22,16 +22,21 @@
 
 """Top-level interface module for SysML2 API."""
 
+from abc import ABC, abstractmethod
 
-class SysML2APIConnector:
+
+class SysML2APIConnector(ABC):
     """Provides the SysML2 API Connector interface."""
 
+    @abstractmethod
     def get_projects(self) -> list:
         """Get all projects of the connected user."""
 
+    @abstractmethod
     def get_project_by_id(self, project_id: str) -> dict:
         """Get project information for the given ID."""
 
+    @abstractmethod
     def create_project(
         self,
         project_name: str,
@@ -53,9 +58,11 @@ class SysML2APIConnector:
             Project record.
         """
 
+    @abstractmethod
     def get_all_elements(self, project_id: str) -> list:
         """Get all elements of the given project."""
 
+    @abstractmethod
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
         Get an element by ID and return its information.
@@ -73,9 +80,11 @@ class SysML2APIConnector:
             Information of the element.
         """
 
+    @abstractmethod
     def get_root_elements(self, project_id: str) -> list:
         """Get all root elements of the project."""
 
+    @abstractmethod
     def execute_query(self, project_id: str, query: str) -> dict:
         """
         Send a query to the standard API using the connector.
@@ -92,8 +101,8 @@ class SysML2APIConnector:
         dict
             Result of the query.
         """
-        pass
 
+    @abstractmethod
     def create_commit(self, project_id: str, commit: str) -> dict:
         """
         Send a commit, provided as a JSON string, to the standard API.

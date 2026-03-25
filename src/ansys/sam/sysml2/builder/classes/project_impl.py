@@ -88,7 +88,10 @@ class ProjectImpl(Project):
 
     def get_root_package(self) -> Package:
         """Get the root package."""
-        return [x for x in self._root if isinstance(x, Package) and x.name == self._name][0]
+        matches = [x for x in self._root if isinstance(x, Package) and x.name == self._name]
+        if not matches:
+            raise ValueError(f"No root Package named '{self._name}' found in project")
+        return matches[0]
 
     def get_name(self) -> str:
         """Get the project name."""
@@ -125,7 +128,7 @@ class ProjectImpl(Project):
             List of elements retrieved.
         """
         return [
-            el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == elements_name
+            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == elements_name
         ]
 
     def start_transactional_mode(self):

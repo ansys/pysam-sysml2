@@ -89,11 +89,30 @@ class ModificationObserver:
             if self._is_transactional_mode:
                 self._register_change(element_id, name, value)
             else:
-                self._commit_change(element_id, name, value)
+                self._commit_single_change(element_id, name, value)
 
-    def _commit_change(self, element_id: str, name: str, value: Any):
+    def list_notify(self, element_id: str, name: str, list_content: List):
         """
-        Commit current change on the element.
+        Catch modification on a list.
+
+        Parameters
+        ----------
+        element_id : str
+            Modified element ID.
+        name : str
+            Key of the modified field.
+        list_content : Any
+            Updated content of the modified list field.
+        """
+        if self._working_observer:
+            if self._is_transactional_mode:
+                self._register_list_change(element_id, name, list_content)
+            else:
+                self._commit_single_change(element_id, name, list_content)
+
+    def _commit_single_change(self, element_id: str, name: str, value: Any):
+        """
+        Commit a single field change on the element.
 
         Parameters
         ----------
@@ -113,7 +132,6 @@ class ModificationObserver:
         change.add_change(name, value)
 
         commit.add_change(change)
-
         self._connector.create_commit(self._project_id, commit.to_json())
         self.reload_project()
 
@@ -134,50 +152,6 @@ class ModificationObserver:
             self._stack[element_id].append((name, value))
         else:
             self._stack[element_id] = [(name, value)]
-
-    def list_notify(self, element_id: str, name: str, list_content: List):
-        """
-        Catch modification on a list.
-
-        Parameters
-        ----------
-        element_id : str
-            Modified element ID.
-        name : str
-            Key of the modified field.
-        list_content : Any
-            Updated content of the modified list field.
-        """
-        if self._working_observer:
-            if self._is_transactional_mode:
-                self._register_list_change(element_id, name, list_content)
-            else:
-                self._commit_list_change(element_id, name, list_content)
-
-    def _commit_list_change(self, element_id: str, name: str, list_content: List):
-        """
-        Commit current change on a list.
-
-        Parameters
-        ----------
-        element_id : str
-            Modified element ID.
-        name : str
-            Name of the list.
-        list_content : List
-            New content of the list.
-        """
-        commit = Commit(self._project_id)
-        change = DataVersion()
-
-        change.identify(element_id)
-        if name.startswith("_"):
-            name = name[1:]
-        change.add_change(name, list_content)
-
-        commit.add_change(change)
-        self._connector.create_commit(self._project_id, commit.to_json())
-        self.reload_project()
 
     def _register_list_change(self, element_id: str, name: str, list_content: List):
         """
@@ -251,11 +225,11 @@ class ModificationObserver:
         builder = SysML2ProjectBuilder(self._connector)
         builder.reload_project(self, self._project)
 
-    def stop_observer(self):
+    def stop(self):
         """Disconnect the observer."""
         self._working_observer = False
 
-    def start_observer(self):
+    def start(self):
         """Connect the observer."""
         self._working_observer = True
 

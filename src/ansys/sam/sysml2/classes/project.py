@@ -22,24 +22,44 @@
 
 """Project Interface for users."""
 
+from abc import ABC, abstractmethod
 from typing import List
 
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.package import Package
 
 
-class Project:
+class Project(ABC):
     """Provides the project interface for users."""
 
+    @property
+    def root(self) -> List[Package]:
+        """Get a list of root packages."""
+        return self.get_root()
+
+    @property
+    def name(self) -> str:
+        """Get the project name."""
+        return self.get_name()
+
+    @property
+    def root_package(self) -> Package:
+        """Get the root package."""
+        return self.get_root_package()
+
+    @abstractmethod
     def get_root(self) -> List[Package]:
         """Get a list of root packages."""
 
+    @abstractmethod
     def get_name(self) -> str:
         """Get the project name."""
 
+    @abstractmethod
     def get_root_package(self) -> Package:
         """Get the root package."""
 
+    @abstractmethod
     def find_element_by_id(self, element_id: str) -> Element:
         """
         Find an element by ID.
@@ -55,6 +75,7 @@ class Project:
             Element retrieved.
         """
 
+    @abstractmethod
     def find_elements_by_name(self, elements_name: str) -> List[Element]:
         """
         Find all elements by name.
@@ -70,6 +91,7 @@ class Project:
             The list of elements retrieved
         """
 
+    @abstractmethod
     def start_transactional_mode(self):
         """
         Start a transactional mode for model edition.
@@ -81,6 +103,7 @@ class Project:
         until the commit of all changes.
         """
 
+    @abstractmethod
     def stop_transactional_mode(self):
         """
         Stop the current transaction.

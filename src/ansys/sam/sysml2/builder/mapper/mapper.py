@@ -21,16 +21,21 @@
 # SOFTWARE.
 """Generic interface for mappers."""
 
-from typing import Union
+from abc import ABC, abstractmethod
+from io import UnsupportedOperation
+from typing import List, Union
 
 from ansys.sam.sysml2.classes.mapped_element import MappedElement
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
+from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 from ansys.sam.sysml2.meta_model.element import Element
 
 
-class Mapper:
+class Mapper(ABC):
     """Generic interface for mappers."""
 
+    @abstractmethod
     def map(
         self,
         name_space: str,
@@ -54,3 +59,77 @@ class Mapper:
         MappedElement
             Mapper element.
         """
+
+    def _add_default_field(self, element, field_name: str, field_value) -> List:
+        """Set a scalar field on the element.
+
+        Parameters
+        ----------
+        element : Union[Element, SysMLElement]
+            Destination element.
+        field_name : str
+            Field name.
+        field_value : Any
+            Field value.
+
+        Returns
+        -------
+        List
+            Empty list because the field is already resolved.
+        """
+        setattr(element, field_name, field_value)
+        return []
+
+    def _add_element_to_field(self, element, key: str, value: dict) -> List[UnresolvedField]:
+        """Set a reference field and create an unresolved link.
+
+        Parameters
+        ----------
+        element : Union[Element, SysMLElement]
+            Destination element.
+        key : str
+            Field name.
+        value : dict
+            Field value containing an ``@id`` key.
+
+        Returns
+        -------
+        List[UnresolvedField]
+            List containing the unresolved field.
+        """
+        setattr(element, key, value["@id"])
+        return [UnresolvedField(element, key, value["@id"])]
+
+    def _add_list_to_field(self, element, key: str, field_values: list) -> List[UnresolvedField]:
+        """Set a list field, creating unresolved links for reference items.
+
+        Parameters
+        ----------
+        element : Union[Element, SysMLElement]
+            Destination element.
+        key : str
+            Field name.
+        field_values : list
+            Field values.
+
+        Returns
+        -------
+        List[UnresolvedField]
+            List of all unresolved fields created for reference items.
+        """
+        if all(isinstance(value, dict) for value in field_values):
+            setattr(
+                element,
+                key,
+                ObservedList(element, key, *[value["@id"] for value in field_values]),
+            )
+            return [UnresolvedField(element, key, value["@id"]) for value in field_values]
+        elif not any(isinstance(value, dict) for value in field_values):
+            setattr(
+                element,
+                key,
+                ObservedList(element, key, *field_values),
+            )
+            return []
+        else:
+            raise UnsupportedOperation(f"Could not index list for {key}.")

@@ -1878,6 +1878,8 @@ class Factory:
             x for x in diff_elements if SysMLTools.isinstance(self._project._env[x], element_type)
         )
 
+        if len(new_elements_ids) == 0:
+            raise ValueError(f"No element of type '{element_type}' found after reload")
         if len(new_elements_ids) > 1:
             raise ValueError("Too many elements of this type found on reload")
 

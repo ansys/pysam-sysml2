@@ -58,7 +58,7 @@ class EObject:
         return ValueHelper.get_value_for_sysml_element(self)
 
     def delete(self):
-        """Delete the element from the model."""
+        """Delete the element from the model via the observer's commit to the server."""
         if self._observer is not None:
             self._observer.delete_element(self.id)
         del self
