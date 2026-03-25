@@ -31,6 +31,21 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 class ScriptingProject(ABC):
     """Project Interface for users."""
 
+    @property
+    def root(self) -> List[SysMLElement]:
+        """Get a list of root packages."""
+        return self.get_root()
+
+    @property
+    def name(self) -> str:
+        """Get the project name."""
+        return self.get_name()
+
+    @property
+    def root_package(self) -> SysMLElement:
+        """Get the root package."""
+        return self.get_root_package()
+
     @abstractmethod
     def get_name(self) -> str:
         """Get the project name."""

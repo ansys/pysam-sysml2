@@ -127,7 +127,7 @@ class ScriptingProjectImpl(ScriptingProject):
             List of elements retrieved.
         """
         return [
-            el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == elements_name
+            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == elements_name
         ]
 
     def start_transactional_mode(self):

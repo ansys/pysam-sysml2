@@ -95,51 +95,61 @@ class SysML2ProjectBuilder:
         self.extract_root_and_check_names(project)
 
     def extract_root_and_check_names(self, project: Union[Project | ScriptingProject]):
-        """Parse all project elements, extract the root element, and update names."""
-        roots = list()
-        add_function = None
+        """Extract root elements and resolve inherited names in a single pass.
+
+        Both operations are combined into one iteration over the project
+        environment to avoid looping twice. Use ``check_names`` or
+        ``extract_root`` individually when only one operation is needed.
+        """
+        roots = []
         if isinstance(project, Project):
-            add_function = self.filter_and_add_sysml_element
+            for element in project._env.values():
+                setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
+                if element.owner is None:
+                    roots.append(element)
         elif isinstance(project, ScriptingProject):
-            add_function = self.filter_and_add_scripting_element
+            for element in project._env.values():
+                setattr(element, "_name", SysMLUtil.check_inherited_name(element))
+                if "_owner" not in dir(element):
+                    roots.append(element)
         else:
             raise TypeError(
                 f"Unsupported project type: {type(project).__name__}. "
                 "Expected Project or ScriptingProject."
             )
-        for _, element in project._env.items():
-            add_function(element, roots)
         project._root = roots
 
-    def filter_and_add_sysml_element(self, element: Element, roots: List):
-        """
-        Filter and check root packages for SysML projects.
+    def check_names(self, project: Union[Project | ScriptingProject]):
+        """Resolve inherited names for all elements."""
+        if isinstance(project, Project):
+            for element in project._env.values():
+                setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
+        elif isinstance(project, ScriptingProject):
+            for element in project._env.values():
+                setattr(element, "_name", SysMLUtil.check_inherited_name(element))
+        else:
+            raise TypeError(
+                f"Unsupported project type: {type(project).__name__}. "
+                "Expected Project or ScriptingProject."
+            )
 
-        Parameters
-        ----------
-        element : Element
-            Element to check.
-        roots : List
-            List of root packages.
-        """
-        setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
-        if element.owner is None:
-            roots.append(element)
-
-    def filter_and_add_scripting_element(self, element: SysMLElement, roots: List):
-        """
-        Filter and check root packages for Scripting project.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            Element to check.
-        roots : List
-            List of root packages.
-        """
-        setattr(element, "_name", SysMLUtil.check_inherited_name(element))
-        if "_owner" not in dir(element):
-            roots.append(element)
+    def extract_root(self, project: Union[Project | ScriptingProject]):
+        """Extract root elements from the project."""
+        roots = []
+        if isinstance(project, Project):
+            for element in project._env.values():
+                if element.owner is None:
+                    roots.append(element)
+        elif isinstance(project, ScriptingProject):
+            for element in project._env.values():
+                if "_owner" not in dir(element):
+                    roots.append(element)
+        else:
+            raise TypeError(
+                f"Unsupported project type: {type(project).__name__}. "
+                "Expected Project or ScriptingProject."
+            )
+        project._root = roots
 
     def _get_mapper(self, project: Union[Project | ScriptingProject]) -> Mapper:
         """
@@ -252,7 +262,7 @@ class SysML2ProjectBuilder:
     def _resolve_inherited_link(self, project: Union[Project | ScriptingProject]):
         """Resolve all inherited elements and add them as members."""
         if isinstance(project, ScriptingProject):
-            for _, element in project._env.copy().items():
+            for element in list(project._env.values()):
                 for x in dir(element):
                     if not x.startswith("_") and x not in [
                         "get_value",
@@ -267,7 +277,7 @@ class SysML2ProjectBuilder:
                         setattr(element, getattr(x, "_name"), x)
                 self._resolve_inherited_elements(project, element)
         else:
-            for _, element in project._env.copy().items():
+            for element in list(project._env.values()):
                 element._element_hash_map = self.__get_all_sysml_element(element)
                 self._resolve_inherited_elements(project, element)
         self._resolve_fields(project)
@@ -414,7 +424,7 @@ class SysML2ProjectBuilder:
     def _add_write_access(self, project: ScriptingProjectImpl):
         """Add write rules access on the project."""
         project_modification_observer = ModificationObserver(project, self._connector)
-        for _, element in project._env.items():
+        for element in project._env.values():
             element._observer = project_modification_observer
 
     def _index_sysml_libraries(self, libraries_elements, element, project):
@@ -437,7 +447,7 @@ class SysML2ProjectBuilder:
             call = self._index_scripting_libraries
         else:
             raise TypeError(f"Unsupported project type: {type(project).__name__}. ")
-        for _, element in project._env.items():
+        for element in project._env.values():
             call(libraries_elements, element, project)
         project._libraries_ids = libraries_elements
 
@@ -454,9 +464,9 @@ class SysML2ProjectBuilder:
         project : ScriptingProjectImpl
             Scripting project instance to reload.
         """
-        modification_observer.stop_observer()
+        modification_observer.stop()
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
         self._index_libraries(project)
-        modification_observer.start_observer()
+        modification_observer.start()

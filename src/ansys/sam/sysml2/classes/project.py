@@ -32,6 +32,21 @@ from ansys.sam.sysml2.meta_model.package import Package
 class Project(ABC):
     """Provides the project interface for users."""
 
+    @property
+    def root(self) -> List[Package]:
+        """Get a list of root packages."""
+        return self.get_root()
+
+    @property
+    def name(self) -> str:
+        """Get the project name."""
+        return self.get_name()
+
+    @property
+    def root_package(self) -> Package:
+        """Get the root package."""
+        return self.get_root_package()
+
     @abstractmethod
     def get_root(self) -> List[Package]:
         """Get a list of root packages."""

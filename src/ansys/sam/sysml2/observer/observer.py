@@ -225,11 +225,11 @@ class ModificationObserver:
         builder = SysML2ProjectBuilder(self._connector)
         builder.reload_project(self, self._project)
 
-    def stop_observer(self):
+    def stop(self):
         """Disconnect the observer."""
         self._working_observer = False
 
-    def start_observer(self):
+    def start(self):
         """Connect the observer."""
         self._working_observer = True
 
