@@ -22,6 +22,7 @@
 
 """Template for implementation of endpoint."""
 
+from abc import abstractmethod
 import json
 from typing import Callable
 
@@ -338,9 +339,11 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         else:
             raise HTTPResponseException(response.content)
 
+    @abstractmethod
     def _build_endpoint(self, endpoint: str) -> str:
         """Build the full URL from the API endpoint."""
 
+    @abstractmethod
     def _add_authentication_field(self, http_request: HttpRequest) -> HttpRequest:
         """
         Update the HTTP request with the correct authentication field.

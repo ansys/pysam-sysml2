@@ -65,7 +65,7 @@ class SysMLElement:
         ValueHelper.set_or_update_value(self, type(new_value), new_value)
 
     def delete(self):
-        """Delete the element from the model."""
+        """Delete the element from the model via the observer's commit to the server."""
         if self._observer is not None:
             self._observer.delete_element(self._id)
         del self

@@ -22,14 +22,12 @@
 
 """JSON mapper class."""
 
-from io import UnsupportedOperation
 from typing import List, Union
 
 from ansys.sam.sysml2.builder.mapper.mapper import Mapper
 from ansys.sam.sysml2.classes.mapped_element import MappedElement
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
-from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
@@ -142,85 +140,8 @@ class ScriptingMapper(Mapper):
         """
         field_name = "_" + field_name
         if isinstance(field_values, list):
-            return self.__add_list_to_field(element, field_name, field_values)
+            return self._add_list_to_field(element, field_name, field_values)
         if isinstance(field_values, dict):
-            return self.__add_element_to_field(element, field_name, field_values)
+            return self._add_element_to_field(element, field_name, field_values)
         else:
-            return self.__add_default_field(element, field_name, field_values)
-
-    def __add_default_field(self, element: SysMLElement, field_name: str, field_value: str) -> List:
-        """
-        Adder for default type.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            Destination element.
-        field_name : str
-            Field name.
-        field_value : str
-            Field value.
-
-        Returns
-        -------
-        List
-            Empty list because the fields are already resolved.
-        """
-        setattr(element, field_name, field_value)
-        return []
-
-    def __add_element_to_field(self, element: SysMLElement, key: str, value: dict):
-        """
-        Adder for simple element field.
-
-        Parameters
-        ----------
-            element : SysMLElement
-                Destination element.
-            key : str
-                Field name.
-            value : dict
-                Field value.
-
-        Returns
-        -------
-        List[UnresolvedField]
-            List of the unresolved field.
-        """
-        setattr(element, key, value["@id"])
-        return [UnresolvedField(element, key, value["@id"])]
-
-    def __add_list_to_field(self, element: SysMLElement, key: str, field_values: list):
-        """
-        Adder function for list elements value.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            Destination element.
-        key : str
-            Field name.
-        field_values : list
-            Field values.
-
-        Returns
-        -------
-        List[UnresolvedField]
-            List of all unresolved fields created for the list elements.
-        """
-        if all(isinstance(value, dict) for value in field_values):
-            setattr(
-                element,
-                key,
-                ObservedList(element, key, *[value["@id"] for value in field_values]),
-            )
-            return [UnresolvedField(element, key, value["@id"]) for value in field_values]
-        elif not any(isinstance(value, dict) for value in field_values):
-            setattr(
-                element,
-                key,
-                ObservedList(element, key, *field_values),
-            )
-            return []
-        else:
-            raise UnsupportedOperation(f"Could not index list for {key}.")
+            return self._add_default_field(element, field_name, field_values)

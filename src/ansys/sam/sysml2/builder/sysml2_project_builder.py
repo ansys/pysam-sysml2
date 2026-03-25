@@ -40,6 +40,7 @@ from ansys.sam.sysml2.dto.query.constraints_classes import (
 )
 from ansys.sam.sysml2.dto.query.query_class import Query
 from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
+from ansys.sam.sysml2.exception.mapper_exception import MapperException
 from ansys.sam.sysml2.meta_model.e_object import EObject
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.observer.observer import ModificationObserver
@@ -103,7 +104,7 @@ class SysML2ProjectBuilder:
             add_function = self.filter_and_add_scripting_element
         else:
             raise TypeError(
-                f"Unsupported project type: {type(project).name}. "
+                f"Unsupported project type: {type(project).__name__}. "
                 "Expected Project or ScriptingProject."
             )
         for _, element in project._env.items():
@@ -164,7 +165,7 @@ class SysML2ProjectBuilder:
         elif isinstance(project, ScriptingProject):
             return self._mappers.get("Scripting")
         else:
-            raise Exception()
+            raise MapperException(f"No mapper found for project type: {type(project).__name__}")
 
     def _map_element_in_project(self, project: Union[Project | ScriptingProject], elements: list):
         """
@@ -246,25 +247,24 @@ class SysML2ProjectBuilder:
         else:
             cp = PrimitiveConstraint(property="@id", value=list(missing_elements)[0])
         query.where = cp
-        self.missing = set()
         return self._connector.execute_query(project._id, query.to_json())
 
     def _resolve_inherited_link(self, project: Union[Project | ScriptingProject]):
         """Resolve all inherited elements and add them as members."""
         if isinstance(project, ScriptingProject):
             for _, element in project._env.copy().items():
-                [
-                    delattr(element, x)
-                    for x in dir(element)
-                    if not x.startswith("_")
-                    and x not in ["get_value", "parse_and_set_value", "set_value", "delete"]
-                ]
+                for x in dir(element):
+                    if not x.startswith("_") and x not in [
+                        "get_value",
+                        "parse_and_set_value",
+                        "set_value",
+                        "delete",
+                    ]:
+                        delattr(element, x)
                 all_element = self.__get_all_element(element)
-                [
-                    setattr(element, getattr(x, "_name"), x)
-                    for x in all_element
-                    if hasattr(x, "_name") and getattr(x, "_name") is not None
-                ]
+                for x in all_element:
+                    if hasattr(x, "_name") and getattr(x, "_name") is not None:
+                        setattr(element, getattr(x, "_name"), x)
                 self._resolve_inherited_elements(project, element)
         else:
             for _, element in project._env.copy().items():
@@ -436,7 +436,7 @@ class SysML2ProjectBuilder:
         elif isinstance(project, ScriptingProject):
             call = self._index_scripting_libraries
         else:
-            raise TypeError(f"Unsupported project type: {type(project).name}. ")
+            raise TypeError(f"Unsupported project type: {type(project).__name__}. ")
         for _, element in project._env.items():
             call(libraries_elements, element, project)
         project._libraries_ids = libraries_elements
