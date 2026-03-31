@@ -9,6 +9,42 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.2.2 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.2.2>`_ - March 31, 2026
+=====================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Fixed
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Refactor owner check for SysML element #124
+          - `#125 <https://github.com/ansys/pysam-sysml2/pull/125>`_
+
+
+  .. tab-item:: Dependencies
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Bump actions/download-artifact from 8.0.0 to 8.0.1
+          - `#119 <https://github.com/ansys/pysam-sysml2/pull/119>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Update CHANGELOG for v0.2.1
+          - `#122 <https://github.com/ansys/pysam-sysml2/pull/122>`_
+
+
 `0.2.1 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.2.1>`_ - March 24, 2026
 =====================================================================================
 
