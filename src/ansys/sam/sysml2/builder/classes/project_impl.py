@@ -88,6 +88,8 @@ class ProjectImpl(Project):
 
     def get_root_package(self) -> Package:
         """Get the root package."""
+        if len(self._root) == 0:
+            raise ValueError("The project does not contain any root package.")
         return [x for x in self._root if isinstance(x, Package) and x.name == self._name][0]
 
     def get_name(self) -> str:
