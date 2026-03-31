@@ -21,8 +21,6 @@
 # SOFTWARE.
 """SysML specific mapper for SysML version."""
 
-from typing import List, Union
-
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.builder.mapper.mapper import Mapper
 from ansys.sam.sysml2.classes.mapped_element import MappedElement
@@ -36,18 +34,18 @@ from ansys.sam.sysml2.meta_model.feature_value import FeatureValue
 TYPE_KEY = "@type"
 
 
-class SysmlMapper(Mapper):
-    """JSON mapper class for SysML version."""
+class SysMLMapper(Mapper):
+    """JSON mapper for SysML meta-model elements."""
 
     class_cache = {}
 
-    def map(self, name_space: str, json_element: dict, mapped_element: Element) -> MappedElement:
+    def map(self, namespace: str, json_element: dict, mapped_element: Element) -> MappedElement:
         """
         Map the JSON into a python element.
 
         Parameters
         ----------
-        name_space : str
+        namespace : str
             Project namespace.
         json_element : dict
             Element data.
@@ -62,15 +60,15 @@ class SysmlMapper(Mapper):
         if TYPE_KEY not in json_element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(name_space, json_element, mapped_element)
+        return self.__build_element(namespace, json_element, mapped_element)
 
-    def __build_element(self, name_space: str, data: dict, element: Element) -> MappedElement:
+    def __build_element(self, namespace: str, data: dict, element: Element | None) -> MappedElement:
         """
         Map element data to python object.
 
         Parameters
         ----------
-        name_space : str
+        namespace : str
             Project namespace.
         data : dict
             Element data.
@@ -82,25 +80,25 @@ class SysmlMapper(Mapper):
         MappedElement
             Mapped element with the SysML element and its unresolved fields.
         """
-        unresolved_fields = list()
+        unresolved_fields = []
         if element is None:
             constructor = SysMLUtil.get_sysml_constructor(data[TYPE_KEY])
             element = constructor(id=data["@id"])
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        if not element.qualified_name.startswith(name_space) and not isinstance(
+        if not element.qualified_name.startswith(namespace) and not isinstance(
             element, FeatureValue
         ):
-            unresolved_fields = list()
+            unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 
     def __add_fields(
         self,
         element: Element,
         field_name: str,
-        field_values: Union[dict | list | str],
-    ) -> List[UnresolvedField]:
+        field_values: dict | list | str,
+    ) -> list[UnresolvedField]:
         """
         Associate element and value with key.
 

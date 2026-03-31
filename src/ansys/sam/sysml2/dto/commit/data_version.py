@@ -28,16 +28,16 @@ from typing import Any
 
 @dataclass
 class DataVersion:
-    """Edits or creates a SysML element."""
+    """Data payload for a single element version in a commit."""
 
     payload: dict = field(default_factory=dict)
-    identity: str = field(default=None)
+    identity: str | None = field(default=None)
 
-    def identify(self, element_id: str):
+    def identify(self, element_id: str) -> None:
         """Set the identity with the given element ID of the data version."""
         self.identity = element_id
 
-    def add_change(self, key: str, value: Any):
+    def add_change(self, key: str, value: Any) -> None:
         """
         Add the change into the data version. Also serialize the data if it's needed.
 
@@ -78,7 +78,7 @@ class DataVersion:
         data = {
             "@type": "DataVersion",
         }
-        if self.payload != {}:
+        if self.payload:
             data["payload"] = self.payload
         if self.identity is not None:
             data["identity"] = {"@id": self.identity, "@type": "DataIdentity"}

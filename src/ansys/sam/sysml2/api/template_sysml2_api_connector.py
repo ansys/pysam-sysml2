@@ -116,7 +116,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
                 "When creating a project, its name must be non-empty."
             )
         http_request = self._build_http_request(endpoint="/projects")
-        http_request.json = {
+        http_request.json_body = {
             "name": project_name,
             "description": project_description,
         }
@@ -204,13 +204,13 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             Result of the query.
         """
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/query-results")
-        http_request.json = json.loads(query)
+        http_request.json_body = json.loads(query)
         return self._send_request(http_request=http_request, call=requests.post)
 
     def create_commit(self, project_id: str, commit: str) -> dict:
         """Send a commit, provided as a JSON string, to the standard API."""
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/commit")
-        http_request.json = json.loads(commit)
+        http_request.json_body = json.loads(commit)
         return self._send_request(http_request=http_request, call=requests.post)
 
     def _build_http_request(self, endpoint: str) -> HttpRequest:
@@ -233,7 +233,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def _send_request(self, http_request: HttpRequest, call: Callable) -> object:
         """
-        Send_request send the http request throws the call function.
+        Send the HTTP request using the provided call function.
 
         Parameters
         ----------
@@ -241,8 +241,6 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             Request to send.
         call : Callable
             Call function for sending the request.
-        exception_dict : dict
-            Association of exception for HTTP return code.
 
         Returns
         -------
@@ -260,7 +258,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         """
         response = None
         try:
-            response = call(**http_request.explode(), verify=self._use_ssl)
+            response = call(**http_request.to_dict(), verify=self._use_ssl)
         except Exception as e:
             raise ConnectorConnectionException(e)
 

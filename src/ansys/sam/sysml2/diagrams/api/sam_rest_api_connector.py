@@ -158,7 +158,7 @@ class SamRestApiConnector(SamApiConnector):
         http_request : HttpRequest
             Request object containing URL, headers, and body.
         call : Callable
-            HTTP method function (such a ``requests.get`` or ``requests.post``).
+            HTTP method function (such as ``requests.get`` or ``requests.post``).
 
         Returns
         -------
@@ -174,7 +174,7 @@ class SamRestApiConnector(SamApiConnector):
         """
         response = None
         try:
-            response = call(**http_request.explode(), verify=self._use_ssl)
+            response = call(**http_request.to_dict(), verify=self._use_ssl)
         except Exception as e:
             raise ConnectorConnectionException(e)
 
@@ -197,7 +197,7 @@ class SamRestApiConnector(SamApiConnector):
         http_request : HttpRequest
             Request object containing URL, headers, and body.
         call : Callable
-            HTTP method function (such a ``requests.get`` or ``requests.post``).
+            HTTP method function (such as ``requests.get`` or ``requests.post``).
         stream : bool, default: False
             Whether to return the response object for streaming.
 
@@ -212,7 +212,7 @@ class SamRestApiConnector(SamApiConnector):
             If the connection or request fails.
         """
         try:
-            response = call(**http_request.explode(), verify=self._use_ssl, stream=stream)
+            response = call(**http_request.to_dict(), verify=self._use_ssl, stream=stream)
             response.raise_for_status()
             return response.content if not stream else response
         except Exception as e:

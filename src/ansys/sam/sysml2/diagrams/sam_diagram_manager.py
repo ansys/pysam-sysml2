@@ -21,8 +21,6 @@
 # SOFTWARE.
 """Main diagram class of PySAM SysML2."""
 
-from typing import Dict
-
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.diagrams.builder import SamDiagramBuilder
@@ -44,32 +42,32 @@ class SAMDiagramManager:
 
     def __exit__(self, exc_type, exc_value, exc_traceback):
         """Exit method for context manager."""
-        ...
+        pass
 
     def load_diagrams(self, model: ScriptingProject) -> None:
         """Load diagrams into a model."""
         builder = SamDiagramBuilder(self._connector)
         diagrams = builder.extract_and_build_diagrams(model)
-        if diagrams == {}:
+        if not diagrams:
             raise DiagramNotAvailableException(
                 f"Diagram functionality is not available for project {model._id}."
             )
         self._update_model(model, diagrams)
 
-    def _update_model(self, model: ScriptingProject, diagrams: Dict[str, dict]):
+    def _update_model(self, model: ScriptingProject, diagrams: dict[str, list]):
         """
         Update the model with the given diagrams.
 
         Parameters
         ----------
-        model : Project
+        model : ScriptingProject
             Context model.
-        diagrams : Dict[str,dict]
+        diagrams : dict[str, list]
             Diagrams
         """
         model.get_root_package()._observer.stop()
-        for id, element in diagrams.items():
-            model_element = model.find_element_by_id(id)
+        for container_id, diagram_elements in diagrams.items():
+            model_element = model.find_element_by_id(container_id)
             if model_element is not None:
-                setattr(model_element, "__diagram", element)
+                setattr(model_element, "__diagram", diagram_elements)
         model.get_root_package()._observer.start()

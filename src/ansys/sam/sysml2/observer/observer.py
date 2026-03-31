@@ -22,7 +22,7 @@
 
 """Observer class."""
 
-from typing import Any, Dict, List, Tuple
+from typing import Any
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
@@ -35,7 +35,7 @@ class ModificationObserver:
     _project_id: str = ""
     _project = None
     _connector: SysML2APIConnector
-    _stack: Dict[str, List[Tuple[str, Any]]]
+    _stack: dict[str, list[tuple[str, Any]]]
 
     def __init__(self, project, connector: SysML2APIConnector):
         """
@@ -55,7 +55,7 @@ class ModificationObserver:
         self._stack = {}
         self._is_transactional_mode = False
 
-    def set_transactional_mode(self, state: bool):
+    def set_transactional_mode(self, state: bool) -> None:
         """
         Set the new value for transactional mode.
 
@@ -72,7 +72,7 @@ class ModificationObserver:
 
         self._is_transactional_mode = state
 
-    def notify(self, element_id: str, name: str, value: object):
+    def notify(self, element_id: str, name: str, value: object) -> None:
         """
         Catch a modification notification.
 
@@ -91,7 +91,7 @@ class ModificationObserver:
             else:
                 self._commit_single_change(element_id, name, value)
 
-    def list_notify(self, element_id: str, name: str, list_content: List):
+    def list_notify(self, element_id: str, name: str, list_content: list) -> None:
         """
         Catch modification on a list.
 
@@ -101,7 +101,7 @@ class ModificationObserver:
             Modified element ID.
         name : str
             Key of the modified field.
-        list_content : Any
+        list_content : list
             Updated content of the modified list field.
         """
         if self._working_observer:
@@ -153,7 +153,7 @@ class ModificationObserver:
         else:
             self._stack[element_id] = [(name, value)]
 
-    def _register_list_change(self, element_id: str, name: str, list_content: List):
+    def _register_list_change(self, element_id: str, name: str, list_content: list):
         """
         Register current change on a list in the stack.
 
@@ -167,14 +167,16 @@ class ModificationObserver:
             New content of the list.
         """
         if element_id in self._stack:
-            if any(x[0] == name for x in self._stack[element_id]):
-                current_list = [x for x in self._stack[element_id] if x[0] == name][0]
-                self._stack[element_id].remove(current_list)
+            entries = self._stack[element_id]
+            for i, entry in enumerate(entries):
+                if entry[0] == name:
+                    entries.pop(i)
+                    break
             self._stack[element_id].append((name, list_content))
         else:
             self._stack[element_id] = [(name, list_content)]
 
-    def delete_element(self, element_id: str):
+    def delete_element(self, element_id: str) -> None:
         """
         Delete function for observer.
 
@@ -218,18 +220,18 @@ class ModificationObserver:
         self._connector.create_commit(self._project_id, commit.to_json())
         self.reload_project()
 
-    def reload_project(self):
+    def reload_project(self) -> None:
         """Reload of the project."""
         from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 
         builder = SysML2ProjectBuilder(self._connector)
         builder.reload_project(self, self._project)
 
-    def stop(self):
+    def stop(self) -> None:
         """Disconnect the observer."""
         self._working_observer = False
 
-    def start(self):
+    def start(self) -> None:
         """Connect the observer."""
         self._working_observer = True
 

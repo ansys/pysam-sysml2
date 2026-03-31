@@ -38,16 +38,16 @@ class Mapper(ABC):
     @abstractmethod
     def map(
         self,
-        name_space: str,
+        namespace: str,
         json_element: dict,
         mapped_element: Union[Element, SysMLElement],
     ) -> MappedElement:
         """
-        Map abstract function.
+        Map a JSON element to a Python object and return unresolved references.
 
         Parameters
         ----------
-        name_space : str
+        namespace : str
             Current namespace.
         json_element : dict
             Data.

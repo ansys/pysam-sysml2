@@ -21,9 +21,10 @@
 # SOFTWARE.
 """EMFJSON mapper class."""
 
+from __future__ import annotations
+
 from typing import Dict, List, Tuple, Union
 
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.diagrams.classes import (
     DiagramElement,
     MappedElement,
@@ -40,8 +41,6 @@ TYPE_KEY = "eClass"
 class EMFJSONMapper:
     """Provides the EMFJSON mapper for a diagram element."""
 
-    _project: ScriptingProject
-    _project_id: str
     class_cache: dict
 
     def __init__(self):
@@ -71,7 +70,7 @@ class EMFJSONMapper:
         """Core implementation for mapping data into a diagram element."""
         eclass = data.get(TYPE_KEY, None)
 
-        element = DiagramElement(id=data["@id"])
+        element = DiagramElement(element_id=data["@id"])
 
         if eclass is not None:
             self.__assign_dynamic_class(element, eclass)
@@ -119,13 +118,13 @@ class EMFJSONMapper:
         if not plane_data:
             return unresolved_fields
 
-        plane = Plane(id=plane_data.get("@id"))
+        plane = Plane(element_id=plane_data.get("@id"))
 
         unresolved_fields.extend(
             self.__extract_references_and_set_attributes("modelElement", plane_data, plane)
-            + self.__extract_references_and_set_attributes(
-                "ownedDiagramElements", plane_data, plane
-            )
+        )
+        unresolved_fields.extend(
+            self.__extract_references_and_set_attributes("ownedDiagramElements", plane_data, plane)
         )
 
         element._plane = plane
@@ -175,7 +174,7 @@ class EMFJSONMapper:
         data: Union[dict, list],
         owner: DiagramElement,
         attr: str,
-        original_key: str = None,
+        original_key: str | None = None,
     ) -> Tuple[List, List[UnresolvedField]]:
         """
         Extract references from a dictionary or list of dictionaries.
@@ -212,7 +211,7 @@ class EMFJSONMapper:
         item: dict,
         owner: DiagramElement,
         attr: str,
-        original_key: str = None,
+        original_key: str | None = None,
     ) -> Tuple[List, List[UnresolvedField]]:
         """
         Handle a single dictionary item, resolving references or building nested elements.
@@ -254,7 +253,7 @@ class EMFJSONMapper:
         items: list,
         owner: DiagramElement,
         attr: str,
-        original_key: str = None,
+        original_key: str | None = None,
     ) -> Tuple[List, List[UnresolvedField]]:
         """
         Handle a list of items, resolving references and building nested elements.

@@ -20,11 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Observed list for SysMl list."""
+"""Observed list for SysML collections."""
 
 from __future__ import annotations
 
-from typing import Any, Union
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+    from ansys.sam.sysml2.meta_model.element import Element
 
 
 def mount_observer_and_access(function):
@@ -54,11 +58,11 @@ class ObservedList(list):
     """React (notification) on each list operation."""
 
     _name: str
-    _owner: Union["Element" | "SysMLElement"]  # noqa: F821
+    _owner: "Element" | "SysMLElement"  # noqa: F821
 
     def __init__(
         self,
-        owner: Union["Element" | "SysMLElement"],  #  noqa: F821
+        owner: "Element" | "SysMLElement",  # noqa: F821
         name: str,
         *args,
     ):
@@ -71,15 +75,15 @@ class ObservedList(list):
         name : str
             Name of the structural feature (owned element).
         """
-        if len(args) > 0:
+        if args:
             super().extend(args)
         self._owner = owner
         self._name = name
 
     @mount_observer_and_access
-    def append(self, object: Any):
+    def append(self, item: Any):
         """Override the list append method."""
-        return super().append(object)
+        return super().append(item)
 
     @mount_observer_and_access
     def extend(self, iterable):
@@ -87,9 +91,9 @@ class ObservedList(list):
         return super().extend(iterable)
 
     @mount_observer_and_access
-    def insert(self, index, object):
+    def insert(self, index, item):
         """Override the list insert method."""
-        return super().insert(index, object)
+        return super().insert(index, item)
 
     @mount_observer_and_access
     def remove(self, value):

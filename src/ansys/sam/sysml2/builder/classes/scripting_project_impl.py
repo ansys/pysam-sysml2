@@ -22,8 +22,6 @@
 
 """Private implementation for a scripting project."""
 
-from typing import List, Set
-
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
@@ -35,35 +33,35 @@ class ScriptingProjectImpl(ScriptingProject):
 
     _id: str
     _env: dict
-    _root: List[SysMLElement]
-    _unresolved_fields: List[UnresolvedField]
-    _libraries_ids: Set[str]
+    _root: list[SysMLElement]
+    _unresolved_fields: list[UnresolvedField]
+    _libraries_ids: set[str]
     _name: str
 
-    def __init__(self, id: str, name: str):
+    def __init__(self, project_id: str, name: str):
         """
         Construct a new instance.
 
         Parameters
         ----------
-        id : str
+        project_id : str
             Project ID.
         name : str
             Project name.
         """
         super().__init__()
-        self._id = id
-        self._root = list()
+        self._id = project_id
+        self._root = []
         self._name = name
-        self._unresolved_fields = list()
+        self._unresolved_fields = []
         self._libraries_ids = set()
-        self._env = dict()
+        self._env = {}
 
     def add_element(self, element: SysMLElement):
         """Add an element to the project environment."""
         self._env[element._id] = element
 
-    def update_unresolved_fields(self, unresolved_fields: List[UnresolvedField]):
+    def update_unresolved_fields(self, unresolved_fields: list[UnresolvedField]):
         """
         Update all unresolved fields.
 
@@ -74,7 +72,7 @@ class ScriptingProjectImpl(ScriptingProject):
         """
         self._unresolved_fields.extend(unresolved_fields)
 
-    def get_root(self) -> List[SysMLElement]:
+    def get_root(self) -> list[SysMLElement]:
         """
         Get a list of root packages.
 
@@ -96,7 +94,7 @@ class ScriptingProjectImpl(ScriptingProject):
         """Get the project name."""
         return self._name
 
-    def find_element_by_id(self, element_id: str) -> SysMLElement:
+    def find_element_by_id(self, element_id: str) -> SysMLElement | None:
         """
         Find an element by its ID.
 
@@ -110,15 +108,15 @@ class ScriptingProjectImpl(ScriptingProject):
         SysMLElement
             SysMLElement retrieved.
         """
-        return self._env.get(element_id, None)
+        return self._env.get(element_id)
 
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
+    def find_elements_by_name(self, element_name: str) -> list[SysMLElement]:
         """
         Find all elements by name.
 
         Parameters
         ----------
-        elements_name : str
+        element_name : str
             Name of elements.
 
         Returns
@@ -127,10 +125,10 @@ class ScriptingProjectImpl(ScriptingProject):
             List of elements retrieved.
         """
         return [
-            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == elements_name
+            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == element_name
         ]
 
-    def start_transactional_mode(self):
+    def start_transactional_mode(self) -> None:
         """
         Start a transactional mode for model edition.
 
@@ -142,7 +140,7 @@ class ScriptingProjectImpl(ScriptingProject):
         """
         self.get_root_package()._observer.set_transactional_mode(True)
 
-    def stop_transactional_mode(self):
+    def stop_transactional_mode(self) -> None:
         """
         Stop the current transaction.
 

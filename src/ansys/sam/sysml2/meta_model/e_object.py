@@ -21,8 +21,6 @@
 # SOFTWARE.
 """Base class of the metamodel."""
 
-from typing import Union
-
 from ansys.sam.sysml2.classes.value_helper import ValueHelper
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 
@@ -30,16 +28,24 @@ from ansys.sam.sysml2.observer.observer import ModificationObserver
 class EObject:
     """Base class of the metamodel."""
 
-    _observer: ModificationObserver
+    _observer: ModificationObserver | None
 
-    def __init__(self, id: str):
-        self.id = id
-        self._observer = None
-        self._element_hash_map = dict()
-
-    def get(self, element_name: str) -> "Element":  # noqa: F821
+    def __init__(self, element_id: str):
         """
-        Get function to find an owned element by is name.
+        Construct a new instance.
+
+        Parameters
+        ----------
+        element_id : str
+            Element ID.
+        """
+        self.id = element_id
+        self._observer = None
+        self._element_hash_map = {}
+
+    def get(self, element_name: str) -> "Element | None":  # noqa: F821
+        """
+        Find an owned element by its name.
 
         Parameters
         ----------
@@ -49,9 +55,9 @@ class EObject:
         Returns
         -------
         Element
-            The Element or None if not find
+            The Element or None if not found
         """
-        return self._element_hash_map.get(element_name, None)
+        return self._element_hash_map.get(element_name)
 
     def get_value(self):
         """Return the value of the feature."""
@@ -67,6 +73,6 @@ class EObject:
         """Parse the value and create the valuation part in the Feature."""
         ValueHelper.set_or_update_value(self, "operator", value)
 
-    def set_value(self, new_value: Union[str | int | float | bool]):
+    def set_value(self, new_value: str | int | float | bool):
         """Update the Feature value."""
         ValueHelper.set_or_update_value(self, type(new_value), new_value)

@@ -76,13 +76,13 @@ class Project(ABC):
         """
 
     @abstractmethod
-    def find_elements_by_name(self, elements_name: str) -> List[Element]:
+    def find_elements_by_name(self, element_name: str) -> List[Element]:
         """
         Find all elements by name.
 
         Parameters
         ----------
-        elements_name : str
+        element_name : str
             Name of elements.
 
         Returns

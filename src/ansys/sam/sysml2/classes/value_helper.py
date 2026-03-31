@@ -46,6 +46,7 @@ class ValueHelper:
     @staticmethod
     def get_value_for_sysml_element(element):
         """Get the value of the feature."""
+        # Local import avoids circular import with meta_model.feature.
         from ansys.sam.sysml2.meta_model.feature import Feature
 
         instance = ValueHelper("")
@@ -61,6 +62,8 @@ class ValueHelper:
 
         Parameters
         ----------
+        element : SysMLElement or Element
+            Element whose feature value is updated.
         value_type : type
             Value type of the new value.
         new_value : Union[str | int | float | bool]

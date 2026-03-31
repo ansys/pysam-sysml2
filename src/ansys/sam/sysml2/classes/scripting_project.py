@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Project Interface for users."""
+"""Scripting project interface for users."""
 
 from abc import ABC, abstractmethod
 from typing import List
@@ -29,7 +29,7 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
 class ScriptingProject(ABC):
-    """Project Interface for users."""
+    """Scripting project interface for users."""
 
     @property
     def root(self) -> List[SysMLElement]:
@@ -75,13 +75,13 @@ class ScriptingProject(ABC):
         """
 
     @abstractmethod
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
+    def find_elements_by_name(self, element_name: str) -> List[SysMLElement]:
         """
         Find all elements by name.
 
         Parameters
         ----------
-        elements_name : str
+        element_name : str
             Name of elements.
 
         Returns
