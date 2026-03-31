@@ -93,7 +93,7 @@ class ScriptingMapper(Mapper):
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
         self.__update_element_definition(data, element)
-        if not element._qualifiedName.startswith(name_space) and not SysMLTools.isinstance(
+        if not getattr(element,"_qualifiedName","").startswith(name_space) and not SysMLTools.isinstance(
             element, "FeatureValue"
         ):
             unresolved_fields = list()
