@@ -137,7 +137,7 @@ class SysML2ProjectBuilder:
             List of root packages.
         """
         setattr(element, "_name", SysMLUtil.check_inherited_name(element))
-        if "_owner" not in dir(element):
+        if getattr( element,"_owner",None) is None:
             roots.append(element)
 
     def _get_mapper(self, project: Union[Project | ScriptingProject]) -> Mapper:
