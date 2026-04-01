@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Observed list for SysMl list."""
+"""Observed list for SysML collections."""
 
 from __future__ import annotations
 
@@ -78,9 +78,9 @@ class ObservedList(list):
         self._name = name
 
     @mount_observer_and_access
-    def append(self, object: Any):
+    def append(self, item: Any):
         """Override the list append method."""
-        return super().append(object)
+        return super().append(item)
 
     @mount_observer_and_access
     def extend(self, iterable):
@@ -88,9 +88,9 @@ class ObservedList(list):
         return super().extend(iterable)
 
     @mount_observer_and_access
-    def insert(self, index, object):
+    def insert(self, index, item):
         """Override the list insert method."""
-        return super().insert(index, object)
+        return super().insert(index, item)
 
     @mount_observer_and_access
     def remove(self, value):

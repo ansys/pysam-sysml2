@@ -158,7 +158,7 @@ class SamRestApiConnector(SamApiConnector):
         http_request : HttpRequest
             Request object containing URL, headers, and body.
         call : Callable
-            HTTP method function (such a ``requests.get`` or ``requests.post``).
+            HTTP method function (such as ``requests.get`` or ``requests.post``).
 
         Returns
         -------
@@ -197,7 +197,7 @@ class SamRestApiConnector(SamApiConnector):
         http_request : HttpRequest
             Request object containing URL, headers, and body.
         call : Callable
-            HTTP method function (such a ``requests.get`` or ``requests.post``).
+            HTTP method function (such as ``requests.get`` or ``requests.post``).
         stream : bool, default: False
             Whether to return the response object for streaming.
 

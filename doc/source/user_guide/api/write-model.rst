@@ -184,11 +184,11 @@ Removing elements
 -----------------
 
 | If you use the ``remove()`` method of the owned element property, the element is deleted from the model.
-| Please use this with caution: if a diagram displays this removed element, the diagram will display errors.
+| Please use this with caution: if a diagram displays this removed element, the diagram displays errors.
 
 Transaction mode
 ----------------
-When you perform write operations, the model is updated after each operation to ensure accuracy. However, if you want to perform multiple write operations without intermediate updates, you can use the transaction mode. In transaction mode, the model updates only after you complete all your operations. This can improve performance when making multiple changes to the model, but be aware that the model will not reflect any changes until you exit the transaction mode.
+When you perform write operations, the model is updated after each operation to ensure accuracy. However, if you want to perform multiple write operations without intermediate updates, you can use the transaction mode. In transaction mode, the model updates only after you complete all your operations. This can improve performance when making multiple changes to the model, but be aware that the model does not reflect any changes until you exit the transaction mode.
 
 
 .. tab-set::

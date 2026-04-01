@@ -29,7 +29,7 @@ from ansys.sam.sysml2.meta_model.element import Element
 
 
 class SysMLUtil:
-    """Provides the SysML utility class."""
+    """Provides utility methods for SysML element name resolution and class lookup."""
 
     @staticmethod
     def check_inherited_name(element: SysMLElement) -> str:
@@ -75,7 +75,7 @@ class SysMLUtil:
             return class_
         except ModuleNotFoundError:
             raise ImportError(
-                f"Unable to found '{module_name}'  in ansys.sam.sysml2.meta_model. package."
+                f"Unable to find module '{module_name}' in ansys.sam.sysml2.meta_model package."
             )
         except AttributeError:
             raise ImportError(f"'{element_type}' class not found in module '{module_name}'.")

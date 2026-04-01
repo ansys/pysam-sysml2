@@ -28,7 +28,7 @@ from typing import Any
 
 @dataclass
 class DataVersion:
-    """Edits or creates a SysML element."""
+    """Data payload for a single element version in a commit."""
 
     payload: dict = field(default_factory=dict)
     identity: str = field(default=None)
