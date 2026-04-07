@@ -40,9 +40,10 @@ from ansys.sam.sysml2.dto.query.constraints_classes import (
 )
 from ansys.sam.sysml2.dto.query.query_class import Query
 from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
-from ansys.sam.sysml2.meta_model.e_object import EObject
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.observer.observer import ModificationObserver
+
+sysml_element_dir = dir(SysMLElement) + ["_id"]
 
 
 class SysML2ProjectBuilder:
@@ -202,14 +203,16 @@ class SysML2ProjectBuilder:
         """
         missing = set()
         unresolved_fields = project._unresolved_fields.copy()
+        resolved_fields = set()
         for unresolved_field in unresolved_fields:
             element_id = unresolved_field.get_id()
             element = project._env.get(element_id, None)
             if element is not None:
                 unresolved_field.resolve(element)
-                project._unresolved_fields.remove(unresolved_field)
+                resolved_fields.add(unresolved_field)
             else:
                 missing.add(element_id)
+        project._unresolved_fields = [f for f in unresolved_fields if f not in resolved_fields]
         return set(x for x in missing if "/?" not in x)
 
     def _get_missing(
@@ -252,158 +255,53 @@ class SysML2ProjectBuilder:
     def _resolve_inherited_link(self, project: Union[Project | ScriptingProject]):
         """Resolve all inherited elements and add them as members."""
         if isinstance(project, ScriptingProject):
+            ingore_list = ["get_value", "parse_and_set_value", "set_value", "delete"]
             for _, element in project._env.copy().items():
-                [
-                    delattr(element, x)
-                    for x in dir(element)
-                    if not x.startswith("_")
-                    and x not in ["get_value", "parse_and_set_value", "set_value", "delete"]
-                ]
-                all_element = self.__get_all_element(element)
-                [
-                    setattr(element, getattr(x, "_name"), x)
-                    for x in all_element
-                    if hasattr(x, "_name") and getattr(x, "_name") is not None
-                ]
-                self._resolve_inherited_elements(project, element)
+                self.clear_element(ingore_list, element)
+                self.update_element(element)
+
         else:
             for _, element in project._env.copy().items():
                 element._element_hash_map = self.__get_all_sysml_element(element)
-                self._resolve_inherited_elements(project, element)
         self._resolve_fields(project)
 
-    def _resolve_inherited_elements(
-        self,
-        project: Union[ScriptingProject, Project],
-        element: Union[SysMLElement | Element],
-        use_owned_element: bool = False,
-    ):
+    def update_element(self, element):
         """
-        Resolve all inherited elements into mirrors.
-
-        Parameters
-        ----------
-        project : Union[ScriptingProject, Project]
-            Container project.
-        element : Union[SysMLElement | Element]
-            Element to resolve.
-        """
-        if isinstance(project, ScriptingProjectImpl):
-            all_inherited_element = getattr(element, "_inheritedFeature", []).copy()
-            if use_owned_element:
-                all_inherited_element.extend(getattr(element, "_ownedElement", []))
-            base_element = SysMLElement
-            base_id = "/?" + element._id if not element._id.startswith("/?") else element._id
-            copy_function = self._copy_scripting_data
-            update_element = self._update_scripting_element
-        else:
-            all_inherited_element = getattr(element, "_owned_inherited_feature", []).copy()
-            if use_owned_element:
-                all_inherited_element.extend(getattr(element, "_owned_element", []))
-            base_element = Element
-            base_id = "/?" + element.id if not element.id.startswith("/?") else element.id
-            copy_function = self._copy_sysml_data
-            update_element = self._update_sysml_element
-        result = {}
-        for inherited_element in all_inherited_element:
-            id_ = base_id
-            if isinstance(inherited_element, str):
-                id_ += inherited_element
-            elif isinstance(inherited_element, Element):
-                id_ += "/?" + inherited_element.id
-            else:
-                id_ += "/?" + inherited_element._id
-
-            if base_element == Element and not isinstance(inherited_element, str):
-                base_element = SysMLUtil.get_sysml_constructor(inherited_element.__class__.__name__)
-            mirror_element = base_element(id_)
-            project.add_element(mirror_element)
-            if not isinstance(inherited_element, str):
-                name = copy_function(inherited_element, mirror_element)
-                result[name] = mirror_element
-
-            self._resolve_inherited_elements(project, mirror_element, use_owned_element=True)
-        update_element(element, result)
-
-    def _copy_sysml_data(self, source: Element, target: Element) -> str:
-        """
-        Copy function for SysML elements.
-
-        Parameters
-        ----------
-        source : Element
-            Source element.
-        target : Element
-            Target element.
-
-        Returns
-        -------
-        str
-            Element name.
-        """
-        for x in dir(source):
-            if x not in dir(EObject):
-                setattr(target, "_" + x, getattr(source, x))
-        target._identifier = target._id
-        return source.name
-
-    def _copy_scripting_data(self, source: SysMLElement, target: SysMLElement) -> str:
-        """
-        Copy function for scripting elements.
-
-        Parameters
-        ----------
-        source : SysMLElement
-            Source element.
-        target : SysMLElement
-            Target element.
-
-        Returns
-        -------
-        str
-            Element name.
-        """
-        for x in dir(source):
-            if x not in dir(SysMLElement) and x != "_id":
-                setattr(target, x, getattr(source, x))
-        target._identifier = target._id
-        return source._name
-
-    def _update_sysml_element(self, element: Element, inherited_elements: Dict[str, Element]):
-        """
-        Update function to add inherited elements.
-
-        Parameters
-        ----------
-        element : Element
-            Base element.
-        inherited_elements : Dict[str, Element]
-            Contained inherited elements.
-        """
-        element._element_hash_map.update(inherited_elements)
-
-    def _update_scripting_element(
-        self, element: SysMLElement, inherited_elements: Dict[str, SysMLElement]
-    ):
-        """
-        Update function to add inherited elements.
+        Update the element with inherited elements.
 
         Parameters
         ----------
         element : SysMLElement
-            Base element.
-        inherited_elements : Dict[str, SysMLElement]
-            Contained inherited elements.
+            The element to update.
         """
-        for name, inherited_element in inherited_elements.items():
+        all_element = self.__get_all_element(element)
+        element._element_hash_map = all_element
+        for name, e in all_element.items():
             if name is not None:
-                setattr(element, name, inherited_element)
+                setattr(element, f"#{name}", e)
 
-    def __get_all_element(self, element: SysMLElement) -> list:
+    def clear_element(self, ingore_list, element):
+        """
+        Clear all inherited elements in the element.
+
+        Parameters
+        ----------
+        ingore_list : list
+            List of attributes to ignore when clearing.
+        element : SysMLElement
+            The element to clear.
+        """
+        [
+            delattr(element, x)
+            for x in element.__dict__.keys()
+            if not x.startswith("_") and x not in ingore_list
+        ]
+
+    def __get_all_element(self, element: SysMLElement) -> dict:
         """Parse all definitions from the element and return its owned elements."""
-        all_element = getattr(element, "_ownedElement", [])
+        all_element = list(getattr(element, "_ownedElement", []).copy())
         all_element.extend(getattr(element, "_inheritedFeature", []))
-        return all_element
+        return dict([(x._name, x) for x in all_element if isinstance(x, SysMLElement)])
 
     def __get_all_sysml_element(self, element: Element) -> dict:
         """Parse all definitions and collect owned elements."""
