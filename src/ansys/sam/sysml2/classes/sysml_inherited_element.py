@@ -58,7 +58,8 @@ class SysMLInheritedElement(EObject):
 
     def __init__(self, owner, element):
         """Construct a new instance."""
-        # self._observer = owner._observer
+        super().__init__("")
+        self._observer = owner._observer
         self._element = element
         self._element_hash_map = element._element_hash_map
         self.id = build_composed_name(owner, element, True)

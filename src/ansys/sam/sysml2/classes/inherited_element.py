@@ -58,7 +58,8 @@ class InheritedElement(SysMLElement):
 
     def __init__(self, owner, element):
         """Construct a new instance."""
-        # self._observer = owner._observer
+        super().__init__("")
+        self._observer = owner._observer
         self._element = element
         self._id = build_composed_name(owner, element, True)
         self._owner = owner
