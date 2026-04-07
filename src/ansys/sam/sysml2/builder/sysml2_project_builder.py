@@ -22,7 +22,6 @@
 
 """Project builder."""
 
-
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
@@ -117,7 +116,7 @@ class SysML2ProjectBuilder:
         elif isinstance(project, ScriptingProject):
             for element in project._env.values():
                 setattr(element, "_name", SysMLUtil.check_inherited_name(element))
-                if getattr(element, "_owner") is None:
+                if getattr(element, "_owner", None) is None:
                     roots.append(element)
         else:
             raise TypeError(
