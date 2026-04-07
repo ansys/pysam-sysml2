@@ -50,19 +50,17 @@ my_project = project_manager.create_scripting_project(
     name="My New Project",
     description="A project created via PySAM SysML2",
 )
-project_id = my_project.get_name()
-print(f"\nCreated project: {my_project.get_name()}")
+project_id = my_project.get_id()
+print(f"\nCreated project: {my_project.get_name()} (id: {project_id})")
 
 # --- Update the project ---
 updated = project_manager.update_project(
-    project_id="<Project ID>",  # Use the ID returned at creation
+    project_id=project_id,
     name="My Renamed Project",
     description="Updated description",
 )
 print(f"\nUpdated project: {updated['name']} - {updated['description']}")
 
 # --- Delete the project ---
-deleted = project_manager.delete_project(
-    project_id="<Project ID>",  # Use the ID of the project to delete
-)
-print(f"\nDeleted project: {deleted['name']} (id: {deleted['@id']})")
+deleted = project_manager.delete_project(project_id=project_id)
+print(f"\nDeleted project with id: {deleted['@id']}")

@@ -36,6 +36,7 @@ from ansys.sam.sysml2.exception.connector_exception import (
     HTTPResponseException,
     InvalidElementJsonFoundException,
     InvalidProjectNameException,
+    ProjectAlreadyExistsException,
     ProjectNotFoundException,
     UnauthorizedConnectionException,
 )
@@ -133,7 +134,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         Returns
         -------
         dict
-            Deleted project record.
+            Confirmation containing ``@type`` and ``@id`` of the deleted project.
         """
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}")
         return self._send_request(http_request=http_request, call=requests.delete)
@@ -340,6 +341,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         match response.status_code:
             case 500:
                 raise ConnectorConnectionException("Internal Server Error")
+            case 409:
+                message = response.json().get("message", "Resource conflict")
+                raise ProjectAlreadyExistsException(message)
             case 404:
                 self._handle_404_response(response)
             case 403:

@@ -510,6 +510,18 @@ def route_create_project() -> dict:
     """
     project_info = loads(request.data)
     if "name" in project_info and "description" in project_info:
+        projects_root = get_project_path("")
+        for _, dirs, _ in os.walk(projects_root):
+            for directory in dirs:
+                project_id = directory.split("_")[1] if "_" in directory else None
+                if project_id is not None:
+                    existing = load_project_data(project_id)
+                    if existing and existing.get("name") == project_info["name"]:
+                        create_http_error(
+                            code=409,
+                            title="impossible-operation",
+                            message="A project with this name already exists in this space.",
+                        )
         return {
             TYPE: "Project",
             "defaultBranch": {"@id": "defaultBranch"},
@@ -535,11 +547,10 @@ def route_delete_project(project_id: str) -> dict:
     Returns
     -------
     dict
-        Deleted project record
+        Confirmation with @type and @id
     """
     check_project_id(project_id)
-    project_data = load_project_data(project_id)
-    return project_data
+    return {TYPE: "Project", "@id": project_id}
 
 
 @authenticate

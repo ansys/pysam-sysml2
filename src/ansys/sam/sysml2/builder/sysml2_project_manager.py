@@ -132,7 +132,7 @@ class SysML2ProjectManager:
         Returns
         -------
         dict
-            Deleted project record.
+            Confirmation containing ``@type`` and ``@id`` of the deleted project.
         """
         result = self._connector.delete_project(project_id)
         self._constructed_project.pop(project_id, None)

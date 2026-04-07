@@ -65,7 +65,7 @@ class SysML2APIConnector:
         Returns
         -------
         dict
-            Deleted project record.
+            Confirmation containing ``@type`` and ``@id`` of the deleted project.
         """
 
     def update_project(

@@ -34,6 +34,9 @@ class Project:
     def get_root(self) -> List[Package]:
         """Get a list of root packages."""
 
+    def get_id(self) -> str:
+        """Get the project ID."""
+
     def get_name(self) -> str:
         """Get the project name."""
 

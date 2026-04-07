@@ -86,6 +86,10 @@ class ProjectImpl(Project):
         """
         return self._root
 
+    def get_id(self) -> str:
+        """Get the project ID."""
+        return self._id
+
     def get_root_package(self) -> Package:
         """Get the root package."""
         if len(self._root) == 0:

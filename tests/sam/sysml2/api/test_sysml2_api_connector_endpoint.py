@@ -48,6 +48,7 @@ from ansys.sam.sysml2.exception.connector_exception import (
     ConnectorConnectionException,
     ElementNotFoundException,
     InvalidProjectNameException,
+    ProjectAlreadyExistsException,
     ProjectNotFoundException,
 )
 from ansys.sam.sysml2.exception.query_exception import InvalidQuery
@@ -83,6 +84,10 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
     def test_create_unnamed_project(self, valid_source: AnsysSysML2APIConnector):
         with pytest.raises(InvalidProjectNameException):
             valid_source.create_project("")
+
+    def test_create_duplicate_project(self, valid_source: AnsysSysML2APIConnector):
+        with pytest.raises(ProjectAlreadyExistsException):
+            valid_source.create_project("PySAMSysML2TestProject-COMPLET")
 
     def test_delete_project(self, valid_source: AnsysSysML2APIConnector):
         project_data = valid_source.delete_project(PROJECT_ID_1)
