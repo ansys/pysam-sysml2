@@ -523,6 +523,55 @@ def route_create_project() -> dict:
 @authenticate
 @space_route
 @return_json
+def route_delete_project(project_id: str) -> dict:
+    """
+    Delete the project with the given ID.
+
+    Parameters
+    ----------
+    project_id : str
+        Project Id
+
+    Returns
+    -------
+    dict
+        Deleted project record
+    """
+    check_project_id(project_id)
+    project_data = load_project_data(project_id)
+    return project_data
+
+
+@authenticate
+@space_route
+@return_json
+def route_update_project(project_id: str) -> dict:
+    """
+    Update the project with the given ID.
+
+    Parameters
+    ----------
+    project_id : str
+        Project Id
+
+    Returns
+    -------
+    dict
+        Updated project record
+    """
+    check_project_id(project_id)
+    project_data = load_project_data(project_id)
+    update_info = loads(request.data)
+    if "name" in update_info:
+        project_data["name"] = update_info["name"]
+    if "description" in update_info:
+        project_data["description"] = update_info["description"]
+    return project_data
+
+
+@authenticate
+@space_route
+@return_json
 def route_create_commit(project_id: str) -> dict:
     """
     route_create_commit _summary_

@@ -84,6 +84,33 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
         with pytest.raises(InvalidProjectNameException):
             valid_source.create_project("")
 
+    def test_delete_project(self, valid_source: AnsysSysML2APIConnector):
+        project_data = valid_source.delete_project(PROJECT_ID_1)
+        assert project_data is not None
+        assert project_data["@id"] == PROJECT_ID_1
+
+    def test_delete_project_not_found(self, valid_source: AnsysSysML2APIConnector):
+        with pytest.raises(ProjectNotFoundException):
+            valid_source.delete_project(self.RANDOM_PROJECT_ID)
+
+    def test_update_project(self, valid_source: AnsysSysML2APIConnector):
+        project_data = valid_source.update_project(
+            PROJECT_ID_1,
+            project_name="UpdatedName",
+            project_description="UpdatedDescription",
+        )
+        assert project_data is not None
+        assert project_data["@id"] == PROJECT_ID_1
+        assert project_data["name"] == "UpdatedName"
+        assert project_data["description"] == "UpdatedDescription"
+
+    def test_update_project_not_found(self, valid_source: AnsysSysML2APIConnector):
+        with pytest.raises(ProjectNotFoundException):
+            valid_source.update_project(
+                self.RANDOM_PROJECT_ID,
+                project_name="UpdatedName",
+            )
+
     def test_get_projects(self, valid_source: AnsysSysML2APIConnector):
         projects = valid_source.get_projects()
         assert projects is not None

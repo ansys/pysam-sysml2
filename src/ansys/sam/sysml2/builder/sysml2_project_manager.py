@@ -22,7 +22,7 @@
 
 """Director class for project building."""
 
-from typing import Dict
+from typing import Dict, List
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
@@ -31,7 +31,7 @@ from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 
 
 class SysML2ProjectManager:
-    """Provides the director class for loading a project."""
+    """Provides the director class for loading and managing projects."""
 
     _connector: SysML2APIConnector
     _constructed_project: Dict[(str, ScriptingProject)]
@@ -40,6 +40,17 @@ class SysML2ProjectManager:
         """Construct a new instance with a specified SysML2 API Connector."""
         self._connector = connector
         self._constructed_project = dict()
+
+    def get_projects(self) -> List[dict]:
+        """
+        Get all projects of the connected user.
+
+        Returns
+        -------
+        list of dict
+            List of all project records.
+        """
+        return self._connector.get_projects()
 
     def get_sysml_project(self, project_id: str) -> Project:
         """Get a SysML project with its ID from the API and map it in a Python object."""
@@ -56,3 +67,100 @@ class SysML2ProjectManager:
             project = SysML2ProjectBuilder(self._connector).build_scripting_project(project_id)
             self._constructed_project[project_id] = project
         return project
+
+    def create_sysml_project(
+        self,
+        name: str,
+        description: str = "Project description",
+    ) -> Project:
+        """
+        Create a new project on the server and return it as a SysML Project.
+
+        Parameters
+        ----------
+        name : str
+            Name of the project.
+        description : str, default: ``"Project description"``
+            Description of the project.
+
+        Returns
+        -------
+        Project
+            The newly created project, fully built from the API.
+        """
+        project_data = self._connector.create_project(name, description)
+        project_id = project_data["@id"]
+        project = SysML2ProjectBuilder(self._connector).build_sysml_project(project_id)
+        self._constructed_project[project_id] = project
+        return project
+
+    def create_scripting_project(
+        self,
+        name: str,
+        description: str = "Project description",
+    ) -> ScriptingProject:
+        """
+        Create a new project on the server and return it as a Scripting Project.
+
+        Parameters
+        ----------
+        name : str
+            Name of the project.
+        description : str, default: ``"Project description"``
+            Description of the project.
+
+        Returns
+        -------
+        ScriptingProject
+            The newly created project, fully built from the API.
+        """
+        project_data = self._connector.create_project(name, description)
+        project_id = project_data["@id"]
+        project = SysML2ProjectBuilder(self._connector).build_scripting_project(project_id)
+        self._constructed_project[project_id] = project
+        return project
+
+    def delete_project(self, project_id: str) -> dict:
+        """
+        Delete the project with the given ID.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to delete.
+
+        Returns
+        -------
+        dict
+            Deleted project record.
+        """
+        result = self._connector.delete_project(project_id)
+        self._constructed_project.pop(project_id, None)
+        return result
+
+    def update_project(
+        self,
+        project_id: str,
+        name: str = None,
+        description: str = None,
+    ) -> dict:
+        """
+        Update the project with the given ID.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to update.
+        name : str, optional
+            New name for the project.
+        description : str, optional
+            New description for the project.
+
+        Returns
+        -------
+        dict
+            Updated project record.
+        """
+        result = self._connector.update_project(project_id, name, description)
+        self._constructed_project.pop(project_id, None)
+        return result

@@ -121,6 +121,55 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         }
         return self._send_request(http_request=http_request, call=requests.post)
 
+    def delete_project(self, project_id: str) -> dict:
+        """
+        Delete the project with the given ID.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to delete.
+
+        Returns
+        -------
+        dict
+            Deleted project record.
+        """
+        http_request = self._build_http_request(endpoint=f"/projects/{project_id}")
+        return self._send_request(http_request=http_request, call=requests.delete)
+
+    def update_project(
+        self,
+        project_id: str,
+        project_name: str = None,
+        project_description: str = None,
+    ) -> dict:
+        """
+        Update the project with the given ID.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to update.
+        project_name : str, optional
+            New name for the project.
+        project_description : str, optional
+            New description for the project.
+
+        Returns
+        -------
+        dict
+            Updated project record.
+        """
+        http_request = self._build_http_request(endpoint=f"/projects/{project_id}")
+        body = {}
+        if project_name is not None:
+            body["name"] = project_name
+        if project_description is not None:
+            body["description"] = project_description
+        http_request.json_body = body
+        return self._send_request(http_request=http_request, call=requests.put)
+
     def get_all_elements(self, project_id: str) -> list:
         """
         Get all elements of a given project.
