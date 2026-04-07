@@ -50,14 +50,14 @@ class DataVersion:
         """
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
         from ansys.sam.sysml2.data_structures.observed_list import ObservedList
-        from ansys.sam.sysml2.meta_model.element import Element
+        from ansys.sam.sysml2.meta_model.e_object import EObject
         from ansys.sam.sysml2.tools.name_utils import NameUtils
 
         if "_" in key:
             key = NameUtils.snake_to_camel(key)
         if isinstance(value, SysMLElement):
             self.payload[key] = {"@id": value._id}
-        elif isinstance(value, Element):
+        elif isinstance(value, EObject):
             self.payload[key] = {"@id": value.id}
         elif isinstance(value, (ObservedList, list)):
             self.payload[key] = [
@@ -65,7 +65,7 @@ class DataVersion:
                     {"@id": x._id}
                     if isinstance(x, SysMLElement)
                     else {"@id": x.id}
-                    if isinstance(x, Element)
+                    if isinstance(x, EObject)
                     else x
                 )
                 for x in value

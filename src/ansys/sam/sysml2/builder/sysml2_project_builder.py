@@ -280,21 +280,21 @@ class SysML2ProjectBuilder:
             if name is not None:
                 setattr(element, f"#{name}", e)
 
-    def clear_element(self, ingore_list, element):
+    def clear_element(self, ignore_list, element):
         """
         Clear all inherited elements in the element.
 
         Parameters
         ----------
-        ingore_list : list
+        ignore_list : list
             List of attributes to ignore when clearing.
         element : SysMLElement
             The element to clear.
         """
         [
             delattr(element, x)
-            for x in element.__dict__.keys()
-            if not x.startswith("_") and x not in ingore_list
+            for x in list(element.__dict__.keys())
+            if not x.startswith("_") and x not in ignore_list
         ]
 
     def __get_all_element(self, element: SysMLElement) -> dict:
