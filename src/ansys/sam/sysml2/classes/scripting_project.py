@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Project Interface for users."""
+"""Scripting project interface for users."""
 
 from typing import List
 
@@ -28,7 +28,7 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
 class ScriptingProject:
-    """Project Interface for users."""
+    """Scripting project interface for users."""
 
     def get_name(self) -> str:
         """Get the project name."""

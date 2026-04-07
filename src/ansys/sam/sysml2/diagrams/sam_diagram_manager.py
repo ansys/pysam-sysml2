@@ -62,7 +62,7 @@ class SAMDiagramManager:
 
         Parameters
         ----------
-        model : Project
+        model : ScriptingProject
             Context model.
         diagrams : Dict[str,dict]
             Diagrams

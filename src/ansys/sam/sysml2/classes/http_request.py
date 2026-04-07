@@ -19,7 +19,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-"""Store all information and create new requests."""
+"""Store parameters for building an HTTP request."""
 
 from dataclasses import dataclass, field
 
@@ -30,11 +30,14 @@ class HttpRequest:
 
     url: str
     data: dict = field(default_factory=dict)
-    json: dict = field(default_factory=dict)
+    json_body: dict = field(default_factory=dict)
     params: dict = field(default_factory=dict)
     headers: dict = field(default_factory=dict)
     cookies: dict = field(default_factory=dict)
 
     def explode(self) -> dict:
         """Get all information for building an HTTP request."""
-        return dict((x, y) for x, y in self.__dict__.items() if not x.startswith("_"))
+        field_renames = {"json_body": "json"}
+        return {
+            field_renames.get(k, k): v for k, v in self.__dict__.items() if not k.startswith("_")
+        }

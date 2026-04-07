@@ -49,7 +49,7 @@ class AnsysProject:
         use_ssl: bool = True,
     ) -> None:
         """
-        Initialize the AnsysSysML2Project with connection parameters.
+        Initialize the AnsysProject with connection parameters.
 
         Parameters
         ----------
@@ -63,15 +63,6 @@ class AnsysProject:
             Unique identifier of the project to manage.
         use_ssl : bool, optional
             Whether to use SSL/TLS for connections. Default is True.
-
-        Raises
-        ------
-        ConnectionError
-            If unable to establish connection to the server.
-        AuthenticationError
-            If the provided token is invalid.
-        ProjectNotFoundError
-            If the specified project does not exist.
         """
         self._project_id = project_id
         self.__diagrams_available = False
@@ -107,7 +98,7 @@ class AnsysProject:
         self._initialize_diagram_capabilities()
 
     def _get_project(self, sysml2_connector: AnsysSysML2APIConnector):
-        """Abstract method to retrieve the correct project type."""
+        """Retrieve the correct project type."""
         return None
 
     def _initialize_diagram_capabilities(self) -> None:

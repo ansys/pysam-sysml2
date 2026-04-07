@@ -39,19 +39,19 @@ TYPE_KEY = "@type"
 
 
 class ScriptingMapper(Mapper):
-    """JSON mapper class for SysML element."""
+    """JSON mapper for scripting-layer SysML elements."""
 
     class_cache = {}
 
     def map(
-        self, name_space: str, json_element: dict, mapped_element: SysMLElement
+        self, namespace: str, json_element: dict, mapped_element: SysMLElement
     ) -> MappedElement:
         """
         Map the JSON into a python element.
 
         Parameters
         ----------
-        name_space : str
+        namespace : str
             Project namespace.
         json_element : dict
             Element data.
@@ -66,15 +66,15 @@ class ScriptingMapper(Mapper):
         if TYPE_KEY not in json_element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(name_space, json_element, mapped_element)
+        return self.__build_element(namespace, json_element, mapped_element)
 
-    def __build_element(self, name_space: str, data: dict, element: SysMLElement) -> MappedElement:
+    def __build_element(self, namespace: str, data: dict, element: SysMLElement) -> MappedElement:
         """
         Map element data to python object.
 
         Parameters
         ----------
-        name_space : str
+        namespace : str
             Project namespace.
         data : dict
             Element data.
@@ -88,13 +88,13 @@ class ScriptingMapper(Mapper):
         """
         unresolved_fields = list()
         if element is None:
-            element = SysMLElement(id=data["@id"])
+            element = SysMLElement(element_id=data["@id"])
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
         self.__update_element_definition(data, element)
         if not getattr(element, "_qualifiedName", "").startswith(
-            name_space
+            namespace
         ) and not SysMLTools.isinstance(element, "FeatureValue"):
             unresolved_fields = list()
         return MappedElement(element, unresolved_fields)
