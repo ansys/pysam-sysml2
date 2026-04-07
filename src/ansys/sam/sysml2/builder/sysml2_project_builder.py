@@ -22,7 +22,6 @@
 
 """Project builder."""
 
-from typing import Dict, List, Set, Union
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
@@ -40,9 +39,11 @@ from ansys.sam.sysml2.dto.query.constraints_classes import (
 )
 from ansys.sam.sysml2.dto.query.query_class import Query
 from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
+from ansys.sam.sysml2.exception.mapper_exception import MapperException
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 
+_SCRIPTING_KEEP = {"get_value", "parse_and_set_value", "set_value", "delete"}
 sysml_element_dir = dir(SysMLElement) + ["_id"]
 
 
@@ -50,7 +51,7 @@ class SysML2ProjectBuilder:
     """Provides the SysML2 project builder."""
 
     _connector: SysML2APIConnector
-    _mappers: Dict[str, Mapper] = {
+    _mappers: dict[str, Mapper] = {
         "Scripting": ScriptingMapper(),
         "SysML": SysMLMapper(),
     }
@@ -80,20 +81,20 @@ class SysML2ProjectBuilder:
         self.__build_project(project)
         return project
 
-    def __build_project(self, project: Union[Project | ScriptingProject]):
+    def __build_project(self, project: Project | ScriptingProject):
         """Build the project from JSON."""
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
         self._index_libraries(project)
 
-    def _build_project_element(self, project: Union[Project | ScriptingProject]):
+    def _build_project_element(self, project: Project | ScriptingProject):
         """Build all project elements in the project."""
         elements = self._connector.get_all_elements(project_id=project._id)
         self._map_element_in_project(project, elements)
         missing_elements = self._resolve_fields(project)
         seen = missing_elements.copy()
-        while len(missing_elements) != 0:
+        while missing_elements:
             new_element = self._get_missing(project, missing_elements)
             self._map_element_in_project(project, new_element)
             missing_elements = self._resolve_fields(project)
@@ -101,60 +102,37 @@ class SysML2ProjectBuilder:
             seen.update(missing_elements)
         self.extract_root_and_check_names(project)
 
-    def extract_root_and_check_names(self, project: Union[Project | ScriptingProject]):
-        """Parse all project elements, extract the root element, and update names."""
-        roots = list()
-        add_function = None
+    def extract_root_and_check_names(self, project: Project | ScriptingProject):
+        """Extract root elements and resolve inherited names in a single pass.
+
+        Both operations are combined into one iteration over the project
+        environment to avoid looping twice.
+        """
+        roots = []
         if isinstance(project, Project):
-            add_function = self.filter_and_add_sysml_element
+            for element in project._env.values():
+                setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
+                if element.owner is None:
+                    roots.append(element)
         elif isinstance(project, ScriptingProject):
-            add_function = self.filter_and_add_scripting_element
+            for element in project._env.values():
+                setattr(element, "_name", SysMLUtil.check_inherited_name(element))
+                if getattr(element, "_owner") is None:
+                    roots.append(element)
         else:
             raise TypeError(
-                f"Unsupported project type: {type(project).name}. "
+                f"Unsupported project type: {type(project).__name__}. "
                 "Expected Project or ScriptingProject."
             )
-        for _, element in project._env.items():
-            add_function(element, roots)
         project._root = roots
 
-    def filter_and_add_sysml_element(self, element: Element, roots: List):
-        """
-        Filter and check root packages for SysML projects.
-
-        Parameters
-        ----------
-        element : Element
-            Element to check.
-        roots : List
-            List of root packages.
-        """
-        setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
-        if element.owner is None:
-            roots.append(element)
-
-    def filter_and_add_scripting_element(self, element: SysMLElement, roots: List):
-        """
-        Filter and check root packages for Scripting project.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            Element to check.
-        roots : List
-            List of root packages.
-        """
-        setattr(element, "_name", SysMLUtil.check_inherited_name(element))
-        if getattr(element, "_owner", None) is None:
-            roots.append(element)
-
-    def _get_mapper(self, project: Union[Project | ScriptingProject]) -> Mapper:
+    def _get_mapper(self, project: Project | ScriptingProject) -> Mapper:
         """
         Get the correct mapper.
 
         Parameters
         ----------
-        project : Union[Project | ScriptingProject]
+        project : Project | ScriptingProject
             Context project.
 
         Returns
@@ -164,28 +142,28 @@ class SysML2ProjectBuilder:
 
         Raises
         ------
-        Exception
-            If no mapper is correct.
+        MapperException
+            If no mapper is found for the project type.
         """
         if isinstance(project, Project):
             return self._mappers.get("SysML")
         elif isinstance(project, ScriptingProject):
             return self._mappers.get("Scripting")
         else:
-            raise Exception()
+            raise MapperException(f"No mapper found for project type: {type(project).__name__}")
 
-    def _map_element_in_project(self, project: Union[Project | ScriptingProject], elements: list):
+    def _map_element_in_project(self, project: Project | ScriptingProject, elements: list):
         """
-        Map all elements and add it to the context project.
+        Map all elements and add them to the context project.
 
         Parameters
         ----------
-        project : Union[Project | ScriptingProject]
+        project : Project | ScriptingProject
             Context project.
-        elements : list
-            All element to map.
+        elements : list[dict]
+            All elements to map.
         """
-        unresolved_fields = list()
+        unresolved_fields = []
         mapper = self._get_mapper(project)
         for element in elements:
             existing_element = project.find_element_by_id(element["@id"])
@@ -194,18 +172,18 @@ class SysML2ProjectBuilder:
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
 
-    def _resolve_fields(self, project: Union[Project | ScriptingProject]) -> Set[str]:
+    def _resolve_fields(self, project: Project | ScriptingProject) -> set[str]:
         """
         Resolve all fields and return missing IDs.
 
         Parameters
         ----------
-        project : Union[Project | ScriptingProject]
+        project : Project | ScriptingProject
             Context project.
 
         Returns
         -------
-        Set[str]
+        set[str]
             All missing IDs.
         """
         missing = set()
@@ -220,65 +198,57 @@ class SysML2ProjectBuilder:
             else:
                 missing.add(element_id)
         project._unresolved_fields = [f for f in unresolved_fields if f not in resolved_fields]
-        return set(x for x in missing if "/?" not in x)
+        return {x for x in missing if "/?" not in x}
 
     def _get_missing(
-        self, project: Union[Project | ScriptingProject], missing_elements: Set[str]
-    ) -> List[dict]:
+        self, project: Project | ScriptingProject, missing_elements: set[str]
+    ) -> list[dict]:
         """
         Get all missing elements from the API.
 
         Parameters
         ----------
-        project : Union[Project | ScriptingProject]
+        project : Project | ScriptingProject
             Current context.
-        missing_elements : Set[str]
+        missing_elements : set[str]
             All missing element IDs.
 
         Returns
         -------
-        List[dict]
+        list[dict]
             New element.
         """
         query = Query(None)
         cp = None
         if len(missing_elements) > 1:
             cp = CompositeConstraint(operator=JoinOperator.OR)
-            missing_list = []
-            for element_id in missing_elements:
-                missing_list.append(
-                    PrimitiveConstraint(
-                        property_name="@id",
-                        value=element_id,
-                    )
-                )
-            cp.constraint = missing_list
+            cp.constraint = [
+                PrimitiveConstraint(property_name="@id", value=eid) for eid in missing_elements
+            ]
         else:
-            cp = PrimitiveConstraint(property_name="@id", value=list(missing_elements)[0])
+            cp = PrimitiveConstraint(property_name="@id", value=next(iter(missing_elements)))
         query.where = cp
-        self.missing = set()
         return self._connector.execute_query(project._id, query.to_json())
 
-    def _resolve_inherited_link(self, project: Union[Project | ScriptingProject]):
+    def _resolve_inherited_link(self, project: Project | ScriptingProject):
         """Resolve all inherited elements and add them as members."""
         if isinstance(project, ScriptingProject):
-            ingore_list = ["get_value", "parse_and_set_value", "set_value", "delete"]
-            for _, element in project._env.copy().items():
-                self.clear_element(ingore_list, element)
+            for element in project._env.copy().values():
+                self.clear_element(_SCRIPTING_KEEP, element)
                 self.update_element(element)
 
             self._resolve_dynamic_inherited_fields(project)
 
         else:
-            for _, element in project._env.copy().items():
+            for element in project._env.copy().values():
                 element._element_hash_map = self.__get_all_sysml_element(element)
             self._resolve_sysml_inherited_fields(project)
 
     def _resolve_dynamic_inherited_fields(self, project: ScriptingProjectImpl):
         """Resolve all inherited fields and add them as members."""
-        composed_ids = set(
+        composed_ids = {
             x.get_id() for x in project._unresolved_fields if x.get_id().startswith("/?")
-        )
+        }
         elements = {}
         for composed_id in composed_ids:
             elements_ids = composed_id.split("/?")
@@ -286,7 +256,7 @@ class SysML2ProjectBuilder:
             if element is None:
                 continue
             parents = self._get_all_parents(project, elements_ids)
-            if len(parents) == 0:
+            if not parents:
                 continue
             elif len(parents) == 1:
                 elements.update(self._resolve_single_level_inherited_dynamic(element, parents))
@@ -297,9 +267,9 @@ class SysML2ProjectBuilder:
 
     def _resolve_sysml_inherited_fields(self, project: Project):
         """Resolve all inherited fields and add them as members."""
-        composed_ids = set(
+        composed_ids = {
             x.get_id() for x in project._unresolved_fields if x.get_id().startswith("/?")
-        )
+        }
         elements = {}
         for composed_id in composed_ids:
             elements_ids = composed_id.split("/?")
@@ -307,7 +277,7 @@ class SysML2ProjectBuilder:
             if element is None:
                 continue
             parents = self._get_all_parents(project, elements_ids)
-            if len(parents) == 0:
+            if not parents:
                 continue
             elif len(parents) == 1:
                 elements.update(self._resolve_single_level_inherited(element, parents))
@@ -324,7 +294,7 @@ class SysML2ProjectBuilder:
         ----------
         element :  SysMLElement
             The element to resolve.
-        parents : List[Element]
+        parents : list[Element]
             The list of parent elements.
 
         Returns
@@ -354,7 +324,7 @@ class SysML2ProjectBuilder:
         ----------
         element : SysMLElement
             The element to resolve.
-        parents : List[Element]
+        parents : list[Element]
             The list of parent elements.
 
         Returns
@@ -391,7 +361,7 @@ class SysML2ProjectBuilder:
         ----------
         element : Element
             The element to resolve.
-        parents : List[Element]
+        parents : list[Element]
             The list of parent elements.
 
         Returns
@@ -421,7 +391,7 @@ class SysML2ProjectBuilder:
         ----------
         element : Element
             The element to resolve.
-        parents : List[Element]
+        parents : list[Element]
             The list of parent elements.
 
         Returns
@@ -456,17 +426,17 @@ class SysML2ProjectBuilder:
 
         Parameters
         ----------
-        project : Union[Project | ScriptingProject]
+        project : Project | ScriptingProject
             The project containing the elements.
-        elements_ids : List[str]
+        elements_ids : list[str]
             The list of element IDs.
 
         Returns
         -------
-        List[Element]
+        list[Element]
             The list of parent elements.
         """
-        parents: List[Element] = []
+        parents: list[Element] = []
         for parent_id in elements_ids[1:-1]:
             parent_element = project._env.get(parent_id, None)
             if parent_element is None:
@@ -510,18 +480,18 @@ class SysML2ProjectBuilder:
         """Parse all definitions from the element and return its owned elements."""
         all_element = getattr(element, "_ownedElement", []).copy()
         all_element.extend(getattr(element, "_inheritedFeature", []))
-        return dict([(x._name, x) for x in all_element if isinstance(x, SysMLElement)])
+        return {x._name: x for x in all_element if isinstance(x, SysMLElement)}
 
     def __get_all_sysml_element(self, element: Element) -> dict:
         """Parse all definitions and collect owned elements."""
         all_element = element.owned_element.copy()
         all_element.extend(getattr(element, "owned_inherited_feature", []).copy())
-        return dict([(x.name, x) for x in all_element if isinstance(x, Element)])
+        return {x.name: x for x in all_element if isinstance(x, Element)}
 
-    def _add_write_access(self, project: ScriptingProjectImpl):
+    def _add_write_access(self, project: Project | ScriptingProject):
         """Add write rules access on the project."""
         project_modification_observer = ModificationObserver(project, self._connector)
-        for _, element in project._env.items():
+        for element in project._env.values():
             element._observer = project_modification_observer
 
     def _index_sysml_libraries(self, libraries_elements, element, project):
@@ -534,7 +504,7 @@ class SysML2ProjectBuilder:
         if not getattr(element, "_qualifiedName", "").startswith(project._name):
             libraries_elements.add(element._id)
 
-    def _index_libraries(self, project: ScriptingProjectImpl):
+    def _index_libraries(self, project: Project | ScriptingProject):
         """Index libraries of the project for future reload."""
         libraries_elements = set()
         call = None
@@ -543,13 +513,15 @@ class SysML2ProjectBuilder:
         elif isinstance(project, ScriptingProject):
             call = self._index_scripting_libraries
         else:
-            raise TypeError(f"Unsupported project type: {type(project).name}. ")
-        for _, element in project._env.items():
+            raise TypeError(f"Unsupported project type: {type(project).__name__}. ")
+        for element in project._env.values():
             call(libraries_elements, element, project)
         project._libraries_ids = libraries_elements
 
     def reload_project(
-        self, modification_observer: ModificationObserver, project: ScriptingProjectImpl
+        self,
+        modification_observer: ModificationObserver,
+        project: Project | ScriptingProject,
     ):
         """
         Reload the project and update all its elements.
@@ -558,12 +530,12 @@ class SysML2ProjectBuilder:
         ----------
         modification_observer : ModificationObserver
             Observer instance.
-        project : ScriptingProjectImpl
-            Scripting project instance to reload.
+        project : Project | ScriptingProject
+            Project instance to reload.
         """
-        modification_observer.stop_observer()
+        modification_observer.stop()
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
         self._index_libraries(project)
-        modification_observer.start_observer()
+        modification_observer.start()
