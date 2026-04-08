@@ -260,10 +260,212 @@ class SysML2ProjectBuilder:
                 self.clear_element(ingore_list, element)
                 self.update_element(element)
 
+            self._resolve_dynamic_inherited_fields(project)
+
         else:
             for _, element in project._env.copy().items():
                 element._element_hash_map = self.__get_all_sysml_element(element)
+            self._resolve_sysml_inherited_fields(project)
+
+    def _resolve_dynamic_inherited_fields(self, project: ScriptingProjectImpl):
+        """Resolve all inherited fields and add them as members."""
+        composed_ids = set(
+            x.get_id() for x in project._unresolved_fields if x.get_id().startswith("/?")
+        )
+        elements = {}
+        for composed_id in composed_ids:
+            elements_ids = composed_id.split("/?")
+            element: SysMLElement = project._env.get(elements_ids[-1], None)
+            if element is None:
+                continue
+            parents = self._get_all_parents(project, elements_ids)
+            if len(parents) == 0:
+                continue
+            elif len(parents) == 1:
+                elements.update(self._resolve_single_level_inherited_dynamic(element, parents))
+            else:
+                elements.update(self._resolve_multi_level_inherited_dynamic(element, parents))
+        project._env.update(elements)
         self._resolve_fields(project)
+
+    def _resolve_sysml_inherited_fields(self, project: Project):
+        """Resolve all inherited fields and add them as members."""
+        composed_ids = set(
+            x.get_id() for x in project._unresolved_fields if x.get_id().startswith("/?")
+        )
+        elements = {}
+        for composed_id in composed_ids:
+            elements_ids = composed_id.split("/?")
+            element: Element = project._env.get(elements_ids[-1], None)
+            if element is None:
+                continue
+            parents = self._get_all_parents(project, elements_ids)
+            if len(parents) == 0:
+                continue
+            elif len(parents) == 1:
+                elements.update(self._resolve_single_level_inherited(element, parents))
+            else:
+                elements.update(self._resolve_multi_level_inherited(element, parents))
+        project._env.update(elements)
+        self._resolve_fields(project)
+
+    def _resolve_multi_level_inherited_dynamic(self, element, parents):
+        """
+        Resolve multi-level inherited element.
+
+        Parameters
+        ----------
+        element :  SysMLElement
+            The element to resolve.
+        parents : List[Element]
+            The list of parent elements.
+
+        Returns
+        -------
+        dict
+            A dictionary containing the resolved inherited element.
+        """
+        current = parents[0]
+        for parent in parents[1:]:
+            if parent._name is not None and parent._name in current._element_hash_map:
+                current = current.get(parent._name)
+            else:
+                return {}
+        if element._name is not None and element._name in current._element_hash_map:
+            element_ = current.get(element._name)
+        else:
+            return {}
+        if element_ is not None:
+            return {element_._id: element_}
+        return {}
+
+    def _resolve_single_level_inherited_dynamic(self, element, parents):
+        """
+        Resolve single-level inherited element.
+
+        Parameters
+        ----------
+        element : SysMLElement
+            The element to resolve.
+        parents : List[Element]
+            The list of parent elements.
+
+        Returns
+        -------
+        dict
+            A dictionary containing the resolved inherited element.
+        """
+        if element._name is not None:
+            e = parents[0].get(element._name)
+            if e is not None:
+                return {e._id: e}
+            return {}
+        else:
+            from ansys.sam.sysml2.classes.sysml_inherited_element import (
+                SysMLInheritedElement,
+            )
+
+            element_ = SysMLInheritedElement(
+                parents[0],
+                next(
+                    (e for e in parents[0]._element_hash_map if e._id == element._id),
+                    None,
+                ),
+            )
+            if element_._element is not None:
+                return {element_._id: element_}
+        return {}
+
+    def _resolve_multi_level_inherited(self, element, parents):
+        """
+        Resolve multi-level inherited element.
+
+        Parameters
+        ----------
+        element : Element
+            The element to resolve.
+        parents : List[Element]
+            The list of parent elements.
+
+        Returns
+        -------
+        dict
+            A dictionary containing the resolved inherited element.
+        """
+        current = parents[0]
+        for parent in parents[1:]:
+            if parent.name is not None and parent.name in current._element_hash_map:
+                current = current.get(parent.name)
+            else:
+                return {}
+        if element.name is not None and element.name in current._element_hash_map:
+            element_ = current.get(element.name)
+        else:
+            return {}
+        if element_ is not None:
+            return {element_.id: element_}
+        return {}
+
+    def _resolve_single_level_inherited(self, element, parents):
+        """
+        Resolve single-level inherited element.
+
+        Parameters
+        ----------
+        element : Element
+            The element to resolve.
+        parents : List[Element]
+            The list of parent elements.
+
+        Returns
+        -------
+        dict
+            A dictionary containing the resolved inherited element.
+        """
+        if element.name is not None:
+            e = parents[0].get(element.name)
+            if e is not None:
+                return {e.id: e}
+            return {}
+        else:
+            from ansys.sam.sysml2.classes.sysml_inherited_element import (
+                SysMLInheritedElement,
+            )
+
+            element_ = SysMLInheritedElement(
+                parents[0],
+                next(
+                    (e for e in parents[0]._element_hash_map if e.id == element.id),
+                    None,
+                ),
+            )
+            if element_._element is not None:
+                return {element_.id: element_}
+        return {}
+
+    def _get_all_parents(self, project, elements_ids):
+        """
+        Get all parent elements from the composed ID.
+
+        Parameters
+        ----------
+        project : Union[Project | ScriptingProject]
+            The project containing the elements.
+        elements_ids : List[str]
+            The list of element IDs.
+
+        Returns
+        -------
+        List[Element]
+            The list of parent elements.
+        """
+        parents: List[Element] = []
+        for parent_id in elements_ids[1:-1]:
+            parent_element = project._env.get(parent_id, None)
+            if parent_element is None:
+                break
+            parents.append(parent_element)
+        return parents
 
     def update_element(self, element):
         """
@@ -306,7 +508,7 @@ class SysML2ProjectBuilder:
     def __get_all_sysml_element(self, element: Element) -> dict:
         """Parse all definitions and collect owned elements."""
         all_element = element.owned_element
-
+        all_element.extend(getattr(element, "owned_inherited_feature", []).copy())
         return dict([(x.name, x) for x in all_element if isinstance(x, Element)])
 
     def _add_write_access(self, project: ScriptingProjectImpl):

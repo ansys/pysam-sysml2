@@ -33,8 +33,8 @@ class EObject:
     _observer: ModificationObserver
 
     def __init__(self, id: str):
-        self.id = id
-        self.identifier = id
+        self._id = id
+        self._identifier = id
         self._observer = None
         self._element_hash_map = dict()
 
@@ -69,6 +69,22 @@ class EObject:
             return SysMLInheritedElement(self, child)
 
         raise AttributeError(f"{self.name} has no element named {element_name}")
+
+    @property
+    def id(self):
+        """Get the id of the element."""
+        return self._id
+
+    @id.setter
+    def id(self, new_id):
+        """Set the id of the element."""
+        self._id = new_id
+        self._identifier = new_id
+
+    @property
+    def identifier(self):
+        """Get the identifier of the element."""
+        return self._identifier
 
     def get_value(self):
         """Return the value of the feature."""
