@@ -508,13 +508,13 @@ class SysML2ProjectBuilder:
 
     def __get_all_element(self, element: SysMLElement) -> dict:
         """Parse all definitions from the element and return its owned elements."""
-        all_element = list(getattr(element, "_ownedElement", []).copy())
+        all_element = getattr(element, "_ownedElement", []).copy()
         all_element.extend(getattr(element, "_inheritedFeature", []))
         return dict([(x._name, x) for x in all_element if isinstance(x, SysMLElement)])
 
     def __get_all_sysml_element(self, element: Element) -> dict:
         """Parse all definitions and collect owned elements."""
-        all_element = element.owned_element
+        all_element = element.owned_element.copy()
         all_element.extend(getattr(element, "owned_inherited_feature", []).copy())
         return dict([(x.name, x) for x in all_element if isinstance(x, Element)])
 
