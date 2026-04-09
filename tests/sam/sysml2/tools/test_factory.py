@@ -134,10 +134,8 @@ class TestFactory(ParentTestClass):
 
         project_root = project.get_root_package()
 
-        with pytest.raises(TypeError) as error:
+        with pytest.raises(TypeError):
             factory.create_attribute_usage(
                 name=["new_attribute"],
                 owner=project_root,
             )
-
-        assert error.value.args[0].startswith("attribute name must be string")

@@ -68,7 +68,7 @@ class EObject:
         hmap = self.__dict__.get("_element_hash_map", {})
         if element_name in hmap:
             child = hmap[element_name]
-            owned = self.__dict__.get("owned_element", [])
+            owned = self.__dict__.get("_owned_element", [])
             is_owned = any(
                 getattr(x, "name", None) == element_name for x in owned if isinstance(x, EObject)
             )

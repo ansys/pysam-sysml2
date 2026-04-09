@@ -463,7 +463,7 @@ def route_get_roots_elements(project_id: str) -> list:
     data = load_project(project_id)
     roots_elements = []
     for element in data:
-        if "owner" not in element:
+        if element.get("owner") is None:
             roots_elements.append(element)
     return roots_elements
 
