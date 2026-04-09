@@ -510,6 +510,18 @@ def route_create_project() -> dict:
     """
     project_info = loads(request.data)
     if "name" in project_info and "description" in project_info:
+        projects_root = get_project_path("")
+        for _, dirs, _ in os.walk(projects_root):
+            for directory in dirs:
+                project_id = directory.split("_")[1] if "_" in directory else None
+                if project_id is not None:
+                    existing = load_project_data(project_id)
+                    if existing and existing.get("name") == project_info["name"]:
+                        create_http_error(
+                            code=409,
+                            title="impossible-operation",
+                            message="A project with this name already exists in this space.",
+                        )
         return {
             TYPE: "Project",
             "defaultBranch": {"@id": "defaultBranch"},
@@ -518,6 +530,54 @@ def route_create_project() -> dict:
             "@id": str(uuid4()),
         }
     create_http_error(code=405)
+
+
+@authenticate
+@space_route
+@return_json
+def route_delete_project(project_id: str) -> dict:
+    """
+    Delete the project with the given ID.
+
+    Parameters
+    ----------
+    project_id : str
+        Project Id
+
+    Returns
+    -------
+    dict
+        Confirmation with @type and @id
+    """
+    check_project_id(project_id)
+    return {TYPE: "Project", "@id": project_id}
+
+
+@authenticate
+@space_route
+@return_json
+def route_update_project(project_id: str) -> dict:
+    """
+    Update the project with the given ID.
+
+    Parameters
+    ----------
+    project_id : str
+        Project Id
+
+    Returns
+    -------
+    dict
+        Updated project record
+    """
+    check_project_id(project_id)
+    project_data = load_project_data(project_id)
+    update_info = loads(request.data)
+    if "name" in update_info:
+        project_data["name"] = update_info["name"]
+    if "description" in update_info:
+        project_data["description"] = update_info["description"]
+    return project_data
 
 
 @authenticate

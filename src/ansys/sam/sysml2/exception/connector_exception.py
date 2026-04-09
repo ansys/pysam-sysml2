@@ -54,6 +54,10 @@ class InvalidProjectNameException(ConnectorException):
     """Exception when the name given for a project is not correct."""
 
 
+class ProjectAlreadyExistsException(ConnectorException):
+    """Exception when a project with the same name already exists."""
+
+
 class BadRequestConnectionException(ConnectorException):
     """Exception when request is invalid."""
 

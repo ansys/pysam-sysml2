@@ -49,6 +49,7 @@ class MockedServer:
         for route in routes_list:
             app.add_url_rule(**route.get_data())
 
+        @app.errorhandler(409)
         @app.errorhandler(404)
         @app.errorhandler(403)
         @app.errorhandler(401)

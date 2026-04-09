@@ -30,6 +30,9 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 class ScriptingProject:
     """Scripting project interface for users."""
 
+    def get_id(self) -> str:
+        """Get the project ID."""
+
     def get_name(self) -> str:
         """Get the project name."""
 

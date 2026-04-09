@@ -53,6 +53,45 @@ class SysML2APIConnector:
             Project record.
         """
 
+    def delete_project(self, project_id: str) -> dict:
+        """
+        Delete the project with the given ID.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to delete.
+
+        Returns
+        -------
+        dict
+            Confirmation containing ``@type`` and ``@id`` of the deleted project.
+        """
+
+    def update_project(
+        self,
+        project_id: str,
+        project_name: str = None,
+        project_description: str = None,
+    ) -> dict:
+        """
+        Update the project with the given ID.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to update.
+        project_name : str, optional
+            New name for the project.
+        project_description : str, optional
+            New description for the project.
+
+        Returns
+        -------
+        dict
+            Updated project record.
+        """
+
     def get_all_elements(self, project_id: str) -> list:
         """Get all elements of the given project."""
 

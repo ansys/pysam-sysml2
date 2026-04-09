@@ -105,6 +105,14 @@ routes_list = [
         route=ANSYS_BASE_URI + "/projects",
         controller_function=route_create_project,
     ),
+    ServerDeleteRouteMapping(
+        route=ANSYS_BASE_URI + "/projects/<string:project_id>",
+        controller_function=route_delete_project,
+    ),
+    ServerPutRouteMapping(
+        route=ANSYS_BASE_URI + "/projects/<string:project_id>",
+        controller_function=route_update_project,
+    ),
     ServerPostRouteMapping(
         route=ANSYS_BASE_URI + "/projects/<string:project_id>/commit",
         controller_function=route_create_commit,

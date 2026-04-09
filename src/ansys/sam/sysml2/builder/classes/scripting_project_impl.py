@@ -85,6 +85,10 @@ class ScriptingProjectImpl(ScriptingProject):
         """
         return self._root
 
+    def get_id(self) -> str:
+        """Get the project ID."""
+        return self._id
+
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
         root = next(
