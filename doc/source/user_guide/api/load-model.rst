@@ -16,7 +16,7 @@ For more information, see the :class:`SysML2ProjectManager <ansys.sam.sysml2.bui
 
 With the project manager, and the ID of the project you want, you can load two types of projects:
 
-SysML2 project (Static approach)
+SysML2 project (static approach)
 ================================
 
 SysML2 projects use a Python-based metamodel, enabling static completion for all SysML2 properties.
@@ -27,7 +27,7 @@ SysML2 projects use a Python-based metamodel, enabling static completion for all
         "<Computer Project ID>"
     )  # You can find your project ID in the URL of the editor.
 
-Scripting project (Dynamic approach)
+Scripting project (dynamic approach)
 ====================================
 
 Scripting projects use a dynamic class generation approach. This offers flexibility but does not provide autocompletion.

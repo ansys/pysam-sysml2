@@ -27,15 +27,15 @@ class SysMLTools:
     """Provides the static class for all SysML tools."""
 
     @staticmethod
-    def isinstance(element, type: str) -> bool:
+    def isinstance(element, element_type: str) -> bool:
         """
         Check the type of an element.
 
         Parameters
         ----------
         element : SysMLElement
-            Element to check
-        type : str
+            Element to check.
+        element_type : str
             SysML class name.
 
         Returns
@@ -43,4 +43,4 @@ class SysMLTools:
         bool
             ``True`` if yes, ``False`` otherwise.
         """
-        return element.__class__.__name__.split(".")[-1] == type
+        return element.__class__.__name__.split(".")[-1] == element_type

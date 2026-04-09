@@ -66,14 +66,14 @@ class SamDiagramBuilder:
             Dictionary mapping diagram IDs to their built element lists.
         """
         data = {}
-        for id, annotations in diagrams_extracted.items():
+        for container_id, annotations in diagrams_extracted.items():
             elements = []
             for annotation in annotations:
                 mapped = self._mapper.map(annotation)
                 elements.append(mapped.get_element())
                 unresolved = mapped.get_unresolved_fields()
                 self.__resolve_unresolved_fields(project, unresolved)
-            data[id] = elements
+            data[container_id] = elements
         return data
 
     def __extract_e_annotations(self, data: dict) -> dict:
@@ -113,12 +113,14 @@ class SamDiagramBuilder:
             Only diagram eAnnotations.
         """
         res = {}
-        for id, annotations in e_annotations.items():
+        for container_id, annotations in e_annotations.items():
+            if not annotations:
+                continue
             diagram_annotations = []
             for annotation in annotations[0].get("contents", []):
                 if annotation.get("eClass", "").endswith("SimpleDiagram"):
                     diagram_annotations.append(annotation)
-            res[id] = diagram_annotations
+            res[container_id] = diagram_annotations
         return res
 
     def __resolve_unresolved_fields(

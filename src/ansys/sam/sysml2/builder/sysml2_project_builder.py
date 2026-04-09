@@ -30,7 +30,7 @@ from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingPro
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.builder.mapper.mapper import Mapper
 from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
-from ansys.sam.sysml2.builder.mapper.sysml_mapper import SysmlMapper
+from ansys.sam.sysml2.builder.mapper.sysml_mapper import SysMLMapper
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
@@ -52,11 +52,18 @@ class SysML2ProjectBuilder:
     _connector: SysML2APIConnector
     _mappers: Dict[str, Mapper] = {
         "Scripting": ScriptingMapper(),
-        "SysML": SysmlMapper(),
+        "SysML": SysMLMapper(),
     }
 
     def __init__(self, connector: SysML2APIConnector):
-        """Construct a new instance with a specified SysML2 API Connector."""
+        """
+        Construct a new instance.
+
+        Parameters
+        ----------
+        connector : SysML2APIConnector
+            SysML2 API connector for server communication.
+        """
         self._connector = connector
 
     def build_sysml_project(self, project_id: str) -> Project:
@@ -241,13 +248,13 @@ class SysML2ProjectBuilder:
             for element_id in missing_elements:
                 missing_list.append(
                     PrimitiveConstraint(
-                        property="@id",
+                        property_name="@id",
                         value=element_id,
                     )
                 )
             cp.constraint = missing_list
         else:
-            cp = PrimitiveConstraint(property="@id", value=list(missing_elements)[0])
+            cp = PrimitiveConstraint(property_name="@id", value=list(missing_elements)[0])
         query.where = cp
         self.missing = set()
         return self._connector.execute_query(project._id, query.to_json())

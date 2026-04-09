@@ -35,8 +35,7 @@ class Element(EObject):
     """Java class 'com.ansys.medini.metamodel.sysml.Element'."""
 
     def __init__(self, id: str):
-        """
-        Construct new instance.
+        """Construct new instance.
 
         Parameters
         ----------

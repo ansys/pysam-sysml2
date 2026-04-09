@@ -43,10 +43,16 @@ class Constraint:
 class PrimitiveConstraint(Constraint):
     """Provides a primitive constraint for a simple query constraint."""
 
-    property: str
+    property_name: str
     value: str
     inverse: bool = field(default=False)
     operator: Operator = field(default=Operator.EQUALS)
+
+    def to_json(self) -> dict:
+        """Return JSON using the API key ``property`` for the property name."""
+        data = super().to_json()
+        data["property"] = data.pop("property_name")
+        return data
 
 
 @dataclass

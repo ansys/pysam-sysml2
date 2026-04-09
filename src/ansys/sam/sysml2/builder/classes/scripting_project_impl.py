@@ -40,19 +40,19 @@ class ScriptingProjectImpl(ScriptingProject):
     _libraries_ids: Set[str]
     _name: str
 
-    def __init__(self, id: str, name: str):
+    def __init__(self, project_id: str, name: str):
         """
         Construct a new instance.
 
         Parameters
         ----------
-        id : str
+        project_id : str
             Project ID.
         name : str
             Project name.
         """
         super().__init__()
-        self._id = id
+        self._id = project_id
         self._root = list()
         self._name = name
         self._unresolved_fields = list()
@@ -121,13 +121,13 @@ class ScriptingProjectImpl(ScriptingProject):
         """
         return self._env.get(element_id, None)
 
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
+    def find_elements_by_name(self, element_name: str) -> List[SysMLElement]:
         """
         Find all elements by name.
 
         Parameters
         ----------
-        elements_name : str
+        element_name : str
             Name of elements.
 
         Returns
@@ -136,7 +136,7 @@ class ScriptingProjectImpl(ScriptingProject):
             List of elements retrieved.
         """
         return [
-            el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == elements_name
+            el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == element_name
         ]
 
     def start_transactional_mode(self):

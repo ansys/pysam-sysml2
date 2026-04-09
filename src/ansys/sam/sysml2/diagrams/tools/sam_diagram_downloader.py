@@ -40,7 +40,7 @@ class SamDiagramDownloader:
         ----------
         connector : SamApiConnector
             Connector providing API access.
-        project : str
+        project_id : str
             Project instance ID.
         """
         self._connector = connector
@@ -114,7 +114,7 @@ class SamDiagramDownloader:
         file_format : str, default: 'svg'
             Format of the diagrams (``'png'``, ``'jpeg'``, or ``'svg'``).
         filename : str, optional
-            Name of the file. The default is ``'{Project Name}_{Image Extension}_diagrams.zip``'.
+            Name of the file. The default is ``'{project_id}_{file_format}_diagrams.zip'``.
 
         Returns
         -------

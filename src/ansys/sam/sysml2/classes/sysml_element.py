@@ -34,9 +34,16 @@ class SysMLElement:
     _observer: ModificationObserver = None
     _element_hash_map: dict = {}
 
-    def __init__(self, id: str) -> None:
-        """Construct a new SysML element instance with its ID specified."""
-        self._id = id
+    def __init__(self, element_id: str) -> None:
+        """
+        Construct a new SysML element instance with its ID specified.
+
+        Parameters
+        ----------
+        element_id : str
+            Element identifier.
+        """
+        self._id = element_id
 
     def __dir__(self):
         """Get the attribute list from the real element."""
@@ -68,7 +75,7 @@ class SysMLElement:
 
     def __setattr__(self, name: str, value: object):
         """
-        Blocker function the set function of each classes.
+        Intercept attribute assignment and notify the modification observer.
 
         Parameters
         ----------
@@ -104,7 +111,7 @@ class SysMLElement:
         ValueHelper.set_or_update_value(self, type(new_value), new_value)
 
     def delete(self):
-        """Delete the element from the model."""
+        """Delete the element from the model via the observer's commit to the server."""
         if self._observer is not None:
             self._observer.delete_element(self._id)
         del self
