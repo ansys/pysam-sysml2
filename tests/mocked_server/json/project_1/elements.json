@@ -3,6 +3,7 @@
         "@type": "Package",
         "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
         "identifier": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
+        "owner": null,
         "eAnnotations": [],
         "name": "PySAMSysML2TestProject-COMPLET",
         "ownedElement": [

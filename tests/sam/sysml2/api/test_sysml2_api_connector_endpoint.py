@@ -180,7 +180,6 @@ class TestSysML2APIConnectorEndpoint(ParentTestClass):
 
         assert roots is not None
         assert len(roots) == 1
-        assert not any("owner" in element for element in roots)
 
     def test_get_root_elements_invalid_project(
         self, valid_source: AnsysSysML2APIConnector

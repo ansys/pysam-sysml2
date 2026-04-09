@@ -125,4 +125,4 @@ class ObservedList(list):
     @mount_observer_and_access
     def __delitem__(self, key):
         """Override the list __delitem__ method."""
-        return super().__delattr__(key)
+        return super().__delitem__(key)
