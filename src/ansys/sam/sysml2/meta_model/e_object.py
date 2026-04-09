@@ -41,7 +41,8 @@ class EObject:
         element_id : str
             Element ID.
         """
-        self.id = element_id
+        self._id = element_id
+        self._identifier = element_id
         self._observer = None
         self._element_hash_map = dict()
 
@@ -59,7 +60,39 @@ class EObject:
         Element
             The Element or None if not found
         """
-        return self._element_hash_map.get(element_name, None)
+        # return self._element_hash_map.get(element_name, None)
+        from ansys.sam.sysml2.classes.sysml_inherited_element import (
+            SysMLInheritedElement,
+        )
+
+        hmap = self.__dict__.get("_element_hash_map", {})
+        if element_name in hmap:
+            child = hmap[element_name]
+            owned = self.__dict__.get("_owned_element", [])
+            is_owned = any(
+                getattr(x, "name", None) == element_name for x in owned if isinstance(x, EObject)
+            )
+            if is_owned:
+                return child
+            return SysMLInheritedElement(self, child)
+
+        raise AttributeError(f"{self.name} has no element named {element_name}")
+
+    @property
+    def id(self):
+        """Get the id of the element."""
+        return self._id
+
+    @id.setter
+    def id(self, new_id):
+        """Set the id of the element."""
+        self._id = new_id
+        self._identifier = new_id
+
+    @property
+    def identifier(self):
+        """Get the identifier of the element."""
+        return self._identifier
 
     def get_value(self):
         """Return the value of the feature."""

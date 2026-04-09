@@ -32,6 +32,7 @@ class SysMLElement:
 
     _id: str
     _observer: ModificationObserver = None
+    _element_hash_map: dict = {}
 
     def __init__(self, element_id: str) -> None:
         """
@@ -44,6 +45,34 @@ class SysMLElement:
         """
         self._id = element_id
 
+    def __dir__(self):
+        """Get the attribute list from the real element."""
+        base = super().__dir__()
+        hmap = self.__dict__.get("_element_hash_map", {})
+        print("hmap:", hmap)
+        children = [k for k in hmap if k is not None]
+        return sorted(set(list(base) + children))
+
+    def __getattr__(self, name):
+        """Get the attribute from the real element."""
+        from ansys.sam.sysml2.classes.inherited_element import InheritedElement
+
+        if name.startswith("__") and name.endswith("__"):
+            raise AttributeError(name)
+
+        hmap = self.__dict__.get("_element_hash_map", {})
+        if name in hmap:
+            child = hmap[name]
+            owned = self.__dict__.get("_ownedElement", [])
+            is_owned = any(
+                getattr(x, "_name", None) == name for x in owned if isinstance(x, SysMLElement)
+            )
+            if is_owned:
+                return child
+            return InheritedElement(self, child)
+
+        raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
+
     def __setattr__(self, name: str, value: object):
         """
         Intercept attribute assignment and notify the modification observer.
@@ -55,9 +84,19 @@ class SysMLElement:
         value : object
             Value of the key.
         """
+        from ansys.sam.sysml2.classes.inherited_element import InheritedElement
+
         if name != "_observer" and getattr(self, "_observer", None) is not None:
             self._observer.notify(self._id, name, value)
-        super().__setattr__(name, value)
+        if name.startswith("#"):
+            name = name[1:]
+            if any(name == getattr(x, "_name", None) for x in getattr(self, "_ownedElement", [])):
+                super().__setattr__(name, value)
+            else:
+                super().__setattr__(name, InheritedElement(self, value))
+
+        else:
+            super().__setattr__(name, value)
 
     def get_value(self):
         """Get the value of the feature."""

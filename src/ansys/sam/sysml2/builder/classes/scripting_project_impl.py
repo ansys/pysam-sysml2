@@ -87,9 +87,19 @@ class ScriptingProjectImpl(ScriptingProject):
 
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
-        if len(self._root) == 0:
+        root = next(
+            iter(
+                [
+                    x
+                    for x in self._root
+                    if x.__class__.__name__ == "Package" and x._name == self._name
+                ]
+            ),
+            None,
+        )
+        if root is None:
             raise ValueError("The project does not contain any root package.")
-        return [x for x in self._root if x.__class__.__name__ == "Package"][0]
+        return root
 
     def get_name(self) -> str:
         """Get the project name."""

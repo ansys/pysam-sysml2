@@ -64,9 +64,12 @@ class TestEObjet(ParentTestClass):
 
         assert project_root.get("PartDefinition").get("NewAttr").name == "NewAttr"
 
-        assert project_root.get("PartDefinition").get("Attribute") is None
+        with pytest.raises(AttributeError):
+            project_root.get("PartDefinition").get("Attribute")
 
-    def test_expression_with_old_format_project_get_values(self, old_format_project: Project):
+    def test_expression_with_old_format_project_get_values(
+        self, old_format_project: Project
+    ):
         """Verifies expression value in old project."""
         package = old_format_project.get_root_package()
         assert package.get("Structure").get("Frame").get("weight").get_value() == (
@@ -74,7 +77,9 @@ class TestEObjet(ParentTestClass):
             "kilogram",
         )
 
-    def test_expression_with_new_format_project_get_values(self, new_format_project: Project):
+    def test_expression_with_new_format_project_get_values(
+        self, new_format_project: Project
+    ):
         """Verifies expression value in new project."""
         package = new_format_project.get_root_package()
         assert package.get("Feature").get("myExpressionFeature").get_value() == (
@@ -82,12 +87,16 @@ class TestEObjet(ParentTestClass):
             "kilogram",
         )
 
-    def test_expression_with_new_format_set_value_without_errors(self, new_format_project: Project):
+    def test_expression_with_new_format_set_value_without_errors(
+        self, new_format_project: Project
+    ):
         """Verifies expression value set without error."""
         package = new_format_project.get_root_package()
         package.get("Feature").get("myExpressionFeature").parse_and_set_value("10 [kg]")
 
-    def test_expression_with_new_format_get_value_with_complex_value_throw_error(self, new_format_project: Project):
+    def test_expression_with_new_format_get_value_with_complex_value_throw_error(
+        self, new_format_project: Project
+    ):
         """Verifies error for complex expression value."""
         package = new_format_project.get_root_package()
         with pytest.raises(UnsupportedValueExpression):
@@ -98,7 +107,9 @@ class TestEObjet(ParentTestClass):
         package = new_format_project.get_root_package()
         assert package.get("Feature").get("myIntFeature").get_value() == 10
 
-    def test_int_with_new_format_set_value_without_errors(self, new_format_project: Project):
+    def test_int_with_new_format_set_value_without_errors(
+        self, new_format_project: Project
+    ):
         """Verifies integer value set without error."""
         package = new_format_project.get_root_package()
         package.get("Feature").get("myIntFeature").set_value(10)
@@ -108,7 +119,9 @@ class TestEObjet(ParentTestClass):
         package = new_format_project.get_root_package()
         assert package.get("Feature").get("myStringFeature").get_value() == "Hello"
 
-    def test_string_with_new_format_set_value_without_errors(self, new_format_project: Project):
+    def test_string_with_new_format_set_value_without_errors(
+        self, new_format_project: Project
+    ):
         """Verifies string value set without error."""
         package = new_format_project.get_root_package()
         package.get("Feature").get("myStringFeature").set_value("Hello")
@@ -118,7 +131,9 @@ class TestEObjet(ParentTestClass):
         package = new_format_project.get_root_package()
         assert package.get("Feature").get("myBoolFeature").get_value() is False
 
-    def test_bool_with_new_format_set_value_without_errors(self, new_format_project: Project):
+    def test_bool_with_new_format_set_value_without_errors(
+        self, new_format_project: Project
+    ):
         """Verifies boolean value set without error."""
         package = new_format_project.get_root_package()
         package.get("Feature").get("myBoolFeature").set_value(True)
@@ -126,9 +141,13 @@ class TestEObjet(ParentTestClass):
     def test_float_with_new_format_get_values(self, new_format_project: Project):
         """Verifies float value."""
         package = new_format_project.get_root_package()
-        assert package.get("Feature").get("myFloatFeature").get_value() == pytest.approx(10.56)
+        assert package.get("Feature").get(
+            "myFloatFeature"
+        ).get_value() == pytest.approx(10.56)
 
-    def test_float_with_new_format_set_value_without_errors(self, new_format_project: Project):
+    def test_float_with_new_format_set_value_without_errors(
+        self, new_format_project: Project
+    ):
         """Verifies float value set without error."""
         package = new_format_project.get_root_package()
         package.get("Feature").get("myFloatFeature").set_value(10.5)

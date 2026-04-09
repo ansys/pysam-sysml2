@@ -16,6 +16,7 @@
         "@type": "Package",
         "@id": "bcadd609-9309-4704-9ece-27179def642a",
         "identifier": "bcadd609-9309-4704-9ece-27179def642a",
+        "owner": null,
         "eAnnotations": [],
         "name": "test-no-diagram",
         "ownedElement": [

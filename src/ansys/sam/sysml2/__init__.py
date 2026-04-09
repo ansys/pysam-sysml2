@@ -42,3 +42,25 @@ from ansys.sam.sysml2.builder.sysml2_project_manager import (  # noqa: F401, E40
 from ansys.sam.sysml2.diagrams.sam_diagram_manager import (  # noqa: F401, E402 as we export name
     SAMDiagramManager,
 )
+
+# IPython completer patch
+# ------------------------------------------------------------------------------
+
+
+def _patch_completer():
+    """Disable Jedi and enable greedy completion in IPython.
+
+    Jedi performs static analysis and ignores ``__dir__``/``__getattr__``.
+    Disabling it makes IPython call ``__dir__()`` on live objects, which is
+    required for dynamic autocompletion on SysML proxy elements.
+    """
+    try:
+        ip = get_ipython()  # noqa: F821
+        if ip is not None:
+            ip.Completer.use_jedi = False
+            ip.Completer.greedy = True
+    except NameError:
+        pass
+
+
+_patch_completer()
