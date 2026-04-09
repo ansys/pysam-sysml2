@@ -87,7 +87,7 @@ class SysMLMapper(Mapper):
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        if not element.qualified_name.startswith(namespace) and not isinstance(
+        if not getattr(element, "qualified_name", "").startswith(namespace) and not isinstance(
             element, FeatureValue
         ):
             unresolved_fields = []

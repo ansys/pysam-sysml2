@@ -92,7 +92,7 @@ class ProjectImpl(Project):
         """Get the root package."""
         matches = [x for x in self._root if isinstance(x, Package) and x.name == self._name]
         if not matches:
-            raise ValueError(f"No root Package named '{self._name}' found in project")
+            raise ValueError("No root Package found in project.")
         return matches[0]
 
     def get_name(self) -> str:
