@@ -1814,6 +1814,7 @@ class Factory:
                 getattr(instance, key).extend(value)
             else:
                 setattr(instance, key, value)
+        self._project.add_element(instance)
         return instance
 
     def _direct_create_element(self, element_type, **kwargs):
