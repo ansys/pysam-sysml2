@@ -328,11 +328,11 @@ class SysML2ProjectBuilder:
         current = parents[0]
         for parent in parents[1:]:
             if parent._name is not None and parent._name in current._element_hash_map:
-                current = current.get(parent._name)
+                current = getattr(current, parent._name, None)
             else:
                 return {}
         if element._name is not None and element._name in current._element_hash_map:
-            element_ = current.get(element._name)
+            element_ = getattr(current, element._name, None)
         else:
             return {}
         if element_ is not None:
@@ -356,7 +356,7 @@ class SysML2ProjectBuilder:
             A dictionary containing the resolved inherited element.
         """
         if element._name is not None:
-            e = parents[0].get(element._name)
+            e = getattr(parents[0], element._name, None)
             if e is not None:
                 return {e._id: e}
             return {}
