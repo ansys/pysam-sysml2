@@ -1,2521 +1,3280 @@
-[ {
-  "@type" : "FeatureValue",
-  "@id" : "03e401a4-62ff-4c85-ad1a-0264f6f53dcb",
-  "identifier" : "03e401a4-62ff-4c85-ad1a-0264f6f53dcb",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  }
-}, {
-  "@type" : "FeatureChainExpression",
-  "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee",
-  "identifier" : "0c0e7082-6a60-4d75-b252-6dea979aaaee",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  }, {
-    "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::",
-  "owner" : {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  },
-  "owningNamespace" : {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  },
-  "ownedMember" : [ {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  }, {
-    "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9"
-  } ],
-  "member" : [ {
-    "@id" : "/?ecd89418-7e15-4207-9748-cef2256e45e5/?ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  }, {
-    "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  }, {
-    "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9"
-  } ],
-  "feature" : [ {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  }, {
-    "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9"
-  } ],
-  "declaration" : {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  },
-  "parameter" : [ {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  }, {
-    "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9"
-  } ],
-  "result" : {
-    "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9"
-  },
-  "targetFeature" : {
-    "@id" : "/?ecd89418-7e15-4207-9748-cef2256e45e5/?ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "1006571a-ad4b-4e08-9d62-7ed549057ef5",
-  "identifier" : "1006571a-ad4b-4e08-9d62-7ed549057ef5",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "15b25161-2fab-4133-abd1-7fe1e5b05082",
-  "identifier" : "15b25161-2fab-4133-abd1-7fe1e5b05082",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  }
-}, {
-  "@type" : "FeatureReferenceExpression",
-  "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29",
-  "identifier" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::::",
-  "owner" : {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  },
-  "owningNamespace" : {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  },
-  "ownedMember" : [ {
-    "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64"
-  } ],
-  "member" : [ {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64"
-  } ],
-  "feature" : [ {
-    "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64"
-  } ],
-  "declaration" : {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  },
-  "parameter" : [ {
-    "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64"
-  } ],
-  "result" : {
-    "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64"
-  },
-  "referent" : {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "2482a4d8-336d-4def-96e6-844f34387949",
-  "identifier" : "2482a4d8-336d-4def-96e6-844f34387949",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  }
-}, {
-  "@type" : "FeatureReferenceExpression",
-  "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b",
-  "identifier" : "266412f0-0281-420a-bba7-f3be5059bd6b",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::::",
-  "owner" : {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  },
-  "owningNamespace" : {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  },
-  "ownedMember" : [ {
-    "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
-  } ],
-  "member" : [ {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
-  } ],
-  "feature" : [ {
-    "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
-  } ],
-  "declaration" : {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  },
-  "parameter" : [ {
-    "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
-  } ],
-  "result" : {
-    "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
-  },
-  "referent" : {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7",
-  "identifier" : "2b10183e-64d8-408c-83d1-6a5fb5814de7",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::result",
-  "owner" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  },
-  "owningNamespace" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c",
-  "identifier" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c",
-  "ownedElement" : [ {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::",
-  "owner" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  },
-  "owningNamespace" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  },
-  "ownedMember" : [ {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "8922e6e2-e4b2-4de0-a1e6-01f4d8e3e4a2"
-  },
-  "declaration" : {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  },
-  "featureValueExpression" : {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "2f2f8c63-4999-4e5b-8d66-7f107afa3698",
-  "identifier" : "2f2f8c63-4999-4e5b-8d66-7f107afa3698",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  }
-}, {
-  "@type" : "PartDefinition",
-  "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599",
-  "identifier" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599",
-  "name" : "Frame",
-  "ownedElement" : [ {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  }, {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Frame",
-  "owner" : {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  },
-  "owningNamespace" : {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  },
-  "ownedMember" : [ {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  }, {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  }, {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  }, {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "ownedUsage" : [ {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  }, {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "ownedPart" : [ {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "ownedItem" : [ {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "ownedAttribute" : [ {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  } ],
-  "ownedOccurrence" : [ {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ]
-}, {
-  "@type" : "Feature",
-  "@id" : "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34",
-  "identifier" : "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::",
-  "owner" : {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  },
-  "owningNamespace" : {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  },
-  "declaration" : {
-    "@id" : "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
-  }
-}, {
-  "@type" : "FeatureChainExpression",
-  "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f",
-  "identifier" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  }, {
-    "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::",
-  "owner" : {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  },
-  "owningNamespace" : {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  },
-  "ownedMember" : [ {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  }, {
-    "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452"
-  } ],
-  "member" : [ {
-    "@id" : "/?8728f83c-c850-4bf1-b7a9-55df66abd367/?639c512d-ad6a-4871-b92f-366c6a2f383c"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  }, {
-    "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  }, {
-    "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452"
-  } ],
-  "feature" : [ {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  }, {
-    "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452"
-  } ],
-  "declaration" : {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  },
-  "parameter" : [ {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  }, {
-    "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452"
-  } ],
-  "result" : {
-    "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452"
-  },
-  "targetFeature" : {
-    "@id" : "/?8728f83c-c850-4bf1-b7a9-55df66abd367/?639c512d-ad6a-4871-b92f-366c6a2f383c"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13",
-  "identifier" : "30c0885f-30d9-4078-b484-3c4fcb063b13",
-  "ownedElement" : [ {
-    "@id" : "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
-  }, {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::",
-  "owner" : {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  },
-  "owningNamespace" : {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  },
-  "ownedMember" : [ {
-    "@id" : "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
-  }, {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
-  }, {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
-  }, {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "b9e38a71-394b-44ef-87ac-a31c15d47952"
-  },
-  "declaration" : {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  },
-  "featureValueExpression" : {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  }
-}, {
-  "@type" : "LiteralInteger",
-  "@id" : "34a07f53-117f-4665-8976-2e71175716c6",
-  "identifier" : "34a07f53-117f-4665-8976-2e71175716c6",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Tire::weight::",
-  "owner" : {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  },
-  "owningNamespace" : {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  },
-  "ownedMember" : [ {
-    "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5"
-  } ],
-  "feature" : [ {
-    "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5"
-  } ],
-  "declaration" : {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  },
-  "parameter" : [ {
-    "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5"
-  } ],
-  "result" : {
-    "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5"
-  },
-  "value" : 5
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "3655676a-2704-4b60-83b7-15bb1ce0216a",
-  "identifier" : "3655676a-2704-4b60-83b7-15bb1ce0216a",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  },
-  "isInitial" : false,
-  "isDefault" : false
-}, {
-  "@type" : "OperatorExpression",
-  "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848",
-  "identifier" : "37e5066a-f3cc-4011-ba41-8e0b54d12848",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  }, {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  }, {
-    "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::",
-  "owner" : {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  },
-  "owningNamespace" : {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  },
-  "ownedMember" : [ {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  }, {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  }, {
-    "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  }, {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  }, {
-    "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  }, {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  }, {
-    "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
-  } ],
-  "feature" : [ {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  }, {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  }, {
-    "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
-  } ],
-  "declaration" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  },
-  "parameter" : [ {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  }, {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  }, {
-    "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
-  } ],
-  "result" : {
-    "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
-  },
-  "operator" : "+"
-}, {
-  "@type" : "PartUsage",
-  "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f",
-  "identifier" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f",
-  "name" : "rim",
-  "qualifiedName" : "bikeSample::structure::Wheel::rim",
-  "owner" : {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  },
-  "owningNamespace" : {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  },
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  } ],
-  "inheritedFeature" : [ {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  } ],
-  "isComposite" : true,
-  "type" : [ {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  } ],
-  "declaration" : {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  },
-  "definition" : [ {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  } ],
-  "individualDefinition" : {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  },
-  "occurrenceDefinition" : [ {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  } ],
-  "itemDefinition" : [ {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  } ],
-  "partDefinition" : [ {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  } ]
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "393a74c6-4852-4194-9943-f603eda5c436",
-  "identifier" : "393a74c6-4852-4194-9943-f603eda5c436",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  }
-}, {
-  "@type" : "LiteralInteger",
-  "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f",
-  "identifier" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Rim::weight::",
-  "owner" : {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  },
-  "owningNamespace" : {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  },
-  "ownedMember" : [ {
-    "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda"
-  } ],
-  "feature" : [ {
-    "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda"
-  } ],
-  "declaration" : {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  },
-  "parameter" : [ {
-    "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda"
-  } ],
-  "result" : {
-    "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda"
-  },
-  "value" : 5
-}, {
-  "@type" : "Feature",
-  "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333",
-  "identifier" : "3e580809-a2df-4a0d-b1da-5de145ec3333",
-  "ownedElement" : [ {
-    "@id" : "d47fdafe-a6b6-4c39-872e-69d60005d847"
-  }, {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::",
-  "owner" : {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  },
-  "owningNamespace" : {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  },
-  "ownedMember" : [ {
-    "@id" : "d47fdafe-a6b6-4c39-872e-69d60005d847"
-  }, {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "d47fdafe-a6b6-4c39-872e-69d60005d847"
-  }, {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "d47fdafe-a6b6-4c39-872e-69d60005d847"
-  }, {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "f94c808a-3a78-4df8-9eda-e46bf0ae47db"
-  },
-  "declaration" : {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  },
-  "featureValueExpression" : {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9",
-  "identifier" : "3ef7b57a-de94-426c-92c2-76288ab57bb9",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::result",
-  "owner" : {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  },
-  "owningNamespace" : {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "3ef7b57a-de94-426c-92c2-76288ab57bb9"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "4500c3f5-6d1b-4f50-bdc8-a8930192bfd2",
-  "identifier" : "4500c3f5-6d1b-4f50-bdc8-a8930192bfd2",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  }
-}, {
-  "@type" : "PartDefinition",
-  "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227",
-  "identifier" : "49f2420f-2973-4da8-8223-8867d8bb4227",
-  "name" : "Wheel",
-  "ownedElement" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel",
-  "owner" : {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  },
-  "owningNamespace" : {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  },
-  "ownedMember" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "ownedUsage" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "ownedPart" : [ {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "ownedItem" : [ {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "ownedAttribute" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  } ],
-  "ownedOccurrence" : [ {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ]
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "4a1993e6-d640-4f96-881a-bc4b3c1677f5",
-  "identifier" : "4a1993e6-d640-4f96-881a-bc4b3c1677f5",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  },
-  "isInitial" : false,
-  "isDefault" : false
-}, {
-  "@type" : "PartDefinition",
-  "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03",
-  "identifier" : "4b835c41-18ca-4170-a9e2-b6419cf07c03",
-  "eAnnotations" : [ ],
-  "name" : "Bike",
-  "ownedElement" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }, {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }, {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  }, {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  } ],
-  "qualifiedName" : "bikeSample::Bike",
-  "owner" : {
-    "@id" : "f424639f-6d13-4c36-9cc0-1ad85568ea96"
-  },
-  "owningNamespace" : {
-    "@id" : "f424639f-6d13-4c36-9cc0-1ad85568ea96"
-  },
-  "ownedMember" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }, {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }, {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  }, {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }, {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }, {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  }, {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }, {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }, {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  }, {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  } ],
-  "ownedUsage" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }, {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }, {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  }, {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  } ],
-  "ownedPart" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }, {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }, {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  } ],
-  "ownedItem" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }, {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }, {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  } ],
-  "ownedAttribute" : [ {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  } ],
-  "ownedOccurrence" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }, {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }, {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  } ]
-}, {
-  "@type" : "Feature",
-  "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8",
-  "identifier" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8",
-  "ownedElement" : [ {
-    "@id" : "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
-  }, {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::",
-  "owner" : {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  },
-  "owningNamespace" : {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  },
-  "ownedMember" : [ {
-    "@id" : "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
-  }, {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
-  }, {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
-  }, {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "ab0ad196-c9b4-441e-b353-ef03efd639d3"
-  },
-  "declaration" : {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  },
-  "featureValueExpression" : {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43",
-  "identifier" : "4e784cbe-368b-4474-8874-4d2b92c01a43",
-  "ownedElement" : [ {
-    "@id" : "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
-  }, {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::",
-  "owner" : {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  },
-  "owningNamespace" : {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  },
-  "ownedMember" : [ {
-    "@id" : "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
-  }, {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
-  }, {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
-  }, {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "1006571a-ad4b-4e08-9d62-7ed549057ef5"
-  },
-  "declaration" : {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  },
-  "featureValueExpression" : {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225",
-  "identifier" : "54adeb7c-6c56-420c-91e3-9742d9376225",
-  "ownedElement" : [ {
-    "@id" : "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
-  }, {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::",
-  "owner" : {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  },
-  "owningNamespace" : {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  },
-  "ownedMember" : [ {
-    "@id" : "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
-  }, {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
-  }, {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
-  }, {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "7e7d4eb9-6b13-4afb-923d-21f7d159b863"
-  },
-  "declaration" : {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  },
-  "featureValueExpression" : {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49",
-  "identifier" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::result",
-  "owner" : {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  },
-  "owningNamespace" : {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f",
-  "identifier" : "5f377ece-6a5f-40a8-b555-0fc74018da1f",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::result",
-  "owner" : {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  },
-  "owningNamespace" : {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698",
-  "identifier" : "62dacb37-06dd-48a1-91d6-99c28ed0f698",
-  "ownedElement" : [ {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::",
-  "owner" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  },
-  "owningNamespace" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  },
-  "ownedMember" : [ {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "4500c3f5-6d1b-4f50-bdc8-a8930192bfd2"
-  },
-  "declaration" : {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  },
-  "featureValueExpression" : {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  }
-}, {
-  "@type" : "FeatureChainExpression",
-  "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6",
-  "identifier" : "6317274c-f0b8-45ec-8029-a02f59e732b6",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  }, {
-    "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::",
-  "owner" : {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  },
-  "owningNamespace" : {
-    "@id" : "62dacb37-06dd-48a1-91d6-99c28ed0f698"
-  },
-  "ownedMember" : [ {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  }, {
-    "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
-  } ],
-  "member" : [ {
-    "@id" : "/?967a1131-ff29-4eb9-84db-0d920165cead/?de20a74f-54a6-4eb4-afa9-a050bef62214"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  }, {
-    "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  }, {
-    "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
-  } ],
-  "feature" : [ {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  }, {
-    "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
-  } ],
-  "declaration" : {
-    "@id" : "6317274c-f0b8-45ec-8029-a02f59e732b6"
-  },
-  "parameter" : [ {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  }, {
-    "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
-  } ],
-  "result" : {
-    "@id" : "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
-  },
-  "targetFeature" : {
-    "@id" : "/?967a1131-ff29-4eb9-84db-0d920165cead/?de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }
-}, {
-  "@type" : "AttributeUsage",
-  "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c",
-  "identifier" : "639c512d-ad6a-4871-b92f-366c6a2f383c",
-  "name" : "weight",
-  "ownedElement" : [ {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Frame::weight",
-  "owner" : {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  },
-  "owningNamespace" : {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  },
-  "ownedMember" : [ {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  } ],
-  "isComposite" : true,
-  "valuation" : {
-    "@id" : "4a1993e6-d640-4f96-881a-bc4b3c1677f5"
-  },
-  "declaration" : {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  },
-  "featureValueExpression" : {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  }
-}, {
-  "@type" : "PartDefinition",
-  "@id" : "668e8738-e822-4645-acc3-68c4025946db",
-  "identifier" : "668e8738-e822-4645-acc3-68c4025946db",
-  "name" : "Tire",
-  "ownedElement" : [ {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Tire",
-  "owner" : {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  },
-  "owningNamespace" : {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  },
-  "ownedMember" : [ {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ],
-  "ownedUsage" : [ {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ],
-  "ownedAttribute" : [ {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ]
-}, {
-  "@type" : "Feature",
-  "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac",
-  "identifier" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::result",
-  "owner" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  },
-  "owningNamespace" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64",
-  "identifier" : "6fe012e9-7410-45f3-9033-22e60da9cb64",
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::::::",
-  "owner" : {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  },
-  "owningNamespace" : {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "6fe012e9-7410-45f3-9033-22e60da9cb64"
-  }
-}, {
-  "@type" : "FeatureReferenceExpression",
-  "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400",
-  "identifier" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::::",
-  "owner" : {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  },
-  "owningNamespace" : {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  },
-  "ownedMember" : [ {
-    "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
-  } ],
-  "member" : [ {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
-  } ],
-  "feature" : [ {
-    "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
-  } ],
-  "declaration" : {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  },
-  "parameter" : [ {
-    "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
-  } ],
-  "result" : {
-    "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
-  },
-  "referent" : {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  }
-}, {
-  "@type" : "FeatureReferenceExpression",
-  "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb",
-  "identifier" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::",
-  "owner" : {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  },
-  "owningNamespace" : {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  },
-  "ownedMember" : [ {
-    "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
-  } ],
-  "member" : [ {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
-  } ],
-  "feature" : [ {
-    "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
-  } ],
-  "declaration" : {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  },
-  "parameter" : [ {
-    "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
-  } ],
-  "result" : {
-    "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
-  },
-  "referent" : {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  }
-}, {
-  "@type" : "AttributeUsage",
-  "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f",
-  "identifier" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f",
-  "name" : "weight",
-  "ownedElement" : [ {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight",
-  "owner" : {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  },
-  "owningNamespace" : {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  },
-  "ownedMember" : [ {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  } ],
-  "isComposite" : true,
-  "valuation" : {
-    "@id" : "3655676a-2704-4b60-83b7-15bb1ce0216a"
-  },
-  "declaration" : {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  },
-  "featureValueExpression" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "7e7d4eb9-6b13-4afb-923d-21f7d159b863",
-  "identifier" : "7e7d4eb9-6b13-4afb-923d-21f7d159b863",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0",
-  "identifier" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::Bike::weight::::result",
-  "owner" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  },
-  "owningNamespace" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
-  }
-}, {
-  "@type" : "AttributeUsage",
-  "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585",
-  "identifier" : "840c3cd6-98d5-479f-8cf8-790e262c9585",
-  "name" : "weight",
-  "ownedElement" : [ {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Frame::suspension::weight",
-  "owner" : {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  },
-  "owningNamespace" : {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  },
-  "ownedMember" : [ {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  } ],
-  "isComposite" : true,
-  "valuation" : {
-    "@id" : "2f2f8c63-4999-4e5b-8d66-7f107afa3698"
-  },
-  "declaration" : {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  },
-  "featureValueExpression" : {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  }
-}, {
-  "@type" : "PartUsage",
-  "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367",
-  "identifier" : "8728f83c-c850-4bf1-b7a9-55df66abd367",
-  "name" : "frame",
-  "qualifiedName" : "bikeSample::Bike::frame",
-  "owner" : {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  },
-  "owningNamespace" : {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  },
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  }, {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "inheritedFeature" : [ {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  }, {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  } ],
-  "isComposite" : true,
-  "type" : [ {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  } ],
-  "declaration" : {
-    "@id" : "8728f83c-c850-4bf1-b7a9-55df66abd367"
-  },
-  "definition" : [ {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  } ],
-  "individualDefinition" : {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  },
-  "occurrenceDefinition" : [ {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  } ],
-  "itemDefinition" : [ {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  } ],
-  "partDefinition" : [ {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  } ]
-}, {
-  "@type" : "PartUsage",
-  "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d",
-  "identifier" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d",
-  "name" : "front",
-  "qualifiedName" : "bikeSample::Bike::front",
-  "owner" : {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  },
-  "owningNamespace" : {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  },
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "inheritedFeature" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "isComposite" : true,
-  "type" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ],
-  "declaration" : {
-    "@id" : "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
-  },
-  "definition" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ],
-  "individualDefinition" : {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  },
-  "occurrenceDefinition" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ],
-  "itemDefinition" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ],
-  "partDefinition" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ]
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "8922e6e2-e4b2-4de0-a1e6-01f4d8e3e4a2",
-  "identifier" : "8922e6e2-e4b2-4de0-a1e6-01f4d8e3e4a2",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  }
-}, {
-  "@type" : "OperatorExpression",
-  "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1",
-  "identifier" : "8b808d51-7119-4918-9331-7e9d46e768a1",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  }, {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  }, {
-    "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::",
-  "owner" : {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  },
-  "owningNamespace" : {
-    "@id" : "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
-  },
-  "ownedMember" : [ {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  }, {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  }, {
-    "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  }, {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  }, {
-    "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  }, {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  }, {
-    "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
-  } ],
-  "feature" : [ {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  }, {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  }, {
-    "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
-  } ],
-  "declaration" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  },
-  "parameter" : [ {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  }, {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  }, {
-    "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
-  } ],
-  "result" : {
-    "@id" : "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
-  },
-  "operator" : "+"
-}, {
-  "@type" : "Feature",
-  "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666",
-  "identifier" : "8f5aaa22-a453-48b3-acb3-2afa9016a666",
-  "ownedElement" : [ {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::",
-  "owner" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  },
-  "owningNamespace" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  },
-  "ownedMember" : [ {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "a425a28b-b4a0-4022-845e-f51b375671e7"
-  },
-  "declaration" : {
-    "@id" : "8f5aaa22-a453-48b3-acb3-2afa9016a666"
-  },
-  "featureValueExpression" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "90a73644-79cd-41b0-973a-5766cf0a73f7",
-  "identifier" : "90a73644-79cd-41b0-973a-5766cf0a73f7",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996",
-  "identifier" : "91f556f6-0a69-48e6-b025-1c1cd2d24996",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::::::",
-  "owner" : {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  },
-  "owningNamespace" : {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996"
-  }
-}, {
-  "@type" : "PartUsage",
-  "@id" : "967a1131-ff29-4eb9-84db-0d920165cead",
-  "identifier" : "967a1131-ff29-4eb9-84db-0d920165cead",
-  "name" : "rear",
-  "qualifiedName" : "bikeSample::Bike::rear",
-  "owner" : {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  },
-  "owningNamespace" : {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  },
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "inheritedFeature" : [ {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }, {
-    "@id" : "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
-  }, {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  } ],
-  "isComposite" : true,
-  "type" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ],
-  "declaration" : {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  },
-  "definition" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ],
-  "individualDefinition" : {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  },
-  "occurrenceDefinition" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ],
-  "itemDefinition" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ],
-  "partDefinition" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  } ]
-}, {
-  "@type" : "Feature",
-  "@id" : "9778885c-6cd6-4267-a7f0-17c421f3aaaa",
-  "identifier" : "9778885c-6cd6-4267-a7f0-17c421f3aaaa",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::::",
-  "owner" : {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  },
-  "owningNamespace" : {
-    "@id" : "54adeb7c-6c56-420c-91e3-9742d9376225"
-  },
-  "declaration" : {
-    "@id" : "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa",
-  "identifier" : "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::::",
-  "owner" : {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  },
-  "owningNamespace" : {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  },
-  "declaration" : {
-    "@id" : "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8",
-  "identifier" : "99c0f7f5-db76-4d70-819a-c13419aeaea8",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::structure::Frame::suspension::weight::::result",
-  "owner" : {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  },
-  "owningNamespace" : {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda",
-  "identifier" : "9b9f49c4-1edd-4667-b99d-885293511eda",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::structure::Rim::weight::::result",
-  "owner" : {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  },
-  "owningNamespace" : {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "9b9f49c4-1edd-4667-b99d-885293511eda"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433",
-  "identifier" : "9d71f91d-8b28-4141-9e94-81d83d916433",
-  "ownedElement" : [ {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::",
-  "owner" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  },
-  "owningNamespace" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  },
-  "ownedMember" : [ {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "90a73644-79cd-41b0-973a-5766cf0a73f7"
-  },
-  "declaration" : {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  },
-  "featureValueExpression" : {
-    "@id" : "0c0e7082-6a60-4d75-b252-6dea979aaaee"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed",
-  "identifier" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::::::",
-  "owner" : {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  },
-  "owningNamespace" : {
-    "@id" : "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
-  }
-}, {
-  "@type" : "OperatorExpression",
-  "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3",
-  "identifier" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  }, {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  }, {
-    "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::",
-  "owner" : {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  },
-  "owningNamespace" : {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  },
-  "ownedMember" : [ {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  }, {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  }, {
-    "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  }, {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  }, {
-    "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  }, {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  }, {
-    "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7"
-  } ],
-  "feature" : [ {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  }, {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  }, {
-    "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7"
-  } ],
-  "declaration" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  },
-  "parameter" : [ {
-    "@id" : "9d71f91d-8b28-4141-9e94-81d83d916433"
-  }, {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  }, {
-    "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7"
-  } ],
-  "result" : {
-    "@id" : "2b10183e-64d8-408c-83d1-6a5fb5814de7"
-  },
-  "operator" : "+"
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "a425a28b-b4a0-4022-845e-f51b375671e7",
-  "identifier" : "a425a28b-b4a0-4022-845e-f51b375671e7",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  }
-}, {
-  "@type" : "FeatureChainExpression",
-  "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f",
-  "identifier" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  }, {
-    "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::",
-  "owner" : {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  },
-  "owningNamespace" : {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  },
-  "ownedMember" : [ {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  }, {
-    "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802"
-  } ],
-  "member" : [ {
-    "@id" : "/?87a4954f-3f63-4a8f-a74d-f0defc681e2d/?de20a74f-54a6-4eb4-afa9-a050bef62214"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  }, {
-    "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  }, {
-    "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802"
-  } ],
-  "feature" : [ {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  }, {
-    "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802"
-  } ],
-  "declaration" : {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  },
-  "parameter" : [ {
-    "@id" : "4e784cbe-368b-4474-8874-4d2b92c01a43"
-  }, {
-    "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802"
-  } ],
-  "result" : {
-    "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802"
-  },
-  "targetFeature" : {
-    "@id" : "/?87a4954f-3f63-4a8f-a74d-f0defc681e2d/?de20a74f-54a6-4eb4-afa9-a050bef62214"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452",
-  "identifier" : "a9d632db-5fcf-48f4-b2c2-97965119d452",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::result",
-  "owner" : {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  },
-  "owningNamespace" : {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "a9d632db-5fcf-48f4-b2c2-97965119d452"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "ab0ad196-c9b4-441e-b353-ef03efd639d3",
-  "identifier" : "ab0ad196-c9b4-441e-b353-ef03efd639d3",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  }
-}, {
-  "@type" : "AttributeUsage",
-  "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402",
-  "identifier" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402",
-  "name" : "weight",
-  "ownedElement" : [ {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Tire::weight",
-  "owner" : {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  },
-  "owningNamespace" : {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  },
-  "ownedMember" : [ {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  } ],
-  "isComposite" : true,
-  "valuation" : {
-    "@id" : "2482a4d8-336d-4def-96e6-844f34387949"
-  },
-  "declaration" : {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  },
-  "featureValueExpression" : {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  }
-}, {
-  "@type" : "AttributeUsage",
-  "@id" : "ae8205c5-4303-44ef-8346-60558de82035",
-  "identifier" : "ae8205c5-4303-44ef-8346-60558de82035",
-  "name" : "weight",
-  "ownedElement" : [ {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Rim::weight",
-  "owner" : {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  },
-  "owningNamespace" : {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  },
-  "ownedMember" : [ {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  } ],
-  "isComposite" : true,
-  "valuation" : {
-    "@id" : "03e401a4-62ff-4c85-ad1a-0264f6f53dcb"
-  },
-  "declaration" : {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  },
-  "featureValueExpression" : {
-    "@id" : "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "af9c85c3-88ac-4e87-83e5-22f6ed041b8c",
-  "identifier" : "af9c85c3-88ac-4e87-83e5-22f6ed041b8c",
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::::",
-  "owner" : {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  },
-  "owningNamespace" : {
-    "@id" : "30c0885f-30d9-4078-b484-3c4fcb063b13"
-  },
-  "declaration" : {
-    "@id" : "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "b9e38a71-394b-44ef-87ac-a31c15d47952",
-  "identifier" : "b9e38a71-394b-44ef-87ac-a31c15d47952",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c",
-  "identifier" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c",
-  "ownedElement" : [ {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::",
-  "owner" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  },
-  "owningNamespace" : {
-    "@id" : "8b808d51-7119-4918-9331-7e9d46e768a1"
-  },
-  "ownedMember" : [ {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "f9671b4f-a9e0-4705-b383-bc1c8f8988ea"
-  },
-  "declaration" : {
-    "@id" : "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
-  },
-  "featureValueExpression" : {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  }
-}, {
-  "@type" : "Package",
-  "@id" : "bddea054-4206-4e84-b05c-b4494e002084",
-  "identifier" : "bddea054-4206-4e84-b05c-b4494e002084",
-  "name" : "structure",
-  "ownedElement" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  }, {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  }, {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  }, {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  } ],
-  "qualifiedName" : "bikeSample::structure",
-  "owner" : {
-    "@id" : "f424639f-6d13-4c36-9cc0-1ad85568ea96"
-  },
-  "owningNamespace" : {
-    "@id" : "f424639f-6d13-4c36-9cc0-1ad85568ea96"
-  },
-  "ownedMember" : [ {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  }, {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  }, {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  }, {
-    "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212"
-  } ]
-}, {
-  "@type" : "LiteralInteger",
-  "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b",
-  "identifier" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Frame::suspension::weight::",
-  "owner" : {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  },
-  "owningNamespace" : {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  },
-  "ownedMember" : [ {
-    "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8"
-  } ],
-  "feature" : [ {
-    "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8"
-  } ],
-  "declaration" : {
-    "@id" : "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
-  },
-  "parameter" : [ {
-    "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8"
-  } ],
-  "result" : {
-    "@id" : "99c0f7f5-db76-4d70-819a-c13419aeaea8"
-  },
-  "value" : 1
-}, {
-  "@type" : "Feature",
-  "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4",
-  "identifier" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::",
-  "owner" : {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  },
-  "owningNamespace" : {
-    "@id" : "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5",
-  "identifier" : "c524b1c0-6873-40a3-84df-bd0b52951ca5",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::structure::Tire::weight::::result",
-  "owner" : {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  },
-  "owningNamespace" : {
-    "@id" : "34a07f53-117f-4665-8976-2e71175716c6"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "c524b1c0-6873-40a3-84df-bd0b52951ca5"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b",
-  "identifier" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b",
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::::::",
-  "owner" : {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  },
-  "owningNamespace" : {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043",
-  "identifier" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043",
-  "ownedElement" : [ {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::",
-  "owner" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  },
-  "owningNamespace" : {
-    "@id" : "37e5066a-f3cc-4011-ba41-8e0b54d12848"
-  },
-  "ownedMember" : [ {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  } ],
-  "direction" : "in",
-  "valuation" : {
-    "@id" : "393a74c6-4852-4194-9943-f603eda5c436"
-  },
-  "declaration" : {
-    "@id" : "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
-  },
-  "featureValueExpression" : {
-    "@id" : "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "d47fdafe-a6b6-4c39-872e-69d60005d847",
-  "identifier" : "d47fdafe-a6b6-4c39-872e-69d60005d847",
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::::::",
-  "owner" : {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  },
-  "owningNamespace" : {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  },
-  "declaration" : {
-    "@id" : "d47fdafe-a6b6-4c39-872e-69d60005d847"
-  }
-}, {
-  "@type" : "PartUsage",
-  "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8",
-  "identifier" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8",
-  "name" : "suspension",
-  "ownedElement" : [ {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Frame::suspension",
-  "owner" : {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  },
-  "owningNamespace" : {
-    "@id" : "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
-  },
-  "ownedMember" : [ {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  } ],
-  "isComposite" : true,
-  "declaration" : {
-    "@id" : "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
-  },
-  "nestedUsage" : [ {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  } ],
-  "nestedAttribute" : [ {
-    "@id" : "840c3cd6-98d5-479f-8cf8-790e262c9585"
-  } ]
-}, {
-  "@type" : "Feature",
-  "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a",
-  "identifier" : "d840291d-ae9e-453f-bd74-a0beeea9303a",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::structure::Frame::weight::::result",
-  "owner" : {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  },
-  "owningNamespace" : {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a"
-  }
-}, {
-  "@type" : "AttributeUsage",
-  "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214",
-  "identifier" : "de20a74f-54a6-4eb4-afa9-a050bef62214",
-  "name" : "weight",
-  "ownedElement" : [ {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight",
-  "owner" : {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  },
-  "owningNamespace" : {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  },
-  "ownedMember" : [ {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  } ],
-  "isComposite" : true,
-  "valuation" : {
-    "@id" : "15b25161-2fab-4133-abd1-7fe1e5b05082"
-  },
-  "declaration" : {
-    "@id" : "de20a74f-54a6-4eb4-afa9-a050bef62214"
-  },
-  "featureValueExpression" : {
-    "@id" : "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
-  }
-}, {
-  "@type" : "Feature",
-  "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802",
-  "identifier" : "de766395-15b9-47d7-af71-fdddf5fcb802",
-  "name" : "result",
-  "qualifiedName" : "bikeSample::Bike::weight::::::::result",
-  "owner" : {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  },
-  "owningNamespace" : {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  },
-  "direction" : "out",
-  "declaration" : {
-    "@id" : "de766395-15b9-47d7-af71-fdddf5fcb802"
-  }
-}, {
-  "@type" : "FeatureReferenceExpression",
-  "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa",
-  "identifier" : "e4a705b3-8198-4c51-b479-7b1e059422aa",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996"
-  } ],
-  "qualifiedName" : "bikeSample::Bike::weight::::::::::::::",
-  "owner" : {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  },
-  "owningNamespace" : {
-    "@id" : "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
-  },
-  "ownedMember" : [ {
-    "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996"
-  } ],
-  "member" : [ {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996"
-  } ],
-  "feature" : [ {
-    "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996"
-  } ],
-  "declaration" : {
-    "@id" : "e4a705b3-8198-4c51-b479-7b1e059422aa"
-  },
-  "parameter" : [ {
-    "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996"
-  } ],
-  "result" : {
-    "@id" : "91f556f6-0a69-48e6-b025-1c1cd2d24996"
-  },
-  "referent" : {
-    "@id" : "967a1131-ff29-4eb9-84db-0d920165cead"
-  }
-}, {
-  "@type" : "LiteralInteger",
-  "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c",
-  "identifier" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Frame::weight::",
-  "owner" : {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  },
-  "owningNamespace" : {
-    "@id" : "639c512d-ad6a-4871-b92f-366c6a2f383c"
-  },
-  "ownedMember" : [ {
-    "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a"
-  } ],
-  "feature" : [ {
-    "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a"
-  } ],
-  "declaration" : {
-    "@id" : "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
-  },
-  "parameter" : [ {
-    "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a"
-  } ],
-  "result" : {
-    "@id" : "d840291d-ae9e-453f-bd74-a0beeea9303a"
-  },
-  "value" : 5
-}, {
-  "@type" : "PartDefinition",
-  "@id" : "ea62c943-eb85-495f-ad4e-8dec0708c212",
-  "identifier" : "ea62c943-eb85-495f-ad4e-8dec0708c212",
-  "name" : "Rim",
-  "ownedElement" : [ {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Rim",
-  "owner" : {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  },
-  "owningNamespace" : {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  },
-  "ownedMember" : [ {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  } ],
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  } ],
-  "ownedUsage" : [ {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  } ],
-  "ownedAttribute" : [ {
-    "@id" : "ae8205c5-4303-44ef-8346-60558de82035"
-  } ]
-}, {
-  "@type" : "PartUsage",
-  "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5",
-  "identifier" : "ecd89418-7e15-4207-9748-cef2256e45e5",
-  "name" : "tire",
-  "qualifiedName" : "bikeSample::structure::Wheel::tire",
-  "owner" : {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  },
-  "owningNamespace" : {
-    "@id" : "49f2420f-2973-4da8-8223-8867d8bb4227"
-  },
-  "directedFeature" : [ ],
-  "feature" : [ {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ],
-  "inheritedFeature" : [ {
-    "@id" : "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
-  } ],
-  "isComposite" : true,
-  "type" : [ {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  } ],
-  "declaration" : {
-    "@id" : "ecd89418-7e15-4207-9748-cef2256e45e5"
-  },
-  "definition" : [ {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  } ],
-  "individualDefinition" : {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  },
-  "occurrenceDefinition" : [ {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  } ],
-  "itemDefinition" : [ {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  } ],
-  "partDefinition" : [ {
-    "@id" : "668e8738-e822-4645-acc3-68c4025946db"
-  } ]
-}, {
-  "@type" : "Package",
-  "@id" : "f424639f-6d13-4c36-9cc0-1ad85568ea96",
-  "identifier" : "f424639f-6d13-4c36-9cc0-1ad85568ea96",
-  "eAnnotations" : [ ],
-  "name" : "bikeSample",
-  "ownedElement" : [ {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  }, {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  } ],
-  "qualifiedName" : "bikeSample",
-  "ownedMember" : [ {
-    "@id" : "bddea054-4206-4e84-b05c-b4494e002084"
-  }, {
-    "@id" : "4b835c41-18ca-4170-a9e2-b6419cf07c03"
-  } ]
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "f94c808a-3a78-4df8-9eda-e46bf0ae47db",
-  "identifier" : "f94c808a-3a78-4df8-9eda-e46bf0ae47db",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "266412f0-0281-420a-bba7-f3be5059bd6b"
-  }
-}, {
-  "@type" : "FeatureValue",
-  "@id" : "f9671b4f-a9e0-4705-b383-bc1c8f8988ea",
-  "identifier" : "f9671b4f-a9e0-4705-b383-bc1c8f8988ea",
-  "qualifiedName" : "",
-  "value" : {
-    "@id" : "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
-  }
-}, {
-  "@type" : "FeatureChainExpression",
-  "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed",
-  "identifier" : "f9db4a4b-8204-444a-b85f-feb6259ccfed",
-  "eAnnotations" : [ ],
-  "ownedElement" : [ {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  }, {
-    "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f"
-  } ],
-  "qualifiedName" : "bikeSample::structure::Wheel::weight::::::",
-  "owner" : {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  },
-  "owningNamespace" : {
-    "@id" : "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
-  },
-  "ownedMember" : [ {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  }, {
-    "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f"
-  } ],
-  "member" : [ {
-    "@id" : "/?387ee3b0-aa58-4c34-9cb7-531bf92e540f/?ae8205c5-4303-44ef-8346-60558de82035"
-  } ],
-  "ownedEndFeature" : [ ],
-  "ownedFeature" : [ {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  }, {
-    "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f"
-  } ],
-  "directedFeature" : [ {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  }, {
-    "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f"
-  } ],
-  "feature" : [ {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  }, {
-    "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f"
-  } ],
-  "declaration" : {
-    "@id" : "f9db4a4b-8204-444a-b85f-feb6259ccfed"
-  },
-  "parameter" : [ {
-    "@id" : "3e580809-a2df-4a0d-b1da-5de145ec3333"
-  }, {
-    "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f"
-  } ],
-  "result" : {
-    "@id" : "5f377ece-6a5f-40a8-b555-0fc74018da1f"
-  },
-  "targetFeature" : {
-    "@id" : "/?387ee3b0-aa58-4c34-9cb7-531bf92e540f/?ae8205c5-4303-44ef-8346-60558de82035"
-  }
-} ]
+[
+  {
+    "@type": "FeatureValue",
+    "@id": "03e401a4-62ff-4c85-ad1a-0264f6f53dcb",
+    "identifier": "03e401a4-62ff-4c85-ad1a-0264f6f53dcb",
+    "qualifiedName": "",
+    "value": {
+      "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+    }
+  },
+  {
+    "@type": "FeatureChainExpression",
+    "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee",
+    "identifier": "0c0e7082-6a60-4d75-b252-6dea979aaaee",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+      },
+      {
+        "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::",
+    "owner": {
+      "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+    },
+    "owningNamespace": {
+      "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+    },
+    "ownedMember": [
+      {
+        "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+      },
+      {
+        "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9"
+      }
+    ],
+    "member": [
+      {
+        "@id": "/?ecd89418-7e15-4207-9748-cef2256e45e5/?ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+      },
+      {
+        "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+      },
+      {
+        "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+      },
+      {
+        "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9"
+      }
+    ],
+    "declaration": {
+      "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+    },
+    "parameter": [
+      {
+        "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+      },
+      {
+        "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9"
+      }
+    ],
+    "result": {
+      "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9"
+    },
+    "targetFeature": {
+      "@id": "/?ecd89418-7e15-4207-9748-cef2256e45e5/?ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "1006571a-ad4b-4e08-9d62-7ed549057ef5",
+    "identifier": "1006571a-ad4b-4e08-9d62-7ed549057ef5",
+    "qualifiedName": "",
+    "value": {
+      "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "15b25161-2fab-4133-abd1-7fe1e5b05082",
+    "identifier": "15b25161-2fab-4133-abd1-7fe1e5b05082",
+    "qualifiedName": "",
+    "value": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    }
+  },
+  {
+    "@type": "FeatureReferenceExpression",
+    "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29",
+    "identifier": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::::",
+    "owner": {
+      "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+    },
+    "owningNamespace": {
+      "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+    },
+    "ownedMember": [
+      {
+        "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64"
+      }
+    ],
+    "member": [
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64"
+      }
+    ],
+    "declaration": {
+      "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+    },
+    "parameter": [
+      {
+        "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64"
+      }
+    ],
+    "result": {
+      "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64"
+    },
+    "referent": {
+      "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "2482a4d8-336d-4def-96e6-844f34387949",
+    "identifier": "2482a4d8-336d-4def-96e6-844f34387949",
+    "qualifiedName": "",
+    "value": {
+      "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+    }
+  },
+  {
+    "@type": "FeatureReferenceExpression",
+    "@id": "266412f0-0281-420a-bba7-f3be5059bd6b",
+    "identifier": "266412f0-0281-420a-bba7-f3be5059bd6b",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::::",
+    "owner": {
+      "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+    },
+    "owningNamespace": {
+      "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+    },
+    "ownedMember": [
+      {
+        "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
+      }
+    ],
+    "member": [
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
+      }
+    ],
+    "declaration": {
+      "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+    },
+    "parameter": [
+      {
+        "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
+      }
+    ],
+    "result": {
+      "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
+    },
+    "referent": {
+      "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7",
+    "identifier": "2b10183e-64d8-408c-83d1-6a5fb5814de7",
+    "name": "result",
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::result",
+    "owner": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    },
+    "owningNamespace": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c",
+    "identifier": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c",
+    "ownedElement": [
+      {
+        "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::",
+    "owner": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    },
+    "owningNamespace": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    },
+    "ownedMember": [
+      {
+        "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "8922e6e2-e4b2-4de0-a1e6-01f4d8e3e4a2"
+    },
+    "declaration": {
+      "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+    },
+    "featureValueExpression": {
+      "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "2f2f8c63-4999-4e5b-8d66-7f107afa3698",
+    "identifier": "2f2f8c63-4999-4e5b-8d66-7f107afa3698",
+    "qualifiedName": "",
+    "value": {
+      "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+    }
+  },
+  {
+    "@type": "PartDefinition",
+    "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599",
+    "identifier": "2fe6e137-4e7a-43d4-b18e-690fc5e13599",
+    "name": "Frame",
+    "ownedElement": [
+      {
+        "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+      },
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Frame",
+    "owner": {
+      "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+    },
+    "owningNamespace": {
+      "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+    },
+    "ownedMember": [
+      {
+        "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+      },
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+      },
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+      },
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "ownedUsage": [
+      {
+        "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+      },
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "ownedPart": [
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "ownedItem": [
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "ownedAttribute": [
+      {
+        "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+      }
+    ],
+    "ownedOccurrence": [
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ]
+  },
+  {
+    "@type": "Feature",
+    "@id": "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34",
+    "identifier": "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34",
+    "qualifiedName": "bikeSample::Bike::weight::::::::::",
+    "owner": {
+      "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+    },
+    "owningNamespace": {
+      "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+    },
+    "declaration": {
+      "@id": "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
+    }
+  },
+  {
+    "@type": "FeatureChainExpression",
+    "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f",
+    "identifier": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+      },
+      {
+        "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::::",
+    "owner": {
+      "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+    },
+    "owningNamespace": {
+      "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+    },
+    "ownedMember": [
+      {
+        "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+      },
+      {
+        "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452"
+      }
+    ],
+    "member": [
+      {
+        "@id": "/?8728f83c-c850-4bf1-b7a9-55df66abd367/?639c512d-ad6a-4871-b92f-366c6a2f383c"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+      },
+      {
+        "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+      },
+      {
+        "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+      },
+      {
+        "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452"
+      }
+    ],
+    "declaration": {
+      "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+    },
+    "parameter": [
+      {
+        "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+      },
+      {
+        "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452"
+      }
+    ],
+    "result": {
+      "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452"
+    },
+    "targetFeature": {
+      "@id": "/?8728f83c-c850-4bf1-b7a9-55df66abd367/?639c512d-ad6a-4871-b92f-366c6a2f383c"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13",
+    "identifier": "30c0885f-30d9-4078-b484-3c4fcb063b13",
+    "ownedElement": [
+      {
+        "@id": "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
+      },
+      {
+        "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::",
+    "owner": {
+      "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+    },
+    "owningNamespace": {
+      "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+    },
+    "ownedMember": [
+      {
+        "@id": "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
+      },
+      {
+        "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
+      },
+      {
+        "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
+      },
+      {
+        "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "b9e38a71-394b-44ef-87ac-a31c15d47952"
+    },
+    "declaration": {
+      "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+    },
+    "featureValueExpression": {
+      "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+    }
+  },
+  {
+    "@type": "LiteralInteger",
+    "@id": "34a07f53-117f-4665-8976-2e71175716c6",
+    "identifier": "34a07f53-117f-4665-8976-2e71175716c6",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Tire::weight::",
+    "owner": {
+      "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+    },
+    "owningNamespace": {
+      "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+    },
+    "ownedMember": [
+      {
+        "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5"
+      }
+    ],
+    "declaration": {
+      "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+    },
+    "parameter": [
+      {
+        "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5"
+      }
+    ],
+    "result": {
+      "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5"
+    },
+    "value": 5
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "3655676a-2704-4b60-83b7-15bb1ce0216a",
+    "identifier": "3655676a-2704-4b60-83b7-15bb1ce0216a",
+    "qualifiedName": "",
+    "value": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    },
+    "isInitial": false,
+    "isDefault": false
+  },
+  {
+    "@type": "OperatorExpression",
+    "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848",
+    "identifier": "37e5066a-f3cc-4011-ba41-8e0b54d12848",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+      },
+      {
+        "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+      },
+      {
+        "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::",
+    "owner": {
+      "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+    },
+    "owningNamespace": {
+      "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+    },
+    "ownedMember": [
+      {
+        "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+      },
+      {
+        "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+      },
+      {
+        "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+      },
+      {
+        "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+      },
+      {
+        "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+      },
+      {
+        "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+      },
+      {
+        "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+      },
+      {
+        "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+      },
+      {
+        "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
+      }
+    ],
+    "declaration": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    },
+    "parameter": [
+      {
+        "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+      },
+      {
+        "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+      },
+      {
+        "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
+      }
+    ],
+    "result": {
+      "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
+    },
+    "operator": "+"
+  },
+  {
+    "@type": "PartUsage",
+    "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f",
+    "identifier": "387ee3b0-aa58-4c34-9cb7-531bf92e540f",
+    "name": "rim",
+    "qualifiedName": "bikeSample::structure::Wheel::rim",
+    "owner": {
+      "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+    },
+    "owningNamespace": {
+      "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+    },
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ],
+    "inheritedFeature": [
+      {
+        "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ],
+    "isComposite": true,
+    "type": [
+      {
+        "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+      }
+    ],
+    "declaration": {
+      "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+    },
+    "definition": [
+      {
+        "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+      }
+    ],
+    "individualDefinition": {
+      "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+    },
+    "occurrenceDefinition": [
+      {
+        "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+      }
+    ],
+    "itemDefinition": [
+      {
+        "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+      }
+    ],
+    "partDefinition": [
+      {
+        "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+      }
+    ]
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "393a74c6-4852-4194-9943-f603eda5c436",
+    "identifier": "393a74c6-4852-4194-9943-f603eda5c436",
+    "qualifiedName": "",
+    "value": {
+      "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+    }
+  },
+  {
+    "@type": "LiteralInteger",
+    "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f",
+    "identifier": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "9b9f49c4-1edd-4667-b99d-885293511eda"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Rim::weight::",
+    "owner": {
+      "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+    },
+    "owningNamespace": {
+      "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+    },
+    "ownedMember": [
+      {
+        "@id": "9b9f49c4-1edd-4667-b99d-885293511eda"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "9b9f49c4-1edd-4667-b99d-885293511eda"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "9b9f49c4-1edd-4667-b99d-885293511eda"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "9b9f49c4-1edd-4667-b99d-885293511eda"
+      }
+    ],
+    "declaration": {
+      "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+    },
+    "parameter": [
+      {
+        "@id": "9b9f49c4-1edd-4667-b99d-885293511eda"
+      }
+    ],
+    "result": {
+      "@id": "9b9f49c4-1edd-4667-b99d-885293511eda"
+    },
+    "value": 5
+  },
+  {
+    "@type": "Feature",
+    "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333",
+    "identifier": "3e580809-a2df-4a0d-b1da-5de145ec3333",
+    "ownedElement": [
+      {
+        "@id": "d47fdafe-a6b6-4c39-872e-69d60005d847"
+      },
+      {
+        "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::",
+    "owner": {
+      "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+    },
+    "owningNamespace": {
+      "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+    },
+    "ownedMember": [
+      {
+        "@id": "d47fdafe-a6b6-4c39-872e-69d60005d847"
+      },
+      {
+        "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "d47fdafe-a6b6-4c39-872e-69d60005d847"
+      },
+      {
+        "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "d47fdafe-a6b6-4c39-872e-69d60005d847"
+      },
+      {
+        "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "f94c808a-3a78-4df8-9eda-e46bf0ae47db"
+    },
+    "declaration": {
+      "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+    },
+    "featureValueExpression": {
+      "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9",
+    "identifier": "3ef7b57a-de94-426c-92c2-76288ab57bb9",
+    "name": "result",
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::result",
+    "owner": {
+      "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+    },
+    "owningNamespace": {
+      "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "3ef7b57a-de94-426c-92c2-76288ab57bb9"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "4500c3f5-6d1b-4f50-bdc8-a8930192bfd2",
+    "identifier": "4500c3f5-6d1b-4f50-bdc8-a8930192bfd2",
+    "qualifiedName": "",
+    "value": {
+      "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+    }
+  },
+  {
+    "@type": "PartDefinition",
+    "@id": "49f2420f-2973-4da8-8223-8867d8bb4227",
+    "identifier": "49f2420f-2973-4da8-8223-8867d8bb4227",
+    "name": "Wheel",
+    "ownedElement": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel",
+    "owner": {
+      "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+    },
+    "owningNamespace": {
+      "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+    },
+    "ownedMember": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "ownedUsage": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "ownedPart": [
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "ownedItem": [
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "ownedAttribute": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      }
+    ],
+    "ownedOccurrence": [
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ]
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "4a1993e6-d640-4f96-881a-bc4b3c1677f5",
+    "identifier": "4a1993e6-d640-4f96-881a-bc4b3c1677f5",
+    "qualifiedName": "",
+    "value": {
+      "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+    },
+    "isInitial": false,
+    "isDefault": false
+  },
+  {
+    "@type": "PartDefinition",
+    "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03",
+    "identifier": "4b835c41-18ca-4170-a9e2-b6419cf07c03",
+    "eAnnotations": [],
+    "name": "Bike",
+    "ownedElement": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      },
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      },
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      },
+      {
+        "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike",
+    "owner": {
+      "@id": "f424639f-6d13-4c36-9cc0-1ad85568ea96"
+    },
+    "owningNamespace": {
+      "@id": "f424639f-6d13-4c36-9cc0-1ad85568ea96"
+    },
+    "ownedMember": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      },
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      },
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      },
+      {
+        "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      },
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      },
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      },
+      {
+        "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      },
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      },
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      },
+      {
+        "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+      }
+    ],
+    "ownedUsage": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      },
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      },
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      },
+      {
+        "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+      }
+    ],
+    "ownedPart": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      },
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      },
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      }
+    ],
+    "ownedItem": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      },
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      },
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      }
+    ],
+    "ownedAttribute": [
+      {
+        "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+      }
+    ],
+    "ownedOccurrence": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      },
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      },
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      }
+    ]
+  },
+  {
+    "@type": "Feature",
+    "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8",
+    "identifier": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8",
+    "ownedElement": [
+      {
+        "@id": "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
+      },
+      {
+        "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::",
+    "owner": {
+      "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+    },
+    "owningNamespace": {
+      "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+    },
+    "ownedMember": [
+      {
+        "@id": "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
+      },
+      {
+        "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
+      },
+      {
+        "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
+      },
+      {
+        "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "ab0ad196-c9b4-441e-b353-ef03efd639d3"
+    },
+    "declaration": {
+      "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+    },
+    "featureValueExpression": {
+      "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43",
+    "identifier": "4e784cbe-368b-4474-8874-4d2b92c01a43",
+    "ownedElement": [
+      {
+        "@id": "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
+      },
+      {
+        "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::",
+    "owner": {
+      "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+    },
+    "owningNamespace": {
+      "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+    },
+    "ownedMember": [
+      {
+        "@id": "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
+      },
+      {
+        "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
+      },
+      {
+        "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "300f6f1d-19d8-48d6-b5dd-ba8c059a5a34"
+      },
+      {
+        "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "1006571a-ad4b-4e08-9d62-7ed549057ef5"
+    },
+    "declaration": {
+      "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+    },
+    "featureValueExpression": {
+      "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "54adeb7c-6c56-420c-91e3-9742d9376225",
+    "identifier": "54adeb7c-6c56-420c-91e3-9742d9376225",
+    "ownedElement": [
+      {
+        "@id": "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
+      },
+      {
+        "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::",
+    "owner": {
+      "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+    },
+    "owningNamespace": {
+      "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+    },
+    "ownedMember": [
+      {
+        "@id": "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
+      },
+      {
+        "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
+      },
+      {
+        "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
+      },
+      {
+        "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "7e7d4eb9-6b13-4afb-923d-21f7d159b863"
+    },
+    "declaration": {
+      "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+    },
+    "featureValueExpression": {
+      "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49",
+    "identifier": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49",
+    "name": "result",
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::result",
+    "owner": {
+      "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+    },
+    "owningNamespace": {
+      "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f",
+    "identifier": "5f377ece-6a5f-40a8-b555-0fc74018da1f",
+    "name": "result",
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::result",
+    "owner": {
+      "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+    },
+    "owningNamespace": {
+      "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698",
+    "identifier": "62dacb37-06dd-48a1-91d6-99c28ed0f698",
+    "ownedElement": [
+      {
+        "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::",
+    "owner": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    },
+    "owningNamespace": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    },
+    "ownedMember": [
+      {
+        "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "4500c3f5-6d1b-4f50-bdc8-a8930192bfd2"
+    },
+    "declaration": {
+      "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+    },
+    "featureValueExpression": {
+      "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+    }
+  },
+  {
+    "@type": "FeatureChainExpression",
+    "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6",
+    "identifier": "6317274c-f0b8-45ec-8029-a02f59e732b6",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+      },
+      {
+        "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::::",
+    "owner": {
+      "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+    },
+    "owningNamespace": {
+      "@id": "62dacb37-06dd-48a1-91d6-99c28ed0f698"
+    },
+    "ownedMember": [
+      {
+        "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+      },
+      {
+        "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
+      }
+    ],
+    "member": [
+      {
+        "@id": "/?967a1131-ff29-4eb9-84db-0d920165cead/?de20a74f-54a6-4eb4-afa9-a050bef62214"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+      },
+      {
+        "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+      },
+      {
+        "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+      },
+      {
+        "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
+      }
+    ],
+    "declaration": {
+      "@id": "6317274c-f0b8-45ec-8029-a02f59e732b6"
+    },
+    "parameter": [
+      {
+        "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+      },
+      {
+        "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
+      }
+    ],
+    "result": {
+      "@id": "5c457ed4-8bbe-4556-9cd1-5f16e1a08a49"
+    },
+    "targetFeature": {
+      "@id": "/?967a1131-ff29-4eb9-84db-0d920165cead/?de20a74f-54a6-4eb4-afa9-a050bef62214"
+    }
+  },
+  {
+    "@type": "AttributeUsage",
+    "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c",
+    "identifier": "639c512d-ad6a-4871-b92f-366c6a2f383c",
+    "name": "weight",
+    "ownedElement": [
+      {
+        "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Frame::weight",
+    "owner": {
+      "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+    },
+    "owningNamespace": {
+      "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+    },
+    "ownedMember": [
+      {
+        "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+      }
+    ],
+    "isComposite": true,
+    "valuation": {
+      "@id": "4a1993e6-d640-4f96-881a-bc4b3c1677f5"
+    },
+    "declaration": {
+      "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+    },
+    "featureValueExpression": {
+      "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+    }
+  },
+  {
+    "@type": "PartDefinition",
+    "@id": "668e8738-e822-4645-acc3-68c4025946db",
+    "identifier": "668e8738-e822-4645-acc3-68c4025946db",
+    "name": "Tire",
+    "ownedElement": [
+      {
+        "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Tire",
+    "owner": {
+      "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+    },
+    "owningNamespace": {
+      "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+    },
+    "ownedMember": [
+      {
+        "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ],
+    "ownedUsage": [
+      {
+        "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ],
+    "ownedAttribute": [
+      {
+        "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ]
+  },
+  {
+    "@type": "Feature",
+    "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac",
+    "identifier": "6f26ff67-523e-4e0b-a021-ba5d502a2dac",
+    "name": "result",
+    "qualifiedName": "bikeSample::Bike::weight::::::::result",
+    "owner": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    },
+    "owningNamespace": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "6f26ff67-523e-4e0b-a021-ba5d502a2dac"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64",
+    "identifier": "6fe012e9-7410-45f3-9033-22e60da9cb64",
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::::::",
+    "owner": {
+      "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+    },
+    "owningNamespace": {
+      "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "6fe012e9-7410-45f3-9033-22e60da9cb64"
+    }
+  },
+  {
+    "@type": "FeatureReferenceExpression",
+    "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400",
+    "identifier": "7779b8b8-f6cc-4d66-812a-ee27fffa1400",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::::",
+    "owner": {
+      "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+    },
+    "owningNamespace": {
+      "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+    },
+    "ownedMember": [
+      {
+        "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
+      }
+    ],
+    "member": [
+      {
+        "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
+      }
+    ],
+    "declaration": {
+      "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+    },
+    "parameter": [
+      {
+        "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
+      }
+    ],
+    "result": {
+      "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
+    },
+    "referent": {
+      "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+    }
+  },
+  {
+    "@type": "FeatureReferenceExpression",
+    "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb",
+    "identifier": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::::",
+    "owner": {
+      "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+    },
+    "owningNamespace": {
+      "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+    },
+    "ownedMember": [
+      {
+        "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
+      }
+    ],
+    "member": [
+      {
+        "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
+      }
+    ],
+    "declaration": {
+      "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+    },
+    "parameter": [
+      {
+        "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
+      }
+    ],
+    "result": {
+      "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
+    },
+    "referent": {
+      "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+    }
+  },
+  {
+    "@type": "AttributeUsage",
+    "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f",
+    "identifier": "7bcafea1-21dc-4a87-abb3-34da2b37e03f",
+    "name": "weight",
+    "ownedElement": [
+      {
+        "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight",
+    "owner": {
+      "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+    },
+    "owningNamespace": {
+      "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+    },
+    "ownedMember": [
+      {
+        "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+      }
+    ],
+    "isComposite": true,
+    "valuation": {
+      "@id": "3655676a-2704-4b60-83b7-15bb1ce0216a"
+    },
+    "declaration": {
+      "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+    },
+    "featureValueExpression": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "7e7d4eb9-6b13-4afb-923d-21f7d159b863",
+    "identifier": "7e7d4eb9-6b13-4afb-923d-21f7d159b863",
+    "qualifiedName": "",
+    "value": {
+      "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0",
+    "identifier": "8056455b-3ae7-4d70-b2de-3afbe8f286a0",
+    "name": "result",
+    "qualifiedName": "bikeSample::Bike::weight::::result",
+    "owner": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    },
+    "owningNamespace": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
+    }
+  },
+  {
+    "@type": "AttributeUsage",
+    "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585",
+    "identifier": "840c3cd6-98d5-479f-8cf8-790e262c9585",
+    "name": "weight",
+    "ownedElement": [
+      {
+        "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Frame::suspension::weight",
+    "owner": {
+      "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+    },
+    "owningNamespace": {
+      "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+    },
+    "ownedMember": [
+      {
+        "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+      }
+    ],
+    "isComposite": true,
+    "valuation": {
+      "@id": "2f2f8c63-4999-4e5b-8d66-7f107afa3698"
+    },
+    "declaration": {
+      "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+    },
+    "featureValueExpression": {
+      "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+    }
+  },
+  {
+    "@type": "PartUsage",
+    "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367",
+    "identifier": "8728f83c-c850-4bf1-b7a9-55df66abd367",
+    "name": "frame",
+    "qualifiedName": "bikeSample::Bike::frame",
+    "owner": {
+      "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+    },
+    "owningNamespace": {
+      "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+    },
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+      },
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "inheritedFeature": [
+      {
+        "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+      },
+      {
+        "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+      }
+    ],
+    "isComposite": true,
+    "type": [
+      {
+        "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+      }
+    ],
+    "declaration": {
+      "@id": "8728f83c-c850-4bf1-b7a9-55df66abd367"
+    },
+    "definition": [
+      {
+        "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+      }
+    ],
+    "individualDefinition": {
+      "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+    },
+    "occurrenceDefinition": [
+      {
+        "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+      }
+    ],
+    "itemDefinition": [
+      {
+        "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+      }
+    ],
+    "partDefinition": [
+      {
+        "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+      }
+    ]
+  },
+  {
+    "@type": "PartUsage",
+    "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d",
+    "identifier": "87a4954f-3f63-4a8f-a74d-f0defc681e2d",
+    "name": "front",
+    "qualifiedName": "bikeSample::Bike::front",
+    "owner": {
+      "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+    },
+    "owningNamespace": {
+      "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+    },
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "inheritedFeature": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "isComposite": true,
+    "type": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ],
+    "declaration": {
+      "@id": "87a4954f-3f63-4a8f-a74d-f0defc681e2d"
+    },
+    "definition": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ],
+    "individualDefinition": {
+      "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+    },
+    "occurrenceDefinition": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ],
+    "itemDefinition": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ],
+    "partDefinition": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ]
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "8922e6e2-e4b2-4de0-a1e6-01f4d8e3e4a2",
+    "identifier": "8922e6e2-e4b2-4de0-a1e6-01f4d8e3e4a2",
+    "qualifiedName": "",
+    "value": {
+      "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+    }
+  },
+  {
+    "@type": "OperatorExpression",
+    "@id": "8b808d51-7119-4918-9331-7e9d46e768a1",
+    "identifier": "8b808d51-7119-4918-9331-7e9d46e768a1",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+      },
+      {
+        "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+      },
+      {
+        "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::",
+    "owner": {
+      "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+    },
+    "owningNamespace": {
+      "@id": "7bcafea1-21dc-4a87-abb3-34da2b37e03f"
+    },
+    "ownedMember": [
+      {
+        "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+      },
+      {
+        "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+      },
+      {
+        "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+      },
+      {
+        "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+      },
+      {
+        "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+      },
+      {
+        "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+      },
+      {
+        "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+      },
+      {
+        "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+      },
+      {
+        "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
+      }
+    ],
+    "declaration": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    },
+    "parameter": [
+      {
+        "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+      },
+      {
+        "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+      },
+      {
+        "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
+      }
+    ],
+    "result": {
+      "@id": "8056455b-3ae7-4d70-b2de-3afbe8f286a0"
+    },
+    "operator": "+"
+  },
+  {
+    "@type": "Feature",
+    "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666",
+    "identifier": "8f5aaa22-a453-48b3-acb3-2afa9016a666",
+    "ownedElement": [
+      {
+        "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::",
+    "owner": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    },
+    "owningNamespace": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    },
+    "ownedMember": [
+      {
+        "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "a425a28b-b4a0-4022-845e-f51b375671e7"
+    },
+    "declaration": {
+      "@id": "8f5aaa22-a453-48b3-acb3-2afa9016a666"
+    },
+    "featureValueExpression": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "90a73644-79cd-41b0-973a-5766cf0a73f7",
+    "identifier": "90a73644-79cd-41b0-973a-5766cf0a73f7",
+    "qualifiedName": "",
+    "value": {
+      "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996",
+    "identifier": "91f556f6-0a69-48e6-b025-1c1cd2d24996",
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::::::",
+    "owner": {
+      "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+    },
+    "owningNamespace": {
+      "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996"
+    }
+  },
+  {
+    "@type": "PartUsage",
+    "@id": "967a1131-ff29-4eb9-84db-0d920165cead",
+    "identifier": "967a1131-ff29-4eb9-84db-0d920165cead",
+    "name": "rear",
+    "qualifiedName": "bikeSample::Bike::rear",
+    "owner": {
+      "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+    },
+    "owningNamespace": {
+      "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+    },
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "inheritedFeature": [
+      {
+        "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+      },
+      {
+        "@id": "387ee3b0-aa58-4c34-9cb7-531bf92e540f"
+      },
+      {
+        "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+      }
+    ],
+    "isComposite": true,
+    "type": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ],
+    "declaration": {
+      "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+    },
+    "definition": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ],
+    "individualDefinition": {
+      "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+    },
+    "occurrenceDefinition": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ],
+    "itemDefinition": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ],
+    "partDefinition": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      }
+    ]
+  },
+  {
+    "@type": "Feature",
+    "@id": "9778885c-6cd6-4267-a7f0-17c421f3aaaa",
+    "identifier": "9778885c-6cd6-4267-a7f0-17c421f3aaaa",
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::::",
+    "owner": {
+      "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+    },
+    "owningNamespace": {
+      "@id": "54adeb7c-6c56-420c-91e3-9742d9376225"
+    },
+    "declaration": {
+      "@id": "9778885c-6cd6-4267-a7f0-17c421f3aaaa"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa",
+    "identifier": "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa",
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::::",
+    "owner": {
+      "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+    },
+    "owningNamespace": {
+      "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+    },
+    "declaration": {
+      "@id": "979bb404-f8cd-4af3-bdfb-a2b487c7d1fa"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8",
+    "identifier": "99c0f7f5-db76-4d70-819a-c13419aeaea8",
+    "name": "result",
+    "qualifiedName": "bikeSample::structure::Frame::suspension::weight::::result",
+    "owner": {
+      "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+    },
+    "owningNamespace": {
+      "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "9b9f49c4-1edd-4667-b99d-885293511eda",
+    "identifier": "9b9f49c4-1edd-4667-b99d-885293511eda",
+    "name": "result",
+    "qualifiedName": "bikeSample::structure::Rim::weight::::result",
+    "owner": {
+      "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+    },
+    "owningNamespace": {
+      "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "9b9f49c4-1edd-4667-b99d-885293511eda"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "9d71f91d-8b28-4141-9e94-81d83d916433",
+    "identifier": "9d71f91d-8b28-4141-9e94-81d83d916433",
+    "ownedElement": [
+      {
+        "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::",
+    "owner": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    },
+    "owningNamespace": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    },
+    "ownedMember": [
+      {
+        "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "90a73644-79cd-41b0-973a-5766cf0a73f7"
+    },
+    "declaration": {
+      "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+    },
+    "featureValueExpression": {
+      "@id": "0c0e7082-6a60-4d75-b252-6dea979aaaee"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed",
+    "identifier": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed",
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::::::",
+    "owner": {
+      "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+    },
+    "owningNamespace": {
+      "@id": "7779b8b8-f6cc-4d66-812a-ee27fffa1400"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "a2b8a84e-6d8d-401e-bdb0-af5f05ae28ed"
+    }
+  },
+  {
+    "@type": "OperatorExpression",
+    "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3",
+    "identifier": "a3250ebe-99df-4003-8ee3-b24e2e3451d3",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+      },
+      {
+        "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+      },
+      {
+        "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::",
+    "owner": {
+      "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+    },
+    "owningNamespace": {
+      "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+    },
+    "ownedMember": [
+      {
+        "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+      },
+      {
+        "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+      },
+      {
+        "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+      },
+      {
+        "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+      },
+      {
+        "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+      },
+      {
+        "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+      },
+      {
+        "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+      },
+      {
+        "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+      },
+      {
+        "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7"
+      }
+    ],
+    "declaration": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    },
+    "parameter": [
+      {
+        "@id": "9d71f91d-8b28-4141-9e94-81d83d916433"
+      },
+      {
+        "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+      },
+      {
+        "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7"
+      }
+    ],
+    "result": {
+      "@id": "2b10183e-64d8-408c-83d1-6a5fb5814de7"
+    },
+    "operator": "+"
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "a425a28b-b4a0-4022-845e-f51b375671e7",
+    "identifier": "a425a28b-b4a0-4022-845e-f51b375671e7",
+    "qualifiedName": "",
+    "value": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    }
+  },
+  {
+    "@type": "FeatureChainExpression",
+    "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f",
+    "identifier": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+      },
+      {
+        "@id": "de766395-15b9-47d7-af71-fdddf5fcb802"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::",
+    "owner": {
+      "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+    },
+    "owningNamespace": {
+      "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+    },
+    "ownedMember": [
+      {
+        "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+      },
+      {
+        "@id": "de766395-15b9-47d7-af71-fdddf5fcb802"
+      }
+    ],
+    "member": [
+      {
+        "@id": "/?87a4954f-3f63-4a8f-a74d-f0defc681e2d/?de20a74f-54a6-4eb4-afa9-a050bef62214"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+      },
+      {
+        "@id": "de766395-15b9-47d7-af71-fdddf5fcb802"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+      },
+      {
+        "@id": "de766395-15b9-47d7-af71-fdddf5fcb802"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+      },
+      {
+        "@id": "de766395-15b9-47d7-af71-fdddf5fcb802"
+      }
+    ],
+    "declaration": {
+      "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+    },
+    "parameter": [
+      {
+        "@id": "4e784cbe-368b-4474-8874-4d2b92c01a43"
+      },
+      {
+        "@id": "de766395-15b9-47d7-af71-fdddf5fcb802"
+      }
+    ],
+    "result": {
+      "@id": "de766395-15b9-47d7-af71-fdddf5fcb802"
+    },
+    "targetFeature": {
+      "@id": "/?87a4954f-3f63-4a8f-a74d-f0defc681e2d/?de20a74f-54a6-4eb4-afa9-a050bef62214"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452",
+    "identifier": "a9d632db-5fcf-48f4-b2c2-97965119d452",
+    "name": "result",
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::result",
+    "owner": {
+      "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+    },
+    "owningNamespace": {
+      "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "a9d632db-5fcf-48f4-b2c2-97965119d452"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "ab0ad196-c9b4-441e-b353-ef03efd639d3",
+    "identifier": "ab0ad196-c9b4-441e-b353-ef03efd639d3",
+    "qualifiedName": "",
+    "value": {
+      "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+    }
+  },
+  {
+    "@type": "AttributeUsage",
+    "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402",
+    "identifier": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402",
+    "name": "weight",
+    "ownedElement": [
+      {
+        "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Tire::weight",
+    "owner": {
+      "@id": "668e8738-e822-4645-acc3-68c4025946db"
+    },
+    "owningNamespace": {
+      "@id": "668e8738-e822-4645-acc3-68c4025946db"
+    },
+    "ownedMember": [
+      {
+        "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+      }
+    ],
+    "isComposite": true,
+    "valuation": {
+      "@id": "2482a4d8-336d-4def-96e6-844f34387949"
+    },
+    "declaration": {
+      "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+    },
+    "featureValueExpression": {
+      "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+    }
+  },
+  {
+    "@type": "AttributeUsage",
+    "@id": "ae8205c5-4303-44ef-8346-60558de82035",
+    "identifier": "ae8205c5-4303-44ef-8346-60558de82035",
+    "name": "weight",
+    "ownedElement": [
+      {
+        "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Rim::weight",
+    "owner": {
+      "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+    },
+    "owningNamespace": {
+      "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+    },
+    "ownedMember": [
+      {
+        "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+      }
+    ],
+    "isComposite": true,
+    "valuation": {
+      "@id": "03e401a4-62ff-4c85-ad1a-0264f6f53dcb"
+    },
+    "declaration": {
+      "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+    },
+    "featureValueExpression": {
+      "@id": "3daf6e22-f5fd-400f-91d4-97fe87c8ab2f"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "af9c85c3-88ac-4e87-83e5-22f6ed041b8c",
+    "identifier": "af9c85c3-88ac-4e87-83e5-22f6ed041b8c",
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::::",
+    "owner": {
+      "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+    },
+    "owningNamespace": {
+      "@id": "30c0885f-30d9-4078-b484-3c4fcb063b13"
+    },
+    "declaration": {
+      "@id": "af9c85c3-88ac-4e87-83e5-22f6ed041b8c"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "b9e38a71-394b-44ef-87ac-a31c15d47952",
+    "identifier": "b9e38a71-394b-44ef-87ac-a31c15d47952",
+    "qualifiedName": "",
+    "value": {
+      "@id": "19fc49bb-9a72-47d0-a1ee-4f706ca8bb29"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c",
+    "identifier": "bcb4237d-9982-403d-9aa3-fd30c8e5640c",
+    "ownedElement": [
+      {
+        "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::",
+    "owner": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    },
+    "owningNamespace": {
+      "@id": "8b808d51-7119-4918-9331-7e9d46e768a1"
+    },
+    "ownedMember": [
+      {
+        "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "f9671b4f-a9e0-4705-b383-bc1c8f8988ea"
+    },
+    "declaration": {
+      "@id": "bcb4237d-9982-403d-9aa3-fd30c8e5640c"
+    },
+    "featureValueExpression": {
+      "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+    }
+  },
+  {
+    "@type": "Package",
+    "@id": "bddea054-4206-4e84-b05c-b4494e002084",
+    "identifier": "bddea054-4206-4e84-b05c-b4494e002084",
+    "name": "structure",
+    "ownedElement": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      },
+      {
+        "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+      },
+      {
+        "@id": "668e8738-e822-4645-acc3-68c4025946db"
+      },
+      {
+        "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure",
+    "owner": {
+      "@id": "f424639f-6d13-4c36-9cc0-1ad85568ea96"
+    },
+    "owningNamespace": {
+      "@id": "f424639f-6d13-4c36-9cc0-1ad85568ea96"
+    },
+    "ownedMember": [
+      {
+        "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+      },
+      {
+        "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+      },
+      {
+        "@id": "668e8738-e822-4645-acc3-68c4025946db"
+      },
+      {
+        "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212"
+      }
+    ]
+  },
+  {
+    "@type": "LiteralInteger",
+    "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b",
+    "identifier": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Frame::suspension::weight::",
+    "owner": {
+      "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+    },
+    "owningNamespace": {
+      "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+    },
+    "ownedMember": [
+      {
+        "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8"
+      }
+    ],
+    "declaration": {
+      "@id": "bdfddf59-e2fb-43bd-9e66-56f1d113f17b"
+    },
+    "parameter": [
+      {
+        "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8"
+      }
+    ],
+    "result": {
+      "@id": "99c0f7f5-db76-4d70-819a-c13419aeaea8"
+    },
+    "value": 1
+  },
+  {
+    "@type": "Feature",
+    "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4",
+    "identifier": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4",
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::",
+    "owner": {
+      "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+    },
+    "owningNamespace": {
+      "@id": "7832a6e3-d4d3-4eb9-9630-f1b3db59addb"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "c3614431-5d4d-4dc0-bb4e-60c25c582fe4"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5",
+    "identifier": "c524b1c0-6873-40a3-84df-bd0b52951ca5",
+    "name": "result",
+    "qualifiedName": "bikeSample::structure::Tire::weight::::result",
+    "owner": {
+      "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+    },
+    "owningNamespace": {
+      "@id": "34a07f53-117f-4665-8976-2e71175716c6"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "c524b1c0-6873-40a3-84df-bd0b52951ca5"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b",
+    "identifier": "cbca6aae-4c5a-46f5-92a7-35a423f3944b",
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::::::",
+    "owner": {
+      "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+    },
+    "owningNamespace": {
+      "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "cbca6aae-4c5a-46f5-92a7-35a423f3944b"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043",
+    "identifier": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043",
+    "ownedElement": [
+      {
+        "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::",
+    "owner": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    },
+    "owningNamespace": {
+      "@id": "37e5066a-f3cc-4011-ba41-8e0b54d12848"
+    },
+    "ownedMember": [
+      {
+        "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+      }
+    ],
+    "direction": "in",
+    "valuation": {
+      "@id": "393a74c6-4852-4194-9943-f603eda5c436"
+    },
+    "declaration": {
+      "@id": "cf8ec5dd-4f45-4aa7-8598-9929a2c7e043"
+    },
+    "featureValueExpression": {
+      "@id": "30bc7fc6-7d34-4b7a-9d1b-e3b31f39b60f"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "d47fdafe-a6b6-4c39-872e-69d60005d847",
+    "identifier": "d47fdafe-a6b6-4c39-872e-69d60005d847",
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::::::",
+    "owner": {
+      "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+    },
+    "owningNamespace": {
+      "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+    },
+    "declaration": {
+      "@id": "d47fdafe-a6b6-4c39-872e-69d60005d847"
+    }
+  },
+  {
+    "@type": "PartUsage",
+    "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8",
+    "identifier": "d6d124f7-ab69-41c3-8c4a-52682ae929f8",
+    "name": "suspension",
+    "ownedElement": [
+      {
+        "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Frame::suspension",
+    "owner": {
+      "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+    },
+    "owningNamespace": {
+      "@id": "2fe6e137-4e7a-43d4-b18e-690fc5e13599"
+    },
+    "ownedMember": [
+      {
+        "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+      }
+    ],
+    "isComposite": true,
+    "declaration": {
+      "@id": "d6d124f7-ab69-41c3-8c4a-52682ae929f8"
+    },
+    "nestedUsage": [
+      {
+        "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+      }
+    ],
+    "nestedAttribute": [
+      {
+        "@id": "840c3cd6-98d5-479f-8cf8-790e262c9585"
+      }
+    ]
+  },
+  {
+    "@type": "Feature",
+    "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a",
+    "identifier": "d840291d-ae9e-453f-bd74-a0beeea9303a",
+    "name": "result",
+    "qualifiedName": "bikeSample::structure::Frame::weight::::result",
+    "owner": {
+      "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+    },
+    "owningNamespace": {
+      "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a"
+    }
+  },
+  {
+    "@type": "AttributeUsage",
+    "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214",
+    "identifier": "de20a74f-54a6-4eb4-afa9-a050bef62214",
+    "name": "weight",
+    "ownedElement": [
+      {
+        "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight",
+    "owner": {
+      "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+    },
+    "owningNamespace": {
+      "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+    },
+    "ownedMember": [
+      {
+        "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+      }
+    ],
+    "isComposite": true,
+    "valuation": {
+      "@id": "15b25161-2fab-4133-abd1-7fe1e5b05082"
+    },
+    "declaration": {
+      "@id": "de20a74f-54a6-4eb4-afa9-a050bef62214"
+    },
+    "featureValueExpression": {
+      "@id": "a3250ebe-99df-4003-8ee3-b24e2e3451d3"
+    }
+  },
+  {
+    "@type": "Feature",
+    "@id": "de766395-15b9-47d7-af71-fdddf5fcb802",
+    "identifier": "de766395-15b9-47d7-af71-fdddf5fcb802",
+    "name": "result",
+    "qualifiedName": "bikeSample::Bike::weight::::::::result",
+    "owner": {
+      "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+    },
+    "owningNamespace": {
+      "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+    },
+    "direction": "out",
+    "declaration": {
+      "@id": "de766395-15b9-47d7-af71-fdddf5fcb802"
+    }
+  },
+  {
+    "@type": "FeatureReferenceExpression",
+    "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa",
+    "identifier": "e4a705b3-8198-4c51-b479-7b1e059422aa",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996"
+      }
+    ],
+    "qualifiedName": "bikeSample::Bike::weight::::::::::::::",
+    "owner": {
+      "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+    },
+    "owningNamespace": {
+      "@id": "4d8878c3-c47e-4ba0-b816-552a9e7cdcb8"
+    },
+    "ownedMember": [
+      {
+        "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996"
+      }
+    ],
+    "member": [
+      {
+        "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996"
+      }
+    ],
+    "declaration": {
+      "@id": "e4a705b3-8198-4c51-b479-7b1e059422aa"
+    },
+    "parameter": [
+      {
+        "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996"
+      }
+    ],
+    "result": {
+      "@id": "91f556f6-0a69-48e6-b025-1c1cd2d24996"
+    },
+    "referent": {
+      "@id": "967a1131-ff29-4eb9-84db-0d920165cead"
+    }
+  },
+  {
+    "@type": "LiteralInteger",
+    "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c",
+    "identifier": "e83cdf42-3342-48eb-b219-b85fb4b67e1c",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Frame::weight::",
+    "owner": {
+      "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+    },
+    "owningNamespace": {
+      "@id": "639c512d-ad6a-4871-b92f-366c6a2f383c"
+    },
+    "ownedMember": [
+      {
+        "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a"
+      }
+    ],
+    "declaration": {
+      "@id": "e83cdf42-3342-48eb-b219-b85fb4b67e1c"
+    },
+    "parameter": [
+      {
+        "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a"
+      }
+    ],
+    "result": {
+      "@id": "d840291d-ae9e-453f-bd74-a0beeea9303a"
+    },
+    "value": 5
+  },
+  {
+    "@type": "PartDefinition",
+    "@id": "ea62c943-eb85-495f-ad4e-8dec0708c212",
+    "identifier": "ea62c943-eb85-495f-ad4e-8dec0708c212",
+    "name": "Rim",
+    "ownedElement": [
+      {
+        "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Rim",
+    "owner": {
+      "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+    },
+    "owningNamespace": {
+      "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+    },
+    "ownedMember": [
+      {
+        "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ],
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ],
+    "ownedUsage": [
+      {
+        "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ],
+    "ownedAttribute": [
+      {
+        "@id": "ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ]
+  },
+  {
+    "@type": "PartUsage",
+    "@id": "ecd89418-7e15-4207-9748-cef2256e45e5",
+    "identifier": "ecd89418-7e15-4207-9748-cef2256e45e5",
+    "name": "tire",
+    "qualifiedName": "bikeSample::structure::Wheel::tire",
+    "owner": {
+      "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+    },
+    "owningNamespace": {
+      "@id": "49f2420f-2973-4da8-8223-8867d8bb4227"
+    },
+    "directedFeature": [],
+    "feature": [
+      {
+        "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ],
+    "inheritedFeature": [
+      {
+        "@id": "ab9bf6fc-d2cc-4d8b-9011-a46d7d177402"
+      }
+    ],
+    "isComposite": true,
+    "type": [
+      {
+        "@id": "668e8738-e822-4645-acc3-68c4025946db"
+      }
+    ],
+    "declaration": {
+      "@id": "ecd89418-7e15-4207-9748-cef2256e45e5"
+    },
+    "definition": [
+      {
+        "@id": "668e8738-e822-4645-acc3-68c4025946db"
+      }
+    ],
+    "individualDefinition": {
+      "@id": "668e8738-e822-4645-acc3-68c4025946db"
+    },
+    "occurrenceDefinition": [
+      {
+        "@id": "668e8738-e822-4645-acc3-68c4025946db"
+      }
+    ],
+    "itemDefinition": [
+      {
+        "@id": "668e8738-e822-4645-acc3-68c4025946db"
+      }
+    ],
+    "partDefinition": [
+      {
+        "@id": "668e8738-e822-4645-acc3-68c4025946db"
+      }
+    ]
+  },
+  {
+    "@type": "Package",
+    "@id": "f424639f-6d13-4c36-9cc0-1ad85568ea96",
+    "identifier": "f424639f-6d13-4c36-9cc0-1ad85568ea96",
+    "eAnnotations": [],
+    "owner": null,
+    "name": "bikeSample",
+    "ownedElement": [
+      {
+        "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+      },
+      {
+        "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+      }
+    ],
+    "qualifiedName": "bikeSample",
+    "ownedMember": [
+      {
+        "@id": "bddea054-4206-4e84-b05c-b4494e002084"
+      },
+      {
+        "@id": "4b835c41-18ca-4170-a9e2-b6419cf07c03"
+      }
+    ]
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "f94c808a-3a78-4df8-9eda-e46bf0ae47db",
+    "identifier": "f94c808a-3a78-4df8-9eda-e46bf0ae47db",
+    "qualifiedName": "",
+    "value": {
+      "@id": "266412f0-0281-420a-bba7-f3be5059bd6b"
+    }
+  },
+  {
+    "@type": "FeatureValue",
+    "@id": "f9671b4f-a9e0-4705-b383-bc1c8f8988ea",
+    "identifier": "f9671b4f-a9e0-4705-b383-bc1c8f8988ea",
+    "qualifiedName": "",
+    "value": {
+      "@id": "a6bd5d4f-ea4a-4b33-84cc-43a3b1ffac7f"
+    }
+  },
+  {
+    "@type": "FeatureChainExpression",
+    "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed",
+    "identifier": "f9db4a4b-8204-444a-b85f-feb6259ccfed",
+    "eAnnotations": [],
+    "ownedElement": [
+      {
+        "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+      },
+      {
+        "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f"
+      }
+    ],
+    "qualifiedName": "bikeSample::structure::Wheel::weight::::::",
+    "owner": {
+      "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+    },
+    "owningNamespace": {
+      "@id": "2c6b0d06-4795-4762-af3c-cc862b5c4c9c"
+    },
+    "ownedMember": [
+      {
+        "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+      },
+      {
+        "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f"
+      }
+    ],
+    "member": [
+      {
+        "@id": "/?387ee3b0-aa58-4c34-9cb7-531bf92e540f/?ae8205c5-4303-44ef-8346-60558de82035"
+      }
+    ],
+    "ownedEndFeature": [],
+    "ownedFeature": [
+      {
+        "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+      },
+      {
+        "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f"
+      }
+    ],
+    "directedFeature": [
+      {
+        "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+      },
+      {
+        "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f"
+      }
+    ],
+    "feature": [
+      {
+        "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+      },
+      {
+        "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f"
+      }
+    ],
+    "declaration": {
+      "@id": "f9db4a4b-8204-444a-b85f-feb6259ccfed"
+    },
+    "parameter": [
+      {
+        "@id": "3e580809-a2df-4a0d-b1da-5de145ec3333"
+      },
+      {
+        "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f"
+      }
+    ],
+    "result": {
+      "@id": "5f377ece-6a5f-40a8-b555-0fc74018da1f"
+    },
+    "targetFeature": {
+      "@id": "/?387ee3b0-aa58-4c34-9cb7-531bf92e540f/?ae8205c5-4303-44ef-8346-60558de82035"
+    }
+  }
+]

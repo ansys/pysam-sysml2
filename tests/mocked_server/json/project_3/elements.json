@@ -717,6 +717,7 @@
         "@type": "Package",
         "@id": "5d0f3623-4a42-4510-bd12-8fb2e073895c",
         "identifier": "5d0f3623-4a42-4510-bd12-8fb2e073895c",
+        "owner": null,
         "eAnnotations": [],
         "name": "ProjectWithAllFeatureTypes",
         "ownedElement": [
