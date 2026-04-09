@@ -9,6 +9,81 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.3.0 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.3.0>`_ - April 09, 2026
+=====================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Added
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Add create and delete methods to project manager
+          - `#139 <https://github.com/ansys/pysam-sysml2/pull/139>`_
+
+
+  .. tab-item:: Fixed
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Incorrect super() call in ObservedList.__delitem__ (#135)
+          - `#136 <https://github.com/ansys/pysam-sysml2/pull/136>`_
+
+
+  .. tab-item:: Dependencies
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Bump pytest-cov from 7.0.0 to 7.1.0
+          - `#128 <https://github.com/ansys/pysam-sysml2/pull/128>`_
+
+        * - Bump werkzeug from 3.1.6 to 3.1.7
+          - `#133 <https://github.com/ansys/pysam-sysml2/pull/133>`_
+
+        * - Bump requests from 2.32.5 to 2.33.0
+          - `#134 <https://github.com/ansys/pysam-sysml2/pull/134>`_
+
+        * - Bump pypa/gh-action-pypi-publish from 1.13.0 to 1.14.0
+          - `#140 <https://github.com/ansys/pysam-sysml2/pull/140>`_
+
+
+  .. tab-item:: Miscellaneous
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Optimize performance across codebase
+          - `#141 <https://github.com/ansys/pysam-sysml2/pull/141>`_
+
+
+  .. tab-item:: Documentation
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Fix typos, syntax issues and clean up documentation (#130)
+          - `#132 <https://github.com/ansys/pysam-sysml2/pull/132>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Update CHANGELOG for v0.2.2
+          - `#126 <https://github.com/ansys/pysam-sysml2/pull/126>`_
+
+
 `0.2.2 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.2.2>`_ - March 31, 2026
 =====================================================================================
 
