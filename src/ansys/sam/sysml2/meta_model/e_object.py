@@ -76,7 +76,7 @@ class EObject:
                 return child
             return SysMLInheritedElement(self, child)
 
-        raise AttributeError(f"{self.name} has no element named {element_name}")
+        return None
 
     @property
     def id(self):

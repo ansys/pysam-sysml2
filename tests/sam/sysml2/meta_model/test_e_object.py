@@ -63,9 +63,7 @@ class TestEObjet(ParentTestClass):
         project_root.get("PartDefinition").get("Attribute").name = "NewAttr"
 
         assert project_root.get("PartDefinition").get("NewAttr").name == "NewAttr"
-
-        with pytest.raises(AttributeError):
-            project_root.get("PartDefinition").get("Attribute")
+        assert project_root.get("PartDefinition").get("Attribute") is None
 
     def test_expression_with_old_format_project_get_values(
         self, old_format_project: Project
