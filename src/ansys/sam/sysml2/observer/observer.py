@@ -269,5 +269,6 @@ class ModificationObserver:
             for field in changes:
                 change.add_change(field[0], field[1])
             commit.add_change(change)
-        self._connector.create_commit(self._project_id, commit.to_json())
-        self.reload_project()
+        if len(commit.changes) > 0:
+            self._connector.create_commit(self._project_id, commit.to_json())
+            self.reload_project()
