@@ -41,14 +41,14 @@ class TestTransitionFeatureMembership:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_transition_feature(self, element):
-        """Test getter and setter for transition feature property."""
-        value = None
-        element.transition_feature = value
-        assert element.transition_feature == value
-
     def test_kind(self, element):
         """Test getter and setter for kind property."""
-        value = None
+        value = "test_value"
         element.kind = value
         assert element.kind == value
+
+    def test_transition_feature(self, element):
+        """Test getter and setter for transition feature property."""
+        value = "test_value"
+        element.transition_feature = value
+        assert element.transition_feature == value

@@ -43,7 +43,7 @@ class TestFeatureTyping:
 
     def test_type_(self, element):
         """Test getter and setter for type property."""
-        value = None
+        value = "test_value"
         element.type_ = value
         assert element.type_ == value
 
@@ -55,6 +55,6 @@ class TestFeatureTyping:
 
     def test_owning_feature(self, element):
         """Test getter and setter for owning feature property."""
-        value = None
+        value = "test_value"
         element.owning_feature = value
         assert element.owning_feature == value

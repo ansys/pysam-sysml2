@@ -31,39 +31,39 @@ from .event_occurrence_usage import EventOccurrenceUsage
 class PerformActionUsage(ActionUsage, EventOccurrenceUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.PerformActionUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._performed_action = None
 
     @property
-    def performed_action(self) -> None:  # noqa: F821
+    def performed_action(self) -> "ActionUsage":  # noqa: F821
         """
         Get the performed action property.
 
         Returns
         -------
-        None
+        "ActionUsage"
             Value of property performed action.
         """
         return self._performed_action
 
     @performed_action.setter
-    def performed_action(self, value: None):  # noqa: F821
+    def performed_action(self, value: "ActionUsage"):  # noqa: F821
         """
         Set the performed_action property.
 
         Parameters
         ----------
-        value: None
+        value: "ActionUsage"
             New value.
         """
         if self._observer is not None:

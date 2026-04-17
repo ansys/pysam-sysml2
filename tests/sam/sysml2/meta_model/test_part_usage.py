@@ -41,9 +41,11 @@ class TestPartUsage:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_all_part_definition(self, element):
-        """Test getter for all part definition property."""
-        _ = element.all_part_definition
+    def test_is_stakeholder(self, element):
+        """Test getter and setter for is stakeholder property."""
+        value = False
+        element.is_stakeholder = value
+        assert element.is_stakeholder == value
 
     def test_part_definition(self, element):
         """Test getter for part definition property."""
@@ -55,8 +57,6 @@ class TestPartUsage:
         element.is_actor = value
         assert element.is_actor == value
 
-    def test_is_stakeholder(self, element):
-        """Test getter and setter for is stakeholder property."""
-        value = False
-        element.is_stakeholder = value
-        assert element.is_stakeholder == value
+    def test_all_part_definition(self, element):
+        """Test getter for all part definition property."""
+        _ = element.all_part_definition

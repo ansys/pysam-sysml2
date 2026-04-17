@@ -24,8 +24,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .calculation_usage import CalculationUsage
@@ -34,21 +32,33 @@ from .calculation_usage import CalculationUsage
 class CaseUsage(CalculationUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.CaseUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
-        self._case_definition = None
+        """
+        super().__init__(element_id)
+
         self._actor_parameter = ObservedList(self, "actor_parameter")
-        self._objective_requirement = None
+        self._case_definition = None
         self._subject_parameter = None
+        self._objective_requirement = None
+
+    @property
+    def actor_parameter(self) -> list["PartUsage"]:  # noqa: F821
+        """
+        Get the actor parameter property.
+
+        Returns
+        -------
+        list["PartUsage"]
+            Value of property actor parameter.
+        """
+        return self._actor_parameter
 
     @property
     def case_definition(self) -> "CaseDefinition":  # noqa: F821
@@ -77,44 +87,6 @@ class CaseUsage(CalculationUsage):
         self._case_definition = value
 
     @property
-    def actor_parameter(self) -> List["PartUsage"]:  # noqa: F821
-        """
-        Get the actor parameter property.
-
-        Returns
-        -------
-        List["PartUsage"]
-            Value of property actor parameter.
-        """
-        return self._actor_parameter
-
-    @property
-    def objective_requirement(self) -> None:  # noqa: F821
-        """
-        Get the objective requirement property.
-
-        Returns
-        -------
-        None
-            Value of property objective requirement.
-        """
-        return self._objective_requirement
-
-    @objective_requirement.setter
-    def objective_requirement(self, value: None):  # noqa: F821
-        """
-        Set the objective_requirement property.
-
-        Parameters
-        ----------
-        value: None
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "objective_requirement", value)
-        self._objective_requirement = value
-
-    @property
     def subject_parameter(self) -> "Usage":  # noqa: F821
         """
         Get the subject parameter property.
@@ -139,3 +111,29 @@ class CaseUsage(CalculationUsage):
         if self._observer is not None:
             self._observer.notify(self.id, "subject_parameter", value)
         self._subject_parameter = value
+
+    @property
+    def objective_requirement(self) -> "RequirementUsage":  # noqa: F821
+        """
+        Get the objective requirement property.
+
+        Returns
+        -------
+        "RequirementUsage"
+            Value of property objective requirement.
+        """
+        return self._objective_requirement
+
+    @objective_requirement.setter
+    def objective_requirement(self, value: "RequirementUsage"):  # noqa: F821
+        """
+        Set the objective_requirement property.
+
+        Parameters
+        ----------
+        value: "RequirementUsage"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "objective_requirement", value)
+        self._objective_requirement = value

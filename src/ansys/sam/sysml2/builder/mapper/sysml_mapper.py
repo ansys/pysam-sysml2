@@ -83,7 +83,7 @@ class SysMLMapper(Mapper):
         unresolved_fields = []
         if element is None:
             constructor = SysMLUtil.get_sysml_constructor(data[TYPE_KEY])
-            element = constructor(id=data["@id"])
+            element = constructor(element_id=data["@id"])
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))

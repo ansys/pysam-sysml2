@@ -28,12 +28,13 @@ from .e_object import EObject
 class ConcernUsage(EObject):
     """Java class 'com.ansys.medini.metamodel.sysml.ConcernUsage'."""
 
-    def __init__(self, id: str):
+    def __init__(self, element_id: str):
         """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)

@@ -41,14 +41,14 @@ class TestSubsetting:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
+    def test_subsetting_feature(self, element):
+        """Test getter and setter for subsetting feature property."""
+        value = "test_value"
+        element.subsetting_feature = value
+        assert element.subsetting_feature == value
+
     def test_subsetted_feature(self, element):
         """Test getter and setter for subsetted feature property."""
         value = "test_value"
         element.subsetted_feature = value
         assert element.subsetted_feature == value
-
-    def test_subsetting_feature(self, element):
-        """Test getter and setter for subsetting feature property."""
-        value = None
-        element.subsetting_feature = value
-        assert element.subsetting_feature == value

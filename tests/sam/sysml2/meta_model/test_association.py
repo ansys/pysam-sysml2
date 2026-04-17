@@ -41,14 +41,6 @@ class TestAssociation:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_association_end(self, element):
-        """Test getter for association end property."""
-        _ = element.association_end
-
-    def test_target_type(self, element):
-        """Test getter for target type property."""
-        _ = element.target_type
-
     def test_source_type(self, element):
         """Test getter and setter for source type property."""
         value = "test_value"
@@ -58,3 +50,11 @@ class TestAssociation:
     def test_related_type(self, element):
         """Test getter for related type property."""
         _ = element.related_type
+
+    def test_association_end(self, element):
+        """Test getter for association end property."""
+        _ = element.association_end
+
+    def test_target_type(self, element):
+        """Test getter for target type property."""
+        _ = element.target_type

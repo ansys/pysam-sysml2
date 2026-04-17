@@ -30,16 +30,16 @@ from .expression import Expression
 class FeatureReferenceExpression(Expression):
     """Java class 'com.ansys.medini.metamodel.sysml.FeatureReferenceExpression'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._referent = None
 

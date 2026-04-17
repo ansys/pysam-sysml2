@@ -43,6 +43,6 @@ class TestRequirementVerificationMembership:
 
     def test_verified_requirement(self, element):
         """Test getter and setter for verified requirement property."""
-        value = None
+        value = "test_value"
         element.verified_requirement = value
         assert element.verified_requirement == value

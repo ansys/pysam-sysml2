@@ -55,92 +55,6 @@ class TestFeature:
         element.default_value = value
         assert element.default_value == value
 
-    def test_inherited_type(self, element):
-        """Test getter for inherited type property."""
-        _ = element.inherited_type
-
-    def test_inheriting_type(self, element):
-        """Test getter and setter for inheriting type property."""
-        value = "test_value"
-        element.inheriting_type = value
-        assert element.inheriting_type == value
-
-    def test_is_composite(self, element):
-        """Test getter and setter for is composite property."""
-        value = False
-        element.is_composite = value
-        assert element.is_composite == value
-
-    def test_is_end(self, element):
-        """Test getter and setter for is end property."""
-        value = False
-        element.is_end = value
-        assert element.is_end == value
-
-    def test_declaration(self, element):
-        """Test getter for declaration property."""
-        _ = element.declaration
-
-    def test_owned_subsetting(self, element):
-        """Test getter for owned subsetting property."""
-        _ = element.owned_subsetting
-
-    def test_direction(self, element):
-        """Test getter and setter for direction property."""
-        value = "test_value"
-        element.direction = value
-        assert element.direction == value
-
-    def test_chaining_feature(self, element):
-        """Test getter for chaining feature property."""
-        _ = element.chaining_feature
-
-    def test_valuation(self, element):
-        """Test getter and setter for valuation property."""
-        value = "test_value"
-        element.valuation = value
-        assert element.valuation == value
-
-    def test_owned_typing(self, element):
-        """Test getter for owned typing property."""
-        _ = element.owned_typing
-
-    def test_set_is_composite(self, element):
-        """Test getter for set is composite property."""
-        _ = element.set_is_composite
-
-    def test_set_direction(self, element):
-        """Test getter for set direction property."""
-        _ = element.set_direction
-
-    def test_is_ordered(self, element):
-        """Test getter and setter for is ordered property."""
-        value = None
-        element.is_ordered = value
-        assert element.is_ordered == value
-
-    def test_is_unique(self, element):
-        """Test getter and setter for is unique property."""
-        value = False
-        element.is_unique = value
-        assert element.is_unique == value
-
-    def test_set_is_ordered(self, element):
-        """Test getter for set is ordered property."""
-        _ = element.set_is_ordered
-
-    def test_set_is_unique(self, element):
-        """Test getter for set is unique property."""
-        _ = element.set_is_unique
-
-    def test_set_default_value(self, element):
-        """Test getter for set default value property."""
-        _ = element.set_default_value
-
-    def test_set_valuation(self, element):
-        """Test getter for set valuation property."""
-        _ = element.set_valuation
-
     def test_referenced_feature(self, element):
         """Test getter for referenced feature property."""
         _ = element.referenced_feature
@@ -155,13 +69,99 @@ class TestFeature:
         """Test getter for owned reference subsetting property."""
         _ = element.owned_reference_subsetting
 
-    def test_owned_redefinition(self, element):
-        """Test getter for owned redefinition property."""
-        _ = element.owned_redefinition
+    def test_inheriting_type(self, element):
+        """Test getter and setter for inheriting type property."""
+        value = "test_value"
+        element.inheriting_type = value
+        assert element.inheriting_type == value
 
-    def test_owned_type_featuring(self, element):
-        """Test getter for owned type featuring property."""
-        _ = element.owned_type_featuring
+    def test_inherited_type(self, element):
+        """Test getter for inherited type property."""
+        _ = element.inherited_type
+
+    def test_declaration(self, element):
+        """Test getter for declaration property."""
+        _ = element.declaration
+
+    def test_set_is_unique(self, element):
+        """Test getter for set is unique property."""
+        _ = element.set_is_unique
+
+    def test_set_default_value(self, element):
+        """Test getter for set default value property."""
+        _ = element.set_default_value
+
+    def test_set_is_ordered(self, element):
+        """Test getter for set is ordered property."""
+        _ = element.set_is_ordered
+
+    def test_is_end(self, element):
+        """Test getter and setter for is end property."""
+        value = False
+        element.is_end = value
+        assert element.is_end == value
+
+    def test_direction(self, element):
+        """Test getter and setter for direction property."""
+        value = "test_value"
+        element.direction = value
+        assert element.direction == value
+
+    def test_set_direction(self, element):
+        """Test getter for set direction property."""
+        _ = element.set_direction
+
+    def test_set_valuation(self, element):
+        """Test getter for set valuation property."""
+        _ = element.set_valuation
+
+    def test_is_ordered(self, element):
+        """Test getter and setter for is ordered property."""
+        value = False
+        element.is_ordered = value
+        assert element.is_ordered == value
+
+    def test_is_unique(self, element):
+        """Test getter and setter for is unique property."""
+        value = False
+        element.is_unique = value
+        assert element.is_unique == value
+
+    def test_valuation(self, element):
+        """Test getter and setter for valuation property."""
+        value = "test_value"
+        element.valuation = value
+        assert element.valuation == value
+
+    def test_is_composite(self, element):
+        """Test getter and setter for is composite property."""
+        value = False
+        element.is_composite = value
+        assert element.is_composite == value
+
+    def test_set_is_composite(self, element):
+        """Test getter for set is composite property."""
+        _ = element.set_is_composite
+
+    def test_owned_typing(self, element):
+        """Test getter for owned typing property."""
+        _ = element.owned_typing
+
+    def test_owned_subsetting(self, element):
+        """Test getter for owned subsetting property."""
+        _ = element.owned_subsetting
+
+    def test_chaining_feature(self, element):
+        """Test getter for chaining feature property."""
+        _ = element.chaining_feature
+
+    def test_subsetted_feature(self, element):
+        """Test getter for subsetted feature property."""
+        _ = element.subsetted_feature
+
+    def test_set_feature_value_expression(self, element):
+        """Test getter for set feature value expression property."""
+        _ = element.set_feature_value_expression
 
     def test_owning_feature_membership(self, element):
         """Test getter and setter for owning feature membership property."""
@@ -169,17 +169,17 @@ class TestFeature:
         element.owning_feature_membership = value
         assert element.owning_feature_membership == value
 
-    def test_subsetted_feature(self, element):
-        """Test getter for subsetted feature property."""
-        _ = element.subsetted_feature
+    def test_owned_type_featuring(self, element):
+        """Test getter for owned type featuring property."""
+        _ = element.owned_type_featuring
+
+    def test_owned_redefinition(self, element):
+        """Test getter for owned redefinition property."""
+        _ = element.owned_redefinition
 
     def test_redefined_feature(self, element):
         """Test getter for redefined feature property."""
         _ = element.redefined_feature
-
-    def test_set_feature_value_expression(self, element):
-        """Test getter for set feature value expression property."""
-        _ = element.set_feature_value_expression
 
     def test_all_redefinitions(self, element):
         """Test getter for all redefinitions property."""

@@ -40,13 +40,13 @@ class TestBehavior:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_parameter(self, element):
-        """Test getter for parameter property."""
-        _ = element.parameter
-
     def test_step(self, element):
         """Test getter for step property."""
         _ = element.step
+
+    def test_parameter(self, element):
+        """Test getter for parameter property."""
+        _ = element.parameter
 
     def test_general_parameter(self, element):
         """Test getter for general parameter property."""

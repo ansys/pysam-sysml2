@@ -30,16 +30,16 @@ from .relationship import Relationship
 class Import(Relationship):
     """Java class 'com.ansys.medini.metamodel.sysml.Import'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._is_recursive = False
         self._imported_namespace = None

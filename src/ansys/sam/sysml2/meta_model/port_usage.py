@@ -22,8 +22,6 @@
 
 """Generated port usage class from metamodel."""
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .occurrence_usage import OccurrenceUsage
@@ -32,27 +30,27 @@ from .occurrence_usage import OccurrenceUsage
 class PortUsage(OccurrenceUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.PortUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._port_definition = ObservedList(self, "port_definition")
 
     @property
-    def port_definition(self) -> List["PortDefinition"]:  # noqa: F821
+    def port_definition(self) -> list["PortDefinition"]:  # noqa: F821
         """
         Get the port definition property.
 
         Returns
         -------
-        List["PortDefinition"]
+        list["PortDefinition"]
             Value of property port definition.
         """
         return self._port_definition

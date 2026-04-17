@@ -49,12 +49,12 @@ class TestTextualRepresentation:
 
     def test_body(self, element):
         """Test getter and setter for body property."""
-        value = None
+        value = ""
         element.body = value
         assert element.body == value
 
     def test_represented_element(self, element):
         """Test getter and setter for represented element property."""
-        value = None
+        value = "test_value"
         element.represented_element = value
         assert element.represented_element == value

@@ -22,8 +22,6 @@
 
 """Generated allocation usage class from metamodel."""
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .connection_usage import ConnectionUsage
@@ -32,27 +30,27 @@ from .connection_usage import ConnectionUsage
 class AllocationUsage(ConnectionUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.AllocationUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._allocation_definition = ObservedList(self, "allocation_definition")
 
     @property
-    def allocation_definition(self) -> List["AllocationDefinition"]:  # noqa: F821
+    def allocation_definition(self) -> list["AllocationDefinition"]:  # noqa: F821
         """
         Get the allocation definition property.
 
         Returns
         -------
-        List["AllocationDefinition"]
+        list["AllocationDefinition"]
             Value of property allocation definition.
         """
         return self._allocation_definition

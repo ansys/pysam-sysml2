@@ -49,6 +49,6 @@ class TestFeatureChaining:
 
     def test_feature_chained(self, element):
         """Test getter and setter for feature chained property."""
-        value = None
+        value = "test_value"
         element.feature_chained = value
         assert element.feature_chained == value

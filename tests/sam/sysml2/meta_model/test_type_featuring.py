@@ -43,7 +43,7 @@ class TestTypeFeaturing:
 
     def test_feature_of_type(self, element):
         """Test getter and setter for feature of type property."""
-        value = None
+        value = "test_value"
         element.feature_of_type = value
         assert element.feature_of_type == value
 

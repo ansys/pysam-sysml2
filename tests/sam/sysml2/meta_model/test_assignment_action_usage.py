@@ -41,6 +41,10 @@ class TestAssignmentActionUsage:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
+    def test_referent(self, element):
+        """Test getter for referent property."""
+        _ = element.referent
+
     def test_value_expression(self, element):
         """Test getter for value expression property."""
         _ = element.value_expression
@@ -48,7 +52,3 @@ class TestAssignmentActionUsage:
     def test_target_argument(self, element):
         """Test getter for target argument property."""
         _ = element.target_argument
-
-    def test_referent(self, element):
-        """Test getter for referent property."""
-        _ = element.referent

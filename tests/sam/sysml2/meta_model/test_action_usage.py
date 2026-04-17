@@ -22,7 +22,6 @@
 
 """Generated  test class from metamodel."""
 
-from __future__ import annotations
 
 import pytest
 

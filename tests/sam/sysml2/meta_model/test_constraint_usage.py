@@ -41,15 +41,15 @@ class TestConstraintUsage:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
+    def test_kind(self, element):
+        """Test getter and setter for kind property."""
+        value = "test_value"
+        element.kind = value
+        assert element.kind == value
+
     def test_set_kind(self, element):
         """Test getter for set kind property."""
         _ = element.set_kind
-
-    def test_kind(self, element):
-        """Test getter and setter for kind property."""
-        value = None
-        element.kind = value
-        assert element.kind == value
 
     def test_constraint_definition(self, element):
         """Test getter and setter for constraint definition property."""
@@ -59,7 +59,7 @@ class TestConstraintUsage:
 
     def test_constraint_expression(self, element):
         """Test getter and setter for constraint expression property."""
-        value = None
+        value = "test_value"
         element.constraint_expression = value
         assert element.constraint_expression == value
 

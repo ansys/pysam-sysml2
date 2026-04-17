@@ -30,39 +30,39 @@ from .literal_expression import LiteralExpression
 class LiteralBoolean(LiteralExpression):
     """Java class 'com.ansys.medini.metamodel.sysml.LiteralBoolean'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
-        self._value = None
+        """
+        super().__init__(element_id)
+
+        self._value = False
 
     @property
-    def value(self) -> None:  # noqa: F821
+    def value(self) -> bool:  # noqa: F821
         """
         Get the value property.
 
         Returns
         -------
-        None
+        bool
             Value of property value.
         """
         return self._value
 
     @value.setter
-    def value(self, value: None):  # noqa: F821
+    def value(self, value: bool):  # noqa: F821
         """
         Set the value property.
 
         Parameters
         ----------
-        value: None
+        value: bool
             New value.
         """
         if self._observer is not None:
