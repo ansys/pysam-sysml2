@@ -139,3 +139,15 @@ class TestFactory(ParentTestClass):
                 name=["new_attribute"],
                 owner=project_root,
             )
+
+    def test_create_element_transactional_scripting_name(
+        self, project_manager: SysML2ProjectManager
+    ):
+        """In transactional mode, scripting elements must use underscore notation like _name (not name)."""
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
+        factory = Factory(project, project_manager._connector)
+        root = project.get_root_package()
+        project.start_transactional_mode()
+        elem = factory.create_attribute_usage(name="test_elem", owner=root)
+        assert hasattr(elem, "_name"), "Scripting element should have _name, not name"
+        assert elem._name == "test_elem"
