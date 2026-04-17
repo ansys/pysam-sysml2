@@ -52,12 +52,12 @@ class TestSysML2ProjectManager(ParentTestClass):
     def test_delete_project(self, valid_source: AnsysSysML2APIConnector):
         manager = SysML2ProjectManager(valid_source)
         manager.get_scripting_project(PROJECT_ID_1)
-        assert PROJECT_ID_1 in manager._constructed_project
+        assert PROJECT_ID_1 in manager._scripting_projects
 
         result = manager.delete_project(PROJECT_ID_1)
         assert result is not None
         assert result["@id"] == PROJECT_ID_1
-        assert PROJECT_ID_1 not in manager._constructed_project
+        assert PROJECT_ID_1 not in manager._scripting_projects
 
     def test_delete_project_not_found(self, valid_source: AnsysSysML2APIConnector):
         manager = SysML2ProjectManager(valid_source)
@@ -67,7 +67,7 @@ class TestSysML2ProjectManager(ParentTestClass):
     def test_update_project(self, valid_source: AnsysSysML2APIConnector):
         manager = SysML2ProjectManager(valid_source)
         manager.get_scripting_project(PROJECT_ID_1)
-        assert PROJECT_ID_1 in manager._constructed_project
+        assert PROJECT_ID_1 in manager._scripting_projects
 
         result = manager.update_project(
             PROJECT_ID_1, name="NewName", description="NewDesc"
@@ -76,7 +76,7 @@ class TestSysML2ProjectManager(ParentTestClass):
         assert result["@id"] == PROJECT_ID_1
         assert result["name"] == "NewName"
         assert result["description"] == "NewDesc"
-        assert PROJECT_ID_1 not in manager._constructed_project
+        assert PROJECT_ID_1 not in manager._scripting_projects
 
     def test_update_project_not_found(self, valid_source: AnsysSysML2APIConnector):
         manager = SysML2ProjectManager(valid_source)
