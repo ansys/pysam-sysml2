@@ -23,7 +23,6 @@
 
 from abc import ABC, abstractmethod
 from io import UnsupportedOperation
-from typing import List, Union
 
 from ansys.sam.sysml2.classes.mapped_element import MappedElement
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
@@ -40,7 +39,7 @@ class Mapper(ABC):
         self,
         namespace: str,
         json_element: dict,
-        mapped_element: Union[Element, SysMLElement],
+        mapped_element: Element | SysMLElement,
     ) -> MappedElement:
         """
         Map a JSON element to a Python object and return unresolved references.
@@ -51,7 +50,7 @@ class Mapper(ABC):
             Current namespace.
         json_element : dict
             Data.
-        mapped_element : Union[Element, SysMLElement]
+        mapped_element : Element | SysMLElement
             Existing element.
 
         Returns
@@ -60,12 +59,12 @@ class Mapper(ABC):
             Mapper element.
         """
 
-    def _add_default_field(self, element, field_name: str, field_value) -> List:
+    def _add_default_field(self, element, field_name: str, field_value) -> list:
         """Set a scalar field on the element.
 
         Parameters
         ----------
-        element : Union[Element, SysMLElement]
+        element : Element | SysMLElement
             Destination element.
         field_name : str
             Field name.
@@ -74,18 +73,18 @@ class Mapper(ABC):
 
         Returns
         -------
-        List
+        list
             Empty list because the field is already resolved.
         """
         setattr(element, field_name, field_value)
         return []
 
-    def _add_element_to_field(self, element, key: str, value: dict) -> List[UnresolvedField]:
+    def _add_element_to_field(self, element, key: str, value: dict) -> list[UnresolvedField]:
         """Set a reference field and create an unresolved link.
 
         Parameters
         ----------
-        element : Union[Element, SysMLElement]
+        element : Element | SysMLElement
             Destination element.
         key : str
             Field name.
@@ -94,18 +93,18 @@ class Mapper(ABC):
 
         Returns
         -------
-        List[UnresolvedField]
+        list[UnresolvedField]
             List containing the unresolved field.
         """
         setattr(element, key, value["@id"])
         return [UnresolvedField(element, key, value["@id"])]
 
-    def _add_list_to_field(self, element, key: str, field_values: list) -> List[UnresolvedField]:
+    def _add_list_to_field(self, element, key: str, field_values: list) -> list[UnresolvedField]:
         """Set a list field, creating unresolved links for reference items.
 
         Parameters
         ----------
-        element : Union[Element, SysMLElement]
+        element : Element | SysMLElement
             Destination element.
         key : str
             Field name.
@@ -114,7 +113,7 @@ class Mapper(ABC):
 
         Returns
         -------
-        List[UnresolvedField]
+        list[UnresolvedField]
             List of all unresolved fields created for reference items.
         """
         if all(isinstance(value, dict) for value in field_values):
