@@ -1794,7 +1794,8 @@ class Factory:
         from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 
         element_id = str(uuid4())
-        if isinstance(self._project, Project):
+        is_scripting = not isinstance(self._project, Project)
+        if not is_scripting:
             constructor = SysMLUtil.get_sysml_constructor(element_type)
             instance = constructor(element_id)
         else:
@@ -1804,16 +1805,19 @@ class Factory:
         instance._observer = self._project.get_root_package()._observer
         instance._observer.notify(element_id, "@type", element_type)
         for key, value in kwargs.items():
+            attr_name = key
+            if is_scripting and not key.startswith("_"):
+                attr_name = "_" + key
             if isinstance(value, list):
-                if not hasattr(instance, key):
+                if not hasattr(instance, attr_name):
                     from ansys.sam.sysml2.data_structures.observed_list import (
                         ObservedList,
                     )
 
-                    setattr(instance, key, ObservedList(owner=instance, name=key))
-                getattr(instance, key).extend(value)
+                    setattr(instance, attr_name, ObservedList(owner=instance, name=attr_name))
+                getattr(instance, attr_name).extend(value)
             else:
-                setattr(instance, key, value)
+                setattr(instance, attr_name, value)
         self._project.add_element(instance)
         return instance
 
