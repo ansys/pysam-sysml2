@@ -82,3 +82,12 @@ class TestSysML2ProjectManager(ParentTestClass):
         manager = SysML2ProjectManager(valid_source)
         with pytest.raises(ProjectNotFoundException):
             manager.update_project("non_existent_id", name="NewName")
+
+    def test_dual_mode_cache_override(self, valid_source: AnsysSysML2APIConnector):
+        """Loading same project as scripting then sysml must return different types."""
+        manager = SysML2ProjectManager(valid_source)
+        scripting = manager.get_scripting_project(PROJECT_ID_1)
+        sysml = manager.get_sysml_project(PROJECT_ID_1)
+        assert type(scripting).__name__ == "ScriptingProjectImpl"
+        assert type(sysml).__name__ == "ProjectImpl"
+        assert type(scripting) != type(sysml)
