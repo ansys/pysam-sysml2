@@ -26,11 +26,16 @@ from ansys.sam.sysml2 import SysML2ProjectManager
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 from ansys.sam.sysml2.tools.factory import Factory
+from conftest import restore_projects_backup_between_tests
 from mocked_server.routes.const import PROJECT_ID_2
 from parent_test_class import ParentTestClass
 
 
 class TestFactory(ParentTestClass):
+
+    @pytest.fixture(scope="function", autouse=True)
+    def restore_jsons(self):
+        restore_projects_backup_between_tests()
 
     @pytest.fixture
     def project_manager(
@@ -139,3 +144,27 @@ class TestFactory(ParentTestClass):
                 name=["new_attribute"],
                 owner=project_root,
             )
+
+    def test_create_element_transactional_scripting_name(
+        self, project_manager: SysML2ProjectManager
+    ):
+        """In transactional mode, scripting elements must use underscore notation like _name (not name)."""
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
+        factory = Factory(project, project_manager._connector)
+        root = project.get_root_package()
+        project.start_transactional_mode()
+        elem = factory.create_attribute_usage(name="test_elem", owner=root)
+        assert hasattr(elem, "_name"), "Scripting element should have _name, not name"
+        assert elem._name == "test_elem"
+
+    def test_create_element_transactional_sysml_name(
+        self, valid_source: AnsysSysML2APIConnector
+    ):
+        """In transactional mode, SysML elements must use direct notation like .name property."""
+        manager = SysML2ProjectManager(valid_source)
+        project = manager.get_sysml_project(PROJECT_ID_2)
+        factory = Factory(project, manager._connector)
+        root = project.get_root_package()
+        project.start_transactional_mode()
+        elem = factory.create_attribute_usage(name="test_elem", owner=root)
+        assert elem.name == "test_elem"
