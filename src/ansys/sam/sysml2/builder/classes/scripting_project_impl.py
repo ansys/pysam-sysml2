@@ -90,8 +90,7 @@ class ScriptingProjectImpl(ScriptingProject):
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
         matches = [
-            x for x in self._root
-            if x.__class__.__name__ == "Package" and x._name == self._name
+            x for x in self._root if x.__class__.__name__ == "Package" and x._name == self._name
         ]
         if not matches:
             raise ValueError("No root Package found in project.")
