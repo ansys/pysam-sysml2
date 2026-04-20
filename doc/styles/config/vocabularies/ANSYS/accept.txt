@@ -16,6 +16,7 @@ isort
 IN
 INOUT
 INPUT
+kwargs
 Makefile
 metaclass
 metamodel

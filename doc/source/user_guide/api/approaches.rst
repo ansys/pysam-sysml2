@@ -121,7 +121,7 @@ You can find other examples of read/write instructions in :ref:`Read your Model 
             Use a connector
 
         .. grid-item-card:: Next step :fa:`arrow-right`
-            :link: load-model
+            :link: manage-projects
             :link-type: doc
 
-            Load a model
+            Manage projects
