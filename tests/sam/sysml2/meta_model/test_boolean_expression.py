@@ -43,6 +43,6 @@ class TestBooleanExpression:
 
     def test_predicate(self, element):
         """Test getter and setter for predicate property."""
-        value = None
+        value = "test_value"
         element.predicate = value
         assert element.predicate == value

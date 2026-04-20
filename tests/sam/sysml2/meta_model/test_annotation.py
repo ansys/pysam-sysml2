@@ -49,6 +49,6 @@ class TestAnnotation:
 
     def test_annotating_element(self, element):
         """Test getter and setter for annotating element property."""
-        value = None
+        value = "test_value"
         element.annotating_element = value
         assert element.annotating_element == value

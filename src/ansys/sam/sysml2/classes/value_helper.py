@@ -233,7 +233,7 @@ class ValueHelper:
                         self.prefix + "referent",
                     )
                 ]
-        except NameError:
+        except AttributeError:
             raise UnsupportedValueExpression("No values found in expression")
 
         return (value, self._extract_unit_name(referents))

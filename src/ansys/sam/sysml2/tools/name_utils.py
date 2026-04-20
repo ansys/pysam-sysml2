@@ -28,13 +28,15 @@ class NameUtils:
     @staticmethod
     def to_snake_case(string: str) -> str:
         """Convert a camelCase or PascalCase string to snake_case."""
-        out = ""
+        parts: list[str] = []
         for i, ch in enumerate(string):
             if ch.isupper() and i > 0:
-                out += "_" + ch.lower()
+                parts.append("_")
+                parts.append(ch.lower())
             else:
-                out += ch.lower()
-        if out in ["class", "import", "type"]:
+                parts.append(ch.lower())
+        out = "".join(parts)
+        if out in ("class", "import", "type"):
             out += "_"
         return out
 
@@ -47,16 +49,16 @@ class NameUtils:
     @staticmethod
     def snake_to_camel(key: str) -> str:
         """Convert a snake_case string to camelCase."""
-        out = ""
+        parts: list[str] = []
         to_upper = False
-        for i, ch in enumerate(key):
+        for ch in key:
             if ch == "_":
                 to_upper = True
                 continue
 
             if to_upper:
-                out += ch.upper()
+                parts.append(ch.upper())
                 to_upper = False
             else:
-                out += ch.lower()
-        return out
+                parts.append(ch.lower())
+        return "".join(parts)

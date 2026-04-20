@@ -41,6 +41,10 @@ class TestSendActionUsage:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
+    def test_sender_argument(self, element):
+        """Test getter for sender argument property."""
+        _ = element.sender_argument
+
     def test_payload_argument(self, element):
         """Test getter for payload argument property."""
         _ = element.payload_argument
@@ -48,7 +52,3 @@ class TestSendActionUsage:
     def test_receiver_argument(self, element):
         """Test getter for receiver argument property."""
         _ = element.receiver_argument
-
-    def test_sender_argument(self, element):
-        """Test getter for sender argument property."""
-        _ = element.sender_argument

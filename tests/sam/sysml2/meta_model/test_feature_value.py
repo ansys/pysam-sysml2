@@ -47,9 +47,11 @@ class TestFeatureValue:
         element.value = value
         assert element.value == value
 
-    def test_set_is_initial(self, element):
-        """Test getter for set is initial property."""
-        _ = element.set_is_initial
+    def test_is_initial(self, element):
+        """Test getter and setter for is initial property."""
+        value = False
+        element.is_initial = value
+        assert element.is_initial == value
 
     def test_is_default(self, element):
         """Test getter and setter for is default property."""
@@ -61,8 +63,6 @@ class TestFeatureValue:
         """Test getter for set is default property."""
         _ = element.set_is_default
 
-    def test_is_initial(self, element):
-        """Test getter and setter for is initial property."""
-        value = False
-        element.is_initial = value
-        assert element.is_initial == value
+    def test_set_is_initial(self, element):
+        """Test getter for set is initial property."""
+        _ = element.set_is_initial

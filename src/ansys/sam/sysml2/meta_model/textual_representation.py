@@ -30,19 +30,19 @@ from .annotating_element import AnnotatingElement
 class TextualRepresentation(AnnotatingElement):
     """Java class 'com.ansys.medini.metamodel.sysml.TextualRepresentation'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._language = ""
-        self._body = None
+        self._body = ""
         self._represented_element = None
 
     @property
@@ -72,25 +72,25 @@ class TextualRepresentation(AnnotatingElement):
         self._language = value
 
     @property
-    def body(self) -> None:  # noqa: F821
+    def body(self) -> str:  # noqa: F821
         """
         Get the body property.
 
         Returns
         -------
-        None
+        str
             Value of property body.
         """
         return self._body
 
     @body.setter
-    def body(self, value: None):  # noqa: F821
+    def body(self, value: str):  # noqa: F821
         """
         Set the body property.
 
         Parameters
         ----------
-        value: None
+        value: str
             New value.
         """
         if self._observer is not None:
@@ -98,25 +98,25 @@ class TextualRepresentation(AnnotatingElement):
         self._body = value
 
     @property
-    def represented_element(self) -> None:  # noqa: F821
+    def represented_element(self) -> "Element":  # noqa: F821
         """
         Get the represented element property.
 
         Returns
         -------
-        None
+        "Element"
             Value of property represented element.
         """
         return self._represented_element
 
     @represented_element.setter
-    def represented_element(self, value: None):  # noqa: F821
+    def represented_element(self, value: "Element"):  # noqa: F821
         """
         Set the represented_element property.
 
         Parameters
         ----------
-        value: None
+        value: "Element"
             New value.
         """
         if self._observer is not None:

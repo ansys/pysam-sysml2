@@ -30,22 +30,22 @@ from .membership import Membership
 class FeatureValue(Membership):
     """Java class 'com.ansys.medini.metamodel.sysml.FeatureValue'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._value = None
-        self._set_is_initial = False
+        self._is_initial = False
         self._is_default = False
         self._set_is_default = False
-        self._is_initial = False
+        self._set_is_initial = False
 
     @property
     def value(self) -> "Expression":  # noqa: F821
@@ -74,16 +74,30 @@ class FeatureValue(Membership):
         self._value = value
 
     @property
-    def set_is_initial(self) -> bool:  # noqa: F821
+    def is_initial(self) -> bool:  # noqa: F821
         """
-        Get the set is initial property.
+        Get the is initial property.
 
         Returns
         -------
         bool
-            Value of property set is initial.
+            Value of property is initial.
         """
-        return self._set_is_initial
+        return self._is_initial
+
+    @is_initial.setter
+    def is_initial(self, value: bool):  # noqa: F821
+        """
+        Set the is_initial property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_initial", value)
+        self._is_initial = value
 
     @property
     def is_default(self) -> bool:  # noqa: F821
@@ -124,27 +138,13 @@ class FeatureValue(Membership):
         return self._set_is_default
 
     @property
-    def is_initial(self) -> bool:  # noqa: F821
+    def set_is_initial(self) -> bool:  # noqa: F821
         """
-        Get the is initial property.
+        Get the set is initial property.
 
         Returns
         -------
         bool
-            Value of property is initial.
+            Value of property set is initial.
         """
-        return self._is_initial
-
-    @is_initial.setter
-    def is_initial(self, value: bool):  # noqa: F821
-        """
-        Set the is_initial property.
-
-        Parameters
-        ----------
-        value: bool
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "is_initial", value)
-        self._is_initial = value
+        return self._set_is_initial

@@ -24,8 +24,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .namespace import Namespace
@@ -34,30 +32,30 @@ from .namespace import Namespace
 class Type(Namespace):
     """Java class 'com.ansys.medini.metamodel.sysml.Type'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._multiplicity = None
         self._set_multiplicity = False
-        self._owned_end_feature = ObservedList(self, "owned_end_feature")
-        self._is_sufficient = False
         self._is_abstract = False
-        self._owned_feature = ObservedList(self, "owned_feature")
-        self._set_is_abstract = False
-        self._all_feature = ObservedList(self, "all_feature")
+        self._is_sufficient = False
         self._directed_feature = ObservedList(self, "directed_feature")
+        self._all_feature = ObservedList(self, "all_feature")
+        self._set_is_abstract = False
+        self._owned_feature = ObservedList(self, "owned_feature")
+        self._owned_end_feature = ObservedList(self, "owned_end_feature")
         self._feature = ObservedList(self, "feature")
-        self._owned_specialization = ObservedList(self, "owned_specialization")
-        self._owned_inherited_feature = ObservedList(self, "owned_inherited_feature")
         self._owned_feature_membership = ObservedList(self, "owned_feature_membership")
+        self._owned_inherited_feature = ObservedList(self, "owned_inherited_feature")
+        self._owned_specialization = ObservedList(self, "owned_specialization")
 
     @property
     def multiplicity(self) -> "Multiplicity":  # noqa: F821
@@ -98,16 +96,30 @@ class Type(Namespace):
         return self._set_multiplicity
 
     @property
-    def owned_end_feature(self) -> List["Feature"]:  # noqa: F821
+    def is_abstract(self) -> bool:  # noqa: F821
         """
-        Get the owned end feature property.
+        Get the is abstract property.
 
         Returns
         -------
-        List["Feature"]
-            Value of property owned end feature.
+        bool
+            Value of property is abstract.
         """
-        return self._owned_end_feature
+        return self._is_abstract
+
+    @is_abstract.setter
+    def is_abstract(self, value: bool):  # noqa: F821
+        """
+        Set the is_abstract property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_abstract", value)
+        self._is_abstract = value
 
     @property
     def is_sufficient(self) -> bool:  # noqa: F821
@@ -136,42 +148,28 @@ class Type(Namespace):
         self._is_sufficient = value
 
     @property
-    def is_abstract(self) -> bool:  # noqa: F821
+    def directed_feature(self) -> list["Feature"]:  # noqa: F821
         """
-        Get the is abstract property.
+        Get the directed feature property.
 
         Returns
         -------
-        bool
-            Value of property is abstract.
+        list["Feature"]
+            Value of property directed feature.
         """
-        return self._is_abstract
-
-    @is_abstract.setter
-    def is_abstract(self, value: bool):  # noqa: F821
-        """
-        Set the is_abstract property.
-
-        Parameters
-        ----------
-        value: bool
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "is_abstract", value)
-        self._is_abstract = value
+        return self._directed_feature
 
     @property
-    def owned_feature(self) -> List["Feature"]:  # noqa: F821
+    def all_feature(self) -> list["Feature"]:  # noqa: F821
         """
-        Get the owned feature property.
+        Get the all feature property.
 
         Returns
         -------
-        List["Feature"]
-            Value of property owned feature.
+        list["Feature"]
+            Value of property all feature.
         """
-        return self._owned_feature
+        return self._all_feature
 
     @property
     def set_is_abstract(self) -> bool:  # noqa: F821
@@ -186,73 +184,73 @@ class Type(Namespace):
         return self._set_is_abstract
 
     @property
-    def all_feature(self) -> List["Feature"]:  # noqa: F821
+    def owned_feature(self) -> list["Feature"]:  # noqa: F821
         """
-        Get the all feature property.
+        Get the owned feature property.
 
         Returns
         -------
-        List["Feature"]
-            Value of property all feature.
+        list["Feature"]
+            Value of property owned feature.
         """
-        return self._all_feature
+        return self._owned_feature
 
     @property
-    def directed_feature(self) -> List["Feature"]:  # noqa: F821
+    def owned_end_feature(self) -> list["Feature"]:  # noqa: F821
         """
-        Get the directed feature property.
+        Get the owned end feature property.
 
         Returns
         -------
-        List["Feature"]
-            Value of property directed feature.
+        list["Feature"]
+            Value of property owned end feature.
         """
-        return self._directed_feature
+        return self._owned_end_feature
 
     @property
-    def feature(self) -> List["Feature"]:  # noqa: F821
+    def feature(self) -> list["Feature"]:  # noqa: F821
         """
         Get the feature property.
 
         Returns
         -------
-        List["Feature"]
+        list["Feature"]
             Value of property feature.
         """
         return self._feature
 
     @property
-    def owned_specialization(self) -> List["Specialization"]:  # noqa: F821
-        """
-        Get the owned specialization property.
-
-        Returns
-        -------
-        List["Specialization"]
-            Value of property owned specialization.
-        """
-        return self._owned_specialization
-
-    @property
-    def owned_inherited_feature(self) -> List["Feature"]:  # noqa: F821
-        """
-        Get the owned inherited feature property.
-
-        Returns
-        -------
-        List["Feature"]
-            Value of property owned inherited feature.
-        """
-        return self._owned_inherited_feature
-
-    @property
-    def owned_feature_membership(self) -> List["FeatureMembership"]:  # noqa: F821
+    def owned_feature_membership(self) -> list["FeatureMembership"]:  # noqa: F821
         """
         Get the owned feature membership property.
 
         Returns
         -------
-        List["FeatureMembership"]
+        list["FeatureMembership"]
             Value of property owned feature membership.
         """
         return self._owned_feature_membership
+
+    @property
+    def owned_inherited_feature(self) -> list["Feature"]:  # noqa: F821
+        """
+        Get the owned inherited feature property.
+
+        Returns
+        -------
+        list["Feature"]
+            Value of property owned inherited feature.
+        """
+        return self._owned_inherited_feature
+
+    @property
+    def owned_specialization(self) -> list["Specialization"]:  # noqa: F821
+        """
+        Get the owned specialization property.
+
+        Returns
+        -------
+        list["Specialization"]
+            Value of property owned specialization.
+        """
+        return self._owned_specialization

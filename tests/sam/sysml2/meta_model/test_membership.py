@@ -49,7 +49,7 @@ class TestMembership:
 
     def test_member_element(self, element):
         """Test getter and setter for member element property."""
-        value = None
+        value = "test_value"
         element.member_element = value
         assert element.member_element == value
 
@@ -61,6 +61,6 @@ class TestMembership:
 
     def test_membership_owning_namespace(self, element):
         """Test getter and setter for membership owning namespace property."""
-        value = None
+        value = "test_value"
         element.membership_owning_namespace = value
         assert element.membership_owning_namespace == value

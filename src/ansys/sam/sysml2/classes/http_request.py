@@ -35,9 +35,9 @@ class HttpRequest:
     headers: dict = field(default_factory=dict)
     cookies: dict = field(default_factory=dict)
 
-    def explode(self) -> dict:
-        """Get all information for building an HTTP request."""
-        field_renames = {"json_body": "json"}
-        return {
-            field_renames.get(k, k): v for k, v in self.__dict__.items() if not k.startswith("_")
-        }
+    def to_dict(self) -> dict:
+        """Return keyword arguments for ``requests``."""
+        result = {k: v for k, v in self.__dict__.items() if not k.startswith("_")}
+        if "json_body" in result:
+            result["json"] = result.pop("json_body")
+        return result

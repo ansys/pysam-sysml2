@@ -40,14 +40,6 @@ class TestNamespace:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_owned_member(self, element):
-        """Test getter for owned member property."""
-        _ = element.owned_member
-
-    def test_owned_import(self, element):
-        """Test getter for owned import property."""
-        _ = element.owned_import
-
     def test_member(self, element):
         """Test getter for member property."""
         _ = element.member
@@ -55,3 +47,11 @@ class TestNamespace:
     def test_owned_membership(self, element):
         """Test getter for owned membership property."""
         _ = element.owned_membership
+
+    def test_owned_member(self, element):
+        """Test getter for owned member property."""
+        _ = element.owned_member
+
+    def test_owned_import(self, element):
+        """Test getter for owned import property."""
+        _ = element.owned_import

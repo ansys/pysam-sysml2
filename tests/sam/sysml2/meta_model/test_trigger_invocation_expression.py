@@ -43,6 +43,6 @@ class TestTriggerInvocationExpression:
 
     def test_kind(self, element):
         """Test getter and setter for kind property."""
-        value = None
+        value = "test_value"
         element.kind = value
         assert element.kind == value

@@ -80,11 +80,12 @@ class SamDiagramDownloader:
             If the download fails or HTTP response is not 200.
         """
         try:
-            if file_format.lower() == "svg":
+            fmt = file_format.lower()
+            if fmt == "svg":
                 content = self._connector.get_diagram_image_as_svg(self._project_id, diagram_id)
-            elif file_format.lower() == "png":
+            elif fmt == "png":
                 content = self._connector.get_diagram_image_as_png(self._project_id, diagram_id)
-            elif file_format.lower() == "jpeg":
+            elif fmt == "jpeg":
                 content = self._connector.get_diagram_image_as_jpeg(self._project_id, diagram_id)
             else:
                 raise DiagramConnectorException(f"Unsupported format: {file_format}")

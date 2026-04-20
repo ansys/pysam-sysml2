@@ -51,9 +51,11 @@ class TestType:
         """Test getter for set multiplicity property."""
         _ = element.set_multiplicity
 
-    def test_owned_end_feature(self, element):
-        """Test getter for owned end feature property."""
-        _ = element.owned_end_feature
+    def test_is_abstract(self, element):
+        """Test getter and setter for is abstract property."""
+        value = False
+        element.is_abstract = value
+        assert element.is_abstract == value
 
     def test_is_sufficient(self, element):
         """Test getter and setter for is sufficient property."""
@@ -61,40 +63,38 @@ class TestType:
         element.is_sufficient = value
         assert element.is_sufficient == value
 
-    def test_is_abstract(self, element):
-        """Test getter and setter for is abstract property."""
-        value = False
-        element.is_abstract = value
-        assert element.is_abstract == value
-
-    def test_owned_feature(self, element):
-        """Test getter for owned feature property."""
-        _ = element.owned_feature
-
-    def test_set_is_abstract(self, element):
-        """Test getter for set is abstract property."""
-        _ = element.set_is_abstract
+    def test_directed_feature(self, element):
+        """Test getter for directed feature property."""
+        _ = element.directed_feature
 
     def test_all_feature(self, element):
         """Test getter for all feature property."""
         _ = element.all_feature
 
-    def test_directed_feature(self, element):
-        """Test getter for directed feature property."""
-        _ = element.directed_feature
+    def test_set_is_abstract(self, element):
+        """Test getter for set is abstract property."""
+        _ = element.set_is_abstract
+
+    def test_owned_feature(self, element):
+        """Test getter for owned feature property."""
+        _ = element.owned_feature
+
+    def test_owned_end_feature(self, element):
+        """Test getter for owned end feature property."""
+        _ = element.owned_end_feature
 
     def test_feature(self, element):
         """Test getter for feature property."""
         _ = element.feature
 
-    def test_owned_specialization(self, element):
-        """Test getter for owned specialization property."""
-        _ = element.owned_specialization
+    def test_owned_feature_membership(self, element):
+        """Test getter for owned feature membership property."""
+        _ = element.owned_feature_membership
 
     def test_owned_inherited_feature(self, element):
         """Test getter for owned inherited feature property."""
         _ = element.owned_inherited_feature
 
-    def test_owned_feature_membership(self, element):
-        """Test getter for owned feature membership property."""
-        _ = element.owned_feature_membership
+    def test_owned_specialization(self, element):
+        """Test getter for owned specialization property."""
+        _ = element.owned_specialization

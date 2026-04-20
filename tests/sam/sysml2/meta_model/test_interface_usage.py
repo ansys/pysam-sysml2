@@ -43,6 +43,6 @@ class TestInterfaceUsage:
 
     def test_interface_definition(self, element):
         """Test getter and setter for interface definition property."""
-        value = None
+        value = "test_value"
         element.interface_definition = value
         assert element.interface_definition == value

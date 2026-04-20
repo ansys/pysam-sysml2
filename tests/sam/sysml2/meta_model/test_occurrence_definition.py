@@ -41,18 +41,18 @@ class TestOccurrenceDefinition:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_set_is_individual(self, element):
-        """Test getter for set is individual property."""
-        _ = element.set_is_individual
-
-    def test_is_individual(self, element):
-        """Test getter and setter for is individual property."""
-        value = None
-        element.is_individual = value
-        assert element.is_individual == value
-
     def test_lifeclass(self, element):
         """Test getter and setter for lifeclass property."""
         value = "test_value"
         element.lifeclass = value
         assert element.lifeclass == value
+
+    def test_is_individual(self, element):
+        """Test getter and setter for is individual property."""
+        value = False
+        element.is_individual = value
+        assert element.is_individual == value
+
+    def test_set_is_individual(self, element):
+        """Test getter for set is individual property."""
+        _ = element.set_is_individual

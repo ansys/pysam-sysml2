@@ -43,6 +43,6 @@ class TestPerformActionUsage:
 
     def test_performed_action(self, element):
         """Test getter and setter for performed action property."""
-        value = None
+        value = "test_value"
         element.performed_action = value
         assert element.performed_action == value

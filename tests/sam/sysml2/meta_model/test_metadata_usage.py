@@ -43,6 +43,6 @@ class TestMetadataUsage:
 
     def test_metadata_definition(self, element):
         """Test getter and setter for metadata definition property."""
-        value = None
+        value = "test_value"
         element.metadata_definition = value
         assert element.metadata_definition == value

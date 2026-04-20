@@ -43,6 +43,6 @@ class TestForLoopActionUsage:
 
     def test_loop_variable(self, element):
         """Test getter and setter for loop variable property."""
-        value = None
+        value = "test_value"
         element.loop_variable = value
         assert element.loop_variable == value

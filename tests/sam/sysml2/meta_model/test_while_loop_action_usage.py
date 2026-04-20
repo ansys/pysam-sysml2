@@ -43,7 +43,7 @@ class TestWhileLoopActionUsage:
 
     def test_while_argument(self, element):
         """Test getter and setter for while argument property."""
-        value = None
+        value = "test_value"
         element.while_argument = value
         assert element.while_argument == value
 

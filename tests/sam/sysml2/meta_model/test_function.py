@@ -43,7 +43,7 @@ class TestFunction:
 
     def test_result(self, element):
         """Test getter and setter for result property."""
-        value = None
+        value = "test_value"
         element.result = value
         assert element.result == value
 

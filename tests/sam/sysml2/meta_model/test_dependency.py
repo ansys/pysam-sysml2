@@ -40,10 +40,10 @@ class TestDependency:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_supplier(self, element):
-        """Test getter for supplier property."""
-        _ = element.supplier
-
     def test_client(self, element):
         """Test getter for client property."""
         _ = element.client
+
+    def test_supplier(self, element):
+        """Test getter for supplier property."""
+        _ = element.supplier

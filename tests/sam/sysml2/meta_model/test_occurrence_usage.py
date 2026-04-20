@@ -41,25 +41,9 @@ class TestOccurrenceUsage:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_portion_kind(self, element):
-        """Test getter and setter for portion kind property."""
-        value = None
-        element.portion_kind = value
-        assert element.portion_kind == value
-
-    def test_set_is_individual(self, element):
-        """Test getter for set is individual property."""
-        _ = element.set_is_individual
-
-    def test_is_individual(self, element):
-        """Test getter and setter for is individual property."""
-        value = None
-        element.is_individual = value
-        assert element.is_individual == value
-
     def test_portioning_feature(self, element):
         """Test getter and setter for portioning feature property."""
-        value = None
+        value = "test_value"
         element.portioning_feature = value
         assert element.portioning_feature == value
 
@@ -72,3 +56,19 @@ class TestOccurrenceUsage:
         value = "test_value"
         element.individual_definition = value
         assert element.individual_definition == value
+
+    def test_is_individual(self, element):
+        """Test getter and setter for is individual property."""
+        value = False
+        element.is_individual = value
+        assert element.is_individual == value
+
+    def test_portion_kind(self, element):
+        """Test getter and setter for portion kind property."""
+        value = "test_value"
+        element.portion_kind = value
+        assert element.portion_kind == value
+
+    def test_set_is_individual(self, element):
+        """Test getter for set is individual property."""
+        _ = element.set_is_individual

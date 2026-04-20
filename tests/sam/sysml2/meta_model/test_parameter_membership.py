@@ -41,14 +41,14 @@ class TestParameterMembership:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
+    def test_member_parameter(self, element):
+        """Test getter and setter for member parameter property."""
+        value = "test_value"
+        element.member_parameter = value
+        assert element.member_parameter == value
+
     def test_owned_member_parameter(self, element):
         """Test getter and setter for owned member parameter property."""
         value = "test_value"
         element.owned_member_parameter = value
         assert element.owned_member_parameter == value
-
-    def test_member_parameter(self, element):
-        """Test getter and setter for member parameter property."""
-        value = None
-        element.member_parameter = value
-        assert element.member_parameter == value

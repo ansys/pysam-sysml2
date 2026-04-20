@@ -30,39 +30,39 @@ from .requirement_constraint_membership import RequirementConstraintMembership
 class RequirementVerificationMembership(RequirementConstraintMembership):
     """Java class 'com.ansys.medini.metamodel.sysml.RequirementVerificationMembership'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._verified_requirement = None
 
     @property
-    def verified_requirement(self) -> None:  # noqa: F821
+    def verified_requirement(self) -> "RequirementUsage":  # noqa: F821
         """
         Get the verified requirement property.
 
         Returns
         -------
-        None
+        "RequirementUsage"
             Value of property verified requirement.
         """
         return self._verified_requirement
 
     @verified_requirement.setter
-    def verified_requirement(self, value: None):  # noqa: F821
+    def verified_requirement(self, value: "RequirementUsage"):  # noqa: F821
         """
         Set the verified_requirement property.
 
         Parameters
         ----------
-        value: None
+        value: "RequirementUsage"
             New value.
         """
         if self._observer is not None:

@@ -43,12 +43,12 @@ class TestRequirementConstraintMembership:
 
     def test_kind(self, element):
         """Test getter and setter for kind property."""
-        value = None
+        value = "test_value"
         element.kind = value
         assert element.kind == value
 
     def test_constraint(self, element):
         """Test getter and setter for constraint property."""
-        value = None
+        value = "test_value"
         element.constraint = value
         assert element.constraint == value

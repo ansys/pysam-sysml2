@@ -22,26 +22,47 @@
 
 """Scripting project interface for users."""
 
+from abc import ABC, abstractmethod
 from typing import List
 
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
-class ScriptingProject:
+class ScriptingProject(ABC):
     """Scripting project interface for users."""
 
+    @property
+    def root(self) -> List[SysMLElement]:
+        """Get a list of root packages."""
+        return self.get_root()
+
+    @property
+    def name(self) -> str:
+        """Get the project name."""
+        return self.get_name()
+
+    @property
+    def root_package(self) -> SysMLElement:
+        """Get the root package."""
+        return self.get_root_package()
+
+    @abstractmethod
     def get_id(self) -> str:
         """Get the project ID."""
 
+    @abstractmethod
     def get_name(self) -> str:
         """Get the project name."""
 
+    @abstractmethod
     def get_root(self) -> List[SysMLElement]:
         """Get a list of root packages."""
 
+    @abstractmethod
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
 
+    @abstractmethod
     def find_element_by_id(self, element_id: str) -> SysMLElement:
         """
         Find an element by ID.
@@ -57,13 +78,14 @@ class ScriptingProject:
             Element retrieved.
         """
 
-    def find_elements_by_name(self, elements_name: str) -> List[SysMLElement]:
+    @abstractmethod
+    def find_elements_by_name(self, element_name: str) -> List[SysMLElement]:
         """
         Find all elements by name.
 
         Parameters
         ----------
-        elements_name : str
+        element_name : str
             Name of elements.
 
         Returns
@@ -72,6 +94,7 @@ class ScriptingProject:
             List of elements retrieved.
         """
 
+    @abstractmethod
     def start_transactional_mode(self):
         """
         Start a transactional mode for model edition.
@@ -83,6 +106,7 @@ class ScriptingProject:
         until the commit of all changes.
         """
 
+    @abstractmethod
     def stop_transactional_mode(self):
         """
         Stop the current transaction.

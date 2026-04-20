@@ -49,6 +49,6 @@ class TestComment:
 
     def test_body(self, element):
         """Test getter and setter for body property."""
-        value = None
+        value = ""
         element.body = value
         assert element.body == value

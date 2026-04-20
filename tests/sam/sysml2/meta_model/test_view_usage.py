@@ -43,6 +43,6 @@ class TestViewUsage:
 
     def test_view_definition(self, element):
         """Test getter and setter for view definition property."""
-        value = None
+        value = "test_value"
         element.view_definition = value
         assert element.view_definition == value

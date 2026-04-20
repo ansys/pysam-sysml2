@@ -43,6 +43,6 @@ class TestExhibitStateUsage:
 
     def test_exhibited_state(self, element):
         """Test getter and setter for exhibited state property."""
-        value = None
+        value = "test_value"
         element.exhibited_state = value
         assert element.exhibited_state == value

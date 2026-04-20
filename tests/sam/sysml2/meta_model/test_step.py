@@ -41,13 +41,13 @@ class TestStep:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_parameter(self, element):
-        """Test getter for parameter property."""
-        _ = element.parameter
-
     def test_behavior(self, element):
         """Test getter for behavior property."""
         _ = element.behavior
+
+    def test_parameter(self, element):
+        """Test getter for parameter property."""
+        _ = element.parameter
 
     def test_general_parameter(self, element):
         """Test getter for general parameter property."""
@@ -55,6 +55,6 @@ class TestStep:
 
     def test_transition_feature_kind(self, element):
         """Test getter and setter for transition feature kind property."""
-        value = None
+        value = "test_value"
         element.transition_feature_kind = value
         assert element.transition_feature_kind == value

@@ -41,17 +41,17 @@ class TestSubclassification:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_subclassifier(self, element):
-        """Test getter and setter for subclassifier property."""
-        value = None
-        element.subclassifier = value
-        assert element.subclassifier == value
-
     def test_superclassifier(self, element):
         """Test getter and setter for superclassifier property."""
-        value = None
+        value = "test_value"
         element.superclassifier = value
         assert element.superclassifier == value
+
+    def test_subclassifier(self, element):
+        """Test getter and setter for subclassifier property."""
+        value = "test_value"
+        element.subclassifier = value
+        assert element.subclassifier == value
 
     def test_owning_classifier(self, element):
         """Test getter and setter for owning classifier property."""
