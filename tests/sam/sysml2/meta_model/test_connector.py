@@ -41,19 +41,9 @@ class TestConnector:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_source_feature(self, element):
-        """Test getter and setter for source feature property."""
-        value = None
-        element.source_feature = value
-        assert element.source_feature == value
-
-    def test_connector_end(self, element):
-        """Test getter for connector end property."""
-        _ = element.connector_end
-
-    def test_association(self, element):
-        """Test getter for association property."""
-        _ = element.association
+    def test_related_feature(self, element):
+        """Test getter for related feature property."""
+        _ = element.related_feature
 
     def test_is_directed(self, element):
         """Test getter and setter for is directed property."""
@@ -65,6 +55,16 @@ class TestConnector:
         """Test getter for target feature property."""
         _ = element.target_feature
 
-    def test_related_feature(self, element):
-        """Test getter for related feature property."""
-        _ = element.related_feature
+    def test_source_feature(self, element):
+        """Test getter and setter for source feature property."""
+        value = "test_value"
+        element.source_feature = value
+        assert element.source_feature == value
+
+    def test_association(self, element):
+        """Test getter for association property."""
+        _ = element.association
+
+    def test_connector_end(self, element):
+        """Test getter for connector end property."""
+        _ = element.connector_end

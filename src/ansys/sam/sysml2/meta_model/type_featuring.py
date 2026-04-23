@@ -30,41 +30,41 @@ from .relationship import Relationship
 class TypeFeaturing(Relationship):
     """Java class 'com.ansys.medini.metamodel.sysml.TypeFeaturing'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._feature_of_type = None
         self._featuring_type = None
         self._owning_feature_of_type = None
 
     @property
-    def feature_of_type(self) -> None:  # noqa: F821
+    def feature_of_type(self) -> "Feature":  # noqa: F821
         """
         Get the feature of type property.
 
         Returns
         -------
-        None
+        "Feature"
             Value of property feature of type.
         """
         return self._feature_of_type
 
     @feature_of_type.setter
-    def feature_of_type(self, value: None):  # noqa: F821
+    def feature_of_type(self, value: "Feature"):  # noqa: F821
         """
         Set the feature_of_type property.
 
         Parameters
         ----------
-        value: None
+        value: "Feature"
             New value.
         """
         if self._observer is not None:

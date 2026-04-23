@@ -43,6 +43,6 @@ class TestLiteralBoolean:
 
     def test_value(self, element):
         """Test getter and setter for value property."""
-        value = None
+        value = False
         element.value = value
         assert element.value == value

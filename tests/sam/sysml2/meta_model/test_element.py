@@ -59,13 +59,23 @@ class TestElement:
 
     def test_short_name(self, element):
         """Test getter and setter for short name property."""
-        value = None
+        value = ""
         element.short_name = value
         assert element.short_name == value
 
-    def test_documentation(self, element):
-        """Test getter for documentation property."""
-        _ = element.documentation
+    def test_owned_annotation(self, element):
+        """Test getter for owned annotation property."""
+        _ = element.owned_annotation
+
+    def test_visibility(self, element):
+        """Test getter and setter for visibility property."""
+        value = "test_value"
+        element.visibility = value
+        assert element.visibility == value
+
+    def test_qualified_name(self, element):
+        """Test getter for qualified name property."""
+        _ = element.qualified_name
 
     def test_owning_namespace(self, element):
         """Test getter and setter for owning namespace property."""
@@ -77,27 +87,13 @@ class TestElement:
         """Test getter for owned element property."""
         _ = element.owned_element
 
-    def test_owned_annotation(self, element):
-        """Test getter for owned annotation property."""
-        _ = element.owned_annotation
-
-    def test_qualified_name(self, element):
-        """Test getter for qualified name property."""
-        _ = element.qualified_name
+    def test_documentation(self, element):
+        """Test getter for documentation property."""
+        _ = element.documentation
 
     def test_alias_ids(self, element):
         """Test getter for alias ids property."""
         _ = element.alias_ids
-
-    def test_visibility(self, element):
-        """Test getter and setter for visibility property."""
-        value = None
-        element.visibility = value
-        assert element.visibility == value
-
-    def test_owned_relationship(self, element):
-        """Test getter for owned relationship property."""
-        _ = element.owned_relationship
 
     def test_textual_representation(self, element):
         """Test getter for textual representation property."""
@@ -106,3 +102,7 @@ class TestElement:
     def test_owned_inherited_relationship(self, element):
         """Test getter for owned inherited relationship property."""
         _ = element.owned_inherited_relationship
+
+    def test_owned_relationship(self, element):
+        """Test getter for owned relationship property."""
+        _ = element.owned_relationship

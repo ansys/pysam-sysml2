@@ -30,39 +30,39 @@ from .part_usage import PartUsage
 class ViewUsage(PartUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.ViewUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._view_definition = None
 
     @property
-    def view_definition(self) -> None:  # noqa: F821
+    def view_definition(self) -> "ViewDefinition":  # noqa: F821
         """
         Get the view definition property.
 
         Returns
         -------
-        None
+        "ViewDefinition"
             Value of property view definition.
         """
         return self._view_definition
 
     @view_definition.setter
-    def view_definition(self, value: None):  # noqa: F821
+    def view_definition(self, value: "ViewDefinition"):  # noqa: F821
         """
         Set the view_definition property.
 
         Parameters
         ----------
-        value: None
+        value: "ViewDefinition"
             New value.
         """
         if self._observer is not None:

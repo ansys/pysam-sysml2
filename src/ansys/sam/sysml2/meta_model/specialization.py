@@ -30,20 +30,72 @@ from .relationship import Relationship
 class Specialization(Relationship):
     """Java class 'com.ansys.medini.metamodel.sysml.Specialization'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
-        self._owning_type = None
+        """
+        super().__init__(element_id)
+
         self._specific = None
         self._general = None
+        self._owning_type = None
+
+    @property
+    def specific(self) -> "Type":  # noqa: F821
+        """
+        Get the specific property.
+
+        Returns
+        -------
+        "Type"
+            Value of property specific.
+        """
+        return self._specific
+
+    @specific.setter
+    def specific(self, value: "Type"):  # noqa: F821
+        """
+        Set the specific property.
+
+        Parameters
+        ----------
+        value: "Type"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "specific", value)
+        self._specific = value
+
+    @property
+    def general(self) -> "Type":  # noqa: F821
+        """
+        Get the general property.
+
+        Returns
+        -------
+        "Type"
+            Value of property general.
+        """
+        return self._general
+
+    @general.setter
+    def general(self, value: "Type"):  # noqa: F821
+        """
+        Set the general property.
+
+        Parameters
+        ----------
+        value: "Type"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "general", value)
+        self._general = value
 
     @property
     def owning_type(self) -> "Type":  # noqa: F821
@@ -70,55 +122,3 @@ class Specialization(Relationship):
         if self._observer is not None:
             self._observer.notify(self.id, "owning_type", value)
         self._owning_type = value
-
-    @property
-    def specific(self) -> None:  # noqa: F821
-        """
-        Get the specific property.
-
-        Returns
-        -------
-        None
-            Value of property specific.
-        """
-        return self._specific
-
-    @specific.setter
-    def specific(self, value: None):  # noqa: F821
-        """
-        Set the specific property.
-
-        Parameters
-        ----------
-        value: None
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "specific", value)
-        self._specific = value
-
-    @property
-    def general(self) -> None:  # noqa: F821
-        """
-        Get the general property.
-
-        Returns
-        -------
-        None
-            Value of property general.
-        """
-        return self._general
-
-    @general.setter
-    def general(self, value: None):  # noqa: F821
-        """
-        Set the general property.
-
-        Parameters
-        ----------
-        value: None
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "general", value)
-        self._general = value

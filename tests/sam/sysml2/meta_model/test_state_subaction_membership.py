@@ -41,14 +41,14 @@ class TestStateSubactionMembership:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_kind(self, element):
-        """Test getter and setter for kind property."""
-        value = None
-        element.kind = value
-        assert element.kind == value
-
     def test_action(self, element):
         """Test getter and setter for action property."""
         value = "test_value"
         element.action = value
         assert element.action == value
+
+    def test_kind(self, element):
+        """Test getter and setter for kind property."""
+        value = "test_value"
+        element.kind = value
+        assert element.kind == value

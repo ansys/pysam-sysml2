@@ -43,6 +43,6 @@ class TestVariantMembership:
 
     def test_owned_variant_usage(self, element):
         """Test getter and setter for owned variant usage property."""
-        value = None
+        value = "test_value"
         element.owned_variant_usage = value
         assert element.owned_variant_usage == value

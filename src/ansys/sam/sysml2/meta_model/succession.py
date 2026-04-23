@@ -24,8 +24,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .connector import Connector
@@ -34,33 +32,45 @@ from .connector import Connector
 class Succession(Connector):
     """Java class 'com.ansys.medini.metamodel.sysml.Succession'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._guard_expression = ObservedList(self, "guard_expression")
-        self._transition_step = None
         self._trigger_step = ObservedList(self, "trigger_step")
+        self._transition_step = None
         self._effect_step = ObservedList(self, "effect_step")
 
     @property
-    def guard_expression(self) -> List["Expression"]:  # noqa: F821
+    def guard_expression(self) -> list["Expression"]:  # noqa: F821
         """
         Get the guard expression property.
 
         Returns
         -------
-        List["Expression"]
+        list["Expression"]
             Value of property guard expression.
         """
         return self._guard_expression
+
+    @property
+    def trigger_step(self) -> list["Step"]:  # noqa: F821
+        """
+        Get the trigger step property.
+
+        Returns
+        -------
+        list["Step"]
+            Value of property trigger step.
+        """
+        return self._trigger_step
 
     @property
     def transition_step(self) -> "Step":  # noqa: F821
@@ -89,25 +99,13 @@ class Succession(Connector):
         self._transition_step = value
 
     @property
-    def trigger_step(self) -> List["Step"]:  # noqa: F821
-        """
-        Get the trigger step property.
-
-        Returns
-        -------
-        List["Step"]
-            Value of property trigger step.
-        """
-        return self._trigger_step
-
-    @property
-    def effect_step(self) -> List["Step"]:  # noqa: F821
+    def effect_step(self) -> list["Step"]:  # noqa: F821
         """
         Get the effect step property.
 
         Returns
         -------
-        List["Step"]
+        list["Step"]
             Value of property effect step.
         """
         return self._effect_step

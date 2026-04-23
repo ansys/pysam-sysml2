@@ -24,8 +24,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .constraint_usage import ConstraintUsage
@@ -34,65 +32,41 @@ from .constraint_usage import ConstraintUsage
 class RequirementUsage(ConstraintUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.RequirementUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._text = ObservedList(self, "text")
-        self._actor_parameter = ObservedList(self, "actor_parameter")
-        self._framed_concern = ObservedList(self, "framed_concern")
         self._is_objective = False
-        self._all_text = ObservedList(self, "all_text")
         self._req_id = ""
-        self._assumed_constraint = ObservedList(self, "assumed_constraint")
-        self._required_constraint = ObservedList(self, "required_constraint")
+        self._all_text = ObservedList(self, "all_text")
+        self._framed_concern = ObservedList(self, "framed_concern")
+        self._actor_parameter = ObservedList(self, "actor_parameter")
         self._subject_parameter = None
-        self._stakeholder_parameter = ObservedList(self, "stakeholder_parameter")
-        self._a_verify_requirement = False
         self._requirement_definition = None
+        self._stakeholder_parameter = ObservedList(self, "stakeholder_parameter")
+        self._required_constraint = ObservedList(self, "required_constraint")
+        self._a_verify_requirement = False
+        self._assumed_constraint = ObservedList(self, "assumed_constraint")
 
     @property
-    def text(self) -> List[str]:  # noqa: F821
+    def text(self) -> list[str]:  # noqa: F821
         """
         Get the text property.
 
         Returns
         -------
-        List[str]
+        list[str]
             Value of property text.
         """
         return self._text
-
-    @property
-    def actor_parameter(self) -> List["PartUsage"]:  # noqa: F821
-        """
-        Get the actor parameter property.
-
-        Returns
-        -------
-        List["PartUsage"]
-            Value of property actor parameter.
-        """
-        return self._actor_parameter
-
-    @property
-    def framed_concern(self) -> List["ConcernUsage"]:  # noqa: F821
-        """
-        Get the framed concern property.
-
-        Returns
-        -------
-        List["ConcernUsage"]
-            Value of property framed concern.
-        """
-        return self._framed_concern
 
     @property
     def is_objective(self) -> bool:  # noqa: F821
@@ -121,18 +95,6 @@ class RequirementUsage(ConstraintUsage):
         self._is_objective = value
 
     @property
-    def all_text(self) -> List[str]:  # noqa: F821
-        """
-        Get the all text property.
-
-        Returns
-        -------
-        List[str]
-            Value of property all text.
-        """
-        return self._all_text
-
-    @property
     def req_id(self) -> str:  # noqa: F821
         """
         Get the req id property.
@@ -159,28 +121,40 @@ class RequirementUsage(ConstraintUsage):
         self._req_id = value
 
     @property
-    def assumed_constraint(self) -> List["ConstraintUsage"]:  # noqa: F821
+    def all_text(self) -> list[str]:  # noqa: F821
         """
-        Get the assumed constraint property.
+        Get the all text property.
 
         Returns
         -------
-        List["ConstraintUsage"]
-            Value of property assumed constraint.
+        list[str]
+            Value of property all text.
         """
-        return self._assumed_constraint
+        return self._all_text
 
     @property
-    def required_constraint(self) -> List["ConstraintUsage"]:  # noqa: F821
+    def framed_concern(self) -> list["ConcernUsage"]:  # noqa: F821
         """
-        Get the required constraint property.
+        Get the framed concern property.
 
         Returns
         -------
-        List["ConstraintUsage"]
-            Value of property required constraint.
+        list["ConcernUsage"]
+            Value of property framed concern.
         """
-        return self._required_constraint
+        return self._framed_concern
+
+    @property
+    def actor_parameter(self) -> list["PartUsage"]:  # noqa: F821
+        """
+        Get the actor parameter property.
+
+        Returns
+        -------
+        list["PartUsage"]
+            Value of property actor parameter.
+        """
+        return self._actor_parameter
 
     @property
     def subject_parameter(self) -> "Usage":  # noqa: F821
@@ -209,30 +183,6 @@ class RequirementUsage(ConstraintUsage):
         self._subject_parameter = value
 
     @property
-    def stakeholder_parameter(self) -> List["PartUsage"]:  # noqa: F821
-        """
-        Get the stakeholder parameter property.
-
-        Returns
-        -------
-        List["PartUsage"]
-            Value of property stakeholder parameter.
-        """
-        return self._stakeholder_parameter
-
-    @property
-    def a_verify_requirement(self) -> bool:  # noqa: F821
-        """
-        Get the a verify requirement property.
-
-        Returns
-        -------
-        bool
-            Value of property a verify requirement.
-        """
-        return self._a_verify_requirement
-
-    @property
     def requirement_definition(self) -> "RequirementDefinition":  # noqa: F821
         """
         Get the requirement definition property.
@@ -257,3 +207,51 @@ class RequirementUsage(ConstraintUsage):
         if self._observer is not None:
             self._observer.notify(self.id, "requirement_definition", value)
         self._requirement_definition = value
+
+    @property
+    def stakeholder_parameter(self) -> list["PartUsage"]:  # noqa: F821
+        """
+        Get the stakeholder parameter property.
+
+        Returns
+        -------
+        list["PartUsage"]
+            Value of property stakeholder parameter.
+        """
+        return self._stakeholder_parameter
+
+    @property
+    def required_constraint(self) -> list["ConstraintUsage"]:  # noqa: F821
+        """
+        Get the required constraint property.
+
+        Returns
+        -------
+        list["ConstraintUsage"]
+            Value of property required constraint.
+        """
+        return self._required_constraint
+
+    @property
+    def a_verify_requirement(self) -> bool:  # noqa: F821
+        """
+        Get the a verify requirement property.
+
+        Returns
+        -------
+        bool
+            Value of property a verify requirement.
+        """
+        return self._a_verify_requirement
+
+    @property
+    def assumed_constraint(self) -> list["ConstraintUsage"]:  # noqa: F821
+        """
+        Get the assumed constraint property.
+
+        Returns
+        -------
+        list["ConstraintUsage"]
+            Value of property assumed constraint.
+        """
+        return self._assumed_constraint

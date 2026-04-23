@@ -53,18 +53,18 @@ class TestRelationship:
         """Test getter for related element property."""
         _ = element.related_element
 
+    def test_inheriting_element(self, element):
+        """Test getter and setter for inheriting element property."""
+        value = "test_value"
+        element.inheriting_element = value
+        assert element.inheriting_element == value
+
     def test_owned_related_element(self, element):
         """Test getter for owned related element property."""
         _ = element.owned_related_element
 
     def test_owning_related_element(self, element):
         """Test getter and setter for owning related element property."""
-        value = None
+        value = "test_value"
         element.owning_related_element = value
         assert element.owning_related_element == value
-
-    def test_inheriting_element(self, element):
-        """Test getter and setter for inheriting element property."""
-        value = "test_value"
-        element.inheriting_element = value
-        assert element.inheriting_element == value

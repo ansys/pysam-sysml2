@@ -43,6 +43,6 @@ class TestSubjectMembership:
 
     def test_owned_subject_parameter(self, element):
         """Test getter and setter for owned subject parameter property."""
-        value = None
+        value = "test_value"
         element.owned_subject_parameter = value
         assert element.owned_subject_parameter == value

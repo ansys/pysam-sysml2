@@ -41,22 +41,22 @@ class TestItemFlow:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
+    def test_item_type(self, element):
+        """Test getter for item type property."""
+        _ = element.item_type
+
     def test_item_feature(self, element):
         """Test getter for item feature property."""
         _ = element.item_feature
 
-    def test_item_flow_end(self, element):
-        """Test getter for item flow end property."""
-        _ = element.item_flow_end
-
-    def test_item_type(self, element):
-        """Test getter for item type property."""
-        _ = element.item_type
+    def test_source_output_feature(self, element):
+        """Test getter for source output feature property."""
+        _ = element.source_output_feature
 
     def test_target_input_feature(self, element):
         """Test getter for target input feature property."""
         _ = element.target_input_feature
 
-    def test_source_output_feature(self, element):
-        """Test getter for source output feature property."""
-        _ = element.source_output_feature
+    def test_item_flow_end(self, element):
+        """Test getter for item flow end property."""
+        _ = element.item_flow_end

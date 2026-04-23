@@ -35,7 +35,7 @@ class Constraint:
     def to_json(self) -> dict:
         """Return a JSON representation of the class."""
         data = {"@type": self.__class__.__name__}
-        data.update(dict((k, v) for k, v in self.__dict__.items() if not k.startswith("_")))
+        data.update({k: v for k, v in self.__dict__.items() if not k.startswith("_")})
         return data
 
 
@@ -66,9 +66,7 @@ class CompositeConstraint(Constraint):
         """Get a JSON representation of the class."""
         data = super().to_json()
         end_data = data.copy()
-        end_data["constraint"] = list()
-        for c in data["constraint"]:
-            end_data["constraint"].append(c.to_json())
+        end_data["constraint"] = [c.to_json() for c in data["constraint"]]
         if len(end_data["constraint"]) < 2:
             raise InvalidCompositeConstraint("Not enough constraints.")
         return end_data

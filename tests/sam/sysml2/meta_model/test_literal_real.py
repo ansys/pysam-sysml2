@@ -22,8 +22,6 @@
 
 """Generated  test class from metamodel."""
 
-from __future__ import annotations
-
 import pytest
 
 from ansys.sam.sysml2.meta_model.literal_real import LiteralReal

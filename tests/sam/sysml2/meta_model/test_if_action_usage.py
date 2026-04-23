@@ -41,9 +41,15 @@ class TestIfActionUsage:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
+    def test_else_action(self, element):
+        """Test getter and setter for else action property."""
+        value = "test_value"
+        element.else_action = value
+        assert element.else_action == value
+
     def test_if_argument(self, element):
         """Test getter and setter for if argument property."""
-        value = None
+        value = "test_value"
         element.if_argument = value
         assert element.if_argument == value
 
@@ -52,9 +58,3 @@ class TestIfActionUsage:
         value = "test_value"
         element.then_action = value
         assert element.then_action == value
-
-    def test_else_action(self, element):
-        """Test getter and setter for else action property."""
-        value = "test_value"
-        element.else_action = value
-        assert element.else_action == value

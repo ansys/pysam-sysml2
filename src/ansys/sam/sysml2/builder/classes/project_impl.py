@@ -22,8 +22,6 @@
 
 """Private implementation for a project."""
 
-from typing import List, Set
-
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
@@ -36,9 +34,9 @@ class ProjectImpl(Project):
 
     _id: str
     _env: dict
-    _root: List[Element]
-    _unresolved_fields: List[UnresolvedField]
-    _libraries_ids: Set[str]
+    _root: list[Element]
+    _unresolved_fields: list[UnresolvedField]
+    _libraries_ids: set[str]
     _name: str
 
     def __init__(self, project_id: str, name: str):
@@ -54,17 +52,17 @@ class ProjectImpl(Project):
         """
         super().__init__()
         self._id = project_id
-        self._root = list()
+        self._root = []
         self._name = name
-        self._unresolved_fields = list()
+        self._unresolved_fields = []
         self._libraries_ids = set()
-        self._env = dict()
+        self._env = {}
 
     def add_element(self, element: Element):
         """Add an element to the project environment."""
         self._env[element.id] = element
 
-    def update_unresolved_fields(self, unresolved_fields: List[UnresolvedField]):
+    def update_unresolved_fields(self, unresolved_fields: list[UnresolvedField]):
         """
         Update all unresolved fields.
 
@@ -75,7 +73,7 @@ class ProjectImpl(Project):
         """
         self._unresolved_fields.extend(unresolved_fields)
 
-    def get_root(self) -> List[Package]:
+    def get_root(self) -> list[Package]:
         """
         Get a list of root packages.
 
@@ -92,15 +90,16 @@ class ProjectImpl(Project):
 
     def get_root_package(self) -> Package:
         """Get the root package."""
-        if len(self._root) == 0:
-            raise ValueError("The project does not contain any root package.")
-        return [x for x in self._root if isinstance(x, Package) and x.name == self._name][0]
+        matches = [x for x in self._root if isinstance(x, Package) and x.name == self._name]
+        if not matches:
+            raise ValueError("No root Package found in project.")
+        return matches[0]
 
     def get_name(self) -> str:
         """Get the project name."""
         return self._name
 
-    def find_element_by_id(self, element_id: str) -> Element:
+    def find_element_by_id(self, element_id: str) -> Element | None:
         """
         Find an element by its ID.
 
@@ -114,9 +113,9 @@ class ProjectImpl(Project):
         Element
             Element retrieved.
         """
-        return self._env.get(element_id, None)
+        return self._env.get(element_id)
 
-    def find_elements_by_name(self, element_name: str) -> List[Element]:
+    def find_elements_by_name(self, element_name: str) -> list[Element]:
         """
         Find all elements by name.
 
@@ -131,10 +130,10 @@ class ProjectImpl(Project):
             List of elements retrieved.
         """
         return [
-            el for _, el in self._env.items() if SysMLUtil.check_inherited_name(el) == element_name
+            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == element_name
         ]
 
-    def start_transactional_mode(self):
+    def start_transactional_mode(self) -> None:
         """
         Start a transactional mode for model edition.
 
@@ -146,7 +145,7 @@ class ProjectImpl(Project):
         """
         self.get_root_package()._observer.set_transactional_mode(True)
 
-    def stop_transactional_mode(self):
+    def stop_transactional_mode(self) -> None:
         """
         Stop the current transaction.
 

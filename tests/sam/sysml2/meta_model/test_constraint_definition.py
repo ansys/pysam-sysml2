@@ -43,7 +43,7 @@ class TestConstraintDefinition:
 
     def test_constraint_expression(self, element):
         """Test getter and setter for constraint expression property."""
-        value = None
+        value = "test_value"
         element.constraint_expression = value
         assert element.constraint_expression == value
 

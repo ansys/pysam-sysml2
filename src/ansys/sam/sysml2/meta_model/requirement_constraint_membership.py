@@ -30,40 +30,40 @@ from .feature_membership import FeatureMembership
 class RequirementConstraintMembership(FeatureMembership):
     """Java class 'com.ansys.medini.metamodel.sysml.RequirementConstraintMembership'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._kind = None
         self._constraint = None
 
     @property
-    def kind(self) -> None:  # noqa: F821
+    def kind(self) -> "RequirementConstraintKind":  # noqa: F821
         """
         Get the kind property.
 
         Returns
         -------
-        None
+        "RequirementConstraintKind"
             Value of property kind.
         """
         return self._kind
 
     @kind.setter
-    def kind(self, value: None):  # noqa: F821
+    def kind(self, value: "RequirementConstraintKind"):  # noqa: F821
         """
         Set the kind property.
 
         Parameters
         ----------
-        value: None
+        value: "RequirementConstraintKind"
             New value.
         """
         if self._observer is not None:
@@ -71,25 +71,25 @@ class RequirementConstraintMembership(FeatureMembership):
         self._kind = value
 
     @property
-    def constraint(self) -> None:  # noqa: F821
+    def constraint(self) -> "ConstraintUsage":  # noqa: F821
         """
         Get the constraint property.
 
         Returns
         -------
-        None
+        "ConstraintUsage"
             Value of property constraint.
         """
         return self._constraint
 
     @constraint.setter
-    def constraint(self, value: None):  # noqa: F821
+    def constraint(self, value: "ConstraintUsage"):  # noqa: F821
         """
         Set the constraint property.
 
         Parameters
         ----------
-        value: None
+        value: "ConstraintUsage"
             New value.
         """
         if self._observer is not None:

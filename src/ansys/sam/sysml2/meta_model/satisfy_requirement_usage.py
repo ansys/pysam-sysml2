@@ -31,16 +31,16 @@ from .requirement_usage import RequirementUsage
 class SatisfyRequirementUsage(RequirementUsage, AssertConstraintUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.SatisfyRequirementUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._satisfied_requirement = None
         self._satisfying_feature = None

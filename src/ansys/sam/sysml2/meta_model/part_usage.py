@@ -24,8 +24,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .item_usage import ItemUsage
@@ -34,42 +32,56 @@ from .item_usage import ItemUsage
 class PartUsage(ItemUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.PartUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
-        self._all_part_definition = ObservedList(self, "all_part_definition")
+        """
+        super().__init__(element_id)
+
+        self._is_stakeholder = False
         self._part_definition = ObservedList(self, "part_definition")
         self._is_actor = False
-        self._is_stakeholder = False
+        self._all_part_definition = ObservedList(self, "all_part_definition")
 
     @property
-    def all_part_definition(self) -> List["PartDefinition"]:  # noqa: F821
+    def is_stakeholder(self) -> bool:  # noqa: F821
         """
-        Get the all part definition property.
+        Get the is stakeholder property.
 
         Returns
         -------
-        List["PartDefinition"]
-            Value of property all part definition.
+        bool
+            Value of property is stakeholder.
         """
-        return self._all_part_definition
+        return self._is_stakeholder
+
+    @is_stakeholder.setter
+    def is_stakeholder(self, value: bool):  # noqa: F821
+        """
+        Set the is_stakeholder property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_stakeholder", value)
+        self._is_stakeholder = value
 
     @property
-    def part_definition(self) -> List["PartDefinition"]:  # noqa: F821
+    def part_definition(self) -> list["PartDefinition"]:  # noqa: F821
         """
         Get the part definition property.
 
         Returns
         -------
-        List["PartDefinition"]
+        list["PartDefinition"]
             Value of property part definition.
         """
         return self._part_definition
@@ -101,27 +113,13 @@ class PartUsage(ItemUsage):
         self._is_actor = value
 
     @property
-    def is_stakeholder(self) -> bool:  # noqa: F821
+    def all_part_definition(self) -> list["PartDefinition"]:  # noqa: F821
         """
-        Get the is stakeholder property.
+        Get the all part definition property.
 
         Returns
         -------
-        bool
-            Value of property is stakeholder.
+        list["PartDefinition"]
+            Value of property all part definition.
         """
-        return self._is_stakeholder
-
-    @is_stakeholder.setter
-    def is_stakeholder(self, value: bool):  # noqa: F821
-        """
-        Set the is_stakeholder property.
-
-        Parameters
-        ----------
-        value: bool
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "is_stakeholder", value)
-        self._is_stakeholder = value
+        return self._all_part_definition

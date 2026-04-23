@@ -30,39 +30,39 @@ from .membership import Membership
 class VariantMembership(Membership):
     """Java class 'com.ansys.medini.metamodel.sysml.VariantMembership'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._owned_variant_usage = None
 
     @property
-    def owned_variant_usage(self) -> None:  # noqa: F821
+    def owned_variant_usage(self) -> "Usage":  # noqa: F821
         """
         Get the owned variant usage property.
 
         Returns
         -------
-        None
+        "Usage"
             Value of property owned variant usage.
         """
         return self._owned_variant_usage
 
     @owned_variant_usage.setter
-    def owned_variant_usage(self, value: None):  # noqa: F821
+    def owned_variant_usage(self, value: "Usage"):  # noqa: F821
         """
         Set the owned_variant_usage property.
 
         Parameters
         ----------
-        value: None
+        value: "Usage"
             New value.
         """
         if self._observer is not None:

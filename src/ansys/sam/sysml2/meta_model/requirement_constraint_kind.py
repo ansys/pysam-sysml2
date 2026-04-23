@@ -39,17 +39,9 @@ class RequirementConstraintKind:
     value: int
     name: str
     literal: str
-    VALUES: "RequirementConstraintKind"
 
     def __init__(self):
-        """
-        Construct new instance.
-
-        Parameters
-        ----------
-        id : str
-            Element ID.
-        """
+        """Construct new instance."""
         self._name = ""
         self._value = 0
         self._by_name = None

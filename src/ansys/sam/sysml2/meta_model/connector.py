@@ -24,8 +24,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .feature import Feature
@@ -35,73 +33,35 @@ from .relationship import Relationship
 class Connector(Relationship, Feature):
     """Java class 'com.ansys.medini.metamodel.sysml.Connector'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
-        self._source_feature = None
-        self._connector_end = ObservedList(self, "connector_end")
-        self._association = ObservedList(self, "association")
+        """
+        super().__init__(element_id)
+
+        self._related_feature = ObservedList(self, "related_feature")
         self._is_directed = False
         self._target_feature = ObservedList(self, "target_feature")
-        self._related_feature = ObservedList(self, "related_feature")
+        self._source_feature = None
+        self._association = ObservedList(self, "association")
+        self._connector_end = ObservedList(self, "connector_end")
 
     @property
-    def source_feature(self) -> None:  # noqa: F821
+    def related_feature(self) -> list["Feature"]:  # noqa: F821
         """
-        Get the source feature property.
+        Get the related feature property.
 
         Returns
         -------
-        None
-            Value of property source feature.
+        list["Feature"]
+            Value of property related feature.
         """
-        return self._source_feature
-
-    @source_feature.setter
-    def source_feature(self, value: None):  # noqa: F821
-        """
-        Set the source_feature property.
-
-        Parameters
-        ----------
-        value: None
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "source_feature", value)
-        self._source_feature = value
-
-    @property
-    def connector_end(self) -> List["Feature"]:  # noqa: F821
-        """
-        Get the connector end property.
-
-        Returns
-        -------
-        List["Feature"]
-            Value of property connector end.
-        """
-        return self._connector_end
-
-    @property
-    def association(self) -> List["Association"]:  # noqa: F821
-        """
-        Get the association property.
-
-        Returns
-        -------
-        List["Association"]
-            Value of property association.
-        """
-        return self._association
+        return self._related_feature
 
     @property
     def is_directed(self) -> bool:  # noqa: F821
@@ -130,25 +90,63 @@ class Connector(Relationship, Feature):
         self._is_directed = value
 
     @property
-    def target_feature(self) -> List["Feature"]:  # noqa: F821
+    def target_feature(self) -> list["Feature"]:  # noqa: F821
         """
         Get the target feature property.
 
         Returns
         -------
-        List["Feature"]
+        list["Feature"]
             Value of property target feature.
         """
         return self._target_feature
 
     @property
-    def related_feature(self) -> List["Feature"]:  # noqa: F821
+    def source_feature(self) -> "Feature":  # noqa: F821
         """
-        Get the related feature property.
+        Get the source feature property.
 
         Returns
         -------
-        List["Feature"]
-            Value of property related feature.
+        "Feature"
+            Value of property source feature.
         """
-        return self._related_feature
+        return self._source_feature
+
+    @source_feature.setter
+    def source_feature(self, value: "Feature"):  # noqa: F821
+        """
+        Set the source_feature property.
+
+        Parameters
+        ----------
+        value: "Feature"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "source_feature", value)
+        self._source_feature = value
+
+    @property
+    def association(self) -> list["Association"]:  # noqa: F821
+        """
+        Get the association property.
+
+        Returns
+        -------
+        list["Association"]
+            Value of property association.
+        """
+        return self._association
+
+    @property
+    def connector_end(self) -> list["Feature"]:  # noqa: F821
+        """
+        Get the connector end property.
+
+        Returns
+        -------
+        list["Feature"]
+            Value of property connector end.
+        """
+        return self._connector_end
