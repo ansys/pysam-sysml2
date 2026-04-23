@@ -49,7 +49,6 @@ class SysMLElement:
         """Get the attribute list from the real element."""
         base = super().__dir__()
         hmap = self.__dict__.get("_element_hash_map", {})
-        print("hmap:", hmap)
         children = [k for k in hmap if k is not None]
         return sorted(set(list(base) + children))
 
