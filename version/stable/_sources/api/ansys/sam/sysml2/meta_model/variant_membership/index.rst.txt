@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``variant_membership.py`` module
+====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.variant_membership
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: variant_membership
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.variant_membership.VariantMembership`
+            - Java class 'com.ansys.medini.metamodel.sysml.VariantMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> VariantMembership</api/ansys/sam/sysml2/meta_model/variant_membership/VariantMembership>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated variant membership class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

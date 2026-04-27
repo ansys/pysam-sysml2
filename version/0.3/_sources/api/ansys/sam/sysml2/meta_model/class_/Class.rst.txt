@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Class`
+==============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.class_.Class(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.classifier.Classifier`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Class'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.class_ import Class
+
+
+
+
+

@@ -1,0 +1,156 @@
+
+
+
+
+
+
+:class:`SAMDiagramManager`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager(connector: ansys.sam.sysml2.diagrams.api.sam_api_connector.SamApiConnector)
+
+   
+   Provides the SAM Diagram Manager.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+.. py:currentmodule:: SAMDiagramManager
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~load_diagrams`
+            - Load diagrams into a model.
+
+
+
+
+
+   .. tab-item:: Special methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~__enter__`
+            - Enter method for context manager.
+          * - :py:attr:`~__exit__`
+            - Exit method for context manager.
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
+
+
+
+Method detail
+-------------
+
+.. py:method:: __enter__()
+
+   
+   Enter method for context manager.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __exit__(exc_type, exc_value, exc_traceback)
+
+   
+   Exit method for context manager.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: load_diagrams(model: ansys.sam.sysml2.classes.scripting_project.ScriptingProject) -> None
+
+   
+   Load diagrams into a model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

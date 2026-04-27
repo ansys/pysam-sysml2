@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`Namespace`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.namespace.Namespace(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.element.Element`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Namespace'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Namespace
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~member`
+            - Get the member property.
+          * - :py:attr:`~owned_membership`
+            - Get the owned membership property.
+          * - :py:attr:`~owned_member`
+            - Get the owned member property.
+          * - :py:attr:`~owned_import`
+            - Get the owned import property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.namespace import Namespace
+
+Property detail
+---------------
+
+.. py:property:: member
+   :type: list[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the member property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Element"]
+           Value of property member.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_membership
+   :type: list[Membership]
+
+
+   
+   Get the owned membership property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Membership"]
+           Value of property owned membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_member
+   :type: list[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the owned member property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Element"]
+           Value of property owned member.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_import
+   :type: list[Import]
+
+
+   
+   Get the owned import property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Import"]
+           Value of property owned import.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

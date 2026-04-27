@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``occurrence_definition.py`` module
+=======================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.occurrence_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: occurrence_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.occurrence_definition.OccurrenceDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.OccurrenceDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> OccurrenceDefinition</api/ansys/sam/sysml2/meta_model/occurrence_definition/OccurrenceDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated occurrence definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`SubjectMembership`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.subject_membership.SubjectMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.parameter_membership.ParameterMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.SubjectMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SubjectMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_subject_parameter`
+            - Get the owned subject parameter property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.subject_membership import SubjectMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_subject_parameter
+   :type: Usage
+
+
+   
+   Get the owned subject parameter property.
+
+
+
+
+
+   :Returns:
+
+       "Usage"
+           Value of property owned subject parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

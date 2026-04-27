@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ActionDefinition`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.action_definition.ActionDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.occurrence_definition.OccurrenceDefinition`, :py:obj:`ansys.sam.sysml2.meta_model.behavior.Behavior`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ActionDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ActionDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~action`
+            - Get the action property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.action_definition import ActionDefinition
+
+Property detail
+---------------
+
+.. py:property:: action
+   :type: List[ActionUsage]
+
+
+   
+   Get the action property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ActionUsage"]
+           Value of property action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`FlowConnectionUsage`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.flow_connection_usage.FlowConnectionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connection_usage.ConnectionUsage`, :py:obj:`ansys.sam.sysml2.meta_model.item_flow.ItemFlow`, :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.FlowConnectionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FlowConnectionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~flow_connection_definition`
+            - Get the flow connection definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.flow_connection_usage import FlowConnectionUsage
+
+Property detail
+---------------
+
+.. py:property:: flow_connection_definition
+   :type: list[Interaction]
+
+
+   
+   Get the flow connection definition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Interaction"]
+           Value of property flow connection definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

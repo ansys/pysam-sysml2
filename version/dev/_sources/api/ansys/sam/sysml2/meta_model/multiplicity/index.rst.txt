@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``multiplicity.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.multiplicity
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: multiplicity
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.multiplicity.Multiplicity`
+            - Java class 'com.ansys.medini.metamodel.sysml.Multiplicity'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Multiplicity</api/ansys/sam/sysml2/meta_model/multiplicity/Multiplicity>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated multiplicity class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

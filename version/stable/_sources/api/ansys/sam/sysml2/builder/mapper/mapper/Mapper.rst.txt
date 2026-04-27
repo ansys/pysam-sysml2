@@ -1,0 +1,111 @@
+
+
+
+
+
+
+:class:`Mapper`
+===============
+
+
+.. py:class:: ansys.sam.sysml2.builder.mapper.mapper.Mapper
+
+   
+   Generic interface for mappers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Mapper
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~map`
+            - Map a JSON element to a Python object and return unresolved references.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.mapper.mapper import Mapper
+
+
+
+Method detail
+-------------
+
+.. py:method:: map(namespace: str, json_element: dict, mapped_element: Union[ansys.sam.sysml2.meta_model.element.Element, ansys.sam.sysml2.classes.sysml_element.SysMLElement]) -> ansys.sam.sysml2.classes.mapped_element.MappedElement
+
+   
+   Map a JSON element to a Python object and return unresolved references.
+
+
+   :Parameters:
+
+       **namespace** : :class:`python:str`
+           Current namespace.
+
+       **json_element** : :class:`python:dict`
+           Data.
+
+       **mapped_element** : :obj:`Union`\[:obj:`Element`, :obj:`SysMLElement`]
+           Existing element.
+
+
+
+   :Returns:
+
+       :obj:`MappedElement`
+           Mapper element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`FeatureChainExpression`
+===============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature_chain_expression.FeatureChainExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.operator_expression.OperatorExpression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.FeatureChainExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureChainExpression
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~target_feature`
+            - Get the target feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature_chain_expression import FeatureChainExpression
+
+Property detail
+---------------
+
+.. py:property:: target_feature
+   :type: Feature
+
+
+   
+   Get the target feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property target feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
