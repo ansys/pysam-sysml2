@@ -58,11 +58,24 @@ class InheritedElement(SysMLElement):
 
     def __init__(self, owner, element):
         """Construct a new instance."""
-        super().__init__("")
-        self._observer = owner._observer
-        self._element = element
-        self._id = build_composed_name(owner, element, True)
-        self._owner = owner
+        object.__setattr__(self, "_owner", owner)
+        object.__setattr__(self, "_element", element)
+        object.__setattr__(self, "_id", build_composed_name(owner, element, True))
+
+    @property
+    def _observer(self):
+        """Resolve observer lazily from the owner chain."""
+        owner = object.__getattribute__(self, "_owner")
+        return getattr(owner, "_observer", None)
+
+    @_observer.setter
+    def _observer(self, value):
+        """No-op setter that preserves the delegated observer.
+
+        Always delegate to owner chain so the observer stays in sync
+        after _add_write_access sets it on the root elements.
+        """
+        pass
 
     def __dir__(self):
         """Get the attribute list from the real element."""
@@ -70,7 +83,7 @@ class InheritedElement(SysMLElement):
 
     def __getattr__(self, name):
         """Get the attribute from the real element."""
-        if name in ("_observer", "_element", "_id", "_owner"):
+        if name in ("_element", "_id", "_owner"):
             return super().__getattribute__(name)
         if name.startswith("__") and name.endswith("__"):
             raise AttributeError(name)
