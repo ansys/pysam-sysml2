@@ -75,14 +75,22 @@ PySAM SysML2 follows the PEP8 standard as outlined in the `PyAnsys development g
 Testing
 ^^^^^^^
 
-PySAM SysML2 uses `pytest <https://docs.pytest.org/en/stable/>`_.
-In the main directory, run this command:
+PySAM SysML2 uses `pytest <https://docs.pytest.org/en/stable/>`_ and has two
+test suites: **unit tests** and **end-to-end (E2E) tests**.
+
+Unit tests (contributors)
+""""""""""""""""""""""""""
+
+Unit tests live in ``tests/unit/`` and run against mocked server responses.
+No external server or Docker setup is required. From the repository root, run:
 
 .. code::
 
     pytest
 
-Tests are in the ``tests`` folder. Add your own tests for non-regression.
+This executes the unit test suite by default (configured via ``testpaths`` in
+``pyproject.toml``). Add your own unit tests for non-regression when
+contributing new features or bug fixes.
 
 To run tests with coverage:
 
@@ -91,6 +99,18 @@ To run tests with coverage:
     pytest --cov=ansys.sam.sysml2 --cov-report=html
 
 This generates a coverage report in ``htmlcov/index.html``.
+
+E2E tests (maintainers)
+""""""""""""""""""""""""
+
+End-to-end tests live in ``tests/e2e/`` and run against a live SAM server
+instance. They validate the full library stack including connector, project
+management, model navigation, commits, queries, and diagrams.
+
+.. note::
+   E2E tests are maintained and executed by the SAM development team. They run
+   automatically in another pipeline when a pull request is submitted.
+   Contributors should focus on unit tests for local validation.
 
 Documentation
 ^^^^^^^^^^^^^
