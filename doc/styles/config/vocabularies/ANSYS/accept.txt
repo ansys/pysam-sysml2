@@ -9,6 +9,7 @@ class
 DiagramDownloader
 DiagramElement
 downloader
+E2E
 Enum
 Factory
 get_value
