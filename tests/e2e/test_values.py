@@ -31,33 +31,37 @@ from .conftest import load_scripting_project, load_sysml_project
 
 
 @pytest.mark.e2e
-class TestBike:
+class TestValues:
 
-    def test_bike_weight(self, connector, project_manager):
-        """Navigate model, calculate total weight, assert == 10 (weight-bike.py)."""
+    def test_bike_weight_and_unit(self, connector, project_manager):
+        """Navigate model, calculate total weight, checks weight and unit."""
         project = load_scripting_project(connector, project_manager, "bike")
         bike = project.get_root_package().Structure.Bike
+        bike_parts = [bike.frontWheel.rim.weight.get_value(), bike.frontWheel.tire.weight.get_value(), bike.rearWheel.rim.weight.get_value(), bike.rearWheel.tire.weight.get_value(), bike.frame.weight.get_value()]
 
-        bike_weight = (
-            bike.frontWheel.rim.weight.get_value()[0]
-            + bike.frontWheel.tire.weight.get_value()[0]
-            + bike.rearWheel.rim.weight.get_value()[0]
-            + bike.rearWheel.tire.weight.get_value()[0]
-            + bike.frame.weight.get_value()[0]
-        )
-        assert bike_weight == 10
+        total_bike_weight = sum(bike_parts[part][0] for part in bike_parts)
+        bike_first_part_weight_unit = bike_parts[0][1]
+        bike_parts_weight_unit_all_same = all(x == bike_parts[1] for x in bike_parts)
+
+        assert total_bike_weight == 10
+        assert bike_first_part_weight_unit == "kg"
+        assert bike_parts_weight_unit_all_same== True
 
         connector.delete_project(project._id)
 
-    def test_bike_rim_weight_update(self, connector, project_manager):
-        """Update rim weight, verify change (bike-rim-weight-update.py)."""
+    def test_bike_rim_weight_and_unit_update(self, connector, project_manager):
+        """Update rim weight and unit, verify change."""
         project = load_scripting_project(connector, project_manager, "bike")
         bike = project.get_root_package().Structure.Bike
+        original_front_weight = bike.frontWheel.rim.weight.get_value()
 
-        original_front = bike.frontWheel.rim.weight.get_value()[0]
-        bike.frontWheel.rim.weight.parse_and_set_value("0.5 [kg]")
-        updated_front = bike.frontWheel.rim.weight.get_value()[0]
-        assert updated_front != original_front
+        assert original_front_weight == (1, 'kg')
+
+        bike.frontWheel.rim.weight.parse_and_set_value("500 [g]")
+        updated_front_weight = bike.frontWheel.rim.weight.get_value()
+
+        assert updated_front_weight != original_front_weight
+        assert updated_front_weight == (500, 'g')
 
         connector.delete_project(project._id)
 
@@ -65,18 +69,22 @@ class TestBike:
         """Transactional mode: batch updates, verify after commit."""
         project = load_scripting_project(connector, project_manager, "bike")
         bike = project.get_root_package().Structure.Bike
+        original_front_weight = bike.frontWheel.rim.weight.get_value()
+        original_rear_weight = bike.rearWheel.rim.weight.get_value()
+
+        assert original_front_weight == (1, 'kg')
+        assert original_rear_weight == (1, 'kg')
 
         project.start_transactional_mode()
-        bike.frontWheel.rim.weight.parse_and_set_value("0.5 [kg]")
-        bike.rearWheel.rim.weight.parse_and_set_value("0.8 [kg]")
+        bike.frontWheel.rim.weight.parse_and_set_value("500 [g]")
+        bike.rearWheel.rim.weight.parse_and_set_value("750 [g]")
         project.stop_transactional_mode()
 
-        updated_front = bike.frontWheel.rim.weight.get_value()
-        updated_rear = bike.rearWheel.rim.weight.get_value()
-        assert updated_front[0] == 0.5
-        assert updated_front[1] == "kg"
-        assert updated_rear[0] == 0.8
-        assert updated_rear[1] == "kg"
+        updated_front_weight = bike.frontWheel.rim.weight.get_value()
+        updated_rear_weight = bike.rearWheel.rim.weight.get_value()
+
+        assert updated_front_weight == (500, 'g')
+        assert updated_rear_weight == (750, 'g')
 
         connector.delete_project(project._id)
 
@@ -84,7 +92,6 @@ class TestBike:
         """Create attribute on bike.frame, set value, verify roundtrip."""
         project = load_scripting_project(connector, project_manager, "bike")
         bike = project.get_root_package().Structure.Bike
-
         factory = Factory(project, connector)
         factory.create_attribute_usage(name="length", owner=bike.frame)
 
@@ -98,15 +105,25 @@ class TestBike:
         """Load bike via load_sysml_project, navigate with .get(), verify structure (weight-bike-static.py)."""
         project = load_sysml_project(connector, project_manager, "bike")
         bike = project.get_root_package().get("Structure").get("Bike")
+        bike_front_wheel = bike.get("frontWheel")
+        bike_front_wheel_rim = bike_front_wheel.get("rim")
+        bike_front_wheel_tire = bike_front_wheel.get("tire")
+        bike_front_wheel_rim_weight = bike_front_wheel_rim.get("weight")
+        bike_front_wheel_tire_weight = bike_front_wheel_tire.get("weight")
+        bike_rear_wheel = bike.get("rearWheel")
+        bike_rear_wheel_rim = bike_rear_wheel.get("rim")
+        bike_rear_wheel_tire = bike_rear_wheel.get("tire")
+        bike_rear_wheel_rim_weight = bike_rear_wheel_rim.get("weight")
+        bike_rear_wheel_tire_weight = bike_rear_wheel_tire.get("weight")
+        bike_parts = [bike_front_wheel_rim_weight, bike_front_wheel_tire_weight, bike_rear_wheel_rim_weight, bike_rear_wheel_tire_weight]
 
-        bike_weight = (
-            bike.get("frontWheel").get("rim").get("weight").get_value()[0]
-            + bike.get("frontWheel").get("tire").get("weight").get_value()[0]
-            + bike.get("rearWheel").get("rim").get("weight").get_value()[0]
-            + bike.get("rearWheel").get("tire").get("weight").get_value()[0]
-            + bike.get("frame").get("weight").get_value()[0]
-        )
-        assert bike_weight == 10
+        total_bike_weight = sum(bike_parts[part][0] for part in bike_parts)
+        bike_first_part_weight_unit = bike_parts[0][1]
+        bike_parts_weight_unit_all_same = all(x == bike_parts[1] for x in bike_parts)
+
+        assert total_bike_weight == 10
+        assert bike_first_part_weight_unit == "kg"
+        assert bike_parts_weight_unit_all_same== True
 
         connector.delete_project(project._id)
 

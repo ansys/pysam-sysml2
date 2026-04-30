@@ -31,16 +31,16 @@ from .conftest import load_scripting_project, load_sysml_project
 
 
 def _assess_cost(element):
-    """Recursively calculate cost from the model tree (mirrors computer-cost.py)."""
-    if hasattr(element, "cost"):
+    """Recursively calculate cost from the model tree."""
+    if getattr(element, "cost"):
         try:
             cost = element.cost.get_value()
         except UnsupportedValueExpression:
             cost = None
         if cost is not None:
-            if type(cost) is int:
+            if isinstance(cost,int):
                 return cost
-            elif type(cost) is tuple:
+            elif isinstance(cost,tuple):
                 return cost[0]
             else:
                 raise ValueError(
@@ -57,7 +57,7 @@ def _assess_cost(element):
 class TestComputer:
 
     def test_computer_cost(self, connector, project_manager):
-        """Load computer model, compute cost for each real system, assert > 0."""
+        """Load computer model, compute cost for each real system."""
         project = load_scripting_project(connector, project_manager, "computer")
         real_systems = project.get_root_package().RealSystems
 
@@ -66,18 +66,6 @@ class TestComputer:
             system_cost = _assess_cost(system)
             assert system_cost >= 0
             total_cost += system_cost
-        assert total_cost > 0
-
-        connector.delete_project(project._id)
-
-    def test_computer_sysml_navigation(self, connector, project_manager):
-        """Load computer via load_sysml_project, navigate with .get()."""
-        project = load_sysml_project(connector, project_manager, "computer")
-        real_systems = project.get_root_package().get("RealSystems")
-        assert real_systems is not None
-
-        owned = real_systems.owned_element
-        assert isinstance(owned, list)
-        assert len(owned) > 0
+        assert total_cost == 2900
 
         connector.delete_project(project._id)

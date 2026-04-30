@@ -9,6 +9,7 @@ class
 DiagramDownloader
 DiagramElement
 downloader
+E2E
 Enum
 Factory
 get_value
@@ -16,6 +17,7 @@ isort
 IN
 INOUT
 INPUT
+kwargs
 Makefile
 metaclass
 metamodel

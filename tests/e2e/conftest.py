@@ -95,6 +95,32 @@ def _import_project(connector, project_name, binary_path):
     return response.json()
 
 
+def _create_project(connector, model_name):
+    """Create a new project from a .bin file.
+
+    Parameters
+    ----------
+    connector : AnsysSysML2APIConnector
+        Live connector to the SAM server.
+    model_name : str
+        Name of the model (e.g. "bike"). Resolves to ``{models_dir}/{name}/{name}.bin``.
+
+    Returns
+    -------
+    Project ID
+        The ID of the created project.
+    """
+    models_dir = _get_models_dir()
+    binary_path = models_dir / model_name / f"{model_name}.bin"
+    if not binary_path.exists():
+        pytest.skip(f"Model binary not found: {binary_path}")
+
+    project_name = f"{model_name}-{uuid4().hex[:8]}"
+    project_data = _import_project(connector, project_name, binary_path)
+    project_id = project_data["projectId"]
+    return project_id
+
+
 def load_scripting_project(connector, project_manager, model_name):
     """Import a .bin model file and return a ScriptingProject.
 
@@ -112,15 +138,7 @@ def load_scripting_project(connector, project_manager, model_name):
     ScriptingProject
         The loaded scripting project.
     """
-    models_dir = _get_models_dir()
-    binary_path = models_dir / model_name / f"{model_name}.bin"
-    if not binary_path.exists():
-        pytest.skip(f"Model binary not found: {binary_path}")
-
-    project_name = f"{model_name}-{uuid4().hex[:8]}"
-    project_data = _import_project(connector, project_name, binary_path)
-    project_id = project_data["projectId"]
-
+    project_id = _create_project(connector, model_name)
     return project_manager.get_scripting_project(project_id)
 
 
@@ -141,13 +159,5 @@ def load_sysml_project(connector, project_manager, model_name):
     Project
         The loaded SysML project.
     """
-    models_dir = _get_models_dir()
-    binary_path = models_dir / model_name / f"{model_name}.bin"
-    if not binary_path.exists():
-        pytest.skip(f"Model binary not found: {binary_path}")
-
-    project_name = f"{model_name}-{uuid4().hex[:8]}"
-    project_data = _import_project(connector, project_name, binary_path)
-    project_id = project_data["projectId"]
-
+    project_id = _create_project(connector, model_name)
     return project_manager.get_sysml_project(project_id)
