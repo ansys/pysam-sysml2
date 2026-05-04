@@ -1,145 +1,349 @@
 [
     {
-        "@type": "Package",
-        "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
-        "identifier": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4",
-        "owner": null,
-        "eAnnotations": [],
-        "name": "PySAMSysML2TestProject-COMPLET",
-        "ownedElement": [
-            {
-                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
-            },
-            {
-                "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
-            }
-        ],
-        "qualifiedName": "PySAMSysML2TestProject-COMPLET",
-        "ownedMember": [
-            {
-                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
-            },
-            {
-                "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
-            }
-        ]
-    },
-    {
         "@type": "PartDefinition",
-        "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc",
-        "identifier": "6afc9e87-1079-4212-8fa4-99cd6b2004fc",
+        "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8",
+        "identifier": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8",
         "name": "PartDefinition",
         "ownedElement": [
             {
-                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+                "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
             }
         ],
-        "qualifiedName": "PySAMSysML2TestProject-COMPLET::PartDefinition",
+        "ownedRelationship": [],
+        "qualifiedName": "project-1::PartDefinition",
         "owner": {
-            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+            "@id": "e65970a1-2259-43f1-acaa-1764dfd353f7"
         },
+        "ownedAnnotation": [],
+        "comment": [],
+        "documentation": [],
+        "visibility": "public",
+        "shortName": "",
+        "textualRepresentation": [],
+        "ownedInheritedRelationship": [],
+        "aliasIds": [],
         "owningNamespace": {
-            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+            "@id": "e65970a1-2259-43f1-acaa-1764dfd353f7"
         },
         "ownedMember": [
             {
-                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+                "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
             }
         ],
+        "ownedMembership": [],
+        "ownedImport": [],
+        "member": [],
+        "ownedFeatureMembership": [],
         "ownedEndFeature": [],
+        "isAbstract": false,
+        "multiplicity": null,
+        "isSufficient": false,
         "ownedFeature": [
             {
-                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+                "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
             }
         ],
+        "ownedSpecialization": [],
         "directedFeature": [],
         "feature": [
             {
-                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+                "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
             }
         ],
+        "ownedSubclassification": [],
+        "superClassifier": [],
         "ownedUsage": [
             {
-                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+                "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
             }
         ],
+        "ownedPart": [],
+        "ownedPort": [],
+        "ownedItem": [],
+        "ownedInterface": [],
+        "ownedConstraint": [],
+        "ownedRequirement": [],
         "ownedAttribute": [
             {
-                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+                "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
             }
-        ]
-    },
-    {
-        "@type": "AttributeUsage",
-        "@id": "ecf75010-3603-4e1e-82d5-db312b093378",
-        "identifier": "ecf75010-3603-4e1e-82d5-db312b093378",
-        "name": "Attribute",
-        "qualifiedName": "PySAMSysML2TestProject-COMPLET::PartDefinition::Attribute",
-        "owner": {
-            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
-        },
-        "owningNamespace": {
-            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
-        },
-        "isComposite": true,
-        "declaration": {
-            "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
-        }
+        ],
+        "ownedReference": [],
+        "ownedEnumeration": [],
+        "variantMembership": [],
+        "variant": [],
+        "isVariation": false,
+        "ownedOccurrence": [],
+        "ownedAction": [],
+        "ownedConnection": [],
+        "ownedFlow": [],
+        "ownedAllocation": [],
+        "ownedMetadata": [],
+        "ownedCalculation": [],
+        "ownedCase": [],
+        "ownedUseCase": [],
+        "ownedState": [],
+        "ownedTransition": [],
+        "ownedView": [],
+        "ownedAnalysisCase": [],
+        "ownedVerificationCase": [],
+        "isIndividual": false,
+        "lifeclass": null
     },
     {
         "@type": "PartUsage",
-        "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c",
-        "identifier": "fd36d11a-bc48-410e-bec9-b7f929666c4c",
-        "name": "myPartUsage",
-        "qualifiedName": "PySAMSysML2TestProject-COMPLET::myPartUsage",
+        "@id": "98a231fa-99ef-4c1c-b0ea-15a34af924d4",
+        "identifier": "98a231fa-99ef-4c1c-b0ea-15a34af924d4",
+        "name": "part",
+        "ownedElement": [],
+        "ownedRelationship": [],
+        "qualifiedName": "project-1::part",
         "owner": {
-            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+            "@id": "e65970a1-2259-43f1-acaa-1764dfd353f7"
         },
+        "ownedAnnotation": [],
+        "comment": [],
+        "documentation": [],
+        "visibility": "public",
+        "shortName": null,
+        "textualRepresentation": [],
+        "ownedInheritedRelationship": [],
+        "aliasIds": [],
         "owningNamespace": {
-            "@id": "201e3e4e-d36c-4848-87b0-8b4a69ed6ef4"
+            "@id": "e65970a1-2259-43f1-acaa-1764dfd353f7"
         },
+        "ownedMember": [],
+        "ownedMembership": [],
+        "ownedImport": [],
+        "member": [],
+        "ownedFeatureMembership": [],
+        "ownedEndFeature": [],
+        "isAbstract": false,
+        "multiplicity": null,
+        "isSufficient": false,
+        "ownedFeature": [],
+        "ownedSpecialization": [],
         "directedFeature": [],
         "feature": [
             {
-                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+                "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
             }
         ],
         "inheritedFeature": [
             {
-                "@id": "ecf75010-3603-4e1e-82d5-db312b093378"
+                "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
             }
         ],
+        "isUnique": true,
+        "isOrdered": false,
         "isComposite": true,
+        "isEnd": false,
+        "ownedSubsetting": [],
+        "ownedRedefinition": [],
+        "ownedTyping": [],
+        "ownedTypeFeaturing": [],
+        "subsettedFeature": [],
+        "redefinedFeature": [],
+        "direction": "undefined",
+        "valuation": null,
+        "defaultValue": null,
+        "owningFeatureMembership": null,
         "type": [
             {
-                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+                "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
             }
         ],
+        "inherited": false,
+        "inheritingType": null,
         "declaration": {
-            "@id": "fd36d11a-bc48-410e-bec9-b7f929666c4c"
+            "@id": "98a231fa-99ef-4c1c-b0ea-15a34af924d4"
         },
+        "ownedReferenceSubsetting": [],
+        "referencedFeature": [],
+        "chainingFeature": [],
+        "featureValueExpression": null,
+        "nestedUsage": [],
+        "nestedPart": [],
+        "nestedPort": [],
+        "nestedItem": [],
+        "nestedInterface": [],
+        "nestedConstraint": [],
+        "nestedRequirement": [],
+        "nestedAttribute": [],
+        "nestedReference": [],
+        "nestedEnumeration": [],
+        "variantMembership": [],
+        "variant": [],
+        "isVariation": false,
+        "isSubject": false,
+        "nestedOccurrence": [],
+        "nestedAction": [],
+        "nestedConnection": [],
+        "nestedFlow": [],
+        "nestedAllocation": [],
         "definition": [
             {
-                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+                "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
             }
         ],
+        "nestedMetadata": [],
+        "nestedCase": [],
+        "nestedUseCase": [],
+        "nestedCalculation": [],
+        "nestedState": [],
+        "nestedTransition": [],
+        "nestedView": [],
+        "nestedAnalysisCase": [],
+        "nestedVerificationCase": [],
+        "isIndividual": false,
+        "portionKind": null,
         "individualDefinition": {
-            "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+            "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
         },
         "occurrenceDefinition": [
             {
-                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+                "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
             }
         ],
+        "portioningFeature": null,
         "itemDefinition": [
             {
-                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+                "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
             }
         ],
         "partDefinition": [
             {
-                "@id": "6afc9e87-1079-4212-8fa4-99cd6b2004fc"
+                "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
             }
-        ]
+        ],
+        "isActor": false,
+        "isStakeholder": false
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1",
+        "identifier": "9c50b600-313c-4460-a6f7-b6459d84aaf1",
+        "name": "attribute",
+        "ownedElement": [],
+        "ownedRelationship": [],
+        "qualifiedName": "project-1::PartDefinition::attribute",
+        "owner": {
+            "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
+        },
+        "ownedAnnotation": [],
+        "comment": [],
+        "documentation": [],
+        "visibility": "public",
+        "shortName": null,
+        "textualRepresentation": [],
+        "ownedInheritedRelationship": [],
+        "aliasIds": [],
+        "owningNamespace": {
+            "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
+        },
+        "ownedMember": [],
+        "ownedMembership": [],
+        "ownedImport": [],
+        "member": [],
+        "ownedFeatureMembership": [],
+        "ownedEndFeature": [],
+        "isAbstract": false,
+        "multiplicity": null,
+        "isSufficient": false,
+        "ownedFeature": [],
+        "ownedSpecialization": [],
+        "directedFeature": [],
+        "feature": [],
+        "isUnique": true,
+        "isOrdered": false,
+        "isComposite": true,
+        "isEnd": false,
+        "ownedSubsetting": [],
+        "ownedRedefinition": [],
+        "ownedTyping": [],
+        "ownedTypeFeaturing": [],
+        "subsettedFeature": [],
+        "redefinedFeature": [],
+        "direction": "undefined",
+        "valuation": null,
+        "defaultValue": null,
+        "owningFeatureMembership": null,
+        "type": [],
+        "inherited": false,
+        "inheritingType": null,
+        "declaration": {
+            "@id": "9c50b600-313c-4460-a6f7-b6459d84aaf1"
+        },
+        "ownedReferenceSubsetting": [],
+        "referencedFeature": [],
+        "chainingFeature": [],
+        "featureValueExpression": null,
+        "nestedUsage": [],
+        "nestedPart": [],
+        "nestedPort": [],
+        "nestedItem": [],
+        "nestedInterface": [],
+        "nestedConstraint": [],
+        "nestedRequirement": [],
+        "nestedAttribute": [],
+        "nestedReference": [],
+        "nestedEnumeration": [],
+        "variantMembership": [],
+        "variant": [],
+        "isVariation": false,
+        "isSubject": false,
+        "nestedOccurrence": [],
+        "nestedAction": [],
+        "nestedConnection": [],
+        "nestedFlow": [],
+        "nestedAllocation": [],
+        "definition": [],
+        "nestedMetadata": [],
+        "nestedCase": [],
+        "nestedUseCase": [],
+        "nestedCalculation": [],
+        "nestedState": [],
+        "nestedTransition": [],
+        "nestedView": [],
+        "nestedAnalysisCase": [],
+        "nestedVerificationCase": [],
+        "attributeDefinition": []
+    },
+    {
+        "@type": "Package",
+        "@id": "e65970a1-2259-43f1-acaa-1764dfd353f7",
+        "identifier": "e65970a1-2259-43f1-acaa-1764dfd353f7",
+        "name": "project-1",
+        "ownedElement": [
+            {
+                "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
+            },
+            {
+                "@id": "98a231fa-99ef-4c1c-b0ea-15a34af924d4"
+            }
+        ],
+        "ownedRelationship": [],
+        "qualifiedName": "project-1",
+        "owner": null,
+        "ownedAnnotation": [],
+        "comment": [],
+        "documentation": [],
+        "visibility": "public",
+        "shortName": "",
+        "textualRepresentation": [],
+        "ownedInheritedRelationship": [],
+        "aliasIds": [],
+        "owningNamespace": null,
+        "ownedMember": [
+            {
+                "@id": "6c8c57fe-33c9-49e4-91e8-08e7f35dd1a8"
+            },
+            {
+                "@id": "98a231fa-99ef-4c1c-b0ea-15a34af924d4"
+            }
+        ],
+        "ownedMembership": [],
+        "ownedImport": [],
+        "member": []
     }
 ]

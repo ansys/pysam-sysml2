@@ -1,34 +1,100 @@
 [
     {
         "@type": "PartDefinition",
-        "@id": "41813a00-4bc1-49ac-af01-3725095a455a",
-        "identifier": "41813a00-4bc1-49ac-af01-3725095a455a",
+        "@id": "0c83deb2-7b75-4d49-9dbb-e1b99a44df50",
+        "identifier": "0c83deb2-7b75-4d49-9dbb-e1b99a44df50",
         "name": "PartDefinition",
-        "qualifiedName": "test-no-diagram::PartDefinition",
+        "ownedElement": [],
+        "ownedRelationship": [],
+        "qualifiedName": "project-2::PartDefinition",
         "owner": {
-            "@id": "bcadd609-9309-4704-9ece-27179def642a"
+            "@id": "e72a5e0e-8b63-495b-9bc9-aaef95a9843d"
         },
+        "ownedAnnotation": [],
+        "comment": [],
+        "documentation": [],
+        "visibility": "public",
+        "shortName": "",
+        "textualRepresentation": [],
+        "ownedInheritedRelationship": [],
+        "aliasIds": [],
         "owningNamespace": {
-            "@id": "bcadd609-9309-4704-9ece-27179def642a"
-        }
+            "@id": "e72a5e0e-8b63-495b-9bc9-aaef95a9843d"
+        },
+        "ownedMember": [],
+        "ownedMembership": [],
+        "ownedImport": [],
+        "member": [],
+        "ownedFeatureMembership": [],
+        "ownedEndFeature": [],
+        "isAbstract": false,
+        "multiplicity": null,
+        "isSufficient": false,
+        "ownedFeature": [],
+        "ownedSpecialization": [],
+        "directedFeature": [],
+        "feature": [],
+        "ownedSubclassification": [],
+        "superClassifier": [],
+        "ownedUsage": [],
+        "ownedPart": [],
+        "ownedPort": [],
+        "ownedItem": [],
+        "ownedInterface": [],
+        "ownedConstraint": [],
+        "ownedRequirement": [],
+        "ownedAttribute": [],
+        "ownedReference": [],
+        "ownedEnumeration": [],
+        "variantMembership": [],
+        "variant": [],
+        "isVariation": false,
+        "ownedOccurrence": [],
+        "ownedAction": [],
+        "ownedConnection": [],
+        "ownedFlow": [],
+        "ownedAllocation": [],
+        "ownedMetadata": [],
+        "ownedCalculation": [],
+        "ownedCase": [],
+        "ownedUseCase": [],
+        "ownedState": [],
+        "ownedTransition": [],
+        "ownedView": [],
+        "ownedAnalysisCase": [],
+        "ownedVerificationCase": [],
+        "isIndividual": false,
+        "lifeclass": null
     },
     {
         "@type": "Package",
-        "@id": "bcadd609-9309-4704-9ece-27179def642a",
-        "identifier": "bcadd609-9309-4704-9ece-27179def642a",
-        "owner": null,
-        "eAnnotations": [],
-        "name": "test-no-diagram",
+        "@id": "e72a5e0e-8b63-495b-9bc9-aaef95a9843d",
+        "identifier": "e72a5e0e-8b63-495b-9bc9-aaef95a9843d",
+        "name": "project-2",
         "ownedElement": [
             {
-                "@id": "41813a00-4bc1-49ac-af01-3725095a455a"
+                "@id": "0c83deb2-7b75-4d49-9dbb-e1b99a44df50"
             }
         ],
-        "qualifiedName": "test-no-diagram",
+        "ownedRelationship": [],
+        "qualifiedName": "project-2",
+        "owner": null,
+        "ownedAnnotation": [],
+        "comment": [],
+        "documentation": [],
+        "visibility": "public",
+        "shortName": "",
+        "textualRepresentation": [],
+        "ownedInheritedRelationship": [],
+        "aliasIds": [],
+        "owningNamespace": null,
         "ownedMember": [
             {
-                "@id": "41813a00-4bc1-49ac-af01-3725095a455a"
+                "@id": "0c83deb2-7b75-4d49-9dbb-e1b99a44df50"
             }
-        ]
+        ],
+        "ownedMembership": [],
+        "ownedImport": [],
+        "member": []
     }
 ]

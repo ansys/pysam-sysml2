@@ -47,7 +47,7 @@ class TestSysML2ProjectManagerScripting:
         manager = SysML2ProjectManager(connector)
         project = manager.get_scripting_project(PROJECT_ID_1)
         assert len(project.get_root()) == 1
-        assert project.get_root()[0]._name == "PySAMSysML2TestProject-COMPLET"
+        assert project.get_root()[0]._name == "project-1"
 
     def test_get_scripting_project_cached(self, connector):
         manager = SysML2ProjectManager(connector)
@@ -58,7 +58,7 @@ class TestSysML2ProjectManagerScripting:
     def test_create_scripting_project_duplicate(self, connector):
         manager = SysML2ProjectManager(connector)
         with pytest.raises(ProjectAlreadyExistsException):
-            manager.create_scripting_project("PySAMSysML2TestProject-COMPLET")
+            manager.create_scripting_project("project-1")
 
     def test_delete_project(self, connector):
         manager = SysML2ProjectManager(connector)
@@ -100,7 +100,7 @@ class TestSysML2ProjectManagerSysML:
         project = manager.get_sysml_project(PROJECT_ID_1)
         assert isinstance(project, Project)
         assert len(project.get_root()) == 1
-        assert project.get_root()[0].name == "PySAMSysML2TestProject-COMPLET"
+        assert project.get_root()[0].name == "project-1"
 
     def test_get_sysml_project_cached(self, connector):
         manager = SysML2ProjectManager(connector)
@@ -111,7 +111,7 @@ class TestSysML2ProjectManagerSysML:
     def test_create_sysml_project_duplicate(self, connector):
         manager = SysML2ProjectManager(connector)
         with pytest.raises(ProjectAlreadyExistsException):
-            manager.create_sysml_project("PySAMSysML2TestProject-COMPLET")
+            manager.create_sysml_project("project-1")
 
 
 class TestSysML2ProjectManagerEdgeCases:

@@ -9,7 +9,7 @@
                 "@id": "3e1037ad-d903-4596-b678-590f60c0132f"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeInheritance::",
+        "qualifiedName": "project-4::Usage::myBikeInheritance::",
         "owner": {
             "@id": "7fea8ee8-9d1e-493b-bf5a-db0ca50996a7"
         },
@@ -81,7 +81,7 @@
                 "@id": "39b27bdd-989f-44ba-8e88-30b0ce7ce186"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::frontWheel::rim",
+        "qualifiedName": "project-4::Structure::Bike::frontWheel::rim",
         "owner": {
             "@id": "beed917a-e83b-41dd-b3e2-ab7cb172044c"
         },
@@ -165,7 +165,7 @@
                 "@id": "0555f171-6cdc-4b56-96fb-3babf222af34"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::frontWheel::weight",
+        "qualifiedName": "project-4::Structure::Bike::frontWheel::weight",
         "owner": {
             "@id": "beed917a-e83b-41dd-b3e2-ab7cb172044c"
         },
@@ -219,7 +219,7 @@
         "@type": "Redefinition",
         "@id": "0555f171-6cdc-4b56-96fb-3babf222af34",
         "identifier": "0555f171-6cdc-4b56-96fb-3babf222af34",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::frontWheel::weight::",
+        "qualifiedName": "project-4::Structure::Bike::frontWheel::weight::",
         "owner": {
             "@id": "03ceb84d-24c1-488e-bef5-f856fa48f0e2"
         },
@@ -270,7 +270,7 @@
         "@type": "Redefinition",
         "@id": "0681bd6c-733b-48ee-9e42-3f4673809a9c",
         "identifier": "0681bd6c-733b-48ee-9e42-3f4673809a9c",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::",
         "owner": {
             "@id": "fea4c205-82fa-4861-93ae-39381eabe8d2"
         },
@@ -332,7 +332,7 @@
                 "@id": "276634c6-dd62-4b0c-a1a5-06ac92a71d82"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::rearWheel",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::rearWheel",
         "owner": {
             "@id": "a60fd0df-510d-4122-beca-40aca0ad5317"
         },
@@ -422,7 +422,7 @@
                 "@id": "e6cf3590-33d3-4536-8bb4-fc7fc87081b6"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::weightRedef::",
         "owner": {
             "@id": "afa19b46-4224-47a6-95e5-f718672973d8"
         },
@@ -468,7 +468,7 @@
         "@type": "Import",
         "@id": "0b0ef761-3903-440a-bd23-59bc674001be",
         "identifier": "0b0ef761-3903-440a-bd23-59bc674001be",
-        "qualifiedName": "OldProjectFormatForDefaultValues::",
+        "qualifiedName": "project-4::",
         "owner": {
             "@id": "35866c3a-e508-4685-9ee9-1a61c1435dce"
         },
@@ -501,7 +501,7 @@
         "@type": "Redefinition",
         "@id": "1070929b-042e-493f-b588-388fd3cb08a1",
         "identifier": "1070929b-042e-493f-b588-388fd3cb08a1",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::frontWheel::",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::frontWheel::",
         "owner": {
             "@id": "9ba19ac3-2ffb-4a2b-bbf4-1f50e999db7e"
         },
@@ -553,7 +553,7 @@
         "@id": "10f09bd6-9b97-40f7-a5c0-b89c88dc13e1",
         "identifier": "10f09bd6-9b97-40f7-a5c0-b89c88dc13e1",
         "name": "bike (part def) - rearWheelWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::bike (part def) - rearWheelWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::bike (part def) - rearWheelWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -577,7 +577,7 @@
                 "@id": "75e267fc-7bce-4d53-b1e9-9264b38e1864"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::tire::weightRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::tire::weightRedef",
         "owner": {
             "@id": "a4650da0-aa69-4672-9915-d8fde5fd0092"
         },
@@ -650,7 +650,7 @@
                 "@id": "eb27cfb8-e2f3-46c6-a660-55c80f810fc5"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike",
+        "qualifiedName": "project-4::Structure::Bike",
         "owner": {
             "@id": "71ee207c-3dd9-40e2-acc7-a3f9570921a0"
         },
@@ -759,7 +759,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "18e2820a-9f11-4c20-9190-e23516dba4c1",
         "identifier": "18e2820a-9f11-4c20-9190-e23516dba4c1",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefinedAndCorrected::weight::::",
+        "qualifiedName": "project-4::Usage::redefinedAndCorrected::weight::::",
         "owner": {
             "@id": "8dc79677-c3a9-4c7b-b429-765dc5a8222c"
         },
@@ -790,7 +790,7 @@
                 "@id": "fa3841a8-c21c-406d-9247-520416635817"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::Margin::",
+        "qualifiedName": "project-4::Requirements::weight::Margin::",
         "owner": {
             "@id": "ad184420-7bb3-4ac3-b7d6-9f35afe11323"
         },
@@ -836,7 +836,7 @@
         "@type": "LiteralString",
         "@id": "1cc1d962-c509-4802-ac36-86d4644fccb2",
         "identifier": "1cc1d962-c509-4802-ac36-86d4644fccb2",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::UpperMargin::::",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::UpperMargin::::",
         "owner": {
             "@id": "f0cdfcc2-61ce-4bb7-b209-97344c63febe"
         },
@@ -858,7 +858,7 @@
                 "@id": "24810b1d-51ae-4f99-8adc-87cecd9ef80a"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::frame::weight",
+        "qualifiedName": "project-4::Structure::Bike::frame::weight",
         "owner": {
             "@id": "bdd1ff93-72c0-48a1-ab70-0cb5f03e8e55"
         },
@@ -923,7 +923,7 @@
                 "@id": "b23c9f39-aa1d-43df-85f1-fe0713aad347"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::UpperMargin::",
+        "qualifiedName": "project-4::Requirements::weight::UpperMargin::",
         "owner": {
             "@id": "ea64ab0d-2806-4017-86c0-2632e35e3990"
         },
@@ -969,7 +969,7 @@
         "@type": "Redefinition",
         "@id": "24810b1d-51ae-4f99-8adc-87cecd9ef80a",
         "identifier": "24810b1d-51ae-4f99-8adc-87cecd9ef80a",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::frame::weight::",
+        "qualifiedName": "project-4::Structure::Bike::frame::weight::",
         "owner": {
             "@id": "233ab2e4-53ce-4ed5-bce9-b9428b7d9567"
         },
@@ -1020,7 +1020,7 @@
         "@type": "Redefinition",
         "@id": "276634c6-dd62-4b0c-a1a5-06ac92a71d82",
         "identifier": "276634c6-dd62-4b0c-a1a5-06ac92a71d82",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::rearWheel::",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::rearWheel::",
         "owner": {
             "@id": "0840491b-f0fe-4482-bd44-cb8e10de51d7"
         },
@@ -1079,7 +1079,7 @@
                 "@id": "ae1f098f-406c-48cc-988e-e18219371b2b"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Tire::weight::",
+        "qualifiedName": "project-4::Structure::Tire::weight::",
         "owner": {
             "@id": "8e506c58-c0c6-44cb-a81d-d9648c80ec7e"
         },
@@ -1125,7 +1125,7 @@
         "@type": "Redefinition",
         "@id": "3103ebc4-b2f2-4e65-b9ae-89f6e2d795c4",
         "identifier": "3103ebc4-b2f2-4e65-b9ae-89f6e2d795c4",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::rim::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::rim::",
         "owner": {
             "@id": "363d2105-6572-4597-8bda-2a0a22be8583"
         },
@@ -1201,7 +1201,7 @@
                 "@id": "73d718bb-26df-4d34-b196-ec417790d6cf"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage",
+        "qualifiedName": "project-4::Usage",
         "owner": {
             "@id": "35866c3a-e508-4685-9ee9-1a61c1435dce"
         },
@@ -1247,7 +1247,7 @@
                 "@id": "cbe8a603-db66-4971-b30e-f58feb3f7941"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::tire",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::tire",
         "owner": {
             "@id": "fea4c205-82fa-4861-93ae-39381eabe8d2"
         },
@@ -1316,7 +1316,7 @@
         "@type": "Redefinition",
         "@id": "34effaa4-5bdd-4980-b00e-f3e6beae1aae",
         "identifier": "34effaa4-5bdd-4980-b00e-f3e6beae1aae",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::tire::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::tire::",
         "owner": {
             "@id": "a4650da0-aa69-4672-9915-d8fde5fd0092"
         },
@@ -1369,7 +1369,7 @@
         "identifier": "35866c3a-e508-4685-9ee9-1a61c1435dce",
         "owner": null,
         "eAnnotations": [],
-        "name": "OldProjectFormatForDefaultValues",
+        "name": "project-4",
         "ownedElement": [
             {
                 "@id": "b065e577-ddf2-4d1b-8158-42f50f45892a"
@@ -1387,7 +1387,7 @@
                 "@id": "fee03c3b-49aa-46e6-9de3-426e98f97494"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues",
+        "qualifiedName": "project-4",
         "ownedMember": [
             {
                 "@id": "b065e577-ddf2-4d1b-8158-42f50f45892a"
@@ -1426,7 +1426,7 @@
                 "@id": "3103ebc4-b2f2-4e65-b9ae-89f6e2d795c4"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::rim",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::rim",
         "owner": {
             "@id": "fea4c205-82fa-4861-93ae-39381eabe8d2"
         },
@@ -1495,7 +1495,7 @@
         "@type": "Redefinition",
         "@id": "39b27bdd-989f-44ba-8e88-30b0ce7ce186",
         "identifier": "39b27bdd-989f-44ba-8e88-30b0ce7ce186",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::frontWheel::rim::",
+        "qualifiedName": "project-4::Structure::Bike::frontWheel::rim::",
         "owner": {
             "@id": "02bf5029-d4fd-4669-8185-3b021ee2a208"
         },
@@ -1546,7 +1546,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "3b3d53a5-73ed-464e-9b8e-c8fb5e7c20a9",
         "identifier": "3b3d53a5-73ed-464e-9b8e-c8fb5e7c20a9",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frame::weightRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frame::weightRedef::::",
         "owner": {
             "@id": "4562118a-8b41-437c-9e92-655e8e71d5ea"
         },
@@ -1569,7 +1569,7 @@
         "@type": "Redefinition",
         "@id": "3bfc3135-dd4a-42dd-a30f-c89c7deaafcf",
         "identifier": "3bfc3135-dd4a-42dd-a30f-c89c7deaafcf",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefined::weight::",
+        "qualifiedName": "project-4::Usage::redefined::weight::",
         "owner": {
             "@id": "9607db80-57d9-4ea0-8d9d-5ee1a7ac4004"
         },
@@ -1620,7 +1620,7 @@
         "@type": "LiteralString",
         "@id": "3ce85828-1920-48d1-8888-d7289794b2bf",
         "identifier": "3ce85828-1920-48d1-8888-d7289794b2bf",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::rearWheel::weight::::",
+        "qualifiedName": "project-4::Structure::Bike::rearWheel::weight::::",
         "owner": {
             "@id": "fbf6d013-013b-4ee8-be85-e0acfca85603"
         },
@@ -1641,7 +1641,7 @@
                 "@id": "d5737cb9-d54c-4ca2-868b-d635b60d9320"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::weightRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef::weightRedef",
         "owner": {
             "@id": "7ee6d9eb-bfa5-4512-b68b-eb6a803d861b"
         },
@@ -1698,7 +1698,7 @@
         "@type": "ReferenceSubsetting",
         "@id": "3e1037ad-d903-4596-b678-590f60c0132f",
         "identifier": "3e1037ad-d903-4596-b678-590f60c0132f",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeInheritance::::",
+        "qualifiedName": "project-4::Usage::myBikeInheritance::::",
         "owner": {
             "@id": "0089a61a-15c3-49c5-8462-ec0e4dd512f0"
         },
@@ -1749,7 +1749,7 @@
         "@type": "LiteralString",
         "@id": "42ca9a2c-095c-4137-8103-c588460b4960",
         "identifier": "42ca9a2c-095c-4137-8103-c588460b4960",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Frame::weight::::",
+        "qualifiedName": "project-4::Structure::Frame::weight::::",
         "owner": {
             "@id": "e07c71b3-be0a-42dc-857b-411036807a2f"
         },
@@ -1765,7 +1765,7 @@
         "@type": "Redefinition",
         "@id": "42e49f85-51d7-461a-83b3-e7824de23135",
         "identifier": "42e49f85-51d7-461a-83b3-e7824de23135",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::Is Satisfied::",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::Is Satisfied::",
         "owner": {
             "@id": "8d55a512-7501-41c6-b2a7-8e355aab6bf0"
         },
@@ -1825,7 +1825,7 @@
                 "@id": "61ad473b-bcb9-4298-ab63-fe73e144d4b8"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::tire::weightRedef::[",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::tire::weightRedef::[",
         "owner": {
             "@id": "15bfc879-2706-4306-ae9e-01e10fec14f1"
         },
@@ -1878,7 +1878,7 @@
                 "@id": "3b3d53a5-73ed-464e-9b8e-c8fb5e7c20a9"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frame::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frame::weightRedef::",
         "owner": {
             "@id": "9f49a340-74db-485b-b218-6352be50db01"
         },
@@ -1924,7 +1924,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "48dd0fa7-e977-4a0d-81f7-e9999694313d",
         "identifier": "48dd0fa7-e977-4a0d-81f7-e9999694313d",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Rim::weight::::",
+        "qualifiedName": "project-4::Structure::Rim::weight::::",
         "owner": {
             "@id": "8b43021a-2829-4976-b481-0fdec5367fef"
         },
@@ -1947,7 +1947,7 @@
         "@type": "Redefinition",
         "@id": "4a938ac5-1a56-41ba-8e1a-06dc9724ca82",
         "identifier": "4a938ac5-1a56-41ba-8e1a-06dc9724ca82",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frame::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frame::weightRedef::",
         "owner": {
             "@id": "9f49a340-74db-485b-b218-6352be50db01"
         },
@@ -1998,7 +1998,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "4fa29377-cd88-488d-a2f2-d1f5f61f2615",
         "identifier": "4fa29377-cd88-488d-a2f2-d1f5f61f2615",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Frame::weight::::",
+        "qualifiedName": "project-4::Structure::Frame::weight::::",
         "owner": {
             "@id": "e07c71b3-be0a-42dc-857b-411036807a2f"
         },
@@ -2021,7 +2021,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "52f77c25-5c89-4e40-b45f-6002d0ec4f6c",
         "identifier": "52f77c25-5c89-4e40-b45f-6002d0ec4f6c",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::weightRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::weightRedef::::",
         "owner": {
             "@id": "87cc64de-5f09-4b60-825c-5f398353ff49"
         },
@@ -2044,7 +2044,7 @@
         "@type": "Redefinition",
         "@id": "53d13c1b-51ae-40e0-9481-00e1e7ce0d91",
         "identifier": "53d13c1b-51ae-40e0-9481-00e1e7ce0d91",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::rim::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::rim::",
         "owner": {
             "@id": "dd2f6825-4132-4ba1-8bf6-35209e323f66"
         },
@@ -2095,7 +2095,7 @@
         "@type": "Redefinition",
         "@id": "540fb0c1-9898-48f6-9f53-2ad708629e93",
         "identifier": "540fb0c1-9898-48f6-9f53-2ad708629e93",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::weight::",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::weight::",
         "owner": {
             "@id": "904c4ab2-93f1-4029-b25b-d0e31310ce3e"
         },
@@ -2152,7 +2152,7 @@
                 "@id": "89cc8e5a-1da4-4923-aa74-5af6cc548b9c"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::frame::weightRedef",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::frame::weightRedef",
         "owner": {
             "@id": "7c21705d-42e0-48f6-b665-beb02216565e"
         },
@@ -2196,7 +2196,7 @@
         "@type": "Redefinition",
         "@id": "57727522-07ac-4bb2-9bba-7b4dd9ed85b1",
         "identifier": "57727522-07ac-4bb2-9bba-7b4dd9ed85b1",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::Margin::",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::Margin::",
         "owner": {
             "@id": "b189cb47-400a-482d-a3f3-530bef65454e"
         },
@@ -2248,7 +2248,7 @@
         "@id": "58aabad8-6349-4618-ba08-544326e74bdd",
         "identifier": "58aabad8-6349-4618-ba08-544326e74bdd",
         "name": "myBikeInheritance - rearWheelWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::myBikeInheritance - rearWheelWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::myBikeInheritance - rearWheelWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -2266,7 +2266,7 @@
         "@type": "Redefinition",
         "@id": "5bad7fc5-18f4-43a2-8465-f1e3bbe4bd2a",
         "identifier": "5bad7fc5-18f4-43a2-8465-f1e3bbe4bd2a",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::UpperMargin::",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::UpperMargin::",
         "owner": {
             "@id": "e616fd8c-9a4c-4141-a83c-f571fa62aba2"
         },
@@ -2329,7 +2329,7 @@
                 "@id": "ea64ab0d-2806-4017-86c0-2632e35e3990"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight",
+        "qualifiedName": "project-4::Requirements::weight",
         "owner": {
             "@id": "b065e577-ddf2-4d1b-8158-42f50f45892a"
         },
@@ -2401,7 +2401,7 @@
         "@type": "LiteralString",
         "@id": "5c875edd-3e18-480a-9dee-094dff7322d8",
         "identifier": "5c875edd-3e18-480a-9dee-094dff7322d8",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefinedAndCorrected::weight::::",
+        "qualifiedName": "project-4::Usage::redefinedAndCorrected::weight::::",
         "owner": {
             "@id": "8dc79677-c3a9-4c7b-b429-765dc5a8222c"
         },
@@ -2419,7 +2419,7 @@
         "identifier": "5d06b442-5c81-4efb-860a-fc7144655f7f",
         "eAnnotations": [],
         "name": "rim",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Wheel::rim",
+        "qualifiedName": "project-4::Structure::Wheel::rim",
         "owner": {
             "@id": "5e2de320-72c7-4971-a9a4-b948398b94b2"
         },
@@ -2487,7 +2487,7 @@
                 "@id": "a0c5a9ce-b59c-424a-a143-77120c614383"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Wheel",
+        "qualifiedName": "project-4::Structure::Wheel",
         "owner": {
             "@id": "71ee207c-3dd9-40e2-acc7-a3f9570921a0"
         },
@@ -2575,7 +2575,7 @@
         "@id": "5fd38c95-8b2d-46f9-ab79-3b0d781b47e7",
         "identifier": "5fd38c95-8b2d-46f9-ab79-3b0d781b47e7",
         "name": "Is Satisfied",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::Is Satisfied",
+        "qualifiedName": "project-4::Requirements::weight::Is Satisfied",
         "owner": {
             "@id": "5c48767d-ae69-4ec6-93da-4dfc969078a6"
         },
@@ -2618,7 +2618,7 @@
                 "@id": "674258e2-6b96-42c3-a6ee-2c34dc9dfc5b"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlan",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlan",
         "owner": {
             "@id": "fee03c3b-49aa-46e6-9de3-426e98f97494"
         },
@@ -2655,7 +2655,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "61ad473b-bcb9-4298-ab63-fe73e144d4b8",
         "identifier": "61ad473b-bcb9-4298-ab63-fe73e144d4b8",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::tire::weightRedef::[::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::tire::weightRedef::[::",
         "owner": {
             "@id": "4542ae35-5678-4d65-9f8a-293e7188f028"
         },
@@ -2678,7 +2678,7 @@
         "@type": "Redefinition",
         "@id": "61df2f75-be16-4763-a6a1-e5e4b857d49f",
         "identifier": "61df2f75-be16-4763-a6a1-e5e4b857d49f",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::rearWheel::weight::",
+        "qualifiedName": "project-4::Structure::Bike::rearWheel::weight::",
         "owner": {
             "@id": "e10509d5-028e-4d08-8453-060ee0c57f9b"
         },
@@ -2729,7 +2729,7 @@
         "@type": "LiteralReal",
         "@id": "65076d9c-08e7-42c6-af3f-d379067cbb61",
         "identifier": "65076d9c-08e7-42c6-af3f-d379067cbb61",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::BikeTestAlexLuc::NewWeight::[::",
+        "qualifiedName": "project-4::Usage::BikeTestAlexLuc::NewWeight::[::",
         "owner": {
             "@id": "bb848fef-9b88-4d18-9701-fb34773a552f"
         },
@@ -2745,7 +2745,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "65e98125-a453-45f0-a4a6-fbf2f7589ca4",
         "identifier": "65e98125-a453-45f0-a4a6-fbf2f7589ca4",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::UpperMargin::::",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::UpperMargin::::",
         "owner": {
             "@id": "f0cdfcc2-61ce-4bb7-b209-97344c63febe"
         },
@@ -2769,7 +2769,7 @@
         "@id": "66e4abae-564c-43ac-a69e-675b3cec28d1",
         "identifier": "66e4abae-564c-43ac-a69e-675b3cec28d1",
         "name": "default2",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlanResults::default2",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlanResults::default2",
         "owner": {
             "@id": "a2dede70-2e7b-4782-906c-e01a9ab5d52e"
         },
@@ -2788,7 +2788,7 @@
         "@id": "674258e2-6b96-42c3-a6ee-2c34dc9dfc5b",
         "identifier": "674258e2-6b96-42c3-a6ee-2c34dc9dfc5b",
         "name": "myBikeRedef",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlan::myBikeRedef",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlan::myBikeRedef",
         "owner": {
             "@id": "6096f22a-3c2c-4bd7-a8be-adce9ebab667"
         },
@@ -2817,7 +2817,7 @@
                 "@id": "e5996d8a-cea6-40e3-90ea-1789072eead1"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frame",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frame",
         "owner": {
             "@id": "7ee6d9eb-bfa5-4512-b68b-eb6a803d861b"
         },
@@ -2887,7 +2887,7 @@
         "@id": "6b6d0ab5-ef99-4096-a3a4-b8e1955d74b8",
         "identifier": "6b6d0ab5-ef99-4096-a3a4-b8e1955d74b8",
         "name": "variant1",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlanResults::variant1",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlanResults::variant1",
         "owner": {
             "@id": "a2dede70-2e7b-4782-906c-e01a9ab5d52e"
         },
@@ -2911,7 +2911,7 @@
                 "@id": "f50e9360-7963-4032-8e65-5123e7563ad9"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::rearWheel::weightRedef",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::rearWheel::weightRedef",
         "owner": {
             "@id": "0840491b-f0fe-4482-bd44-cb8e10de51d7"
         },
@@ -2955,7 +2955,7 @@
         "@type": "LiteralReal",
         "@id": "6e07ba9a-d41b-499c-abd8-4a6dacbd7b31",
         "identifier": "6e07ba9a-d41b-499c-abd8-4a6dacbd7b31",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::rim::weightRedef::[::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::rim::weightRedef::[::",
         "owner": {
             "@id": "f1c3a7fd-f595-4ba4-bc24-2b6f8f723cb7"
         },
@@ -2971,7 +2971,7 @@
         "@type": "Redefinition",
         "@id": "6e1662c7-9ff6-4bfa-a00c-4cfdb6fea023",
         "identifier": "6e1662c7-9ff6-4bfa-a00c-4cfdb6fea023",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::weightRedef::",
         "owner": {
             "@id": "73d2ea7d-43ff-48a2-ba1e-20f0a7d26178"
         },
@@ -3023,7 +3023,7 @@
         "@id": "6face56b-5253-4894-8b73-dbcbf50efdb3",
         "identifier": "6face56b-5253-4894-8b73-dbcbf50efdb3",
         "name": "variant2",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlanResults::variant2",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlanResults::variant2",
         "owner": {
             "@id": "a2dede70-2e7b-4782-906c-e01a9ab5d52e"
         },
@@ -3060,7 +3060,7 @@
                 "@id": "a3b7aad5-f5e3-448e-a728-5732551bdbba"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure",
+        "qualifiedName": "project-4::Structure",
         "owner": {
             "@id": "35866c3a-e508-4685-9ee9-1a61c1435dce"
         },
@@ -3089,7 +3089,7 @@
         "@type": "Redefinition",
         "@id": "724815a0-a1ca-4e73-aeea-f85407fac1f2",
         "identifier": "724815a0-a1ca-4e73-aeea-f85407fac1f2",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::tire::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::tire::weightRedef::",
         "owner": {
             "@id": "86c37a40-7010-4709-b017-dc4f67db5acf"
         },
@@ -3141,7 +3141,7 @@
         "@id": "7295eeb8-5909-45fb-90e2-7071f88268fd",
         "identifier": "7295eeb8-5909-45fb-90e2-7071f88268fd",
         "name": "bike (part def) - frontWheelWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::bike (part def) - frontWheelWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::bike (part def) - frontWheelWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -3165,7 +3165,7 @@
                 "@id": "6e1662c7-9ff6-4bfa-a00c-4cfdb6fea023"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::weightRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::weightRedef",
         "owner": {
             "@id": "76af4637-3c80-43bb-8901-5503be3d986e"
         },
@@ -3228,7 +3228,7 @@
                 "@id": "b06eb940-99f7-4c73-a563-ecf3b9fd282c"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefinedAndCorrected",
+        "qualifiedName": "project-4::Usage::redefinedAndCorrected",
         "owner": {
             "@id": "32e953a2-ec06-4876-bf6d-c7eb7c2cfc35"
         },
@@ -3300,7 +3300,7 @@
         "@type": "LiteralString",
         "@id": "74937a83-3cf8-4083-9c23-6a5f630cacbc",
         "identifier": "74937a83-3cf8-4083-9c23-6a5f630cacbc",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::weightRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::weightRedef::::",
         "owner": {
             "@id": "09f2315f-c4a9-48c3-8671-442f292d4aaf"
         },
@@ -3317,7 +3317,7 @@
         "@id": "74f5569d-96fe-4b9d-9bf9-3df72ddecc6b",
         "identifier": "74f5569d-96fe-4b9d-9bf9-3df72ddecc6b",
         "name": "default1",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlanResults::default1",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlanResults::default1",
         "owner": {
             "@id": "a2dede70-2e7b-4782-906c-e01a9ab5d52e"
         },
@@ -3335,7 +3335,7 @@
         "@type": "Redefinition",
         "@id": "75e267fc-7bce-4d53-b1e9-9264b38e1864",
         "identifier": "75e267fc-7bce-4d53-b1e9-9264b38e1864",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::tire::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::tire::weightRedef::",
         "owner": {
             "@id": "15bfc879-2706-4306-ae9e-01e10fec14f1"
         },
@@ -3403,7 +3403,7 @@
                 "@id": "98139b43-c4ec-48d3-8c0c-08e64d17b778"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel",
         "owner": {
             "@id": "7ee6d9eb-bfa5-4512-b68b-eb6a803d861b"
         },
@@ -3528,7 +3528,7 @@
         "@id": "79bf8155-8e39-48bc-a9f7-c13e6700cb07",
         "identifier": "79bf8155-8e39-48bc-a9f7-c13e6700cb07",
         "name": "myBikeInheritance - bikeWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::myBikeInheritance - bikeWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::myBikeInheritance - bikeWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -3548,7 +3548,7 @@
         "identifier": "7adf2bc2-389e-4b9a-a110-0f2f3efcec85",
         "eAnnotations": [],
         "name": "tire",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Wheel::tire",
+        "qualifiedName": "project-4::Structure::Wheel::tire",
         "owner": {
             "@id": "5e2de320-72c7-4971-a9a4-b948398b94b2"
         },
@@ -3614,7 +3614,7 @@
                 "@id": "f74a0654-99be-4d33-a1d4-4d7cc61c4a54"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::frame",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::frame",
         "owner": {
             "@id": "a60fd0df-510d-4122-beca-40aca0ad5317"
         },
@@ -3701,7 +3701,7 @@
                 "@id": "6a7ad12b-6e72-4eaa-9975-aca069dccf90"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef",
         "owner": {
             "@id": "32e953a2-ec06-4876-bf6d-c7eb7c2cfc35"
         },
@@ -3873,7 +3873,7 @@
                 "@id": "0089a61a-15c3-49c5-8462-ec0e4dd512f0"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeInheritance",
+        "qualifiedName": "project-4::Usage::myBikeInheritance",
         "owner": {
             "@id": "32e953a2-ec06-4876-bf6d-c7eb7c2cfc35"
         },
@@ -3980,7 +3980,7 @@
         "@type": "Redefinition",
         "@id": "84311f85-1bf7-4e96-b905-3f3294ec44da",
         "identifier": "84311f85-1bf7-4e96-b905-3f3294ec44da",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefinedAndCorrected::weight::",
+        "qualifiedName": "project-4::Usage::redefinedAndCorrected::weight::",
         "owner": {
             "@id": "b06eb940-99f7-4c73-a563-ecf3b9fd282c"
         },
@@ -4038,7 +4038,7 @@
                 "@id": "dd96f36d-7793-438e-8819-fbff5b07056e"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Frame",
+        "qualifiedName": "project-4::Structure::Frame",
         "owner": {
             "@id": "71ee207c-3dd9-40e2-acc7-a3f9570921a0"
         },
@@ -4083,7 +4083,7 @@
                 "@id": "724815a0-a1ca-4e73-aeea-f85407fac1f2"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::tire::weightRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::tire::weightRedef",
         "owner": {
             "@id": "345a6ba3-29de-486a-845b-4c5b2216fece"
         },
@@ -4140,7 +4140,7 @@
         "@type": "Redefinition",
         "@id": "87351366-c108-4f39-921f-9ef20322dc69",
         "identifier": "87351366-c108-4f39-921f-9ef20322dc69",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::weightRedef::",
         "owner": {
             "@id": "afa19b46-4224-47a6-95e5-f718672973d8"
         },
@@ -4199,7 +4199,7 @@
                 "@id": "52f77c25-5c89-4e40-b45f-6002d0ec4f6c"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::weightRedef::",
         "owner": {
             "@id": "3d53e08e-c302-49e2-8d2c-759a267047f9"
         },
@@ -4245,7 +4245,7 @@
         "@type": "Redefinition",
         "@id": "89cc8e5a-1da4-4923-aa74-5af6cc548b9c",
         "identifier": "89cc8e5a-1da4-4923-aa74-5af6cc548b9c",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::frame::weightRedef::",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::frame::weightRedef::",
         "owner": {
             "@id": "5445b858-a3e4-4ae2-ab86-e2fc00b469fc"
         },
@@ -4304,7 +4304,7 @@
                 "@id": "48dd0fa7-e977-4a0d-81f7-e9999694313d"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Rim::weight::",
+        "qualifiedName": "project-4::Structure::Rim::weight::",
         "owner": {
             "@id": "a7be574b-8893-41c1-a098-ebd6189e3c82"
         },
@@ -4356,7 +4356,7 @@
                 "@id": "42e49f85-51d7-461a-83b3-e7824de23135"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::Is Satisfied",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::Is Satisfied",
         "owner": {
             "@id": "ed0d5cb9-69e8-41b9-9c1f-76b4822d8df7"
         },
@@ -4405,7 +4405,7 @@
                 "@id": "18e2820a-9f11-4c20-9190-e23516dba4c1"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefinedAndCorrected::weight::",
+        "qualifiedName": "project-4::Usage::redefinedAndCorrected::weight::",
         "owner": {
             "@id": "b06eb940-99f7-4c73-a563-ecf3b9fd282c"
         },
@@ -4457,7 +4457,7 @@
                 "@id": "9607db80-57d9-4ea0-8d9d-5ee1a7ac4004"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefined",
+        "qualifiedName": "project-4::Usage::redefined",
         "owner": {
             "@id": "32e953a2-ec06-4876-bf6d-c7eb7c2cfc35"
         },
@@ -4531,7 +4531,7 @@
         "identifier": "8e506c58-c0c6-44cb-a81d-d9648c80ec7e",
         "eAnnotations": [],
         "name": "weight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Tire::weight",
+        "qualifiedName": "project-4::Structure::Tire::weight",
         "owner": {
             "@id": "a3b7aad5-f5e3-448e-a728-5732551bdbba"
         },
@@ -4571,7 +4571,7 @@
                 "@id": "540fb0c1-9898-48f6-9f53-2ad708629e93"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::weight",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::weight",
         "owner": {
             "@id": "a60fd0df-510d-4122-beca-40aca0ad5317"
         },
@@ -4618,7 +4618,7 @@
                 "@id": "935d8c38-3a1e-48d3-b8cc-06a5161d7e57"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::BikeTestAlexLuc::NewWeight",
+        "qualifiedName": "project-4::Usage::BikeTestAlexLuc::NewWeight",
         "owner": {
             "@id": "941c4e3d-a3ab-44a9-9685-380e6b8f9ac8"
         },
@@ -4675,7 +4675,7 @@
         "@type": "Redefinition",
         "@id": "935d8c38-3a1e-48d3-b8cc-06a5161d7e57",
         "identifier": "935d8c38-3a1e-48d3-b8cc-06a5161d7e57",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::BikeTestAlexLuc::NewWeight::",
+        "qualifiedName": "project-4::Usage::BikeTestAlexLuc::NewWeight::",
         "owner": {
             "@id": "92a4cde9-58a4-45d4-bc8e-d5ab17bbe0de"
         },
@@ -4727,7 +4727,7 @@
         "@id": "937abdb6-883c-4bad-ae84-16e2be437713",
         "identifier": "937abdb6-883c-4bad-ae84-16e2be437713",
         "name": "bike (part def) - bikeWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::bike (part def) - bikeWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::bike (part def) - bikeWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -4754,7 +4754,7 @@
                 "@id": "bc34e89e-e7a4-4d99-bd2f-7098c0a514d0"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::BikeTestAlexLuc",
+        "qualifiedName": "project-4::Usage::BikeTestAlexLuc",
         "owner": {
             "@id": "32e953a2-ec06-4876-bf6d-c7eb7c2cfc35"
         },
@@ -4878,7 +4878,7 @@
                 "@id": "3bfc3135-dd4a-42dd-a30f-c89c7deaafcf"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefined::weight",
+        "qualifiedName": "project-4::Usage::redefined::weight",
         "owner": {
             "@id": "8e419123-e0cb-4b1a-869d-0961be1a8b53"
         },
@@ -4922,7 +4922,7 @@
         "@type": "Redefinition",
         "@id": "98139b43-c4ec-48d3-8c0c-08e64d17b778",
         "identifier": "98139b43-c4ec-48d3-8c0c-08e64d17b778",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::",
         "owner": {
             "@id": "76af4637-3c80-43bb-8901-5503be3d986e"
         },
@@ -4984,7 +4984,7 @@
                 "@id": "1070929b-042e-493f-b588-388fd3cb08a1"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::frontWheel",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::frontWheel",
         "owner": {
             "@id": "a60fd0df-510d-4122-beca-40aca0ad5317"
         },
@@ -5066,7 +5066,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "9dbea39a-751b-4ff3-94f5-a7484dfc5d2f",
         "identifier": "9dbea39a-751b-4ff3-94f5-a7484dfc5d2f",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::rim::weightRedef::[::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::rim::weightRedef::[::",
         "owner": {
             "@id": "c07a3044-a1ca-4250-9cbb-3f48255d236e"
         },
@@ -5095,7 +5095,7 @@
                 "@id": "4a938ac5-1a56-41ba-8e1a-06dc9724ca82"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frame::weightRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frame::weightRedef",
         "owner": {
             "@id": "6a7ad12b-6e72-4eaa-9975-aca069dccf90"
         },
@@ -5154,7 +5154,7 @@
         "identifier": "a0c5a9ce-b59c-424a-a143-77120c614383",
         "eAnnotations": [],
         "name": "weight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Wheel::weight",
+        "qualifiedName": "project-4::Structure::Wheel::weight",
         "owner": {
             "@id": "5e2de320-72c7-4971-a9a4-b948398b94b2"
         },
@@ -5203,7 +5203,7 @@
                 "@id": "6face56b-5253-4894-8b73-dbcbf50efdb3"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlanResults",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlanResults",
         "owner": {
             "@id": "fee03c3b-49aa-46e6-9de3-426e98f97494"
         },
@@ -5259,7 +5259,7 @@
                 "@id": "8e506c58-c0c6-44cb-a81d-d9648c80ec7e"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Tire",
+        "qualifiedName": "project-4::Structure::Tire",
         "owner": {
             "@id": "71ee207c-3dd9-40e2-acc7-a3f9570921a0"
         },
@@ -5309,7 +5309,7 @@
                 "@id": "34effaa4-5bdd-4980-b00e-f3e6beae1aae"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::tire",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::tire",
         "owner": {
             "@id": "76af4637-3c80-43bb-8901-5503be3d986e"
         },
@@ -5384,7 +5384,7 @@
                 "@id": "c6835645-39a9-4531-8787-e138bb5b18be"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::rim::weightRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::rim::weightRedef",
         "owner": {
             "@id": "363d2105-6572-4597-8bda-2a0a22be8583"
         },
@@ -5456,7 +5456,7 @@
                 "@id": "9ba19ac3-2ffb-4a2b-bbf4-1f50e999db7e"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4",
         "owner": {
             "@id": "32e953a2-ec06-4876-bf6d-c7eb7c2cfc35"
         },
@@ -5597,7 +5597,7 @@
         "@type": "LiteralReal",
         "@id": "a64523cb-ae4b-4d2f-ba45-4fbdf629b0e8",
         "identifier": "a64523cb-ae4b-4d2f-ba45-4fbdf629b0e8",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::tire::weightRedef::[::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::tire::weightRedef::[::",
         "owner": {
             "@id": "c68d9d08-d973-4298-8cc5-04872d3b3e2d"
         },
@@ -5646,7 +5646,7 @@
                 "@id": "79bf8155-8e39-48bc-a9f7-c13e6700cb07"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses",
+        "qualifiedName": "project-4::ModelCenter::Analyses",
         "owner": {
             "@id": "fee03c3b-49aa-46e6-9de3-426e98f97494"
         },
@@ -5727,7 +5727,7 @@
         "identifier": "a7be574b-8893-41c1-a098-ebd6189e3c82",
         "eAnnotations": [],
         "name": "weight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Rim::weight",
+        "qualifiedName": "project-4::Structure::Rim::weight",
         "owner": {
             "@id": "e95cdb61-75ab-4d8f-9075-78e0fe8cbd8e"
         },
@@ -5761,7 +5761,7 @@
         "@type": "LiteralString",
         "@id": "a90bde1a-6abd-440b-9fa2-1be569c2eb47",
         "identifier": "a90bde1a-6abd-440b-9fa2-1be569c2eb47",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::weightRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::weightRedef::::",
         "owner": {
             "@id": "87cc64de-5f09-4b60-825c-5f398353ff49"
         },
@@ -5778,7 +5778,7 @@
         "@id": "aaba596b-4f1a-4935-b41b-eaf17c5a42f8",
         "identifier": "aaba596b-4f1a-4935-b41b-eaf17c5a42f8",
         "name": "myBikeRedef - rearWheelWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::myBikeRedef - rearWheelWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::myBikeRedef - rearWheelWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -5796,7 +5796,7 @@
         "@type": "LiteralString",
         "@id": "ab25a700-1c23-4fca-8dec-368ac748a29c",
         "identifier": "ab25a700-1c23-4fca-8dec-368ac748a29c",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Tire::weight::::",
+        "qualifiedName": "project-4::Structure::Tire::weight::::",
         "owner": {
             "@id": "305f8ed9-19d0-4999-a9ec-1f5b2a2eaeba"
         },
@@ -5812,7 +5812,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "ab455fb6-a2b1-4ae4-b10e-9b3bf30410e2",
         "identifier": "ab455fb6-a2b1-4ae4-b10e-9b3bf30410e2",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::tire::weightRedef::[::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::tire::weightRedef::[::",
         "owner": {
             "@id": "c68d9d08-d973-4298-8cc5-04872d3b3e2d"
         },
@@ -5836,7 +5836,7 @@
         "@id": "ad184420-7bb3-4ac3-b7d6-9f35afe11323",
         "identifier": "ad184420-7bb3-4ac3-b7d6-9f35afe11323",
         "name": "Margin",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::Margin",
+        "qualifiedName": "project-4::Requirements::weight::Margin",
         "owner": {
             "@id": "5c48767d-ae69-4ec6-93da-4dfc969078a6"
         },
@@ -5870,7 +5870,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "ae1f098f-406c-48cc-988e-e18219371b2b",
         "identifier": "ae1f098f-406c-48cc-988e-e18219371b2b",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Tire::weight::::",
+        "qualifiedName": "project-4::Structure::Tire::weight::::",
         "owner": {
             "@id": "305f8ed9-19d0-4999-a9ec-1f5b2a2eaeba"
         },
@@ -5894,7 +5894,7 @@
         "@id": "ae5ef7c4-1043-4e00-8482-5ae047f32048",
         "identifier": "ae5ef7c4-1043-4e00-8482-5ae047f32048",
         "name": "inherited",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::inherited",
+        "qualifiedName": "project-4::Usage::inherited",
         "owner": {
             "@id": "32e953a2-ec06-4876-bf6d-c7eb7c2cfc35"
         },
@@ -5955,7 +5955,7 @@
                 "@id": "87351366-c108-4f39-921f-9ef20322dc69"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::weightRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::weightRedef",
         "owner": {
             "@id": "fea4c205-82fa-4861-93ae-39381eabe8d2"
         },
@@ -6020,7 +6020,7 @@
                 "@id": "eba081ca-59c5-411d-a31a-a606450b2fdf"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::weightRedef::",
         "owner": {
             "@id": "73d2ea7d-43ff-48a2-ba1e-20f0a7d26178"
         },
@@ -6078,7 +6078,7 @@
                 "@id": "fbd3c439-0bf8-44c2-8cd4-571efc973bae"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements",
+        "qualifiedName": "project-4::Requirements",
         "owner": {
             "@id": "35866c3a-e508-4685-9ee9-1a61c1435dce"
         },
@@ -6107,7 +6107,7 @@
                 "@id": "84311f85-1bf7-4e96-b905-3f3294ec44da"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::redefinedAndCorrected::weight",
+        "qualifiedName": "project-4::Usage::redefinedAndCorrected::weight",
         "owner": {
             "@id": "73d718bb-26df-4d34-b196-ec417790d6cf"
         },
@@ -6164,7 +6164,7 @@
         "@type": "LiteralReal",
         "@id": "b0eb97bc-4e30-4f93-b040-cb9042d0401a",
         "identifier": "b0eb97bc-4e30-4f93-b040-cb9042d0401a",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::rim::weightRedef::[::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::rim::weightRedef::[::",
         "owner": {
             "@id": "c07a3044-a1ca-4250-9cbb-3f48255d236e"
         },
@@ -6186,7 +6186,7 @@
                 "@id": "57727522-07ac-4bb2-9bba-7b4dd9ed85b1"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::Margin",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::Margin",
         "owner": {
             "@id": "ed0d5cb9-69e8-41b9-9c1f-76b4822d8df7"
         },
@@ -6230,7 +6230,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "b23c9f39-aa1d-43df-85f1-fe0713aad347",
         "identifier": "b23c9f39-aa1d-43df-85f1-fe0713aad347",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::UpperMargin::::",
+        "qualifiedName": "project-4::Requirements::weight::UpperMargin::::",
         "owner": {
             "@id": "23ff8fca-09b4-41fc-8f77-90efa34c8457"
         },
@@ -6253,7 +6253,7 @@
         "@type": "Redefinition",
         "@id": "b78b3c45-0ef0-4459-af48-b32961693dc0",
         "identifier": "b78b3c45-0ef0-4459-af48-b32961693dc0",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::rim::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::rim::weightRedef::",
         "owner": {
             "@id": "b83e5def-2104-4870-a7e3-fe6fb0b385ab"
         },
@@ -6310,7 +6310,7 @@
                 "@id": "b78b3c45-0ef0-4459-af48-b32961693dc0"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::rim::weightRedef",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::rim::weightRedef",
         "owner": {
             "@id": "dd2f6825-4132-4ba1-8bf6-35209e323f66"
         },
@@ -6367,7 +6367,7 @@
         "@type": "LiteralString",
         "@id": "b8c61757-cd68-475d-8079-1a895122edfb",
         "identifier": "b8c61757-cd68-475d-8079-1a895122edfb",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frame::weightRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frame::weightRedef::::",
         "owner": {
             "@id": "4562118a-8b41-437c-9e92-655e8e71d5ea"
         },
@@ -6383,7 +6383,7 @@
         "@type": "LiteralString",
         "@id": "b9779cf1-aee8-4f9b-88bb-18d87b974611",
         "identifier": "b9779cf1-aee8-4f9b-88bb-18d87b974611",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::Margin::::",
+        "qualifiedName": "project-4::Requirements::weight::Margin::::",
         "owner": {
             "@id": "1bea884a-d2ba-4c5c-ada7-85581c9056a3"
         },
@@ -6408,7 +6408,7 @@
                 "@id": "f58e699c-0fee-48b6-acfd-0a19f03a33eb"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::BikeTestAlexLuc::NewWeight::[",
+        "qualifiedName": "project-4::Usage::BikeTestAlexLuc::NewWeight::[",
         "owner": {
             "@id": "92a4cde9-58a4-45d4-bc8e-d5ab17bbe0de"
         },
@@ -6454,7 +6454,7 @@
         "@id": "bc34e89e-e7a4-4d99-bd2f-7098c0a514d0",
         "identifier": "bc34e89e-e7a4-4d99-bd2f-7098c0a514d0",
         "name": "requirement",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::BikeTestAlexLuc::requirement",
+        "qualifiedName": "project-4::Usage::BikeTestAlexLuc::requirement",
         "owner": {
             "@id": "941c4e3d-a3ab-44a9-9685-380e6b8f9ac8"
         },
@@ -6472,7 +6472,7 @@
         "@id": "bc9e8c6d-f9aa-4382-9d5e-659ff97be4d7",
         "identifier": "bc9e8c6d-f9aa-4382-9d5e-659ff97be4d7",
         "name": "myBikeRedef - bikeWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::myBikeRedef - bikeWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::myBikeRedef - bikeWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -6497,7 +6497,7 @@
                 "@id": "233ab2e4-53ce-4ed5-bce9-b9428b7d9567"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::frame",
+        "qualifiedName": "project-4::Structure::Bike::frame",
         "owner": {
             "@id": "168054e3-dadf-4d4a-b254-fb10b75b1e08"
         },
@@ -6579,7 +6579,7 @@
                 "@id": "02bf5029-d4fd-4669-8185-3b021ee2a208"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::frontWheel",
+        "qualifiedName": "project-4::Structure::Bike::frontWheel",
         "owner": {
             "@id": "168054e3-dadf-4d4a-b254-fb10b75b1e08"
         },
@@ -6686,7 +6686,7 @@
         "@id": "bf79f2cd-10bb-4bbe-9da0-326b3541e779",
         "identifier": "bf79f2cd-10bb-4bbe-9da0-326b3541e779",
         "name": "myBikeRedef - frontWheelWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::myBikeRedef - frontWheelWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::myBikeRedef - frontWheelWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -6711,7 +6711,7 @@
                 "@id": "e10509d5-028e-4d08-8453-060ee0c57f9b"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::rearWheel",
+        "qualifiedName": "project-4::Structure::Bike::rearWheel",
         "owner": {
             "@id": "168054e3-dadf-4d4a-b254-fb10b75b1e08"
         },
@@ -6805,7 +6805,7 @@
                 "@id": "9dbea39a-751b-4ff3-94f5-a7484dfc5d2f"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::rim::weightRedef::[",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::rim::weightRedef::[",
         "owner": {
             "@id": "a5554dff-d6b9-44bf-9d78-e61429ec130d"
         },
@@ -6850,7 +6850,7 @@
         "@type": "LiteralString",
         "@id": "c3a77b18-aae8-485f-83b2-dd9587052211",
         "identifier": "c3a77b18-aae8-485f-83b2-dd9587052211",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::UpperMargin::::",
+        "qualifiedName": "project-4::Requirements::weight::UpperMargin::::",
         "owner": {
             "@id": "23ff8fca-09b4-41fc-8f77-90efa34c8457"
         },
@@ -6866,7 +6866,7 @@
         "@type": "Redefinition",
         "@id": "c6835645-39a9-4531-8787-e138bb5b18be",
         "identifier": "c6835645-39a9-4531-8787-e138bb5b18be",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::rim::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::rim::weightRedef::",
         "owner": {
             "@id": "a5554dff-d6b9-44bf-9d78-e61429ec130d"
         },
@@ -6926,7 +6926,7 @@
                 "@id": "ab455fb6-a2b1-4ae4-b10e-9b3bf30410e2"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::tire::weightRedef::[",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::tire::weightRedef::[",
         "owner": {
             "@id": "86c37a40-7010-4709-b017-dc4f67db5acf"
         },
@@ -6972,7 +6972,7 @@
         "@id": "ca8665a0-fdcf-4390-b688-749de2b8b0c7",
         "identifier": "ca8665a0-fdcf-4390-b688-749de2b8b0c7",
         "name": "Bike (part def)",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlan::Bike (part def)",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlan::Bike (part def)",
         "owner": {
             "@id": "6096f22a-3c2c-4bd7-a8be-adce9ebab667"
         },
@@ -6991,7 +6991,7 @@
         "@id": "cbc9dc45-09ff-4097-9c40-e0ab16c14b35",
         "identifier": "cbc9dc45-09ff-4097-9c40-e0ab16c14b35",
         "name": "Rectangle_Alex_LUC",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::Rectangle_Alex_LUC",
+        "qualifiedName": "project-4::ModelCenter::Analyses::Rectangle_Alex_LUC",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -7009,7 +7009,7 @@
         "@type": "Redefinition",
         "@id": "cbe8a603-db66-4971-b30e-f58feb3f7941",
         "identifier": "cbe8a603-db66-4971-b30e-f58feb3f7941",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::tire::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::tire::",
         "owner": {
             "@id": "345a6ba3-29de-486a-845b-4c5b2216fece"
         },
@@ -7060,7 +7060,7 @@
         "@type": "LiteralReal",
         "@id": "ce05fcd7-ac83-4fdc-9f25-390e5feb90e1",
         "identifier": "ce05fcd7-ac83-4fdc-9f25-390e5feb90e1",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::tire::weightRedef::[::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::tire::weightRedef::[::",
         "owner": {
             "@id": "4542ae35-5678-4d65-9f8a-293e7188f028"
         },
@@ -7077,7 +7077,7 @@
         "@id": "d1bc9e62-d1a6-4031-a3ab-9afd5f83d02d",
         "identifier": "d1bc9e62-d1a6-4031-a3ab-9afd5f83d02d",
         "name": "default",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlanResults::default",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlanResults::default",
         "owner": {
             "@id": "a2dede70-2e7b-4782-906c-e01a9ab5d52e"
         },
@@ -7101,7 +7101,7 @@
                 "@id": "fd507c22-1705-4bf7-8475-5f25674ffd3b"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::frontWheel::weight",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::frontWheel::weight",
         "owner": {
             "@id": "9ba19ac3-2ffb-4a2b-bbf4-1f50e999db7e"
         },
@@ -7155,7 +7155,7 @@
         "@type": "Redefinition",
         "@id": "d5737cb9-d54c-4ca2-868b-d635b60d9320",
         "identifier": "d5737cb9-d54c-4ca2-868b-d635b60d9320",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::weightRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::weightRedef::",
         "owner": {
             "@id": "3d53e08e-c302-49e2-8d2c-759a267047f9"
         },
@@ -7207,7 +7207,7 @@
         "@id": "d78d6577-0a48-4f47-82be-9c68dadff3bc",
         "identifier": "d78d6577-0a48-4f47-82be-9c68dadff3bc",
         "name": "myBikeInheritance - frontWheelWeight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::Analyses::myBikeInheritance - frontWheelWeight",
+        "qualifiedName": "project-4::ModelCenter::Analyses::myBikeInheritance - frontWheelWeight",
         "owner": {
             "@id": "a6c5dae7-a15f-41cc-9b59-79a26434ff06"
         },
@@ -7236,7 +7236,7 @@
                 "@id": "53d13c1b-51ae-40e0-9481-00e1e7ce0d91"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::rim",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::rim",
         "owner": {
             "@id": "76af4637-3c80-43bb-8901-5503be3d986e"
         },
@@ -7307,7 +7307,7 @@
         "identifier": "dd96f36d-7793-438e-8819-fbff5b07056e",
         "eAnnotations": [],
         "name": "weight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Frame::weight",
+        "qualifiedName": "project-4::Structure::Frame::weight",
         "owner": {
             "@id": "86945faa-b98e-459c-b471-2c8ac0e3d196"
         },
@@ -7349,7 +7349,7 @@
                 "@id": "4fa29377-cd88-488d-a2f2-d1f5f61f2615"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Frame::weight::",
+        "qualifiedName": "project-4::Structure::Frame::weight::",
         "owner": {
             "@id": "dd96f36d-7793-438e-8819-fbff5b07056e"
         },
@@ -7401,7 +7401,7 @@
                 "@id": "61df2f75-be16-4763-a6a1-e5e4b857d49f"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::rearWheel::weight",
+        "qualifiedName": "project-4::Structure::Bike::rearWheel::weight",
         "owner": {
             "@id": "c0558222-938b-40cf-9c67-d350000c0e02"
         },
@@ -7464,7 +7464,7 @@
                 "@id": "ec2390fb-b6c4-43b5-a52e-186d49d2302d"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::",
         "owner": {
             "@id": "7ee6d9eb-bfa5-4512-b68b-eb6a803d861b"
         },
@@ -7531,7 +7531,7 @@
         "@id": "e49c79f3-f50f-4782-b4b4-31a5cde434b2",
         "identifier": "e49c79f3-f50f-4782-b4b4-31a5cde434b2",
         "name": "myBikeInheritance",
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter::ExecutionPlan::myBikeInheritance",
+        "qualifiedName": "project-4::ModelCenter::ExecutionPlan::myBikeInheritance",
         "owner": {
             "@id": "6096f22a-3c2c-4bd7-a8be-adce9ebab667"
         },
@@ -7549,7 +7549,7 @@
         "@type": "Redefinition",
         "@id": "e5996d8a-cea6-40e3-90ea-1789072eead1",
         "identifier": "e5996d8a-cea6-40e3-90ea-1789072eead1",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frame::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frame::",
         "owner": {
             "@id": "6a7ad12b-6e72-4eaa-9975-aca069dccf90"
         },
@@ -7606,7 +7606,7 @@
                 "@id": "5bad7fc5-18f4-43a2-8465-f1e3bbe4bd2a"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::UpperMargin",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::UpperMargin",
         "owner": {
             "@id": "ed0d5cb9-69e8-41b9-9c1f-76b4822d8df7"
         },
@@ -7650,7 +7650,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "e6cf3590-33d3-4536-8bb4-fc7fc87081b6",
         "identifier": "e6cf3590-33d3-4536-8bb4-fc7fc87081b6",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel::weightRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel::weightRedef::::",
         "owner": {
             "@id": "09f2315f-c4a9-48c3-8671-442f292d4aaf"
         },
@@ -7680,7 +7680,7 @@
                 "@id": "a7be574b-8893-41c1-a098-ebd6189e3c82"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Rim",
+        "qualifiedName": "project-4::Structure::Rim",
         "owner": {
             "@id": "71ee207c-3dd9-40e2-acc7-a3f9570921a0"
         },
@@ -7720,7 +7720,7 @@
         "@id": "ea64ab0d-2806-4017-86c0-2632e35e3990",
         "identifier": "ea64ab0d-2806-4017-86c0-2632e35e3990",
         "name": "UpperMargin",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::UpperMargin",
+        "qualifiedName": "project-4::Requirements::weight::UpperMargin",
         "owner": {
             "@id": "5c48767d-ae69-4ec6-93da-4dfc969078a6"
         },
@@ -7756,7 +7756,7 @@
         "identifier": "eb27cfb8-e2f3-46c6-a660-55c80f810fc5",
         "eAnnotations": [],
         "name": "weight",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::weight",
+        "qualifiedName": "project-4::Structure::Bike::weight",
         "owner": {
             "@id": "168054e3-dadf-4d4a-b254-fb10b75b1e08"
         },
@@ -7787,7 +7787,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "eba081ca-59c5-411d-a31a-a606450b2fdf",
         "identifier": "eba081ca-59c5-411d-a31a-a606450b2fdf",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::weightRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::weightRedef::::",
         "owner": {
             "@id": "afe7af37-211b-4719-a837-0f4fc695ac47"
         },
@@ -7810,7 +7810,7 @@
         "@type": "ReferenceSubsetting",
         "@id": "ec2390fb-b6c4-43b5-a52e-186d49d2302d",
         "identifier": "ec2390fb-b6c4-43b5-a52e-186d49d2302d",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::::",
         "owner": {
             "@id": "e26738df-2c35-4586-af16-377c75f21a60"
         },
@@ -7861,7 +7861,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "ec706a82-5b80-4532-98fe-a8f6544d75ca",
         "identifier": "ec706a82-5b80-4532-98fe-a8f6544d75ca",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::rearWheel::weight::::",
+        "qualifiedName": "project-4::Structure::Bike::rearWheel::weight::::",
         "owner": {
             "@id": "fbf6d013-013b-4ee8-be85-e0acfca85603"
         },
@@ -7896,7 +7896,7 @@
                 "@id": "e616fd8c-9a4c-4141-a83c-f571fa62aba2"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined",
         "owner": {
             "@id": "b065e577-ddf2-4d1b-8158-42f50f45892a"
         },
@@ -8016,7 +8016,7 @@
                 "@id": "65e98125-a453-45f0-a4a6-fbf2f7589ca4"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesRedefined::UpperMargin::",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesRedefined::UpperMargin::",
         "owner": {
             "@id": "e616fd8c-9a4c-4141-a83c-f571fa62aba2"
         },
@@ -8071,7 +8071,7 @@
                 "@id": "f7d3a1ae-d288-47f6-b77e-1b18d3eff964"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::rim::weightRedef::[",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::rim::weightRedef::[",
         "owner": {
             "@id": "b83e5def-2104-4870-a7e3-fe6fb0b385ab"
         },
@@ -8116,7 +8116,7 @@
         "@type": "Redefinition",
         "@id": "f50e9360-7963-4032-8e65-5123e7563ad9",
         "identifier": "f50e9360-7963-4032-8e65-5123e7563ad9",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::rearWheel::weightRedef::",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::rearWheel::weightRedef::",
         "owner": {
             "@id": "6ca1dbaa-ed1f-4daa-b8a5-d7c1e54fe268"
         },
@@ -8167,7 +8167,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "f58e699c-0fee-48b6-acfd-0a19f03a33eb",
         "identifier": "f58e699c-0fee-48b6-acfd-0a19f03a33eb",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::BikeTestAlexLuc::NewWeight::[::",
+        "qualifiedName": "project-4::Usage::BikeTestAlexLuc::NewWeight::[::",
         "owner": {
             "@id": "bb848fef-9b88-4d18-9701-fb34773a552f"
         },
@@ -8190,7 +8190,7 @@
         "@type": "Redefinition",
         "@id": "f74a0654-99be-4d33-a1d4-4d7cc61c4a54",
         "identifier": "f74a0654-99be-4d33-a1d4-4d7cc61c4a54",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::frame::",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::frame::",
         "owner": {
             "@id": "7c21705d-42e0-48f6-b665-beb02216565e"
         },
@@ -8241,7 +8241,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "f7d3a1ae-d288-47f6-b77e-1b18d3eff964",
         "identifier": "f7d3a1ae-d288-47f6-b77e-1b18d3eff964",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::rim::weightRedef::[::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::rim::weightRedef::[::",
         "owner": {
             "@id": "f1c3a7fd-f595-4ba4-bc24-2b6f8f723cb7"
         },
@@ -8264,7 +8264,7 @@
         "@type": "FeatureReferenceExpression",
         "@id": "fa3841a8-c21c-406d-9247-520416635817",
         "identifier": "fa3841a8-c21c-406d-9247-520416635817",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::weight::Margin::::",
+        "qualifiedName": "project-4::Requirements::weight::Margin::::",
         "owner": {
             "@id": "1bea884a-d2ba-4c5c-ada7-85581c9056a3"
         },
@@ -8288,7 +8288,7 @@
         "@id": "fbd3c439-0bf8-44c2-8cd4-571efc973bae",
         "identifier": "fbd3c439-0bf8-44c2-8cd4-571efc973bae",
         "name": "BikeWeightValuesInherited",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Requirements::BikeWeightValuesInherited",
+        "qualifiedName": "project-4::Requirements::BikeWeightValuesInherited",
         "owner": {
             "@id": "b065e577-ddf2-4d1b-8158-42f50f45892a"
         },
@@ -8370,7 +8370,7 @@
                 "@id": "ec706a82-5b80-4532-98fe-a8f6544d75ca"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Bike::rearWheel::weight::",
+        "qualifiedName": "project-4::Structure::Bike::rearWheel::weight::",
         "owner": {
             "@id": "e10509d5-028e-4d08-8453-060ee0c57f9b"
         },
@@ -8416,7 +8416,7 @@
         "@type": "Redefinition",
         "@id": "fd507c22-1705-4bf7-8475-5f25674ffd3b",
         "identifier": "fd507c22-1705-4bf7-8475-5f25674ffd3b",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::mybikeRedefBug4::frontWheel::weight::",
+        "qualifiedName": "project-4::Usage::mybikeRedefBug4::frontWheel::weight::",
         "owner": {
             "@id": "d4474f8b-4191-46d9-8fab-f20aa8c2dcb1"
         },
@@ -8484,7 +8484,7 @@
                 "@id": "0681bd6c-733b-48ee-9e42-3f4673809a9c"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::rearWheel",
+        "qualifiedName": "project-4::Usage::myBikeRedef::rearWheel",
         "owner": {
             "@id": "7ee6d9eb-bfa5-4512-b68b-eb6a803d861b"
         },
@@ -8613,7 +8613,7 @@
                 "@id": "a2dede70-2e7b-4782-906c-e01a9ab5d52e"
             }
         ],
-        "qualifiedName": "OldProjectFormatForDefaultValues::ModelCenter",
+        "qualifiedName": "project-4::ModelCenter",
         "owner": {
             "@id": "35866c3a-e508-4685-9ee9-1a61c1435dce"
         },
@@ -8639,7 +8639,7 @@
         "@type": "LiteralString",
         "@id": "ffb90338-1a07-44cb-b1c2-4fc2ace153aa",
         "identifier": "ffb90338-1a07-44cb-b1c2-4fc2ace153aa",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Usage::myBikeRedef::frontWheel::weightRedef::::",
+        "qualifiedName": "project-4::Usage::myBikeRedef::frontWheel::weightRedef::::",
         "owner": {
             "@id": "afe7af37-211b-4719-a837-0f4fc695ac47"
         },
@@ -8655,7 +8655,7 @@
         "@type": "LiteralString",
         "@id": "ffe5623c-f39a-47ad-bbed-c4cc67d80be3",
         "identifier": "ffe5623c-f39a-47ad-bbed-c4cc67d80be3",
-        "qualifiedName": "OldProjectFormatForDefaultValues::Structure::Rim::weight::::",
+        "qualifiedName": "project-4::Structure::Rim::weight::::",
         "owner": {
             "@id": "8b43021a-2829-4976-b481-0fdec5367fef"
         },

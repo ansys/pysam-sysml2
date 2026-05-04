@@ -47,7 +47,7 @@ class TestEObjet:
         project = project_manager.get_sysml_project(PROJECT_ID_1)
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
-        elem = root.get("PartDefinition").get("Attribute")
+        elem = root.get("PartDefinition").get("attribute")
         elem.name = "NewAttr"
         assert elem.name == "NewAttr"
 
@@ -57,7 +57,7 @@ class TestEObjet:
         package = old_format_project.get_root_package()
         assert package.get("Structure").get("Frame").get("weight").get_value() == (
             "2",
-            "kg",
+            "kilogram",
         )
 
     def test_expression_with_new_format_project_get_values(
@@ -66,7 +66,7 @@ class TestEObjet:
         package = new_format_project.get_root_package()
         assert package.get("Feature").get("myExpressionFeature").get_value() == (
             10,
-            "kg",
+            "kilogram",
         )
 
     def test_expression_set_value(self, new_format_project: Project, mocker):

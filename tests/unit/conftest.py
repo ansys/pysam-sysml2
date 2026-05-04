@@ -27,7 +27,6 @@ from pathlib import Path
 import pytest
 
 from tests.unit.mocked_connector import MockedSysML2APIConnector
-from tests.unit.mocked_sam_connector import MockedSamApiConnector
 
 TMP_DIR = Path(__file__).resolve().parent.parent / "tmp"
 
@@ -36,12 +35,6 @@ TMP_DIR = Path(__file__).resolve().parent.parent / "tmp"
 def connector():
     """Provide a fresh MockedSysML2APIConnector per test."""
     return MockedSysML2APIConnector()
-
-
-@pytest.fixture
-def sam_connector():
-    """Provide a MockedSamApiConnector per test."""
-    return MockedSamApiConnector()
 
 
 @pytest.fixture

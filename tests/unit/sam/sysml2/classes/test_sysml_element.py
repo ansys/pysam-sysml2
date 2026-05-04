@@ -48,7 +48,7 @@ class TestSysMLElement:
         project = manager.get_scripting_project(PROJECT_ID_1)
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
-        attr = root.PartDefinition.Attribute
+        attr = root.PartDefinition.attribute
         attr._name = "NewAttr"
         assert attr._name == "NewAttr"
 
