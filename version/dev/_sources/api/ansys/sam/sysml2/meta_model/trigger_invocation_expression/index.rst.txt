@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``trigger_invocation_expression.py`` module
+===============================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.trigger_invocation_expression
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: trigger_invocation_expression
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.trigger_invocation_expression.TriggerInvocationExpression`
+            - Java class 'com.ansys.medini.metamodel.sysml.TriggerInvocationExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> TriggerInvocationExpression</api/ansys/sam/sysml2/meta_model/trigger_invocation_expression/TriggerInvocationExpression>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated trigger invocation expression class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

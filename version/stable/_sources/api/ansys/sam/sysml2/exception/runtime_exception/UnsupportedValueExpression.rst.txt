@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`UnsupportedValueExpression`
+===================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.runtime_exception.UnsupportedValueExpression
+
+   Bases: :py:obj:`Exception`
+
+
+   
+   Exception when the requested expression is not value [unit].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``part_usage.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.part_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: part_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.part_usage.PartUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.PartUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> PartUsage</api/ansys/sam/sysml2/meta_model/part_usage/PartUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated part usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

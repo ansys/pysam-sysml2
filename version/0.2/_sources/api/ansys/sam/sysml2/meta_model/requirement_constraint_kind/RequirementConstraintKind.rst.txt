@@ -1,0 +1,247 @@
+
+
+
+
+
+
+:class:`RequirementConstraintKind`
+==================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.requirement_constraint_kind.RequirementConstraintKind
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.RequirementConstraintKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: RequirementConstraintKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value`
+            - Get the value property.
+          * - :py:attr:`~name`
+            - Get the name property.
+          * - :py:attr:`~literal`
+            - Get the literal property.
+          * - :py:attr:`~by_name`
+            - Get the by name property.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~NOT_AREQUIREMENT_CONSTRAINT`
+            - 
+          * - :py:attr:`~ASSUMPTION`
+            - 
+          * - :py:attr:`~REQUIREMENT`
+            - 
+          * - :py:attr:`~NOT_AREQUIREMENT_CONSTRAINT_VALUE`
+            - 
+          * - :py:attr:`~ASSUMPTION_VALUE`
+            - 
+          * - :py:attr:`~REQUIREMENT_VALUE`
+            - 
+          * - :py:attr:`~VALUES_ARRAY`
+            - 
+          * - :py:attr:`~VALUES`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.requirement_constraint_kind import RequirementConstraintKind
+
+Property detail
+---------------
+
+.. py:property:: value
+   :type: int
+
+
+   
+   Get the value property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:int`
+           Value of property value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: name
+   :type: str
+
+
+   
+   Get the name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: literal
+   :type: str
+
+
+   
+   Get the literal property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property literal.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: by_name
+   :type: RequirementConstraintKind
+
+
+   
+   Get the by name property.
+
+
+
+
+
+   :Returns:
+
+       "RequirementConstraintKind"
+           Value of property by name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: NOT_AREQUIREMENT_CONSTRAINT
+   :type:  RequirementConstraintKind
+
+.. py:attribute:: ASSUMPTION
+   :type:  RequirementConstraintKind
+
+.. py:attribute:: REQUIREMENT
+   :type:  RequirementConstraintKind
+
+.. py:attribute:: NOT_AREQUIREMENT_CONSTRAINT_VALUE
+   :type:  int
+
+.. py:attribute:: ASSUMPTION_VALUE
+   :type:  int
+
+.. py:attribute:: REQUIREMENT_VALUE
+   :type:  int
+
+.. py:attribute:: VALUES_ARRAY
+   :type:  RequirementConstraintKind
+
+.. py:attribute:: VALUES
+   :type:  list
+
+
+
+
+

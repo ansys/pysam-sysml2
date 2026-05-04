@@ -1,0 +1,46 @@
+
+
+
+
+
+
+:class:`DiagramElement`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.classes.diagram_element.DiagramElement(element_id: str)
+
+   
+   Provides diagram element data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.classes.diagram_element import DiagramElement
+
+
+
+
+

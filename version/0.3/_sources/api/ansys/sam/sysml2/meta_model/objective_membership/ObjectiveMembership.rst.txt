@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ObjectiveMembership`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.objective_membership.ObjectiveMembership(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ObjectiveMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ObjectiveMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_objective_requirement`
+            - Get the owned objective requirement property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.objective_membership import ObjectiveMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_objective_requirement
+   :type: RequirementUsage
+
+
+   
+   Get the owned objective requirement property.
+
+
+
+
+
+   :Returns:
+
+       "RequirementUsage"
+           Value of property owned objective requirement.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

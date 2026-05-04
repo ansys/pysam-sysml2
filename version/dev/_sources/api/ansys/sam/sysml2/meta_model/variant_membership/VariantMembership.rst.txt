@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`VariantMembership`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.variant_membership.VariantMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.membership.Membership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.VariantMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: VariantMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_variant_usage`
+            - Get the owned variant usage property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.variant_membership import VariantMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_variant_usage
+   :type: Usage
+
+
+   
+   Get the owned variant usage property.
+
+
+
+
+
+   :Returns:
+
+       "Usage"
+           Value of property owned variant usage.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

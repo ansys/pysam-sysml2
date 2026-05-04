@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`LoopActionUsage`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.loop_action_usage.LoopActionUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.LoopActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: LoopActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~body_action`
+            - Get the body action property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.loop_action_usage import LoopActionUsage
+
+Property detail
+---------------
+
+.. py:property:: body_action
+   :type: ansys.sam.sysml2.meta_model.action_usage.ActionUsage
+
+
+   
+   Get the body action property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property body action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`Membership`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.membership.Membership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Membership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Membership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~member_name`
+            - Get the member name property.
+          * - :py:attr:`~member_element`
+            - Get the member element property.
+          * - :py:attr:`~owned_member_element`
+            - Get the owned member element property.
+          * - :py:attr:`~membership_owning_namespace`
+            - Get the membership owning namespace property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.membership import Membership
+
+Property detail
+---------------
+
+.. py:property:: member_name
+   :type: str
+
+
+   
+   Get the member name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property member name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: member_element
+   :type: Element
+
+
+   
+   Get the member element property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property member element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_member_element
+   :type: Element
+
+
+   
+   Get the owned member element property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property owned member element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: membership_owning_namespace
+   :type: Namespace
+
+
+   
+   Get the membership owning namespace property.
+
+
+
+
+
+   :Returns:
+
+       "Namespace"
+           Value of property membership owning namespace.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

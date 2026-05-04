@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``view_definition.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.view_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: view_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.view_definition.ViewDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.ViewDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ViewDefinition</api/ansys/sam/sysml2/meta_model/view_definition/ViewDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated view definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

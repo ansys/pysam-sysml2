@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`Step`
+=============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.step.Step(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature.Feature`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Step'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Step
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~behavior`
+            - Get the behavior property.
+          * - :py:attr:`~parameter`
+            - Get the parameter property.
+          * - :py:attr:`~general_parameter`
+            - Get the general parameter property.
+          * - :py:attr:`~transition_feature_kind`
+            - Get the transition feature kind property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.step import Step
+
+Property detail
+---------------
+
+.. py:property:: behavior
+   :type: list[Behavior]
+
+
+   
+   Get the behavior property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Behavior"]
+           Value of property behavior.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: parameter
+   :type: list[ansys.sam.sysml2.meta_model.feature.Feature]
+
+
+   
+   Get the parameter property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: general_parameter
+   :type: list[ansys.sam.sysml2.meta_model.feature.Feature]
+
+
+   
+   Get the general parameter property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property general parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: transition_feature_kind
+   :type: TransitionFeatureKind
+
+
+   
+   Get the transition feature kind property.
+
+
+
+
+
+   :Returns:
+
+       "TransitionFeatureKind"
+           Value of property transition feature kind.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

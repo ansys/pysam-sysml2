@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``query_class.py`` module
+=============================
+
+.. py:module:: ansys.sam.sysml2.dto.query.query_class
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: query_class
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.query_class.Query`
+            - Provides a data class for a query.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Query</api/ansys/sam/sysml2/dto/query/query_class/Query>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Query class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+
