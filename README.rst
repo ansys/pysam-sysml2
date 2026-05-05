@@ -49,7 +49,7 @@ The PySAM SysML2 documentation includes four sections:
 - `Examples`_: Provides some examples of how to use PySAM SysML2.
 
 License
-=======
+========
 
 The PySAM SysML2 project uses the MIT license. Read the full text of the license in the `MIT <https://opensource.org/licenses/MIT/>`_ file.
 

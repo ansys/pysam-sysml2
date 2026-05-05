@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.feature_reference_expression import FeatureRefe
 
 
 class TestFeatureReferenceExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.FeatureReferenceExpression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.FeatureReferenceExpression'."""
 
     @pytest.fixture
     def element(self):
@@ -42,5 +42,7 @@ class TestFeatureReferenceExpression:
         assert element.id == "element_id"
 
     def test_referent(self, element):
-        """Test getter for referent property."""
-        _ = element.referent
+        """Test getter and setter for referent property."""
+        value = "test_value"
+        element.referent = value
+        assert element.referent == value

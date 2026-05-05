@@ -26,8 +26,8 @@ from .association import Association
 from .behavior import Behavior
 
 
-class Interaction(Behavior, Association):
-    """Java class 'com.ansys.medini.metamodel.sysml.Interaction'."""
+class Interaction(Association, Behavior):
+    """Java class 'com.ansys.metamodel.sysml2.Interaction'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

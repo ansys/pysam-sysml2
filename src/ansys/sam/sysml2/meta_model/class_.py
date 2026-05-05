@@ -26,7 +26,7 @@ from .classifier import Classifier
 
 
 class Class(Classifier):
-    """Java class 'com.ansys.medini.metamodel.sysml.Class'."""
+    """Java class 'com.ansys.metamodel.sysml2.Class'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

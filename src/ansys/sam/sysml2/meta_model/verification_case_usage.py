@@ -30,7 +30,7 @@ from .case_usage import CaseUsage
 
 
 class VerificationCaseUsage(CaseUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.VerificationCaseUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.VerificationCaseUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
