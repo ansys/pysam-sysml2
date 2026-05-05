@@ -1,25 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 """Generated subsetting class from metamodel."""
 
 from __future__ import annotations
@@ -28,7 +6,7 @@ from .specialization import Specialization
 
 
 class Subsetting(Specialization):
-    """Java class 'com.ansys.medini.metamodel.sysml.Subsetting'."""
+    """Java class 'com.ansys.metamodel.sysml2.Subsetting'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -41,25 +19,26 @@ class Subsetting(Specialization):
         """
         super().__init__(element_id)
 
-        self._subsetting_feature = None
+        self._owning_feature = None
         self._subsetted_feature = None
+        self._subsetting_feature = None
 
     @property
-    def subsetting_feature(self) -> "Feature":  # noqa: F821
+    def owning_feature(self) -> "Feature":  # noqa: F821
         """
-        Get the subsetting feature property.
+        Get the owning feature property.
 
         Returns
         -------
         "Feature"
-            Value of property subsetting feature.
+            Value of property owning feature.
         """
-        return self._subsetting_feature
+        return self._owning_feature
 
-    @subsetting_feature.setter
-    def subsetting_feature(self, value: "Feature"):  # noqa: F821
+    @owning_feature.setter
+    def owning_feature(self, value: "Feature"):  # noqa: F821
         """
-        Set the subsetting_feature property.
+        Set the owning_feature property.
 
         Parameters
         ----------
@@ -67,8 +46,8 @@ class Subsetting(Specialization):
             New value.
         """
         if self._observer is not None:
-            self._observer.notify(self.id, "subsetting_feature", value)
-        self._subsetting_feature = value
+            self._observer.notify(self.id, "owning_feature", value)
+        self._owning_feature = value
 
     @property
     def subsetted_feature(self) -> "Feature":  # noqa: F821
@@ -95,3 +74,29 @@ class Subsetting(Specialization):
         if self._observer is not None:
             self._observer.notify(self.id, "subsetted_feature", value)
         self._subsetted_feature = value
+
+    @property
+    def subsetting_feature(self) -> "Feature":  # noqa: F821
+        """
+        Get the subsetting feature property.
+
+        Returns
+        -------
+        "Feature"
+            Value of property subsetting feature.
+        """
+        return self._subsetting_feature
+
+    @subsetting_feature.setter
+    def subsetting_feature(self, value: "Feature"):  # noqa: F821
+        """
+        Set the subsetting_feature property.
+
+        Parameters
+        ----------
+        value: "Feature"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "subsetting_feature", value)
+        self._subsetting_feature = value

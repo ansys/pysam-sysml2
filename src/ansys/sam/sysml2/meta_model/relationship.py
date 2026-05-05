@@ -1,25 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 """Generated relationship class from metamodel."""
 
 from __future__ import annotations
@@ -30,7 +8,7 @@ from .element import Element
 
 
 class Relationship(Element):
-    """Java class 'com.ansys.medini.metamodel.sysml.Relationship'."""
+    """Java class 'com.ansys.metamodel.sysml2.Relationship'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -43,74 +21,13 @@ class Relationship(Element):
         """
         super().__init__(element_id)
 
-        self._target = ObservedList(self, "target")
-        self._source = ObservedList(self, "source")
-        self._related_element = ObservedList(self, "related_element")
-        self._inheriting_element = None
         self._owned_related_element = ObservedList(self, "owned_related_element")
         self._owning_related_element = None
-
-    @property
-    def target(self) -> list["Element"]:  # noqa: F821
-        """
-        Get the target property.
-
-        Returns
-        -------
-        list["Element"]
-            Value of property target.
-        """
-        return self._target
-
-    @property
-    def source(self) -> list["Element"]:  # noqa: F821
-        """
-        Get the source property.
-
-        Returns
-        -------
-        list["Element"]
-            Value of property source.
-        """
-        return self._source
-
-    @property
-    def related_element(self) -> list["Element"]:  # noqa: F821
-        """
-        Get the related element property.
-
-        Returns
-        -------
-        list["Element"]
-            Value of property related element.
-        """
-        return self._related_element
-
-    @property
-    def inheriting_element(self) -> "Element":  # noqa: F821
-        """
-        Get the inheriting element property.
-
-        Returns
-        -------
-        "Element"
-            Value of property inheriting element.
-        """
-        return self._inheriting_element
-
-    @inheriting_element.setter
-    def inheriting_element(self, value: "Element"):  # noqa: F821
-        """
-        Set the inheriting_element property.
-
-        Parameters
-        ----------
-        value: "Element"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "inheriting_element", value)
-        self._inheriting_element = value
+        self._related_element = ObservedList(self, "related_element")
+        self._relationship_owner = None
+        self._source = ObservedList(self, "source")
+        self._target = ObservedList(self, "target")
+        self._is_implied = False
 
     @property
     def owned_related_element(self) -> list["Element"]:  # noqa: F821
@@ -149,3 +66,91 @@ class Relationship(Element):
         if self._observer is not None:
             self._observer.notify(self.id, "owning_related_element", value)
         self._owning_related_element = value
+
+    @property
+    def related_element(self) -> list["Element"]:  # noqa: F821
+        """
+        Get the related element property.
+
+        Returns
+        -------
+        list["Element"]
+            Value of property related element.
+        """
+        return self._related_element
+
+    @property
+    def relationship_owner(self) -> "Element":  # noqa: F821
+        """
+        Get the relationship owner property.
+
+        Returns
+        -------
+        "Element"
+            Value of property relationship owner.
+        """
+        return self._relationship_owner
+
+    @relationship_owner.setter
+    def relationship_owner(self, value: "Element"):  # noqa: F821
+        """
+        Set the relationship_owner property.
+
+        Parameters
+        ----------
+        value: "Element"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "relationship_owner", value)
+        self._relationship_owner = value
+
+    @property
+    def source(self) -> list["Element"]:  # noqa: F821
+        """
+        Get the source property.
+
+        Returns
+        -------
+        list["Element"]
+            Value of property source.
+        """
+        return self._source
+
+    @property
+    def target(self) -> list["Element"]:  # noqa: F821
+        """
+        Get the target property.
+
+        Returns
+        -------
+        list["Element"]
+            Value of property target.
+        """
+        return self._target
+
+    @property
+    def is_implied(self) -> bool:  # noqa: F821
+        """
+        Get the is implied property.
+
+        Returns
+        -------
+        bool
+            Value of property is implied.
+        """
+        return self._is_implied
+
+    @is_implied.setter
+    def is_implied(self, value: bool):  # noqa: F821
+        """
+        Set the is_implied property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_implied", value)
+        self._is_implied = value

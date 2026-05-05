@@ -1,25 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 """Generated assignment action usage class from metamodel."""
 
 from __future__ import annotations
@@ -28,7 +6,7 @@ from .action_usage import ActionUsage
 
 
 class AssignmentActionUsage(ActionUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.AssignmentActionUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.AssignmentActionUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -42,8 +20,8 @@ class AssignmentActionUsage(ActionUsage):
         super().__init__(element_id)
 
         self._referent = None
-        self._value_expression = None
         self._target_argument = None
+        self._value_expression = None
 
     @property
     def referent(self) -> "Feature":  # noqa: F821
@@ -57,17 +35,19 @@ class AssignmentActionUsage(ActionUsage):
         """
         return self._referent
 
-    @property
-    def value_expression(self) -> "Expression":  # noqa: F821
+    @referent.setter
+    def referent(self, value: "Feature"):  # noqa: F821
         """
-        Get the value expression property.
+        Set the referent property.
 
-        Returns
-        -------
-        "Expression"
-            Value of property value expression.
+        Parameters
+        ----------
+        value: "Feature"
+            New value.
         """
-        return self._value_expression
+        if self._observer is not None:
+            self._observer.notify(self.id, "referent", value)
+        self._referent = value
 
     @property
     def target_argument(self) -> "Expression":  # noqa: F821
@@ -80,3 +60,43 @@ class AssignmentActionUsage(ActionUsage):
             Value of property target argument.
         """
         return self._target_argument
+
+    @target_argument.setter
+    def target_argument(self, value: "Expression"):  # noqa: F821
+        """
+        Set the target_argument property.
+
+        Parameters
+        ----------
+        value: "Expression"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "target_argument", value)
+        self._target_argument = value
+
+    @property
+    def value_expression(self) -> "Expression":  # noqa: F821
+        """
+        Get the value expression property.
+
+        Returns
+        -------
+        "Expression"
+            Value of property value expression.
+        """
+        return self._value_expression
+
+    @value_expression.setter
+    def value_expression(self, value: "Expression"):  # noqa: F821
+        """
+        Set the value_expression property.
+
+        Parameters
+        ----------
+        value: "Expression"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "value_expression", value)
+        self._value_expression = value

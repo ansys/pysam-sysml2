@@ -23,174 +23,296 @@
 
 from uuid import uuid4
 
-from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-from ansys.sam.sysml2.dto.commit.commit_class import Commit
-from ansys.sam.sysml2.dto.commit.data_version import DataVersion
-from ansys.sam.sysml2.meta_model.accept_action_usage import AcceptActionUsage
-from ansys.sam.sysml2.meta_model.action_definition import ActionDefinition
-from ansys.sam.sysml2.meta_model.action_usage import ActionUsage
-from ansys.sam.sysml2.meta_model.actor_membership import ActorMembership
-from ansys.sam.sysml2.meta_model.allocation_definition import AllocationDefinition
-from ansys.sam.sysml2.meta_model.allocation_usage import AllocationUsage
-from ansys.sam.sysml2.meta_model.annotating_element import AnnotatingElement
-from ansys.sam.sysml2.meta_model.annotation import Annotation
-from ansys.sam.sysml2.meta_model.assert_constraint_usage import AssertConstraintUsage
-from ansys.sam.sysml2.meta_model.assignment_action_usage import AssignmentActionUsage
-from ansys.sam.sysml2.meta_model.association import Association
-from ansys.sam.sysml2.meta_model.association_structure import AssociationStructure
-from ansys.sam.sysml2.meta_model.attribute_definition import AttributeDefinition
-from ansys.sam.sysml2.meta_model.attribute_usage import AttributeUsage
-from ansys.sam.sysml2.meta_model.behavior import Behavior
-from ansys.sam.sysml2.meta_model.binding_connector import BindingConnector
+from ansys.sam.sysml2.meta_model.accept_action_usage import AcceptActionUsage as AcceptActionUsage
+from ansys.sam.sysml2.meta_model.action_definition import ActionDefinition as ActionDefinition
+from ansys.sam.sysml2.meta_model.action_usage import ActionUsage as ActionUsage
+from ansys.sam.sysml2.meta_model.actor_membership import ActorMembership as ActorMembership
+from ansys.sam.sysml2.meta_model.allocation_definition import (
+    AllocationDefinition as AllocationDefinition,
+)
+from ansys.sam.sysml2.meta_model.allocation_usage import AllocationUsage as AllocationUsage
+from ansys.sam.sysml2.meta_model.analysis_case_definition import (
+    AnalysisCaseDefinition as AnalysisCaseDefinition,
+)
+from ansys.sam.sysml2.meta_model.analysis_case_usage import AnalysisCaseUsage as AnalysisCaseUsage
+from ansys.sam.sysml2.meta_model.annotating_element import AnnotatingElement as AnnotatingElement
+from ansys.sam.sysml2.meta_model.annotation import Annotation as Annotation
+from ansys.sam.sysml2.meta_model.assert_constraint_usage import (
+    AssertConstraintUsage as AssertConstraintUsage,
+)
+from ansys.sam.sysml2.meta_model.assignment_action_usage import (
+    AssignmentActionUsage as AssignmentActionUsage,
+)
+from ansys.sam.sysml2.meta_model.association import Association as Association
+from ansys.sam.sysml2.meta_model.association_structure import (
+    AssociationStructure as AssociationStructure,
+)
+from ansys.sam.sysml2.meta_model.attribute_definition import (
+    AttributeDefinition as AttributeDefinition,
+)
+from ansys.sam.sysml2.meta_model.attribute_usage import AttributeUsage as AttributeUsage
+from ansys.sam.sysml2.meta_model.behavior import Behavior as Behavior
+from ansys.sam.sysml2.meta_model.binding_connector import BindingConnector as BindingConnector
 from ansys.sam.sysml2.meta_model.binding_connector_as_usage import (
-    BindingConnectorAsUsage,
+    BindingConnectorAsUsage as BindingConnectorAsUsage,
 )
-from ansys.sam.sysml2.meta_model.boolean_expression import BooleanExpression
-from ansys.sam.sysml2.meta_model.calculation_definition import CalculationDefinition
-from ansys.sam.sysml2.meta_model.calculation_usage import CalculationUsage
-from ansys.sam.sysml2.meta_model.case_definition import CaseDefinition
-from ansys.sam.sysml2.meta_model.case_usage import CaseUsage
-from ansys.sam.sysml2.meta_model.class_ import Class
-from ansys.sam.sysml2.meta_model.classifier import Classifier
-from ansys.sam.sysml2.meta_model.comment import Comment
-from ansys.sam.sysml2.meta_model.concern_usage import ConcernUsage
-from ansys.sam.sysml2.meta_model.connection_definition import ConnectionDefinition
-from ansys.sam.sysml2.meta_model.connection_usage import ConnectionUsage
-from ansys.sam.sysml2.meta_model.connector import Connector
-from ansys.sam.sysml2.meta_model.constraint_definition import ConstraintDefinition
-from ansys.sam.sysml2.meta_model.constraint_usage import ConstraintUsage
-from ansys.sam.sysml2.meta_model.data_type import DataType
-from ansys.sam.sysml2.meta_model.decision_node import DecisionNode
-from ansys.sam.sysml2.meta_model.definition import Definition
-from ansys.sam.sysml2.meta_model.dependency import Dependency
-from ansys.sam.sysml2.meta_model.documentation import Documentation
-from ansys.sam.sysml2.meta_model.element import Element
-from ansys.sam.sysml2.meta_model.end_feature_membership import EndFeatureMembership
-from ansys.sam.sysml2.meta_model.enumeration_definition import EnumerationDefinition
-from ansys.sam.sysml2.meta_model.enumeration_usage import EnumerationUsage
-from ansys.sam.sysml2.meta_model.event_occurrence_usage import EventOccurrenceUsage
-from ansys.sam.sysml2.meta_model.exhibit_state_usage import ExhibitStateUsage
-from ansys.sam.sysml2.meta_model.expression import Expression
-from ansys.sam.sysml2.meta_model.feature import Feature
-from ansys.sam.sysml2.meta_model.feature_chain_expression import FeatureChainExpression
-from ansys.sam.sysml2.meta_model.feature_chaining import FeatureChaining
-from ansys.sam.sysml2.meta_model.feature_membership import FeatureMembership
+from ansys.sam.sysml2.meta_model.boolean_expression import BooleanExpression as BooleanExpression
+from ansys.sam.sysml2.meta_model.calculation_definition import (
+    CalculationDefinition as CalculationDefinition,
+)
+from ansys.sam.sysml2.meta_model.calculation_usage import CalculationUsage as CalculationUsage
+from ansys.sam.sysml2.meta_model.case_definition import CaseDefinition as CaseDefinition
+from ansys.sam.sysml2.meta_model.case_usage import CaseUsage as CaseUsage
+from ansys.sam.sysml2.meta_model.class_ import Class as Class
+from ansys.sam.sysml2.meta_model.classifier import Classifier as Classifier
+from ansys.sam.sysml2.meta_model.collect_expression import CollectExpression as CollectExpression
+from ansys.sam.sysml2.meta_model.comment import Comment as Comment
+from ansys.sam.sysml2.meta_model.concern_definition import ConcernDefinition as ConcernDefinition
+from ansys.sam.sysml2.meta_model.concern_usage import ConcernUsage as ConcernUsage
+from ansys.sam.sysml2.meta_model.conjugated_port_definition import (
+    ConjugatedPortDefinition as ConjugatedPortDefinition,
+)
+from ansys.sam.sysml2.meta_model.conjugated_port_typing import (
+    ConjugatedPortTyping as ConjugatedPortTyping,
+)
+from ansys.sam.sysml2.meta_model.conjugation import Conjugation as Conjugation
+from ansys.sam.sysml2.meta_model.connection_definition import (
+    ConnectionDefinition as ConnectionDefinition,
+)
+from ansys.sam.sysml2.meta_model.connection_usage import ConnectionUsage as ConnectionUsage
+from ansys.sam.sysml2.meta_model.connector import Connector as Connector
+from ansys.sam.sysml2.meta_model.connector_as_usage import ConnectorAsUsage as ConnectorAsUsage
+from ansys.sam.sysml2.meta_model.constraint_definition import (
+    ConstraintDefinition as ConstraintDefinition,
+)
+from ansys.sam.sysml2.meta_model.constraint_usage import ConstraintUsage as ConstraintUsage
+from ansys.sam.sysml2.meta_model.constructor_expression import (
+    ConstructorExpression as ConstructorExpression,
+)
+from ansys.sam.sysml2.meta_model.control_node import ControlNode as ControlNode
+from ansys.sam.sysml2.meta_model.cross_subsetting import CrossSubsetting as CrossSubsetting
+from ansys.sam.sysml2.meta_model.data_type import DataType as DataType
+from ansys.sam.sysml2.meta_model.decision_node import DecisionNode as DecisionNode
+from ansys.sam.sysml2.meta_model.definition import Definition as Definition
+from ansys.sam.sysml2.meta_model.dependency import Dependency as Dependency
+from ansys.sam.sysml2.meta_model.differencing import Differencing as Differencing
+from ansys.sam.sysml2.meta_model.disjoining import Disjoining as Disjoining
+from ansys.sam.sysml2.meta_model.documentation import Documentation as Documentation
+from ansys.sam.sysml2.meta_model.element import Element as Element
+from ansys.sam.sysml2.meta_model.element_filter_membership import (
+    ElementFilterMembership as ElementFilterMembership,
+)
+from ansys.sam.sysml2.meta_model.end_feature_membership import (
+    EndFeatureMembership as EndFeatureMembership,
+)
+from ansys.sam.sysml2.meta_model.enumeration_definition import (
+    EnumerationDefinition as EnumerationDefinition,
+)
+from ansys.sam.sysml2.meta_model.enumeration_usage import EnumerationUsage as EnumerationUsage
+from ansys.sam.sysml2.meta_model.event_occurrence_usage import (
+    EventOccurrenceUsage as EventOccurrenceUsage,
+)
+from ansys.sam.sysml2.meta_model.exhibit_state_usage import ExhibitStateUsage as ExhibitStateUsage
+from ansys.sam.sysml2.meta_model.expose import Expose as Expose
+from ansys.sam.sysml2.meta_model.expression import Expression as Expression
+from ansys.sam.sysml2.meta_model.feature import Feature as Feature
+from ansys.sam.sysml2.meta_model.feature_chain_expression import (
+    FeatureChainExpression as FeatureChainExpression,
+)
+from ansys.sam.sysml2.meta_model.feature_chaining import FeatureChaining as FeatureChaining
+from ansys.sam.sysml2.meta_model.feature_direction_kind import (
+    FeatureDirectionKind as FeatureDirectionKind,
+)
+from ansys.sam.sysml2.meta_model.feature_inverting import FeatureInverting as FeatureInverting
+from ansys.sam.sysml2.meta_model.feature_membership import FeatureMembership as FeatureMembership
 from ansys.sam.sysml2.meta_model.feature_reference_expression import (
-    FeatureReferenceExpression,
+    FeatureReferenceExpression as FeatureReferenceExpression,
 )
-from ansys.sam.sysml2.meta_model.feature_typing import FeatureTyping
-from ansys.sam.sysml2.meta_model.feature_value import FeatureValue
-from ansys.sam.sysml2.meta_model.flow_connection_definition import (
-    FlowConnectionDefinition,
+from ansys.sam.sysml2.meta_model.feature_typing import FeatureTyping as FeatureTyping
+from ansys.sam.sysml2.meta_model.feature_value import FeatureValue as FeatureValue
+from ansys.sam.sysml2.meta_model.flow import Flow as Flow
+from ansys.sam.sysml2.meta_model.flow_definition import FlowDefinition as FlowDefinition
+from ansys.sam.sysml2.meta_model.flow_end import FlowEnd as FlowEnd
+from ansys.sam.sysml2.meta_model.flow_usage import FlowUsage as FlowUsage
+from ansys.sam.sysml2.meta_model.for_loop_action_usage import (
+    ForLoopActionUsage as ForLoopActionUsage,
 )
-from ansys.sam.sysml2.meta_model.flow_connection_usage import FlowConnectionUsage
-from ansys.sam.sysml2.meta_model.for_loop_action_usage import ForLoopActionUsage
-from ansys.sam.sysml2.meta_model.fork_node import ForkNode
-from ansys.sam.sysml2.meta_model.function import Function
-from ansys.sam.sysml2.meta_model.if_action_usage import IfActionUsage
-from ansys.sam.sysml2.meta_model.import_ import Import
-from ansys.sam.sysml2.meta_model.include_use_case_usage import IncludeUseCaseUsage
-from ansys.sam.sysml2.meta_model.interaction import Interaction
-from ansys.sam.sysml2.meta_model.interface_definition import InterfaceDefinition
-from ansys.sam.sysml2.meta_model.interface_usage import InterfaceUsage
-from ansys.sam.sysml2.meta_model.invariant import Invariant
-from ansys.sam.sysml2.meta_model.invocation_expression import InvocationExpression
-from ansys.sam.sysml2.meta_model.item_definition import ItemDefinition
-from ansys.sam.sysml2.meta_model.item_feature import ItemFeature
-from ansys.sam.sysml2.meta_model.item_flow import ItemFlow
-from ansys.sam.sysml2.meta_model.item_flow_end import ItemFlowEnd
-from ansys.sam.sysml2.meta_model.item_usage import ItemUsage
-from ansys.sam.sysml2.meta_model.join_node import JoinNode
-from ansys.sam.sysml2.meta_model.library_package import LibraryPackage
-from ansys.sam.sysml2.meta_model.life_class import LifeClass
-from ansys.sam.sysml2.meta_model.literal_boolean import LiteralBoolean
-from ansys.sam.sysml2.meta_model.literal_expression import LiteralExpression
-from ansys.sam.sysml2.meta_model.literal_integer import LiteralInteger
-from ansys.sam.sysml2.meta_model.literal_rational import LiteralRational
-from ansys.sam.sysml2.meta_model.literal_real import LiteralReal
-from ansys.sam.sysml2.meta_model.literal_string import LiteralString
-from ansys.sam.sysml2.meta_model.literal_unbounded import LiteralUnbounded
-from ansys.sam.sysml2.meta_model.loop_action_usage import LoopActionUsage
-from ansys.sam.sysml2.meta_model.membership import Membership
-from ansys.sam.sysml2.meta_model.merge_node import MergeNode
-from ansys.sam.sysml2.meta_model.metaclass import Metaclass
-from ansys.sam.sysml2.meta_model.metadata_definition import MetadataDefinition
-from ansys.sam.sysml2.meta_model.metadata_feature import MetadataFeature
-from ansys.sam.sysml2.meta_model.metadata_usage import MetadataUsage
-from ansys.sam.sysml2.meta_model.multiplicity import Multiplicity
-from ansys.sam.sysml2.meta_model.multiplicity_range import MultiplicityRange
-from ansys.sam.sysml2.meta_model.namespace import Namespace
-from ansys.sam.sysml2.meta_model.null_expression import NullExpression
-from ansys.sam.sysml2.meta_model.objective_membership import ObjectiveMembership
-from ansys.sam.sysml2.meta_model.occurrence_definition import OccurrenceDefinition
-from ansys.sam.sysml2.meta_model.occurrence_usage import OccurrenceUsage
-from ansys.sam.sysml2.meta_model.operator_expression import OperatorExpression
-from ansys.sam.sysml2.meta_model.package import Package
-from ansys.sam.sysml2.meta_model.parameter_membership import ParameterMembership
-from ansys.sam.sysml2.meta_model.part_definition import PartDefinition
-from ansys.sam.sysml2.meta_model.part_usage import PartUsage
-from ansys.sam.sysml2.meta_model.perform_action_usage import PerformActionUsage
-from ansys.sam.sysml2.meta_model.port_definition import PortDefinition
-from ansys.sam.sysml2.meta_model.port_usage import PortUsage
-from ansys.sam.sysml2.meta_model.portioning_feature import PortioningFeature
-from ansys.sam.sysml2.meta_model.predicate import Predicate
-from ansys.sam.sysml2.meta_model.redefinition import Redefinition
-from ansys.sam.sysml2.meta_model.reference_subsetting import ReferenceSubsetting
-from ansys.sam.sysml2.meta_model.reference_usage import ReferenceUsage
-from ansys.sam.sysml2.meta_model.relationship import Relationship
+from ansys.sam.sysml2.meta_model.fork_node import ForkNode as ForkNode
+from ansys.sam.sysml2.meta_model.framed_concern_membership import (
+    FramedConcernMembership as FramedConcernMembership,
+)
+from ansys.sam.sysml2.meta_model.function import Function as Function
+from ansys.sam.sysml2.meta_model.if_action_usage import IfActionUsage as IfActionUsage
+from ansys.sam.sysml2.meta_model.import_ import Import as Import
+from ansys.sam.sysml2.meta_model.include_use_case_usage import (
+    IncludeUseCaseUsage as IncludeUseCaseUsage,
+)
+from ansys.sam.sysml2.meta_model.index_expression import IndexExpression as IndexExpression
+from ansys.sam.sysml2.meta_model.instantiation_expression import (
+    InstantiationExpression as InstantiationExpression,
+)
+from ansys.sam.sysml2.meta_model.interaction import Interaction as Interaction
+from ansys.sam.sysml2.meta_model.interface_definition import (
+    InterfaceDefinition as InterfaceDefinition,
+)
+from ansys.sam.sysml2.meta_model.interface_usage import InterfaceUsage as InterfaceUsage
+from ansys.sam.sysml2.meta_model.intersecting import Intersecting as Intersecting
+from ansys.sam.sysml2.meta_model.invariant import Invariant as Invariant
+from ansys.sam.sysml2.meta_model.invocation_expression import (
+    InvocationExpression as InvocationExpression,
+)
+from ansys.sam.sysml2.meta_model.item_definition import ItemDefinition as ItemDefinition
+from ansys.sam.sysml2.meta_model.item_usage import ItemUsage as ItemUsage
+from ansys.sam.sysml2.meta_model.join_node import JoinNode as JoinNode
+from ansys.sam.sysml2.meta_model.library_package import LibraryPackage as LibraryPackage
+from ansys.sam.sysml2.meta_model.literal_boolean import LiteralBoolean as LiteralBoolean
+from ansys.sam.sysml2.meta_model.literal_expression import LiteralExpression as LiteralExpression
+from ansys.sam.sysml2.meta_model.literal_infinity import LiteralInfinity as LiteralInfinity
+from ansys.sam.sysml2.meta_model.literal_integer import LiteralInteger as LiteralInteger
+from ansys.sam.sysml2.meta_model.literal_rational import LiteralRational as LiteralRational
+from ansys.sam.sysml2.meta_model.literal_string import LiteralString as LiteralString
+from ansys.sam.sysml2.meta_model.loop_action_usage import LoopActionUsage as LoopActionUsage
+from ansys.sam.sysml2.meta_model.membership import Membership as Membership
+from ansys.sam.sysml2.meta_model.membership_expose import MembershipExpose as MembershipExpose
+from ansys.sam.sysml2.meta_model.membership_import import MembershipImport as MembershipImport
+from ansys.sam.sysml2.meta_model.merge_node import MergeNode as MergeNode
+from ansys.sam.sysml2.meta_model.metaclass import Metaclass as Metaclass
+from ansys.sam.sysml2.meta_model.metadata_access_expression import (
+    MetadataAccessExpression as MetadataAccessExpression,
+)
+from ansys.sam.sysml2.meta_model.metadata_definition import MetadataDefinition as MetadataDefinition
+from ansys.sam.sysml2.meta_model.metadata_feature import MetadataFeature as MetadataFeature
+from ansys.sam.sysml2.meta_model.metadata_usage import MetadataUsage as MetadataUsage
+from ansys.sam.sysml2.meta_model.multiplicity import Multiplicity as Multiplicity
+from ansys.sam.sysml2.meta_model.multiplicity_range import MultiplicityRange as MultiplicityRange
+from ansys.sam.sysml2.meta_model.namespace import Namespace as Namespace
+from ansys.sam.sysml2.meta_model.namespace_expose import NamespaceExpose as NamespaceExpose
+from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport as NamespaceImport
+from ansys.sam.sysml2.meta_model.null_expression import NullExpression as NullExpression
+from ansys.sam.sysml2.meta_model.objective_membership import (
+    ObjectiveMembership as ObjectiveMembership,
+)
+from ansys.sam.sysml2.meta_model.occurrence_definition import (
+    OccurrenceDefinition as OccurrenceDefinition,
+)
+from ansys.sam.sysml2.meta_model.occurrence_usage import OccurrenceUsage as OccurrenceUsage
+from ansys.sam.sysml2.meta_model.operator_expression import OperatorExpression as OperatorExpression
+from ansys.sam.sysml2.meta_model.owning_membership import OwningMembership as OwningMembership
+from ansys.sam.sysml2.meta_model.package import Package as Package
+from ansys.sam.sysml2.meta_model.parameter_membership import (
+    ParameterMembership as ParameterMembership,
+)
+from ansys.sam.sysml2.meta_model.part_definition import PartDefinition as PartDefinition
+from ansys.sam.sysml2.meta_model.part_usage import PartUsage as PartUsage
+from ansys.sam.sysml2.meta_model.payload_feature import PayloadFeature as PayloadFeature
+from ansys.sam.sysml2.meta_model.perform_action_usage import (
+    PerformActionUsage as PerformActionUsage,
+)
+from ansys.sam.sysml2.meta_model.port_conjugation import PortConjugation as PortConjugation
+from ansys.sam.sysml2.meta_model.port_definition import PortDefinition as PortDefinition
+from ansys.sam.sysml2.meta_model.port_usage import PortUsage as PortUsage
+from ansys.sam.sysml2.meta_model.portion_kind import PortionKind as PortionKind
+from ansys.sam.sysml2.meta_model.predicate import Predicate as Predicate
+from ansys.sam.sysml2.meta_model.redefinition import Redefinition as Redefinition
+from ansys.sam.sysml2.meta_model.reference_subsetting import (
+    ReferenceSubsetting as ReferenceSubsetting,
+)
+from ansys.sam.sysml2.meta_model.reference_usage import ReferenceUsage as ReferenceUsage
+from ansys.sam.sysml2.meta_model.relationship import Relationship as Relationship
+from ansys.sam.sysml2.meta_model.rendering_definition import (
+    RenderingDefinition as RenderingDefinition,
+)
+from ansys.sam.sysml2.meta_model.rendering_usage import RenderingUsage as RenderingUsage
+from ansys.sam.sysml2.meta_model.requirement_constraint_kind import (
+    RequirementConstraintKind as RequirementConstraintKind,
+)
 from ansys.sam.sysml2.meta_model.requirement_constraint_membership import (
-    RequirementConstraintMembership,
+    RequirementConstraintMembership as RequirementConstraintMembership,
 )
-from ansys.sam.sysml2.meta_model.requirement_definition import RequirementDefinition
-from ansys.sam.sysml2.meta_model.requirement_usage import RequirementUsage
+from ansys.sam.sysml2.meta_model.requirement_definition import (
+    RequirementDefinition as RequirementDefinition,
+)
+from ansys.sam.sysml2.meta_model.requirement_usage import RequirementUsage as RequirementUsage
+from ansys.sam.sysml2.meta_model.requirement_verification_membership import (
+    RequirementVerificationMembership as RequirementVerificationMembership,
+)
 from ansys.sam.sysml2.meta_model.result_expression_membership import (
-    ResultExpressionMembership,
+    ResultExpressionMembership as ResultExpressionMembership,
 )
 from ansys.sam.sysml2.meta_model.return_parameter_membership import (
-    ReturnParameterMembership,
+    ReturnParameterMembership as ReturnParameterMembership,
 )
 from ansys.sam.sysml2.meta_model.satisfy_requirement_usage import (
-    SatisfyRequirementUsage,
+    SatisfyRequirementUsage as SatisfyRequirementUsage,
 )
-from ansys.sam.sysml2.meta_model.send_action_usage import SendActionUsage
-from ansys.sam.sysml2.meta_model.specialization import Specialization
-from ansys.sam.sysml2.meta_model.stakeholder_membership import StakeholderMembership
-from ansys.sam.sysml2.meta_model.state_definition import StateDefinition
+from ansys.sam.sysml2.meta_model.select_expression import SelectExpression as SelectExpression
+from ansys.sam.sysml2.meta_model.send_action_usage import SendActionUsage as SendActionUsage
+from ansys.sam.sysml2.meta_model.specialization import Specialization as Specialization
+from ansys.sam.sysml2.meta_model.stakeholder_membership import (
+    StakeholderMembership as StakeholderMembership,
+)
+from ansys.sam.sysml2.meta_model.state_definition import StateDefinition as StateDefinition
+from ansys.sam.sysml2.meta_model.state_subaction_kind import (
+    StateSubactionKind as StateSubactionKind,
+)
 from ansys.sam.sysml2.meta_model.state_subaction_membership import (
-    StateSubactionMembership,
+    StateSubactionMembership as StateSubactionMembership,
 )
-from ansys.sam.sysml2.meta_model.state_usage import StateUsage
-from ansys.sam.sysml2.meta_model.step import Step
-from ansys.sam.sysml2.meta_model.structure import Structure
-from ansys.sam.sysml2.meta_model.subclassification import Subclassification
-from ansys.sam.sysml2.meta_model.subject_membership import SubjectMembership
-from ansys.sam.sysml2.meta_model.subsetting import Subsetting
-from ansys.sam.sysml2.meta_model.succession import Succession
-from ansys.sam.sysml2.meta_model.succession_as_usage import SuccessionAsUsage
-from ansys.sam.sysml2.meta_model.succession_flow_connection_usage import (
-    SuccessionFlowConnectionUsage,
+from ansys.sam.sysml2.meta_model.state_usage import StateUsage as StateUsage
+from ansys.sam.sysml2.meta_model.step import Step as Step
+from ansys.sam.sysml2.meta_model.structure import Structure as Structure
+from ansys.sam.sysml2.meta_model.subclassification import Subclassification as Subclassification
+from ansys.sam.sysml2.meta_model.subject_membership import SubjectMembership as SubjectMembership
+from ansys.sam.sysml2.meta_model.subsetting import Subsetting as Subsetting
+from ansys.sam.sysml2.meta_model.succession import Succession as Succession
+from ansys.sam.sysml2.meta_model.succession_as_usage import SuccessionAsUsage as SuccessionAsUsage
+from ansys.sam.sysml2.meta_model.succession_flow import SuccessionFlow as SuccessionFlow
+from ansys.sam.sysml2.meta_model.succession_flow_usage import (
+    SuccessionFlowUsage as SuccessionFlowUsage,
 )
-from ansys.sam.sysml2.meta_model.succession_item_flow import SuccessionItemFlow
-from ansys.sam.sysml2.meta_model.textual_representation import TextualRepresentation
+from ansys.sam.sysml2.meta_model.terminate_action_usage import (
+    TerminateActionUsage as TerminateActionUsage,
+)
+from ansys.sam.sysml2.meta_model.textual_representation import (
+    TextualRepresentation as TextualRepresentation,
+)
+from ansys.sam.sysml2.meta_model.transition_feature_kind import (
+    TransitionFeatureKind as TransitionFeatureKind,
+)
 from ansys.sam.sysml2.meta_model.transition_feature_membership import (
-    TransitionFeatureMembership,
+    TransitionFeatureMembership as TransitionFeatureMembership,
 )
-from ansys.sam.sysml2.meta_model.transition_usage import TransitionUsage
+from ansys.sam.sysml2.meta_model.transition_usage import TransitionUsage as TransitionUsage
 from ansys.sam.sysml2.meta_model.trigger_invocation_expression import (
-    TriggerInvocationExpression,
+    TriggerInvocationExpression as TriggerInvocationExpression,
 )
-from ansys.sam.sysml2.meta_model.type_ import Type
-from ansys.sam.sysml2.meta_model.type_featuring import TypeFeaturing
-from ansys.sam.sysml2.meta_model.usage import Usage
-from ansys.sam.sysml2.meta_model.use_case_definition import UseCaseDefinition
-from ansys.sam.sysml2.meta_model.use_case_usage import UseCaseUsage
-from ansys.sam.sysml2.meta_model.variant_membership import VariantMembership
-from ansys.sam.sysml2.meta_model.view_definition import ViewDefinition
-from ansys.sam.sysml2.meta_model.view_usage import ViewUsage
-from ansys.sam.sysml2.meta_model.while_loop_action_usage import WhileLoopActionUsage
+from ansys.sam.sysml2.meta_model.trigger_kind import TriggerKind as TriggerKind
+from ansys.sam.sysml2.meta_model.type_ import Type as Type
+from ansys.sam.sysml2.meta_model.type_featuring import TypeFeaturing as TypeFeaturing
+from ansys.sam.sysml2.meta_model.unioning import Unioning as Unioning
+from ansys.sam.sysml2.meta_model.usage import Usage as Usage
+from ansys.sam.sysml2.meta_model.use_case_definition import UseCaseDefinition as UseCaseDefinition
+from ansys.sam.sysml2.meta_model.use_case_usage import UseCaseUsage as UseCaseUsage
+from ansys.sam.sysml2.meta_model.variant_membership import VariantMembership as VariantMembership
+from ansys.sam.sysml2.meta_model.verification_case_definition import (
+    VerificationCaseDefinition as VerificationCaseDefinition,
+)
+from ansys.sam.sysml2.meta_model.verification_case_usage import (
+    VerificationCaseUsage as VerificationCaseUsage,
+)
+from ansys.sam.sysml2.meta_model.view_definition import ViewDefinition as ViewDefinition
+from ansys.sam.sysml2.meta_model.view_rendering_membership import (
+    ViewRenderingMembership as ViewRenderingMembership,
+)
+from ansys.sam.sysml2.meta_model.view_usage import ViewUsage as ViewUsage
+from ansys.sam.sysml2.meta_model.viewpoint_definition import (
+    ViewpointDefinition as ViewpointDefinition,
+)
+from ansys.sam.sysml2.meta_model.viewpoint_usage import ViewpointUsage as ViewpointUsage
+from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind as VisibilityKind
+from ansys.sam.sysml2.meta_model.while_loop_action_usage import (
+    WhileLoopActionUsage as WhileLoopActionUsage,
+)
 
 
 class Factory:

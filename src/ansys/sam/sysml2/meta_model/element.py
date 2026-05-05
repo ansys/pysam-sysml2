@@ -1,25 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 """Generated element class from metamodel."""
 
 from __future__ import annotations
@@ -30,7 +8,7 @@ from .e_object import EObject
 
 
 class Element(EObject):
-    """Java class 'com.ansys.medini.metamodel.sysml.Element'."""
+    """Java class 'com.ansys.metamodel.sysml2.Element'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -43,20 +21,126 @@ class Element(EObject):
         """
         super().__init__(element_id)
 
-        self._name = ""
-        self._owner = None
-        self._comment = ObservedList(self, "comment")
-        self._short_name = ""
-        self._owned_annotation = ObservedList(self, "owned_annotation")
-        self._visibility = None
-        self._qualified_name = ""
-        self._owning_namespace = None
-        self._owned_element = ObservedList(self, "owned_element")
-        self._documentation = ObservedList(self, "documentation")
         self._alias_ids = ObservedList(self, "alias_ids")
-        self._textual_representation = ObservedList(self, "textual_representation")
-        self._owned_inherited_relationship = ObservedList(self, "owned_inherited_relationship")
+        self._declared_name = ""
+        self._declared_short_name = ""
+        self._documentation = ObservedList(self, "documentation")
+        self._element_id = ""
+        self._name = ""
+        self._owned_annotation = ObservedList(self, "owned_annotation")
+        self._owned_element = ObservedList(self, "owned_element")
         self._owned_relationship = ObservedList(self, "owned_relationship")
+        self._owner = None
+        self._owning_membership = None
+        self._owning_namespace = None
+        self._owning_relationship = None
+        self._qualified_name = ""
+        self._short_name = ""
+        self._textual_representation = ObservedList(self, "textual_representation")
+        self._is_implied_included = False
+        self._is_library_element = False
+
+    @property
+    def alias_ids(self) -> list[str]:  # noqa: F821
+        """
+        Get the alias ids property.
+
+        Returns
+        -------
+        list[str]
+            Value of property alias ids.
+        """
+        return self._alias_ids
+
+    @property
+    def declared_name(self) -> str:  # noqa: F821
+        """
+        Get the declared name property.
+
+        Returns
+        -------
+        str
+            Value of property declared name.
+        """
+        return self._declared_name
+
+    @declared_name.setter
+    def declared_name(self, value: str):  # noqa: F821
+        """
+        Set the declared_name property.
+
+        Parameters
+        ----------
+        value: str
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "declared_name", value)
+        self._declared_name = value
+
+    @property
+    def declared_short_name(self) -> str:  # noqa: F821
+        """
+        Get the declared short name property.
+
+        Returns
+        -------
+        str
+            Value of property declared short name.
+        """
+        return self._declared_short_name
+
+    @declared_short_name.setter
+    def declared_short_name(self, value: str):  # noqa: F821
+        """
+        Set the declared_short_name property.
+
+        Parameters
+        ----------
+        value: str
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "declared_short_name", value)
+        self._declared_short_name = value
+
+    @property
+    def documentation(self) -> list["Documentation"]:  # noqa: F821
+        """
+        Get the documentation property.
+
+        Returns
+        -------
+        list["Documentation"]
+            Value of property documentation.
+        """
+        return self._documentation
+
+    @property
+    def element_id(self) -> str:  # noqa: F821
+        """
+        Get the element id property.
+
+        Returns
+        -------
+        str
+            Value of property element id.
+        """
+        return self._element_id
+
+    @element_id.setter
+    def element_id(self, value: str):  # noqa: F821
+        """
+        Set the element_id property.
+
+        Parameters
+        ----------
+        value: str
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "element_id", value)
+        self._element_id = value
 
     @property
     def name(self) -> str:  # noqa: F821
@@ -70,19 +154,41 @@ class Element(EObject):
         """
         return self._name
 
-    @name.setter
-    def name(self, value: str):  # noqa: F821
+    @property
+    def owned_annotation(self) -> list["Annotation"]:  # noqa: F821
         """
-        Set the name property.
+        Get the owned annotation property.
 
-        Parameters
-        ----------
-        value: str
-            New value.
+        Returns
+        -------
+        list["Annotation"]
+            Value of property owned annotation.
         """
-        if self._observer is not None:
-            self._observer.notify(self.id, "name", value)
-        self._name = value
+        return self._owned_annotation
+
+    @property
+    def owned_element(self) -> list["Element"]:  # noqa: F821
+        """
+        Get the owned element property.
+
+        Returns
+        -------
+        list["Element"]
+            Value of property owned element.
+        """
+        return self._owned_element
+
+    @property
+    def owned_relationship(self) -> list["Relationship"]:  # noqa: F821
+        """
+        Get the owned relationship property.
+
+        Returns
+        -------
+        list["Relationship"]
+            Value of property owned relationship.
+        """
+        return self._owned_relationship
 
     @property
     def owner(self) -> "Element":  # noqa: F821
@@ -111,92 +217,30 @@ class Element(EObject):
         self._owner = value
 
     @property
-    def comment(self) -> list["Comment"]:  # noqa: F821
+    def owning_membership(self) -> "OwningMembership":  # noqa: F821
         """
-        Get the comment property.
+        Get the owning membership property.
 
         Returns
         -------
-        list["Comment"]
-            Value of property comment.
+        "OwningMembership"
+            Value of property owning membership.
         """
-        return self._comment
+        return self._owning_membership
 
-    @property
-    def short_name(self) -> str:  # noqa: F821
+    @owning_membership.setter
+    def owning_membership(self, value: "OwningMembership"):  # noqa: F821
         """
-        Get the short name property.
-
-        Returns
-        -------
-        str
-            Value of property short name.
-        """
-        return self._short_name
-
-    @short_name.setter
-    def short_name(self, value: str):  # noqa: F821
-        """
-        Set the short_name property.
+        Set the owning_membership property.
 
         Parameters
         ----------
-        value: str
+        value: "OwningMembership"
             New value.
         """
         if self._observer is not None:
-            self._observer.notify(self.id, "short_name", value)
-        self._short_name = value
-
-    @property
-    def owned_annotation(self) -> list["Annotation"]:  # noqa: F821
-        """
-        Get the owned annotation property.
-
-        Returns
-        -------
-        list["Annotation"]
-            Value of property owned annotation.
-        """
-        return self._owned_annotation
-
-    @property
-    def visibility(self) -> "VisibilityKind":  # noqa: F821
-        """
-        Get the visibility property.
-
-        Returns
-        -------
-        "VisibilityKind"
-            Value of property visibility.
-        """
-        return self._visibility
-
-    @visibility.setter
-    def visibility(self, value: "VisibilityKind"):  # noqa: F821
-        """
-        Set the visibility property.
-
-        Parameters
-        ----------
-        value: "VisibilityKind"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "visibility", value)
-        self._visibility = value
-
-    @property
-    def qualified_name(self) -> str:  # noqa: F821
-        """
-        Get the qualified name property.
-
-        Returns
-        -------
-        str
-            Value of property qualified name.
-        """
-        return self._qualified_name
+            self._observer.notify(self.id, "owning_membership", value)
+        self._owning_membership = value
 
     @property
     def owning_namespace(self) -> "Namespace":  # noqa: F821
@@ -225,40 +269,54 @@ class Element(EObject):
         self._owning_namespace = value
 
     @property
-    def owned_element(self) -> list["Element"]:  # noqa: F821
+    def owning_relationship(self) -> "Relationship":  # noqa: F821
         """
-        Get the owned element property.
+        Get the owning relationship property.
 
         Returns
         -------
-        list["Element"]
-            Value of property owned element.
+        "Relationship"
+            Value of property owning relationship.
         """
-        return self._owned_element
+        return self._owning_relationship
+
+    @owning_relationship.setter
+    def owning_relationship(self, value: "Relationship"):  # noqa: F821
+        """
+        Set the owning_relationship property.
+
+        Parameters
+        ----------
+        value: "Relationship"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "owning_relationship", value)
+        self._owning_relationship = value
 
     @property
-    def documentation(self) -> list["Documentation"]:  # noqa: F821
+    def qualified_name(self) -> str:  # noqa: F821
         """
-        Get the documentation property.
+        Get the qualified name property.
 
         Returns
         -------
-        list["Documentation"]
-            Value of property documentation.
+        str
+            Value of property qualified name.
         """
-        return self._documentation
+        return self._qualified_name
 
     @property
-    def alias_ids(self) -> list[str]:  # noqa: F821
+    def short_name(self) -> str:  # noqa: F821
         """
-        Get the alias ids property.
+        Get the short name property.
 
         Returns
         -------
-        list[str]
-            Value of property alias ids.
+        str
+            Value of property short name.
         """
-        return self._alias_ids
+        return self._short_name
 
     @property
     def textual_representation(self) -> list["TextualRepresentation"]:  # noqa: F821
@@ -273,25 +331,53 @@ class Element(EObject):
         return self._textual_representation
 
     @property
-    def owned_inherited_relationship(self) -> list["Relationship"]:  # noqa: F821
+    def is_implied_included(self) -> bool:  # noqa: F821
         """
-        Get the owned inherited relationship property.
+        Get the is implied included property.
 
         Returns
         -------
-        list["Relationship"]
-            Value of property owned inherited relationship.
+        bool
+            Value of property is implied included.
         """
-        return self._owned_inherited_relationship
+        return self._is_implied_included
+
+    @is_implied_included.setter
+    def is_implied_included(self, value: bool):  # noqa: F821
+        """
+        Set the is_implied_included property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_implied_included", value)
+        self._is_implied_included = value
 
     @property
-    def owned_relationship(self) -> list["Relationship"]:  # noqa: F821
+    def is_library_element(self) -> bool:  # noqa: F821
         """
-        Get the owned relationship property.
+        Get the is library element property.
 
         Returns
         -------
-        list["Relationship"]
-            Value of property owned relationship.
+        bool
+            Value of property is library element.
         """
-        return self._owned_relationship
+        return self._is_library_element
+
+    @is_library_element.setter
+    def is_library_element(self, value: bool):  # noqa: F821
+        """
+        Set the is_library_element property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_library_element", value)
+        self._is_library_element = value

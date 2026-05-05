@@ -1,25 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 """Generated feature class from metamodel."""
 
 from __future__ import annotations
@@ -30,7 +8,7 @@ from .type_ import Type
 
 
 class Feature(Type):
-    """Java class 'com.ansys.medini.metamodel.sysml.Feature'."""
+    """Java class 'com.ansys.metamodel.sysml2.Feature'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -43,249 +21,75 @@ class Feature(Type):
         """
         super().__init__(element_id)
 
-        self._inherited = False
-        self._type_ = ObservedList(self, "type_")
-        self._default_value = None
-        self._referenced_feature = ObservedList(self, "referenced_feature")
-        self._feature_value_expression = None
-        self._owned_reference_subsetting = ObservedList(self, "owned_reference_subsetting")
-        self._inheriting_type = None
-        self._inherited_type = ObservedList(self, "inherited_type")
-        self._declaration = None
-        self._set_is_unique = False
-        self._set_default_value = False
-        self._set_is_ordered = False
-        self._is_end = False
-        self._direction = None
-        self._set_direction = False
-        self._set_valuation = False
-        self._is_ordered = False
-        self._is_unique = False
-        self._valuation = None
-        self._is_composite = False
-        self._set_is_composite = False
-        self._owned_typing = ObservedList(self, "owned_typing")
-        self._owned_subsetting = ObservedList(self, "owned_subsetting")
         self._chaining_feature = ObservedList(self, "chaining_feature")
-        self._subsetted_feature = ObservedList(self, "subsetted_feature")
-        self._set_feature_value_expression = False
-        self._owning_feature_membership = None
-        self._owned_type_featuring = ObservedList(self, "owned_type_featuring")
+        self._cross_feature = None
+        self._direction = None
+        self._endfeaturemembership = None
+        self._feature_target = None
+        self._featuring_type = False
+        self._owned_cross_subsetting = None
+        self._owned_feature_chaining = ObservedList(self, "owned_feature_chaining")
+        self._owned_feature_inverting = ObservedList(self, "owned_feature_inverting")
         self._owned_redefinition = ObservedList(self, "owned_redefinition")
-        self._redefined_feature = ObservedList(self, "redefined_feature")
-        self._all_redefinitions = ObservedList(self, "all_redefinitions")
+        self._owned_reference_subsetting = None
+        self._owned_subsetting = ObservedList(self, "owned_subsetting")
+        self._owned_type_featuring = ObservedList(self, "owned_type_featuring")
+        self._owned_typing = ObservedList(self, "owned_typing")
+        self._owning_feature_membership = None
+        self._owning_type = None
+        self._type_ = ObservedList(self, "type_")
+        self._valuation = None
+        self._cartesian_product = False
+        self._compatible_with = False
+        self._featured_within = False
+        self._is_composite = False
+        self._is_constant = False
+        self._is_derived = False
+        self._is_end = False
+        self._is_ordered = False
+        self._is_portion = False
+        self._is_unique = False
+        self._is_variable = False
+        self._owned_cross_feature = False
+        self._set_direction = False
 
     @property
-    def inherited(self) -> bool:  # noqa: F821
+    def chaining_feature(self) -> list["Feature"]:  # noqa: F821
         """
-        Get the inherited property.
-
-        Returns
-        -------
-        bool
-            Value of property inherited.
-        """
-        return self._inherited
-
-    @property
-    def type_(self) -> list["Type"]:  # noqa: F821
-        """
-        Get the type property.
-
-        Returns
-        -------
-        list["Type"]
-            Value of property type.
-        """
-        return self._type_
-
-    @property
-    def default_value(self) -> "Expression":  # noqa: F821
-        """
-        Get the default value property.
-
-        Returns
-        -------
-        "Expression"
-            Value of property default value.
-        """
-        return self._default_value
-
-    @default_value.setter
-    def default_value(self, value: "Expression"):  # noqa: F821
-        """
-        Set the default_value property.
-
-        Parameters
-        ----------
-        value: "Expression"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "default_value", value)
-        self._default_value = value
-
-    @property
-    def referenced_feature(self) -> list["Feature"]:  # noqa: F821
-        """
-        Get the referenced feature property.
+        Get the chaining feature property.
 
         Returns
         -------
         list["Feature"]
-            Value of property referenced feature.
+            Value of property chaining feature.
         """
-        return self._referenced_feature
+        return self._chaining_feature
 
     @property
-    def feature_value_expression(self) -> "Expression":  # noqa: F821
+    def cross_feature(self) -> "Feature":  # noqa: F821
         """
-        Get the feature value expression property.
-
-        Returns
-        -------
-        "Expression"
-            Value of property feature value expression.
-        """
-        return self._feature_value_expression
-
-    @feature_value_expression.setter
-    def feature_value_expression(self, value: "Expression"):  # noqa: F821
-        """
-        Set the feature_value_expression property.
-
-        Parameters
-        ----------
-        value: "Expression"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "feature_value_expression", value)
-        self._feature_value_expression = value
-
-    @property
-    def owned_reference_subsetting(self) -> list["ReferenceSubsetting"]:  # noqa: F821
-        """
-        Get the owned reference subsetting property.
-
-        Returns
-        -------
-        list["ReferenceSubsetting"]
-            Value of property owned reference subsetting.
-        """
-        return self._owned_reference_subsetting
-
-    @property
-    def inheriting_type(self) -> "Type":  # noqa: F821
-        """
-        Get the inheriting type property.
-
-        Returns
-        -------
-        "Type"
-            Value of property inheriting type.
-        """
-        return self._inheriting_type
-
-    @inheriting_type.setter
-    def inheriting_type(self, value: "Type"):  # noqa: F821
-        """
-        Set the inheriting_type property.
-
-        Parameters
-        ----------
-        value: "Type"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "inheriting_type", value)
-        self._inheriting_type = value
-
-    @property
-    def inherited_type(self) -> list["Type"]:  # noqa: F821
-        """
-        Get the inherited type property.
-
-        Returns
-        -------
-        list["Type"]
-            Value of property inherited type.
-        """
-        return self._inherited_type
-
-    @property
-    def declaration(self) -> "Feature":  # noqa: F821
-        """
-        Get the declaration property.
+        Get the cross feature property.
 
         Returns
         -------
         "Feature"
-            Value of property declaration.
+            Value of property cross feature.
         """
-        return self._declaration
+        return self._cross_feature
 
-    @property
-    def set_is_unique(self) -> bool:  # noqa: F821
+    @cross_feature.setter
+    def cross_feature(self, value: "Feature"):  # noqa: F821
         """
-        Get the set is unique property.
-
-        Returns
-        -------
-        bool
-            Value of property set is unique.
-        """
-        return self._set_is_unique
-
-    @property
-    def set_default_value(self) -> bool:  # noqa: F821
-        """
-        Get the set default value property.
-
-        Returns
-        -------
-        bool
-            Value of property set default value.
-        """
-        return self._set_default_value
-
-    @property
-    def set_is_ordered(self) -> bool:  # noqa: F821
-        """
-        Get the set is ordered property.
-
-        Returns
-        -------
-        bool
-            Value of property set is ordered.
-        """
-        return self._set_is_ordered
-
-    @property
-    def is_end(self) -> bool:  # noqa: F821
-        """
-        Get the is end property.
-
-        Returns
-        -------
-        bool
-            Value of property is end.
-        """
-        return self._is_end
-
-    @is_end.setter
-    def is_end(self, value: bool):  # noqa: F821
-        """
-        Set the is_end property.
+        Set the cross_feature property.
 
         Parameters
         ----------
-        value: bool
+        value: "Feature"
             New value.
         """
         if self._observer is not None:
-            self._observer.notify(self.id, "is_end", value)
-        self._is_end = value
+            self._observer.notify(self.id, "cross_feature", value)
+        self._cross_feature = value
 
     @property
     def direction(self) -> "FeatureDirectionKind":  # noqa: F821
@@ -314,156 +118,156 @@ class Feature(Type):
         self._direction = value
 
     @property
-    def set_direction(self) -> bool:  # noqa: F821
+    def endfeaturemembership(self) -> "EndFeatureMembership":  # noqa: F821
         """
-        Get the set direction property.
+        Get the endfeaturemembership property.
 
         Returns
         -------
-        bool
-            Value of property set direction.
+        "EndFeatureMembership"
+            Value of property endfeaturemembership.
         """
-        return self._set_direction
+        return self._endfeaturemembership
 
-    @property
-    def set_valuation(self) -> bool:  # noqa: F821
+    @endfeaturemembership.setter
+    def endfeaturemembership(self, value: "EndFeatureMembership"):  # noqa: F821
         """
-        Get the set valuation property.
-
-        Returns
-        -------
-        bool
-            Value of property set valuation.
-        """
-        return self._set_valuation
-
-    @property
-    def is_ordered(self) -> bool:  # noqa: F821
-        """
-        Get the is ordered property.
-
-        Returns
-        -------
-        bool
-            Value of property is ordered.
-        """
-        return self._is_ordered
-
-    @is_ordered.setter
-    def is_ordered(self, value: bool):  # noqa: F821
-        """
-        Set the is_ordered property.
+        Set the endfeaturemembership property.
 
         Parameters
         ----------
-        value: bool
+        value: "EndFeatureMembership"
             New value.
         """
         if self._observer is not None:
-            self._observer.notify(self.id, "is_ordered", value)
-        self._is_ordered = value
+            self._observer.notify(self.id, "endfeaturemembership", value)
+        self._endfeaturemembership = value
 
     @property
-    def is_unique(self) -> bool:  # noqa: F821
+    def feature_target(self) -> "Feature":  # noqa: F821
         """
-        Get the is unique property.
+        Get the feature target property.
+
+        Returns
+        -------
+        "Feature"
+            Value of property feature target.
+        """
+        return self._feature_target
+
+    @feature_target.setter
+    def feature_target(self, value: "Feature"):  # noqa: F821
+        """
+        Set the feature_target property.
+
+        Parameters
+        ----------
+        value: "Feature"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "feature_target", value)
+        self._feature_target = value
+
+    @property
+    def featuring_type(self) -> bool:  # noqa: F821
+        """
+        Get the featuring type property.
 
         Returns
         -------
         bool
-            Value of property is unique.
+            Value of property featuring type.
         """
-        return self._is_unique
+        return self._featuring_type
 
-    @is_unique.setter
-    def is_unique(self, value: bool):  # noqa: F821
+    @property
+    def owned_cross_subsetting(self) -> "CrossSubsetting":  # noqa: F821
         """
-        Set the is_unique property.
+        Get the owned cross subsetting property.
+
+        Returns
+        -------
+        "CrossSubsetting"
+            Value of property owned cross subsetting.
+        """
+        return self._owned_cross_subsetting
+
+    @owned_cross_subsetting.setter
+    def owned_cross_subsetting(self, value: "CrossSubsetting"):  # noqa: F821
+        """
+        Set the owned_cross_subsetting property.
 
         Parameters
         ----------
-        value: bool
+        value: "CrossSubsetting"
             New value.
         """
         if self._observer is not None:
-            self._observer.notify(self.id, "is_unique", value)
-        self._is_unique = value
+            self._observer.notify(self.id, "owned_cross_subsetting", value)
+        self._owned_cross_subsetting = value
 
     @property
-    def valuation(self) -> "FeatureValue":  # noqa: F821
+    def owned_feature_chaining(self) -> list["FeatureChaining"]:  # noqa: F821
         """
-        Get the valuation property.
+        Get the owned feature chaining property.
 
         Returns
         -------
-        "FeatureValue"
-            Value of property valuation.
+        list["FeatureChaining"]
+            Value of property owned feature chaining.
         """
-        return self._valuation
+        return self._owned_feature_chaining
 
-    @valuation.setter
-    def valuation(self, value: "FeatureValue"):  # noqa: F821
+    @property
+    def owned_feature_inverting(self) -> list["FeatureInverting"]:  # noqa: F821
         """
-        Set the valuation property.
+        Get the owned feature inverting property.
+
+        Returns
+        -------
+        list["FeatureInverting"]
+            Value of property owned feature inverting.
+        """
+        return self._owned_feature_inverting
+
+    @property
+    def owned_redefinition(self) -> list["Redefinition"]:  # noqa: F821
+        """
+        Get the owned redefinition property.
+
+        Returns
+        -------
+        list["Redefinition"]
+            Value of property owned redefinition.
+        """
+        return self._owned_redefinition
+
+    @property
+    def owned_reference_subsetting(self) -> "ReferenceSubsetting":  # noqa: F821
+        """
+        Get the owned reference subsetting property.
+
+        Returns
+        -------
+        "ReferenceSubsetting"
+            Value of property owned reference subsetting.
+        """
+        return self._owned_reference_subsetting
+
+    @owned_reference_subsetting.setter
+    def owned_reference_subsetting(self, value: "ReferenceSubsetting"):  # noqa: F821
+        """
+        Set the owned_reference_subsetting property.
 
         Parameters
         ----------
-        value: "FeatureValue"
+        value: "ReferenceSubsetting"
             New value.
         """
         if self._observer is not None:
-            self._observer.notify(self.id, "valuation", value)
-        self._valuation = value
-
-    @property
-    def is_composite(self) -> bool:  # noqa: F821
-        """
-        Get the is composite property.
-
-        Returns
-        -------
-        bool
-            Value of property is composite.
-        """
-        return self._is_composite
-
-    @is_composite.setter
-    def is_composite(self, value: bool):  # noqa: F821
-        """
-        Set the is_composite property.
-
-        Parameters
-        ----------
-        value: bool
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "is_composite", value)
-        self._is_composite = value
-
-    @property
-    def set_is_composite(self) -> bool:  # noqa: F821
-        """
-        Get the set is composite property.
-
-        Returns
-        -------
-        bool
-            Value of property set is composite.
-        """
-        return self._set_is_composite
-
-    @property
-    def owned_typing(self) -> list["FeatureTyping"]:  # noqa: F821
-        """
-        Get the owned typing property.
-
-        Returns
-        -------
-        list["FeatureTyping"]
-            Value of property owned typing.
-        """
-        return self._owned_typing
+            self._observer.notify(self.id, "owned_reference_subsetting", value)
+        self._owned_reference_subsetting = value
 
     @property
     def owned_subsetting(self) -> list["Subsetting"]:  # noqa: F821
@@ -478,40 +282,28 @@ class Feature(Type):
         return self._owned_subsetting
 
     @property
-    def chaining_feature(self) -> list["Feature"]:  # noqa: F821
+    def owned_type_featuring(self) -> list["TypeFeaturing"]:  # noqa: F821
         """
-        Get the chaining feature property.
+        Get the owned type featuring property.
 
         Returns
         -------
-        list["Feature"]
-            Value of property chaining feature.
+        list["TypeFeaturing"]
+            Value of property owned type featuring.
         """
-        return self._chaining_feature
+        return self._owned_type_featuring
 
     @property
-    def subsetted_feature(self) -> list["Feature"]:  # noqa: F821
+    def owned_typing(self) -> list["FeatureTyping"]:  # noqa: F821
         """
-        Get the subsetted feature property.
+        Get the owned typing property.
 
         Returns
         -------
-        list["Feature"]
-            Value of property subsetted feature.
+        list["FeatureTyping"]
+            Value of property owned typing.
         """
-        return self._subsetted_feature
-
-    @property
-    def set_feature_value_expression(self) -> bool:  # noqa: F821
-        """
-        Get the set feature value expression property.
-
-        Returns
-        -------
-        bool
-            Value of property set feature value expression.
-        """
-        return self._set_feature_value_expression
+        return self._owned_typing
 
     @property
     def owning_feature_membership(self) -> "FeatureMembership":  # noqa: F821
@@ -540,49 +332,333 @@ class Feature(Type):
         self._owning_feature_membership = value
 
     @property
-    def owned_type_featuring(self) -> list["TypeFeaturing"]:  # noqa: F821
+    def owning_type(self) -> "Type":  # noqa: F821
         """
-        Get the owned type featuring property.
+        Get the owning type property.
 
         Returns
         -------
-        list["TypeFeaturing"]
-            Value of property owned type featuring.
+        "Type"
+            Value of property owning type.
         """
-        return self._owned_type_featuring
+        return self._owning_type
+
+    @owning_type.setter
+    def owning_type(self, value: "Type"):  # noqa: F821
+        """
+        Set the owning_type property.
+
+        Parameters
+        ----------
+        value: "Type"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "owning_type", value)
+        self._owning_type = value
 
     @property
-    def owned_redefinition(self) -> list["Redefinition"]:  # noqa: F821
+    def type_(self) -> list["Type"]:  # noqa: F821
         """
-        Get the owned redefinition property.
+        Get the type property.
 
         Returns
         -------
-        list["Redefinition"]
-            Value of property owned redefinition.
+        list["Type"]
+            Value of property type.
         """
-        return self._owned_redefinition
+        return self._type_
 
     @property
-    def redefined_feature(self) -> list["Feature"]:  # noqa: F821
+    def valuation(self) -> "FeatureValue":  # noqa: F821
         """
-        Get the redefined feature property.
+        Get the valuation property.
 
         Returns
         -------
-        list["Feature"]
-            Value of property redefined feature.
+        "FeatureValue"
+            Value of property valuation.
         """
-        return self._redefined_feature
+        return self._valuation
+
+    @valuation.setter
+    def valuation(self, value: "FeatureValue"):  # noqa: F821
+        """
+        Set the valuation property.
+
+        Parameters
+        ----------
+        value: "FeatureValue"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "valuation", value)
+        self._valuation = value
 
     @property
-    def all_redefinitions(self) -> list["Feature"]:  # noqa: F821
+    def cartesian_product(self) -> bool:  # noqa: F821
         """
-        Get the all redefinitions property.
+        Get the cartesian product property.
 
         Returns
         -------
-        list["Feature"]
-            Value of property all redefinitions.
+        bool
+            Value of property cartesian product.
         """
-        return self._all_redefinitions
+        return self._cartesian_product
+
+    @property
+    def compatible_with(self) -> bool:  # noqa: F821
+        """
+        Get the compatible with property.
+
+        Returns
+        -------
+        bool
+            Value of property compatible with.
+        """
+        return self._compatible_with
+
+    @property
+    def featured_within(self) -> bool:  # noqa: F821
+        """
+        Get the featured within property.
+
+        Returns
+        -------
+        bool
+            Value of property featured within.
+        """
+        return self._featured_within
+
+    @property
+    def is_composite(self) -> bool:  # noqa: F821
+        """
+        Get the is composite property.
+
+        Returns
+        -------
+        bool
+            Value of property is composite.
+        """
+        return self._is_composite
+
+    @is_composite.setter
+    def is_composite(self, value: bool):  # noqa: F821
+        """
+        Set the is_composite property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_composite", value)
+        self._is_composite = value
+
+    @property
+    def is_constant(self) -> bool:  # noqa: F821
+        """
+        Get the is constant property.
+
+        Returns
+        -------
+        bool
+            Value of property is constant.
+        """
+        return self._is_constant
+
+    @is_constant.setter
+    def is_constant(self, value: bool):  # noqa: F821
+        """
+        Set the is_constant property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_constant", value)
+        self._is_constant = value
+
+    @property
+    def is_derived(self) -> bool:  # noqa: F821
+        """
+        Get the is derived property.
+
+        Returns
+        -------
+        bool
+            Value of property is derived.
+        """
+        return self._is_derived
+
+    @is_derived.setter
+    def is_derived(self, value: bool):  # noqa: F821
+        """
+        Set the is_derived property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_derived", value)
+        self._is_derived = value
+
+    @property
+    def is_end(self) -> bool:  # noqa: F821
+        """
+        Get the is end property.
+
+        Returns
+        -------
+        bool
+            Value of property is end.
+        """
+        return self._is_end
+
+    @is_end.setter
+    def is_end(self, value: bool):  # noqa: F821
+        """
+        Set the is_end property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_end", value)
+        self._is_end = value
+
+    @property
+    def is_ordered(self) -> bool:  # noqa: F821
+        """
+        Get the is ordered property.
+
+        Returns
+        -------
+        bool
+            Value of property is ordered.
+        """
+        return self._is_ordered
+
+    @is_ordered.setter
+    def is_ordered(self, value: bool):  # noqa: F821
+        """
+        Set the is_ordered property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_ordered", value)
+        self._is_ordered = value
+
+    @property
+    def is_portion(self) -> bool:  # noqa: F821
+        """
+        Get the is portion property.
+
+        Returns
+        -------
+        bool
+            Value of property is portion.
+        """
+        return self._is_portion
+
+    @is_portion.setter
+    def is_portion(self, value: bool):  # noqa: F821
+        """
+        Set the is_portion property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_portion", value)
+        self._is_portion = value
+
+    @property
+    def is_unique(self) -> bool:  # noqa: F821
+        """
+        Get the is unique property.
+
+        Returns
+        -------
+        bool
+            Value of property is unique.
+        """
+        return self._is_unique
+
+    @is_unique.setter
+    def is_unique(self, value: bool):  # noqa: F821
+        """
+        Set the is_unique property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_unique", value)
+        self._is_unique = value
+
+    @property
+    def is_variable(self) -> bool:  # noqa: F821
+        """
+        Get the is variable property.
+
+        Returns
+        -------
+        bool
+            Value of property is variable.
+        """
+        return self._is_variable
+
+    @is_variable.setter
+    def is_variable(self, value: bool):  # noqa: F821
+        """
+        Set the is_variable property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_variable", value)
+        self._is_variable = value
+
+    @property
+    def owned_cross_feature(self) -> bool:  # noqa: F821
+        """
+        Get the owned cross feature property.
+
+        Returns
+        -------
+        bool
+            Value of property owned cross feature.
+        """
+        return self._owned_cross_feature
+
+    @property
+    def set_direction(self) -> bool:  # noqa: F821
+        """
+        Get the set direction property.
+
+        Returns
+        -------
+        bool
+            Value of property set direction.
+        """
+        return self._set_direction

@@ -1,25 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 """Generated function class from metamodel."""
 
 from __future__ import annotations
@@ -30,7 +8,7 @@ from .behavior import Behavior
 
 
 class Function(Behavior):
-    """Java class 'com.ansys.medini.metamodel.sysml.Function'."""
+    """Java class 'com.ansys.metamodel.sysml2.Function'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -43,8 +21,21 @@ class Function(Behavior):
         """
         super().__init__(element_id)
 
-        self._result = None
         self._expression = ObservedList(self, "expression")
+        self._result = None
+        self._is_model_level_evaluable = False
+
+    @property
+    def expression(self) -> list["Expression"]:  # noqa: F821
+        """
+        Get the expression property.
+
+        Returns
+        -------
+        list["Expression"]
+            Value of property expression.
+        """
+        return self._expression
 
     @property
     def result(self) -> "Feature":  # noqa: F821
@@ -73,13 +64,27 @@ class Function(Behavior):
         self._result = value
 
     @property
-    def expression(self) -> list["Expression"]:  # noqa: F821
+    def is_model_level_evaluable(self) -> bool:  # noqa: F821
         """
-        Get the expression property.
+        Get the is model level evaluable property.
 
         Returns
         -------
-        list["Expression"]
-            Value of property expression.
+        bool
+            Value of property is model level evaluable.
         """
-        return self._expression
+        return self._is_model_level_evaluable
+
+    @is_model_level_evaluable.setter
+    def is_model_level_evaluable(self, value: bool):  # noqa: F821
+        """
+        Set the is_model_level_evaluable property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_model_level_evaluable", value)
+        self._is_model_level_evaluable = value

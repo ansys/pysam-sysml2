@@ -1,25 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 """Generated requirement usage class from metamodel."""
 
 from __future__ import annotations
@@ -30,7 +8,7 @@ from .constraint_usage import ConstraintUsage
 
 
 class RequirementUsage(ConstraintUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.RequirementUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.RequirementUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -43,56 +21,51 @@ class RequirementUsage(ConstraintUsage):
         """
         super().__init__(element_id)
 
-        self._text = ObservedList(self, "text")
-        self._is_objective = False
-        self._req_id = ""
-        self._all_text = ObservedList(self, "all_text")
-        self._framed_concern = ObservedList(self, "framed_concern")
         self._actor_parameter = ObservedList(self, "actor_parameter")
-        self._subject_parameter = None
+        self._assumed_constraint = ObservedList(self, "assumed_constraint")
+        self._framed_concern = ObservedList(self, "framed_concern")
+        self._req_id = ""
+        self._required_constraint = ObservedList(self, "required_constraint")
         self._requirement_definition = None
         self._stakeholder_parameter = ObservedList(self, "stakeholder_parameter")
-        self._required_constraint = ObservedList(self, "required_constraint")
-        self._a_verify_requirement = False
-        self._assumed_constraint = ObservedList(self, "assumed_constraint")
+        self._subject_parameter = None
+        self._text = ObservedList(self, "text")
 
     @property
-    def text(self) -> list[str]:  # noqa: F821
+    def actor_parameter(self) -> list["PartUsage"]:  # noqa: F821
         """
-        Get the text property.
+        Get the actor parameter property.
 
         Returns
         -------
-        list[str]
-            Value of property text.
+        list["PartUsage"]
+            Value of property actor parameter.
         """
-        return self._text
+        return self._actor_parameter
 
     @property
-    def is_objective(self) -> bool:  # noqa: F821
+    def assumed_constraint(self) -> list["ConstraintUsage"]:  # noqa: F821
         """
-        Get the is objective property.
+        Get the assumed constraint property.
 
         Returns
         -------
-        bool
-            Value of property is objective.
+        list["ConstraintUsage"]
+            Value of property assumed constraint.
         """
-        return self._is_objective
+        return self._assumed_constraint
 
-    @is_objective.setter
-    def is_objective(self, value: bool):  # noqa: F821
+    @property
+    def framed_concern(self) -> list["ConcernUsage"]:  # noqa: F821
         """
-        Set the is_objective property.
+        Get the framed concern property.
 
-        Parameters
-        ----------
-        value: bool
-            New value.
+        Returns
+        -------
+        list["ConcernUsage"]
+            Value of property framed concern.
         """
-        if self._observer is not None:
-            self._observer.notify(self.id, "is_objective", value)
-        self._is_objective = value
+        return self._framed_concern
 
     @property
     def req_id(self) -> str:  # noqa: F821
@@ -121,66 +94,16 @@ class RequirementUsage(ConstraintUsage):
         self._req_id = value
 
     @property
-    def all_text(self) -> list[str]:  # noqa: F821
+    def required_constraint(self) -> list["ConstraintUsage"]:  # noqa: F821
         """
-        Get the all text property.
+        Get the required constraint property.
 
         Returns
         -------
-        list[str]
-            Value of property all text.
+        list["ConstraintUsage"]
+            Value of property required constraint.
         """
-        return self._all_text
-
-    @property
-    def framed_concern(self) -> list["ConcernUsage"]:  # noqa: F821
-        """
-        Get the framed concern property.
-
-        Returns
-        -------
-        list["ConcernUsage"]
-            Value of property framed concern.
-        """
-        return self._framed_concern
-
-    @property
-    def actor_parameter(self) -> list["PartUsage"]:  # noqa: F821
-        """
-        Get the actor parameter property.
-
-        Returns
-        -------
-        list["PartUsage"]
-            Value of property actor parameter.
-        """
-        return self._actor_parameter
-
-    @property
-    def subject_parameter(self) -> "Usage":  # noqa: F821
-        """
-        Get the subject parameter property.
-
-        Returns
-        -------
-        "Usage"
-            Value of property subject parameter.
-        """
-        return self._subject_parameter
-
-    @subject_parameter.setter
-    def subject_parameter(self, value: "Usage"):  # noqa: F821
-        """
-        Set the subject_parameter property.
-
-        Parameters
-        ----------
-        value: "Usage"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "subject_parameter", value)
-        self._subject_parameter = value
+        return self._required_constraint
 
     @property
     def requirement_definition(self) -> "RequirementDefinition":  # noqa: F821
@@ -221,37 +144,39 @@ class RequirementUsage(ConstraintUsage):
         return self._stakeholder_parameter
 
     @property
-    def required_constraint(self) -> list["ConstraintUsage"]:  # noqa: F821
+    def subject_parameter(self) -> "Usage":  # noqa: F821
         """
-        Get the required constraint property.
+        Get the subject parameter property.
 
         Returns
         -------
-        list["ConstraintUsage"]
-            Value of property required constraint.
+        "Usage"
+            Value of property subject parameter.
         """
-        return self._required_constraint
+        return self._subject_parameter
+
+    @subject_parameter.setter
+    def subject_parameter(self, value: "Usage"):  # noqa: F821
+        """
+        Set the subject_parameter property.
+
+        Parameters
+        ----------
+        value: "Usage"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "subject_parameter", value)
+        self._subject_parameter = value
 
     @property
-    def a_verify_requirement(self) -> bool:  # noqa: F821
+    def text(self) -> list[str]:  # noqa: F821
         """
-        Get the a verify requirement property.
+        Get the text property.
 
         Returns
         -------
-        bool
-            Value of property a verify requirement.
+        list[str]
+            Value of property text.
         """
-        return self._a_verify_requirement
-
-    @property
-    def assumed_constraint(self) -> list["ConstraintUsage"]:  # noqa: F821
-        """
-        Get the assumed constraint property.
-
-        Returns
-        -------
-        list["ConstraintUsage"]
-            Value of property assumed constraint.
-        """
-        return self._assumed_constraint
+        return self._text

@@ -1,25 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 """Generated  test class from metamodel."""
 
 from __future__ import annotations
@@ -30,7 +8,7 @@ from ansys.sam.sysml2.meta_model.accept_action_usage import AcceptActionUsage
 
 
 class TestAcceptActionUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.AcceptActionUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.AcceptActionUsage'."""
 
     @pytest.fixture
     def element(self):
@@ -42,13 +20,23 @@ class TestAcceptActionUsage:
         assert element.id == "element_id"
 
     def test_payload_argument(self, element):
-        """Test getter for payload argument property."""
-        _ = element.payload_argument
-
-    def test_receiver_argument(self, element):
-        """Test getter for receiver argument property."""
-        _ = element.receiver_argument
+        """Test getter and setter for payload argument property."""
+        value = "test_value"
+        element.payload_argument = value
+        assert element.payload_argument == value
 
     def test_payload_parameter(self, element):
-        """Test getter for payload parameter property."""
-        _ = element.payload_parameter
+        """Test getter and setter for payload parameter property."""
+        value = "test_value"
+        element.payload_parameter = value
+        assert element.payload_parameter == value
+
+    def test_receiver_argument(self, element):
+        """Test getter and setter for receiver argument property."""
+        value = "test_value"
+        element.receiver_argument = value
+        assert element.receiver_argument == value
+
+    def test_trigger_action(self, element):
+        """Test getter for trigger action property."""
+        _ = element.trigger_action

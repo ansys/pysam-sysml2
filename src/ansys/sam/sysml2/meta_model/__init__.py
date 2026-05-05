@@ -1,24 +1,3 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
-# SPDX-License-Identifier: MIT
-#
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
 """Metamodel package."""
 
 from .accept_action_usage import AcceptActionUsage as AcceptActionUsage
@@ -27,6 +6,8 @@ from .action_usage import ActionUsage as ActionUsage
 from .actor_membership import ActorMembership as ActorMembership
 from .allocation_definition import AllocationDefinition as AllocationDefinition
 from .allocation_usage import AllocationUsage as AllocationUsage
+from .analysis_case_definition import AnalysisCaseDefinition as AnalysisCaseDefinition
+from .analysis_case_usage import AnalysisCaseUsage as AnalysisCaseUsage
 from .annotating_element import AnnotatingElement as AnnotatingElement
 from .annotation import Annotation as Annotation
 from .assert_constraint_usage import AssertConstraintUsage as AssertConstraintUsage
@@ -37,9 +18,7 @@ from .attribute_definition import AttributeDefinition as AttributeDefinition
 from .attribute_usage import AttributeUsage as AttributeUsage
 from .behavior import Behavior as Behavior
 from .binding_connector import BindingConnector as BindingConnector
-from .binding_connector_as_usage import (
-    BindingConnectorAsUsage as BindingConnectorAsUsage,
-)
+from .binding_connector_as_usage import BindingConnectorAsUsage as BindingConnectorAsUsage
 from .boolean_expression import BooleanExpression as BooleanExpression
 from .calculation_definition import CalculationDefinition as CalculationDefinition
 from .calculation_usage import CalculationUsage as CalculationUsage
@@ -47,113 +26,133 @@ from .case_definition import CaseDefinition as CaseDefinition
 from .case_usage import CaseUsage as CaseUsage
 from .class_ import Class as Class
 from .classifier import Classifier as Classifier
+from .collect_expression import CollectExpression as CollectExpression
 from .comment import Comment as Comment
+from .concern_definition import ConcernDefinition as ConcernDefinition
 from .concern_usage import ConcernUsage as ConcernUsage
+from .conjugated_port_definition import ConjugatedPortDefinition as ConjugatedPortDefinition
+from .conjugated_port_typing import ConjugatedPortTyping as ConjugatedPortTyping
+from .conjugation import Conjugation as Conjugation
 from .connection_definition import ConnectionDefinition as ConnectionDefinition
 from .connection_usage import ConnectionUsage as ConnectionUsage
 from .connector import Connector as Connector
+from .connector_as_usage import ConnectorAsUsage as ConnectorAsUsage
 from .constraint_definition import ConstraintDefinition as ConstraintDefinition
 from .constraint_usage import ConstraintUsage as ConstraintUsage
+from .constructor_expression import ConstructorExpression as ConstructorExpression
+from .control_node import ControlNode as ControlNode
+from .cross_subsetting import CrossSubsetting as CrossSubsetting
 from .data_type import DataType as DataType
 from .decision_node import DecisionNode as DecisionNode
 from .definition import Definition as Definition
 from .dependency import Dependency as Dependency
+from .differencing import Differencing as Differencing
+from .disjoining import Disjoining as Disjoining
 from .documentation import Documentation as Documentation
 from .element import Element as Element
+from .element_filter_membership import ElementFilterMembership as ElementFilterMembership
 from .end_feature_membership import EndFeatureMembership as EndFeatureMembership
 from .enumeration_definition import EnumerationDefinition as EnumerationDefinition
 from .enumeration_usage import EnumerationUsage as EnumerationUsage
 from .event_occurrence_usage import EventOccurrenceUsage as EventOccurrenceUsage
 from .exhibit_state_usage import ExhibitStateUsage as ExhibitStateUsage
+from .expose import Expose as Expose
 from .expression import Expression as Expression
 from .feature import Feature as Feature
 from .feature_chain_expression import FeatureChainExpression as FeatureChainExpression
 from .feature_chaining import FeatureChaining as FeatureChaining
+from .feature_direction_kind import FeatureDirectionKind as FeatureDirectionKind
+from .feature_inverting import FeatureInverting as FeatureInverting
 from .feature_membership import FeatureMembership as FeatureMembership
-from .feature_reference_expression import (
-    FeatureReferenceExpression as FeatureReferenceExpression,
-)
+from .feature_reference_expression import FeatureReferenceExpression as FeatureReferenceExpression
 from .feature_typing import FeatureTyping as FeatureTyping
 from .feature_value import FeatureValue as FeatureValue
-from .flow_connection_definition import (
-    FlowConnectionDefinition as FlowConnectionDefinition,
-)
-from .flow_connection_usage import FlowConnectionUsage as FlowConnectionUsage
+from .flow import Flow as Flow
+from .flow_definition import FlowDefinition as FlowDefinition
+from .flow_end import FlowEnd as FlowEnd
+from .flow_usage import FlowUsage as FlowUsage
 from .for_loop_action_usage import ForLoopActionUsage as ForLoopActionUsage
 from .fork_node import ForkNode as ForkNode
+from .framed_concern_membership import FramedConcernMembership as FramedConcernMembership
 from .function import Function as Function
 from .if_action_usage import IfActionUsage as IfActionUsage
 from .import_ import Import as Import
 from .include_use_case_usage import IncludeUseCaseUsage as IncludeUseCaseUsage
+from .index_expression import IndexExpression as IndexExpression
+from .instantiation_expression import InstantiationExpression as InstantiationExpression
 from .interaction import Interaction as Interaction
 from .interface_definition import InterfaceDefinition as InterfaceDefinition
 from .interface_usage import InterfaceUsage as InterfaceUsage
+from .intersecting import Intersecting as Intersecting
 from .invariant import Invariant as Invariant
 from .invocation_expression import InvocationExpression as InvocationExpression
 from .item_definition import ItemDefinition as ItemDefinition
-from .item_feature import ItemFeature as ItemFeature
-from .item_flow import ItemFlow as ItemFlow
-from .item_flow_end import ItemFlowEnd as ItemFlowEnd
 from .item_usage import ItemUsage as ItemUsage
 from .join_node import JoinNode as JoinNode
 from .library_package import LibraryPackage as LibraryPackage
-from .life_class import LifeClass as LifeClass
 from .literal_boolean import LiteralBoolean as LiteralBoolean
 from .literal_expression import LiteralExpression as LiteralExpression
+from .literal_infinity import LiteralInfinity as LiteralInfinity
 from .literal_integer import LiteralInteger as LiteralInteger
 from .literal_rational import LiteralRational as LiteralRational
-from .literal_real import LiteralReal as LiteralReal
 from .literal_string import LiteralString as LiteralString
-from .literal_unbounded import LiteralUnbounded as LiteralUnbounded
 from .loop_action_usage import LoopActionUsage as LoopActionUsage
 from .membership import Membership as Membership
+from .membership_expose import MembershipExpose as MembershipExpose
+from .membership_import import MembershipImport as MembershipImport
 from .merge_node import MergeNode as MergeNode
 from .metaclass import Metaclass as Metaclass
+from .metadata_access_expression import MetadataAccessExpression as MetadataAccessExpression
 from .metadata_definition import MetadataDefinition as MetadataDefinition
 from .metadata_feature import MetadataFeature as MetadataFeature
 from .metadata_usage import MetadataUsage as MetadataUsage
 from .multiplicity import Multiplicity as Multiplicity
 from .multiplicity_range import MultiplicityRange as MultiplicityRange
 from .namespace import Namespace as Namespace
+from .namespace_expose import NamespaceExpose as NamespaceExpose
+from .namespace_import import NamespaceImport as NamespaceImport
 from .null_expression import NullExpression as NullExpression
 from .objective_membership import ObjectiveMembership as ObjectiveMembership
 from .occurrence_definition import OccurrenceDefinition as OccurrenceDefinition
 from .occurrence_usage import OccurrenceUsage as OccurrenceUsage
 from .operator_expression import OperatorExpression as OperatorExpression
+from .owning_membership import OwningMembership as OwningMembership
 from .package import Package as Package
 from .parameter_membership import ParameterMembership as ParameterMembership
 from .part_definition import PartDefinition as PartDefinition
 from .part_usage import PartUsage as PartUsage
+from .payload_feature import PayloadFeature as PayloadFeature
 from .perform_action_usage import PerformActionUsage as PerformActionUsage
+from .port_conjugation import PortConjugation as PortConjugation
 from .port_definition import PortDefinition as PortDefinition
 from .port_usage import PortUsage as PortUsage
-from .portioning_feature import PortioningFeature as PortioningFeature
+from .portion_kind import PortionKind as PortionKind
 from .predicate import Predicate as Predicate
 from .redefinition import Redefinition as Redefinition
 from .reference_subsetting import ReferenceSubsetting as ReferenceSubsetting
 from .reference_usage import ReferenceUsage as ReferenceUsage
 from .relationship import Relationship as Relationship
+from .rendering_definition import RenderingDefinition as RenderingDefinition
+from .rendering_usage import RenderingUsage as RenderingUsage
+from .requirement_constraint_kind import RequirementConstraintKind as RequirementConstraintKind
 from .requirement_constraint_membership import (
     RequirementConstraintMembership as RequirementConstraintMembership,
 )
 from .requirement_definition import RequirementDefinition as RequirementDefinition
 from .requirement_usage import RequirementUsage as RequirementUsage
-from .result_expression_membership import (
-    ResultExpressionMembership as ResultExpressionMembership,
+from .requirement_verification_membership import (
+    RequirementVerificationMembership as RequirementVerificationMembership,
 )
-from .return_parameter_membership import (
-    ReturnParameterMembership as ReturnParameterMembership,
-)
-from .satisfy_requirement_usage import (
-    SatisfyRequirementUsage as SatisfyRequirementUsage,
-)
+from .result_expression_membership import ResultExpressionMembership as ResultExpressionMembership
+from .return_parameter_membership import ReturnParameterMembership as ReturnParameterMembership
+from .satisfy_requirement_usage import SatisfyRequirementUsage as SatisfyRequirementUsage
+from .select_expression import SelectExpression as SelectExpression
 from .send_action_usage import SendActionUsage as SendActionUsage
 from .specialization import Specialization as Specialization
 from .stakeholder_membership import StakeholderMembership as StakeholderMembership
 from .state_definition import StateDefinition as StateDefinition
-from .state_subaction_membership import (
-    StateSubactionMembership as StateSubactionMembership,
-)
+from .state_subaction_kind import StateSubactionKind as StateSubactionKind
+from .state_subaction_membership import StateSubactionMembership as StateSubactionMembership
 from .state_usage import StateUsage as StateUsage
 from .step import Step as Step
 from .structure import Structure as Structure
@@ -162,11 +161,11 @@ from .subject_membership import SubjectMembership as SubjectMembership
 from .subsetting import Subsetting as Subsetting
 from .succession import Succession as Succession
 from .succession_as_usage import SuccessionAsUsage as SuccessionAsUsage
-from .succession_flow_connection_usage import (
-    SuccessionFlowConnectionUsage as SuccessionFlowConnectionUsage,
-)
-from .succession_item_flow import SuccessionItemFlow as SuccessionItemFlow
+from .succession_flow import SuccessionFlow as SuccessionFlow
+from .succession_flow_usage import SuccessionFlowUsage as SuccessionFlowUsage
+from .terminate_action_usage import TerminateActionUsage as TerminateActionUsage
 from .textual_representation import TextualRepresentation as TextualRepresentation
+from .transition_feature_kind import TransitionFeatureKind as TransitionFeatureKind
 from .transition_feature_membership import (
     TransitionFeatureMembership as TransitionFeatureMembership,
 )
@@ -174,12 +173,20 @@ from .transition_usage import TransitionUsage as TransitionUsage
 from .trigger_invocation_expression import (
     TriggerInvocationExpression as TriggerInvocationExpression,
 )
+from .trigger_kind import TriggerKind as TriggerKind
 from .type_ import Type as Type
 from .type_featuring import TypeFeaturing as TypeFeaturing
+from .unioning import Unioning as Unioning
 from .usage import Usage as Usage
 from .use_case_definition import UseCaseDefinition as UseCaseDefinition
 from .use_case_usage import UseCaseUsage as UseCaseUsage
 from .variant_membership import VariantMembership as VariantMembership
+from .verification_case_definition import VerificationCaseDefinition as VerificationCaseDefinition
+from .verification_case_usage import VerificationCaseUsage as VerificationCaseUsage
 from .view_definition import ViewDefinition as ViewDefinition
+from .view_rendering_membership import ViewRenderingMembership as ViewRenderingMembership
 from .view_usage import ViewUsage as ViewUsage
+from .viewpoint_definition import ViewpointDefinition as ViewpointDefinition
+from .viewpoint_usage import ViewpointUsage as ViewpointUsage
+from .visibility_kind import VisibilityKind as VisibilityKind
 from .while_loop_action_usage import WhileLoopActionUsage as WhileLoopActionUsage
