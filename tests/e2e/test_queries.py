@@ -33,15 +33,13 @@ from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 from ansys.sam.sysml2.exception.query_exception import InvalidQuery
 
-from .conftest import load_scripting_project, load_sysml_project
-
 
 @pytest.mark.e2e
 class TestQueriesScripting:
 
-    def test_query_primitive_constraint_by_id(self, connector, project_manager):
+    def test_query_primitive_constraint_by_id(self, connector, project_factory):
         """Query with PrimitiveConstraint on @id returns exactly one matching element."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         elements = connector.get_all_elements(project._id)
         target_id = elements[0]["@id"]
 
@@ -52,11 +50,9 @@ class TestQueriesScripting:
         assert len(result) == 1
         assert result[0]["@id"] == target_id
 
-        connector.delete_project(project._id)
-
-    def test_query_composite_or(self, connector, project_manager):
+    def test_query_composite_or(self, connector, project_factory):
         """Composite OR constraint returns elements matching either condition."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         elements = connector.get_all_elements(project._id)
         id_a = elements[0]["@id"]
         id_b = elements[1]["@id"]
@@ -75,19 +71,15 @@ class TestQueriesScripting:
         assert id_a in result_ids
         assert id_b in result_ids
 
-        connector.delete_project(project._id)
-
-    def test_query_invalid_property(self, connector, project_manager):
+    def test_query_invalid_property(self, connector, project_factory):
         """Query on non-existent property raises BadRequestConnectionException."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
 
         query = Query()
         query.where = PrimitiveConstraint("nonExistentProperty", "value")
 
         with pytest.raises(BadRequestConnectionException):
             connector.execute_query(project._id, query.to_json())
-
-        connector.delete_project(project._id)
 
     def test_query_invalid_composite_constraint(self):
         """Composite constraint with fewer than 2 children raises InvalidQuery client-side."""
@@ -105,9 +97,9 @@ class TestQueriesScripting:
 @pytest.mark.e2e
 class TestQueriesSysML:
 
-    def test_query_primitive_constraint_by_id(self, connector, project_manager):
+    def test_query_primitive_constraint_by_id(self, connector, project_factory):
         """Query with PrimitiveConstraint on @id via sysml project."""
-        project = load_sysml_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="sysml")
         elements = connector.get_all_elements(project._id)
         target_id = elements[0]["@id"]
 
@@ -118,11 +110,9 @@ class TestQueriesSysML:
         assert len(result) == 1
         assert result[0]["@id"] == target_id
 
-        connector.delete_project(project._id)
-
-    def test_query_composite_or_sysml(self, connector, project_manager):
+    def test_query_composite_or_sysml(self, connector, project_factory):
         """Composite OR constraint via sysml project."""
-        project = load_sysml_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="sysml")
         elements = connector.get_all_elements(project._id)
         id_a = elements[0]["@id"]
         id_b = elements[1]["@id"]
@@ -140,5 +130,3 @@ class TestQueriesSysML:
         result_ids = {r["@id"] for r in result}
         assert id_a in result_ids
         assert id_b in result_ids
-
-        connector.delete_project(project._id)

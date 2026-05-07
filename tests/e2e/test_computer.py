@@ -27,8 +27,6 @@ import pytest
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
-from .conftest import load_scripting_project, load_sysml_project
-
 
 def _assess_cost(element):
     """Recursively calculate cost from the model tree."""
@@ -56,9 +54,9 @@ def _assess_cost(element):
 @pytest.mark.e2e
 class TestComputer:
 
-    def test_computer_cost(self, connector, project_manager):
+    def test_computer_cost(self, project_factory):
         """Load computer model, compute cost for each real system."""
-        project = load_scripting_project(connector, project_manager, "computer")
+        project = project_factory(model="computer", kind="scripting")
         real_systems = project.get_root_package().RealSystems
 
         total_cost = 0
@@ -67,5 +65,3 @@ class TestComputer:
             assert system_cost >= 0
             total_cost += system_cost
         assert total_cost == 2900
-
-        connector.delete_project(project._id)

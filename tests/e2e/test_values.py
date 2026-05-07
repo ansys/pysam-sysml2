@@ -27,15 +27,13 @@ import pytest
 from ansys.sam.sysml2.exception.connector_exception import ProjectNotFoundException
 from ansys.sam.sysml2.tools.factory import Factory
 
-from .conftest import load_scripting_project, load_sysml_project
-
 
 @pytest.mark.e2e
 class TestValues:
 
-    def test_bike_weight_and_unit(self, connector, project_manager):
+    def test_bike_weight_and_unit(self, project_factory):
         """Navigate model, calculate total weight, checks weight and unit."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
         bike_parts = [bike.frontWheel.rim.weight.get_value(), bike.frontWheel.tire.weight.get_value(), bike.rearWheel.rim.weight.get_value(), bike.rearWheel.tire.weight.get_value(), bike.frame.weight.get_value()]
 
@@ -47,11 +45,9 @@ class TestValues:
         assert bike_first_part_weight_unit == "kg"
         assert bike_parts_weight_unit_all_same== True
 
-        connector.delete_project(project._id)
-
-    def test_bike_rim_weight_and_unit_update(self, connector, project_manager):
+    def test_bike_rim_weight_and_unit_update(self, project_factory):
         """Update rim weight and unit, verify change."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
         original_front_weight = bike.frontWheel.rim.weight.get_value()
 
@@ -63,11 +59,9 @@ class TestValues:
         assert updated_front_weight != original_front_weight
         assert updated_front_weight == (500, 'g')
 
-        connector.delete_project(project._id)
-
-    def test_bike_rim_weight_transaction(self, connector, project_manager):
+    def test_bike_rim_weight_transaction(self, project_factory):
         """Transactional mode: batch updates, verify after commit."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
         original_front_weight = bike.frontWheel.rim.weight.get_value()
         original_rear_weight = bike.rearWheel.rim.weight.get_value()
@@ -86,11 +80,9 @@ class TestValues:
         assert updated_front_weight == (500, 'g')
         assert updated_rear_weight == (750, 'g')
 
-        connector.delete_project(project._id)
-
-    def test_bike_create_element(self, connector, project_manager):
+    def test_bike_create_element(self, connector, project_factory):
         """Create attribute on bike.frame, set value, verify roundtrip."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
         factory = Factory(project, connector)
         factory.create_attribute_usage(name="length", owner=bike.frame)
@@ -99,11 +91,9 @@ class TestValues:
         value = bike.frame.length.get_value()
         assert value == (60, "cm")
 
-        connector.delete_project(project._id)
-
-    def test_bike_sysml_project(self, connector, project_manager):
-        """Load bike via load_sysml_project, navigate with .get(), verify structure (weight-bike-static.py)."""
-        project = load_sysml_project(connector, project_manager, "bike")
+    def test_bike_sysml_project(self, project_factory):
+        """Load bike via sysml project, navigate with .get(), verify structure (weight-bike-static.py)."""
+        project = project_factory(model="bike", kind="sysml")
         bike = project.get_root_package().get("Structure").get("Bike")
         bike_front_wheel = bike.get("frontWheel")
         bike_front_wheel_rim = bike_front_wheel.get("rim")
@@ -125,11 +115,9 @@ class TestValues:
         assert bike_first_part_weight_unit == "kg"
         assert bike_parts_weight_unit_all_same== True
 
-        connector.delete_project(project._id)
-
-    def test_bike_delete_project(self, connector, project_manager):
+    def test_bike_delete_project(self, connector, project_factory):
         """Delete project and verify it raises ProjectNotFoundException."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         project_id = project._id
 
         connector.delete_project(project_id)

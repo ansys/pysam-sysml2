@@ -28,15 +28,13 @@ from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 
-from .conftest import load_sysml_project
-
 
 @pytest.mark.e2e
 class TestCommitsSysML:
 
-    def test_create_commit_successful(self, connector, project_manager):
+    def test_create_commit_successful(self, connector, project_factory):
         """Create a valid commit (rename element) via sysml project."""
-        project = load_sysml_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="sysml")
         bike = project.get_root_package().get("Structure").get("Bike")
         bike_front_wheel = bike.get("frontWheel")
         bike_front_wheel_id = bike_front_wheel.id
@@ -54,11 +52,9 @@ class TestCommitsSysML:
         assert response["@type"] == "Commit"
         assert response["owningProject"]["@id"] == project._id
 
-        connector.delete_project(project._id)
-
-    def test_create_commit_set_attribute_via_sysml(self, connector, project_manager):
+    def test_create_commit_set_attribute_via_sysml(self, project_factory):
         """Set attribute via sysml API (.get() navigation), verify roundtrip."""
-        project = load_sysml_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="sysml")
         bike = project.get_root_package().get("Structure").get("Bike")
         bike_front_wheel = bike.get("frontWheel")
         bike_front_wheel_rim = bike_front_wheel.get("rim")
@@ -71,15 +67,11 @@ class TestCommitsSysML:
         assert updated_bike_front_wheel_rim_weight != original_bike_front_wheel_rim_weight
         assert updated_bike_front_wheel_rim_weight == (500, ['g'])
 
-        connector.delete_project(project._id)
-
-    def test_create_commit_empty_change_sysml(self, connector, project_manager):
+    def test_create_commit_empty_change_sysml(self, connector, project_factory):
         """Commit with no DataVersion raises BadRequestConnectionException (sysml project)."""
-        project = load_sysml_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="sysml")
 
         commit = Commit(project._id)
 
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit(project._id, commit.to_json())
-
-        connector.delete_project(project._id)

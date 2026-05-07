@@ -33,6 +33,8 @@ import requests as http_requests
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
+from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
+from ansys.sam.sysml2.exception.connector_exception import ProjectNotFoundException
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -161,3 +163,58 @@ def load_sysml_project(connector, project_manager, model_name):
     """
     project_id = _create_project(connector, model_name)
     return project_manager.get_sysml_project(project_id)
+
+
+@pytest.fixture
+def project_factory(connector, project_manager):
+    """Factory fixture: create SAM projects on demand and auto-delete them after the test.
+
+    Usage::
+
+        def test_something(project_factory):
+            project = project_factory(model="bike", kind="scripting")
+            ...
+
+    Multiple projects may be created in one test; all are cleaned up.
+    Tests that delete the project themselves are tolerated via
+    ``ProjectNotFoundException`` handling.
+    """
+    created_ids: list[str] = []
+
+    def _load(model: str = "bike", kind: str = "scripting"):
+        if kind == "scripting":
+            project = load_scripting_project(connector, project_manager, model)
+        elif kind == "sysml":
+            project = load_sysml_project(connector, project_manager, model)
+        else:
+            raise ValueError(f"Unknown project kind: {kind!r}")
+        created_ids.append(project._id)
+        return project
+
+    yield _load
+
+    for project_id in created_ids:
+        try:
+            connector.delete_project(project_id)
+        except ProjectNotFoundException:
+            pass
+
+
+@pytest.fixture
+def project_with_diagrams_factory(project_factory, sam_connector):
+    """Factory fixture: create a project (scripting or sysml) with diagrams loaded.
+
+    Usage::
+
+        def test_something(project_with_diagrams_factory):
+            project = project_with_diagrams_factory(model="bike", kind="scripting")
+            ...
+    """
+
+    def _load(model: str = "bike", kind: str = "scripting"):
+        project = project_factory(model=model, kind=kind)
+        with SAMDiagramManager(connector=sam_connector) as diagrams:
+            diagrams.load_diagrams(model=project)
+        return project
+
+    return _load

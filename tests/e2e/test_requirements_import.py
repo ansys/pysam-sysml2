@@ -28,7 +28,7 @@ import pytest
 
 from ansys.sam.sysml2.tools.factory import Factory
 
-from .conftest import _get_models_dir, load_scripting_project, load_sysml_project
+from .conftest import _get_models_dir
 
 CSV_PATH = _get_models_dir() / "bike" / "data" / "requirements.csv"
 
@@ -43,9 +43,9 @@ def _read_requirements_csv():
 @pytest.mark.e2e
 class TestRequirementsImportScripting:
 
-    def test_import_requirements_from_csv(self, connector, project_manager):
+    def test_import_requirements_from_csv(self, connector, project_factory):
         """Import 10 requirements from CSV into bike project via scripting API."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
 
         rows = _read_requirements_csv()
@@ -63,11 +63,9 @@ class TestRequirementsImportScripting:
             assert req._name == row["title"]
             assert row["description"] in req._text
 
-        connector.delete_project(project._id)
-
-    def test_import_requirements_transactional(self, connector, project_manager):
+    def test_import_requirements_transactional(self, connector, project_factory):
         """Import 10 requirements in transactional mode (single commit) via scripting API."""
-        project = load_scripting_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
 
         rows = _read_requirements_csv()
@@ -87,16 +85,14 @@ class TestRequirementsImportScripting:
             req = getattr(bike, row["title"])
             assert req._name == row["title"]
             assert row["description"] in req._text
-
-        connector.delete_project(project._id)
 
 
 @pytest.mark.e2e
 class TestRequirementsImportSysML:
 
-    def test_import_requirements_from_csv(self, connector, project_manager):
+    def test_import_requirements_from_csv(self, connector, project_factory):
         """Import 10 requirements from CSV into bike project via SysML API."""
-        project = load_sysml_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="sysml")
         bike = project.get_root_package().get("Structure").get("Bike")
 
         rows = _read_requirements_csv()
@@ -114,11 +110,9 @@ class TestRequirementsImportSysML:
             assert req is not None
             assert req.name == row["title"]
 
-        connector.delete_project(project._id)
-
-    def test_import_requirements_transactional(self, connector, project_manager):
+    def test_import_requirements_transactional(self, connector, project_factory):
         """Import 10 requirements in transactional mode (single commit) via SysML API."""
-        project = load_sysml_project(connector, project_manager, "bike")
+        project = project_factory(model="bike", kind="sysml")
         bike = project.get_root_package().get("Structure").get("Bike")
 
         rows = _read_requirements_csv()
@@ -138,5 +132,3 @@ class TestRequirementsImportSysML:
             req = bike.get(row["title"])
             assert req is not None
             assert req.name == row["title"]
-
-        connector.delete_project(project._id)
