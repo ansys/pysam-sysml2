@@ -92,7 +92,7 @@ class TestCommit:
         assert dv["identity"]["@id"] == "elem-1"
         assert dv["payload"]["name"] == "NewName"
 
-    def test_commit_matches_fixture(self):
+    def test_commit_top_level_ids(self):
         commit = Commit("1")
         result = json.loads(commit.to_json())
         assert result["owningProject"]["@id"] == "1"

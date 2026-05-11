@@ -35,15 +35,21 @@ class TestValues:
         """Navigate model, calculate total weight, checks weight and unit."""
         project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
-        bike_parts = [bike.frontWheel.rim.weight.get_value(), bike.frontWheel.tire.weight.get_value(), bike.rearWheel.rim.weight.get_value(), bike.rearWheel.tire.weight.get_value(), bike.frame.weight.get_value()]
+        bike_parts = [
+            bike.frontWheel.rim.weight.get_value(),
+            bike.frontWheel.tire.weight.get_value(),
+            bike.rearWheel.rim.weight.get_value(),
+            bike.rearWheel.tire.weight.get_value(),
+            bike.frame.weight.get_value(),
+        ]
 
-        total_bike_weight = sum(bike_parts[part][0] for part in bike_parts)
+        total_bike_weight = sum(part[0] for part in bike_parts)
         bike_first_part_weight_unit = bike_parts[0][1]
-        bike_parts_weight_unit_all_same = all(x == bike_parts[1] for x in bike_parts)
+        bike_parts_weight_unit_all_same = all(p[1] == bike_parts[0][1] for p in bike_parts)
 
         assert total_bike_weight == 10
         assert bike_first_part_weight_unit == "kg"
-        assert bike_parts_weight_unit_all_same== True
+        assert bike_parts_weight_unit_all_same
 
     def test_bike_rim_weight_and_unit_update(self, project_factory):
         """Update rim weight and unit, verify change."""
@@ -95,25 +101,23 @@ class TestValues:
         """Load bike via sysml project, navigate with .get(), verify structure (weight-bike-static.py)."""
         project = project_factory(model="bike", kind="sysml")
         bike = project.get_root_package().get("Structure").get("Bike")
-        bike_front_wheel = bike.get("frontWheel")
-        bike_front_wheel_rim = bike_front_wheel.get("rim")
-        bike_front_wheel_tire = bike_front_wheel.get("tire")
-        bike_front_wheel_rim_weight = bike_front_wheel_rim.get("weight")
-        bike_front_wheel_tire_weight = bike_front_wheel_tire.get("weight")
-        bike_rear_wheel = bike.get("rearWheel")
-        bike_rear_wheel_rim = bike_rear_wheel.get("rim")
-        bike_rear_wheel_tire = bike_rear_wheel.get("tire")
-        bike_rear_wheel_rim_weight = bike_rear_wheel_rim.get("weight")
-        bike_rear_wheel_tire_weight = bike_rear_wheel_tire.get("weight")
-        bike_parts = [bike_front_wheel_rim_weight, bike_front_wheel_tire_weight, bike_rear_wheel_rim_weight, bike_rear_wheel_tire_weight]
+        front_wheel = bike.get("frontWheel")
+        rear_wheel = bike.get("rearWheel")
+        bike_parts = [
+            front_wheel.get("rim").get("weight").get_value(),
+            front_wheel.get("tire").get("weight").get_value(),
+            rear_wheel.get("rim").get("weight").get_value(),
+            rear_wheel.get("tire").get("weight").get_value(),
+            bike.get("frame").get("weight").get_value(),
+        ]
 
-        total_bike_weight = sum(bike_parts[part][0] for part in bike_parts)
+        total_bike_weight = sum(part[0] for part in bike_parts)
         bike_first_part_weight_unit = bike_parts[0][1]
-        bike_parts_weight_unit_all_same = all(x == bike_parts[1] for x in bike_parts)
+        bike_parts_weight_unit_all_same = all(p[1] == bike_parts[0][1] for p in bike_parts)
 
         assert total_bike_weight == 10
         assert bike_first_part_weight_unit == "kg"
-        assert bike_parts_weight_unit_all_same== True
+        assert bike_parts_weight_unit_all_same
 
     def test_bike_delete_project(self, connector, project_factory):
         """Delete project and verify it raises ProjectNotFoundException."""

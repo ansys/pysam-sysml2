@@ -24,6 +24,7 @@ import pytest
 
 from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.exception.mapper_exception import InvalidProjectJSONMapperException
 
 
 class TestScriptingMapper:
@@ -47,7 +48,7 @@ class TestScriptingMapper:
         data = {
             "@id": "element_id",
         }
-        with pytest.raises(Exception):
+        with pytest.raises(InvalidProjectJSONMapperException):
             scripting_mapper.map("pp", data, None)
 
     def test_create_element_string_field(self, scripting_mapper: ScriptingMapper):
@@ -117,7 +118,7 @@ class TestScriptingMapper:
         for unresolved_field in unresolved_fields:
             element_id = unresolved_field.get_id()
             el = env.get(element_id, None)
-            if element is not None:
+            if el is not None:
                 unresolved_field.resolve(el)
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"

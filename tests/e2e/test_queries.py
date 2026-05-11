@@ -90,7 +90,7 @@ class TestQueriesScripting:
         query = Query()
         query.where = cc
 
-        with pytest.raises((InvalidQuery, Exception)):
+        with pytest.raises(InvalidQuery):
             query.to_json()
 
 

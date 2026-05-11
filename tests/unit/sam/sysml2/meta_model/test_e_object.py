@@ -30,7 +30,7 @@ from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpress
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
 
 
-class TestEObjet:
+class TestEObject:
 
     @pytest.fixture
     def old_format_project(self, connector) -> Project:
