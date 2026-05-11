@@ -47,13 +47,17 @@ class ValueHelper:
     def get_value_for_sysml_element(element):
         """Get the value of the feature."""
         # Local import avoids circular import with meta_model.feature.
+        from ansys.sam.sysml2.classes.sysml_inherited_element import (
+            SysMLInheritedElement,
+        )
         from ansys.sam.sysml2.meta_model.feature import Feature
 
         instance = ValueHelper("")
         if isinstance(element, Feature):
             return instance._get_value(element)
-        else:
-            raise UnsupportedValueExpression("Can't read value of non feature element")
+        if isinstance(element, SysMLInheritedElement) and isinstance(element._element, Feature):
+            return instance._get_value(element)
+        raise UnsupportedValueExpression("Can't read value of non feature element")
 
     @staticmethod
     def set_or_update_value(element, value_type: type, new_value: Union[str | int | float | bool]):
@@ -133,9 +137,9 @@ class ValueHelper:
 
     def _get_value(self, element):
         """Get the value of the feature."""
-        if hasattr(element, self.prefix + "defaultValue"):
+        if getattr(element, self.prefix + "defaultValue", None) is not None:
             value = getattr(element, self.prefix + "defaultValue")
-            if hasattr(value, self.prefix + "value"):
+            if getattr(value, self.prefix + "value", None) is not None:
                 return getattr(value, self.prefix + "value")
             else:
                 return self._parse_expression(value, is_old_format=True)
@@ -146,10 +150,12 @@ class ValueHelper:
             else:
                 return self._parse_expression(value, is_old_format=True)
         if getattr(element, self.prefix + "valuation", None) is not None:
-            value = getattr(getattr(element, self.prefix + "valuation"), self.prefix + "value")
-            if hasattr(value, self.prefix + "value"):
+            value = getattr(
+                getattr(element, self.prefix + "valuation"), self.prefix + "value", None
+            )
+            if value is not None and hasattr(value, self.prefix + "value"):
                 return getattr(value, self.prefix + "value")
-            else:
+            elif value is not None:
                 return self._parse_expression(value)
 
         return None
@@ -193,15 +199,29 @@ class ValueHelper:
                 for x in owned_member
                 if hasattr(x, self.prefix + "value")
             ]
-            return self._format_result_with_unit(values, owned_member, is_old_format)
-        else:
-            elements = [
-                x
-                for x in owned_member
-                if hasattr(x, self.prefix + "valuation")
-                and hasattr(getattr(x, self.prefix + "valuation"), self.prefix + "value")
-            ]
-            return self._format_result_with_unit(elements, owned_member, is_old_format)
+            if values:
+                return self._format_result_with_unit(values, owned_member, is_old_format)
+
+            nested_values = []
+            nested_referents = []
+            for x in owned_member:
+                dv = getattr(x, self.prefix + "defaultValue", None)
+                if dv is not None:
+                    if hasattr(dv, self.prefix + "value"):
+                        nested_values.append(getattr(dv, self.prefix + "value"))
+                    elif hasattr(dv, self.prefix + "referent"):
+                        nested_referents.append(getattr(dv, self.prefix + "referent"))
+            if nested_values:
+                unit_name = self._extract_unit_name(nested_referents)
+                return (nested_values[0], unit_name)
+
+        elements = [
+            x
+            for x in owned_member
+            if hasattr(x, self.prefix + "valuation")
+            and hasattr(getattr(x, self.prefix + "valuation"), self.prefix + "value")
+        ]
+        return self._format_result_with_unit(elements, owned_member, False)
 
     def _format_result_with_unit(self, elements: list, owned_member: list, is_old_format: bool):
         """Format a parsed expression value along with its associated unit (if available)."""
@@ -246,8 +266,8 @@ class ValueHelper:
         unit = referents[0]
         if hasattr(unit, self.prefix + "shortName"):
             return getattr(unit, self.prefix + "shortName")
-        elif hasattr(unit, self.prefix + "name"):
-            return getattr(unit, self.prefix + "name")
         if hasattr(unit, self.prefix + "short_name"):
             return getattr(unit, self.prefix + "short_name")
+        elif hasattr(unit, self.prefix + "name"):
+            return getattr(unit, self.prefix + "name")
         return None
