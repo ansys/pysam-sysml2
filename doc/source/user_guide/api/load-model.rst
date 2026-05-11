@@ -41,15 +41,44 @@ Both of the approaches give you a Python version of your model.
 
 See :ref:`Approaches dynamic and static <Approaches_Section>` for more information about the differences between these approaches and when to use each of them.
 
+Create and load a new project
+=============================
+
+You can also create a new project on the server and load it in a single step. The project manager
+provides ``create_scripting_project()`` and ``create_sysml_project()`` methods that create the
+project remotely and return a fully built Python object.
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            project = project_manager.create_scripting_project(
+                name="My New Project",
+                description="A project created via PySAM SysML2",
+            )
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            project = project_manager.create_sysml_project(
+                name="My New Project",
+                description="A project created via PySAM SysML2",
+            )
+
+For more project management operations (update, delete, list), see :ref:`Manage projects <Manage_Projects_Section>`.
+
 .. only:: html
 
     .. grid:: 2
 
         .. grid-item-card:: :fa:`arrow-left` Previous step
-            :link: approaches
+            :link: manage-projects
             :link-type: doc
 
-            Dynamic vs static approaches
+            Manage projects
 
         .. grid-item-card:: Next step :fa:`arrow-right`
             :link: read-model

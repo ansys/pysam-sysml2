@@ -25,11 +25,21 @@ required information.
 
     .. grid:: 2
 
+        .. grid-item-card:: Manage projects :fa:`folder-open`
+            :link: api/manage-projects
+            :link-type: doc
+
+            Explains how to create, update, and delete projects on the server.
+
         .. grid-item-card:: Load a model :fa:`cloud-download`
             :link: api/load-model
             :link-type: doc
 
             Explains how to load a model from the SysML V2 server.
+
+.. only:: html
+
+    .. grid:: 2
 
         .. grid-item-card:: Read your model :fa:`book`
             :link: api/read-model
@@ -37,25 +47,21 @@ required information.
 
             Explains how to read and parse your model.
 
-.. only:: html
-
-    .. grid:: 2
-
         .. grid-item-card:: Write data to your model :fa:`pencil`
             :link: api/write-model
             :link-type: doc
 
             Explains how to write and publish in your model.
 
+.. only:: html
+
+    .. grid:: 2
+
         .. grid-item-card:: Work with diagrams :fa:`project-diagram`
             :link: api/diagram-model
             :link-type: doc
 
             Explains how to download and explore diagrams.
-
-.. only:: html
-
-    .. grid:: 2
 
         .. grid-item-card:: Find required information :fa:`info-circle`
             :link: api/information
@@ -69,6 +75,7 @@ required information.
 
    api/create-conn
    api/approaches
+   api/manage-projects
    api/load-model
    api/read-model
    api/write-model

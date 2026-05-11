@@ -1,7 +1,7 @@
 .. _Download_Example:
 
-Download diagrams and create new elements
-#########################################
+Download diagrams and navigate elements
+#######################################
 
 This example shows how to work with the ``Bike`` model in a SysML v2 project using the
 Ansys SAM API. It explains how to perform these tasks:

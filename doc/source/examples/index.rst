@@ -7,7 +7,7 @@ This section provides some examples of how to use PySAM SysML2.
 
 .. only:: html
 
-    .. grid:: 5
+    .. grid:: 3
 
         .. grid-item-card:: Calculate bike weight :fa:`bicycle`
             :link: bike-weight
@@ -27,6 +27,8 @@ This section provides some examples of how to use PySAM SysML2.
 
             Create new elements in your project.
 
+    .. grid:: 3
+
         .. grid-item-card:: Download diagrams :fa:`download`
             :link: download-diagrams
             :link-type: doc
@@ -39,6 +41,12 @@ This section provides some examples of how to use PySAM SysML2.
 
             Streamline SAM project initialization and operations.
 
+        .. grid-item-card:: Manage projects :fa:`folder-open`
+            :link: manage-projects
+            :link-type: doc
+
+            Create, update, and delete projects on the server.
+
 .. toctree::
    :maxdepth: 4
    :hidden:
@@ -48,3 +56,4 @@ This section provides some examples of how to use PySAM SysML2.
    creating-elements
    download-diagrams
    simplified-sam-project
+   manage-projects
