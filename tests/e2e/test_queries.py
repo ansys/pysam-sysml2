@@ -35,11 +35,12 @@ from ansys.sam.sysml2.exception.query_exception import InvalidQuery
 
 
 @pytest.mark.e2e
-class TestQueriesScripting:
+class TestQueries:
 
-    def test_query_primitive_constraint_by_id(self, connector, project_factory):
+    @pytest.mark.parametrize("kind", ["scripting", "sysml"])
+    def test_query_primitive_constraint_by_id(self, connector, project_factory, kind):
         """Query with PrimitiveConstraint on @id returns exactly one matching element."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind=kind)
         elements = connector.get_all_elements(project._id)
         target_id = elements[0]["@id"]
 
@@ -50,9 +51,10 @@ class TestQueriesScripting:
         assert len(result) == 1
         assert result[0]["@id"] == target_id
 
-    def test_query_composite_or(self, connector, project_factory):
+    @pytest.mark.parametrize("kind", ["scripting", "sysml"])
+    def test_query_composite_or(self, connector, project_factory, kind):
         """Composite OR constraint returns elements matching either condition."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind=kind)
         elements = connector.get_all_elements(project._id)
         id_a = elements[0]["@id"]
         id_b = elements[1]["@id"]
@@ -71,9 +73,10 @@ class TestQueriesScripting:
         assert id_a in result_ids
         assert id_b in result_ids
 
-    def test_query_invalid_property(self, connector, project_factory):
+    @pytest.mark.parametrize("kind", ["scripting", "sysml"])
+    def test_query_invalid_property(self, connector, project_factory, kind):
         """Query on non-existent property raises BadRequestConnectionException."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind=kind)
 
         query = Query()
         query.where = PrimitiveConstraint("nonExistentProperty", "value")
@@ -92,41 +95,3 @@ class TestQueriesScripting:
 
         with pytest.raises(InvalidQuery):
             query.to_json()
-
-
-@pytest.mark.e2e
-class TestQueriesSysML:
-
-    def test_query_primitive_constraint_by_id(self, connector, project_factory):
-        """Query with PrimitiveConstraint on @id via sysml project."""
-        project = project_factory(model="bike", kind="sysml")
-        elements = connector.get_all_elements(project._id)
-        target_id = elements[0]["@id"]
-
-        query = Query()
-        query.where = PrimitiveConstraint("@id", target_id)
-        result = connector.execute_query(project._id, query.to_json())
-
-        assert len(result) == 1
-        assert result[0]["@id"] == target_id
-
-    def test_query_composite_or_sysml(self, connector, project_factory):
-        """Composite OR constraint via sysml project."""
-        project = project_factory(model="bike", kind="sysml")
-        elements = connector.get_all_elements(project._id)
-        id_a = elements[0]["@id"]
-        id_b = elements[1]["@id"]
-
-        query = Query()
-        cc = CompositeConstraint(operator=JoinOperator.OR)
-        cc.constraint = [
-            PrimitiveConstraint("@id", id_a),
-            PrimitiveConstraint("@id", id_b),
-        ]
-        query.where = cc
-        result = connector.execute_query(project._id, query.to_json())
-
-        assert len(result) == 2
-        result_ids = {r["@id"] for r in result}
-        assert id_a in result_ids
-        assert id_b in result_ids
