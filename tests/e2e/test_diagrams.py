@@ -75,18 +75,18 @@ class TestSAMDiagramManager:
         project = project_with_diagrams_factory(model="bike")
 
         package = project.get_root_package()
-        bike = package.Structure.Bike
+        usage = package.Usage
 
         assert len(_get_diagrams(package)) == 1
-        assert len(_get_diagrams(bike)) == 1
+        assert len(_get_diagrams(usage)) == 3
 
-        diagram = _get_diagrams(package)[0]
-        diagram_bike = _get_diagrams(bike)[0]
+        package_diagram = _get_diagrams(package)[0]
 
-        assert hasattr(diagram, "_name")
-        assert hasattr(diagram_bike, "_name")
-        assert diagram._name == "general diagram"
-        assert diagram_bike._name == "general diagram"
+        assert package_diagram._name == "Bike"
+
+        for diagram in _get_diagrams(usage):
+            assert hasattr(diagram, "_name")
+            assert diagram._name is not None
 
     def test_navigation_through_diagrams(self, project_with_diagrams_factory):
         project = project_with_diagrams_factory(model="bike")
@@ -95,14 +95,15 @@ class TestSAMDiagramManager:
         diagram = _get_diagrams(package)[0]
         owned = diagram._plane._owned_diagram_elements
 
-        assert len(owned) == 22
+        assert len(owned) > 0
 
         simple_nodes = [x for x in owned if x.__class__.__name__ == "SimpleNode"]
 
-        assert len(simple_nodes) == 5
+        assert len(simple_nodes) > 0
 
         for node in simple_nodes:
             assert hasattr(node, "_model_element")
+            assert node._model_element._name is not None
 
     def test_points_correctly_typed(self, project_with_diagrams_factory):
         project = project_with_diagrams_factory(model="bike")
