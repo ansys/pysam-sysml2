@@ -65,7 +65,7 @@ class TestCommitsSysML:
         updated_bike_front_wheel_rim_weight = bike_front_wheel_rim_weight.get_value()
 
         assert updated_bike_front_wheel_rim_weight != original_bike_front_wheel_rim_weight
-        assert updated_bike_front_wheel_rim_weight == (500, ['g'])
+        assert updated_bike_front_wheel_rim_weight == (500, "g")
 
     def test_create_commit_empty_change_sysml(self, connector, project_factory):
         """Commit with no DataVersion raises BadRequestConnectionException (sysml project)."""

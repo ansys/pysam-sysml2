@@ -60,13 +60,13 @@ class TestCommitsScripting:
         bike_front_wheel_rim_weight = bike.frontWheel.rim.weight
         original_front_wheel_rim_weight = bike_front_wheel_rim_weight.get_value()
 
-        assert original_front_wheel_rim_weight == (1,['kg'])
+        assert original_front_wheel_rim_weight == (1, "kg")
 
         bike_front_wheel_rim_weight.parse_and_set_value("500 [g]")
         updated_front_wheel_rim_weight = bike_front_wheel_rim_weight.get_value()
 
         assert updated_front_wheel_rim_weight != original_front_wheel_rim_weight
-        assert updated_front_wheel_rim_weight == (500,["g"])
+        assert updated_front_wheel_rim_weight == (500, "g")
 
     def test_create_commit_empty_change(self, connector, project_factory):
         """Commit with no DataVersion raises BadRequestConnectionException."""
