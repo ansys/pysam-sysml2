@@ -22,22 +22,12 @@
 
 """Unit test configuration and shared fixtures."""
 
-from pathlib import Path
-
 import pytest
 
 from tests.unit.mocked_connector import MockedSysML2APIConnector
-
-TMP_DIR = Path(__file__).resolve().parent.parent / "tmp"
 
 
 @pytest.fixture
 def connector():
     """Provide a fresh MockedSysML2APIConnector per test."""
     return MockedSysML2APIConnector()
-
-
-@pytest.fixture
-def tmp_dir(tmp_path):
-    """Provide a temporary directory for file downloads."""
-    return tmp_path
