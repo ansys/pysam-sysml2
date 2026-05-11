@@ -22,19 +22,19 @@
 
 """E2E test configuration: requires a real SAM product instance."""
 
-import base64
 import os
 from pathlib import Path
 from uuid import uuid4
 
 import pytest
-import requests as http_requests
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
 from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
 from ansys.sam.sysml2.exception.connector_exception import ProjectNotFoundException
+
+from ._sam_binary_import import import_project as _import_project
 
 
 REQUIRED_ENV_VARS = ("SAM_SERVER_URL", "SAM_ORGANIZATION_ID", "SAM_TOKEN")
@@ -78,28 +78,6 @@ def sam_connector():
 def _get_models_dir():
     """Resolve the models directory from E2E_MODELS_DIR (default: modeltestset)."""
     return Path(os.environ.get("E2E_MODELS_DIR", "modeltestset"))
-
-
-def _import_project(connector, project_name, binary_path):
-    """Import a .bin file as a new project via POST /organizations/{orgId}/projects/import."""
-    data = Path(binary_path).read_bytes()
-    url = (
-        f"{connector._server_url}/api/organizations/"
-        f"{connector._organization_id}/projects/import"
-    )
-    headers = {
-        "Authorization": f"Bearer {connector._token}",
-        "Content-Type": "application/json",
-    }
-    body = {
-        "name": project_name,
-        "visibility": "PRIVATE",
-        "importerType": "BINARY",
-        "base64data": base64.b64encode(data).decode("ascii"),
-    }
-    response = http_requests.post(url, json=body, headers=headers, verify=False)
-    response.raise_for_status()
-    return response.json()
 
 
 def _create_project(connector, model_name):
