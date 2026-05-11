@@ -32,6 +32,7 @@ OUT
 parse_and_set_value
 PAT
 Personal Access Token
+prek
 py
 PySAM
 pytest
