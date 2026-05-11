@@ -123,48 +123,6 @@ def _create_project(connector, model_name):
     return project_id
 
 
-def load_scripting_project(connector, project_manager, model_name):
-    """Import a .bin model file and return a ScriptingProject.
-
-    Parameters
-    ----------
-    connector : AnsysSysML2APIConnector
-        Live connector to the SAM server.
-    project_manager : SysML2ProjectManager
-        Project manager instance.
-    model_name : str
-        Name of the model (e.g. "bike"). Resolves to ``{models_dir}/{name}/{name}.bin``.
-
-    Returns
-    -------
-    ScriptingProject
-        The loaded scripting project.
-    """
-    project_id = _create_project(connector, model_name)
-    return project_manager.get_scripting_project(project_id)
-
-
-def load_sysml_project(connector, project_manager, model_name):
-    """Import a .bin model file and return a SysML Project.
-
-    Parameters
-    ----------
-    connector : AnsysSysML2APIConnector
-        Live connector to the SAM server.
-    project_manager : SysML2ProjectManager
-        Project manager instance.
-    model_name : str
-        Name of the model (e.g. "bike"). Resolves to ``{models_dir}/{name}/{name}.bin``.
-
-    Returns
-    -------
-    Project
-        The loaded SysML project.
-    """
-    project_id = _create_project(connector, model_name)
-    return project_manager.get_sysml_project(project_id)
-
-
 @pytest.fixture
 def project_factory(connector, project_manager):
     """Factory fixture: create SAM projects on demand and auto-delete them after the test.
@@ -182,14 +140,13 @@ def project_factory(connector, project_manager):
     created_ids: list[str] = []
 
     def _load(model: str = "bike", kind: str = "scripting"):
+        project_id = _create_project(connector, model)
+        created_ids.append(project_id)
         if kind == "scripting":
-            project = load_scripting_project(connector, project_manager, model)
-        elif kind == "sysml":
-            project = load_sysml_project(connector, project_manager, model)
-        else:
-            raise ValueError(f"Unknown project kind: {kind!r}")
-        created_ids.append(project._id)
-        return project
+            return project_manager.get_scripting_project(project_id)
+        if kind == "sysml":
+            return project_manager.get_sysml_project(project_id)
+        raise ValueError(f"Unknown project kind: {kind!r}")
 
     yield _load
 
