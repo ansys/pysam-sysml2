@@ -30,17 +30,23 @@ class TestHttpRequest:
     def test_explode_renames_json_body(self):
         req = HttpRequest(url="http://test")
         req.json_body = {"key": "value"}
+
         exploded = req.to_dict()
+
         assert "json" in exploded
         assert "json_body" not in exploded
         assert exploded["json"] == {"key": "value"}
 
     def test_headers_default_empty(self):
         req = HttpRequest(url="http://test")
+
         assert req.headers == {}
 
     def test_url_set(self):
         req = HttpRequest(url="http://example.com/api")
+
         assert req.url == "http://example.com/api"
+
         exploded = req.to_dict()
+
         assert exploded["url"] == "http://example.com/api"

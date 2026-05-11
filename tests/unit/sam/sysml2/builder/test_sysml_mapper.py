@@ -41,7 +41,9 @@ class TestSysMLMapper:
             "@type": "PartUsage",
             "qualifiedName": "pp::p",
         }
+
         element = sysml_mapper.map("pp", data, None).get_element()
+
         assert isinstance(element, Element)
         assert element.id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -50,6 +52,7 @@ class TestSysMLMapper:
         data = {
             "@id": "element_id",
         }
+
         with pytest.raises(InvalidProjectJSONMapperException):
             sysml_mapper.map("pp", data, None)
 
@@ -60,7 +63,9 @@ class TestSysMLMapper:
             "name": "Element",
             "qualifiedName": "pp::p",
         }
+
         element = sysml_mapper.map("pp", data, None).get_element()
+
         assert isinstance(element, Element)
         assert element.id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -73,7 +78,9 @@ class TestSysMLMapper:
             "ownedElement": [{"@id": "sub_element_id"}],
             "qualifiedName": "pp::p",
         }
+
         element = sysml_mapper.map("pp", data, None).get_element()
+
         assert isinstance(element, Element)
         assert element.id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -86,7 +93,9 @@ class TestSysMLMapper:
             "body": "Some comment text",
             "qualifiedName": "pp::p",
         }
+
         element = sysml_mapper.map("pp", data, None).get_element()
+
         assert isinstance(element, Element)
         assert element.body == "Some comment text"
 
@@ -118,6 +127,7 @@ class TestSysMLMapper:
             el = env.get(element_id, None)
             if el is not None:
                 unresolved_field.resolve(el)
+
         assert isinstance(element, Element)
         assert element.id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -131,5 +141,7 @@ class TestSysMLMapper:
             "qualifiedName": "pp::p",
             "isAbstract": True,
         }
+
         element = sysml_mapper.map("pp", data, None).get_element()
+
         assert element.is_abstract is True

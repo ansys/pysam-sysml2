@@ -39,7 +39,9 @@ class TestPrimitiveConstraint:
 
     def test_primitive_constraint_structure(self):
         pc = PrimitiveConstraint(property_name="@id", value="elem-1")
+
         result = pc.to_json()
+
         assert result["@type"] == "PrimitiveConstraint"
         assert result["property"] == "@id"
         assert result["value"] == "elem-1"
@@ -50,7 +52,9 @@ class TestPrimitiveConstraint:
         pc = PrimitiveConstraint(
             property_name="@type", value="PartUsage", inverse=False
         )
+
         result = pc.to_json()
+
         assert result["inverse"] is False
         assert not isinstance(result["inverse"], str)
 
@@ -58,7 +62,9 @@ class TestPrimitiveConstraint:
         pc = PrimitiveConstraint(
             property_name="count", value="5", operator=Operator.UPPER
         )
+
         result = pc.to_json()
+
         assert result["operator"] == ">"
 
 
@@ -69,7 +75,9 @@ class TestCompositeConstraint:
         pc2 = PrimitiveConstraint("@id", "b")
         cc = CompositeConstraint(operator=JoinOperator.OR)
         cc.constraint = [pc1, pc2]
+
         result = cc.to_json()
+
         assert result["@type"] == "CompositeConstraint"
         assert result["operator"] == "or"
         assert len(result["constraint"]) == 2
@@ -79,6 +87,7 @@ class TestCompositeConstraint:
         pc1 = PrimitiveConstraint("@id", "a")
         cc = CompositeConstraint(operator=JoinOperator.OR)
         cc.constraint = [pc1]
+
         with pytest.raises(InvalidCompositeConstraint):
             cc.to_json()
 
@@ -88,7 +97,9 @@ class TestQuery:
     def test_query_to_json(self):
         query = Query()
         query.where = PrimitiveConstraint("@id", "elem-1")
+
         result = json.loads(query.to_json())
+
         assert result["@type"] == "Query"
         assert "where" in result
         assert result["where"]["property"] == "@id"
@@ -101,7 +112,9 @@ class TestQuery:
             PrimitiveConstraint("@id", "b"),
         ]
         query.where = cc
+
         result = json.loads(query.to_json())
+
         assert result["where"]["@type"] == "CompositeConstraint"
         assert len(result["where"]["constraint"]) == 2
 

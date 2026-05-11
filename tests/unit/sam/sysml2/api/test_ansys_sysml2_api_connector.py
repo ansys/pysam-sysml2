@@ -43,18 +43,18 @@ class TestAnsysSysML2APIConnector:
 
     def test_build_endpoint(self, connector):
         url = connector._build_endpoint("/projects")
-        assert VALID_ORGANIZATION in url
-        assert url.endswith("/projects")
-        assert url.startswith("http://fake-server/api/spaces/")
+
+        assert url == f"http://fake-server/api/spaces/{VALID_ORGANIZATION}/sysml2/projects"
 
     def test_build_endpoint_without_leading_slash(self, connector):
         url = connector._build_endpoint("projects")
-        assert url.endswith("/projects")
-        assert "/sysml2/" in url
+
+        assert url == f"http://fake-server/api/spaces/{VALID_ORGANIZATION}/sysml2/projects"
 
     def test_add_authentication_field(self, connector):
         http_request = HttpRequest(url="http://test")
         http_request = connector._add_authentication_field(http_request)
+
         assert "Authorization" in http_request.headers
         assert http_request.headers["Authorization"] == f"Bearer {VALID_TOKEN}"
 
@@ -64,4 +64,5 @@ class TestAnsysSysML2APIConnector:
             organization_id=VALID_ORGANIZATION,
             token=VALID_TOKEN,
         )
-        assert not c._server_url.endswith("/")
+
+        assert c._server_url == "http://fake-server"

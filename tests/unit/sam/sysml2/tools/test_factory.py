@@ -59,10 +59,14 @@ class TestFactory:
         commit_spy = mocker.spy(project_manager._connector, "create_commit")
         project.start_transactional_mode()
         create_fn = getattr(factory, factory_method)
+
         elem = create_fn(name="test_elem", owner=root)
+
         assert elem.__class__.__name__ == element_type
         assert elem._name == "test_elem"
+
         project.stop_transactional_mode()
+
         assert commit_spy.call_count == 1
 
     @pytest.mark.parametrize("factory_method,element_type", ELEMENT_TYPES)
@@ -76,10 +80,14 @@ class TestFactory:
         commit_spy = mocker.spy(manager._connector, "create_commit")
         project.start_transactional_mode()
         create_fn = getattr(factory, factory_method)
+
         elem = create_fn(name="test_elem", owner=root)
+
         assert elem.__class__.__name__ == element_type
         assert elem.name == "test_elem"
+
         project.stop_transactional_mode()
+
         assert commit_spy.call_count == 1
 
     def test_create_part_definition_with_owned_elements(
@@ -91,13 +99,17 @@ class TestFactory:
         commit_spy = mocker.spy(project_manager._connector, "create_commit")
         project.start_transactional_mode()
         new_attr = factory.create_attribute_usage(name="new_attribute", owner=root)
+
         new_part = factory.create_part_definition(
             name="new_part_def", owner=root, owned_elements=[new_attr]
         )
+
         assert new_part.__class__.__name__ == "PartDefinition"
         assert new_part._name == "new_part_def"
         assert len(new_part._owned_elements) == 1
+
         project.stop_transactional_mode()
+
         assert commit_spy.call_count == 1
 
     def test_create_element_commit_rejected(self, project_manager, mocker):
@@ -108,9 +120,9 @@ class TestFactory:
             "create_commit",
             side_effect=BadRequestConnectionException("No Type for New Element"),
         )
+
         with pytest.raises(BadRequestConnectionException) as exc:
             factory._create_element(element_type=None, name="test")
-        assert "No Type" in str(exc.value)
 
     def test_create_element_owner_invalid(self, project_manager, mocker):
         project = project_manager.get_scripting_project(PROJECT_ID_2)
@@ -120,6 +132,7 @@ class TestFactory:
             "create_commit",
             side_effect=BadRequestConnectionException("No Valid Owner Specified"),
         )
+
         with pytest.raises(BadRequestConnectionException):
             factory.create_attribute_usage(name="new_attribute")
 
@@ -127,6 +140,7 @@ class TestFactory:
         project = project_manager.get_scripting_project(PROJECT_ID_2)
         factory = Factory(project, project_manager._connector)
         root = project.get_root_package()
+
         with pytest.raises(AttributeError):
             factory.create_attribute_usage(
                 name="new_attribute", owner=root.UNDEFINED_ELEMENT

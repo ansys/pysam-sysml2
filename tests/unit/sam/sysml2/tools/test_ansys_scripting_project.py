@@ -52,10 +52,11 @@ class TestAnsysScriptingProject:
         )
 
         assert project._project_id == PROJECT_ID_1
+
         root = project.get_root_package()
+
         assert root is not None
         assert root._name == "project-1"
-
         assert isinstance(project._factory, Factory)
         assert project._factory._project is project
         assert project._factory._project_id == PROJECT_ID_1
@@ -63,8 +64,8 @@ class TestAnsysScriptingProject:
         project.start_transactional_mode()
         new_pkg = project._factory.create_package(name="my_package", owner=root)
         project.stop_transactional_mode()
+
         assert SysMLTools.isinstance(new_pkg, "Package")
         assert new_pkg._name == "my_package"
-
         assert project.is_diagrams_available() is False
         assert project._downloader is None

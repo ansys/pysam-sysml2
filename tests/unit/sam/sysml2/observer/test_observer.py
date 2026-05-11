@@ -53,11 +53,15 @@ class TestObserverTransactional:
 
         observer.set_transactional_mode(True)
         observer.notify("id", "name", "New Name")
+
         assert commit_mock.call_count == 0
 
         observer.set_transactional_mode(False)
+
         assert commit_mock.call_count == 1
+
         payload = json.loads(commit_mock.call_args.args[1])
+
         assert payload["change"][0]["identity"]["@id"] == "id"
         assert payload["change"][0]["payload"] == {"name": "New Name"}
 
@@ -66,11 +70,15 @@ class TestObserverTransactional:
 
         observer.set_transactional_mode(True)
         observer.list_notify("id", "definition", ["t", "t"])
+
         assert commit_mock.call_count == 0
 
         observer.set_transactional_mode(False)
+
         assert commit_mock.call_count == 1
+
         payload = json.loads(commit_mock.call_args.args[1])
+
         assert payload["change"][0]["identity"]["@id"] == "id"
         assert payload["change"][0]["payload"] == {"definition": ["t", "t"]}
 
@@ -79,11 +87,15 @@ class TestObserverTransactional:
 
         observer.set_transactional_mode(True)
         observer.delete_element("id")
+
         assert commit_mock.call_count == 0
 
         observer.set_transactional_mode(False)
+
         assert commit_mock.call_count == 1
+
         payload = json.loads(commit_mock.call_args.args[1])
+
         assert payload["change"][0]["identity"]["@id"] == "id"
         assert "payload" not in payload["change"][0]
 
@@ -97,7 +109,9 @@ class TestObserverImmediate:
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
+
         root._name = "RenamedRoot"
+
         assert root._name == "RenamedRoot"
         assert commit_spy.call_count == 1
 
@@ -108,9 +122,10 @@ class TestObserverImmediate:
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-
         valid_el = SysMLElement("valid_id")
+
         root._ownedElement.append(valid_el)
+
         assert commit_spy.call_count == 1
 
     def test_delete_element_immediate_calls_create_commit(self, connector, mocker):
@@ -119,7 +134,9 @@ class TestObserverImmediate:
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
+
         root.delete()
+
         assert commit_spy.call_count == 1
 
     def test_notify_commit_error_propagates(self, connector, mocker):
@@ -127,25 +144,25 @@ class TestObserverImmediate:
         manager = SysML2ProjectManager(connector)
         project = manager.get_scripting_project(PROJECT_ID_1)
         root = project.get_root_package()
-
         mocker.patch.object(
             connector,
             "create_commit",
             side_effect=BadRequestConnectionException("Bad commit"),
         )
+
         with pytest.raises(BadRequestConnectionException):
-            root._name = "ShouldFail"
+            root._name = ["ShouldFail"]
 
     def test_delete_commit_error_propagates(self, connector, mocker):
         """Verify BadRequestConnectionException from create_commit propagates on delete."""
         manager = SysML2ProjectManager(connector)
         project = manager.get_scripting_project(PROJECT_ID_1)
         root = project.get_root_package()
-
         mocker.patch.object(
             connector,
             "create_commit",
             side_effect=BadRequestConnectionException("Bad commit"),
         )
+
         with pytest.raises(BadRequestConnectionException):
             root.delete()

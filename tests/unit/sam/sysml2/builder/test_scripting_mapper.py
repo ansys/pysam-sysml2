@@ -39,7 +39,9 @@ class TestScriptingMapper:
             "@type": "PartUsage",
             "qualifiedName": "pp::p",
         }
+
         element = scripting_mapper.map("pp", data, None).get_element()
+
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -48,6 +50,7 @@ class TestScriptingMapper:
         data = {
             "@id": "element_id",
         }
+
         with pytest.raises(InvalidProjectJSONMapperException):
             scripting_mapper.map("pp", data, None)
 
@@ -58,7 +61,9 @@ class TestScriptingMapper:
             "name": "Element",
             "qualifiedName": "pp::p",
         }
+
         element = scripting_mapper.map("pp", data, None).get_element()
+
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -73,6 +78,7 @@ class TestScriptingMapper:
         }
 
         element = scripting_mapper.map("pp", data_1, None).get_element()
+
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -87,6 +93,7 @@ class TestScriptingMapper:
         }
 
         element = scripting_mapper.map("pp", data_1, None).get_element()
+
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
@@ -120,6 +127,7 @@ class TestScriptingMapper:
             el = env.get(element_id, None)
             if el is not None:
                 unresolved_field.resolve(el)
+
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"

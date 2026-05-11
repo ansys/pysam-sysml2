@@ -30,7 +30,9 @@ class TestSysML2ProjectBuilderScripting:
 
     def test_build_scripting_project(self, connector):
         builder = SysML2ProjectBuilder(connector)
+
         project = builder.build_scripting_project(PROJECT_ID_1)
+
         assert len(project.get_root()) == 1
         assert project.get_root()[0]._name == "project-1"
         assert project.get_root_package()._name == "project-1"
@@ -38,18 +40,24 @@ class TestSysML2ProjectBuilderScripting:
     def test_find_element_by_id(self, connector):
         builder = SysML2ProjectBuilder(connector)
         project = builder.build_scripting_project(PROJECT_ID_1)
+
         element = project.find_element_by_id(PROJECT_1_ATTR_ID)
+
         assert element._name == "attribute"
 
     def test_find_elements_by_name(self, connector):
         builder = SysML2ProjectBuilder(connector)
         project = builder.build_scripting_project(PROJECT_ID_1)
+
         elements = project.find_elements_by_name("attribute")
+
         assert any(el._id == PROJECT_1_ATTR_ID for el in elements)
 
     def test_root_elements_have_no_owner(self, connector):
         builder = SysML2ProjectBuilder(connector)
+
         project = builder.build_scripting_project(PROJECT_ID_1)
+
         for root in project.get_root():
             assert getattr(root, "_owner", None) is None
 
@@ -58,7 +66,9 @@ class TestSysML2ProjectBuilderSysML:
 
     def test_build_sysml_project(self, connector):
         builder = SysML2ProjectBuilder(connector)
+
         project = builder.build_sysml_project(PROJECT_ID_1)
+
         assert len(project.get_root()) == 1
         assert project.get_root()[0].name == "project-1"
         assert project.get_root_package().name == "project-1"
@@ -66,17 +76,23 @@ class TestSysML2ProjectBuilderSysML:
     def test_find_element_by_id_sysml(self, connector):
         builder = SysML2ProjectBuilder(connector)
         project = builder.build_sysml_project(PROJECT_ID_1)
+
         element = project.find_element_by_id(PROJECT_1_ATTR_ID)
+
         assert element.name == "attribute"
 
     def test_find_elements_by_name_sysml(self, connector):
         builder = SysML2ProjectBuilder(connector)
         project = builder.build_sysml_project(PROJECT_ID_1)
+
         elements = project.find_elements_by_name("attribute")
+
         assert any(el.id == PROJECT_1_ATTR_ID for el in elements)
 
     def test_root_elements_have_no_owner_sysml(self, connector):
         builder = SysML2ProjectBuilder(connector)
+
         project = builder.build_sysml_project(PROJECT_ID_1)
+
         for root in project.get_root():
             assert root.owner is None

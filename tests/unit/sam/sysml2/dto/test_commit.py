@@ -38,6 +38,7 @@ class TestCommit:
         commit.add_change(change)
 
         result = json.loads(commit.to_json())
+
         assert result["@type"] == "Commit"
         assert "change" in result
         assert "owningProject" in result
@@ -49,25 +50,33 @@ class TestCommit:
         dv = DataVersion()
         dv.identify("elem-1")
         dv.add_change("name", "Test")
+
         result = dv.to_json()
+
         assert result["@type"] == "DataVersion"
 
     def test_data_identity_includes_type(self):
         dv = DataVersion()
         dv.identify("elem-1")
+
         result = dv.to_json()
+
         assert result["identity"]["@id"] == "elem-1"
         assert result["identity"]["@type"] == "DataIdentity"
 
     def test_data_version_add_change(self):
         dv = DataVersion()
         dv.add_change("name", "Value")
+
         result = dv.to_json()
+
         assert result["payload"]["name"] == "Value"
 
     def test_empty_commit(self):
         commit = Commit("proj-1")
+
         result = json.loads(commit.to_json())
+
         assert result["change"] == []
         assert result["@type"] == "Commit"
 
@@ -77,7 +86,9 @@ class TestCommit:
         change.identify("elem-to-delete")
         commit.add_change(change)
         result = json.loads(commit.to_json())
+
         dv = result["change"][0]
+
         assert dv["identity"]["@id"] == "elem-to-delete"
         assert "payload" not in dv
 
@@ -88,12 +99,16 @@ class TestCommit:
         change.add_change("name", "NewName")
         commit.add_change(change)
         result = json.loads(commit.to_json())
+
         dv = result["change"][0]
+
         assert dv["identity"]["@id"] == "elem-1"
         assert dv["payload"]["name"] == "NewName"
 
     def test_commit_top_level_ids(self):
         commit = Commit("1")
+
         result = json.loads(commit.to_json())
+
         assert result["owningProject"]["@id"] == "1"
         assert result["previousCommit"]["@id"] == "head"

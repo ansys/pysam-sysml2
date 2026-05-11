@@ -70,6 +70,7 @@ class TestConnectorErrorHandling:
             return_value=_MockResponse(200, content=b'{"@id": "1", "name": "P"}'),
         )
         result = connector.get_project_by_id("1")
+
         assert result["@id"] == "1"
 
     def test_get_project_200_invalid_json(self, connector, mocker):
@@ -77,6 +78,7 @@ class TestConnectorErrorHandling:
             "requests.get",
             return_value=_MockResponse(200, content=b"not json"),
         )
+
         with pytest.raises(InvalidElementJsonFoundException):
             connector.get_project_by_id("1")
 
@@ -85,6 +87,7 @@ class TestConnectorErrorHandling:
             "requests.get",
             return_value=_MockResponse(401),
         )
+
         with pytest.raises(UnauthorizedConnectionException):
             connector.get_project_by_id("1")
 
@@ -98,6 +101,7 @@ class TestConnectorErrorHandling:
                 },
             ),
         )
+
         with pytest.raises(ConnectorConnectionException):
             connector.get_project_by_id("1")
 
@@ -108,6 +112,7 @@ class TestConnectorErrorHandling:
                 404, json_data={"message": "Project X not found"}
             ),
         )
+
         with pytest.raises(ProjectNotFoundException):
             connector.get_project_by_id("X")
 
@@ -119,6 +124,7 @@ class TestConnectorErrorHandling:
                 json_data={"message": "Element X not found in project Y"},
             ),
         )
+
         with pytest.raises(ElementNotFoundException):
             connector.get_element_by_id("Y", "X")
 
@@ -129,6 +135,7 @@ class TestConnectorErrorHandling:
                 404, json_data={"message": "Organization Z not found"}
             ),
         )
+
         with pytest.raises(ConnectorConnectionException):
             connector.get_project_by_id("1")
 
@@ -142,6 +149,7 @@ class TestConnectorErrorHandling:
                 },
             ),
         )
+
         with pytest.raises(ProjectAlreadyExistsException):
             connector.create_project("duplicate")
 
@@ -152,6 +160,7 @@ class TestConnectorErrorHandling:
                 400, json_data={"message": "Change can't be empty"}
             ),
         )
+
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit("1", '{"@type": "Commit", "change": []}')
 
@@ -160,6 +169,7 @@ class TestConnectorErrorHandling:
             "requests.get",
             return_value=_MockResponse(500),
         )
+
         with pytest.raises(ConnectorConnectionException, match="Internal Server Error"):
             connector.get_project_by_id("1")
 
@@ -168,6 +178,7 @@ class TestConnectorErrorHandling:
             "requests.get",
             return_value=_MockResponse(418),
         )
+
         with pytest.raises(HTTPResponseException):
             connector.get_project_by_id("1")
 
@@ -176,5 +187,6 @@ class TestConnectorErrorHandling:
             "requests.get",
             side_effect=ConnectionError("Connection refused"),
         )
+
         with pytest.raises(ConnectorConnectionException):
             connector.get_project_by_id("1")
