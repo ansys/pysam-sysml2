@@ -37,10 +37,15 @@ from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
 from ansys.sam.sysml2.exception.connector_exception import ProjectNotFoundException
 
 
+REQUIRED_ENV_VARS = ("SAM_SERVER_URL", "SAM_ORGANIZATION_ID", "SAM_TOKEN")
+
+
 @pytest.fixture(scope="session", autouse=True)
 def _skip_without_env():
-    if not os.environ.get("SAM_SERVER_URL"):
-        pytest.skip("SAM_SERVER_URL not set -- skipping e2e tests")
+    """Skip every e2e test unless the connector fixtures can be built."""
+    missing = [name for name in REQUIRED_ENV_VARS if not os.environ.get(name)]
+    if missing:
+        pytest.skip(f"e2e env vars not set: {', '.join(missing)}")
 
 
 @pytest.fixture(scope="session")
