@@ -40,17 +40,17 @@ class TestCommitsSysML:
         bike_front_wheel_id = bike_front_wheel.id
         bike_front_wheel_type = type(bike_front_wheel)
 
-        commit = Commit(project._id)
+        commit = Commit(project.get_id())
         change = DataVersion()
         change.identify(bike_front_wheel_id)
         change.add_change("@type", bike_front_wheel_type)
         change.add_change("name", "RenamedByE2ESysML")
         commit.add_change(change)
 
-        response = connector.create_commit(project._id, commit.to_json())
+        response = connector.create_commit(project.get_id(), commit.to_json())
 
         assert response["@type"] == "Commit"
-        assert response["owningProject"]["@id"] == project._id
+        assert response["owningProject"]["@id"] == project.get_id()
 
     def test_create_commit_set_attribute_via_sysml(self, project_factory):
         """Set attribute via sysml API (.get() navigation), verify roundtrip."""
@@ -71,7 +71,7 @@ class TestCommitsSysML:
         """Commit with no DataVersion raises BadRequestConnectionException (sysml project)."""
         project = project_factory(model="bike", kind="sysml")
 
-        commit = Commit(project._id)
+        commit = Commit(project.get_id())
 
         with pytest.raises(BadRequestConnectionException):
-            connector.create_commit(project._id, commit.to_json())
+            connector.create_commit(project.get_id(), commit.to_json())

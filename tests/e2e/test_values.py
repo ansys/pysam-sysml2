@@ -122,7 +122,7 @@ class TestValues:
     def test_bike_delete_project(self, connector, project_factory):
         """Delete project and verify it raises ProjectNotFoundException."""
         project = project_factory(model="bike", kind="scripting")
-        project_id = project._id
+        project_id = project.get_id()
 
         connector.delete_project(project_id)
 

@@ -63,7 +63,7 @@ class TestFactory:
         assert elem.__class__.__name__ == element_type
         assert elem._name == "test_elem"
         project.stop_transactional_mode()
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     @pytest.mark.parametrize("factory_method,element_type", ELEMENT_TYPES)
     def test_create_element_transactional_sysml(
@@ -80,7 +80,7 @@ class TestFactory:
         assert elem.__class__.__name__ == element_type
         assert elem.name == "test_elem"
         project.stop_transactional_mode()
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_create_part_definition_with_owned_elements(
         self, project_manager, mocker
@@ -98,7 +98,7 @@ class TestFactory:
         assert new_part._name == "new_part_def"
         assert len(new_part._owned_elements) == 1
         project.stop_transactional_mode()
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_create_element_commit_rejected(self, project_manager, mocker):
         project = project_manager.get_scripting_project(PROJECT_ID_2)

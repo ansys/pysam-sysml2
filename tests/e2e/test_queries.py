@@ -41,12 +41,12 @@ class TestQueries:
     def test_query_primitive_constraint_by_id(self, connector, project_factory, kind):
         """Query with PrimitiveConstraint on @id returns exactly one matching element."""
         project = project_factory(model="bike", kind=kind)
-        elements = connector.get_all_elements(project._id)
+        elements = connector.get_all_elements(project.get_id())
         target_id = elements[0]["@id"]
 
         query = Query()
         query.where = PrimitiveConstraint("@id", target_id)
-        result = connector.execute_query(project._id, query.to_json())
+        result = connector.execute_query(project.get_id(), query.to_json())
 
         assert len(result) == 1
         assert result[0]["@id"] == target_id
@@ -55,7 +55,7 @@ class TestQueries:
     def test_query_composite_or(self, connector, project_factory, kind):
         """Composite OR constraint returns elements matching either condition."""
         project = project_factory(model="bike", kind=kind)
-        elements = connector.get_all_elements(project._id)
+        elements = connector.get_all_elements(project.get_id())
         id_a = elements[0]["@id"]
         id_b = elements[1]["@id"]
 
@@ -66,7 +66,7 @@ class TestQueries:
             PrimitiveConstraint("@id", id_b),
         ]
         query.where = cc
-        result = connector.execute_query(project._id, query.to_json())
+        result = connector.execute_query(project.get_id(), query.to_json())
 
         assert len(result) == 2
         result_ids = {r["@id"] for r in result}
@@ -82,7 +82,7 @@ class TestQueries:
         query.where = PrimitiveConstraint("nonExistentProperty", "value")
 
         with pytest.raises(BadRequestConnectionException):
-            connector.execute_query(project._id, query.to_json())
+            connector.execute_query(project.get_id(), query.to_json())
 
     def test_query_invalid_composite_constraint(self):
         """Composite constraint with fewer than 2 children raises InvalidQuery client-side."""

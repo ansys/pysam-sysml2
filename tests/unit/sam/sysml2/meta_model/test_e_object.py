@@ -90,7 +90,7 @@ class TestEObject:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myIntFeature").set_value(20)
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_string_get_values(self, new_format_project: Project):
         package = new_format_project.get_root_package()
@@ -101,7 +101,7 @@ class TestEObject:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myStringFeature").set_value("World")
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_bool_get_values(self, new_format_project: Project):
         package = new_format_project.get_root_package()
@@ -112,7 +112,7 @@ class TestEObject:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myBoolFeature").set_value(True)
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_float_get_values(self, new_format_project: Project):
         package = new_format_project.get_root_package()
@@ -125,4 +125,4 @@ class TestEObject:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myFloatFeature").set_value(20.5)
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1

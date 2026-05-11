@@ -41,17 +41,17 @@ class TestCommitsScripting:
         bike_front_wheel_id = bike_front_wheel._id
         bike_front_wheel_type = type(bike_front_wheel)
 
-        commit = Commit(project._id)
+        commit = Commit(project.get_id())
         change = DataVersion()
         change.identify(bike_front_wheel_id)
         change.add_change("@type", bike_front_wheel_type)
         change.add_change("name", "RenamedByE2E")
         commit.add_change(change)
 
-        response = connector.create_commit(project._id, commit.to_json())
+        response = connector.create_commit(project.get_id(), commit.to_json())
 
         assert response["@type"] == "Commit"
-        assert response["owningProject"]["@id"] == project._id
+        assert response["owningProject"]["@id"] == project.get_id()
 
     def test_create_commit_set_attribute(self, project_factory):
         """Set attribute via scripting API, verify roundtrip."""
@@ -72,33 +72,33 @@ class TestCommitsScripting:
         """Commit with no DataVersion raises BadRequestConnectionException."""
         project = project_factory(model="bike", kind="scripting")
 
-        commit = Commit(project._id)
+        commit = Commit(project.get_id())
 
         with pytest.raises(BadRequestConnectionException):
-            connector.create_commit(project._id, commit.to_json())
+            connector.create_commit(project.get_id(), commit.to_json())
 
     def test_create_commit_none_type(self, connector, project_factory):
         """Commit for new element with None @type raises BadRequestConnectionException."""
         project = project_factory(model="bike", kind="scripting")
 
-        commit = Commit(project._id)
+        commit = Commit(project.get_id())
         change = DataVersion()
         change.add_change("@type", None)
         commit.add_change(change)
 
         with pytest.raises(BadRequestConnectionException):
-            connector.create_commit(project._id, commit.to_json())
+            connector.create_commit(project.get_id(), commit.to_json())
 
     def test_create_commit_missing_type(self, connector, project_factory):
         """Commit for new element without @type raises BadRequestConnectionException."""
         project = project_factory(model="bike", kind="scripting")
 
-        commit = Commit(project._id)
+        commit = Commit(project.get_id())
         change = DataVersion()
         commit.add_change(change)
 
         with pytest.raises(BadRequestConnectionException):
-            connector.create_commit(project._id, commit.to_json())
+            connector.create_commit(project.get_id(), commit.to_json())
 
     def test_create_commit_invalid_key(self, connector, project_factory):
         """Commit with invalid key raises BadRequestConnectionException."""
@@ -107,14 +107,14 @@ class TestCommitsScripting:
         bike_front_wheel = bike.frontWheel
         bike_front_wheel_id = bike_front_wheel._id
 
-        commit = Commit(project._id)
+        commit = Commit(project.get_id())
         change = DataVersion()
         change.identify(bike_front_wheel_id)
         change.add_change("invalidKey", "SomeValue")
         commit.add_change(change)
 
         with pytest.raises(BadRequestConnectionException):
-            connector.create_commit(project._id, commit.to_json())
+            connector.create_commit(project.get_id(), commit.to_json())
 
     def test_create_commit_invalid_attribute_type(self, connector, project_factory):
         """Commit with wrong value type raises BadRequestConnectionException."""
@@ -123,14 +123,14 @@ class TestCommitsScripting:
         bike_front_wheel = bike.frontWheel
         bike_front_wheel_id = bike_front_wheel._id
 
-        commit = Commit(project._id)
+        commit = Commit(project.get_id())
         change = DataVersion()
         change.identify(bike_front_wheel_id)
         change.add_change("name", ["NotAString"])
         commit.add_change(change)
 
         with pytest.raises(BadRequestConnectionException):
-            connector.create_commit(project._id, commit.to_json())
+            connector.create_commit(project.get_id(), commit.to_json())
 
     def test_create_commit_replace_list(self, connector, project_factory):
         """Create a RequirementUsage, set its _text list, then replace it."""

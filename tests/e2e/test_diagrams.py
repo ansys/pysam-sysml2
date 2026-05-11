@@ -50,7 +50,7 @@ class TestDiagrams:
             organization_id=os.environ["SAM_ORGANIZATION_ID"],
             token=os.environ["SAM_TOKEN"],
             use_ssl=os.environ.get("SAM_USE_SSL", "true").lower() == "true",
-            project_id=project._id,
+            project_id=project.get_id(),
         )
 
         assert ansys_project.is_diagrams_available()
@@ -125,25 +125,25 @@ class TestSamRestApiConnector:
     def test_get_project_data(self, sam_connector, project_factory):
         project = project_factory(model="bike", kind="scripting")
 
-        data = sam_connector.get_project_data(project._id)
+        data = sam_connector.get_project_data(project.get_id())
         assert len(data) > 0
         assert "eClass" in data
 
     def test_get_diagrams_info(self, sam_connector, project_factory):
         project = project_factory(model="bike", kind="scripting")
 
-        diagrams_info = sam_connector.get_diagrams_info(project._id)
+        diagrams_info = sam_connector.get_diagrams_info(project.get_id())
         assert len(diagrams_info) == 4
         assert diagrams_info[0]["name"] == "Bike"
 
     def test_get_single_diagram_info(self, sam_connector, project_factory):
         project = project_factory(model="bike", kind="scripting")
 
-        diagrams_info = sam_connector.get_diagrams_info(project._id)
+        diagrams_info = sam_connector.get_diagrams_info(project.get_id())
         bike_entry = next(d for d in diagrams_info if d["name"] == "Bike")
         diagram_id = bike_entry["diagramId"]
 
-        info = sam_connector.get_single_diagram_info(project._id, diagram_id)
+        info = sam_connector.get_single_diagram_info(project.get_id(), diagram_id)
         assert isinstance(info, dict)
         assert info["name"] == "Bike"
         assert info["diagramId"] == diagram_id
@@ -152,7 +152,7 @@ class TestSamRestApiConnector:
         project = project_factory(model="bike", kind="scripting")
 
         with pytest.raises(ConnectorConnectionException):
-            sam_connector.get_single_diagram_info(project._id, "unknown")
+            sam_connector.get_single_diagram_info(project.get_id(), "unknown")
 
 
 @pytest.mark.e2e
@@ -169,7 +169,7 @@ class TestSamDiagramDownloader:
 
         diagram = _get_diagrams(project.get_root_package())[0]
         downloader = SamDiagramDownloader(
-            connector=sam_connector, project_id=project._id
+            connector=sam_connector, project_id=project.get_id()
         )
         result = downloader.download_diagram(
             diagram_id=diagram._id, path=str(tmp_path), file_format=file_format
@@ -186,7 +186,7 @@ class TestSamDiagramDownloader:
         project = project_factory(model="bike", kind="scripting")
 
         downloader = SamDiagramDownloader(
-            connector=sam_connector, project_id=project._id
+            connector=sam_connector, project_id=project.get_id()
         )
         result = downloader.download_all_diagrams(
             path=str(tmp_path), file_format=file_format
@@ -203,7 +203,7 @@ class TestSamDiagramDownloader:
 
         diagram = _get_diagrams(project.get_root_package())[0]
         downloader = SamDiagramDownloader(
-            connector=sam_connector, project_id=project._id
+            connector=sam_connector, project_id=project.get_id()
         )
         with pytest.raises(DiagramConnectorException):
             downloader.download_diagram(
@@ -217,7 +217,7 @@ class TestSamDiagramDownloader:
 
         diagram = _get_diagrams(project.get_root_package())[0]
         downloader = SamDiagramDownloader(
-            connector=sam_connector, project_id=project._id
+            connector=sam_connector, project_id=project.get_id()
         )
         with pytest.raises(DiagramConnectorException):
             downloader.download_diagram(

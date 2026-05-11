@@ -22,6 +22,8 @@
 
 """Unit tests for ModificationObserver, transactional and immediate commit flows."""
 
+import json
+
 import pytest
 
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
@@ -32,29 +34,58 @@ from tests.unit.const import PROJECT_ID_1
 
 
 class TestObserverTransactional:
-    """Tests for transactional mode, no connector required."""
+    """Transactional mode defers every change into a single commit at stop time.
+
+    These tests assert the public observable contract via ``create_commit``:
+    no commit fires until ``set_transactional_mode(False)``, then exactly one
+    commit is sent whose JSON payload reflects the registered changes.
+    """
 
     @pytest.fixture
-    def observer(self) -> ModificationObserver:
-        return ModificationObserver(ProjectImpl("", ""), None)
+    def observer(self, connector, mocker) -> ModificationObserver:
+        """Build an observer wired to the mocked connector, with ``reload_project`` stubbed out."""
+        observer = ModificationObserver(ProjectImpl("", ""), connector)
+        mocker.patch.object(observer, "reload_project")
+        return observer
 
-    def test_transactional_mode_for_notify(self, observer):
+    def test_transactional_notify_defers_commit_until_stop(self, observer, connector, mocker):
+        commit_mock = mocker.patch.object(connector, "create_commit")
+
         observer.set_transactional_mode(True)
         observer.notify("id", "name", "New Name")
-        assert "id" in observer._stack
-        assert observer._stack["id"] == [("name", "New Name")]
+        assert commit_mock.call_count == 0
 
-    def test_transactional_mode_for_list(self, observer):
+        observer.set_transactional_mode(False)
+        assert commit_mock.call_count == 1
+        payload = json.loads(commit_mock.call_args.args[1])
+        assert payload["change"][0]["identity"]["@id"] == "id"
+        assert payload["change"][0]["payload"] == {"name": "New Name"}
+
+    def test_transactional_list_notify_defers_commit_until_stop(self, observer, connector, mocker):
+        commit_mock = mocker.patch.object(connector, "create_commit")
+
         observer.set_transactional_mode(True)
         observer.list_notify("id", "definition", ["t", "t"])
-        assert "id" in observer._stack
-        assert observer._stack["id"] == [("definition", ["t", "t"])]
+        assert commit_mock.call_count == 0
 
-    def test_transactional_mode_for_delete(self, observer):
+        observer.set_transactional_mode(False)
+        assert commit_mock.call_count == 1
+        payload = json.loads(commit_mock.call_args.args[1])
+        assert payload["change"][0]["identity"]["@id"] == "id"
+        assert payload["change"][0]["payload"] == {"definition": ["t", "t"]}
+
+    def test_transactional_delete_defers_commit_until_stop(self, observer, connector, mocker):
+        commit_mock = mocker.patch.object(connector, "create_commit")
+
         observer.set_transactional_mode(True)
         observer.delete_element("id")
-        assert "id" in observer._stack
-        assert len(observer._stack["id"]) == 0
+        assert commit_mock.call_count == 0
+
+        observer.set_transactional_mode(False)
+        assert commit_mock.call_count == 1
+        payload = json.loads(commit_mock.call_args.args[1])
+        assert payload["change"][0]["identity"]["@id"] == "id"
+        assert "payload" not in payload["change"][0]
 
 
 class TestObserverImmediate:
@@ -80,7 +111,7 @@ class TestObserverImmediate:
 
         valid_el = SysMLElement("valid_id")
         root._ownedElement.append(valid_el)
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_delete_element_immediate_calls_create_commit(self, connector, mocker):
         manager = SysML2ProjectManager(connector)

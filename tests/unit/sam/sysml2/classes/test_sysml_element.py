@@ -67,7 +67,7 @@ class TestSysMLElement:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.Feature.myExpressionFeature.parse_and_set_value("20 [kg]")
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_expression_complex_value_throws_error(self, new_format_project):
         package = new_format_project.get_root_package()
@@ -80,7 +80,7 @@ class TestSysMLElement:
         commit_spy = mocker.spy(connector, "create_commit")
         assert package.Feature.myIntFeature.get_value() == 10
         package.Feature.myIntFeature.set_value(20)
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_string_get_set_value(self, connector, new_format_project, mocker):
         package = new_format_project.get_root_package()
@@ -88,7 +88,7 @@ class TestSysMLElement:
         commit_spy = mocker.spy(connector, "create_commit")
         assert package.Feature.myStringFeature.get_value() == "Hello"
         package.Feature.myStringFeature.set_value("World")
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_bool_get_set_value(self, connector, new_format_project, mocker):
         package = new_format_project.get_root_package()
@@ -96,7 +96,7 @@ class TestSysMLElement:
         commit_spy = mocker.spy(connector, "create_commit")
         assert package.Feature.myBoolFeature.get_value() is False
         package.Feature.myBoolFeature.set_value(True)
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_float_get_set_value(self, connector, new_format_project, mocker):
         package = new_format_project.get_root_package()
@@ -104,7 +104,7 @@ class TestSysMLElement:
         commit_spy = mocker.spy(connector, "create_commit")
         assert package.Feature.myFloatFeature.get_value() == pytest.approx(10.56)
         package.Feature.myFloatFeature.set_value(20.5)
-        assert commit_spy.call_count >= 1
+        assert commit_spy.call_count == 1
 
     def test_setattr_commit_rejected(self, connector, mocker):
         manager = SysML2ProjectManager(connector)
