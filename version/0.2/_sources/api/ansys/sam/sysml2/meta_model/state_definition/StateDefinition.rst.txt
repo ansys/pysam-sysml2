@@ -1,0 +1,354 @@
+
+
+
+
+
+
+:class:`StateDefinition`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.state_definition.StateDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_definition.ActionDefinition`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.StateDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: StateDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~set_exit_action`
+            - Get the set exit action property.
+          * - :py:attr:`~state`
+            - Get the state property.
+          * - :py:attr:`~exit_action`
+            - Get the exit action property.
+          * - :py:attr:`~do_action`
+            - Get the do action property.
+          * - :py:attr:`~set_is_parallel`
+            - Get the set is parallel property.
+          * - :py:attr:`~set_do_action`
+            - Get the set do action property.
+          * - :py:attr:`~entry_action`
+            - Get the entry action property.
+          * - :py:attr:`~is_parallel`
+            - Get the is parallel property.
+          * - :py:attr:`~set_entry_action`
+            - Get the set entry action property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.state_definition import StateDefinition
+
+Property detail
+---------------
+
+.. py:property:: set_exit_action
+   :type: bool
+
+
+   
+   Get the set exit action property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set exit action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: state
+   :type: List[StateUsage]
+
+
+   
+   Get the state property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["StateUsage"]
+           Value of property state.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: exit_action
+   :type: None
+
+
+   
+   Get the exit action property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property exit action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: do_action
+   :type: ActionUsage
+
+
+   
+   Get the do action property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property do action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_parallel
+   :type: bool
+
+
+   
+   Get the set is parallel property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is parallel.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_do_action
+   :type: bool
+
+
+   
+   Get the set do action property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set do action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: entry_action
+   :type: ActionUsage
+
+
+   
+   Get the entry action property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property entry action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_parallel
+   :type: bool
+
+
+   
+   Get the is parallel property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is parallel.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_entry_action
+   :type: bool
+
+
+   
+   Get the set entry action property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set entry action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

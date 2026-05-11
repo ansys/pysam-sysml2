@@ -1,0 +1,132 @@
+
+
+
+
+
+
+The ``inherited_element.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.classes.inherited_element
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: inherited_element
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.inherited_element.InheritedElement`
+            - A proxy class for the element that is not created yet.
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~build_composed_name`
+            - Build a composed name for the inherited element.
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> InheritedElement</api/ansys/sam/sysml2/classes/inherited_element/InheritedElement>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+A proxy class for the element that is not created yet.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:function:: build_composed_name(owner, element, is_inherited)
+
+   
+   Build a composed name for the inherited element.
+
+
+   :Parameters:
+
+       **owner** : :obj:`SysMLElement`
+           The owner of the inherited element.
+
+       **element** : :obj:`SysMLElement`
+           The inherited element.
+
+       **is_inherited** : :ref:`bool <python:bltin-boolean-values>`
+           Whether the element is inherited or not.
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           The composed name for the inherited element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+

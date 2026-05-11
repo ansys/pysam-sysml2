@@ -1,0 +1,97 @@
+
+
+
+
+
+
+:class:`Constraint`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.dto.query.constraints_classes.Constraint
+
+   
+   Provides the constraint interface.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Constraint
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~to_json`
+            - Return a JSON representation of the class.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.query.constraints_classes import Constraint
+
+
+
+Method detail
+-------------
+
+.. py:method:: to_json() -> dict
+
+   
+   Return a JSON representation of the class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

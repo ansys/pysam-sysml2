@@ -1,0 +1,122 @@
+
+
+
+
+
+
+The ``observed_list.py`` module
+===============================
+
+.. py:module:: ansys.sam.sysml2.data_structures.observed_list
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: observed_list
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.data_structures.observed_list.ObservedList`
+            - React (notification) on each list operation.
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~mount_observer_and_access`
+            - Check write access and notify observer.
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ObservedList</api/ansys/sam/sysml2/data_structures/observed_list/ObservedList>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Observed list for SysMl list.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:function:: mount_observer_and_access(function)
+
+   
+   Check write access and notify observer.
+
+
+   :Parameters:
+
+       **function** : :func:`python:callable`
+           Function to watch.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+

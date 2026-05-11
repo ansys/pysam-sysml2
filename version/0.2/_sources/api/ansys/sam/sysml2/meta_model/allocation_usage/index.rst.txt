@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``allocation_usage.py`` module
+==================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.allocation_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: allocation_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.allocation_usage.AllocationUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.AllocationUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> AllocationUsage</api/ansys/sam/sysml2/meta_model/allocation_usage/AllocationUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated allocation usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``literal_real.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.literal_real
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: literal_real
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_real.LiteralReal`
+            - Java class 'com.ansys.medini.metamodel.sysml.LiteralReal'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> LiteralReal</api/ansys/sam/sysml2/meta_model/literal_real/LiteralReal>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated literal real class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

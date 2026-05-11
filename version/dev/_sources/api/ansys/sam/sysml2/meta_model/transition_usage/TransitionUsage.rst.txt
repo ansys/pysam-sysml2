@@ -1,0 +1,354 @@
+
+
+
+
+
+
+:class:`TransitionUsage`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.transition_usage.TransitionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.TransitionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TransitionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~target`
+            - Get the target property.
+          * - :py:attr:`~source`
+            - Get the source property.
+          * - :py:attr:`~inherited_guard_expression`
+            - Get the inherited guard expression property.
+          * - :py:attr:`~inherited_trigger_action`
+            - Get the inherited trigger action property.
+          * - :py:attr:`~inherited_effect_action`
+            - Get the inherited effect action property.
+          * - :py:attr:`~succession`
+            - Get the succession property.
+          * - :py:attr:`~guard_expression`
+            - Get the guard expression property.
+          * - :py:attr:`~trigger_action`
+            - Get the trigger action property.
+          * - :py:attr:`~effect_action`
+            - Get the effect action property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.transition_usage import TransitionUsage
+
+Property detail
+---------------
+
+.. py:property:: target
+   :type: ansys.sam.sysml2.meta_model.action_usage.ActionUsage
+
+
+   
+   Get the target property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property target.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: source
+   :type: ansys.sam.sysml2.meta_model.action_usage.ActionUsage
+
+
+   
+   Get the source property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property source.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inherited_guard_expression
+   :type: list[Expression]
+
+
+   
+   Get the inherited guard expression property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property inherited guard expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inherited_trigger_action
+   :type: list[AcceptActionUsage]
+
+
+   
+   Get the inherited trigger action property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["AcceptActionUsage"]
+           Value of property inherited trigger action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inherited_effect_action
+   :type: list[ansys.sam.sysml2.meta_model.action_usage.ActionUsage]
+
+
+   
+   Get the inherited effect action property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ActionUsage"]
+           Value of property inherited effect action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: succession
+   :type: Succession
+
+
+   
+   Get the succession property.
+
+
+
+
+
+   :Returns:
+
+       "Succession"
+           Value of property succession.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: guard_expression
+   :type: list[Expression]
+
+
+   
+   Get the guard expression property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property guard expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: trigger_action
+   :type: list[AcceptActionUsage]
+
+
+   
+   Get the trigger action property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["AcceptActionUsage"]
+           Value of property trigger action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: effect_action
+   :type: list[ansys.sam.sysml2.meta_model.action_usage.ActionUsage]
+
+
+   
+   Get the effect action property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ActionUsage"]
+           Value of property effect action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
