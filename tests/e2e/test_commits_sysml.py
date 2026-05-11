@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""E2E tests for commit operations against a real SAM product instance."""
+"""E2E tests with sysml approach for commit operations against a real SAM product instance."""
 
 import pytest
 
@@ -46,7 +46,6 @@ class TestCommitsSysML:
         change.add_change("@type", bike_front_wheel_type)
         change.add_change("name", "RenamedByE2ESysML")
         commit.add_change(change)
-
         response = connector.create_commit(project.get_id(), commit.to_json())
 
         assert response["@type"] == "Commit"
@@ -68,7 +67,7 @@ class TestCommitsSysML:
         assert updated_bike_front_wheel_rim_weight == (500, "g")
 
     def test_create_commit_empty_change_sysml(self, connector, project_factory):
-        """Commit with no DataVersion raises BadRequestConnectionException (sysml project)."""
+        """Commit with no DataVersion raises BadRequestConnectionException."""
         project = project_factory(model="bike", kind="sysml")
 
         commit = Commit(project.get_id())

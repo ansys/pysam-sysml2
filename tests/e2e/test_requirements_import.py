@@ -44,43 +44,45 @@ def _read_requirements_csv():
 class TestRequirementsImportScripting:
 
     def test_import_requirements_from_csv(self, connector, project_factory):
-        """Import 10 requirements from CSV into bike project via scripting API."""
+        """Import 10 requirements from CSV into bike project via scripting project."""
         project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
 
         rows = _read_requirements_csv()
+
         assert len(rows) == 10
 
         factory = Factory(project, connector)
+
         for row in rows:
             req = factory.create_requirement_usage(name=row["title"], owner=bike)
             req._text = [row["description"]]
             req._reqId = row["id"]
-
         bike = project.get_root_package().Structure.Bike
+
         for row in rows:
             req = getattr(bike, row["title"])
             assert req._name == row["title"]
             assert row["description"] in req._text
 
     def test_import_requirements_transactional(self, connector, project_factory):
-        """Import 10 requirements in transactional mode (single commit) via scripting API."""
+        """Import 10 requirements in transactional mode (single commit) via scripting project."""
         project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
 
         rows = _read_requirements_csv()
+
         assert len(rows) == 10
 
         factory = Factory(project, connector)
-
         project.start_transactional_mode()
         for row in rows:
             req = factory.create_requirement_usage(name=row["title"], owner=bike)
             req._text = [row["description"]]
             req._reqId = row["id"]
         project.stop_transactional_mode()
-
         bike = project.get_root_package().Structure.Bike
+
         for row in rows:
             req = getattr(bike, row["title"])
             assert req._name == row["title"]
@@ -91,11 +93,12 @@ class TestRequirementsImportScripting:
 class TestRequirementsImportSysML:
 
     def test_import_requirements_from_csv(self, connector, project_factory):
-        """Import 10 requirements from CSV into bike project via SysML API."""
+        """Import 10 requirements from CSV into bike project via SysML project."""
         project = project_factory(model="bike", kind="sysml")
         bike = project.get_root_package().get("Structure").get("Bike")
 
         rows = _read_requirements_csv()
+
         assert len(rows) == 10
 
         factory = Factory(project, connector)
@@ -103,31 +106,31 @@ class TestRequirementsImportSysML:
             req = factory.create_requirement_usage(name=row["title"], owner=bike)
             req._text = [row["description"]]
             req._reqId = row["id"]
-
         bike = project.get_root_package().get("Structure").get("Bike")
+
         for row in rows:
             req = bike.get(row["title"])
             assert req is not None
             assert req.name == row["title"]
 
     def test_import_requirements_transactional(self, connector, project_factory):
-        """Import 10 requirements in transactional mode (single commit) via SysML API."""
+        """Import 10 requirements in transactional mode (single commit) via SysML project."""
         project = project_factory(model="bike", kind="sysml")
         bike = project.get_root_package().get("Structure").get("Bike")
 
         rows = _read_requirements_csv()
+
         assert len(rows) == 10
 
         factory = Factory(project, connector)
-
         project.start_transactional_mode()
         for row in rows:
             req = factory.create_requirement_usage(name=row["title"], owner=bike)
             req._text = [row["description"]]
             req._reqId = row["id"]
         project.stop_transactional_mode()
-
         bike = project.get_root_package().get("Structure").get("Bike")
+
         for row in rows:
             req = bike.get(row["title"])
             assert req is not None

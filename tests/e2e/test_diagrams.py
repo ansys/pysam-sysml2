@@ -59,6 +59,7 @@ class TestDiagrams:
         project = project_with_diagrams_factory(model="bike")
 
         root_diagrams = _get_diagrams(project.get_root_package())
+
         assert isinstance(root_diagrams, list)
         assert len(root_diagrams) == 1
 
@@ -66,6 +67,7 @@ class TestDiagrams:
         project = project_with_diagrams_factory(model="bike")
 
         first_diagram = _get_diagrams(project.get_root_package())[0]
+
         assert first_diagram._plane._model_element._name is not None
 
 
@@ -77,11 +79,13 @@ class TestSAMDiagramManager:
 
         package = project.get_root_package()
         bike = package.Bike
+
         assert len(_get_diagrams(package)) == 1
         assert len(_get_diagrams(bike)) == 1
 
         diagram = _get_diagrams(package)[0]
         diagram_bike = _get_diagrams(bike)[0]
+
         assert hasattr(diagram, "_name")
         assert hasattr(diagram_bike, "_name")
         assert diagram._name == "general diagram"
@@ -93,10 +97,13 @@ class TestSAMDiagramManager:
         package = project.get_root_package()
         diagram = _get_diagrams(package)[0]
         owned = diagram._plane._owned_diagram_elements
+
         assert len(owned) == 10
 
         simple_nodes = [x for x in owned if x.__class__.__name__ == "SimpleNode"]
+
         assert len(simple_nodes) == 5
+
         for node in simple_nodes:
             assert hasattr(node, "_model_element")
 
@@ -106,16 +113,20 @@ class TestSAMDiagramManager:
         package = project.get_root_package()
         diagram = _get_diagrams(package)[0]
         owned = diagram._plane._owned_diagram_elements
-
         path_elements = [x for x in owned if x.__class__.__name__ == "Path"]
+
         assert len(path_elements) > 0
 
         point_elements = []
+
         for path in path_elements:
             if hasattr(path, "_points") and path._points:
                 point_elements.extend(path._points)
+
         assert len(point_elements) > 0
+
         actual_points = [p for p in point_elements if p.__class__.__name__ == "Point"]
+
         assert len(actual_points) > 0
 
 
@@ -126,6 +137,7 @@ class TestSamRestApiConnector:
         project = project_factory(model="bike", kind="scripting")
 
         data = sam_connector.get_project_data(project.get_id())
+
         assert len(data) > 0
         assert "eClass" in data
 
@@ -133,6 +145,7 @@ class TestSamRestApiConnector:
         project = project_factory(model="bike", kind="scripting")
 
         diagrams_info = sam_connector.get_diagrams_info(project.get_id())
+
         assert len(diagrams_info) == 4
         assert diagrams_info[0]["name"] == "Bike"
 
@@ -142,8 +155,8 @@ class TestSamRestApiConnector:
         diagrams_info = sam_connector.get_diagrams_info(project.get_id())
         bike_entry = next(d for d in diagrams_info if d["name"] == "Bike")
         diagram_id = bike_entry["diagramId"]
-
         info = sam_connector.get_single_diagram_info(project.get_id(), diagram_id)
+
         assert isinstance(info, dict)
         assert info["name"] == "Bike"
         assert info["diagramId"] == diagram_id
@@ -175,6 +188,7 @@ class TestSamDiagramDownloader:
             diagram_id=diagram._id, path=str(tmp_path), file_format=file_format
         )
         result_path = Path(result)
+
         assert result_path.exists()
         assert result.endswith(suffix)
         assert result_path.stat().st_size > 0
@@ -192,6 +206,7 @@ class TestSamDiagramDownloader:
             path=str(tmp_path), file_format=file_format
         )
         result_path = Path(result)
+
         assert result_path.exists()
         assert result.endswith(".zip")
         assert result_path.stat().st_size > 0
@@ -205,6 +220,7 @@ class TestSamDiagramDownloader:
         downloader = SamDiagramDownloader(
             connector=sam_connector, project_id=project.get_id()
         )
+
         with pytest.raises(DiagramConnectorException):
             downloader.download_diagram(
                 diagram_id=diagram._id,
@@ -219,6 +235,7 @@ class TestSamDiagramDownloader:
         downloader = SamDiagramDownloader(
             connector=sam_connector, project_id=project.get_id()
         )
+
         with pytest.raises(DiagramConnectorException):
             downloader.download_diagram(
                 diagram_id=diagram._id,

@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""E2E tests for commit operations against a real SAM product instance."""
+"""E2E tests with scripting approach for commit operations against a real SAM product instance."""
 
 import pytest
 
@@ -47,14 +47,13 @@ class TestCommitsScripting:
         change.add_change("@type", bike_front_wheel_type)
         change.add_change("name", "RenamedByE2E")
         commit.add_change(change)
-
         response = connector.create_commit(project.get_id(), commit.to_json())
 
         assert response["@type"] == "Commit"
         assert response["owningProject"]["@id"] == project.get_id()
 
     def test_create_commit_set_attribute(self, project_factory):
-        """Set attribute via scripting API, verify roundtrip."""
+        """Set attribute via scripting project, verify roundtrip."""
         project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
         bike_front_wheel_rim_weight = bike.frontWheel.rim.weight
@@ -139,13 +138,13 @@ class TestCommitsScripting:
 
         factory = Factory(project, connector)
         req = factory.create_requirement_usage(name="testReq", owner=bike)
-
         req._text.extend([
             "The bicycle shall not exceed 15 kg.",
             "Measured under standard conditions.",
             "Excludes accessories.",
         ])
         text_after_set = project.get_root_package().Structure.Bike.testReq._text
+
         assert len(text_after_set) == 3
         assert text_after_set[1] == "Measured under standard conditions."
 
@@ -156,11 +155,12 @@ class TestCommitsScripting:
             "Excludes accessories.",
         ])
         text_after_replace = project.get_root_package().Structure.Bike.testReq._text
+
         assert len(text_after_replace) == 3
         assert text_after_replace[1] == "Measured under ISO conditions."
 
     def test_create_commit_set_invalid_key_via_scripting(self, project_factory):
-        """Setting invalid attribute via scripting API raises BadRequestConnectionException."""
+        """Setting invalid attribute via scripting project raises BadRequestConnectionException."""
         project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
 

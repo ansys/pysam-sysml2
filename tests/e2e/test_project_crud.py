@@ -61,11 +61,13 @@ class TestProjectCRUD:
 
     def test_get_projects(self, connector, created_project):
         projects = connector.get_projects()
+
         assert isinstance(projects, list)
         assert any(p["@id"] == created_project["@id"] for p in projects)
 
     def test_get_project_by_id(self, connector, created_project):
         project = connector.get_project_by_id(created_project["@id"])
+
         assert project["@id"] == created_project["@id"]
         assert project["name"] == created_project["name"]
 
@@ -79,6 +81,7 @@ class TestProjectCRUD:
             project_name="UpdatedName",
             project_description="UpdatedDesc",
         )
+
         assert result["@id"] == created_project["@id"]
         assert result["name"] == "UpdatedName"
         assert result["description"] == "UpdatedDesc"
@@ -93,6 +96,7 @@ class TestProjectCRUD:
         )
         project_id = project["@id"]
         result = connector.delete_project(project_id)
+
         assert result["@id"] == project_id
 
         with pytest.raises(ProjectNotFoundException):

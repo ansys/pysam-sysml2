@@ -69,7 +69,9 @@ class TestQueries:
         result = connector.execute_query(project.get_id(), query.to_json())
 
         assert len(result) == 2
+
         result_ids = {r["@id"] for r in result}
+
         assert id_a in result_ids
         assert id_b in result_ids
 

@@ -95,6 +95,7 @@ class TestValues:
 
         bike.frame.length.parse_and_set_value("60 [cm]")
         value = bike.frame.length.get_value()
+
         assert value == (60, "cm")
 
     def test_bike_sysml_project(self, project_factory):

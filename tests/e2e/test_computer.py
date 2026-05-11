@@ -28,7 +28,7 @@ from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpress
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 
-def _assess_cost(element):
+def _assess_cost_scripting(element):
     """Recursively calculate cost from the model tree."""
     if getattr(element, "cost"):
         try:
@@ -36,9 +36,9 @@ def _assess_cost(element):
         except UnsupportedValueExpression:
             cost = None
         if cost is not None:
-            if isinstance(cost,int):
+            if isinstance(cost, int):
                 return cost
-            elif isinstance(cost,tuple):
+            elif isinstance(cost, tuple):
                 return cost[0]
             else:
                 raise ValueError(
@@ -47,21 +47,59 @@ def _assess_cost(element):
     cost = 0
     for sub_element in element._ownedElement:
         if SysMLTools.isinstance(sub_element, "PartUsage"):
-            cost += _assess_cost(sub_element)
+            cost += _assess_cost_scripting(sub_element)
+    return cost
+
+
+def _assess_cost_sysml(element):
+    """Recursively calculate cost from the model tree."""
+    cost_feature = element.get("cost")
+    if cost_feature is not None:
+        try:
+            cost = cost_feature.get_value()
+        except UnsupportedValueExpression:
+            cost = None
+        if cost is not None:
+            if isinstance(cost, int):
+                return cost
+            elif isinstance(cost, tuple):
+                return cost[0]
+            else:
+                raise ValueError(
+                    f"Problem of value type for the cost of {element.name}"
+                )
+    cost = 0
+    for sub_element in element.owned_element:
+        if SysMLTools.isinstance(sub_element, "PartUsage"):
+            cost += _assess_cost_sysml(sub_element)
     return cost
 
 
 @pytest.mark.e2e
 class TestComputer:
 
-    def test_computer_cost(self, project_factory):
-        """Load computer model, compute cost for each real system."""
+    def test_computer_cost_scripting(self, project_factory):
+        """Load computer model via scripting, compute cost for each real system."""
         project = project_factory(model="computer", kind="scripting")
         real_systems = project.get_root_package().RealSystems
 
         total_cost = 0
         for system in real_systems._ownedElement:
-            system_cost = _assess_cost(system)
+            system_cost = _assess_cost_scripting(system)
             assert system_cost >= 0
             total_cost += system_cost
+
+        assert total_cost == 2900
+
+    def test_computer_cost_sysml(self, project_factory):
+        """Load computer model via sysml, compute cost for each real system."""
+        project = project_factory(model="computer", kind="sysml")
+        real_systems = project.get_root_package().get("RealSystems")
+
+        total_cost = 0
+        for system in real_systems.owned_element:
+            system_cost = _assess_cost_sysml(system)
+            assert system_cost >= 0
+            total_cost += system_cost
+
         assert total_cost == 2900
