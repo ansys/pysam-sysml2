@@ -151,23 +151,38 @@ Pre-commit hooks
 ^^^^^^^^^^^^^^^^
 
 PySAM SysML2 uses pre-commit hooks to automatically check code quality before each commit.
-Pre-commit runs various checks including code formatting, linting, and style validation.
+The hooks cover code formatting, linting, and style validation, and are declared in the
+``.pre-commit-config.yaml`` file at the repository root.
 
-To install the pre-commit hooks:
-
-.. code::
-
-    pre-commit install
-
-Once installed, the hooks run automatically when you run the ``git commit`` command. The pre-commit configuration is defined in the ``.pre-commit-config.yaml`` file.
-
-To manually run all pre-commit hooks on all files:
+For local development, PySAM SysML2 recommends `prek <https://prek.j178.dev/>`_, a faster
+drop-in alternative to `pre-commit <https://pre-commit.com/>`_ that reads the same
+``.pre-commit-config.yaml`` file. The ``prek`` package is already declared in the
+``checks`` optional dependency group, so a ``pip install -e ".[checks]"`` installs it.
+Otherwise, install it directly with:
 
 .. code::
 
-    pre-commit run --all-files
+    pip install prek
 
-If a hook fails, fix the reported issues and commit again. Some hooks (like ``ruff``) can automatically fix issues.
+To install the git hook so the checks run automatically on every ``git commit``:
+
+.. code::
+
+    prek install
+
+.. note::
+   If you previously ran ``pre-commit install`` in this repository, run
+   ``prek install -f`` once to replace the existing git hook shim.
+
+To manually run all hooks on every file in the repository:
+
+.. code::
+
+    prek run --all-files
+
+If a hook fails, fix the reported issues and commit again. Some hooks (like ``ruff``)
+automatically fix issues. The CI/CD pipeline enforces the exact same hooks, so passing
+locally with ``prek`` matches the result you will get on GitHub.
 
 
 Quality checks workflow
@@ -180,7 +195,7 @@ Before submitting a pull request, ensure all quality checks pass:
 3. **Check code style**: ``ruff check .``
 4. **Format code**: ``ruff format .``
 5. **Check documentation style**: ``cd doc; vale sync; vale .``
-6. **Run pre-commit checks**: ``pre-commit run --all-files``
+6. **Run pre-commit checks**: ``prek run --all-files``
 
 The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, 3.13, and 3.14) when you submit your pull request.
 
