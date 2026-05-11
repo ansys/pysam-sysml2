@@ -28,10 +28,7 @@ from pathlib import Path
 import pytest
 
 from ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader import SamDiagramDownloader
-from ansys.sam.sysml2.exception.connector_exception import (
-    ConnectorConnectionException,
-    DiagramConnectorException,
-)
+from ansys.sam.sysml2.exception.connector_exception import DiagramConnectorException
 from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 
 
@@ -78,7 +75,7 @@ class TestSAMDiagramManager:
         project = project_with_diagrams_factory(model="bike")
 
         package = project.get_root_package()
-        bike = package.Bike
+        bike = package.Structure.Bike
 
         assert len(_get_diagrams(package)) == 1
         assert len(_get_diagrams(bike)) == 1
@@ -98,7 +95,7 @@ class TestSAMDiagramManager:
         diagram = _get_diagrams(package)[0]
         owned = diagram._plane._owned_diagram_elements
 
-        assert len(owned) == 10
+        assert len(owned) == 22
 
         simple_nodes = [x for x in owned if x.__class__.__name__ == "SimpleNode"]
 
@@ -164,7 +161,7 @@ class TestSamRestApiConnector:
     def test_get_single_diagram_info_unknown(self, sam_connector, project_factory):
         project = project_factory(model="bike", kind="scripting")
 
-        with pytest.raises(ConnectorConnectionException):
+        with pytest.raises(DiagramConnectorException):
             sam_connector.get_single_diagram_info(project.get_id(), "unknown")
 
 

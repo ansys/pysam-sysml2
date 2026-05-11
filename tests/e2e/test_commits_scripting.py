@@ -39,7 +39,7 @@ class TestCommitsScripting:
         bike = project.get_root_package().Structure.Bike
         bike_front_wheel = bike.frontWheel
         bike_front_wheel_id = bike_front_wheel._id
-        bike_front_wheel_type = type(bike_front_wheel)
+        bike_front_wheel_type = bike_front_wheel.__class__.__name__
 
         commit = Commit(project.get_id())
         change = DataVersion()

@@ -30,7 +30,7 @@ from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 def _assess_cost_scripting(element):
     """Recursively calculate cost from the model tree."""
-    if getattr(element, "cost"):
+    if getattr(element, "cost", None):
         try:
             cost = element.cost.get_value()
         except UnsupportedValueExpression:
