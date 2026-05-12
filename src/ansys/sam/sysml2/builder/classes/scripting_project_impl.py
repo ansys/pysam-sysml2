@@ -37,6 +37,7 @@ class ScriptingProjectImpl(ScriptingProject):
     _unresolved_fields: list[UnresolvedField]
     _libraries_ids: set[str]
     _name: str
+    _namespace: str | None
 
     def __init__(self, project_id: str, name: str):
         """
@@ -53,6 +54,7 @@ class ScriptingProjectImpl(ScriptingProject):
         self._id = project_id
         self._root = []
         self._name = name
+        self._namespace = None
         self._unresolved_fields = []
         self._libraries_ids = set()
         self._env = {}
