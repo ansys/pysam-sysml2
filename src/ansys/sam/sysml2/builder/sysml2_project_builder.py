@@ -89,6 +89,7 @@ class SysML2ProjectBuilder:
 
     def _build_project_element(self, project: Project | ScriptingProject):
         """Build all project elements in the project."""
+        project._namespace = self._resolve_namespace(project._id)
         elements = self._connector.get_all_elements(project_id=project._id)
         self._map_element_in_project(project, elements)
         missing_elements = self._resolve_fields(project)
@@ -151,6 +152,29 @@ class SysML2ProjectBuilder:
         else:
             raise MapperException(f"No mapper found for project type: {type(project).__name__}")
 
+    def _resolve_namespace(self, project_id: str) -> str:
+        """Return the name of the first root Package of the project.
+
+        Parameters
+        ----------
+        project_id : str
+            Project ID.
+
+        Returns
+        -------
+        str
+            Name of the first root Package.
+
+        Raises
+        ------
+        MapperException
+            If no root element has ``@type == "Package"``.
+        """
+        for root_element in self._connector.get_root_elements(project_id):
+            if root_element.get("@type") == "Package":
+                return root_element.get("name")
+        raise MapperException(f"Project {project_id} has no root Package among /roots.")
+
     def _map_element_in_project(self, project: Project | ScriptingProject, elements: list):
         """
         Map all elements and add them to the context project.
@@ -166,7 +190,7 @@ class SysML2ProjectBuilder:
         mapper = self._get_mapper(project)
         for element in elements:
             existing_element = project.find_element_by_id(element["@id"])
-            mapped_element = mapper.map(project.get_name(), element, existing_element)
+            mapped_element = mapper.map(project._namespace, element, existing_element)
             project.add_element(mapped_element.get_element())
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
