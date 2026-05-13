@@ -25,6 +25,7 @@
 import pytest
 
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
+from ansys.sam.sysml2.meta_model.part_usage import PartUsage
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 
@@ -70,7 +71,7 @@ def _assess_cost_sysml(element):
                 )
     cost = 0
     for sub_element in element.owned_element:
-        if SysMLTools.isinstance(sub_element, "PartUsage"):
+        if isinstance(sub_element, PartUsage):
             cost += _assess_cost_sysml(sub_element)
     return cost
 
