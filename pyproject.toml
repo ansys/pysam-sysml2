@@ -57,7 +57,7 @@ tests = [
     "Jinja2==3.1.6",
     "MarkupSafe==3.0.3",
     "requests==2.33.1",
-    "urllib3==2.6.3",
+    "urllib3==2.7.0",
     "Werkzeug==3.1.8",
 ]
 checks = ["pre-commit==4.6.0"]
