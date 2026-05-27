@@ -1,0 +1,8 @@
+{
+    "@type": "Project",
+    "defaultBranch": {
+        "@id": "defaultBranch"
+    },
+    "name": "project-2",
+    "@id": "2"
+}
