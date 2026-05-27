@@ -133,7 +133,7 @@ class ValueHelper:
 
     def _get_value(self, element):
         """Get the value of the feature."""
-        if hasattr(element, self.prefix + "defaultValue"):
+        if getattr(element, self.prefix + "defaultValue", None) is not None:
             value = getattr(element, self.prefix + "defaultValue")
             if hasattr(value, self.prefix + "value"):
                 return getattr(value, self.prefix + "value")
