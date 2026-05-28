@@ -43,7 +43,7 @@ doc = [
 tests = [
     "pytest==9.0.3",
     "pytest-cov==7.1.0",
-    "pytest-mock==3.14.0",
+    "pytest-mock==3.15.1",
 ]
 checks = ["pre-commit==4.6.0"]
 
