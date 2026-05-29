@@ -20,7 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Value helper class for Feature's value."""
+"""Value helper for Feature values (new SysML2 metamodel).
+
+A Feature's value is the primitive carried by the most recent Literal*
+element owned by the Feature (``Feature.ownedFeature``). Writing a value
+creates a fresh Literal owned by the Feature in a single commit; reading
+walks ``ownedFeature`` in reverse and returns the value of the first
+Literal* it finds.
+
+Operator/expression values and standard-library support are not handled
+here; they land together in a future iteration.
+"""
 
 from typing import Union
 from uuid import uuid4
@@ -29,225 +39,201 @@ from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 
+_LITERAL_TYPES = (
+    "LiteralString",
+    "LiteralInteger",
+    "LiteralRational",
+    "LiteralBoolean",
+)
+
+# ScriptingMapper stores ``"_" + camelCase`` JSON keys; SysMLMapper exposes
+# snake_case properties backed by ``"_" + snake_case``.
+_SCRIPTING_FIELDS = {
+    "owned_feature": "_ownedFeature",
+    "value": "_value",
+}
+_SYSML_FIELDS = {
+    "owned_feature": "owned_feature",
+    "value": "value",
+}
+
 
 class ValueHelper:
-    """Helper class for feature value resolve."""
+    """Helper class for feature value resolution and update."""
 
-    def __init__(self, prefix: str):
-        """Construct new instance with its prefix specified."""
-        self.prefix = prefix
+    def __init__(self, fields: dict):
+        """Construct a new instance with the given field-name map.
+
+        Parameters
+        ----------
+        fields : dict
+            Mapping from logical field name (``"owned_feature"``,
+            ``"value"``) to the actual attribute name on the target
+            element class.
+        """
+        self._fields = fields
 
     @staticmethod
     def get_value_for_scripting_element(element):
-        """Get the value of the feature."""
-        instance = ValueHelper("_")
-        return instance._get_value(element)
-
-    @staticmethod
-    def get_value_for_sysml_element(element):
-        """Get the value of the feature."""
-        # Local import avoids circular import with meta_model.feature.
-        from ansys.sam.sysml2.meta_model.feature import Feature
-
-        instance = ValueHelper("")
-        if isinstance(element, Feature):
-            return instance._get_value(element)
-        else:
-            raise UnsupportedValueExpression("Can't read value of non feature element")
-
-    @staticmethod
-    def set_or_update_value(element, value_type: type, new_value: Union[str | int | float | bool]):
-        """
-        Create the commit to set or update the value of type ``value_type``.
+        """Get the value of the feature for a scripting (dynamic) element.
 
         Parameters
         ----------
-        element : SysMLElement or Element
-            Element whose feature value is updated.
-        value_type : type
-            Value type of the new value.
-        new_value : Union[str | int | float | bool]
-            New value to update to.
-        """
-        instance = ValueHelper("")
-        if element._observer._is_transactional_mode:
-            instance._add_to_stack(element, value_type, new_value)
-        else:
-            instance._direct_update_value(element, value_type, new_value)
-
-    def _add_to_stack(self, element, value_type, new_value):
-        """
-        Add the value update to stack.
-
-        Parameters
-        ----------
-        element : [SysMLElement|Element]
-            Feature of the container.
-        value_type : str
-            Value type of the new value.
-        new_value : Any
-            New value to update to.
-        """
-        value_id = "value:" + str(uuid4())
-        element._observer.notify(value_id, "@type", "FeatureValue")
-        if value_type != "operator":
-            element._observer.notify(value_id, "value", self._adapt_value(new_value))
-        else:
-            element._observer.notify(value_id, "value", new_value)
-        element._observer.notify(value_id, "owner", element)
-
-    def _direct_update_value(self, element, value_type, new_value):
-        """
-        Update directly the value of the feature.
-
-        Parameters
-        ----------
-        element : [SysMLElement|Element]
-            Feature of the container.
-        value_type : str
-            Value type of the new value.
-        new_value : Any
-            New value to update to.
-        """
-        project_id = element._observer._project_id
-        commit = Commit(project_id)
-        change = DataVersion()
-        change.add_change("@type", "FeatureValue")
-        if value_type != "operator":
-            change.add_change("value", self._adapt_value(new_value))
-        else:
-            change.add_change("value", new_value)
-        change.add_change("owner", element)
-        commit.add_change(change)
-        element._observer._connector.create_commit(project_id, commit.to_json())
-        element._observer.reload_project()
-
-    def _adapt_value(self, new_value: Union[str | int | float | bool]):
-        """Convert the value to JSON format."""
-        if isinstance(new_value, bool):
-            return "true" if new_value else "false"
-        if isinstance(new_value, str):
-            return f'"{new_value}"'
-        else:
-            return str(new_value)
-
-    def _get_value(self, element):
-        """Get the value of the feature."""
-        if getattr(element, self.prefix + "defaultValue", None) is not None:
-            value = getattr(element, self.prefix + "defaultValue")
-            if hasattr(value, self.prefix + "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value, is_old_format=True)
-        elif getattr(element, self.prefix + "default_value", None) is not None:
-            value = getattr(element, self.prefix + "default_value")
-            if hasattr(value, "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value, is_old_format=True)
-        if getattr(element, self.prefix + "valuation", None) is not None:
-            value = getattr(getattr(element, self.prefix + "valuation"), self.prefix + "value")
-            if hasattr(value, self.prefix + "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value)
-
-        return None
-
-    def _parse_expression(self, value: dict, is_old_format: bool = False):
-        """Parse expression and return parsed value and unit using specified format."""
-        if getattr(value, self.prefix + "operator", None) != "[":
-            raise UnsupportedValueExpression("Expression not supported!")
-
-        return self._parse_format(value, is_old_format)
-
-    def _parse_format(self, value: dict, is_old_format: bool):
-        """
-        Parse an expression using the specified format type.
-
-        Parameters
-        ----------
-        value : dict
-            The expression object containing members and potentially an operator.
-        is_old_format : bool
-            Format of the expression. Must be either True for old format or False otherwise.
+        element : SysMLElement
+            Scripting element to read the value from.
 
         Returns
         -------
-        tuple
-            A tuple of (value, unit_name or None).
+        Any
+            The primitive value, or ``None`` if no Literal is attached.
+        """
+        return ValueHelper(_SCRIPTING_FIELDS)._get_value(element)
+
+    @staticmethod
+    def get_value_for_sysml_element(element):
+        """Get the value of the feature for a typed metamodel element.
+
+        Parameters
+        ----------
+        element : Feature
+            Typed metamodel element to read the value from. Must be a
+            ``Feature``; otherwise an exception is raised.
+
+        Returns
+        -------
+        Any
+            The primitive value, or ``None`` if no Literal is attached.
 
         Raises
         ------
         UnsupportedValueExpression
-            If no parsable values are found in the expression.
+            If ``element`` is not a ``Feature``.
         """
-        if hasattr(value, "_ownedMember"):
-            owned_member = getattr(value, "_ownedMember", [])
+        from ansys.sam.sysml2.meta_model.feature import Feature
+
+        if not isinstance(element, Feature):
+            raise UnsupportedValueExpression("Can't read value of non feature element")
+        return ValueHelper(_SYSML_FIELDS)._get_value(element)
+
+    @staticmethod
+    def set_or_update_value(element, value_type, new_value: Union[str, int, float, bool]):
+        """Create the commit needed to set or update the value of ``element``.
+
+        Parameters
+        ----------
+        element : SysMLElement or Element
+            Feature whose value is updated.
+        value_type : type or str
+            Python type of ``new_value``, or the string ``"operator"``
+            when called from ``parse_and_set_value``. Operator values
+            are not supported yet (see module docstring).
+        new_value : Union[str, int, float, bool]
+            New primitive value to record.
+        """
+        instance = ValueHelper(_SYSML_FIELDS)
+        if element._observer is None:
+            raise UnsupportedValueExpression(
+                "Element is not attached to a project; cannot set its value."
+            )
+        if value_type == "operator":
+            raise UnsupportedValueExpression(
+                "Operator/expression values are not supported yet; "
+                "they will be added together with standard-library support."
+            )
+        if element._observer._is_transactional_mode:
+            instance._add_to_stack(element, new_value)
         else:
-            owned_member = getattr(value, "owned_member", [])
+            instance._direct_update_value(element, new_value)
 
-        if is_old_format:
-            values = [
-                getattr(x, self.prefix + "value")
-                for x in owned_member
-                if hasattr(x, self.prefix + "value")
-            ]
-            return self._format_result_with_unit(values, owned_member, is_old_format)
-        else:
-            elements = [
-                x
-                for x in owned_member
-                if hasattr(x, self.prefix + "valuation")
-                and hasattr(getattr(x, self.prefix + "valuation"), self.prefix + "value")
-            ]
-            return self._format_result_with_unit(elements, owned_member, is_old_format)
+    def _add_to_stack(self, element, new_value):
+        """Queue the value-create commits on the observer's transaction stack.
 
-    def _format_result_with_unit(self, elements: list, owned_member: list, is_old_format: bool):
-        """Format a parsed expression value along with its associated unit (if available)."""
-        if not elements:
-            raise UnsupportedValueExpression("No values found in expression")
+        Parameters
+        ----------
+        element : SysMLElement or Element
+            Feature whose value is being set.
+        new_value : Any
+            New primitive value to record.
+        """
+        literal_id = str(uuid4())
+        element._observer.notify(literal_id, "@type", self._literal_type(new_value))
+        element._observer.notify(literal_id, "owningNamespace", {"@id": element._id})
+        element._observer.notify(literal_id, "value", new_value)
 
-        try:
-            if is_old_format:
-                value = elements[0]
-                referents = [
-                    x._referent for x in owned_member if hasattr(x, self.prefix + "referent")
-                ]
-            else:
-                value = getattr(
-                    getattr(
-                        getattr(elements[0], self.prefix + "valuation"),
-                        self.prefix + "value",
-                    ),
-                    self.prefix + "value",
-                )
-                referents = [
-                    getattr(
-                        getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
-                        self.prefix + "referent",
-                    )
-                    for x in elements
-                    if hasattr(
-                        getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
-                        self.prefix + "referent",
-                    )
-                ]
-        except AttributeError:
-            raise UnsupportedValueExpression("No values found in expression")
+    def _direct_update_value(self, element, new_value):
+        """Create a new Literal owned by ``element`` in a single commit.
 
-        return (value, self._extract_unit_name(referents))
+        Parameters
+        ----------
+        element : SysMLElement or Element
+            Feature whose value is being set.
+        new_value : Any
+            New primitive value to record.
+        """
+        literal_id = str(uuid4())
+        commit = Commit(element._observer._project_id)
+        change = DataVersion()
+        change.identify(literal_id)
+        change.add_change("@type", self._literal_type(new_value))
+        change.add_change("owningNamespace", {"@id": element._id})
+        change.add_change("value", new_value)
+        commit.add_change(change)
 
-    def _extract_unit_name(self, referents):
-        """Extract the unit name from referents, if any, otherwise return None."""
-        if not referents:
-            return None
+        element._observer._connector.create_commit(
+            element._observer._project_id, commit.to_json()
+        )
+        element._observer.reload_project()
 
-        unit = referents[0]
-        if hasattr(unit, self.prefix + "shortName"):
-            return getattr(unit, self.prefix + "shortName")
-        elif hasattr(unit, self.prefix + "name"):
-            return getattr(unit, self.prefix + "name")
-        if hasattr(unit, self.prefix + "short_name"):
-            return getattr(unit, self.prefix + "short_name")
+    def _literal_type(self, new_value) -> str:
+        """Return the ``@type`` of the Literal to create for ``new_value``.
+
+        Parameters
+        ----------
+        new_value : Any
+            Primitive value whose Python type drives the Literal class.
+
+        Returns
+        -------
+        str
+            One of ``"LiteralBoolean"``, ``"LiteralInteger"``,
+            ``"LiteralRational"``, ``"LiteralString"``.
+
+        Raises
+        ------
+        UnsupportedValueExpression
+            If the Python type of ``new_value`` is not supported.
+        """
+        # ``bool`` must be checked before ``int`` since ``bool`` is a
+        # subclass of ``int`` in Python.
+        if isinstance(new_value, bool):
+            return "LiteralBoolean"
+        if isinstance(new_value, int):
+            return "LiteralInteger"
+        if isinstance(new_value, float):
+            return "LiteralRational"
+        if isinstance(new_value, str):
+            return "LiteralString"
+        raise UnsupportedValueExpression(
+            f"Unsupported primitive value type: {type(new_value).__name__}"
+        )
+
+    def _get_value(self, element):
+        """Return the primitive value carried by the latest owned Literal.
+
+        Parameters
+        ----------
+        element : SysMLElement or Element
+            Feature whose value is being read.
+
+        Returns
+        -------
+        Any
+            Primitive value of the most recent Literal owned by the
+            feature, or ``None`` if none is present.
+        """
+        owned = getattr(element, self._fields["owned_feature"], []) or []
+        # Reverse iteration so the latest ``set_value`` wins on a repeated write.
+        for child in reversed(list(owned)):
+            if type(child).__name__ in _LITERAL_TYPES:
+                return getattr(child, self._fields["value"], None)
         return None

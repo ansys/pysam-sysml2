@@ -111,7 +111,11 @@ class SysML2ProjectBuilder:
         roots = []
         if isinstance(project, Project):
             for element in project._env.values():
-                setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
+                setattr(
+                    element,
+                    "declared_name",
+                    SysMLUtil.check_sysml_inherited_name(element),
+                )
                 if element.owner is None:
                     roots.append(element)
         elif isinstance(project, ScriptingProject):

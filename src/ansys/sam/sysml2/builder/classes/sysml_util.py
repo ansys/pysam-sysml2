@@ -51,15 +51,15 @@ class SysMLUtil:
         """Check and return the name of the element."""
         if isinstance(element, str):
             return "::" + element
-        if hasattr(element, "name"):
-            return getattr(element, "name")
-        elif hasattr(element, "redefined_feature"):
+        declared_name = getattr(element, "declared_name", None)
+        if declared_name:
+            return declared_name
+        if hasattr(element, "redefined_feature"):
             redefined_feature = getattr(element, "redefined_feature", [])
             if isinstance(redefined_feature, list) and len(redefined_feature) > 0:
                 redefined_feature = redefined_feature[0]
             return SysMLUtil.check_sysml_inherited_name(redefined_feature)
-        else:
-            return element.__class__.__name__.split(".")[-1] + "::" + element.id
+        return element.__class__.__name__.split(".")[-1] + "::" + element.id
 
     @staticmethod
     def get_sysml_constructor(element_type: str) -> type[EObject]:
