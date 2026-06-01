@@ -94,6 +94,8 @@ class ValueHelper:
             element._observer.notify(value_id, "value", self._adapt_value(new_value))
         else:
             element._observer.notify(value_id, "value", new_value)
+        element._observer.notify(value_id, "isInitial", True)
+        element._observer.notify(value_id, "isDefault", True)
         element._observer.notify(value_id, "owner", element)
 
     def _direct_update_value(self, element, value_type, new_value):
@@ -117,6 +119,8 @@ class ValueHelper:
             change.add_change("value", self._adapt_value(new_value))
         else:
             change.add_change("value", new_value)
+        change.add_change("isInitial", True)
+        change.add_change("isDefault", True)
         change.add_change("owner", element)
         commit.add_change(change)
         element._observer._connector.create_commit(project_id, commit.to_json())
