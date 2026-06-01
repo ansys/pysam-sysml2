@@ -105,19 +105,26 @@ class SysML2ProjectBuilder:
     def extract_root_and_check_names(self, project: Project | ScriptingProject):
         """Extract root elements and resolve inherited names in a single pass.
 
-        Both operations are combined into one iteration over the project
-        environment to avoid looping twice.
+        In the new metamodel a wrapping ``Namespace`` (``owner=None``)
+        sits above the user's root ``Package``. We collapse that wrapper:
+        the Namespace itself is not a root; the elements it owns are.
+        Elements with ``owner=None`` that are not the wrapping Namespace
+        (typically library roots) are still treated as roots.
         """
         roots = []
         if isinstance(project, Project):
             for element in project._env.values():
-                setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
-                if element.owner is None:
+                setattr(
+                    element,
+                    "declared_name",
+                    SysMLUtil.check_sysml_inherited_name(element),
+                )
+                if self._is_logical_root(element, "owner"):
                     roots.append(element)
         elif isinstance(project, ScriptingProject):
             for element in project._env.values():
                 setattr(element, "_name", SysMLUtil.check_inherited_name(element))
-                if getattr(element, "_owner", None) is None:
+                if self._is_logical_root(element, "_owner"):
                     roots.append(element)
         else:
             raise TypeError(
@@ -125,6 +132,17 @@ class SysML2ProjectBuilder:
                 "Expected Project or ScriptingProject."
             )
         project._root = roots
+
+    @staticmethod
+    def _is_logical_root(element, owner_attr: str) -> bool:
+        """Decide whether ``element`` is a user-facing root of the model."""
+        owner = getattr(element, owner_attr, None)
+        if owner is None:
+            return element.__class__.__name__ != "Namespace"
+        return (
+            owner.__class__.__name__ == "Namespace"
+            and getattr(owner, owner_attr, None) is None
+        )
 
     def _get_mapper(self, project: Project | ScriptingProject) -> Mapper:
         """
@@ -155,6 +173,10 @@ class SysML2ProjectBuilder:
     def _resolve_namespace(self, project_id: str) -> str:
         """Return the name of the first root Package of the project.
 
+        Older SAM builds return the root ``Package`` directly from
+        ``/roots``. The new SysMLv2-aligned metamodel wraps it in a
+        ``Namespace`` whose ``ownedMember`` lists the actual Package.
+
         Parameters
         ----------
         project_id : str
@@ -168,11 +190,21 @@ class SysML2ProjectBuilder:
         Raises
         ------
         MapperException
-            If no root element has ``@type == "Package"``.
+            If no root Package is found, directly or below a Namespace.
         """
-        for root_element in self._connector.get_root_elements(project_id):
+        roots = self._connector.get_root_elements(project_id)
+
+        for root_element in roots:
             if root_element.get("@type") == "Package":
                 return root_element.get("name")
+
+        for root_element in roots:
+            if root_element.get("@type") == "Namespace":
+                for member in root_element.get("ownedMember", []):
+                    child = self._connector.get_element_by_id(project_id, member["@id"])
+                    if child.get("@type") == "Package":
+                        return child.get("name")
+
         raise MapperException(f"Project {project_id} has no root Package among /roots.")
 
     def _map_element_in_project(self, project: Project | ScriptingProject, elements: list):
@@ -519,12 +551,12 @@ class SysML2ProjectBuilder:
 
     def _index_sysml_libraries(self, libraries_elements, element, project):
         """Index libraries of the SysML project for future reload."""
-        if not getattr(element, "qualifiedName", "").startswith(project._name):
+        if getattr(element, "is_library_element", False):
             libraries_elements.add(element.id)
 
     def _index_scripting_libraries(self, libraries_elements, element, project):
         """Index libraries of the scripting project for future reload."""
-        if not getattr(element, "_qualifiedName", "").startswith(project._name):
+        if getattr(element, "_isLibraryElement", False):
             libraries_elements.add(element._id)
 
     def _index_libraries(self, project: Project | ScriptingProject):

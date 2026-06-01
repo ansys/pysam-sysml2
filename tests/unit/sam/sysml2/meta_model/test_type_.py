@@ -42,6 +42,12 @@ class TestType:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
+    def test_base_type(self, element):
+        """Test getter and setter for base type property."""
+        value = ""
+        element.base_type = value
+        assert element.base_type == value
+
     def test_differencing_type(self, element):
         """Test getter for differencing type property."""
         _ = element.differencing_type

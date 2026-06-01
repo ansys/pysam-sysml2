@@ -29,7 +29,6 @@ from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
 from ansys.sam.sysml2.meta_model.element import Element
-from ansys.sam.sysml2.meta_model.feature_value import FeatureValue
 
 TYPE_KEY = "@type"
 
@@ -87,9 +86,7 @@ class SysMLMapper(Mapper):
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        if not getattr(element, "qualified_name", "").startswith(namespace) and not isinstance(
-            element, FeatureValue
-        ):
+        if getattr(element, "is_library_element", False):
             unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 

@@ -29,8 +29,6 @@ from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
-from ansys.sam.sysml2.tools.sysmltools import SysMLTools
-
 TYPE_KEY = "@type"
 
 
@@ -91,9 +89,7 @@ class ScriptingMapper(Mapper):
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
         self.__update_element_definition(data, element)
-        if not element._qualifiedName.startswith(namespace) and not SysMLTools.isinstance(
-            element, "FeatureValue"
-        ):
+        if getattr(element, "_isLibraryElement", False):
             unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 
