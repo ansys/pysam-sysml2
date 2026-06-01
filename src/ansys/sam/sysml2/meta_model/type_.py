@@ -43,7 +43,6 @@ class Type(Namespace):
         """
         super().__init__(element_id)
 
-        self._base_type = ""
         self._differencing_type = ObservedList(self, "differencing_type")
         self._directed_feature = ObservedList(self, "directed_feature")
         self._end_feature = ObservedList(self, "end_feature")
@@ -71,32 +70,6 @@ class Type(Namespace):
         self._is_sufficient = False
         self._set_is_abstract = False
         self._set_is_sufficient = False
-
-    @property
-    def base_type(self) -> str:  # noqa: F821
-        """
-        Get the base type property.
-
-        Returns
-        -------
-        str
-            Value of property base type.
-        """
-        return self._base_type
-
-    @base_type.setter
-    def base_type(self, value: str):  # noqa: F821
-        """
-        Set the base_type property.
-
-        Parameters
-        ----------
-        value: str
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "base_type", value)
-        self._base_type = value
 
     @property
     def differencing_type(self) -> list["Type"]:  # noqa: F821

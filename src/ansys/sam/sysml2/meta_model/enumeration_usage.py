@@ -54,3 +54,17 @@ class EnumerationUsage(AttributeUsage):
             Value of property enumeration definition.
         """
         return self._enumeration_definition
+
+    @enumeration_definition.setter
+    def enumeration_definition(self, value: "EnumerationDefinition"):  # noqa: F821
+        """
+        Set the enumeration_definition property.
+
+        Parameters
+        ----------
+        value: "EnumerationDefinition"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "enumeration_definition", value)
+        self._enumeration_definition = value
