@@ -29,6 +29,7 @@ from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
+
 TYPE_KEY = "@type"
 
 

@@ -139,10 +139,7 @@ class SysML2ProjectBuilder:
         owner = getattr(element, owner_attr, None)
         if owner is None:
             return element.__class__.__name__ != "Namespace"
-        return (
-            owner.__class__.__name__ == "Namespace"
-            and getattr(owner, owner_attr, None) is None
-        )
+        return owner.__class__.__name__ == "Namespace" and getattr(owner, owner_attr, None) is None
 
     def _get_mapper(self, project: Project | ScriptingProject) -> Mapper:
         """

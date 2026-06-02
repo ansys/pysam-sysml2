@@ -1013,6 +1013,17 @@ class Factory:
         """
         return self._create_element("FeatureChaining", **kwargs)
 
+    def create_feature_direction_kind(self, **kwargs) -> FeatureDirectionKind:
+        """
+        Create a new FeatureDirectionKind.
+
+        Returns
+        -------
+        FeatureDirectionKind
+            The new model element
+        """
+        return self._create_element("FeatureDirectionKind", **kwargs)
+
     def create_feature_inverting(self, **kwargs) -> FeatureInverting:
         """
         Create a new FeatureInverting.
@@ -1717,6 +1728,17 @@ class Factory:
         """
         return self._create_element("PortUsage", **kwargs)
 
+    def create_portion_kind(self, **kwargs) -> PortionKind:
+        """
+        Create a new PortionKind.
+
+        Returns
+        -------
+        PortionKind
+            The new model element
+        """
+        return self._create_element("PortionKind", **kwargs)
+
     def create_predicate(self, **kwargs) -> Predicate:
         """
         Create a new Predicate.
@@ -1793,6 +1815,17 @@ class Factory:
             The new model element
         """
         return self._create_element("RenderingUsage", **kwargs)
+
+    def create_requirement_constraint_kind(self, **kwargs) -> RequirementConstraintKind:
+        """
+        Create a new RequirementConstraintKind.
+
+        Returns
+        -------
+        RequirementConstraintKind
+            The new model element
+        """
+        return self._create_element("RequirementConstraintKind", **kwargs)
 
     def create_requirement_constraint_membership(self, **kwargs) -> RequirementConstraintMembership:
         """
@@ -1927,6 +1960,17 @@ class Factory:
             The new model element
         """
         return self._create_element("StateDefinition", **kwargs)
+
+    def create_state_subaction_kind(self, **kwargs) -> StateSubactionKind:
+        """
+        Create a new StateSubactionKind.
+
+        Returns
+        -------
+        StateSubactionKind
+            The new model element
+        """
+        return self._create_element("StateSubactionKind", **kwargs)
 
     def create_state_subaction_membership(self, **kwargs) -> StateSubactionMembership:
         """
@@ -2071,6 +2115,17 @@ class Factory:
         """
         return self._create_element("TextualRepresentation", **kwargs)
 
+    def create_transition_feature_kind(self, **kwargs) -> TransitionFeatureKind:
+        """
+        Create a new TransitionFeatureKind.
+
+        Returns
+        -------
+        TransitionFeatureKind
+            The new model element
+        """
+        return self._create_element("TransitionFeatureKind", **kwargs)
+
     def create_transition_feature_membership(self, **kwargs) -> TransitionFeatureMembership:
         """
         Create a new TransitionFeatureMembership.
@@ -2103,6 +2158,17 @@ class Factory:
             The new model element
         """
         return self._create_element("TriggerInvocationExpression", **kwargs)
+
+    def create_trigger_kind(self, **kwargs) -> TriggerKind:
+        """
+        Create a new TriggerKind.
+
+        Returns
+        -------
+        TriggerKind
+            The new model element
+        """
+        return self._create_element("TriggerKind", **kwargs)
 
     def create_type_(self, **kwargs) -> Type:
         """
@@ -2257,6 +2323,17 @@ class Factory:
             The new model element
         """
         return self._create_element("ViewpointUsage", **kwargs)
+
+    def create_visibility_kind(self, **kwargs) -> VisibilityKind:
+        """
+        Create a new VisibilityKind.
+
+        Returns
+        -------
+        VisibilityKind
+            The new model element
+        """
+        return self._create_element("VisibilityKind", **kwargs)
 
     def create_while_loop_action_usage(self, **kwargs) -> WhileLoopActionUsage:
         """
