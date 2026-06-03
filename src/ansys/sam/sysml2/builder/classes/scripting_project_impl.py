@@ -74,17 +74,6 @@ class ScriptingProjectImpl(ScriptingProject):
         """
         self._unresolved_fields.extend(unresolved_fields)
 
-    def get_root(self) -> list[SysMLElement]:
-        """
-        Get a list of root packages.
-
-        Returns
-        -------
-        List[SysMLElement]
-            List of root packages.
-        """
-        return self._root
-
     def get_id(self) -> str:
         """Get the project ID."""
         return self._id
@@ -92,11 +81,25 @@ class ScriptingProjectImpl(ScriptingProject):
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
         matches = [
-            x for x in self._root if x.__class__.__name__ == "Package" and x._name == self._name
+            x for x in self._root if x.__class__.__name__ == "Package"
         ]
         if not matches:
             raise ValueError("No root Package found in project.")
         return matches[0]
+
+    def get_libraries_packages(self) -> list[SysMLElement]:
+        """
+        Get the libraries packages.
+        
+        Returns
+        -------
+        List[SysMLElement]
+            List of libraries packages.
+        """
+        matches = [x._importedElement for x in self._root if x.__class__.__name__ == "NamespaceImport"]
+        if not matches:
+            raise ValueError("No libraries packages found in project.")
+        return matches
 
     def get_name(self) -> str:
         """Get the project name."""

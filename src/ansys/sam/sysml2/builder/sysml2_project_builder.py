@@ -105,11 +105,8 @@ class SysML2ProjectBuilder:
     def extract_root_and_check_names(self, project: Project | ScriptingProject):
         """Extract root elements and resolve inherited names in a single pass.
 
-        In the new metamodel a wrapping ``Namespace`` (``owner=None``)
-        sits above the user's root ``Package``. We collapse that wrapper:
-        the Namespace itself is not a root; the elements it owns are.
-        Elements with ``owner=None`` that are not the wrapping Namespace
-        (typically library roots) are still treated as roots.
+        Both operations are combined into one iteration over the project
+        environment to avoid looping twice.
         """
         roots = []
         if isinstance(project, Project):
