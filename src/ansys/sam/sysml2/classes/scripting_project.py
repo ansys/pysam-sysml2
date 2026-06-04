@@ -32,6 +32,11 @@ class ScriptingProject(ABC):
     """Scripting project interface for users."""
 
     @property
+    def id(self) -> str:
+        """Get the project ID."""
+        return self.get_id()
+
+    @property
     def name(self) -> str:
         """Get the project name."""
         return self.get_name()
