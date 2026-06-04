@@ -37,7 +37,6 @@ class ScriptingProjectImpl(ScriptingProject):
     _unresolved_fields: list[UnresolvedField]
     _libraries_ids: set[str]
     _name: str
-    _namespace: str | None
 
     def __init__(self, project_id: str, name: str):
         """
@@ -54,7 +53,6 @@ class ScriptingProjectImpl(ScriptingProject):
         self._id = project_id
         self._root = []
         self._name = name
-        self._namespace = None
         self._unresolved_fields = []
         self._libraries_ids = set()
         self._env = {}
@@ -80,9 +78,7 @@ class ScriptingProjectImpl(ScriptingProject):
 
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
-        matches = [
-            x for x in self._root if x.__class__.__name__ == "Package"
-        ]
+        matches = [x for x in self._root if x.__class__.__name__ == "Package"]
         if not matches:
             raise ValueError("No root Package found in project.")
         return matches[0]
@@ -90,13 +86,15 @@ class ScriptingProjectImpl(ScriptingProject):
     def get_libraries_packages(self) -> list[SysMLElement]:
         """
         Get the libraries packages.
-        
+
         Returns
         -------
         List[SysMLElement]
             List of libraries packages.
         """
-        matches = [x._importedElement for x in self._root if x.__class__.__name__ == "NamespaceImport"]
+        matches = [
+            x._importedElement for x in self._root if x.__class__.__name__ == "NamespaceImport"
+        ]
         if not matches:
             raise ValueError("No libraries packages found in project.")
         return matches

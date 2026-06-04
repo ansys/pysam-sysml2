@@ -45,8 +45,7 @@ def build_composed_name(owner, element, is_inherited):
     is_contained_in_inherited_element = isinstance(owner, SysMLInheritedElement)
     if is_inherited:
         is_inherited = (
-            element in getattr(owner, "owned_inherited_feature", [])
-            or is_contained_in_inherited_element
+            element in getattr(owner, "inherited_feature", []) or is_contained_in_inherited_element
         )
         if is_contained_in_inherited_element:
             return f"{owner.id}/?{element.identifier}"
@@ -55,7 +54,7 @@ def build_composed_name(owner, element, is_inherited):
 
 
 class SysMLInheritedElement(EObject):
-    """A proxy class for the element that is not created yet."""
+    """Proxy that exposes an inherited element under its on-the-fly owner."""
 
     def __init__(self, owner, element):
         """Construct a new instance."""

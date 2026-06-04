@@ -42,7 +42,7 @@ class TestSysMLMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = sysml_mapper.map("pp", data, None).get_element()
+        element = sysml_mapper.map(data, None).get_element()
 
         assert isinstance(element, Element)
         assert element.id == "element_id"
@@ -54,7 +54,7 @@ class TestSysMLMapper:
         }
 
         with pytest.raises(InvalidProjectJSONMapperException):
-            sysml_mapper.map("pp", data, None)
+            sysml_mapper.map(data, None)
 
     def test_create_element_string_field(self, sysml_mapper: SysMLMapper):
         data = {
@@ -64,7 +64,7 @@ class TestSysMLMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = sysml_mapper.map("pp", data, None).get_element()
+        element = sysml_mapper.map(data, None).get_element()
 
         assert isinstance(element, Element)
         assert element.id == "element_id"
@@ -79,7 +79,7 @@ class TestSysMLMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = sysml_mapper.map("pp", data, None).get_element()
+        element = sysml_mapper.map(data, None).get_element()
 
         assert isinstance(element, Element)
         assert element.id == "element_id"
@@ -94,7 +94,7 @@ class TestSysMLMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = sysml_mapper.map("pp", data, None).get_element()
+        element = sysml_mapper.map(data, None).get_element()
 
         assert isinstance(element, Element)
         assert element.body == "Some comment text"
@@ -113,8 +113,8 @@ class TestSysMLMapper:
             "qualifiedName": "pp::p",
         }
 
-        mapped_element = sysml_mapper.map("pp", data, None)
-        mapped_owner = sysml_mapper.map("pp", owner_data, None)
+        mapped_element = sysml_mapper.map(data, None)
+        mapped_owner = sysml_mapper.map(owner_data, None)
         element = mapped_element.get_element()
         owner = mapped_owner.get_element()
         unresolved_fields = (
@@ -142,6 +142,6 @@ class TestSysMLMapper:
             "isAbstract": True,
         }
 
-        element = sysml_mapper.map("pp", data, None).get_element()
+        element = sysml_mapper.map(data, None).get_element()
 
         assert element.is_abstract is True
