@@ -81,6 +81,29 @@ class EObject:
             return None
         return self._resolve_child(element_name, hmap)
 
+    def get_target(self) -> "Element | None":  # noqa: F821
+        """Return the resolved leaf element pointed to by ``self.target``, or None."""
+        return self._resolve_end(getattr(self, "target", []) or [])
+
+    def get_source(self) -> "Element | None":  # noqa: F821
+        """Return the resolved leaf element pointed to by ``self.source``, or None."""
+        return self._resolve_end(getattr(self, "source", []) or [])
+
+    def _resolve_end(self, ends):
+        """Walk the first end's ``chaining_feature`` via ``self.owner.get(name)``; passthrough direct references."""
+        if not ends:
+            return None
+        end = ends[0]
+        chain = getattr(end, "chaining_feature", None) or []
+        if not chain:
+            return end
+        current = getattr(self, "owner", None)
+        for hop in chain:
+            if current is None:
+                return None
+            current = current.get(hop.name)
+        return current
+
     @property
     def id(self):
         """Get the id of the element."""
