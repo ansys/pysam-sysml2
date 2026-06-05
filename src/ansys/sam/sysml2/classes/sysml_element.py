@@ -99,6 +99,29 @@ class SysMLElement:
             return None
         return self.__getattr__(element_name)
 
+    def get_target(self):
+        """Return the resolved leaf element pointed to by ``self._target``, or None."""
+        return self._resolve_end(getattr(self, "_target", []) or [])
+
+    def get_source(self):
+        """Return the resolved leaf element pointed to by ``self._source``, or None."""
+        return self._resolve_end(getattr(self, "_source", []) or [])
+
+    def _resolve_end(self, ends):
+        """Walk the first end's ``_chainingFeature`` via attribute access; passthrough direct references."""
+        if not ends:
+            return None
+        end = ends[0]
+        chain = getattr(end, "_chainingFeature", None) or []
+        if not chain:
+            return end
+        current = getattr(self, "_owner", None)
+        for hop in chain:
+            if current is None:
+                return None
+            current = getattr(current, hop._name, None)
+        return current
+
     def delete(self):
         """Delete the element from the model via the observer's commit to the server."""
         if self._observer is not None:
