@@ -35,7 +35,6 @@ class ScriptingProjectImpl(ScriptingProject):
     _env: dict
     _root: list[SysMLElement]
     _unresolved_fields: list[UnresolvedField]
-    _libraries_ids: set[str]
     _name: str
 
     def __init__(self, project_id: str, name: str):
@@ -54,7 +53,6 @@ class ScriptingProjectImpl(ScriptingProject):
         self._root = []
         self._name = name
         self._unresolved_fields = []
-        self._libraries_ids = set()
         self._env = {}
 
     def add_element(self, element: SysMLElement):

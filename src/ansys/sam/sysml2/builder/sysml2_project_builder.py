@@ -82,10 +82,20 @@ class SysML2ProjectBuilder:
 
     def __build_project(self, project: Project | ScriptingProject):
         """Build the project from JSON."""
+        # FIXME: Library element tracking was removed alongside the regenerated
+        # SysML2 API. The previous `_libraries_ids` was populated by iterating
+        # `project._env` post-build, but the bulk get_all_elements endpoint no
+        # longer returns library elements, so the set was always empty (and
+        # read by nobody). Re-introduce library tracking once one of these
+        # lands:
+        #   (a) bulk path: the server returns library elements alongside
+        #       project elements in the same call (single round-trip).
+        #   (b) on-demand path: the client fetches each referenced library
+        #       element by UUID via the per-element endpoint (multiple
+        #       lighter calls, now affordable since the API rework).
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
-        self._index_libraries(project)
 
     def _build_project_element(self, project: Project | ScriptingProject):
         """Build all project elements in the project."""
@@ -505,30 +515,6 @@ class SysML2ProjectBuilder:
         for element in project._env.values():
             element._observer = project_modification_observer
 
-    def _index_sysml_libraries(self, libraries_elements, element, project):
-        """Index libraries of the SysML project for future reload."""
-        if getattr(element, "is_library_element", False):
-            libraries_elements.add(element.id)
-
-    def _index_scripting_libraries(self, libraries_elements, element, project):
-        """Index libraries of the scripting project for future reload."""
-        if getattr(element, "_isLibraryElement", False):
-            libraries_elements.add(element._id)
-
-    def _index_libraries(self, project: Project | ScriptingProject):
-        """Index libraries of the project for future reload."""
-        libraries_elements = set()
-        call = None
-        if isinstance(project, Project):
-            call = self._index_sysml_libraries
-        elif isinstance(project, ScriptingProject):
-            call = self._index_scripting_libraries
-        else:
-            raise TypeError(f"Unsupported project type: {type(project).__name__}. ")
-        for element in project._env.values():
-            call(libraries_elements, element, project)
-        project._libraries_ids = libraries_elements
-
     def reload_project(
         self,
         modification_observer: ModificationObserver,
@@ -548,5 +534,4 @@ class SysML2ProjectBuilder:
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
-        self._index_libraries(project)
         modification_observer.start()
