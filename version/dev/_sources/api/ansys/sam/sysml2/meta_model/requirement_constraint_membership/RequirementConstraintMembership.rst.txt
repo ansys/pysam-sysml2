@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`RequirementConstraintMembership`
+========================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.requirement_constraint_membership.RequirementConstraintMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.RequirementConstraintMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: RequirementConstraintMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~kind`
+            - Get the kind property.
+          * - :py:attr:`~constraint`
+            - Get the constraint property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.requirement_constraint_membership import RequirementConstraintMembership
+
+Property detail
+---------------
+
+.. py:property:: kind
+   :type: RequirementConstraintKind
+
+
+   
+   Get the kind property.
+
+
+
+
+
+   :Returns:
+
+       "RequirementConstraintKind"
+           Value of property kind.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: constraint
+   :type: ConstraintUsage
+
+
+   
+   Get the constraint property.
+
+
+
+
+
+   :Returns:
+
+       "ConstraintUsage"
+           Value of property constraint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

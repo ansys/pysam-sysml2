@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``port_definition.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.port_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: port_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.port_definition.PortDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.PortDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> PortDefinition</api/ansys/sam/sysml2/meta_model/port_definition/PortDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated port definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

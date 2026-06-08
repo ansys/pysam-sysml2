@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``visibility_kind.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.visibility_kind
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: visibility_kind
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.visibility_kind.VisibilityKind`
+            - Java class 'com.ansys.medini.metamodel.sysml.VisibilityKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> VisibilityKind</api/ansys/sam/sysml2/meta_model/visibility_kind/VisibilityKind>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated visibility kind class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

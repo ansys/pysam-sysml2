@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``merge_node.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.merge_node
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: merge_node
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.merge_node.MergeNode`
+            - Java class 'com.ansys.medini.metamodel.sysml.MergeNode'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> MergeNode</api/ansys/sam/sysml2/meta_model/merge_node/MergeNode>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated merge node class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

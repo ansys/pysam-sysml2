@@ -1,0 +1,336 @@
+
+
+
+
+
+
+:class:`ObservedList`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.data_structures.observed_list.ObservedList(owner: ansys.sam.sysml2.meta_model.element.Element | ansys.sam.sysml2.classes.sysml_element.SysMLElement, name: str, *args)
+
+   Bases: :py:obj:`list`
+
+
+   
+   React (notification) on each list operation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
+.. py:currentmodule:: ObservedList
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~append`
+            - Override the list append method.
+          * - :py:attr:`~extend`
+            - Override the list extend method.
+          * - :py:attr:`~insert`
+            - Override the list insert method.
+          * - :py:attr:`~remove`
+            - Override the list remove method.
+          * - :py:attr:`~pop`
+            - Override the list pop method.
+          * - :py:attr:`~reverse`
+            - Override the list reverse method.
+
+
+
+
+
+   .. tab-item:: Special methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~__iadd__`
+            - Override the list __iadd__ method.
+          * - :py:attr:`~__imul__`
+            - Override the list __imul__ method.
+          * - :py:attr:`~__setitem__`
+            - Override the list __setitem__ method.
+          * - :py:attr:`~__delitem__`
+            - Override the list __delitem__ method.
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.data_structures.observed_list import ObservedList
+
+
+
+Method detail
+-------------
+
+.. py:method:: append(item: Any)
+
+   
+   Override the list append method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: extend(iterable)
+
+   
+   Override the list extend method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: insert(index, item)
+
+   
+   Override the list insert method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: remove(value)
+
+   
+   Override the list remove method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: pop(index=-1)
+
+   
+   Override the list pop method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: reverse()
+
+   
+   Override the list reverse method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __iadd__(value)
+
+   
+   Override the list __iadd__ method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __imul__(value)
+
+   
+   Override the list __imul__ method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __setitem__(key, value)
+
+   
+   Override the list __setitem__ method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __delitem__(key)
+
+   
+   Override the list __delitem__ method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

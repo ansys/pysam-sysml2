@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`LibraryPackage`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.library_package.LibraryPackage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.package.Package`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.LibraryPackage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: LibraryPackage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~is_standard`
+            - Get the is standard property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.library_package import LibraryPackage
+
+Property detail
+---------------
+
+.. py:property:: is_standard
+   :type: bool
+
+
+   
+   Get the is standard property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is standard.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

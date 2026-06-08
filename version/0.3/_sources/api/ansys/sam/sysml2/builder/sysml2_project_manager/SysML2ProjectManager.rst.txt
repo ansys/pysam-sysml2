@@ -1,0 +1,295 @@
+
+
+
+
+
+
+:class:`SysML2ProjectManager`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager(connector: ansys.sam.sysml2.api.sysml2_api_connector.SysML2APIConnector)
+
+   
+   Provides the director class for loading and managing projects.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SysML2ProjectManager
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_projects`
+            - Get all projects of the connected user.
+          * - :py:attr:`~get_sysml_project`
+            - Get a SysML project with its ID from the API and map it in a Python object.
+          * - :py:attr:`~get_scripting_project`
+            - Get a scripting project with its ID from the API and map it in a Python object.
+          * - :py:attr:`~create_sysml_project`
+            - Create a new project on the server and return it as a SysML Project.
+          * - :py:attr:`~create_scripting_project`
+            - Create a new project on the server and return it as a Scripting Project.
+          * - :py:attr:`~delete_project`
+            - Delete the project with the given ID.
+          * - :py:attr:`~update_project`
+            - Update the project with the given ID.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_projects() -> List[dict]
+
+   
+   Get all projects of the connected user.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list` :obj:`of` :class:`python:dict`
+           List of all project records.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_sysml_project(project_id: str) -> ansys.sam.sysml2.classes.project.Project
+
+   
+   Get a SysML project with its ID from the API and map it in a Python object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_scripting_project(project_id: str) -> ansys.sam.sysml2.classes.scripting_project.ScriptingProject
+
+   
+   Get a scripting project with its ID from the API and map it in a Python object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_sysml_project(name: str, description: str = 'Project description') -> ansys.sam.sysml2.classes.project.Project
+
+   
+   Create a new project on the server and return it as a SysML Project.
+
+
+   :Parameters:
+
+       **name** : :class:`python:str`
+           Name of the project.
+
+       **description** : :class:`python:str`, default: ``"Project description"``
+           Description of the project.
+
+
+
+   :Returns:
+
+       :obj:`Project`
+           The newly created project, fully built from the API.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_scripting_project(name: str, description: str = 'Project description') -> ansys.sam.sysml2.classes.scripting_project.ScriptingProject
+
+   
+   Create a new project on the server and return it as a Scripting Project.
+
+
+   :Parameters:
+
+       **name** : :class:`python:str`
+           Name of the project.
+
+       **description** : :class:`python:str`, default: ``"Project description"``
+           Description of the project.
+
+
+
+   :Returns:
+
+       :obj:`ScriptingProject`
+           The newly created project, fully built from the API.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: delete_project(project_id: str) -> dict
+
+   
+   Delete the project with the given ID.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project to delete.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Confirmation containing ``@type`` and ``@id`` of the deleted project.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: update_project(project_id: str, name: str = None, description: str = None) -> dict
+
+   
+   Update the project with the given ID.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project to update.
+
+       **name** : :class:`python:str`, :obj:`optional`
+           New name for the project.
+
+       **description** : :class:`python:str`, :obj:`optional`
+           New description for the project.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Updated project record.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

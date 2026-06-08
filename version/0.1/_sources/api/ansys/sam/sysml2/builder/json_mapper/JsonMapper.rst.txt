@@ -1,0 +1,126 @@
+
+
+
+
+
+
+:class:`JsonMapper`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.builder.json_mapper.JsonMapper
+
+   
+   Provides the JSON mapper class for a SysML element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: JsonMapper
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~map`
+            - Map the JSON into a Python element.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~class_cache`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.json_mapper import JsonMapper
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: class_cache
+
+
+
+Method detail
+-------------
+
+.. py:method:: map(name_space: str, json_element: dict, mapped_element: ansys.sam.sysml2.classes.sysml_element.SysMLElement) -> ansys.sam.sysml2.classes.mapped_element.MappedElement
+
+   
+   Map the JSON into a Python element.
+
+
+   :Parameters:
+
+       **json_element** : :class:`python:dict`
+           Element data.
+
+       **name_space: str**
+           Project name space.
+
+       **mapped_element: SysMLElement**
+           SysMLElement.
+
+
+
+   :Returns:
+
+       :obj:`MappedElement`
+           Mapped element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

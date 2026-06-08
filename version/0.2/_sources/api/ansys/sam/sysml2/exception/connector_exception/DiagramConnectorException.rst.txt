@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`DiagramConnectorException`
+==================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.DiagramConnectorException
+
+   Bases: :py:obj:`ConnectorException`
+
+
+   
+   Exception when trying to download diagrams.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import DiagramConnectorException
+
+
+
+
+
