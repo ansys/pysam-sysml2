@@ -78,9 +78,7 @@ class ScriptingProjectImpl(ScriptingProject):
 
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
-        matches = [
-            x for x in self._root if x.__class__.__name__ == "Package"
-        ]
+        matches = [x for x in self._root if x.__class__.__name__ == "Package"]
         if not matches:
             raise ValueError("No root Package found in project.")
         return matches[0]
@@ -88,13 +86,15 @@ class ScriptingProjectImpl(ScriptingProject):
     def get_libraries_packages(self) -> list[SysMLElement]:
         """
         Get the libraries packages.
-        
+
         Returns
         -------
         List[SysMLElement]
             List of libraries packages.
         """
-        matches = [x._importedElement for x in self._root if x.__class__.__name__ == "NamespaceImport"]
+        matches = [
+            x._importedElement for x in self._root if x.__class__.__name__ == "NamespaceImport"
+        ]
         if not matches:
             raise ValueError("No libraries packages found in project.")
         return matches
