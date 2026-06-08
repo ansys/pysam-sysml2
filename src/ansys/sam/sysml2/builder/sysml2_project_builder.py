@@ -110,13 +110,17 @@ class SysML2ProjectBuilder:
         roots = []
         if isinstance(project, Project):
             for element in project._env.values():
-                setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
-                if element.owner is None:
+                setattr(
+                    element,
+                    "declared_name",
+                    SysMLUtil.check_sysml_inherited_name(element),
+                )
+                if self._is_logical_root(element, "owner"):
                     roots.append(element)
         elif isinstance(project, ScriptingProject):
             for element in project._env.values():
                 setattr(element, "_name", SysMLUtil.check_inherited_name(element))
-                if getattr(element, "_owner", None) is None:
+                if self._is_logical_root(element, "_owner"):
                     roots.append(element)
         else:
             raise TypeError(
@@ -124,6 +128,14 @@ class SysML2ProjectBuilder:
                 "Expected Project or ScriptingProject."
             )
         project._root = roots
+
+    @staticmethod
+    def _is_logical_root(element, owner_attr: str) -> bool:
+        """Decide whether ``element`` is a user-facing root of the model."""
+        owner = getattr(element, owner_attr, None)
+        if owner is None:
+            return element.__class__.__name__ != "Namespace"
+        return owner.__class__.__name__ == "Namespace" and getattr(owner, owner_attr, None) is None
 
     def _get_mapper(self, project: Project | ScriptingProject) -> Mapper:
         """
@@ -166,7 +178,7 @@ class SysML2ProjectBuilder:
         mapper = self._get_mapper(project)
         for element in elements:
             existing_element = project.find_element_by_id(element["@id"])
-            mapped_element = mapper.map(project.get_name(), element, existing_element)
+            mapped_element = mapper.map(element, existing_element)
             project.add_element(mapped_element.get_element())
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
@@ -495,12 +507,12 @@ class SysML2ProjectBuilder:
 
     def _index_sysml_libraries(self, libraries_elements, element, project):
         """Index libraries of the SysML project for future reload."""
-        if not getattr(element, "qualifiedName", "").startswith(project._name):
+        if getattr(element, "is_library_element", False):
             libraries_elements.add(element.id)
 
     def _index_scripting_libraries(self, libraries_elements, element, project):
         """Index libraries of the scripting project for future reload."""
-        if not getattr(element, "_qualifiedName", "").startswith(project._name):
+        if getattr(element, "_isLibraryElement", False):
             libraries_elements.add(element._id)
 
     def _index_libraries(self, project: Project | ScriptingProject):
