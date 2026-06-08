@@ -37,7 +37,6 @@ class Mapper(ABC):
     @abstractmethod
     def map(
         self,
-        namespace: str,
         json_element: dict,
         mapped_element: Element | SysMLElement,
     ) -> MappedElement:
@@ -46,8 +45,6 @@ class Mapper(ABC):
 
         Parameters
         ----------
-        namespace : str
-            Current namespace.
         json_element : dict
             Data.
         mapped_element : Element | SysMLElement
