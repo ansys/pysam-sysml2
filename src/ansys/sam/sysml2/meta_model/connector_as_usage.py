@@ -27,7 +27,7 @@ from .usage import Usage
 
 
 class ConnectorAsUsage(Usage, Connector):
-    """Java class 'com.ansys.medini.metamodel.sysml.ConnectorAsUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.ConnectorAsUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

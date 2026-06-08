@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.structure import Structure
 
 
 class TestStructure:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Structure'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Structure'."""
 
     @pytest.fixture
     def element(self):

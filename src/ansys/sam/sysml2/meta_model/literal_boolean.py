@@ -28,7 +28,7 @@ from .literal_expression import LiteralExpression
 
 
 class LiteralBoolean(LiteralExpression):
-    """Java class 'com.ansys.medini.metamodel.sysml.LiteralBoolean'."""
+    """Java class 'com.ansys.metamodel.sysml2.LiteralBoolean'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

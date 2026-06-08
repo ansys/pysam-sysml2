@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.classifier import Classifier
 
 
 class TestClassifier:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Classifier'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Classifier'."""
 
     @pytest.fixture
     def element(self):
@@ -39,10 +39,6 @@ class TestClassifier:
     def test_id_set(self, element):
         """Test element ID is correctly set."""
         assert element.id == "element_id"
-
-    def test_super_classifier(self, element):
-        """Test getter for super classifier property."""
-        _ = element.super_classifier
 
     def test_owned_subclassification(self, element):
         """Test getter for owned subclassification property."""

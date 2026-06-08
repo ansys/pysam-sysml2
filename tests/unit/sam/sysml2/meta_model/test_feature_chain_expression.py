@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.feature_chain_expression import FeatureChainExp
 
 
 class TestFeatureChainExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.FeatureChainExpression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.FeatureChainExpression'."""
 
     @pytest.fixture
     def element(self):
@@ -42,5 +42,7 @@ class TestFeatureChainExpression:
         assert element.id == "element_id"
 
     def test_target_feature(self, element):
-        """Test getter for target feature property."""
-        _ = element.target_feature
+        """Test getter and setter for target feature property."""
+        value = "test_value"
+        element.target_feature = value
+        assert element.target_feature == value

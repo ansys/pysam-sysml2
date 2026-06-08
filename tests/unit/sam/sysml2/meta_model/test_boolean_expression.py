@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.boolean_expression import BooleanExpression
 
 
 class TestBooleanExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.BooleanExpression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.BooleanExpression'."""
 
     @pytest.fixture
     def element(self):

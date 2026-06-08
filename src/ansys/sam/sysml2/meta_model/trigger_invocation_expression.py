@@ -28,7 +28,7 @@ from .invocation_expression import InvocationExpression
 
 
 class TriggerInvocationExpression(InvocationExpression):
-    """Java class 'com.ansys.medini.metamodel.sysml.TriggerInvocationExpression'."""
+    """Java class 'com.ansys.metamodel.sysml2.TriggerInvocationExpression'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

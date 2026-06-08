@@ -22,13 +22,11 @@
 
 """Generated reference usage class from metamodel."""
 
-from ansys.sam.sysml2.data_structures.observed_list import ObservedList
-
 from .usage import Usage
 
 
 class ReferenceUsage(Usage):
-    """Java class 'com.ansys.medini.metamodel.sysml.ReferenceUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.ReferenceUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -40,17 +38,3 @@ class ReferenceUsage(Usage):
 
         """
         super().__init__(element_id)
-
-        self._reference_type = ObservedList(self, "reference_type")
-
-    @property
-    def reference_type(self) -> list["Classifier"]:  # noqa: F821
-        """
-        Get the reference type property.
-
-        Returns
-        -------
-        list["Classifier"]
-            Value of property reference type.
-        """
-        return self._reference_type

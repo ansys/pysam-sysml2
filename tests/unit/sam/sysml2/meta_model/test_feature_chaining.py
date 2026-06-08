@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.feature_chaining import FeatureChaining
 
 
 class TestFeatureChaining:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.FeatureChaining'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.FeatureChaining'."""
 
     @pytest.fixture
     def element(self):

@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.use_case_definition import UseCaseDefinition
 
 
 class TestUseCaseDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.UseCaseDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.UseCaseDefinition'."""
 
     @pytest.fixture
     def element(self):
