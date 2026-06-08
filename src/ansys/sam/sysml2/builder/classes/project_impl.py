@@ -37,7 +37,6 @@ class ProjectImpl(Project):
     _env: dict
     _root: list[Element]
     _unresolved_fields: list[UnresolvedField]
-    _libraries_ids: set[str]
     _name: str
 
     def __init__(self, project_id: str, name: str):
@@ -56,7 +55,6 @@ class ProjectImpl(Project):
         self._root = []
         self._name = name
         self._unresolved_fields = []
-        self._libraries_ids = set()
         self._env = {}
 
     def add_element(self, element: Element):
