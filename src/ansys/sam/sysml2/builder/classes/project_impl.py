@@ -88,7 +88,7 @@ class ProjectImpl(Project):
     def get_libraries_packages(self) -> list[Package]:
         """
         Get the libraries packages.
-        
+
         Returns
         -------
         List[Package]
