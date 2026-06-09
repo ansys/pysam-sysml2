@@ -94,6 +94,8 @@ class ValueHelper:
             element._observer.notify(value_id, "value", self._adapt_value(new_value))
         else:
             element._observer.notify(value_id, "value", new_value)
+        element._observer.notify(value_id, "isInitial", False)
+        element._observer.notify(value_id, "isDefault", True)
         element._observer.notify(value_id, "owner", element)
 
     def _direct_update_value(self, element, value_type, new_value):
@@ -117,6 +119,8 @@ class ValueHelper:
             change.add_change("value", self._adapt_value(new_value))
         else:
             change.add_change("value", new_value)
+        change.add_change("isInitial", False)
+        change.add_change("isDefault", True)
         change.add_change("owner", element)
         commit.add_change(change)
         element._observer._connector.create_commit(project_id, commit.to_json())
@@ -132,111 +136,59 @@ class ValueHelper:
             return str(new_value)
 
     def _get_value(self, element):
-        """Get the value of the feature."""
-        if getattr(element, self.prefix + "defaultValue", None) is not None:
-            value = getattr(element, self.prefix + "defaultValue")
-            if hasattr(value, self.prefix + "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value, is_old_format=True)
-        elif getattr(element, self.prefix + "default_value", None) is not None:
-            value = getattr(element, self.prefix + "default_value")
-            if hasattr(value, "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value, is_old_format=True)
-        if getattr(element, self.prefix + "valuation", None) is not None:
-            value = getattr(getattr(element, self.prefix + "valuation"), self.prefix + "value")
-            if hasattr(value, self.prefix + "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value)
+        """Get the value of the feature via the valuation chain."""
+        valuation = getattr(element, self.prefix + "valuation", None)
+        if valuation is None:
+            return None
+        value = getattr(valuation, self.prefix + "value", None)
+        if value is None:
+            return None
+        if hasattr(value, self.prefix + "value"):
+            return getattr(value, self.prefix + "value")
+        else:
+            return self._parse_expression(value)
 
-        return None
-
-    def _parse_expression(self, value: dict, is_old_format: bool = False):
-        """Parse expression and return parsed value and unit using specified format."""
+    def _parse_expression(self, value):
+        """Parse an operator expression and return (value, unit_name) tuple."""
         if getattr(value, self.prefix + "operator", None) != "[":
             raise UnsupportedValueExpression("Expression not supported!")
 
-        return self._parse_format(value, is_old_format)
-
-    def _parse_format(self, value: dict, is_old_format: bool):
-        """
-        Parse an expression using the specified format type.
-
-        Parameters
-        ----------
-        value : dict
-            The expression object containing members and potentially an operator.
-        is_old_format : bool
-            Format of the expression. Must be either True for old format or False otherwise.
-
-        Returns
-        -------
-        tuple
-            A tuple of (value, unit_name or None).
-
-        Raises
-        ------
-        UnsupportedValueExpression
-            If no parsable values are found in the expression.
-        """
         if hasattr(value, "_ownedMember"):
             owned_member = getattr(value, "_ownedMember", [])
         else:
             owned_member = getattr(value, "owned_member", [])
 
-        if is_old_format:
-            values = [
-                getattr(x, self.prefix + "value")
-                for x in owned_member
-                if hasattr(x, self.prefix + "value")
-            ]
-            return self._format_result_with_unit(values, owned_member, is_old_format)
-        else:
-            elements = [
-                x
-                for x in owned_member
-                if hasattr(x, self.prefix + "valuation")
-                and hasattr(getattr(x, self.prefix + "valuation"), self.prefix + "value")
-            ]
-            return self._format_result_with_unit(elements, owned_member, is_old_format)
+        elements = [
+            x
+            for x in owned_member
+            if hasattr(x, self.prefix + "valuation")
+            and hasattr(getattr(x, self.prefix + "valuation"), self.prefix + "value")
+        ]
 
-    def _format_result_with_unit(self, elements: list, owned_member: list, is_old_format: bool):
-        """Format a parsed expression value along with its associated unit (if available)."""
         if not elements:
             raise UnsupportedValueExpression("No values found in expression")
 
         try:
-            if is_old_format:
-                value = elements[0]
-                referents = [
-                    x._referent for x in owned_member if hasattr(x, self.prefix + "referent")
-                ]
-            else:
-                value = getattr(
-                    getattr(
-                        getattr(elements[0], self.prefix + "valuation"),
-                        self.prefix + "value",
-                    ),
-                    self.prefix + "value",
+            literal = getattr(
+                getattr(elements[0], self.prefix + "valuation"),
+                self.prefix + "value",
+            )
+            result_value = getattr(literal, self.prefix + "value")
+            referents = [
+                getattr(
+                    getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
+                    self.prefix + "referent",
                 )
-                referents = [
-                    getattr(
-                        getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
-                        self.prefix + "referent",
-                    )
-                    for x in elements
-                    if hasattr(
-                        getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
-                        self.prefix + "referent",
-                    )
-                ]
+                for x in elements
+                if hasattr(
+                    getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
+                    self.prefix + "referent",
+                )
+            ]
         except AttributeError:
             raise UnsupportedValueExpression("No values found in expression")
 
-        return (value, self._extract_unit_name(referents))
+        return (result_value, self._extract_unit_name(referents))
 
     def _extract_unit_name(self, referents):
         """Extract the unit name from referents, if any, otherwise return None."""
@@ -244,10 +196,10 @@ class ValueHelper:
             return None
 
         unit = referents[0]
-        if hasattr(unit, self.prefix + "shortName"):
+        if hasattr(unit, self.prefix + "short_name"):
+            return getattr(unit, self.prefix + "short_name")
+        elif hasattr(unit, self.prefix + "shortName"):
             return getattr(unit, self.prefix + "shortName")
         elif hasattr(unit, self.prefix + "name"):
             return getattr(unit, self.prefix + "name")
-        if hasattr(unit, self.prefix + "short_name"):
-            return getattr(unit, self.prefix + "short_name")
         return None

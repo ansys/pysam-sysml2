@@ -27,15 +27,10 @@ import pytest
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
-from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
+from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
 class TestEObject:
-
-    @pytest.fixture
-    def old_format_project(self, connector) -> Project:
-        model_manager = SysML2ProjectManager(connector=connector)
-        return model_manager.get_sysml_project(PROJECT_ID_4)
 
     @pytest.fixture
     def new_format_project(self, connector) -> Project:
@@ -51,22 +46,13 @@ class TestEObject:
         elem.name = "NewAttr"
         assert elem.name == "NewAttr"
 
-    def test_expression_with_old_format_project_get_values(
-        self, old_format_project: Project
-    ):
-        package = old_format_project.get_root_package()
-        assert package.get("Structure").get("Frame").get("weight").get_value() == (
-            "2",
-            "kilogram",
-        )
-
     def test_expression_with_new_format_project_get_values(
         self, new_format_project: Project
     ):
         package = new_format_project.get_root_package()
         assert package.get("Feature").get("myExpressionFeature").get_value() == (
             10,
-            "kilogram",
+            "kg",
         )
 
     def test_expression_set_value(self, new_format_project: Project, mocker):
