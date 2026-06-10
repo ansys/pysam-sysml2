@@ -75,8 +75,27 @@ class SysMLElement:
         self.__dict__[cache_key] = result
         return result
 
+    @property
+    def visibility(self):
+        """Deprecated: redirects to the owning membership's visibility (moved in the new metamodel)."""
+        own = self.__dict__.get("_visibility")
+        if own is not None:
+            return own
+        om = self.__dict__.get("_owningMembership")
+        if om is None:
+            return None
+        from ansys.sam.sysml2.tools.deprecation import warn_moved
+
+        warn_moved("visibility", "owning_membership.visibility")
+        return getattr(om, "_visibility", None)
+
     def __setattr__(self, name: str, value: object):
         """Intercept attribute assignment and notify the modification observer."""
+        if name in ("name", "visibility"):
+            from ansys.sam.sysml2.tools.deprecation import raise_readonly
+
+            alternative = "declared_name" if name == "name" else "owning_membership.visibility"
+            raise_readonly(name, alternative)
         if name != "_observer" and getattr(self, "_observer", None) is not None:
             self._observer.notify(self._id, name, value)
         super().__setattr__(name, value)
