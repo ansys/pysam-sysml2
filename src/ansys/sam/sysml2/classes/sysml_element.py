@@ -46,8 +46,8 @@ class SysMLElement:
         self._id = element_id
 
     def __dir__(self):
-        """Get the attribute list from the real element."""
-        base = super().__dir__()
+        """List owned + inherited child names (clean), excluding internal #cache keys."""
+        base = [b for b in super().__dir__() if not b.startswith("#")]
         hmap = self.__dict__.get("_element_hash_map", {})
         children = [k for k in hmap if k is not None]
         names = set(list(base) + children)

@@ -45,23 +45,11 @@ class EObject:
         self._element_hash_map = {}
 
     def __dir__(self):
-        """Expose owned + inherited names for Jupyter ``<TAB>`` autocompletion."""
+        """Children are reachable via get(), not dot; hide the internal proxy cache."""
         names = [a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#")]
-        hmap = self.__dict__.get("_element_hash_map", {})
-        children = [k for k in hmap if k is not None]
-        names = list(set(names + children))
         if not ValueHelper.is_value_capable(self):
             names = [a for a in names if a not in ("get_value", "set_value", "parse_and_set_value")]
         return sorted(names)
-
-    def __getattr__(self, name):
-        """Lazy access for non-property child names; only fires when normal lookup fails."""
-        if name.startswith("__") and name.endswith("__"):
-            raise AttributeError(name)
-        hmap = self.__dict__.get("_element_hash_map", {})
-        if name in hmap:
-            return self._resolve_child(name, hmap)
-        raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
 
     def _resolve_child(self, name, hmap):
         """Return the owned child raw, or a ``SysMLInheritedElement`` proxy cached under ``#name``."""
