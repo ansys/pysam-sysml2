@@ -44,6 +44,10 @@ class EObject:
         self._observer = None
         self._element_hash_map = {}
 
+    def __dir__(self):
+        """Hide internal #proxy-cache keys; children are reachable via get(), not dot."""
+        return sorted(a for a in super().__dir__() if not a.startswith("#"))
+
     def _resolve_child(self, name, hmap):
         """Return the owned child raw, or a ``SysMLInheritedElement`` proxy cached under ``#name``."""
         from ansys.sam.sysml2.classes.sysml_inherited_element import SysMLInheritedElement
