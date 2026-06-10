@@ -52,8 +52,8 @@ class TestEObject:
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         elem = root.get("PartDefinition").get("attribute")
-        elem.name = "NewAttr"
-        assert elem.name == "NewAttr"
+        elem.declared_name = "NewAttr"
+        assert elem.declared_name == "NewAttr"
 
     def test_expression_get_values(self, project: Project):
         package = project.get_root_package()
