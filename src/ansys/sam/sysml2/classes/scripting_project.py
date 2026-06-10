@@ -42,11 +42,6 @@ class ScriptingProject(ABC):
         return self.get_name()
 
     @property
-    def root_package(self) -> SysMLElement:
-        """Get the root package."""
-        return self.get_root_package()
-
-    @property
     def libraries_packages(self) -> list[SysMLElement]:
         """Get the libraries packages."""
         return self.get_libraries_packages()
