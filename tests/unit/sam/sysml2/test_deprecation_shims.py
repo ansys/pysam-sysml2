@@ -49,11 +49,15 @@ class TestMetamodelDeprecationShims:
         with pytest.warns(DeprecationWarning):
             assert element.visibility is None
 
-    def test_setting_visibility_raises(self):
+    def test_setting_visibility_redirects_to_owning_membership_with_warning(self):
         element = Element("element_id")
+        membership = OwningMembership("membership_id")
+        element.owning_membership = membership
 
-        with pytest.raises(AttributeError, match="owning_membership.visibility"):
-            element.visibility = "public"
+        with pytest.warns(DeprecationWarning, match="owning_membership.visibility"):
+            element.visibility = "private"
+
+        assert membership.visibility == "private"
 
     def test_setting_name_raises_pointing_to_declared_name(self):
         element = Element("element_id")
@@ -87,7 +91,7 @@ class TestScriptingDeprecationShims:
         membership._visibility = "private"
         element._owningMembership = membership
 
-        with pytest.warns(DeprecationWarning, match="owning_membership.visibility"):
+        with pytest.warns(DeprecationWarning, match="_owningMembership._visibility"):
             assert element.visibility == "private"
 
     def test_visibility_without_owning_membership_returns_none(self):
@@ -95,14 +99,24 @@ class TestScriptingDeprecationShims:
 
         assert element.visibility is None
 
-    def test_setting_visibility_raises(self):
+    def test_setting_visibility_redirects_to_owning_membership_with_warning(self):
         element = SysMLElement("element_id")
+        membership = SysMLElement("membership_id")
+        element._owningMembership = membership
 
-        with pytest.raises(AttributeError, match="owning_membership.visibility"):
-            element.visibility = "public"
+        with pytest.warns(DeprecationWarning, match="_owningMembership._visibility"):
+            element.visibility = "private"
+
+        assert membership._visibility == "private"
 
     def test_setting_name_raises_pointing_to_declared_name(self):
         element = SysMLElement("element_id")
 
-        with pytest.raises(AttributeError, match="declared_name"):
+        with pytest.raises(AttributeError, match="_declaredName"):
             element.name = "RenamedPart"
+
+    def test_setting_underscore_name_raises_pointing_to_declared_name(self):
+        element = SysMLElement("element_id")
+
+        with pytest.raises(AttributeError, match="_declaredName"):
+            element._name = "RenamedPart"

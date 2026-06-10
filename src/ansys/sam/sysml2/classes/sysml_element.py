@@ -82,16 +82,25 @@ class SysMLElement:
             return None
         from ansys.sam.sysml2.tools.deprecation import warn_moved
 
-        warn_moved("visibility", "owning_membership.visibility")
+        warn_moved("visibility", "_owningMembership._visibility")
         return getattr(om, "_visibility", None)
 
     def __setattr__(self, name: str, value: object):
-        """Intercept attribute assignment and notify the modification observer."""
-        if name in ("name", "visibility"):
+        """Intercept attribute assignment: name is read-only, visibility redirects, others notify."""
+        if name in ("name", "_name"):
             from ansys.sam.sysml2.tools.deprecation import raise_readonly
 
-            alternative = "declared_name" if name == "name" else "owning_membership.visibility"
-            raise_readonly(name, alternative)
+            raise_readonly(name, "_declaredName")
+        if name == "visibility":
+            from ansys.sam.sysml2.tools.deprecation import warn_moved
+
+            warn_moved("visibility", "_owningMembership._visibility")
+            om = self.__dict__.get("_owningMembership")
+            if om is not None:
+                om._visibility = value
+            else:
+                object.__setattr__(self, "_visibility", value)
+            return
         if name != "_observer" and getattr(self, "_observer", None) is not None:
             self._observer.notify(self._id, name, value)
         super().__setattr__(name, value)

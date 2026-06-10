@@ -194,10 +194,13 @@ class Element(EObject):
 
     @visibility.setter
     def visibility(self, value):
-        """Reject writes: ``visibility`` now lives on the owning membership."""
-        from ansys.sam.sysml2.tools.deprecation import raise_readonly
+        """Deprecated: redirects the write to ``owning_membership.visibility`` (moved in the new metamodel)."""
+        from ansys.sam.sysml2.tools.deprecation import warn_moved
 
-        raise_readonly("visibility", "owning_membership.visibility")
+        warn_moved("visibility", "owning_membership.visibility")
+        om = self._owning_membership
+        if om is not None:
+            om.visibility = value
 
     @property
     def owned_annotation(self) -> list["Annotation"]:  # noqa: F821
