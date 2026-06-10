@@ -69,6 +69,10 @@ class SysMLInheritedElement(EObject):
         """Get the attribute list from the real element."""
         return dir(self._element)
 
+    def get_value(self):
+        """Read the value from the wrapped feature (the proxy itself is not a Feature)."""
+        return self._element.get_value()
+
     def __getattr__(self, name):
         """Get the attribute from the real element."""
         if name in ("_observer", "_element", "id", "owner"):
