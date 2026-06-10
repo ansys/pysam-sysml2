@@ -33,17 +33,17 @@ class SysMLUtil:
 
     @staticmethod
     def check_inherited_name(element: SysMLElement) -> str:
-        """Resolve the element name with a ``ClassName::id`` fallback when null."""
+        """Resolve the element name with a ``ClassName::id`` fallback when null or empty."""
         name = getattr(element, "_name", None)
-        if name is not None:
+        if name:
             return name
         return element.__class__.__name__.split(".")[-1] + "::" + element._id
 
     @staticmethod
     def check_sysml_inherited_name(element: Element) -> str:
-        """Resolve the element name with a ``ClassName::id`` fallback when null."""
+        """Resolve the element name with a ``ClassName::id`` fallback when null or empty."""
         name = getattr(element, "name", None)
-        if name is not None:
+        if name:
             return name
         return element.__class__.__name__.split(".")[-1] + "::" + element.id
 
