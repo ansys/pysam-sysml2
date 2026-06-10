@@ -72,8 +72,7 @@ class EObject:
         if cached is not None:
             return cached
         child = hmap[name]
-        owned = self.__dict__.get("_owned_element", [])
-        is_owned = any(getattr(x, "name", None) == name for x in owned if isinstance(x, EObject))
+        is_owned = name in self.__dict__.get("_owned_names", set())
         result = child if is_owned else SysMLInheritedElement(self, child)
         self.__dict__[cache_key] = result
         return result
