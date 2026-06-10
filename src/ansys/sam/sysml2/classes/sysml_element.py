@@ -46,8 +46,8 @@ class SysMLElement:
         self._id = element_id
 
     def __dir__(self):
-        """List owned + inherited child names (clean), excluding internal #cache keys."""
-        base = [b for b in super().__dir__() if not b.startswith("#")]
+        """List owned + inherited child names alongside normal attributes."""
+        base = list(super().__dir__())
         hmap = self.__dict__.get("_element_hash_map", {})
         children = [k for k in hmap if k is not None]
         names = set(list(base) + children)
@@ -65,17 +65,13 @@ class SysMLElement:
         return self._resolve_child(name, hmap)
 
     def _resolve_child(self, name, hmap):
-        """Return the owned child raw, or an ``InheritedElement`` proxy cached under ``#name``."""
+        """Return the owned child raw, or an ``InheritedElement`` proxy, cached under the child name."""
         from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 
-        cache_key = f"#{name}"
-        cached = self.__dict__.get(cache_key)
-        if cached is not None:
-            return cached
         child = hmap[name]
         is_owned = name in self.__dict__.get("_owned_names", set())
         result = child if is_owned else InheritedElement(self, child)
-        self.__dict__[cache_key] = result
+        self.__dict__[name] = result
         return result
 
     def __setattr__(self, name: str, value: object):
