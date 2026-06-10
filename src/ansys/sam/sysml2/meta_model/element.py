@@ -176,6 +176,29 @@ class Element(EObject):
         """
         return self._name
 
+    @name.setter
+    def name(self, value: str):
+        """Reject writes: ``name`` is read-only in the new metamodel; use ``declared_name``."""
+        from ansys.sam.sysml2.tools.deprecation import raise_readonly
+
+        raise_readonly("name", "declared_name")
+
+    @property
+    def visibility(self):
+        """Deprecated: redirects to ``owning_membership.visibility`` (moved in the new metamodel)."""
+        from ansys.sam.sysml2.tools.deprecation import warn_moved
+
+        warn_moved("visibility", "owning_membership.visibility")
+        om = self._owning_membership
+        return om.visibility if om is not None else None
+
+    @visibility.setter
+    def visibility(self, value):
+        """Reject writes: ``visibility`` now lives on the owning membership."""
+        from ansys.sam.sysml2.tools.deprecation import raise_readonly
+
+        raise_readonly("visibility", "owning_membership.visibility")
+
     @property
     def owned_annotation(self) -> list["Annotation"]:  # noqa: F821
         """

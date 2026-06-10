@@ -71,6 +71,11 @@ class InheritedElement(SysMLElement):
             return
         super().__setattr__(name, value)
 
+    @property
+    def visibility(self):
+        """Delegate visibility to the wrapped element (the proxy holds no fields of its own)."""
+        return self._element.visibility
+
     def __dir__(self):
         """Get the attribute list from the real element."""
         return dir(self._element)
