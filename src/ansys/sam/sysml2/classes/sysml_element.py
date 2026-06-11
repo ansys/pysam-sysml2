@@ -63,6 +63,11 @@ class SysMLElement:
         """Resolve hash-map children lazily; only fires when normal attribute lookup fails."""
         if name.startswith("__") and name.endswith("__"):
             raise AttributeError(name)
+        from ansys.sam.sysml2.tools.deprecation import UNHANDLED, scripting_deprecated_get
+
+        shimmed = scripting_deprecated_get(self, name)
+        if shimmed is not UNHANDLED:
+            return shimmed
         hmap = self.__dict__.get("_element_hash_map", {})
         if name not in hmap:
             raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
@@ -78,35 +83,11 @@ class SysMLElement:
         self.__dict__[name] = result
         return result
 
-    @property
-    def visibility(self):
-        """Deprecated: redirect to the owning membership's visibility (moved in new MM)."""
-        own = self.__dict__.get("_visibility")
-        if own is not None:
-            return own
-        om = self.__dict__.get("_owningMembership")
-        if om is None:
-            return None
-        from ansys.sam.sysml2.tools.deprecation import warn_moved
-
-        warn_moved("visibility", "_owningMembership._visibility")
-        return getattr(om, "_visibility", None)
-
     def __setattr__(self, name: str, value: object):
-        """Intercept assignment: name is read-only, visibility redirects, others notify."""
-        if name in ("name", "_name"):
-            from ansys.sam.sysml2.tools.deprecation import raise_readonly
+        """Intercept attribute assignment: deprecated shims first, then notify the observer."""
+        from ansys.sam.sysml2.tools.deprecation import scripting_deprecated_set
 
-            raise_readonly(name, "_declaredName")
-        if name == "visibility":
-            from ansys.sam.sysml2.tools.deprecation import warn_moved
-
-            warn_moved("visibility", "_owningMembership._visibility")
-            om = self.__dict__.get("_owningMembership")
-            if om is not None:
-                om._visibility = value
-            else:
-                object.__setattr__(self, "_visibility", value)
+        if scripting_deprecated_set(self, name, value):
             return
         if name != "_observer" and getattr(self, "_observer", None) is not None:
             self._observer.notify(self._id, name, value)
