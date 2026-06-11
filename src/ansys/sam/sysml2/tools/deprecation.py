@@ -82,3 +82,17 @@ def scripting_deprecated_set(element, name, value) -> bool:
             object.__setattr__(element, "_visibility", value)
         return True
     return False
+
+
+def visibility_alias_listed(element, own_attr, membership_attr) -> bool:
+    """Whether the deprecated visibility alias should appear in dir() for this element."""
+    if element.__dict__.get(own_attr) is not None:
+        return True
+    return element.__dict__.get(membership_attr) is not None
+
+
+def is_visibility_shim(element_type) -> bool:
+    """Return ``True`` if ``element_type`` uses the deprecated ``Element.visibility`` shim."""
+    from ansys.sam.sysml2.meta_model.element import Element
+
+    return getattr(element_type, "visibility", None) is Element.__dict__.get("visibility")

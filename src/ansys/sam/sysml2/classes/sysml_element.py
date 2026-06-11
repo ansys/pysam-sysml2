@@ -57,6 +57,10 @@ class SysMLElement:
             names.discard("get_source")
         if not getattr(self, "_target", None):
             names.discard("get_target")
+        from ansys.sam.sysml2.tools.deprecation import visibility_alias_listed
+
+        if visibility_alias_listed(self, "_visibility", "_owningMembership"):
+            names.add("_visibility")
         return sorted(names)
 
     def __getattr__(self, name):

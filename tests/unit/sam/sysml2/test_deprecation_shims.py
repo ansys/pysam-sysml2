@@ -73,6 +73,22 @@ class TestMetamodelDeprecationShims:
             warnings.simplefilter("error", DeprecationWarning)
             assert membership.visibility == "private"
 
+    def test_visibility_listed_in_dir_when_owning_membership_set(self):
+        element = Element("element_id")
+        element.owning_membership = OwningMembership("membership_id")
+
+        assert "visibility" in dir(element)
+
+    def test_visibility_hidden_in_dir_on_bare_element(self):
+        element = Element("element_id")
+
+        assert "visibility" not in dir(element)
+
+    def test_membership_always_lists_its_own_visibility_in_dir(self):
+        membership = OwningMembership("membership_id")
+
+        assert "visibility" in dir(membership)
+
 
 class TestScriptingDeprecationShims:
     """Scripting flavor: SysMLElement._visibility redirect and read-only name."""
@@ -120,3 +136,20 @@ class TestScriptingDeprecationShims:
 
         with pytest.raises(AttributeError, match="_declaredName"):
             element._name = "RenamedPart"
+
+    def test_visibility_listed_in_dir_when_owning_membership_set(self):
+        element = SysMLElement("element_id")
+        element._owningMembership = SysMLElement("membership_id")
+
+        assert "_visibility" in dir(element)
+
+    def test_visibility_listed_in_dir_when_own_visibility_set(self):
+        element = SysMLElement("element_id")
+        object.__setattr__(element, "_visibility", "public")
+
+        assert "_visibility" in dir(element)
+
+    def test_visibility_hidden_in_dir_when_no_visibility(self):
+        element = SysMLElement("element_id")
+
+        assert "_visibility" not in dir(element)
