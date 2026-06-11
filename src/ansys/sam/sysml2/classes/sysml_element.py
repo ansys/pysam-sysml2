@@ -50,7 +50,12 @@ class SysMLElement:
         base = list(super().__dir__())
         hmap = self.__dict__.get("_element_hash_map", {})
         children = [k for k in hmap if k is not None]
-        return sorted(set(base + children))
+        names = set(base + children)
+        if not getattr(self, "_source", None):
+            names.discard("get_source")
+        if not getattr(self, "_target", None):
+            names.discard("get_target")
+        return sorted(names)
 
     def __getattr__(self, name):
         """Resolve hash-map children lazily; only fires when normal attribute lookup fails."""

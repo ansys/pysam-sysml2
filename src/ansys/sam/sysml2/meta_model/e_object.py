@@ -46,7 +46,12 @@ class EObject:
 
     def __dir__(self):
         """Children are reachable via get(), not dot; hide the internal proxy cache."""
-        return sorted(a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#"))
+        names = [a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#")]
+        if not getattr(self, "source", None):
+            names = [a for a in names if a != "get_source"]
+        if not getattr(self, "target", None):
+            names = [a for a in names if a != "get_target"]
+        return sorted(names)
 
     def _resolve_child(self, name, hmap):
         """Return the owned child, or a ``SysMLInheritedElement`` proxy, cached privately."""
