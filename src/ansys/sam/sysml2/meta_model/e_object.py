@@ -49,6 +49,10 @@ class EObject:
         names = [a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#")]
         if not ValueHelper.is_value_capable(self):
             names = [a for a in names if a not in ("get_value", "set_value", "parse_and_set_value")]
+        if not getattr(self, "source", None):
+            names = [a for a in names if a != "get_source"]
+        if not getattr(self, "target", None):
+            names = [a for a in names if a != "get_target"]
         return sorted(names)
 
     def _resolve_child(self, name, hmap):

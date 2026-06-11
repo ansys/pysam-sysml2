@@ -122,7 +122,7 @@ class TestEObject:
 
 
 class TestEObjectDir:
-    """Value methods are listed in dir() only for value-capable (Feature) elements."""
+    """dir() lists value and connection helpers only when applicable."""
 
     def test_value_methods_hidden_on_non_feature(self):
         element = Element("element_id")
@@ -147,3 +147,24 @@ class TestEObjectDir:
         assert "get_value" in listing
         assert "set_value" in listing
         assert "parse_and_set_value" in listing
+
+    def test_source_target_hidden_without_ends(self):
+        element = Element("element_id")
+
+        listing = dir(element)
+        assert "get_source" not in listing
+        assert "get_target" not in listing
+
+    def test_get_source_listed_when_source_populated(self):
+        element = Element("element_id")
+        element.source = [Element("end_id")]
+
+        assert "get_source" in dir(element)
+        assert "get_target" not in dir(element)
+
+    def test_get_target_listed_when_target_populated(self):
+        element = Element("element_id")
+        element.target = [Element("end_id")]
+
+        assert "get_target" in dir(element)
+        assert "get_source" not in dir(element)
