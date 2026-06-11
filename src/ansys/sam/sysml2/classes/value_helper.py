@@ -69,15 +69,40 @@ class ValueHelper:
         new_value : Union[str | int | float | bool]
             New value to update to.
         """
-        instance = ValueHelper("")
-        if element._observer._is_transactional_mode:
-            instance._add_to_stack(element, value_type, new_value)
-        else:
-            instance._direct_update_value(element, value_type, new_value)
+        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
-    def _add_to_stack(self, element, value_type, new_value):
+        prefix = "_" if isinstance(element, SysMLElement) else ""
+        instance = ValueHelper(prefix)
+        literal = instance._find_existing_literal(element)
+        if element._observer._is_transactional_mode:
+            instance._add_to_stack(element, value_type, new_value, literal)
+        else:
+            instance._direct_update_value(element, value_type, new_value, literal)
+
+    def _find_existing_literal(self, element):
+        """Return the literal currently held by the feature's valuation, or ``None``."""
+        valuation = getattr(element, self.prefix + "valuation", None)
+        if valuation is None:
+            return None
+        return getattr(valuation, self.prefix + "value", None)
+
+    def _literal_type_name(self, value_type):
+        """Map a Python value type to its SysML literal ``@type`` name (``None`` for operators)."""
+        literal_types = {
+            bool: "LiteralBoolean",
+            int: "LiteralInteger",
+            float: "LiteralRational",
+            str: "LiteralString",
+        }
+        return literal_types.get(value_type)
+
+    def _add_to_stack(self, element, value_type, new_value, literal=None):
         """
-        Add the value update to stack.
+        Stack the value update for the current transaction.
+
+        In transactional mode the existing literal (when present) is always dropped
+        and a new ``FeatureValue`` is recreated, so the change applies regardless of
+        any literal type switch.
 
         Parameters
         ----------
@@ -87,7 +112,11 @@ class ValueHelper:
             Value type of the new value.
         new_value : Any
             New value to update to.
+        literal : [SysMLElement|Element], optional
+            Existing literal held by the feature, if any.
         """
+        if literal is not None:
+            element._observer.delete_element(literal._id)
         value_id = "value:" + str(uuid4())
         element._observer.notify(value_id, "@type", "FeatureValue")
         if value_type != "operator":
@@ -98,9 +127,14 @@ class ValueHelper:
         element._observer.notify(value_id, "isDefault", True)
         element._observer.notify(value_id, "owner", element)
 
-    def _direct_update_value(self, element, value_type, new_value):
+    def _direct_update_value(self, element, value_type, new_value, literal=None):
         """
         Update directly the value of the feature.
+
+        When no literal exists a ``FeatureValue`` is created. When a literal of the
+        same type already exists it is updated in place through its identity. When
+        the literal type changes the old literal is dropped before a new
+        ``FeatureValue`` is created.
 
         Parameters
         ----------
@@ -110,7 +144,22 @@ class ValueHelper:
             Value type of the new value.
         new_value : Any
             New value to update to.
+        literal : [SysMLElement|Element], optional
+            Existing literal held by the feature, if any.
         """
+        target_type = self._literal_type_name(value_type)
+        if literal is not None and target_type is not None:
+            if type(literal).__name__ == target_type:
+                self._commit_literal_update(element, literal, target_type, new_value)
+            else:
+                self._commit_literal_drop(element, literal)
+                self._commit_feature_value(element, value_type, new_value)
+        else:
+            self._commit_feature_value(element, value_type, new_value)
+        element._observer.reload_project()
+
+    def _commit_feature_value(self, element, value_type, new_value):
+        """Create a ``FeatureValue`` owned by ``element`` carrying the new value."""
         project_id = element._observer._project_id
         commit = Commit(project_id)
         change = DataVersion()
@@ -124,7 +173,26 @@ class ValueHelper:
         change.add_change("owner", element)
         commit.add_change(change)
         element._observer._connector.create_commit(project_id, commit.to_json())
-        element._observer.reload_project()
+
+    def _commit_literal_update(self, element, literal, literal_type, new_value):
+        """Update the existing literal in place through its identity (same type only)."""
+        project_id = element._observer._project_id
+        commit = Commit(project_id)
+        change = DataVersion()
+        change.add_change("@type", literal_type)
+        change.add_change("value", new_value)
+        change.identify(literal._id)
+        commit.add_change(change)
+        element._observer._connector.create_commit(project_id, commit.to_json())
+
+    def _commit_literal_drop(self, element, literal):
+        """Drop the existing literal so a new typed literal can be recreated."""
+        project_id = element._observer._project_id
+        commit = Commit(project_id)
+        change = DataVersion()
+        change.identify(literal._id)
+        commit.add_change(change)
+        element._observer._connector.create_commit(project_id, commit.to_json())
 
     def _adapt_value(self, new_value: Union[str | int | float | bool]):
         """Convert the value to JSON format."""
