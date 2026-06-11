@@ -27,6 +27,9 @@ import pytest
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
+from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.meta_model.feature import Feature
+from ansys.sam.sysml2.meta_model.part_usage import PartUsage
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
@@ -112,3 +115,31 @@ class TestEObject:
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myFloatFeature").set_value(20.5)
         assert commit_spy.call_count == 1
+
+
+class TestEObjectDir:
+    """Value methods are listed in dir() only for value-capable (Feature) elements."""
+
+    def test_value_methods_hidden_on_non_feature(self):
+        element = Element("element_id")
+
+        listing = dir(element)
+        assert "get_value" not in listing
+        assert "set_value" not in listing
+        assert "parse_and_set_value" not in listing
+
+    def test_value_methods_listed_on_feature(self):
+        element = Feature("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing
+
+    def test_value_methods_listed_on_feature_descendant(self):
+        element = PartUsage("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing

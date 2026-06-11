@@ -38,6 +38,21 @@ class ValueHelper:
         self.prefix = prefix
 
     @staticmethod
+    def is_value_capable(element) -> bool:
+        """Return ``True`` if the element can carry a feature value (a Feature or descendant)."""
+        from ansys.sam.sysml2.meta_model.feature import Feature
+
+        if isinstance(element, Feature):
+            return True
+        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+
+        try:
+            mm_class = SysMLUtil.get_sysml_constructor(type(element).__name__)
+        except ImportError:
+            return False
+        return issubclass(mm_class, Feature)
+
+    @staticmethod
     def get_value_for_scripting_element(element):
         """Get the value of the feature."""
         instance = ValueHelper("_")
