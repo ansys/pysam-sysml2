@@ -41,3 +41,44 @@ def raise_readonly(attr: str, alternative: str) -> NoReturn:
         f"'{attr}' is read-only in the new metamodel. Use '{alternative}' to set a value "
         f"(for example, element.{alternative} = ...)."
     )
+
+
+UNHANDLED = object()
+"""Sentinel returned by ``scripting_deprecated_get`` when no shim applies."""
+
+
+def scripting_deprecated_get(element, name):
+    """Resolve a scripting deprecation read shim, or return ``UNHANDLED``.
+
+    ``_visibility`` moved onto the owning membership in the new metamodel.
+    """
+    if name == "_visibility":
+        owning_membership = element.__dict__.get("_owningMembership")
+        if owning_membership is None:
+            return None
+        warn_moved("_visibility", "_owningMembership._visibility")
+        return owning_membership.__dict__.get("_visibility")
+    return UNHANDLED
+
+
+def scripting_deprecated_set(element, name, value) -> bool:
+    """Apply a scripting deprecation write shim. Return ``True`` if handled.
+
+    ``name``/``_name`` are read-only (raise); ``_visibility`` redirects the
+    write to the owning membership.
+    """
+    if name in ("name", "_name"):
+        raise_readonly(name, "_declaredName")
+    if name == "_visibility":
+        warn_moved("_visibility", "_owningMembership._visibility")
+        owning_membership = element.__dict__.get("_owningMembership")
+        if owning_membership is not None:
+            # Bypass the membership's own ``_visibility`` redirect and persist
+            # the change against the membership directly.
+            if getattr(owning_membership, "_observer", None) is not None:
+                owning_membership._observer.notify(owning_membership._id, "_visibility", value)
+            object.__setattr__(owning_membership, "_visibility", value)
+        else:
+            object.__setattr__(element, "_visibility", value)
+        return True
+    return False
