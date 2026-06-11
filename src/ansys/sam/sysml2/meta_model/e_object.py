@@ -46,7 +46,16 @@ class EObject:
 
     def __dir__(self):
         """Children are reachable via get(), not dot; hide the internal proxy cache."""
-        return sorted(a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#"))
+        names = [a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#")]
+        from ansys.sam.sysml2.tools.deprecation import is_visibility_shim, visibility_alias_listed
+
+        if (
+            "visibility" in names
+            and is_visibility_shim(type(self))
+            and not visibility_alias_listed(self, "_visibility", "_owning_membership")
+        ):
+            names = [a for a in names if a != "visibility"]
+        return sorted(names)
 
     def _resolve_child(self, name, hmap):
         """Return the owned child, or a ``SysMLInheritedElement`` proxy, cached privately."""

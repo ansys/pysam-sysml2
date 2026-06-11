@@ -50,7 +50,12 @@ class SysMLElement:
         base = list(super().__dir__())
         hmap = self.__dict__.get("_element_hash_map", {})
         children = [k for k in hmap if k is not None]
-        return sorted(set(base + children))
+        names = set(base + children)
+        from ansys.sam.sysml2.tools.deprecation import visibility_alias_listed
+
+        if visibility_alias_listed(self, "_visibility", "_owningMembership"):
+            names.add("_visibility")
+        return sorted(names)
 
     def __getattr__(self, name):
         """Resolve hash-map children lazily; only fires when normal attribute lookup fails."""
