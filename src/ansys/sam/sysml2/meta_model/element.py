@@ -185,7 +185,7 @@ class Element(EObject):
 
     @property
     def visibility(self):
-        """Deprecated: redirects to ``owning_membership.visibility`` (moved in the new metamodel)."""
+        """Deprecated: redirect to ``owning_membership.visibility`` (moved in new MM)."""
         from ansys.sam.sysml2.tools.deprecation import warn_moved
 
         warn_moved("visibility", "owning_membership.visibility")
@@ -194,7 +194,7 @@ class Element(EObject):
 
     @visibility.setter
     def visibility(self, value):
-        """Deprecated: redirects the write to ``owning_membership.visibility`` (moved in the new metamodel)."""
+        """Redirect the write to ``owning_membership.visibility`` (deprecated; moved in new MM)."""
         from ansys.sam.sysml2.tools.deprecation import warn_moved
 
         warn_moved("visibility", "owning_membership.visibility")

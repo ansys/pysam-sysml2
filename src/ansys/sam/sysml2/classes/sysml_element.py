@@ -80,7 +80,7 @@ class SysMLElement:
 
     @property
     def visibility(self):
-        """Deprecated: redirects to the owning membership's visibility (moved in the new metamodel)."""
+        """Deprecated: redirect to the owning membership's visibility (moved in new MM)."""
         own = self.__dict__.get("_visibility")
         if own is not None:
             return own
@@ -93,7 +93,7 @@ class SysMLElement:
         return getattr(om, "_visibility", None)
 
     def __setattr__(self, name: str, value: object):
-        """Intercept attribute assignment: name is read-only, visibility redirects, others notify."""
+        """Intercept assignment: name is read-only, visibility redirects, others notify."""
         if name in ("name", "_name"):
             from ansys.sam.sysml2.tools.deprecation import raise_readonly
 
