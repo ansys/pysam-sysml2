@@ -31,13 +31,12 @@ from ansys.sam.sysml2.tools.factory import Factory
 from tests.unit.const import PROJECT_ID_1, VALID_ORGANIZATION, VALID_TOKEN
 from tests.unit.mocked_connector import MockedSysML2APIConnector
 
+_REQUIRES_NAME_WRITE_HANDLING = "Requires name write handling delivered in deprecation-shims (#183)"
+
 
 class TestAnsysSysML2Project:
 
-    @pytest.mark.skip(
-        reason="creating elements with name needs the read-only-name handling "
-        "that lands in #192 (#183)"
-    )
+    @pytest.mark.skip(reason=_REQUIRES_NAME_WRITE_HANDLING)
     def test_streamlined_project_factory_initialization(self, mocker):
         mocker.patch(
             "ansys.sam.sysml2.tools.ansys_project.AnsysSysML2APIConnector",

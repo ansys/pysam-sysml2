@@ -50,7 +50,12 @@ class SysMLElement:
         base = list(super().__dir__())
         hmap = self.__dict__.get("_element_hash_map", {})
         children = [k for k in hmap if k is not None]
-        return sorted(set(base + children))
+        names = set(base + children)
+        if not getattr(self, "_source", None):
+            names.discard("get_source")
+        if not getattr(self, "_target", None):
+            names.discard("get_target")
+        return sorted(names)
 
     def __getattr__(self, name):
         """Resolve hash-map children lazily; only fires when normal attribute lookup fails."""
@@ -88,6 +93,29 @@ class SysMLElement:
     def set_value(self, new_value: str | int | float | bool):
         """Update the feature value."""
         ValueHelper.set_or_update_value(self, type(new_value), new_value)
+
+    def get_target(self):
+        """Return the resolved leaf element pointed to by ``self._target``, or None."""
+        return self._resolve_end(getattr(self, "_target", []) or [])
+
+    def get_source(self):
+        """Return the resolved leaf element pointed to by ``self._source``, or None."""
+        return self._resolve_end(getattr(self, "_source", []) or [])
+
+    def _resolve_end(self, ends):
+        """Walk the first end's ``_chainingFeature`` via attribute access; else passthrough."""
+        if not ends:
+            return None
+        end = ends[0]
+        chain = getattr(end, "_chainingFeature", None) or []
+        if not chain:
+            return end
+        current = getattr(self, "_owner", None)
+        for hop in chain:
+            if current is None:
+                return None
+            current = getattr(current, hop._name, None)
+        return current
 
     def delete(self):
         """Delete the element from the model via the observer's commit to the server."""

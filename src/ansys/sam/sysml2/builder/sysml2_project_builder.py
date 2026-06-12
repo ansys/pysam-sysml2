@@ -82,9 +82,17 @@ class SysML2ProjectBuilder:
 
     def __build_project(self, project: Project | ScriptingProject):
         """Build the project from JSON."""
-        # TODO(agrzecho): re-introduce library element tracking once the API exposes
-        # library elements (bulk in get_all_elements, or per-UUID fetch).
-        # https://github.com/ansys/pysam-sysml2/issues/183
+        # TODO(agrzecho): (#183) Library element tracking was removed alongside the
+        # regenerated SysML2 API. The previous `_libraries_ids` was populated by iterating
+        # `project._env` post-build, but the bulk get_all_elements endpoint no
+        # longer returns library elements, so the set was always empty (and
+        # read by nobody). Re-introduce library tracking once one of these
+        # lands:
+        #   (a) bulk path: the server returns library elements alongside
+        #       project elements in the same call (single round-trip).
+        #   (b) on-demand path: the client fetches each referenced library
+        #       element by UUID via the per-element endpoint (multiple
+        #       lighter calls, now affordable since the API rework).
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
