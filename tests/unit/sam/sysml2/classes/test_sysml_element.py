@@ -26,6 +26,7 @@ import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
+from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
@@ -137,3 +138,28 @@ class TestSysMLElement:
 
         with pytest.raises(BadRequestConnectionException):
             root._declaredName = ["ShouldFail"]
+
+
+class TestSysMLElementDir:
+    """Connection getters are listed in dir() only when the element has ends."""
+
+    def test_source_target_hidden_without_ends(self):
+        element = SysMLElement("element_id")
+
+        listing = dir(element)
+        assert "get_source" not in listing
+        assert "get_target" not in listing
+
+    def test_get_source_listed_when_source_populated(self):
+        element = SysMLElement("element_id")
+        element._source = [SysMLElement("end_id")]
+
+        assert "get_source" in dir(element)
+        assert "get_target" not in dir(element)
+
+    def test_get_target_listed_when_target_populated(self):
+        element = SysMLElement("element_id")
+        element._target = [SysMLElement("end_id")]
+
+        assert "get_target" in dir(element)
+        assert "get_source" not in dir(element)

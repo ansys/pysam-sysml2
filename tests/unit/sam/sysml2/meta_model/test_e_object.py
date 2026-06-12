@@ -27,6 +27,7 @@ import pytest
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
+from ansys.sam.sysml2.meta_model.element import Element
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
 
 _OLD_FORMAT_LITERAL_REAL_REMOVED = (
@@ -131,3 +132,28 @@ class TestEObject:
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myFloatFeature").set_value(20.5)
         assert commit_spy.call_count == 1
+
+
+class TestEObjectDir:
+    """Connection getters are listed in dir() only when the element has ends."""
+
+    def test_source_target_hidden_without_ends(self):
+        element = Element("element_id")
+
+        listing = dir(element)
+        assert "get_source" not in listing
+        assert "get_target" not in listing
+
+    def test_get_source_listed_when_source_populated(self):
+        element = Element("element_id")
+        element.source = [Element("end_id")]
+
+        assert "get_source" in dir(element)
+        assert "get_target" not in dir(element)
+
+    def test_get_target_listed_when_target_populated(self):
+        element = Element("element_id")
+        element.target = [Element("end_id")]
+
+        assert "get_target" in dir(element)
+        assert "get_source" not in dir(element)

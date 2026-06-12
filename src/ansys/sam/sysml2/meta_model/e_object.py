@@ -55,6 +55,10 @@ class EObject:
             and not visibility_alias_listed(self, "_visibility", "_owning_membership")
         ):
             names = [a for a in names if a != "visibility"]
+        if not getattr(self, "source", None):
+            names = [a for a in names if a != "get_source"]
+        if not getattr(self, "target", None):
+            names = [a for a in names if a != "get_target"]
         return sorted(names)
 
     def _resolve_child(self, name, hmap):

@@ -55,6 +55,10 @@ class SysMLElement:
 
         if visibility_alias_listed(self, "_visibility", "_owningMembership"):
             names.add("_visibility")
+        if not getattr(self, "_source", None):
+            names.discard("get_source")
+        if not getattr(self, "_target", None):
+            names.discard("get_target")
         return sorted(names)
 
     def __getattr__(self, name):
