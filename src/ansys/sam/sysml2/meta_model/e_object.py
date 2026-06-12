@@ -46,12 +46,10 @@ class EObject:
 
     def __dir__(self):
         """Children are reachable via get(), not dot; hide the internal proxy cache."""
-        return sorted(
-            a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#")
-        )
+        return sorted(a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#"))
 
     def _resolve_child(self, name, hmap):
-        """Return the owned child raw, or a ``SysMLInheritedElement`` proxy, cached in a hidden dict."""
+        """Return the owned child, or a ``SysMLInheritedElement`` proxy, cached privately."""
         from ansys.sam.sysml2.classes.sysml_inherited_element import SysMLInheritedElement
 
         cache = self.__dict__.setdefault("_proxy_cache", {})
@@ -79,7 +77,7 @@ class EObject:
         return self._resolve_end(getattr(self, "source", []) or [])
 
     def _resolve_end(self, ends):
-        """Walk the first end's ``chaining_feature`` via ``self.owner.get(name)``; passthrough direct references."""
+        """Walk the first end's ``chaining_feature`` via ``self.owner.get``; else passthrough."""
         if not ends:
             return None
         end = ends[0]

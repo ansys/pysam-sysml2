@@ -82,8 +82,8 @@ class SysML2ProjectBuilder:
 
     def __build_project(self, project: Project | ScriptingProject):
         """Build the project from JSON."""
-        # FIXME: Library element tracking was removed alongside the regenerated
-        # SysML2 API. The previous `_libraries_ids` was populated by iterating
+        # TODO(agrzecho): (#183) Library element tracking was removed alongside the
+        # regenerated SysML2 API. The previous `_libraries_ids` was populated by iterating
         # `project._env` post-build, but the bulk get_all_elements endpoint no
         # longer returns library elements, so the set was always empty (and
         # read by nobody). Re-introduce library tracking once one of these
@@ -301,7 +301,9 @@ class SysML2ProjectBuilder:
 
     def __get_sysml_owned_names(self, element: Element) -> set[str]:
         """Return the names of owned (non-inherited) children of a metamodel element."""
-        return {x.name for x in element.owned_element if isinstance(x, Element) and x.name is not None}
+        return {
+            x.name for x in element.owned_element if isinstance(x, Element) and x.name is not None
+        }
 
     def _add_write_access(self, project: Project | ScriptingProject):
         """Add write rules access on the project."""
