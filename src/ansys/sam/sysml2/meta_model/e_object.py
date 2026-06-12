@@ -52,7 +52,7 @@ class EObject:
         return sorted(names)
 
     def _resolve_child(self, name, hmap):
-        """Return the owned child raw, or a ``SysMLInheritedElement`` proxy, cached in a hidden dict."""
+        """Return the owned child, or a ``SysMLInheritedElement`` proxy, cached privately."""
         from ansys.sam.sysml2.classes.sysml_inherited_element import SysMLInheritedElement
 
         cache = self.__dict__.setdefault("_proxy_cache", {})

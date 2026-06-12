@@ -65,7 +65,7 @@ class SysMLElement:
         return self._resolve_child(name, hmap)
 
     def _resolve_child(self, name, hmap):
-        """Return the owned child raw, or an ``InheritedElement`` proxy, cached under the child name."""
+        """Return the owned child, or an ``InheritedElement`` proxy, cached under its name."""
         from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 
         child = hmap[name]
