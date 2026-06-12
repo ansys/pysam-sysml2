@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.allocation_usage import AllocationUsage
 
 
 class TestAllocationUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.AllocationUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.AllocationUsage'."""
 
     @pytest.fixture
     def element(self):

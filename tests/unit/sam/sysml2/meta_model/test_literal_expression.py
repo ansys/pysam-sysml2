@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.literal_expression import LiteralExpression
 
 
 class TestLiteralExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.LiteralExpression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.LiteralExpression'."""
 
     @pytest.fixture
     def element(self):

@@ -46,56 +46,36 @@ class SysMLElement:
         self._id = element_id
 
     def __dir__(self):
-        """Get the attribute list from the real element."""
-        base = super().__dir__()
+        """List owned + inherited child names alongside normal attributes."""
+        base = list(super().__dir__())
         hmap = self.__dict__.get("_element_hash_map", {})
         children = [k for k in hmap if k is not None]
-        return sorted(set(list(base) + children))
+        return sorted(set(base + children))
 
     def __getattr__(self, name):
-        """Get the attribute from the real element."""
-        from ansys.sam.sysml2.classes.inherited_element import InheritedElement
-
+        """Resolve hash-map children lazily; only fires when normal attribute lookup fails."""
         if name.startswith("__") and name.endswith("__"):
             raise AttributeError(name)
-
         hmap = self.__dict__.get("_element_hash_map", {})
-        if name in hmap:
-            child = hmap[name]
-            owned = self.__dict__.get("_ownedElement", [])
-            is_owned = any(
-                getattr(x, "_name", None) == name for x in owned if isinstance(x, SysMLElement)
-            )
-            if is_owned:
-                return child
-            return InheritedElement(self, child)
+        if name not in hmap:
+            raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
+        return self._resolve_child(name, hmap)
 
-        raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
-
-    def __setattr__(self, name: str, value: object):
-        """
-        Intercept attribute assignment and notify the modification observer.
-
-        Parameters
-        ----------
-        name : str
-            Name of the key.
-        value : object
-            Value of the key.
-        """
+    def _resolve_child(self, name, hmap):
+        """Return the owned child, or an ``InheritedElement`` proxy, cached under its name."""
         from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 
+        child = hmap[name]
+        is_owned = name in self.__dict__.get("_owned_names", set())
+        result = child if is_owned else InheritedElement(self, child)
+        self.__dict__[name] = result
+        return result
+
+    def __setattr__(self, name: str, value: object):
+        """Intercept attribute assignment and notify the modification observer."""
         if name != "_observer" and getattr(self, "_observer", None) is not None:
             self._observer.notify(self._id, name, value)
-        if name.startswith("#"):
-            name = name[1:]
-            if any(name == getattr(x, "_name", None) for x in getattr(self, "_ownedElement", [])):
-                super().__setattr__(name, value)
-            else:
-                super().__setattr__(name, InheritedElement(self, value))
-
-        else:
-            super().__setattr__(name, value)
+        super().__setattr__(name, value)
 
     def get_value(self):
         """Get the value of the feature."""

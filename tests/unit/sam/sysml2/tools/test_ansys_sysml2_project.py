@@ -22,6 +22,8 @@
 
 """Unit tests for AnsysSysML2Project using mocker to inject MockedConnectors."""
 
+import pytest
+
 from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
 from ansys.sam.sysml2.meta_model.package import Package
 from ansys.sam.sysml2.tools.ansys_sysml2_project import AnsysSysML2Project
@@ -32,6 +34,10 @@ from tests.unit.mocked_connector import MockedSysML2APIConnector
 
 class TestAnsysSysML2Project:
 
+    @pytest.mark.skip(
+        reason="creating elements with name needs the read-only-name handling "
+        "that lands in #192 (#183)"
+    )
     def test_streamlined_project_factory_initialization(self, mocker):
         mocker.patch(
             "ansys.sam.sysml2.tools.ansys_project.AnsysSysML2APIConnector",

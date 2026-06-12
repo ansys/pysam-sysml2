@@ -33,9 +33,9 @@ class Project(ABC):
     """Provides the project interface for users."""
 
     @property
-    def root(self) -> List[Package]:
-        """Get a list of root packages."""
-        return self.get_root()
+    def id(self) -> str:
+        """Get the project ID."""
+        return self.get_id()
 
     @property
     def name(self) -> str:
@@ -43,13 +43,9 @@ class Project(ABC):
         return self.get_name()
 
     @property
-    def root_package(self) -> Package:
-        """Get the root package."""
-        return self.get_root_package()
-
-    @abstractmethod
-    def get_root(self) -> List[Package]:
-        """Get a list of root packages."""
+    def libraries_packages(self) -> list[Package]:
+        """Get the libraries packages."""
+        return self.get_libraries_packages()
 
     @abstractmethod
     def get_id(self) -> str:
@@ -62,6 +58,10 @@ class Project(ABC):
     @abstractmethod
     def get_root_package(self) -> Package:
         """Get the root package."""
+
+    @abstractmethod
+    def get_libraries_packages(self) -> list[Package]:
+        """Get the libraries packages."""
 
     @abstractmethod
     def find_element_by_id(self, element_id: str) -> Element:

@@ -27,7 +27,7 @@ from .succession import Succession
 
 
 class SuccessionAsUsage(ConnectorAsUsage, Succession):
-    """Java class 'com.ansys.medini.metamodel.sysml.SuccessionAsUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.SuccessionAsUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

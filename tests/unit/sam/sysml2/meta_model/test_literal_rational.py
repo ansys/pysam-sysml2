@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.literal_rational import LiteralRational
 
 
 class TestLiteralRational:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.LiteralRational'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.LiteralRational'."""
 
     @pytest.fixture
     def element(self):

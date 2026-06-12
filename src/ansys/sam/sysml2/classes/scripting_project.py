@@ -32,9 +32,9 @@ class ScriptingProject(ABC):
     """Scripting project interface for users."""
 
     @property
-    def root(self) -> List[SysMLElement]:
-        """Get a list of root packages."""
-        return self.get_root()
+    def id(self) -> str:
+        """Get the project ID."""
+        return self.get_id()
 
     @property
     def name(self) -> str:
@@ -42,9 +42,9 @@ class ScriptingProject(ABC):
         return self.get_name()
 
     @property
-    def root_package(self) -> SysMLElement:
-        """Get the root package."""
-        return self.get_root_package()
+    def libraries_packages(self) -> list[SysMLElement]:
+        """Get the libraries packages."""
+        return self.get_libraries_packages()
 
     @abstractmethod
     def get_id(self) -> str:
@@ -55,12 +55,12 @@ class ScriptingProject(ABC):
         """Get the project name."""
 
     @abstractmethod
-    def get_root(self) -> List[SysMLElement]:
-        """Get a list of root packages."""
-
-    @abstractmethod
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
+
+    @abstractmethod
+    def get_libraries_packages(self) -> list[SysMLElement]:
+        """Get the libraries packages."""
 
     @abstractmethod
     def find_element_by_id(self, element_id: str) -> SysMLElement:
