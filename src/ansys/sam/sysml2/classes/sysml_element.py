@@ -62,7 +62,7 @@ class SysMLElement:
         return self._resolve_child(name, hmap)
 
     def _resolve_child(self, name, hmap):
-        """Return the owned child raw, or an ``InheritedElement`` proxy, cached under the child name."""
+        """Return the owned child, or an ``InheritedElement`` proxy, cached under its name."""
         from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 
         child = hmap[name]
@@ -126,7 +126,7 @@ class SysMLElement:
         return self._resolve_end(getattr(self, "_source", []) or [])
 
     def _resolve_end(self, ends):
-        """Walk the first end's ``_chainingFeature`` via attribute access; passthrough direct references."""
+        """Walk the first end's ``_chainingFeature`` via attribute access; else passthrough."""
         if not ends:
             return None
         end = ends[0]
