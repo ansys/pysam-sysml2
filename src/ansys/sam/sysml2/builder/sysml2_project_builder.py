@@ -293,7 +293,9 @@ class SysML2ProjectBuilder:
 
     def __get_sysml_owned_names(self, element: Element) -> set[str]:
         """Return the names of owned (non-inherited) children of a metamodel element."""
-        return {x.name for x in element.owned_element if isinstance(x, Element) and x.name is not None}
+        return {
+            x.name for x in element.owned_element if isinstance(x, Element) and x.name is not None
+        }
 
     def _add_write_access(self, project: Project | ScriptingProject):
         """Add write rules access on the project."""
