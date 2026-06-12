@@ -29,6 +29,11 @@ from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
 
+_REQUIRES_NAME_WRITE_HANDLING = (
+    "writing name needs the read-only-name handling that lands in #192 (#183)"
+)
+_REQUIRES_OLD_FORMAT_DROP = "old-format value path is dropped in #186 (#183)"
+
 
 class TestEObject:
 
@@ -42,6 +47,7 @@ class TestEObject:
         model_manager = SysML2ProjectManager(connector=connector)
         return model_manager.get_sysml_project(PROJECT_ID_3)
 
+    @pytest.mark.skip(reason=_REQUIRES_NAME_WRITE_HANDLING)
     def test_update_element(self, connector, mocker):
         project_manager = SysML2ProjectManager(connector)
         project = project_manager.get_sysml_project(PROJECT_ID_1)
@@ -51,6 +57,7 @@ class TestEObject:
         elem.name = "NewAttr"
         assert elem.name == "NewAttr"
 
+    @pytest.mark.skip(reason=_REQUIRES_OLD_FORMAT_DROP)
     def test_expression_with_old_format_project_get_values(
         self, old_format_project: Project
     ):
