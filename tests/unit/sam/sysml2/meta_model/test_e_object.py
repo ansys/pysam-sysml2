@@ -30,8 +30,9 @@ from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpress
 from ansys.sam.sysml2.meta_model.element import Element
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
 
-_REQUIRES_NAME_WRITE_HANDLING = "Requires name write handling delivered in deprecation-shims (#183)"
-_REQUIRES_OLD_FORMAT_DROP = "Requires old-format value drop delivered in deprecation-shims (#183)"
+_OLD_FORMAT_LITERAL_REAL_REMOVED = (
+    "Old-format fixture references LiteralReal, dropped by the metamodel regeneration (#183)"
+)
 
 
 class TestEObject:
@@ -46,17 +47,16 @@ class TestEObject:
         model_manager = SysML2ProjectManager(connector=connector)
         return model_manager.get_sysml_project(PROJECT_ID_3)
 
-    @pytest.mark.skip(reason=_REQUIRES_NAME_WRITE_HANDLING)
     def test_update_element(self, connector, mocker):
         project_manager = SysML2ProjectManager(connector)
         project = project_manager.get_sysml_project(PROJECT_ID_1)
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         elem = root.get("PartDefinition").get("attribute")
-        elem.name = "NewAttr"
-        assert elem.name == "NewAttr"
+        elem.declared_name = "NewAttr"
+        assert elem.declared_name == "NewAttr"
 
-    @pytest.mark.skip(reason=_REQUIRES_OLD_FORMAT_DROP)
+    @pytest.mark.skip(reason=_OLD_FORMAT_LITERAL_REAL_REMOVED)
     def test_expression_with_old_format_project_get_values(
         self, old_format_project: Project
     ):

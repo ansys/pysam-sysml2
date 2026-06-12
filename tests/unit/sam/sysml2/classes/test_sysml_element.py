@@ -51,9 +51,9 @@ class TestSysMLElement:
         mocker.patch.object(root._observer, "reload_project")
         attr = root.PartDefinition.attribute
 
-        attr._name = "NewAttr"
+        attr._declaredName = "NewAttr"
 
-        assert attr._name == "NewAttr"
+        assert attr._declaredName == "NewAttr"
 
     def test_expression_get_value_old_format(self, old_format_project):
         package = old_format_project.get_root_package()
@@ -137,7 +137,7 @@ class TestSysMLElement:
         )
 
         with pytest.raises(BadRequestConnectionException):
-            root._name = ["ShouldFail"]
+            root._declaredName = ["ShouldFail"]
 
 
 class TestSysMLElementDir:
