@@ -62,7 +62,7 @@ class SysMLElement:
         return self._resolve_child(name, hmap)
 
     def _resolve_child(self, name, hmap):
-        """Return the owned child raw, or an ``InheritedElement`` proxy, cached under the child name."""
+        """Return the owned child, or an ``InheritedElement`` proxy, cached under its name."""
         from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 
         child = hmap[name]
@@ -73,7 +73,7 @@ class SysMLElement:
 
     @property
     def visibility(self):
-        """Deprecated: redirects to the owning membership's visibility (moved in the new metamodel)."""
+        """Deprecated: redirect to the owning membership's visibility (moved in new MM)."""
         own = self.__dict__.get("_visibility")
         if own is not None:
             return own
@@ -86,7 +86,7 @@ class SysMLElement:
         return getattr(om, "_visibility", None)
 
     def __setattr__(self, name: str, value: object):
-        """Intercept attribute assignment: name is read-only, visibility redirects, others notify."""
+        """Intercept assignment: name is read-only, visibility redirects, others notify."""
         if name in ("name", "_name"):
             from ansys.sam.sysml2.tools.deprecation import raise_readonly
 
@@ -126,7 +126,7 @@ class SysMLElement:
         return self._resolve_end(getattr(self, "_source", []) or [])
 
     def _resolve_end(self, ends):
-        """Walk the first end's ``_chainingFeature`` via attribute access; passthrough direct references."""
+        """Walk the first end's ``_chainingFeature`` via attribute access; else passthrough."""
         if not ends:
             return None
         end = ends[0]
