@@ -108,7 +108,7 @@ class SysMLElement:
         return self._resolve_end(getattr(self, "_source", []) or [])
 
     def _resolve_end(self, ends):
-        """Walk the first end's ``_chainingFeature`` via attribute access; passthrough direct references."""
+        """Walk the first end's ``_chainingFeature`` via attribute access; else passthrough."""
         if not ends:
             return None
         end = ends[0]

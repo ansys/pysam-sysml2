@@ -80,7 +80,7 @@ class EObject:
         return self._resolve_end(getattr(self, "source", []) or [])
 
     def _resolve_end(self, ends):
-        """Walk the first end's ``chaining_feature`` via ``self.owner.get(name)``; passthrough direct references."""
+        """Walk the first end's ``chaining_feature`` via ``self.owner.get``; else passthrough."""
         if not ends:
             return None
         end = ends[0]

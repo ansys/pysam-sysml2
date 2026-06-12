@@ -37,6 +37,7 @@ _REQUIRES_NAME_WRITE_HANDLING = (
 )
 _REQUIRES_OLD_FORMAT_DROP = "old-format value path is dropped in #186 (#183)"
 
+
 class TestEObject:
 
     @pytest.fixture
