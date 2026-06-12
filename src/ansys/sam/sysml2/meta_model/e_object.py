@@ -59,6 +59,8 @@ class EObject:
             names = [a for a in names if a != "get_source"]
         if not getattr(self, "target", None):
             names = [a for a in names if a != "get_target"]
+        if not ValueHelper.is_value_capable(self):
+            names = [a for a in names if a not in ("get_value", "set_value", "parse_and_set_value")]
         return sorted(names)
 
     def _resolve_child(self, name, hmap):

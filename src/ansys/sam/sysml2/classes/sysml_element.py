@@ -59,6 +59,8 @@ class SysMLElement:
             names.discard("get_source")
         if not getattr(self, "_target", None):
             names.discard("get_target")
+        if not ValueHelper.is_value_capable(self):
+            names.difference_update({"get_value", "set_value", "parse_and_set_value"})
         return sorted(names)
 
     def __getattr__(self, name):

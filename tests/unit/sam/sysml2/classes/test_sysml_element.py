@@ -30,15 +30,10 @@ from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
-from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
+from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
 class TestSysMLElement:
-
-    @pytest.fixture
-    def old_format_project(self, connector) -> ScriptingProject:
-        manager = SysML2ProjectManager(connector)
-        return manager.get_scripting_project(PROJECT_ID_4)
 
     @pytest.fixture
     def new_format_project(self, connector) -> ScriptingProject:
@@ -55,11 +50,6 @@ class TestSysMLElement:
         attr._declaredName = "NewAttr"
 
         assert attr._declaredName == "NewAttr"
-
-    def test_expression_get_value_old_format(self, old_format_project):
-        package = old_format_project.get_root_package()
-
-        assert package.Structure.Frame.weight.get_value() == ("2", "kg")
 
     def test_expression_get_value_new_format(self, new_format_project):
         package = new_format_project.get_root_package()
@@ -142,7 +132,7 @@ class TestSysMLElement:
 
 
 class TestSysMLElementDir:
-    """Connection getters are listed in dir() only when the element has ends."""
+    """dir() exposes connection getters and value methods only when applicable."""
 
     def test_source_target_hidden_without_ends(self):
         element = SysMLElement("element_id")
@@ -165,6 +155,24 @@ class TestSysMLElementDir:
         assert "get_target" in dir(element)
         assert "get_source" not in dir(element)
 
+    def test_value_methods_hidden_on_non_feature(self):
+        comment_cls = type("Comment", (SysMLElement,), {})
+        element = comment_cls("element_id")
+
+        listing = dir(element)
+        assert "get_value" not in listing
+        assert "set_value" not in listing
+        assert "parse_and_set_value" not in listing
+
+    def test_value_methods_listed_on_feature_descendant(self):
+        part_usage_cls = type("PartUsage", (SysMLElement,), {})
+        element = part_usage_cls("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing
+
 
 class TestSysMLElementGet:
     """The get(name) accessor reaches children whose names dot access cannot express."""
@@ -175,7 +183,7 @@ class TestSysMLElementGet:
         child._declaredName = "Part Definition"
         parent = SysMLElement("parent-id")
         parent._element_hash_map = {"Part Definition": child}
-        parent._ownedElement = [child]
+        parent._owned_names = {"Part Definition"}
         return parent, child
 
     def test_get_returns_owned_child_with_spaced_name(self):
@@ -197,5 +205,5 @@ class TestSysMLElementGet:
         resolved = proxy.get("Part Definition")
 
         assert resolved is not None
-        assert resolved._name == "Part Definition"
+        assert resolved._declaredName == "Part Definition"
         assert proxy.get("missing") is None

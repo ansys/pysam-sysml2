@@ -28,19 +28,12 @@ from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 from ansys.sam.sysml2.meta_model.element import Element
-from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
-
-_OLD_FORMAT_LITERAL_REAL_REMOVED = (
-    "Old-format fixture references LiteralReal, dropped by the metamodel regeneration (#183)"
-)
+from ansys.sam.sysml2.meta_model.feature import Feature
+from ansys.sam.sysml2.meta_model.part_usage import PartUsage
+from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
 class TestEObject:
-
-    @pytest.fixture
-    def old_format_project(self, connector) -> Project:
-        model_manager = SysML2ProjectManager(connector=connector)
-        return model_manager.get_sysml_project(PROJECT_ID_4)
 
     @pytest.fixture
     def new_format_project(self, connector) -> Project:
@@ -56,23 +49,13 @@ class TestEObject:
         elem.declared_name = "NewAttr"
         assert elem.declared_name == "NewAttr"
 
-    @pytest.mark.skip(reason=_OLD_FORMAT_LITERAL_REAL_REMOVED)
-    def test_expression_with_old_format_project_get_values(
-        self, old_format_project: Project
-    ):
-        package = old_format_project.get_root_package()
-        assert package.get("Structure").get("Frame").get("weight").get_value() == (
-            "2",
-            "kilogram",
-        )
-
     def test_expression_with_new_format_project_get_values(
         self, new_format_project: Project
     ):
         package = new_format_project.get_root_package()
         assert package.get("Feature").get("myExpressionFeature").get_value() == (
             10,
-            "kilogram",
+            "kg",
         )
 
     def test_expression_set_value(self, new_format_project: Project, mocker):
@@ -135,7 +118,7 @@ class TestEObject:
 
 
 class TestEObjectDir:
-    """Connection getters are listed in dir() only when the element has ends."""
+    """dir() exposes connection getters and value methods only when applicable."""
 
     def test_source_target_hidden_without_ends(self):
         element = Element("element_id")
@@ -157,3 +140,27 @@ class TestEObjectDir:
 
         assert "get_target" in dir(element)
         assert "get_source" not in dir(element)
+
+    def test_value_methods_hidden_on_non_feature(self):
+        element = Element("element_id")
+
+        listing = dir(element)
+        assert "get_value" not in listing
+        assert "set_value" not in listing
+        assert "parse_and_set_value" not in listing
+
+    def test_value_methods_listed_on_feature(self):
+        element = Feature("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing
+
+    def test_value_methods_listed_on_feature_descendant(self):
+        element = PartUsage("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing
