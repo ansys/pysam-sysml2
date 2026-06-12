@@ -110,7 +110,7 @@ class SysMLElement:
         ValueHelper.set_or_update_value(self, type(new_value), new_value)
 
     def get(self, element_name: str):
-        """Find an owned or inherited child by name; use for names dot access cannot express (e.g. spaces)."""
+        """Find an owned or inherited child by name (e.g. names with spaces)."""
         hmap = self.__dict__.get("_element_hash_map", {})
         if element_name not in hmap:
             return None
