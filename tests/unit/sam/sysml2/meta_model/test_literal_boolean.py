@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.literal_boolean import LiteralBoolean
 
 
 class TestLiteralBoolean:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.LiteralBoolean'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.LiteralBoolean'."""
 
     @pytest.fixture
     def element(self):

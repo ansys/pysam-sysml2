@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.port_usage import PortUsage
 
 
 class TestPortUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.PortUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.PortUsage'."""
 
     @pytest.fixture
     def element(self):

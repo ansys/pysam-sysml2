@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.end_feature_membership import EndFeatureMembers
 
 
 class TestEndFeatureMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.EndFeatureMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.EndFeatureMembership'."""
 
     @pytest.fixture
     def element(self):

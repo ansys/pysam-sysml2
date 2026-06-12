@@ -29,7 +29,7 @@ from .occurrence_definition import OccurrenceDefinition
 
 
 class ActionDefinition(OccurrenceDefinition, Behavior):
-    """Java class 'com.ansys.medini.metamodel.sysml.ActionDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.ActionDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
