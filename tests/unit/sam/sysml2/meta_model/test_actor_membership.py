@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.actor_membership import ActorMembership
 
 
 class TestActorMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ActorMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ActorMembership'."""
 
     @pytest.fixture
     def element(self):

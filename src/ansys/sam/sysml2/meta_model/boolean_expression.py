@@ -28,7 +28,7 @@ from .expression import Expression
 
 
 class BooleanExpression(Expression):
-    """Java class 'com.ansys.medini.metamodel.sysml.BooleanExpression'."""
+    """Java class 'com.ansys.metamodel.sysml2.BooleanExpression'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

@@ -26,7 +26,7 @@ from .control_node import ControlNode
 
 
 class DecisionNode(ControlNode):
-    """Java class 'com.ansys.medini.metamodel.sysml.DecisionNode'."""
+    """Java class 'com.ansys.metamodel.sysml2.DecisionNode'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

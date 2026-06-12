@@ -29,7 +29,7 @@ from .definition import Definition
 
 
 class OccurrenceDefinition(Definition, Class):
-    """Java class 'com.ansys.medini.metamodel.sysml.OccurrenceDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.OccurrenceDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -42,35 +42,7 @@ class OccurrenceDefinition(Definition, Class):
         """
         super().__init__(element_id)
 
-        self._lifeclass = None
         self._is_individual = False
-        self._set_is_individual = False
-
-    @property
-    def lifeclass(self) -> "LifeClass":  # noqa: F821
-        """
-        Get the lifeclass property.
-
-        Returns
-        -------
-        "LifeClass"
-            Value of property lifeclass.
-        """
-        return self._lifeclass
-
-    @lifeclass.setter
-    def lifeclass(self, value: "LifeClass"):  # noqa: F821
-        """
-        Set the lifeclass property.
-
-        Parameters
-        ----------
-        value: "LifeClass"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "lifeclass", value)
-        self._lifeclass = value
 
     @property
     def is_individual(self) -> bool:  # noqa: F821
@@ -97,15 +69,3 @@ class OccurrenceDefinition(Definition, Class):
         if self._observer is not None:
             self._observer.notify(self.id, "is_individual", value)
         self._is_individual = value
-
-    @property
-    def set_is_individual(self) -> bool:  # noqa: F821
-        """
-        Get the set is individual property.
-
-        Returns
-        -------
-        bool
-            Value of property set is individual.
-        """
-        return self._set_is_individual

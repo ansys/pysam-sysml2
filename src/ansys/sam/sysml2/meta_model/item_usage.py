@@ -28,7 +28,7 @@ from .occurrence_usage import OccurrenceUsage
 
 
 class ItemUsage(OccurrenceUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.ItemUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.ItemUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.objective_membership import ObjectiveMembership
 
 
 class TestObjectiveMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ObjectiveMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ObjectiveMembership'."""
 
     @pytest.fixture
     def element(self):

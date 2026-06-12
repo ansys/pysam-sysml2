@@ -28,7 +28,7 @@ from .subsetting import Subsetting
 
 
 class Redefinition(Subsetting):
-    """Java class 'com.ansys.medini.metamodel.sysml.Redefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.Redefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

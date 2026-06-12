@@ -28,8 +28,8 @@ from .item_usage import ItemUsage
 from .metadata_feature import MetadataFeature
 
 
-class MetadataUsage(ItemUsage, MetadataFeature):
-    """Java class 'com.ansys.medini.metamodel.sysml.MetadataUsage'."""
+class MetadataUsage(MetadataFeature, ItemUsage):
+    """Java class 'com.ansys.metamodel.sysml2.MetadataUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

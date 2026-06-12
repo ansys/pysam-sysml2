@@ -29,7 +29,7 @@ from .expression import Expression
 
 
 class CalculationUsage(ActionUsage, Expression):
-    """Java class 'com.ansys.medini.metamodel.sysml.CalculationUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.CalculationUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
