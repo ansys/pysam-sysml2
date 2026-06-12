@@ -33,7 +33,7 @@ class SysMLUtil:
 
     @staticmethod
     def check_inherited_name(element: SysMLElement) -> str:
-        """Resolve the element name with a dot-safe ``ClassName_<id>`` fallback when null or empty."""
+        """Resolve the name with a dot-safe ``ClassName_<id>`` fallback when empty."""
         name = getattr(element, "_name", None)
         if name:
             return name
