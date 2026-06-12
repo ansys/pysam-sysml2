@@ -80,6 +80,13 @@ class InheritedElement(SysMLElement):
         """Get the attribute list from the real element."""
         return dir(self._element)
 
+    def get(self, element_name: str):
+        """Resolve a child by name on the wrapped element, wrapping it as a proxy when needed."""
+        hmap = getattr(self._element, "_element_hash_map", {})
+        if element_name not in hmap:
+            return None
+        return self.__getattr__(element_name)
+
     def __getattr__(self, name):
         """Get the attribute from the real element."""
         if name in ("_observer", "_element", "_id", "_owner"):

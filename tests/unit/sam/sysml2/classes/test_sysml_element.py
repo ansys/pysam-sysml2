@@ -25,6 +25,7 @@
 import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
@@ -163,3 +164,38 @@ class TestSysMLElementDir:
 
         assert "get_target" in dir(element)
         assert "get_source" not in dir(element)
+
+
+class TestSysMLElementGet:
+    """The get(name) accessor reaches children whose names dot access cannot express."""
+
+    def _build_parent_with_spaced_child(self):
+        child = SysMLElement("child-id")
+        child._identifier = "child-id"
+        child._declaredName = "Part Definition"
+        parent = SysMLElement("parent-id")
+        parent._element_hash_map = {"Part Definition": child}
+        parent._ownedElement = [child]
+        return parent, child
+
+    def test_get_returns_owned_child_with_spaced_name(self):
+        parent, child = self._build_parent_with_spaced_child()
+
+        assert parent.get("Part Definition") is child
+
+    def test_get_returns_none_for_missing_name(self):
+        parent, _ = self._build_parent_with_spaced_child()
+
+        assert parent.get("missing") is None
+
+    def test_get_through_inherited_element_proxy(self):
+        parent, _ = self._build_parent_with_spaced_child()
+        owner = SysMLElement("owner-id")
+        owner._owner = None
+        proxy = InheritedElement(owner, parent)
+
+        resolved = proxy.get("Part Definition")
+
+        assert resolved is not None
+        assert resolved._name == "Part Definition"
+        assert proxy.get("missing") is None
