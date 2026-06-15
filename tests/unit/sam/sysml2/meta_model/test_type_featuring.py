@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.type_featuring import TypeFeaturing
 
 
 class TestTypeFeaturing:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.TypeFeaturing'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.TypeFeaturing'."""
 
     @pytest.fixture
     def element(self):

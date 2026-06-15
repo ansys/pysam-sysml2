@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.subclassification import Subclassification
 
 
 class TestSubclassification:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Subclassification'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Subclassification'."""
 
     @pytest.fixture
     def element(self):
@@ -41,11 +41,11 @@ class TestSubclassification:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_superclassifier(self, element):
-        """Test getter and setter for superclassifier property."""
+    def test_owning_classifier(self, element):
+        """Test getter and setter for owning classifier property."""
         value = "test_value"
-        element.superclassifier = value
-        assert element.superclassifier == value
+        element.owning_classifier = value
+        assert element.owning_classifier == value
 
     def test_subclassifier(self, element):
         """Test getter and setter for subclassifier property."""
@@ -53,8 +53,8 @@ class TestSubclassification:
         element.subclassifier = value
         assert element.subclassifier == value
 
-    def test_owning_classifier(self, element):
-        """Test getter and setter for owning classifier property."""
+    def test_superclassifier(self, element):
+        """Test getter and setter for superclassifier property."""
         value = "test_value"
-        element.owning_classifier = value
-        assert element.owning_classifier == value
+        element.superclassifier = value
+        assert element.superclassifier == value

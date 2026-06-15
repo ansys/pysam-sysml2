@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.variant_membership import VariantMembership
 
 
 class TestVariantMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.VariantMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.VariantMembership'."""
 
     @pytest.fixture
     def element(self):

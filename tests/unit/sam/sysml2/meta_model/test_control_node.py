@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.control_node import ControlNode
 
 
 class TestControlNode:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ControlNode'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ControlNode'."""
 
     @pytest.fixture
     def element(self):

@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.dependency import Dependency
 
 
 class TestDependency:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Dependency'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Dependency'."""
 
     @pytest.fixture
     def element(self):

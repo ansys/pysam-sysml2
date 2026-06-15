@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.while_loop_action_usage import WhileLoopActionU
 
 
 class TestWhileLoopActionUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.WhileLoopActionUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.WhileLoopActionUsage'."""
 
     @pytest.fixture
     def element(self):
@@ -41,14 +41,14 @@ class TestWhileLoopActionUsage:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_while_argument(self, element):
-        """Test getter and setter for while argument property."""
-        value = "test_value"
-        element.while_argument = value
-        assert element.while_argument == value
-
     def test_until_argument(self, element):
         """Test getter and setter for until argument property."""
         value = "test_value"
         element.until_argument = value
         assert element.until_argument == value
+
+    def test_while_argument(self, element):
+        """Test getter and setter for while argument property."""
+        value = "test_value"
+        element.while_argument = value
+        assert element.while_argument == value

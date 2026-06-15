@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.loop_action_usage import LoopActionUsage
 
 
 class TestLoopActionUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.LoopActionUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.LoopActionUsage'."""
 
     @pytest.fixture
     def element(self):

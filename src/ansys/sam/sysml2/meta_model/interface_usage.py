@@ -22,13 +22,13 @@
 
 """Generated interface usage class from metamodel."""
 
-from __future__ import annotations
+from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .connection_usage import ConnectionUsage
 
 
 class InterfaceUsage(ConnectionUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.InterfaceUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.InterfaceUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -41,30 +41,16 @@ class InterfaceUsage(ConnectionUsage):
         """
         super().__init__(element_id)
 
-        self._interface_definition = None
+        self._interface_definition = ObservedList(self, "interface_definition")
 
     @property
-    def interface_definition(self) -> "InterfaceDefinition":  # noqa: F821
+    def interface_definition(self) -> list["InterfaceDefinition"]:  # noqa: F821
         """
         Get the interface definition property.
 
         Returns
         -------
-        "InterfaceDefinition"
+        list["InterfaceDefinition"]
             Value of property interface definition.
         """
         return self._interface_definition
-
-    @interface_definition.setter
-    def interface_definition(self, value: "InterfaceDefinition"):  # noqa: F821
-        """
-        Set the interface_definition property.
-
-        Parameters
-        ----------
-        value: "InterfaceDefinition"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "interface_definition", value)
-        self._interface_definition = value

@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.succession_as_usage import SuccessionAsUsage
 
 
 class TestSuccessionAsUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.SuccessionAsUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.SuccessionAsUsage'."""
 
     @pytest.fixture
     def element(self):

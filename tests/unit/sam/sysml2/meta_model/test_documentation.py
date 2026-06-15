@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.documentation import Documentation
 
 
 class TestDocumentation:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Documentation'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Documentation'."""
 
     @pytest.fixture
     def element(self):

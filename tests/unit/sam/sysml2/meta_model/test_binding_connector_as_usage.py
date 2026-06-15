@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.binding_connector_as_usage import BindingConnec
 
 
 class TestBindingConnectorAsUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.BindingConnectorAsUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.BindingConnectorAsUsage'."""
 
     @pytest.fixture
     def element(self):

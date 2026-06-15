@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.satisfy_requirement_usage import SatisfyRequire
 
 
 class TestSatisfyRequirementUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.SatisfyRequirementUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.SatisfyRequirementUsage'."""
 
     @pytest.fixture
     def element(self):

@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.calculation_usage import CalculationUsage
 
 
 class TestCalculationUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.CalculationUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.CalculationUsage'."""
 
     @pytest.fixture
     def element(self):

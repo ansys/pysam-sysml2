@@ -29,7 +29,7 @@ from .event_occurrence_usage import EventOccurrenceUsage
 
 
 class PerformActionUsage(ActionUsage, EventOccurrenceUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.PerformActionUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.PerformActionUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

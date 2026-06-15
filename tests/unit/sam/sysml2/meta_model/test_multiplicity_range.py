@@ -26,11 +26,12 @@ from __future__ import annotations
 
 import pytest
 
+
 from ansys.sam.sysml2.meta_model.multiplicity_range import MultiplicityRange
 
 
 class TestMultiplicityRange:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.MultiplicityRange'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.MultiplicityRange'."""
 
     @pytest.fixture
     def element(self):
@@ -41,11 +42,9 @@ class TestMultiplicityRange:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_upper_bound(self, element):
-        """Test getter and setter for upper bound property."""
-        value = "test_value"
-        element.upper_bound = value
-        assert element.upper_bound == value
+    def test_bound(self, element):
+        """Test getter for bound property."""
+        _ = element.bound
 
     def test_lower_bound(self, element):
         """Test getter and setter for lower bound property."""
@@ -53,6 +52,8 @@ class TestMultiplicityRange:
         element.lower_bound = value
         assert element.lower_bound == value
 
-    def test_bound(self, element):
-        """Test getter for bound property."""
-        _ = element.bound
+    def test_upper_bound(self, element):
+        """Test getter and setter for upper bound property."""
+        value = "test_value"
+        element.upper_bound = value
+        assert element.upper_bound == value

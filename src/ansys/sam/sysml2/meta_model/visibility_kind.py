@@ -26,52 +26,26 @@ from __future__ import annotations
 
 
 class VisibilityKind:
-    """Java class 'com.ansys.medini.metamodel.sysml.VisibilityKind'."""
+    """Java class 'com.ansys.metamodel.sysml2.VisibilityKind'."""
 
-    PUBLIC: "VisibilityKind"
     PRIVATE: "VisibilityKind"
-    PROTECTED: "VisibilityKind"
-    PACKAGE: "VisibilityKind"
-    PUBLIC_VALUE: int
     PRIVATE_VALUE: int
+    PROTECTED: "VisibilityKind"
     PROTECTED_VALUE: int
-    PACKAGE_VALUE: int
-    VALUES_ARRAY: "VisibilityKind"
+    PUBLIC: "VisibilityKind"
+    PUBLIC_VALUE: int
     VALUES: list
-    value: int
-    name: str
+    VALUES_ARRAY: "VisibilityKind"
     literal: str
+    name: str
+    value: int
 
     def __init__(self):
         """Construct new instance."""
-        self._name = ""
-        self._value = 0
         self._by_name = None
         self._literal = ""
-
-    @property
-    def name(self) -> str:  # noqa: F821
-        """
-        Get the name property.
-
-        Returns
-        -------
-        str
-            Value of property name.
-        """
-        return self._name
-
-    @property
-    def value(self) -> int:
-        """
-        Get the value property.
-
-        Returns
-        -------
-        int
-            Value of property value.
-        """
-        return self._value
+        self._name = ""
+        self._value = 0
 
     @property
     def by_name(self) -> "VisibilityKind":  # noqa: F821
@@ -96,3 +70,27 @@ class VisibilityKind:
             Value of property literal.
         """
         return self._literal
+
+    @property
+    def name(self) -> str:  # noqa: F821
+        """
+        Get the name property.
+
+        Returns
+        -------
+        str
+            Value of property name.
+        """
+        return self._name
+
+    @property
+    def value(self) -> int:
+        """
+        Get the value property.
+
+        Returns
+        -------
+        int
+            Value of property value.
+        """
+        return self._value

@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.join_node import JoinNode
 
 
 class TestJoinNode:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.JoinNode'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.JoinNode'."""
 
     @pytest.fixture
     def element(self):

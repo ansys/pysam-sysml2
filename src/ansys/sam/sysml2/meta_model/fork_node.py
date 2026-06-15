@@ -26,7 +26,7 @@ from .control_node import ControlNode
 
 
 class ForkNode(ControlNode):
-    """Java class 'com.ansys.medini.metamodel.sysml.ForkNode'."""
+    """Java class 'com.ansys.metamodel.sysml2.ForkNode'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

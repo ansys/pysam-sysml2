@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.assert_constraint_usage import AssertConstraint
 
 
 class TestAssertConstraintUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.AssertConstraintUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.AssertConstraintUsage'."""
 
     @pytest.fixture
     def element(self):
