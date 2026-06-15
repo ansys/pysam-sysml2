@@ -36,11 +36,6 @@ class ScriptingProject(ABC):
         """Get the project name."""
         return self.get_name()
 
-    @property
-    def libraries_packages(self) -> list[SysMLElement]:
-        """Get the libraries packages."""
-        return self.get_libraries_packages()
-
     @abstractmethod
     def get_id(self) -> str:
         """Get the project ID."""
