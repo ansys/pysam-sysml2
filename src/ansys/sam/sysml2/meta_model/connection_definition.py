@@ -28,8 +28,8 @@ from .association_structure import AssociationStructure
 from .part_definition import PartDefinition
 
 
-class ConnectionDefinition(PartDefinition, AssociationStructure):
-    """Java class 'com.ansys.medini.metamodel.sysml.ConnectionDefinition'."""
+class ConnectionDefinition(AssociationStructure, PartDefinition):
+    """Java class 'com.ansys.metamodel.sysml2.ConnectionDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

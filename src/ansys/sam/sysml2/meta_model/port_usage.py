@@ -28,7 +28,7 @@ from .occurrence_usage import OccurrenceUsage
 
 
 class PortUsage(OccurrenceUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.PortUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.PortUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

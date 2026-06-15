@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.transition_feature_membership import Transition
 
 
 class TestTransitionFeatureMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.TransitionFeatureMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.TransitionFeatureMembership'."""
 
     @pytest.fixture
     def element(self):

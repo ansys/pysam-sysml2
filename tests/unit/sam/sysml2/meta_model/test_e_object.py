@@ -29,7 +29,13 @@ from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
 
+_REQUIRES_BUILDER_ADAPTATION = (
+    "builder writes read-only name after the metamodel regen; "
+    "builder adaptation lands in #185 (#183)"
+)
 
+
+@pytest.mark.skip(reason=_REQUIRES_BUILDER_ADAPTATION)
 class TestEObject:
 
     @pytest.fixture

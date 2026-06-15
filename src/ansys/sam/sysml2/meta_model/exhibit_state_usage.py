@@ -28,8 +28,8 @@ from .perform_action_usage import PerformActionUsage
 from .state_usage import StateUsage
 
 
-class ExhibitStateUsage(StateUsage, PerformActionUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.ExhibitStateUsage'."""
+class ExhibitStateUsage(PerformActionUsage, StateUsage):
+    """Java class 'com.ansys.metamodel.sysml2.ExhibitStateUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

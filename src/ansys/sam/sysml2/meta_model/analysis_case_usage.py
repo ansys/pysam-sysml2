@@ -28,7 +28,7 @@ from .case_usage import CaseUsage
 
 
 class AnalysisCaseUsage(CaseUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.AnalysisCaseUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.AnalysisCaseUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

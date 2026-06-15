@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.textual_representation import TextualRepresenta
 
 
 class TestTextualRepresentation:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.TextualRepresentation'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.TextualRepresentation'."""
 
     @pytest.fixture
     def element(self):
@@ -41,17 +41,17 @@ class TestTextualRepresentation:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_language(self, element):
-        """Test getter and setter for language property."""
-        value = ""
-        element.language = value
-        assert element.language == value
-
     def test_body(self, element):
         """Test getter and setter for body property."""
         value = ""
         element.body = value
         assert element.body == value
+
+    def test_language(self, element):
+        """Test getter and setter for language property."""
+        value = ""
+        element.language = value
+        assert element.language == value
 
     def test_represented_element(self, element):
         """Test getter and setter for represented element property."""

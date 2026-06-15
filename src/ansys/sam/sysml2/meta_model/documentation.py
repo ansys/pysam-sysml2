@@ -28,7 +28,7 @@ from .comment import Comment
 
 
 class Documentation(Comment):
-    """Java class 'com.ansys.medini.metamodel.sysml.Documentation'."""
+    """Java class 'com.ansys.metamodel.sysml2.Documentation'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

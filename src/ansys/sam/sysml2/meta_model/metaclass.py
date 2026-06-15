@@ -26,7 +26,7 @@ from .structure import Structure
 
 
 class Metaclass(Structure):
-    """Java class 'com.ansys.medini.metamodel.sysml.Metaclass'."""
+    """Java class 'com.ansys.metamodel.sysml2.Metaclass'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
