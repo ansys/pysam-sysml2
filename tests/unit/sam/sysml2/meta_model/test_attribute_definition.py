@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.attribute_definition import AttributeDefinition
 
 
 class TestAttributeDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.AttributeDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.AttributeDefinition'."""
 
     @pytest.fixture
     def element(self):

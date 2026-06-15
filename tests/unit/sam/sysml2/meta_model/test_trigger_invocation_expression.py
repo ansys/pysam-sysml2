@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.trigger_invocation_expression import TriggerInv
 
 
 class TestTriggerInvocationExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.TriggerInvocationExpression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.TriggerInvocationExpression'."""
 
     @pytest.fixture
     def element(self):

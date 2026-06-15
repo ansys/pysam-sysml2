@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.merge_node import MergeNode
 
 
 class TestMergeNode:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.MergeNode'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.MergeNode'."""
 
     @pytest.fixture
     def element(self):

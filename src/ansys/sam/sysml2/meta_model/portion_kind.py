@@ -26,48 +26,24 @@ from __future__ import annotations
 
 
 class PortionKind:
-    """Java class 'com.ansys.medini.metamodel.sysml.PortionKind'."""
+    """Java class 'com.ansys.metamodel.sysml2.PortionKind'."""
 
-    TIMESLICE: "PortionKind"
     SNAPSHOT: "PortionKind"
-    TIMESLICE_VALUE: int
     SNAPSHOT_VALUE: int
-    VALUES_ARRAY: "PortionKind"
+    TIMESLICE: "PortionKind"
+    TIMESLICE_VALUE: int
     VALUES: list
-    value: int
-    name: str
+    VALUES_ARRAY: "PortionKind"
     literal: str
+    name: str
+    value: int
 
     def __init__(self):
         """Construct new instance."""
-        self._name = ""
-        self._value = 0
         self._by_name = None
         self._literal = ""
-
-    @property
-    def name(self) -> str:  # noqa: F821
-        """
-        Get the name property.
-
-        Returns
-        -------
-        str
-            Value of property name.
-        """
-        return self._name
-
-    @property
-    def value(self) -> int:
-        """
-        Get the value property.
-
-        Returns
-        -------
-        int
-            Value of property value.
-        """
-        return self._value
+        self._name = ""
+        self._value = 0
 
     @property
     def by_name(self) -> "PortionKind":  # noqa: F821
@@ -92,3 +68,27 @@ class PortionKind:
             Value of property literal.
         """
         return self._literal
+
+    @property
+    def name(self) -> str:  # noqa: F821
+        """
+        Get the name property.
+
+        Returns
+        -------
+        str
+            Value of property name.
+        """
+        return self._name
+
+    @property
+    def value(self) -> int:
+        """
+        Get the value property.
+
+        Returns
+        -------
+        int
+            Value of property value.
+        """
+        return self._value

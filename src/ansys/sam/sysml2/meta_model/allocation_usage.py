@@ -28,7 +28,7 @@ from .connection_usage import ConnectionUsage
 
 
 class AllocationUsage(ConnectionUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.AllocationUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.AllocationUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

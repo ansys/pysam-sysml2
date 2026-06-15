@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.redefinition import Redefinition
 
 
 class TestRedefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Redefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Redefinition'."""
 
     @pytest.fixture
     def element(self):

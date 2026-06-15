@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.expression import Expression
 
 
 class TestExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Expression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Expression'."""
 
     @pytest.fixture
     def element(self):
@@ -52,3 +52,9 @@ class TestExpression:
         value = "test_value"
         element.result = value
         assert element.result == value
+
+    def test_is_model_level_evaluable(self, element):
+        """Test getter and setter for is model level evaluable property."""
+        value = False
+        element.is_model_level_evaluable = value
+        assert element.is_model_level_evaluable == value

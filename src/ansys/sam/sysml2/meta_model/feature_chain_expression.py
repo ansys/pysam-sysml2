@@ -28,7 +28,7 @@ from .operator_expression import OperatorExpression
 
 
 class FeatureChainExpression(OperatorExpression):
-    """Java class 'com.ansys.medini.metamodel.sysml.FeatureChainExpression'."""
+    """Java class 'com.ansys.metamodel.sysml2.FeatureChainExpression'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

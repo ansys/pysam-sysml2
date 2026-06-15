@@ -22,14 +22,16 @@
 
 """Generated  test class from metamodel."""
 
+from __future__ import annotations
 
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.action_usage import ActionUsage
 
 
 class TestActionUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ActionUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ActionUsage'."""
 
     @pytest.fixture
     def element(self):
@@ -43,3 +45,7 @@ class TestActionUsage:
     def test_action_definition(self, element):
         """Test getter for action definition property."""
         _ = element.action_definition
+
+    def test_subaction_usage(self, element):
+        """Test getter for subaction usage property."""
+        _ = element.subaction_usage

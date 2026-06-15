@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.metadata_usage import MetadataUsage
 
 
 class TestMetadataUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.MetadataUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.MetadataUsage'."""
 
     @pytest.fixture
     def element(self):

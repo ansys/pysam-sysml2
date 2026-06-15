@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.feature_chain_expression import FeatureChainExp
 
 
 class TestFeatureChainExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.FeatureChainExpression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.FeatureChainExpression'."""
 
     @pytest.fixture
     def element(self):

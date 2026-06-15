@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.multiplicity import Multiplicity
 
 
 class TestMultiplicity:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Multiplicity'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Multiplicity'."""
 
     @pytest.fixture
     def element(self):

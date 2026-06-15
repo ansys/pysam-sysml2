@@ -28,7 +28,7 @@ from .parameter_membership import ParameterMembership
 
 
 class SubjectMembership(ParameterMembership):
-    """Java class 'com.ansys.medini.metamodel.sysml.SubjectMembership'."""
+    """Java class 'com.ansys.metamodel.sysml2.SubjectMembership'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

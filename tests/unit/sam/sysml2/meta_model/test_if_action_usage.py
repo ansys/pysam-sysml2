@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.if_action_usage import IfActionUsage
 
 
 class TestIfActionUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.IfActionUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.IfActionUsage'."""
 
     @pytest.fixture
     def element(self):

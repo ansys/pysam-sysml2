@@ -26,7 +26,7 @@ from .control_node import ControlNode
 
 
 class MergeNode(ControlNode):
-    """Java class 'com.ansys.medini.metamodel.sysml.MergeNode'."""
+    """Java class 'com.ansys.metamodel.sysml2.MergeNode'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

@@ -28,7 +28,7 @@ from .annotating_element import AnnotatingElement
 
 
 class TextualRepresentation(AnnotatingElement):
-    """Java class 'com.ansys.medini.metamodel.sysml.TextualRepresentation'."""
+    """Java class 'com.ansys.metamodel.sysml2.TextualRepresentation'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -41,35 +41,9 @@ class TextualRepresentation(AnnotatingElement):
         """
         super().__init__(element_id)
 
-        self._language = ""
         self._body = ""
+        self._language = ""
         self._represented_element = None
-
-    @property
-    def language(self) -> str:  # noqa: F821
-        """
-        Get the language property.
-
-        Returns
-        -------
-        str
-            Value of property language.
-        """
-        return self._language
-
-    @language.setter
-    def language(self, value: str):  # noqa: F821
-        """
-        Set the language property.
-
-        Parameters
-        ----------
-        value: str
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "language", value)
-        self._language = value
 
     @property
     def body(self) -> str:  # noqa: F821
@@ -96,6 +70,32 @@ class TextualRepresentation(AnnotatingElement):
         if self._observer is not None:
             self._observer.notify(self.id, "body", value)
         self._body = value
+
+    @property
+    def language(self) -> str:  # noqa: F821
+        """
+        Get the language property.
+
+        Returns
+        -------
+        str
+            Value of property language.
+        """
+        return self._language
+
+    @language.setter
+    def language(self, value: str):  # noqa: F821
+        """
+        Set the language property.
+
+        Parameters
+        ----------
+        value: str
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "language", value)
+        self._language = value
 
     @property
     def represented_element(self) -> "Element":  # noqa: F821

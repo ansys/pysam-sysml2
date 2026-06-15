@@ -28,7 +28,7 @@ from .case_definition import CaseDefinition
 
 
 class VerificationCaseDefinition(CaseDefinition):
-    """Java class 'com.ansys.medini.metamodel.sysml.VerificationCaseDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.VerificationCaseDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

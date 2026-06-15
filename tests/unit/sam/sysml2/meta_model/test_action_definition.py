@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.action_definition import ActionDefinition
 
 
 class TestActionDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ActionDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ActionDefinition'."""
 
     @pytest.fixture
     def element(self):

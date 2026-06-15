@@ -28,7 +28,7 @@ from .action_usage import ActionUsage
 
 
 class LoopActionUsage(ActionUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.LoopActionUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.LoopActionUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

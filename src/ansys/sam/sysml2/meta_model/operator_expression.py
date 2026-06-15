@@ -28,7 +28,7 @@ from .invocation_expression import InvocationExpression
 
 
 class OperatorExpression(InvocationExpression):
-    """Java class 'com.ansys.medini.metamodel.sysml.OperatorExpression'."""
+    """Java class 'com.ansys.metamodel.sysml2.OperatorExpression'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

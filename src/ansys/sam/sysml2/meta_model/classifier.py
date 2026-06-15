@@ -28,7 +28,7 @@ from .type_ import Type
 
 
 class Classifier(Type):
-    """Java class 'com.ansys.medini.metamodel.sysml.Classifier'."""
+    """Java class 'com.ansys.metamodel.sysml2.Classifier'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -41,20 +41,7 @@ class Classifier(Type):
         """
         super().__init__(element_id)
 
-        self._super_classifier = ObservedList(self, "super_classifier")
         self._owned_subclassification = ObservedList(self, "owned_subclassification")
-
-    @property
-    def super_classifier(self) -> list["Classifier"]:  # noqa: F821
-        """
-        Get the super classifier property.
-
-        Returns
-        -------
-        list["Classifier"]
-            Value of property super classifier.
-        """
-        return self._super_classifier
 
     @property
     def owned_subclassification(self) -> list["Subclassification"]:  # noqa: F821

@@ -28,7 +28,7 @@ from .connection_definition import ConnectionDefinition
 
 
 class AllocationDefinition(ConnectionDefinition):
-    """Java class 'com.ansys.medini.metamodel.sysml.AllocationDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.AllocationDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

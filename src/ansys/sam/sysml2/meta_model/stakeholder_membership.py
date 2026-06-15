@@ -28,7 +28,7 @@ from .parameter_membership import ParameterMembership
 
 
 class StakeholderMembership(ParameterMembership):
-    """Java class 'com.ansys.medini.metamodel.sysml.StakeholderMembership'."""
+    """Java class 'com.ansys.metamodel.sysml2.StakeholderMembership'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
