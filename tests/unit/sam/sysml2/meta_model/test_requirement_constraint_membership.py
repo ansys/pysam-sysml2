@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.requirement_constraint_membership import Requir
 
 
 class TestRequirementConstraintMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.RequirementConstraintMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.RequirementConstraintMembership'."""
 
     @pytest.fixture
     def element(self):
@@ -47,8 +47,14 @@ class TestRequirementConstraintMembership:
         element.kind = value
         assert element.kind == value
 
-    def test_constraint(self, element):
-        """Test getter and setter for constraint property."""
+    def test_owned_constraint(self, element):
+        """Test getter and setter for owned constraint property."""
         value = "test_value"
-        element.constraint = value
-        assert element.constraint == value
+        element.owned_constraint = value
+        assert element.owned_constraint == value
+
+    def test_referenced_constraint(self, element):
+        """Test getter and setter for referenced constraint property."""
+        value = "test_value"
+        element.referenced_constraint = value
+        assert element.referenced_constraint == value

@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.connection_definition import ConnectionDefinition
 
 
 class TestConnectionDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ConnectionDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ConnectionDefinition'."""
 
     @pytest.fixture
     def element(self):

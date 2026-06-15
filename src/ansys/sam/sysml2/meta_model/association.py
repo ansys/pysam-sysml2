@@ -31,7 +31,7 @@ from .relationship import Relationship
 
 
 class Association(Classifier, Relationship):
-    """Java class 'com.ansys.medini.metamodel.sysml.Association'."""
+    """Java class 'com.ansys.metamodel.sysml2.Association'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -44,10 +44,34 @@ class Association(Classifier, Relationship):
         """
         super().__init__(element_id)
 
-        self._source_type = None
-        self._related_type = ObservedList(self, "related_type")
         self._association_end = ObservedList(self, "association_end")
+        self._related_type = ObservedList(self, "related_type")
+        self._source_type = None
         self._target_type = ObservedList(self, "target_type")
+
+    @property
+    def association_end(self) -> list["Feature"]:  # noqa: F821
+        """
+        Get the association end property.
+
+        Returns
+        -------
+        list["Feature"]
+            Value of property association end.
+        """
+        return self._association_end
+
+    @property
+    def related_type(self) -> list["Type"]:  # noqa: F821
+        """
+        Get the related type property.
+
+        Returns
+        -------
+        list["Type"]
+            Value of property related type.
+        """
+        return self._related_type
 
     @property
     def source_type(self) -> "Type":  # noqa: F821
@@ -74,30 +98,6 @@ class Association(Classifier, Relationship):
         if self._observer is not None:
             self._observer.notify(self.id, "source_type", value)
         self._source_type = value
-
-    @property
-    def related_type(self) -> list["Type"]:  # noqa: F821
-        """
-        Get the related type property.
-
-        Returns
-        -------
-        list["Type"]
-            Value of property related type.
-        """
-        return self._related_type
-
-    @property
-    def association_end(self) -> list["Feature"]:  # noqa: F821
-        """
-        Get the association end property.
-
-        Returns
-        -------
-        list["Feature"]
-            Value of property association end.
-        """
-        return self._association_end
 
     @property
     def target_type(self) -> list["Type"]:  # noqa: F821

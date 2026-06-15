@@ -24,11 +24,11 @@
 
 from __future__ import annotations
 
-from .membership import Membership
+from .owning_membership import OwningMembership
 
 
-class VariantMembership(Membership):
-    """Java class 'com.ansys.medini.metamodel.sysml.VariantMembership'."""
+class VariantMembership(OwningMembership):
+    """Java class 'com.ansys.metamodel.sysml2.VariantMembership'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
