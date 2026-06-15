@@ -42,7 +42,5 @@ class TestFeatureReferenceExpression:
         assert element.id == "element_id"
 
     def test_referent(self, element):
-        """Test getter and setter for referent property."""
-        value = "test_value"
-        element.referent = value
-        assert element.referent == value
+        """Test getter for referent property."""
+        _ = element.referent

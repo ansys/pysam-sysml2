@@ -42,10 +42,8 @@ class TestAcceptActionUsage:
         assert element.id == "element_id"
 
     def test_payload_argument(self, element):
-        """Test getter and setter for payload argument property."""
-        value = "test_value"
-        element.payload_argument = value
-        assert element.payload_argument == value
+        """Test getter for payload argument property."""
+        _ = element.payload_argument
 
     def test_payload_parameter(self, element):
         """Test getter and setter for payload parameter property."""

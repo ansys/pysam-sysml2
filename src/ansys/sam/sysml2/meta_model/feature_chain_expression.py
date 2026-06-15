@@ -54,17 +54,3 @@ class FeatureChainExpression(OperatorExpression):
             Value of property target feature.
         """
         return self._target_feature
-
-    @target_feature.setter
-    def target_feature(self, value: "Feature"):  # noqa: F821
-        """
-        Set the target_feature property.
-
-        Parameters
-        ----------
-        value: "Feature"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "target_feature", value)
-        self._target_feature = value

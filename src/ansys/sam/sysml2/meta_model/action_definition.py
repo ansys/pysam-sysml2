@@ -28,7 +28,7 @@ from .behavior import Behavior
 from .occurrence_definition import OccurrenceDefinition
 
 
-class ActionDefinition(OccurrenceDefinition, Behavior):
+class ActionDefinition(Behavior, OccurrenceDefinition):
     """Java class 'com.ansys.metamodel.sysml2.ActionDefinition'."""
 
     def __init__(self, element_id: str):

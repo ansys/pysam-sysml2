@@ -54,17 +54,3 @@ class FeatureReferenceExpression(Expression):
             Value of property referent.
         """
         return self._referent
-
-    @referent.setter
-    def referent(self, value: "Feature"):  # noqa: F821
-        """
-        Set the referent property.
-
-        Parameters
-        ----------
-        value: "Feature"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "referent", value)
-        self._referent = value

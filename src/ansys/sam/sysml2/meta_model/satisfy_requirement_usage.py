@@ -28,7 +28,7 @@ from .assert_constraint_usage import AssertConstraintUsage
 from .requirement_usage import RequirementUsage
 
 
-class SatisfyRequirementUsage(RequirementUsage, AssertConstraintUsage):
+class SatisfyRequirementUsage(AssertConstraintUsage, RequirementUsage):
     """Java class 'com.ansys.metamodel.sysml2.SatisfyRequirementUsage'."""
 
     def __init__(self, element_id: str):

@@ -28,7 +28,7 @@ from .item_usage import ItemUsage
 from .metadata_feature import MetadataFeature
 
 
-class MetadataUsage(MetadataFeature, ItemUsage):
+class MetadataUsage(ItemUsage, MetadataFeature):
     """Java class 'com.ansys.metamodel.sysml2.MetadataUsage'."""
 
     def __init__(self, element_id: str):

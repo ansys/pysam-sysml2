@@ -48,6 +48,7 @@ class StateDefinition(ActionDefinition):
         self._exit_action = None
         self._state = ObservedList(self, "state")
         self._is_parallel = False
+        self._set_is_parallel = False
 
     @property
     def do_action(self) -> "ActionUsage":  # noqa: F821
@@ -164,3 +165,15 @@ class StateDefinition(ActionDefinition):
         if self._observer is not None:
             self._observer.notify(self.id, "is_parallel", value)
         self._is_parallel = value
+
+    @property
+    def set_is_parallel(self) -> bool:  # noqa: F821
+        """
+        Get the set is parallel property.
+
+        Returns
+        -------
+        bool
+            Value of property set is parallel.
+        """
+        return self._set_is_parallel

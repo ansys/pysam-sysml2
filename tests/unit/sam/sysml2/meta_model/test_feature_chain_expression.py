@@ -42,7 +42,5 @@ class TestFeatureChainExpression:
         assert element.id == "element_id"
 
     def test_target_feature(self, element):
-        """Test getter and setter for target feature property."""
-        value = "test_value"
-        element.target_feature = value
-        assert element.target_feature == value
+        """Test getter for target feature property."""
+        _ = element.target_feature

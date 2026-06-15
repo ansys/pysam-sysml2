@@ -26,7 +26,7 @@ from .binding_connector import BindingConnector
 from .connector_as_usage import ConnectorAsUsage
 
 
-class BindingConnectorAsUsage(ConnectorAsUsage, BindingConnector):
+class BindingConnectorAsUsage(BindingConnector, ConnectorAsUsage):
     """Java class 'com.ansys.metamodel.sysml2.BindingConnectorAsUsage'."""
 
     def __init__(self, element_id: str):

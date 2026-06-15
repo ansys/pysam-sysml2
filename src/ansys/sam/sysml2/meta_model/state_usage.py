@@ -48,6 +48,7 @@ class StateUsage(ActionUsage):
         self._exit_action = None
         self._state_definition = ObservedList(self, "state_definition")
         self._is_parallel = False
+        self._set_is_parallel = False
         self._substate_usage = False
 
     @property
@@ -165,6 +166,18 @@ class StateUsage(ActionUsage):
         if self._observer is not None:
             self._observer.notify(self.id, "is_parallel", value)
         self._is_parallel = value
+
+    @property
+    def set_is_parallel(self) -> bool:  # noqa: F821
+        """
+        Get the set is parallel property.
+
+        Returns
+        -------
+        bool
+            Value of property set is parallel.
+        """
+        return self._set_is_parallel
 
     @property
     def substate_usage(self) -> bool:  # noqa: F821

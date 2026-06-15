@@ -199,3 +199,35 @@ class TestFeature:
     def test_set_direction(self, element):
         """Test getter for set direction property."""
         _ = element.set_direction
+
+    def test_set_is_composite(self, element):
+        """Test getter for set is composite property."""
+        _ = element.set_is_composite
+
+    def test_set_is_constant(self, element):
+        """Test getter for set is constant property."""
+        _ = element.set_is_constant
+
+    def test_set_is_derived(self, element):
+        """Test getter for set is derived property."""
+        _ = element.set_is_derived
+
+    def test_set_is_end(self, element):
+        """Test getter for set is end property."""
+        _ = element.set_is_end
+
+    def test_set_is_ordered(self, element):
+        """Test getter for set is ordered property."""
+        _ = element.set_is_ordered
+
+    def test_set_is_portion(self, element):
+        """Test getter for set is portion property."""
+        _ = element.set_is_portion
+
+    def test_set_is_unique(self, element):
+        """Test getter for set is unique property."""
+        _ = element.set_is_unique
+
+    def test_set_is_variable(self, element):
+        """Test getter for set is variable property."""
+        _ = element.set_is_variable

@@ -28,7 +28,7 @@ from .class_ import Class
 from .definition import Definition
 
 
-class OccurrenceDefinition(Definition, Class):
+class OccurrenceDefinition(Class, Definition):
     """Java class 'com.ansys.metamodel.sysml2.OccurrenceDefinition'."""
 
     def __init__(self, element_id: str):
@@ -43,6 +43,7 @@ class OccurrenceDefinition(Definition, Class):
         super().__init__(element_id)
 
         self._is_individual = False
+        self._set_is_individual = False
 
     @property
     def is_individual(self) -> bool:  # noqa: F821
@@ -69,3 +70,15 @@ class OccurrenceDefinition(Definition, Class):
         if self._observer is not None:
             self._observer.notify(self.id, "is_individual", value)
         self._is_individual = value
+
+    @property
+    def set_is_individual(self) -> bool:  # noqa: F821
+        """
+        Get the set is individual property.
+
+        Returns
+        -------
+        bool
+            Value of property set is individual.
+        """
+        return self._set_is_individual

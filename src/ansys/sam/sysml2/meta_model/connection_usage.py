@@ -28,7 +28,7 @@ from .connector_as_usage import ConnectorAsUsage
 from .part_usage import PartUsage
 
 
-class ConnectionUsage(PartUsage, ConnectorAsUsage):
+class ConnectionUsage(ConnectorAsUsage, PartUsage):
     """Java class 'com.ansys.metamodel.sysml2.ConnectionUsage'."""
 
     def __init__(self, element_id: str):

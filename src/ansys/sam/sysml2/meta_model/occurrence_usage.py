@@ -47,6 +47,7 @@ class OccurrenceUsage(Usage):
         self._occurrence_definition = ObservedList(self, "occurrence_definition")
         self._portion_kind = None
         self._is_individual = False
+        self._set_is_individual = False
 
     @property
     def individual_definition(self) -> "OccurrenceDefinition":  # noqa: F821
@@ -137,3 +138,15 @@ class OccurrenceUsage(Usage):
         if self._observer is not None:
             self._observer.notify(self.id, "is_individual", value)
         self._is_individual = value
+
+    @property
+    def set_is_individual(self) -> bool:  # noqa: F821
+        """
+        Get the set is individual property.
+
+        Returns
+        -------
+        bool
+            Value of property set is individual.
+        """
+        return self._set_is_individual

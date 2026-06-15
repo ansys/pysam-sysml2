@@ -28,7 +28,7 @@ from .perform_action_usage import PerformActionUsage
 from .use_case_usage import UseCaseUsage
 
 
-class IncludeUseCaseUsage(UseCaseUsage, PerformActionUsage):
+class IncludeUseCaseUsage(PerformActionUsage, UseCaseUsage):
     """Java class 'com.ansys.metamodel.sysml2.IncludeUseCaseUsage'."""
 
     def __init__(self, element_id: str):

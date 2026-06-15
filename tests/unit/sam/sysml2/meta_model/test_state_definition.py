@@ -69,3 +69,7 @@ class TestStateDefinition:
         value = False
         element.is_parallel = value
         assert element.is_parallel == value
+
+    def test_set_is_parallel(self, element):
+        """Test getter for set is parallel property."""
+        _ = element.set_is_parallel

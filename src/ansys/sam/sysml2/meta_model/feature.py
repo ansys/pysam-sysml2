@@ -74,6 +74,14 @@ class Feature(Type):
         self._is_variable = False
         self._owned_cross_feature = False
         self._set_direction = False
+        self._set_is_composite = False
+        self._set_is_constant = False
+        self._set_is_derived = False
+        self._set_is_end = False
+        self._set_is_ordered = False
+        self._set_is_portion = False
+        self._set_is_unique = False
+        self._set_is_variable = False
 
     @property
     def chaining_feature(self) -> list["Feature"]:  # noqa: F821
@@ -684,3 +692,99 @@ class Feature(Type):
             Value of property set direction.
         """
         return self._set_direction
+
+    @property
+    def set_is_composite(self) -> bool:  # noqa: F821
+        """
+        Get the set is composite property.
+
+        Returns
+        -------
+        bool
+            Value of property set is composite.
+        """
+        return self._set_is_composite
+
+    @property
+    def set_is_constant(self) -> bool:  # noqa: F821
+        """
+        Get the set is constant property.
+
+        Returns
+        -------
+        bool
+            Value of property set is constant.
+        """
+        return self._set_is_constant
+
+    @property
+    def set_is_derived(self) -> bool:  # noqa: F821
+        """
+        Get the set is derived property.
+
+        Returns
+        -------
+        bool
+            Value of property set is derived.
+        """
+        return self._set_is_derived
+
+    @property
+    def set_is_end(self) -> bool:  # noqa: F821
+        """
+        Get the set is end property.
+
+        Returns
+        -------
+        bool
+            Value of property set is end.
+        """
+        return self._set_is_end
+
+    @property
+    def set_is_ordered(self) -> bool:  # noqa: F821
+        """
+        Get the set is ordered property.
+
+        Returns
+        -------
+        bool
+            Value of property set is ordered.
+        """
+        return self._set_is_ordered
+
+    @property
+    def set_is_portion(self) -> bool:  # noqa: F821
+        """
+        Get the set is portion property.
+
+        Returns
+        -------
+        bool
+            Value of property set is portion.
+        """
+        return self._set_is_portion
+
+    @property
+    def set_is_unique(self) -> bool:  # noqa: F821
+        """
+        Get the set is unique property.
+
+        Returns
+        -------
+        bool
+            Value of property set is unique.
+        """
+        return self._set_is_unique
+
+    @property
+    def set_is_variable(self) -> bool:  # noqa: F821
+        """
+        Get the set is variable property.
+
+        Returns
+        -------
+        bool
+            Value of property set is variable.
+        """
+        return self._set_is_variable

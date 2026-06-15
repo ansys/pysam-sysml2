@@ -29,7 +29,7 @@ from .connector_as_usage import ConnectorAsUsage
 from .flow import Flow
 
 
-class FlowUsage(ActionUsage, Flow, ConnectorAsUsage):
+class FlowUsage(ActionUsage, ConnectorAsUsage, Flow):
     """Java class 'com.ansys.metamodel.sysml2.FlowUsage'."""
 
     def __init__(self, element_id: str):

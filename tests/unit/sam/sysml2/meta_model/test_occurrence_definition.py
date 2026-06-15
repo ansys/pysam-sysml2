@@ -46,3 +46,7 @@ class TestOccurrenceDefinition:
         value = False
         element.is_individual = value
         assert element.is_individual == value
+
+    def test_set_is_individual(self, element):
+        """Test getter for set is individual property."""
+        _ = element.set_is_individual

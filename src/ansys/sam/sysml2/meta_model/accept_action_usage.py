@@ -58,20 +58,6 @@ class AcceptActionUsage(ActionUsage):
         """
         return self._payload_argument
 
-    @payload_argument.setter
-    def payload_argument(self, value: "Expression"):  # noqa: F821
-        """
-        Set the payload_argument property.
-
-        Parameters
-        ----------
-        value: "Expression"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "payload_argument", value)
-        self._payload_argument = value
-
     @property
     def payload_parameter(self) -> "ReferenceUsage":  # noqa: F821
         """
