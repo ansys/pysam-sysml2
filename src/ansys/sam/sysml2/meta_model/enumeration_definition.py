@@ -28,7 +28,7 @@ from .attribute_definition import AttributeDefinition
 
 
 class EnumerationDefinition(AttributeDefinition):
-    """Java class 'com.ansys.medini.metamodel.sysml.EnumerationDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.EnumerationDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

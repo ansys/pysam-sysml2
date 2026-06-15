@@ -28,7 +28,7 @@ from .feature_membership import FeatureMembership
 
 
 class StateSubactionMembership(FeatureMembership):
-    """Java class 'com.ansys.medini.metamodel.sysml.StateSubactionMembership'."""
+    """Java class 'com.ansys.metamodel.sysml2.StateSubactionMembership'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

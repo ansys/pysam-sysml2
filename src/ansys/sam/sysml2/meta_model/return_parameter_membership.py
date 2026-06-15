@@ -26,7 +26,7 @@ from .parameter_membership import ParameterMembership
 
 
 class ReturnParameterMembership(ParameterMembership):
-    """Java class 'com.ansys.medini.metamodel.sysml.ReturnParameterMembership'."""
+    """Java class 'com.ansys.metamodel.sysml2.ReturnParameterMembership'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

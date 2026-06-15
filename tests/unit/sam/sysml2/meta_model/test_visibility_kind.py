@@ -30,20 +30,12 @@ from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind
 
 
 class TestVisibilityKind:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.VisibilityKind'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.VisibilityKind'."""
 
     @pytest.fixture
     def element(self):
         """Create test element."""
         return VisibilityKind()
-
-    def test_name(self, element):
-        """Test getter for name property."""
-        _ = element.name
-
-    def test_value(self, element):
-        """Test getter for value property."""
-        _ = element.value
 
     def test_by_name(self, element):
         """Test getter for by name property."""
@@ -52,3 +44,11 @@ class TestVisibilityKind:
     def test_literal(self, element):
         """Test getter for literal property."""
         _ = element.literal
+
+    def test_name(self, element):
+        """Test getter for name property."""
+        _ = element.name
+
+    def test_value(self, element):
+        """Test getter for value property."""
+        _ = element.value

@@ -22,15 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-from __future__ import annotations
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.step import Step
 
 
 class TestStep:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Step'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Step'."""
 
     @pytest.fixture
     def element(self):
@@ -48,13 +47,3 @@ class TestStep:
     def test_parameter(self, element):
         """Test getter for parameter property."""
         _ = element.parameter
-
-    def test_general_parameter(self, element):
-        """Test getter for general parameter property."""
-        _ = element.general_parameter
-
-    def test_transition_feature_kind(self, element):
-        """Test getter and setter for transition feature kind property."""
-        value = "test_value"
-        element.transition_feature_kind = value
-        assert element.transition_feature_kind == value

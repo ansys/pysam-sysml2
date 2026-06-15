@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.library_package import LibraryPackage
 
 
 class TestLibraryPackage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.LibraryPackage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.LibraryPackage'."""
 
     @pytest.fixture
     def element(self):

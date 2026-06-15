@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.metaclass import Metaclass
 
 
 class TestMetaclass:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Metaclass'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Metaclass'."""
 
     @pytest.fixture
     def element(self):

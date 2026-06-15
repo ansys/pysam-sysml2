@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.return_parameter_membership import ReturnParame
 
 
 class TestReturnParameterMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ReturnParameterMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ReturnParameterMembership'."""
 
     @pytest.fixture
     def element(self):
