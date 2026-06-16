@@ -35,8 +35,8 @@ from tests.unit.mocked_connector import MockedSysML2APIConnector
 class TestAnsysSysML2Project:
 
     @pytest.mark.skip(
-        reason="builder writes read-only name after the metamodel regen; "
-        "builder adaptation lands in #185 (#183)"
+        reason="creating elements with name needs the read-only-name handling "
+        "that lands in #192 (#183)"
     )
     def test_streamlined_project_factory_initialization(self, mocker):
         mocker.patch(
