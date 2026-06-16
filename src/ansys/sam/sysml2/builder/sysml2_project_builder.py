@@ -249,8 +249,7 @@ class SysML2ProjectBuilder:
                 element._element_hash_map = self.__get_all_sysml_element(element)
                 element._owned_names = self.__get_sysml_owned_names(element)
 
-    @staticmethod
-    def _clear_element(element, keep: set[str]) -> None:
+    def _clear_element(self, element, keep: set[str]) -> None:
         """Drop stale pre-wrapped proxies from a previous build before refilling."""
         for x in list(element.__dict__.keys()):
             if not x.startswith("_") and x not in keep:
