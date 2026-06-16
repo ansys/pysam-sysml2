@@ -138,7 +138,7 @@ class TestSysMLElementGet:
         child._name = "Part Definition"
         parent = SysMLElement("parent-id")
         parent._element_hash_map = {"Part Definition": child}
-        parent._ownedElement = [child]
+        parent._owned_names = {"Part Definition"}
         return parent, child
 
     def test_get_returns_owned_child_with_spaced_name(self):
