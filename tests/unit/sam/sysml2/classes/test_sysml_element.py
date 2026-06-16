@@ -35,7 +35,7 @@ from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 class TestSysMLElement:
 
     @pytest.fixture
-    def new_format_project(self, connector) -> ScriptingProject:
+    def project(self, connector) -> ScriptingProject:
         manager = SysML2ProjectManager(connector)
         return manager.get_scripting_project(PROJECT_ID_3)
 
@@ -50,15 +50,13 @@ class TestSysMLElement:
 
         assert attr._name == "NewAttr"
 
-    def test_expression_get_value_new_format(self, new_format_project):
-        package = new_format_project.get_root_package()
+    def test_expression_get_value(self, project):
+        package = project.get_root_package()
 
         assert package.Feature.myExpressionFeature.get_value() == (10, "kg")
 
-    def test_expression_set_value_new_format(
-        self, connector, new_format_project, mocker
-    ):
-        package = new_format_project.get_root_package()
+    def test_expression_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -66,14 +64,14 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_expression_complex_value_throws_error(self, new_format_project):
-        package = new_format_project.get_root_package()
+    def test_expression_complex_value_throws_error(self, project):
+        package = project.get_root_package()
 
         with pytest.raises(UnsupportedValueExpression):
             package.Feature.myComplexExpressionFeature.get_value()
 
-    def test_int_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_int_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -83,8 +81,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_string_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_string_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -94,8 +92,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_bool_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_bool_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -105,8 +103,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_float_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_float_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
