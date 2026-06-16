@@ -40,7 +40,7 @@ class TestScriptingMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = scripting_mapper.map("pp", data, None).get_element()
+        element = scripting_mapper.map(data, None).get_element()
 
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
@@ -52,7 +52,7 @@ class TestScriptingMapper:
         }
 
         with pytest.raises(InvalidProjectJSONMapperException):
-            scripting_mapper.map("pp", data, None)
+            scripting_mapper.map(data, None)
 
     def test_create_element_string_field(self, scripting_mapper: ScriptingMapper):
         data = {
@@ -62,7 +62,7 @@ class TestScriptingMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = scripting_mapper.map("pp", data, None).get_element()
+        element = scripting_mapper.map(data, None).get_element()
 
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
@@ -77,7 +77,7 @@ class TestScriptingMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = scripting_mapper.map("pp", data_1, None).get_element()
+        element = scripting_mapper.map(data_1, None).get_element()
 
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
@@ -92,7 +92,7 @@ class TestScriptingMapper:
             "qualifiedName": "pp::p",
         }
 
-        element = scripting_mapper.map("pp", data_1, None).get_element()
+        element = scripting_mapper.map(data_1, None).get_element()
 
         assert isinstance(element, SysMLElement)
         assert element._id == "element_id"
@@ -113,8 +113,8 @@ class TestScriptingMapper:
             "qualifiedName": "pp::p",
         }
 
-        mapped_element = scripting_mapper.map("pp", data, None)
-        mapped_owner = scripting_mapper.map("pp", owner, None)
+        mapped_element = scripting_mapper.map(data, None)
+        mapped_owner = scripting_mapper.map(owner, None)
         element = mapped_element.get_element()
         owner = mapped_owner.get_element()
         unresolved_fields = (
