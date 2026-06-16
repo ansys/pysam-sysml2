@@ -44,6 +44,13 @@ class EObject:
         self._observer = None
         self._element_hash_map = {}
 
+    def __dir__(self):
+        """Children are reachable via get(), not dot; hide the internal proxy cache."""
+        names = [a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#")]
+        if not ValueHelper.is_value_capable(self):
+            names = [a for a in names if a not in ("get_value", "set_value", "parse_and_set_value")]
+        return sorted(names)
+
     def get(self, element_name: str) -> "Element | None":  # noqa: F821
         """
         Find an owned element by its name.
