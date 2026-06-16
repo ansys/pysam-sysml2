@@ -112,6 +112,13 @@ class SysMLElement:
         """Update the feature value."""
         ValueHelper.set_or_update_value(self, type(new_value), new_value)
 
+    def get(self, element_name: str):
+        """Find an owned or inherited child by name (e.g. names with spaces)."""
+        hmap = self.__dict__.get("_element_hash_map", {})
+        if element_name not in hmap:
+            return None
+        return self.__getattr__(element_name)
+
     def delete(self):
         """Delete the element from the model via the observer's commit to the server."""
         if self._observer is not None:
