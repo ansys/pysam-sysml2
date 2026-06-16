@@ -26,7 +26,7 @@ from .literal_expression import LiteralExpression
 
 
 class LiteralRational(LiteralExpression):
-    """Java class 'com.ansys.medini.metamodel.sysml.LiteralRational'."""
+    """Java class 'com.ansys.metamodel.sysml2.LiteralRational'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

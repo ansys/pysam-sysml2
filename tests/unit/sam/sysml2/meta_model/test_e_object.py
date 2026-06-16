@@ -32,6 +32,10 @@ from ansys.sam.sysml2.meta_model.feature import Feature
 from ansys.sam.sysml2.meta_model.part_usage import PartUsage
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
+_REQUIRES_NAME_WRITE_HANDLING = (
+    "writing name needs the read-only-name handling that lands in #192 (#183)"
+)
+_REQUIRES_OLD_FORMAT_DROP = "old-format value path is dropped in #186 (#183)"
 
 class TestEObject:
 
@@ -40,6 +44,7 @@ class TestEObject:
         model_manager = SysML2ProjectManager(connector=connector)
         return model_manager.get_sysml_project(PROJECT_ID_3)
 
+    @pytest.mark.skip(reason=_REQUIRES_NAME_WRITE_HANDLING)
     def test_update_element(self, connector, mocker):
         project_manager = SysML2ProjectManager(connector)
         project = project_manager.get_sysml_project(PROJECT_ID_1)

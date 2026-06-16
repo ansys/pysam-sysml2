@@ -30,7 +30,7 @@ from .action_usage import ActionUsage
 
 
 class StateUsage(ActionUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.StateUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.StateUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -43,53 +43,13 @@ class StateUsage(ActionUsage):
         """
         super().__init__(element_id)
 
-        self._is_parallel = False
-        self._set_is_parallel = False
         self._do_action = None
         self._entry_action = None
-        self._set_do_action = False
         self._exit_action = None
-        self._set_entry_action = False
         self._state_definition = ObservedList(self, "state_definition")
-        self._set_exit_action = False
-
-    @property
-    def is_parallel(self) -> bool:  # noqa: F821
-        """
-        Get the is parallel property.
-
-        Returns
-        -------
-        bool
-            Value of property is parallel.
-        """
-        return self._is_parallel
-
-    @is_parallel.setter
-    def is_parallel(self, value: bool):  # noqa: F821
-        """
-        Set the is_parallel property.
-
-        Parameters
-        ----------
-        value: bool
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "is_parallel", value)
-        self._is_parallel = value
-
-    @property
-    def set_is_parallel(self) -> bool:  # noqa: F821
-        """
-        Get the set is parallel property.
-
-        Returns
-        -------
-        bool
-            Value of property set is parallel.
-        """
-        return self._set_is_parallel
+        self._is_parallel = False
+        self._set_is_parallel = False
+        self._substate_usage = False
 
     @property
     def do_action(self) -> "ActionUsage":  # noqa: F821
@@ -144,18 +104,6 @@ class StateUsage(ActionUsage):
         self._entry_action = value
 
     @property
-    def set_do_action(self) -> bool:  # noqa: F821
-        """
-        Get the set do action property.
-
-        Returns
-        -------
-        bool
-            Value of property set do action.
-        """
-        return self._set_do_action
-
-    @property
     def exit_action(self) -> "ActionUsage":  # noqa: F821
         """
         Get the exit action property.
@@ -182,18 +130,6 @@ class StateUsage(ActionUsage):
         self._exit_action = value
 
     @property
-    def set_entry_action(self) -> bool:  # noqa: F821
-        """
-        Get the set entry action property.
-
-        Returns
-        -------
-        bool
-            Value of property set entry action.
-        """
-        return self._set_entry_action
-
-    @property
     def state_definition(self) -> list["Behavior"]:  # noqa: F821
         """
         Get the state definition property.
@@ -206,13 +142,51 @@ class StateUsage(ActionUsage):
         return self._state_definition
 
     @property
-    def set_exit_action(self) -> bool:  # noqa: F821
+    def is_parallel(self) -> bool:  # noqa: F821
         """
-        Get the set exit action property.
+        Get the is parallel property.
 
         Returns
         -------
         bool
-            Value of property set exit action.
+            Value of property is parallel.
         """
-        return self._set_exit_action
+        return self._is_parallel
+
+    @is_parallel.setter
+    def is_parallel(self, value: bool):  # noqa: F821
+        """
+        Set the is_parallel property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_parallel", value)
+        self._is_parallel = value
+
+    @property
+    def set_is_parallel(self) -> bool:  # noqa: F821
+        """
+        Get the set is parallel property.
+
+        Returns
+        -------
+        bool
+            Value of property set is parallel.
+        """
+        return self._set_is_parallel
+
+    @property
+    def substate_usage(self) -> bool:  # noqa: F821
+        """
+        Get the substate usage property.
+
+        Returns
+        -------
+        bool
+            Value of property substate usage.
+        """
+        return self._substate_usage

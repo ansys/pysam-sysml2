@@ -27,7 +27,7 @@ from .metaclass import Metaclass
 
 
 class MetadataDefinition(ItemDefinition, Metaclass):
-    """Java class 'com.ansys.medini.metamodel.sysml.MetadataDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.MetadataDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

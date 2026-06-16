@@ -26,11 +26,12 @@ from __future__ import annotations
 
 import pytest
 
+
 from ansys.sam.sysml2.meta_model.verification_case_usage import VerificationCaseUsage
 
 
 class TestVerificationCaseUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.VerificationCaseUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.VerificationCaseUsage'."""
 
     @pytest.fixture
     def element(self):

@@ -26,52 +26,26 @@ from __future__ import annotations
 
 
 class StateSubactionKind:
-    """Java class 'com.ansys.medini.metamodel.sysml.StateSubactionKind'."""
+    """Java class 'com.ansys.metamodel.sysml2.StateSubactionKind'."""
 
-    ENTRY: "StateSubactionKind"
     DO: "StateSubactionKind"
-    EXIT: "StateSubactionKind"
-    UNDEFINED: "StateSubactionKind"
-    ENTRY_VALUE: int
     DO_VALUE: int
+    ENTRY: "StateSubactionKind"
+    ENTRY_VALUE: int
+    EXIT: "StateSubactionKind"
     EXIT_VALUE: int
-    UNDEFINED_VALUE: int
-    VALUES_ARRAY: "StateSubactionKind"
     VALUES: list
-    value: int
-    name: str
+    VALUES_ARRAY: "StateSubactionKind"
     literal: str
+    name: str
+    value: int
 
     def __init__(self):
         """Construct new instance."""
-        self._name = ""
-        self._value = 0
         self._by_name = None
         self._literal = ""
-
-    @property
-    def name(self) -> str:  # noqa: F821
-        """
-        Get the name property.
-
-        Returns
-        -------
-        str
-            Value of property name.
-        """
-        return self._name
-
-    @property
-    def value(self) -> int:
-        """
-        Get the value property.
-
-        Returns
-        -------
-        int
-            Value of property value.
-        """
-        return self._value
+        self._name = ""
+        self._value = 0
 
     @property
     def by_name(self) -> "StateSubactionKind":  # noqa: F821
@@ -96,3 +70,27 @@ class StateSubactionKind:
             Value of property literal.
         """
         return self._literal
+
+    @property
+    def name(self) -> str:  # noqa: F821
+        """
+        Get the name property.
+
+        Returns
+        -------
+        str
+            Value of property name.
+        """
+        return self._name
+
+    @property
+    def value(self) -> int:
+        """
+        Get the value property.
+
+        Returns
+        -------
+        int
+            Value of property value.
+        """
+        return self._value

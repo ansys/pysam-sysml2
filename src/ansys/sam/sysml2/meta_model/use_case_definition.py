@@ -28,7 +28,7 @@ from .case_definition import CaseDefinition
 
 
 class UseCaseDefinition(CaseDefinition):
-    """Java class 'com.ansys.medini.metamodel.sysml.UseCaseDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.UseCaseDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

@@ -28,7 +28,7 @@ from .step import Step
 
 
 class Expression(Step):
-    """Java class 'com.ansys.medini.metamodel.sysml.Expression'."""
+    """Java class 'com.ansys.metamodel.sysml2.Expression'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -43,6 +43,7 @@ class Expression(Step):
 
         self._function = None
         self._result = None
+        self._is_model_level_evaluable = False
 
     @property
     def function(self) -> "Function":  # noqa: F821
@@ -95,3 +96,29 @@ class Expression(Step):
         if self._observer is not None:
             self._observer.notify(self.id, "result", value)
         self._result = value
+
+    @property
+    def is_model_level_evaluable(self) -> bool:  # noqa: F821
+        """
+        Get the is model level evaluable property.
+
+        Returns
+        -------
+        bool
+            Value of property is model level evaluable.
+        """
+        return self._is_model_level_evaluable
+
+    @is_model_level_evaluable.setter
+    def is_model_level_evaluable(self, value: bool):  # noqa: F821
+        """
+        Set the is_model_level_evaluable property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_model_level_evaluable", value)
+        self._is_model_level_evaluable = value
