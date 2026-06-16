@@ -38,6 +38,21 @@ class ValueHelper:
         self.prefix = prefix
 
     @staticmethod
+    def is_value_capable(element) -> bool:
+        """Return ``True`` if the element can carry a feature value (a Feature or descendant)."""
+        from ansys.sam.sysml2.meta_model.feature import Feature
+
+        if isinstance(element, Feature):
+            return True
+        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+
+        try:
+            mm_class = SysMLUtil.get_sysml_constructor(type(element).__name__)
+        except ImportError:
+            return False
+        return issubclass(mm_class, Feature)
+
+    @staticmethod
     def get_value_for_scripting_element(element):
         """Get the value of the feature."""
         instance = ValueHelper("_")
@@ -69,15 +84,40 @@ class ValueHelper:
         new_value : Union[str | int | float | bool]
             New value to update to.
         """
-        instance = ValueHelper("")
-        if element._observer._is_transactional_mode:
-            instance._add_to_stack(element, value_type, new_value)
-        else:
-            instance._direct_update_value(element, value_type, new_value)
+        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
-    def _add_to_stack(self, element, value_type, new_value):
+        prefix = "_" if isinstance(element, SysMLElement) else ""
+        instance = ValueHelper(prefix)
+        literal = instance._find_existing_literal(element)
+        if element._observer._is_transactional_mode:
+            instance._add_to_stack(element, value_type, new_value, literal)
+        else:
+            instance._direct_update_value(element, value_type, new_value, literal)
+
+    def _find_existing_literal(self, element):
+        """Return the literal currently held by the feature's valuation, or ``None``."""
+        valuation = getattr(element, self.prefix + "valuation", None)
+        if valuation is None:
+            return None
+        return getattr(valuation, self.prefix + "value", None)
+
+    def _literal_type_name(self, value_type):
+        """Map a Python value type to its SysML literal ``@type`` name (``None`` for operators)."""
+        literal_types = {
+            bool: "LiteralBoolean",
+            int: "LiteralInteger",
+            float: "LiteralRational",
+            str: "LiteralString",
+        }
+        return literal_types.get(value_type)
+
+    def _add_to_stack(self, element, value_type, new_value, literal=None):
         """
-        Add the value update to stack.
+        Stack the value update for the current transaction.
+
+        In transactional mode the existing literal (when present) is always dropped
+        and a new ``FeatureValue`` is recreated, so the change applies regardless of
+        any literal type switch.
 
         Parameters
         ----------
@@ -87,18 +127,29 @@ class ValueHelper:
             Value type of the new value.
         new_value : Any
             New value to update to.
+        literal : [SysMLElement|Element], optional
+            Existing literal held by the feature, if any.
         """
+        if literal is not None:
+            element._observer.delete_element(literal._id)
         value_id = "value:" + str(uuid4())
         element._observer.notify(value_id, "@type", "FeatureValue")
         if value_type != "operator":
             element._observer.notify(value_id, "value", self._adapt_value(new_value))
         else:
             element._observer.notify(value_id, "value", new_value)
+        element._observer.notify(value_id, "isInitial", False)
+        element._observer.notify(value_id, "isDefault", True)
         element._observer.notify(value_id, "owner", element)
 
-    def _direct_update_value(self, element, value_type, new_value):
+    def _direct_update_value(self, element, value_type, new_value, literal=None):
         """
         Update directly the value of the feature.
+
+        When no literal exists a ``FeatureValue`` is created. When a literal of the
+        same type already exists it is updated in place through its identity. When
+        the literal type changes the old literal is dropped before a new
+        ``FeatureValue`` is created.
 
         Parameters
         ----------
@@ -108,7 +159,22 @@ class ValueHelper:
             Value type of the new value.
         new_value : Any
             New value to update to.
+        literal : [SysMLElement|Element], optional
+            Existing literal held by the feature, if any.
         """
+        target_type = self._literal_type_name(value_type)
+        if literal is not None and target_type is not None:
+            if type(literal).__name__ == target_type:
+                self._commit_literal_update(element, literal, target_type, new_value)
+            else:
+                self._commit_literal_drop(element, literal)
+                self._commit_feature_value(element, value_type, new_value)
+        else:
+            self._commit_feature_value(element, value_type, new_value)
+        element._observer.reload_project()
+
+    def _commit_feature_value(self, element, value_type, new_value):
+        """Create a ``FeatureValue`` owned by ``element`` carrying the new value."""
         project_id = element._observer._project_id
         commit = Commit(project_id)
         change = DataVersion()
@@ -117,10 +183,31 @@ class ValueHelper:
             change.add_change("value", self._adapt_value(new_value))
         else:
             change.add_change("value", new_value)
+        change.add_change("isInitial", False)
+        change.add_change("isDefault", True)
         change.add_change("owner", element)
         commit.add_change(change)
         element._observer._connector.create_commit(project_id, commit.to_json())
-        element._observer.reload_project()
+
+    def _commit_literal_update(self, element, literal, literal_type, new_value):
+        """Update the existing literal in place through its identity (same type only)."""
+        project_id = element._observer._project_id
+        commit = Commit(project_id)
+        change = DataVersion()
+        change.add_change("@type", literal_type)
+        change.add_change("value", new_value)
+        change.identify(literal._id)
+        commit.add_change(change)
+        element._observer._connector.create_commit(project_id, commit.to_json())
+
+    def _commit_literal_drop(self, element, literal):
+        """Drop the existing literal so a new typed literal can be recreated."""
+        project_id = element._observer._project_id
+        commit = Commit(project_id)
+        change = DataVersion()
+        change.identify(literal._id)
+        commit.add_change(change)
+        element._observer._connector.create_commit(project_id, commit.to_json())
 
     def _adapt_value(self, new_value: Union[str | int | float | bool]):
         """Convert the value to JSON format."""
@@ -132,111 +219,59 @@ class ValueHelper:
             return str(new_value)
 
     def _get_value(self, element):
-        """Get the value of the feature."""
-        if getattr(element, self.prefix + "defaultValue", None) is not None:
-            value = getattr(element, self.prefix + "defaultValue")
-            if hasattr(value, self.prefix + "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value, is_old_format=True)
-        elif getattr(element, self.prefix + "default_value", None) is not None:
-            value = getattr(element, self.prefix + "default_value")
-            if hasattr(value, "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value, is_old_format=True)
-        if getattr(element, self.prefix + "valuation", None) is not None:
-            value = getattr(getattr(element, self.prefix + "valuation"), self.prefix + "value")
-            if hasattr(value, self.prefix + "value"):
-                return getattr(value, self.prefix + "value")
-            else:
-                return self._parse_expression(value)
+        """Get the value of the feature via the valuation chain."""
+        valuation = getattr(element, self.prefix + "valuation", None)
+        if valuation is None:
+            return None
+        value = getattr(valuation, self.prefix + "value", None)
+        if value is None:
+            return None
+        if hasattr(value, self.prefix + "value"):
+            return getattr(value, self.prefix + "value")
+        else:
+            return self._parse_expression(value)
 
-        return None
-
-    def _parse_expression(self, value: dict, is_old_format: bool = False):
-        """Parse expression and return parsed value and unit using specified format."""
+    def _parse_expression(self, value):
+        """Parse an operator expression and return (value, unit_name) tuple."""
         if getattr(value, self.prefix + "operator", None) != "[":
             raise UnsupportedValueExpression("Expression not supported!")
 
-        return self._parse_format(value, is_old_format)
-
-    def _parse_format(self, value: dict, is_old_format: bool):
-        """
-        Parse an expression using the specified format type.
-
-        Parameters
-        ----------
-        value : dict
-            The expression object containing members and potentially an operator.
-        is_old_format : bool
-            Format of the expression. Must be either True for old format or False otherwise.
-
-        Returns
-        -------
-        tuple
-            A tuple of (value, unit_name or None).
-
-        Raises
-        ------
-        UnsupportedValueExpression
-            If no parsable values are found in the expression.
-        """
         if hasattr(value, "_ownedMember"):
             owned_member = getattr(value, "_ownedMember", [])
         else:
             owned_member = getattr(value, "owned_member", [])
 
-        if is_old_format:
-            values = [
-                getattr(x, self.prefix + "value")
-                for x in owned_member
-                if hasattr(x, self.prefix + "value")
-            ]
-            return self._format_result_with_unit(values, owned_member, is_old_format)
-        else:
-            elements = [
-                x
-                for x in owned_member
-                if hasattr(x, self.prefix + "valuation")
-                and hasattr(getattr(x, self.prefix + "valuation"), self.prefix + "value")
-            ]
-            return self._format_result_with_unit(elements, owned_member, is_old_format)
+        elements = [
+            x
+            for x in owned_member
+            if hasattr(x, self.prefix + "valuation")
+            and hasattr(getattr(x, self.prefix + "valuation"), self.prefix + "value")
+        ]
 
-    def _format_result_with_unit(self, elements: list, owned_member: list, is_old_format: bool):
-        """Format a parsed expression value along with its associated unit (if available)."""
         if not elements:
             raise UnsupportedValueExpression("No values found in expression")
 
         try:
-            if is_old_format:
-                value = elements[0]
-                referents = [
-                    x._referent for x in owned_member if hasattr(x, self.prefix + "referent")
-                ]
-            else:
-                value = getattr(
-                    getattr(
-                        getattr(elements[0], self.prefix + "valuation"),
-                        self.prefix + "value",
-                    ),
-                    self.prefix + "value",
+            literal = getattr(
+                getattr(elements[0], self.prefix + "valuation"),
+                self.prefix + "value",
+            )
+            result_value = getattr(literal, self.prefix + "value")
+            referents = [
+                getattr(
+                    getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
+                    self.prefix + "referent",
                 )
-                referents = [
-                    getattr(
-                        getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
-                        self.prefix + "referent",
-                    )
-                    for x in elements
-                    if hasattr(
-                        getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
-                        self.prefix + "referent",
-                    )
-                ]
+                for x in elements
+                if hasattr(
+                    getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
+                    self.prefix + "referent",
+                )
+            ]
         except AttributeError:
             raise UnsupportedValueExpression("No values found in expression")
 
-        return (value, self._extract_unit_name(referents))
+        return (result_value, self._extract_unit_name(referents))
 
     def _extract_unit_name(self, referents):
         """Extract the unit name from referents, if any, otherwise return None."""
@@ -244,10 +279,10 @@ class ValueHelper:
             return None
 
         unit = referents[0]
-        if hasattr(unit, self.prefix + "shortName"):
+        if hasattr(unit, self.prefix + "short_name"):
+            return getattr(unit, self.prefix + "short_name")
+        elif hasattr(unit, self.prefix + "shortName"):
             return getattr(unit, self.prefix + "shortName")
         elif hasattr(unit, self.prefix + "name"):
             return getattr(unit, self.prefix + "name")
-        if hasattr(unit, self.prefix + "short_name"):
-            return getattr(unit, self.prefix + "short_name")
         return None

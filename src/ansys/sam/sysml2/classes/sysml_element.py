@@ -50,7 +50,10 @@ class SysMLElement:
         base = super().__dir__()
         hmap = self.__dict__.get("_element_hash_map", {})
         children = [k for k in hmap if k is not None]
-        return sorted(set(list(base) + children))
+        names = set(list(base) + children)
+        if not ValueHelper.is_value_capable(self):
+            names.difference_update({"get_value", "set_value", "parse_and_set_value"})
+        return sorted(names)
 
     def __getattr__(self, name):
         """Get the attribute from the real element."""

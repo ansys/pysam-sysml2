@@ -30,18 +30,13 @@ from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
-from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
+from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
 class TestSysMLElement:
 
     @pytest.fixture
-    def old_format_project(self, connector) -> ScriptingProject:
-        manager = SysML2ProjectManager(connector)
-        return manager.get_scripting_project(PROJECT_ID_4)
-
-    @pytest.fixture
-    def new_format_project(self, connector) -> ScriptingProject:
+    def project(self, connector) -> ScriptingProject:
         manager = SysML2ProjectManager(connector)
         return manager.get_scripting_project(PROJECT_ID_3)
 
@@ -56,20 +51,13 @@ class TestSysMLElement:
 
         assert attr._name == "NewAttr"
 
-    def test_expression_get_value_old_format(self, old_format_project):
-        package = old_format_project.get_root_package()
-
-        assert package.Structure.Frame.weight.get_value() == ("2", "kg")
-
-    def test_expression_get_value_new_format(self, new_format_project):
-        package = new_format_project.get_root_package()
+    def test_expression_get_value(self, project):
+        package = project.get_root_package()
 
         assert package.Feature.myExpressionFeature.get_value() == (10, "kg")
 
-    def test_expression_set_value_new_format(
-        self, connector, new_format_project, mocker
-    ):
-        package = new_format_project.get_root_package()
+    def test_expression_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -77,14 +65,14 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_expression_complex_value_throws_error(self, new_format_project):
-        package = new_format_project.get_root_package()
+    def test_expression_complex_value_throws_error(self, project):
+        package = project.get_root_package()
 
         with pytest.raises(UnsupportedValueExpression):
             package.Feature.myComplexExpressionFeature.get_value()
 
-    def test_int_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_int_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -94,8 +82,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_string_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_string_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -105,8 +93,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_bool_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_bool_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -116,8 +104,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_float_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_float_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -174,3 +162,26 @@ class TestSysMLElementGet:
         assert resolved is not None
         assert resolved._name == "Part Definition"
         assert proxy.get("missing") is None
+
+
+class TestSysMLElementDir:
+    """Value methods are listed in dir() only for value-capable (Feature) elements."""
+
+    def test_value_methods_hidden_on_non_feature(self):
+        # The scripting mapper sets __class__ to a subclass named after the @type.
+        comment_cls = type("Comment", (SysMLElement,), {})
+        element = comment_cls("element_id")
+
+        listing = dir(element)
+        assert "get_value" not in listing
+        assert "set_value" not in listing
+        assert "parse_and_set_value" not in listing
+
+    def test_value_methods_listed_on_feature_descendant(self):
+        part_usage_cls = type("PartUsage", (SysMLElement,), {})
+        element = part_usage_cls("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing

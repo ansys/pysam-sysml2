@@ -27,27 +27,24 @@ import pytest
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
-from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
+from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.meta_model.feature import Feature
+from ansys.sam.sysml2.meta_model.part_usage import PartUsage
+from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
-_REQUIRES_BUILDER_ADAPTATION = (
-    "builder writes read-only name after the metamodel regen; "
-    "builder adaptation lands in #185 (#183)"
+_REQUIRES_NAME_WRITE_HANDLING = (
+    "writing name needs the read-only-name handling that lands in #192 (#183)"
 )
+_REQUIRES_OLD_FORMAT_DROP = "old-format value path is dropped in #186 (#183)"
 
-
-@pytest.mark.skip(reason=_REQUIRES_BUILDER_ADAPTATION)
 class TestEObject:
 
     @pytest.fixture
-    def old_format_project(self, connector) -> Project:
-        model_manager = SysML2ProjectManager(connector=connector)
-        return model_manager.get_sysml_project(PROJECT_ID_4)
-
-    @pytest.fixture
-    def new_format_project(self, connector) -> Project:
+    def project(self, connector) -> Project:
         model_manager = SysML2ProjectManager(connector=connector)
         return model_manager.get_sysml_project(PROJECT_ID_3)
 
+    @pytest.mark.skip(reason=_REQUIRES_NAME_WRITE_HANDLING)
     def test_update_element(self, connector, mocker):
         project_manager = SysML2ProjectManager(connector)
         project = project_manager.get_sysml_project(PROJECT_ID_1)
@@ -57,78 +54,95 @@ class TestEObject:
         elem.name = "NewAttr"
         assert elem.name == "NewAttr"
 
-    def test_expression_with_old_format_project_get_values(
-        self, old_format_project: Project
-    ):
-        package = old_format_project.get_root_package()
-        assert package.get("Structure").get("Frame").get("weight").get_value() == (
-            "2",
-            "kilogram",
-        )
-
-    def test_expression_with_new_format_project_get_values(
-        self, new_format_project: Project
-    ):
-        package = new_format_project.get_root_package()
+    def test_expression_get_values(self, project: Project):
+        package = project.get_root_package()
         assert package.get("Feature").get("myExpressionFeature").get_value() == (
             10,
-            "kilogram",
+            "kg",
         )
 
-    def test_expression_set_value(self, new_format_project: Project, mocker):
-        package = new_format_project.get_root_package()
+    def test_expression_set_value(self, project: Project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         package.get("Feature").get("myExpressionFeature").parse_and_set_value("20 [kg]")
         value = package.get("Feature").get("myExpressionFeature").get_value()
         assert value is not None
 
-    def test_expression_complex_value_throws_error(self, new_format_project: Project):
-        package = new_format_project.get_root_package()
+    def test_expression_complex_value_throws_error(self, project: Project):
+        package = project.get_root_package()
         with pytest.raises(UnsupportedValueExpression):
             package.get("Feature").get("myComplexExpressionFeature").get_value()
 
-    def test_int_get_values(self, new_format_project: Project):
-        package = new_format_project.get_root_package()
+    def test_int_get_values(self, project: Project):
+        package = project.get_root_package()
         assert package.get("Feature").get("myIntFeature").get_value() == 10
 
-    def test_int_set_value(self, connector, new_format_project: Project, mocker):
-        package = new_format_project.get_root_package()
+    def test_int_set_value(self, connector, project: Project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myIntFeature").set_value(20)
         assert commit_spy.call_count == 1
 
-    def test_string_get_values(self, new_format_project: Project):
-        package = new_format_project.get_root_package()
+    def test_string_get_values(self, project: Project):
+        package = project.get_root_package()
         assert package.get("Feature").get("myStringFeature").get_value() == "Hello"
 
-    def test_string_set_value(self, connector, new_format_project: Project, mocker):
-        package = new_format_project.get_root_package()
+    def test_string_set_value(self, connector, project: Project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myStringFeature").set_value("World")
         assert commit_spy.call_count == 1
 
-    def test_bool_get_values(self, new_format_project: Project):
-        package = new_format_project.get_root_package()
+    def test_bool_get_values(self, project: Project):
+        package = project.get_root_package()
         assert package.get("Feature").get("myBoolFeature").get_value() is False
 
-    def test_bool_set_value(self, connector, new_format_project: Project, mocker):
-        package = new_format_project.get_root_package()
+    def test_bool_set_value(self, connector, project: Project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myBoolFeature").set_value(True)
         assert commit_spy.call_count == 1
 
-    def test_float_get_values(self, new_format_project: Project):
-        package = new_format_project.get_root_package()
+    def test_float_get_values(self, project: Project):
+        package = project.get_root_package()
         assert package.get("Feature").get(
             "myFloatFeature"
         ).get_value() == pytest.approx(10.56)
 
-    def test_float_set_value(self, connector, new_format_project: Project, mocker):
-        package = new_format_project.get_root_package()
+    def test_float_set_value(self, connector, project: Project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myFloatFeature").set_value(20.5)
         assert commit_spy.call_count == 1
+
+
+class TestEObjectDir:
+    """Value methods are listed in dir() only for value-capable (Feature) elements."""
+
+    def test_value_methods_hidden_on_non_feature(self):
+        element = Element("element_id")
+
+        listing = dir(element)
+        assert "get_value" not in listing
+        assert "set_value" not in listing
+        assert "parse_and_set_value" not in listing
+
+    def test_value_methods_listed_on_feature(self):
+        element = Feature("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing
+
+    def test_value_methods_listed_on_feature_descendant(self):
+        element = PartUsage("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing
