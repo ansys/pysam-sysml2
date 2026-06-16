@@ -55,8 +55,7 @@ class TestSysML2ProjectManagerScripting:
 
         project = manager.get_scripting_project(PROJECT_ID_1)
 
-        assert len(project.get_root()) == 1
-        assert project.get_root()[0]._name == "project-1"
+        assert project.get_root_package()._name == "project-1"
 
     def test_get_scripting_project_cached(self, connector):
         manager = SysML2ProjectManager(connector)
@@ -130,8 +129,7 @@ class TestSysML2ProjectManagerSysML:
         project = manager.get_sysml_project(PROJECT_ID_1)
 
         assert isinstance(project, Project)
-        assert len(project.get_root()) == 1
-        assert project.get_root()[0].name == "project-1"
+        assert project.get_root_package().name == "project-1"
 
     @pytest.mark.skip(reason=_REQUIRES_BUILDER_ADAPTATION)
     def test_get_sysml_project_cached(self, connector):
