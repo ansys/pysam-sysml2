@@ -131,8 +131,7 @@ class SysML2ProjectBuilder:
             )
         project._root = roots
 
-    @staticmethod
-    def _is_logical_root(element, owner_attr: str) -> bool:
+    def _is_logical_root(self, element, owner_attr: str) -> bool:
         """Decide whether ``element`` is a user-facing root of the model."""
         owner = getattr(element, owner_attr, None)
         if owner is None:
