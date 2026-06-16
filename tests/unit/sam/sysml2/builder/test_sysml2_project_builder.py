@@ -40,8 +40,6 @@ class TestSysML2ProjectBuilderScripting:
 
         project = builder.build_scripting_project(PROJECT_ID_1)
 
-        assert len(project.get_root()) == 1
-        assert project.get_root()[0]._name == "project-1"
         assert project.get_root_package()._name == "project-1"
 
     def test_find_element_by_id(self, connector):
@@ -65,8 +63,7 @@ class TestSysML2ProjectBuilderScripting:
 
         project = builder.build_scripting_project(PROJECT_ID_1)
 
-        for root in project.get_root():
-            assert getattr(root, "_owner", None) is None
+        assert getattr(project.get_root_package(), "_owner", None) is None
 
 
 @pytest.mark.skip(reason=_REQUIRES_BUILDER_ADAPTATION)
@@ -77,8 +74,6 @@ class TestSysML2ProjectBuilderSysML:
 
         project = builder.build_sysml_project(PROJECT_ID_1)
 
-        assert len(project.get_root()) == 1
-        assert project.get_root()[0].name == "project-1"
         assert project.get_root_package().name == "project-1"
 
     def test_find_element_by_id_sysml(self, connector):
@@ -102,5 +97,4 @@ class TestSysML2ProjectBuilderSysML:
 
         project = builder.build_sysml_project(PROJECT_ID_1)
 
-        for root in project.get_root():
-            assert root.owner is None
+        assert project.get_root_package().owner is None

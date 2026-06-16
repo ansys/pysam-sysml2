@@ -82,10 +82,12 @@ class SysML2ProjectBuilder:
 
     def __build_project(self, project: Project | ScriptingProject):
         """Build the project from JSON."""
+        # TODO(agrzecho): re-introduce library element tracking once the API exposes
+        # library elements (bulk in get_all_elements, or per-UUID fetch).
+        # https://github.com/ansys/pysam-sysml2/issues/183
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
-        self._index_libraries(project)
 
     def _build_project_element(self, project: Project | ScriptingProject):
         """Build all project elements in the project."""
@@ -110,13 +112,17 @@ class SysML2ProjectBuilder:
         roots = []
         if isinstance(project, Project):
             for element in project._env.values():
-                setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
-                if element.owner is None:
+                setattr(
+                    element,
+                    "declared_name",
+                    SysMLUtil.check_sysml_inherited_name(element),
+                )
+                if self._is_logical_root(element, "owner"):
                     roots.append(element)
         elif isinstance(project, ScriptingProject):
             for element in project._env.values():
                 setattr(element, "_name", SysMLUtil.check_inherited_name(element))
-                if getattr(element, "_owner", None) is None:
+                if self._is_logical_root(element, "_owner"):
                     roots.append(element)
         else:
             raise TypeError(
@@ -124,6 +130,13 @@ class SysML2ProjectBuilder:
                 "Expected Project or ScriptingProject."
             )
         project._root = roots
+
+    def _is_logical_root(self, element, owner_attr: str) -> bool:
+        """Decide whether ``element`` is a user-facing root of the model."""
+        owner = getattr(element, owner_attr, None)
+        if owner is None:
+            return element.__class__.__name__ != "Namespace"
+        return owner.__class__.__name__ == "Namespace" and getattr(owner, owner_attr, None) is None
 
     def _get_mapper(self, project: Project | ScriptingProject) -> Mapper:
         """
@@ -166,7 +179,7 @@ class SysML2ProjectBuilder:
         mapper = self._get_mapper(project)
         for element in elements:
             existing_element = project.find_element_by_id(element["@id"])
-            mapped_element = mapper.map(project.get_name(), element, existing_element)
+            mapped_element = mapper.map(element, existing_element)
             project.add_element(mapped_element.get_element())
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
@@ -493,30 +506,6 @@ class SysML2ProjectBuilder:
         for element in project._env.values():
             element._observer = project_modification_observer
 
-    def _index_sysml_libraries(self, libraries_elements, element, project):
-        """Index libraries of the SysML project for future reload."""
-        if not getattr(element, "qualifiedName", "").startswith(project._name):
-            libraries_elements.add(element.id)
-
-    def _index_scripting_libraries(self, libraries_elements, element, project):
-        """Index libraries of the scripting project for future reload."""
-        if not getattr(element, "_qualifiedName", "").startswith(project._name):
-            libraries_elements.add(element._id)
-
-    def _index_libraries(self, project: Project | ScriptingProject):
-        """Index libraries of the project for future reload."""
-        libraries_elements = set()
-        call = None
-        if isinstance(project, Project):
-            call = self._index_sysml_libraries
-        elif isinstance(project, ScriptingProject):
-            call = self._index_scripting_libraries
-        else:
-            raise TypeError(f"Unsupported project type: {type(project).__name__}. ")
-        for element in project._env.values():
-            call(libraries_elements, element, project)
-        project._libraries_ids = libraries_elements
-
     def reload_project(
         self,
         modification_observer: ModificationObserver,
@@ -536,5 +525,4 @@ class SysML2ProjectBuilder:
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
-        self._index_libraries(project)
         modification_observer.start()
