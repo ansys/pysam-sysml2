@@ -112,9 +112,6 @@ class SysMLMapper(Mapper):
         from ansys.sam.sysml2.tools.name_utils import NameUtils
 
         field_name = "_" + NameUtils.to_snake_case(field_name)
-        # Fix due to differences between Standard API and Metamodel
-        if field_name == "_inherited_feature":
-            field_name = "_owned_inherited_feature"
         if isinstance(field_values, list):
             return self._add_list_to_field(element, field_name, field_values)
         if isinstance(field_values, dict):
