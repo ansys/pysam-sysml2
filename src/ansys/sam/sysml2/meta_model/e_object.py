@@ -51,36 +51,25 @@ class EObject:
             names = [a for a in names if a not in ("get_value", "set_value", "parse_and_set_value")]
         return sorted(names)
 
+    def _resolve_child(self, name, hmap):
+        """Return the owned child, or a ``SysMLInheritedElement`` proxy, cached privately."""
+        from ansys.sam.sysml2.classes.sysml_inherited_element import SysMLInheritedElement
+
+        cache = self.__dict__.setdefault("_proxy_cache", {})
+        if name in cache:
+            return cache[name]
+        child = hmap[name]
+        is_owned = name in self.__dict__.get("_owned_names", set())
+        result = child if is_owned else SysMLInheritedElement(self, child)
+        cache[name] = result
+        return result
+
     def get(self, element_name: str) -> "Element | None":  # noqa: F821
-        """
-        Find an owned element by its name.
-
-        Parameters
-        ----------
-        element_name : str
-            Element name
-
-        Returns
-        -------
-        Element
-            The Element or None if not found
-        """
-        from ansys.sam.sysml2.classes.sysml_inherited_element import (
-            SysMLInheritedElement,
-        )
-
+        """Find an owned or inherited element by name; reuse the cached proxy when present."""
         hmap = self.__dict__.get("_element_hash_map", {})
-        if element_name in hmap:
-            child = hmap[element_name]
-            owned = self.__dict__.get("_owned_element", [])
-            is_owned = any(
-                getattr(x, "name", None) == element_name for x in owned if isinstance(x, EObject)
-            )
-            if is_owned:
-                return child
-            return SysMLInheritedElement(self, child)
-
-        return None
+        if element_name not in hmap:
+            return None
+        return self._resolve_child(element_name, hmap)
 
     @property
     def id(self):
