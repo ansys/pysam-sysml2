@@ -47,9 +47,9 @@ class TestSysMLElement:
         mocker.patch.object(root._observer, "reload_project")
         attr = root.PartDefinition.attribute
 
-        attr._name = "NewAttr"
+        attr._declaredName = "NewAttr"
 
-        assert attr._name == "NewAttr"
+        assert attr._declaredName == "NewAttr"
 
     def test_expression_get_value(self, project):
         package = project.get_root_package()
@@ -126,7 +126,7 @@ class TestSysMLElement:
         )
 
         with pytest.raises(BadRequestConnectionException):
-            root._name = ["ShouldFail"]
+            root._declaredName = ["ShouldFail"]
 
 
 class TestSysMLElementGet:
@@ -135,7 +135,7 @@ class TestSysMLElementGet:
     def _build_parent_with_spaced_child(self):
         child = SysMLElement("child-id")
         child._identifier = "child-id"
-        child._name = "Part Definition"
+        child._declaredName = "Part Definition"
         parent = SysMLElement("parent-id")
         parent._element_hash_map = {"Part Definition": child}
         parent._owned_names = {"Part Definition"}
@@ -160,7 +160,7 @@ class TestSysMLElementGet:
         resolved = proxy.get("Part Definition")
 
         assert resolved is not None
-        assert resolved._name == "Part Definition"
+        assert resolved._declaredName == "Part Definition"
         assert proxy.get("missing") is None
 
 

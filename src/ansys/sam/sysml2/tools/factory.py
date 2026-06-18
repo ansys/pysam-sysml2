@@ -2405,6 +2405,11 @@ class Factory:
 
                     setattr(instance, attr_name, ObservedList(owner=instance, name=attr_name))
                 getattr(instance, attr_name).extend(value)
+            elif attr_name in ("name", "_name"):
+                # ``name`` is read-only in the new metamodel: write the backing field
+                # directly (both flavors store it as ``_name``) and stack the change.
+                object.__setattr__(instance, "_name", value)
+                instance._observer.notify(instance._id, attr_name, value)
             else:
                 setattr(instance, attr_name, value)
         self._project.add_element(instance)
