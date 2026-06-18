@@ -202,7 +202,7 @@ To manually run all hooks on every file in the repository:
 
 If a hook fails, fix the reported issues and commit again. Some hooks (like ``ruff``)
 automatically fix issues. The CI/CD pipeline enforces the exact same hooks, so passing
-locally with ``prek`` matches the result you will get on GitHub.
+locally with ``prek`` matches the result on GitHub.
 
 
 Quality checks workflow
