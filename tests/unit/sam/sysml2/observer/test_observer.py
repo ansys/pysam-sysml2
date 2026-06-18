@@ -110,9 +110,9 @@ class TestObserverImmediate:
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
-        root._name = "RenamedRoot"
+        root._declaredName = "RenamedRoot"
 
-        assert root._name == "RenamedRoot"
+        assert root._declaredName == "RenamedRoot"
         assert commit_spy.call_count == 1
 
     def test_list_notify_immediate_calls_create_commit(self, connector, mocker):
@@ -151,7 +151,7 @@ class TestObserverImmediate:
         )
 
         with pytest.raises(BadRequestConnectionException):
-            root._name = ["ShouldFail"]
+            root._declaredName = ["ShouldFail"]
 
     def test_delete_commit_error_propagates(self, connector, mocker):
         """Verify BadRequestConnectionException from create_commit propagates on delete."""
