@@ -165,7 +165,7 @@ class TestSysMLElementGet:
 
 
 class TestSysMLElementDir:
-    """Value methods are listed in dir() only for value-capable (Feature) elements."""
+    """dir() lists value and connection helpers only when applicable."""
 
     def test_value_methods_hidden_on_non_feature(self):
         # The scripting mapper sets __class__ to a subclass named after the @type.
@@ -185,3 +185,24 @@ class TestSysMLElementDir:
         assert "get_value" in listing
         assert "set_value" in listing
         assert "parse_and_set_value" in listing
+
+    def test_source_target_hidden_without_ends(self):
+        element = SysMLElement("element_id")
+
+        listing = dir(element)
+        assert "get_source" not in listing
+        assert "get_target" not in listing
+
+    def test_get_source_listed_when_source_populated(self):
+        element = SysMLElement("element_id")
+        element._source = [SysMLElement("end_id")]
+
+        assert "get_source" in dir(element)
+        assert "get_target" not in dir(element)
+
+    def test_get_target_listed_when_target_populated(self):
+        element = SysMLElement("element_id")
+        element._target = [SysMLElement("end_id")]
+
+        assert "get_target" in dir(element)
+        assert "get_source" not in dir(element)

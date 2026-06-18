@@ -243,7 +243,10 @@ class ModificationObserver:
             if not key.startswith("value:"):
                 change.identify(key)
             for field in changes:
-                change.add_change(field[0], field[1])
+                field_name = field[0]
+                if field_name.startswith("_"):
+                    field_name = field_name[1:]
+                change.add_change(field_name, field[1])
             commit.add_change(change)
         if len(commit.changes) > 0:
             self._connector.create_commit(self._project_id, commit.to_json())
