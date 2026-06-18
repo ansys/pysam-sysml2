@@ -32,8 +32,6 @@ from ansys.sam.sysml2.meta_model.feature import Feature
 from ansys.sam.sysml2.meta_model.part_usage import PartUsage
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
-_REQUIRES_OLD_FORMAT_DROP = "old-format value path is dropped in #186 (#183)"
-
 
 class TestEObject:
 
