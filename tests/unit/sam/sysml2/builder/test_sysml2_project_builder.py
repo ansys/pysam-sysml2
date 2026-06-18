@@ -22,15 +22,8 @@
 
 """Unit tests for SysML2ProjectBuilder using the mocked connector."""
 
-import pytest
-
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 from tests.unit.const import PROJECT_1_ATTR_ID, PROJECT_ID_1
-
-_REQUIRES_BUILDER_ADAPTATION = (
-    "builder writes read-only name after the metamodel regen; "
-    "builder adaptation lands in #185 (#183)"
-)
 
 
 class TestSysML2ProjectBuilderScripting:
@@ -66,7 +59,6 @@ class TestSysML2ProjectBuilderScripting:
         assert getattr(project.get_root_package(), "_owner", None) is None
 
 
-@pytest.mark.skip(reason=_REQUIRES_BUILDER_ADAPTATION)
 class TestSysML2ProjectBuilderSysML:
 
     def test_build_sysml_project(self, connector):

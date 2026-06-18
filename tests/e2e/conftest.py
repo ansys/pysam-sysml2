@@ -40,19 +40,6 @@ from ._sam_binary_import import import_project as _import_project
 REQUIRED_ENV_VARS = ("SAM_SERVER_URL", "SAM_ORGANIZATION_ID", "SAM_TOKEN")
 
 
-# TEMPORARY: force all e2e tests to pass while still executing them.
-# Revert by deleting this hook.
-@pytest.hookimpl(hookwrapper=True, tryfirst=True)
-def pytest_runtest_makereport(item, call):
-    outcome = yield
-    report = outcome.get_result()
-    if report.outcome == "failed":
-        report.outcome = "passed"
-        report.longrepr = None
-        if hasattr(report, "wasxfail"):
-            del report.wasxfail
-
-
 @pytest.fixture(scope="session", autouse=True)
 def _skip_without_env():
     """Skip every e2e test unless the connector fixtures can be built."""
