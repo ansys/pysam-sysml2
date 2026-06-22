@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`InterfaceDefinition`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.interface_definition.InterfaceDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connection_definition.ConnectionDefinition`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.InterfaceDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: InterfaceDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~interface_end`
+            - Get the interface end property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.interface_definition import InterfaceDefinition
+
+Property detail
+---------------
+
+.. py:property:: interface_end
+   :type: list[PortUsage]
+
+
+   
+   Get the interface end property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["PortUsage"]
+           Value of property interface end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

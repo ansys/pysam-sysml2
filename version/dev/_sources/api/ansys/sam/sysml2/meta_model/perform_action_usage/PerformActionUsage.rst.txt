@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`PerformActionUsage`
+===========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.perform_action_usage.PerformActionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`, :py:obj:`ansys.sam.sysml2.meta_model.event_occurrence_usage.EventOccurrenceUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.PerformActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PerformActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~performed_action`
+            - Get the performed action property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.perform_action_usage import PerformActionUsage
+
+Property detail
+---------------
+
+.. py:property:: performed_action
+   :type: ansys.sam.sysml2.meta_model.action_usage.ActionUsage
+
+
+   
+   Get the performed action property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property performed action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`Comment`
+================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.comment.Comment(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.annotating_element.AnnotatingElement`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Comment'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Comment
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~locale`
+            - Get the locale property.
+          * - :py:attr:`~body`
+            - Get the body property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.comment import Comment
+
+Property detail
+---------------
+
+.. py:property:: locale
+   :type: str
+
+
+   
+   Get the locale property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property locale.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: body
+   :type: None
+
+
+   
+   Get the body property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property body.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

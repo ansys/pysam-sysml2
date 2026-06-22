@@ -1,0 +1,117 @@
+
+
+
+
+
+
+The ``tools`` package
+=========================
+
+.. py:module:: ansys.sam.sysml2.tools
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: tools
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.ansys_project`
+            - Ansys Base Project to facilitate use of PySAM SysML2 library.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.ansys_scripting_project`
+            - Ansys Scripting Project to facilitate use of PySAM SysML2 library.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.ansys_sysml2_project`
+            - Ansys SysML2 project to facilitate use of PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.factory`
+            - Factory class to create new elements.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.name_utils`
+            - Name utilities class for the PySAM SysML2 diagram library.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.sysmltools`
+            - Tool module for SysML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> ansys_project</api/ansys/sam/sysml2/tools/ansys_project/index>
+    <span class="nf nf-fa-file"></span> ansys_scripting_project</api/ansys/sam/sysml2/tools/ansys_scripting_project/index>
+    <span class="nf nf-fa-file"></span> ansys_sysml2_project</api/ansys/sam/sysml2/tools/ansys_sysml2_project/index>
+    <span class="nf nf-fa-file"></span> factory</api/ansys/sam/sysml2/tools/factory/index>
+    <span class="nf nf-fa-file"></span> name_utils</api/ansys/sam/sysml2/tools/name_utils/index>
+    <span class="nf nf-fa-file"></span> sysmltools</api/ansys/sam/sysml2/tools/sysmltools/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Tools module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

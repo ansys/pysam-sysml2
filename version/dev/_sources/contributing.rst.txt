@@ -1,0 +1,223 @@
+.. _ref_contributing:
+
+==========
+Contribute
+==========
+
+PySAM SysML2 is a Python library that makes accessing the SysML V2 standard API easier. It is developed by the R&D team dedicated to Ansys SAM. For now, the only tested implementation of the SysML V2 standard API is the one proposed by SAM.
+
+Contributing to PySAM SysML2 is welcomed and can be in the form of discussions, code,
+documentation, or issue reports.
+
+
+Overall guidance on contributing to a PyAnsys library appears in the
+`Contributing <https://dev.docs.pyansys.com/>`_ topic
+in the *PyAnsys developer's guide*. Ensure that you are thoroughly familiar
+with it and all style guidelines before attempting to contribute to PySAM SysML2.
+
+The following contribution information is specific to PySAM SysML2.
+
+PySAM SysML2 documentation
+--------------------------
+Documentation for the latest stable release of PySAM SysML2 is hosted at
+`PySAM SysML2 documentation <https://sysml2.docs.pyansys.com>`_.
+
+This version is automatically kept up to date with GitHub actions.
+
+
+Posting Issues
+--------------
+
+Use the `PySAM SysML2 Issues <https://github.com/ansys/pysam-sysml2/issues>`_
+page to submit questions, report bugs, and request new features. When possible,
+use one of the existing templates.
+
+.. update to https://github.com/ansys/pysam-sysml2/issues when ready
+
+To reach the project support team, email `pyansys.core@ansys.com <pyansys.core@ansys.com>`_.
+
+Contribute code
+---------------
+
+.. Note::
+   As PySAM SysML2 is associated with the SysML V2 standard API and strongly related to SAM,
+   any contribution is analyzed and possibly integrated by the SAM development team.
+
+Source code
+^^^^^^^^^^^^
+Run this code to clone and install the latest version of PySAM SysML2 in development mode:
+
+.. code::
+
+    # Create a PySAM directory and the virtual environment
+    mkdir PySAM
+    cd PySAM
+    python -m venv pysam-dev-env
+    pysam-dev-env\Scripts\activate
+
+    # Clone the repository and install
+    git clone https://github.com/ansys/pysam-sysml2.git
+    cd pysam-sysml2
+
+    # Update pip and install the project with all dependencies including optional ones
+    python -m pip install --upgrade pip
+    pip install -e ".[doc,tests,checks]"
+
+
+.. update to https://github.com/ansys/pysam-sysml2.git when ready
+
+Code style
+^^^^^^^^^^
+PySAM SysML2 follows the PEP8 standard as outlined in the `PyAnsys development guide
+<https://dev.docs.pyansys.com>`_. Code style is enforced using `Ruff <https://github.com/astral-sh/ruff>`_ for linting.
+
+
+Testing
+^^^^^^^
+
+PySAM SysML2 uses `pytest <https://docs.pytest.org/en/stable/>`_ and has two
+test suites: **unit tests** and **end-to-end (E2E) tests**.
+
+Unit tests (contributors)
+""""""""""""""""""""""""""
+
+Unit tests live in ``tests/unit/`` and run against mocked server responses.
+No external server or Docker setup is required. From the repository root, run:
+
+.. code::
+
+    pytest
+
+This executes the unit test suite by default (configured via ``testpaths`` in
+``pyproject.toml``). Add your own unit tests for non-regression when
+contributing new features or bug fixes.
+
+To run tests with coverage:
+
+.. code::
+
+    pytest --cov=ansys.sam.sysml2 --cov-report=html
+
+This generates a coverage report in ``htmlcov/index.html``.
+
+E2E tests (maintainers)
+""""""""""""""""""""""""
+
+End-to-end tests live in ``tests/e2e/`` and run against a live SAM server
+instance. They validate the full library stack including connector, project
+management, model navigation, commits, queries, and diagrams.
+
+.. note::
+   E2E tests are maintained and executed by the SAM development team. They run
+   automatically in another pipeline when a pull request is submitted.
+   Contributors should focus on unit tests for local validation.
+
+Documentation
+^^^^^^^^^^^^^
+
+Build the documentation
+""""""""""""""""""""""""
+
+PySAM SysML2 uses Sphinx for documentation generation. To build the documentation:
+
+.. code::
+
+    cd doc
+    .\make.bat html
+
+To generate a PDF version:
+
+.. code::
+
+    .\make.bat pdf
+
+The generated HTML documentation is in the ``doc/_build/html`` directory
+and can be viewed locally:
+
+.. code::
+
+    cd _build/html
+    python -m http.server
+
+Then open your browser to ``http://localhost:8000``.
+
+The PDF is generated in the ``doc/_build/latex`` directory.
+
+Run Vale
+""""""""
+
+Vale is used to enforce documentation style guidelines and ensure consistency across the documentation.
+It checks for grammar, style, and terminology compliance with the Google developer and
+Ansys style guides.
+
+Before running Vale, you must download the style definitions:
+
+.. code::
+
+    cd doc
+    vale sync
+
+This downloads the required style guides defined in the ``.vale.ini`` file
+
+To check documentation files:
+
+.. code::
+
+    vale .
+
+Vale reports any style violations, spelling errors, or inconsistencies. Fix these issues before submitting documentation changes.
+
+Pre-commit hooks
+^^^^^^^^^^^^^^^^
+
+PySAM SysML2 uses pre-commit hooks to automatically check code quality before each commit.
+The hooks cover code formatting, linting, and style validation, and are declared in the
+``.pre-commit-config.yaml`` file at the repository root.
+
+For local development, PySAM SysML2 recommends `prek <https://prek.j178.dev/>`_, a faster
+drop-in alternative to `pre-commit <https://pre-commit.com/>`_ that reads the same
+``.pre-commit-config.yaml`` file. The ``prek`` package is already declared in the
+``checks`` optional dependency group, so a ``pip install -e ".[checks]"`` installs it.
+Otherwise, install it directly with:
+
+.. code::
+
+    pip install prek
+
+To install the git hook so the checks run automatically on every ``git commit``:
+
+.. code::
+
+    prek install
+
+.. note::
+   If you previously ran ``pre-commit install`` in this repository, run
+   ``prek install -f`` once to replace the existing git hook shim.
+
+To manually run all hooks on every file in the repository:
+
+.. code::
+
+    prek run --all-files
+
+If a hook fails, fix the reported issues and commit again. Some hooks (like ``ruff``)
+automatically fix issues. The CI/CD pipeline enforces the exact same hooks, so passing
+locally with ``prek`` matches the result on GitHub.
+
+
+Quality checks workflow
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Before submitting a pull request, ensure all quality checks pass:
+
+1. **Run tests**: ``pytest``
+2. **Run tests with coverage**: ``pytest --cov=ansys.sam.sysml2 --cov-report=html``
+3. **Check code style**: ``ruff check .``
+4. **Format code**: ``ruff format .``
+5. **Check documentation style**: ``cd doc; vale sync; vale .``
+6. **Run pre-commit checks**: ``prek run --all-files``
+
+The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, 3.13, and 3.14) when you submit your pull request.
+
+.. note::
+   While you can run tests locally on your installed Python version, the CI/CD pipeline ensures compatibility across all supported Python versions.

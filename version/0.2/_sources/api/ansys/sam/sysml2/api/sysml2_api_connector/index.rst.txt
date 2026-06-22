@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sysml2_api_connector.py`` module
+======================================
+
+.. py:module:: ansys.sam.sysml2.api.sysml2_api_connector
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sysml2_api_connector
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.api.sysml2_api_connector.SysML2APIConnector`
+            - Provides the SysML2 API Connector interface.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SysML2APIConnector</api/ansys/sam/sysml2/api/sysml2_api_connector/SysML2APIConnector>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Top-level interface module for SysML2 API.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

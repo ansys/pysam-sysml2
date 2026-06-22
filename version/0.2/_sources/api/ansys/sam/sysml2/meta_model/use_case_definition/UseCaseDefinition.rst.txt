@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`UseCaseDefinition`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.use_case_definition.UseCaseDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.case_definition.CaseDefinition`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.UseCaseDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: UseCaseDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~included_use_case`
+            - Get the included use case property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.use_case_definition import UseCaseDefinition
+
+Property detail
+---------------
+
+.. py:property:: included_use_case
+   :type: List[UseCaseUsage]
+
+
+   
+   Get the included use case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["UseCaseUsage"]
+           Value of property included use case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

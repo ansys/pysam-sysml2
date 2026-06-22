@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``reference_usage.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.reference_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: reference_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.reference_usage.ReferenceUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.ReferenceUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ReferenceUsage</api/ansys/sam/sysml2/meta_model/reference_usage/ReferenceUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated reference usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+
