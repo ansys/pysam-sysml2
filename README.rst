@@ -36,7 +36,7 @@ PySAM SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architectu
 Prerequisites
 =============
 
-PySAM SysML2 requires `Python <https://www.python.org/downloads/>`_ 3.10 or later.
+PySAM SysML2 requires `Python <https://www.python.org/downloads/>`_ 3.12 or later.
 
 Documentation
 =============
