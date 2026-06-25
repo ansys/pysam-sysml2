@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.analysis_case_definition import AnalysisCaseDef
 
 
 class TestAnalysisCaseDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.AnalysisCaseDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.AnalysisCaseDefinition'."""
 
     @pytest.fixture
     def element(self):

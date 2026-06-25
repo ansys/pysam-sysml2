@@ -28,8 +28,8 @@ from .connector_as_usage import ConnectorAsUsage
 from .part_usage import PartUsage
 
 
-class ConnectionUsage(PartUsage, ConnectorAsUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.ConnectionUsage'."""
+class ConnectionUsage(ConnectorAsUsage, PartUsage):
+    """Java class 'com.ansys.metamodel.sysml2.ConnectionUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

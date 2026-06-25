@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.occurrence_definition import OccurrenceDefiniti
 
 
 class TestOccurrenceDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.OccurrenceDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.OccurrenceDefinition'."""
 
     @pytest.fixture
     def element(self):
@@ -40,12 +40,6 @@ class TestOccurrenceDefinition:
     def test_id_set(self, element):
         """Test element ID is correctly set."""
         assert element.id == "element_id"
-
-    def test_lifeclass(self, element):
-        """Test getter and setter for lifeclass property."""
-        value = "test_value"
-        element.lifeclass = value
-        assert element.lifeclass == value
 
     def test_is_individual(self, element):
         """Test getter and setter for is individual property."""

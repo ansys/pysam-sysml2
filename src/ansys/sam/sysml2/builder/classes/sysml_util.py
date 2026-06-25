@@ -33,33 +33,20 @@ class SysMLUtil:
 
     @staticmethod
     def check_inherited_name(element: SysMLElement) -> str:
-        """Check and return the name of the element."""
-        if isinstance(element, str):
-            return "::" + element
-        if hasattr(element, "_name"):
-            return getattr(element, "_name")
-        elif hasattr(element, "_redefinedFeature"):
-            redefined_feature = getattr(element, "_redefinedFeature", [])
-            if isinstance(redefined_feature, list) and len(redefined_feature) > 0:
-                redefined_feature = redefined_feature[0]
-            return SysMLUtil.check_inherited_name(redefined_feature)
-        else:
-            return element.__class__.__name__.split(".")[-1] + "::" + element._id
+        """Resolve the name with a dot-safe ``ClassName_<id>`` fallback when empty."""
+        name = getattr(element, "_name", None)
+        if name:
+            return name
+        class_name = element.__class__.__name__.split(".")[-1]
+        return f"{class_name}_{element._id}".replace("-", "_")
 
     @staticmethod
     def check_sysml_inherited_name(element: Element) -> str:
-        """Check and return the name of the element."""
-        if isinstance(element, str):
-            return "::" + element
-        if hasattr(element, "name"):
-            return getattr(element, "name")
-        elif hasattr(element, "redefined_feature"):
-            redefined_feature = getattr(element, "redefined_feature", [])
-            if isinstance(redefined_feature, list) and len(redefined_feature) > 0:
-                redefined_feature = redefined_feature[0]
-            return SysMLUtil.check_sysml_inherited_name(redefined_feature)
-        else:
-            return element.__class__.__name__.split(".")[-1] + "::" + element.id
+        """Resolve the element name with a ``ClassName::id`` fallback when null or empty."""
+        name = getattr(element, "name", None)
+        if name:
+            return name
+        return element.__class__.__name__.split(".")[-1] + "::" + element.id
 
     @staticmethod
     def get_sysml_constructor(element_type: str) -> type[EObject]:

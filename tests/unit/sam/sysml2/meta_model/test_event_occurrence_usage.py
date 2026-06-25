@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.event_occurrence_usage import EventOccurrenceUs
 
 
 class TestEventOccurrenceUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.EventOccurrenceUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.EventOccurrenceUsage'."""
 
     @pytest.fixture
     def element(self):
@@ -46,9 +46,3 @@ class TestEventOccurrenceUsage:
         value = "test_value"
         element.event_occurrence = value
         assert element.event_occurrence == value
-
-    def test_is_reference(self, element):
-        """Test getter and setter for is reference property."""
-        value = False
-        element.is_reference = value
-        assert element.is_reference == value

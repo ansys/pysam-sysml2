@@ -46,56 +46,56 @@ class SysMLElement:
         self._id = element_id
 
     def __dir__(self):
-        """Get the attribute list from the real element."""
-        base = super().__dir__()
+        """List owned + inherited child names alongside normal attributes."""
+        base = list(super().__dir__())
         hmap = self.__dict__.get("_element_hash_map", {})
         children = [k for k in hmap if k is not None]
-        return sorted(set(list(base) + children))
+        names = set(list(base) + children)
+        if not ValueHelper.is_value_capable(self):
+            names.difference_update({"get_value", "set_value", "parse_and_set_value"})
+        if not getattr(self, "_source", None):
+            names.discard("get_source")
+        if not getattr(self, "_target", None):
+            names.discard("get_target")
+        from ansys.sam.sysml2.tools.deprecation import visibility_alias_listed
+
+        if visibility_alias_listed(self, "_visibility", "_owningMembership"):
+            names.add("_visibility")
+        return sorted(names)
 
     def __getattr__(self, name):
-        """Get the attribute from the real element."""
-        from ansys.sam.sysml2.classes.inherited_element import InheritedElement
-
+        """Resolve hash-map children lazily; only fires when normal attribute lookup fails."""
         if name.startswith("__") and name.endswith("__"):
             raise AttributeError(name)
+        from ansys.sam.sysml2.tools.deprecation import UNHANDLED, scripting_deprecated_get
 
+        shimmed = scripting_deprecated_get(self, name)
+        if shimmed is not UNHANDLED:
+            return shimmed
         hmap = self.__dict__.get("_element_hash_map", {})
-        if name in hmap:
-            child = hmap[name]
-            owned = self.__dict__.get("_ownedElement", [])
-            is_owned = any(
-                getattr(x, "_name", None) == name for x in owned if isinstance(x, SysMLElement)
-            )
-            if is_owned:
-                return child
-            return InheritedElement(self, child)
+        if name not in hmap:
+            raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
+        return self._resolve_child(name, hmap)
 
-        raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
-
-    def __setattr__(self, name: str, value: object):
-        """
-        Intercept attribute assignment and notify the modification observer.
-
-        Parameters
-        ----------
-        name : str
-            Name of the key.
-        value : object
-            Value of the key.
-        """
+    def _resolve_child(self, name, hmap):
+        """Return the owned child, or an ``InheritedElement`` proxy, cached under its name."""
         from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 
+        child = hmap[name]
+        is_owned = name in self.__dict__.get("_owned_names", set())
+        result = child if is_owned else InheritedElement(self, child)
+        self.__dict__[name] = result
+        return result
+
+    def __setattr__(self, name: str, value: object):
+        """Intercept attribute assignment: deprecated shims first, then notify the observer."""
+        from ansys.sam.sysml2.tools.deprecation import scripting_deprecated_set
+
+        if scripting_deprecated_set(self, name, value):
+            return
         if name != "_observer" and getattr(self, "_observer", None) is not None:
             self._observer.notify(self._id, name, value)
-        if name.startswith("#"):
-            name = name[1:]
-            if any(name == getattr(x, "_name", None) for x in getattr(self, "_ownedElement", [])):
-                super().__setattr__(name, value)
-            else:
-                super().__setattr__(name, InheritedElement(self, value))
-
-        else:
-            super().__setattr__(name, value)
+        super().__setattr__(name, value)
 
     def get_value(self):
         """Get the value of the feature."""
@@ -108,6 +108,36 @@ class SysMLElement:
     def set_value(self, new_value: str | int | float | bool):
         """Update the feature value."""
         ValueHelper.set_or_update_value(self, type(new_value), new_value)
+
+    def get(self, element_name: str):
+        """Find an owned or inherited child by name (e.g. names with spaces)."""
+        hmap = self.__dict__.get("_element_hash_map", {})
+        if element_name not in hmap:
+            return None
+        return self.__getattr__(element_name)
+
+    def get_target(self):
+        """Return the resolved leaf element pointed to by ``self._target``, or None."""
+        return self._resolve_end(getattr(self, "_target", []) or [])
+
+    def get_source(self):
+        """Return the resolved leaf element pointed to by ``self._source``, or None."""
+        return self._resolve_end(getattr(self, "_source", []) or [])
+
+    def _resolve_end(self, ends):
+        """Walk the first end's ``_chainingFeature`` via attribute access; else passthrough."""
+        if not ends:
+            return None
+        end = ends[0]
+        chain = getattr(end, "_chainingFeature", None) or []
+        if not chain:
+            return end
+        current = getattr(self, "_owner", None)
+        for hop in chain:
+            if current is None:
+                return None
+            current = getattr(current, hop._name, None)
+        return current
 
     def delete(self):
         """Delete the element from the model via the observer's commit to the server."""

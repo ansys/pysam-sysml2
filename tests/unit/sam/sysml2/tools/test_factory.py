@@ -42,7 +42,6 @@ ELEMENT_TYPES = [
     ("create_state_usage", "StateUsage"),
 ]
 
-
 class TestFactory:
 
     @pytest.fixture

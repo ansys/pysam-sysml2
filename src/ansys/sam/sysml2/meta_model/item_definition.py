@@ -27,7 +27,7 @@ from .structure import Structure
 
 
 class ItemDefinition(OccurrenceDefinition, Structure):
-    """Java class 'com.ansys.medini.metamodel.sysml.ItemDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.ItemDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

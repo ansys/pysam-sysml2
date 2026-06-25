@@ -26,7 +26,7 @@ from .item_definition import ItemDefinition
 
 
 class PartDefinition(ItemDefinition):
-    """Java class 'com.ansys.medini.metamodel.sysml.PartDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.PartDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

@@ -29,7 +29,6 @@ from ansys.sam.sysml2.tools.factory import Factory
 from tests.unit.const import PROJECT_ID_1, VALID_ORGANIZATION, VALID_TOKEN
 from tests.unit.mocked_connector import MockedSysML2APIConnector
 
-
 class TestAnsysSysML2Project:
 
     def test_streamlined_project_factory_initialization(self, mocker):

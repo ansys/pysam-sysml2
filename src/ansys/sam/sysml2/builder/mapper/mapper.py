@@ -37,7 +37,6 @@ class Mapper(ABC):
     @abstractmethod
     def map(
         self,
-        namespace: str,
         json_element: dict,
         mapped_element: Element | SysMLElement,
     ) -> MappedElement:
@@ -46,8 +45,6 @@ class Mapper(ABC):
 
         Parameters
         ----------
-        namespace : str
-            Current namespace.
         json_element : dict
             Data.
         mapped_element : Element | SysMLElement
@@ -76,7 +73,9 @@ class Mapper(ABC):
         list
             Empty list because the field is already resolved.
         """
-        setattr(element, field_name, field_value)
+        # Bypass the scripting read-only guard on ``_name``: this is deserialization,
+        # not a user edit, so it must not raise or stack an observer change.
+        object.__setattr__(element, field_name, field_value)
         return []
 
     def _add_element_to_field(self, element, key: str, value: dict) -> list[UnresolvedField]:

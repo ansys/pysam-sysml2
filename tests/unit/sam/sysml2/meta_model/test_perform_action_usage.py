@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.perform_action_usage import PerformActionUsage
 
 
 class TestPerformActionUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.PerformActionUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.PerformActionUsage'."""
 
     @pytest.fixture
     def element(self):

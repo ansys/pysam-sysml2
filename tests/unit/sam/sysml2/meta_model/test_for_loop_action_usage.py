@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.for_loop_action_usage import ForLoopActionUsage
 
 
 class TestForLoopActionUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ForLoopActionUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ForLoopActionUsage'."""
 
     @pytest.fixture
     def element(self):
@@ -46,3 +46,9 @@ class TestForLoopActionUsage:
         value = "test_value"
         element.loop_variable = value
         assert element.loop_variable == value
+
+    def test_seq_argument(self, element):
+        """Test getter and setter for seq argument property."""
+        value = "test_value"
+        element.seq_argument = value
+        assert element.seq_argument == value

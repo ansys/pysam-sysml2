@@ -26,7 +26,7 @@ from .expression import Expression
 
 
 class LiteralExpression(Expression):
-    """Java class 'com.ansys.medini.metamodel.sysml.LiteralExpression'."""
+    """Java class 'com.ansys.metamodel.sysml2.LiteralExpression'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

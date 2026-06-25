@@ -28,7 +28,7 @@ from .relationship import Relationship
 
 
 class Dependency(Relationship):
-    """Java class 'com.ansys.medini.metamodel.sysml.Dependency'."""
+    """Java class 'com.ansys.metamodel.sysml2.Dependency'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

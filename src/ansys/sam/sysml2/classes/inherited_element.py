@@ -54,7 +54,7 @@ def build_composed_name(owner, element, is_inherited):
 
 
 class InheritedElement(SysMLElement):
-    """A proxy class for the element that is not created yet."""
+    """Proxy that exposes an inherited element under its on-the-fly owner."""
 
     def __init__(self, owner, element):
         """Construct a new instance."""
@@ -64,9 +64,28 @@ class InheritedElement(SysMLElement):
         self._id = build_composed_name(owner, element, True)
         self._owner = owner
 
+    def __setattr__(self, name, value):
+        """Store proxy plumbing directly; route model writes through the parent observer."""
+        if name in ("_observer", "_element", "_id", "_owner"):
+            object.__setattr__(self, name, value)
+            return
+        super().__setattr__(name, value)
+
+    @property
+    def _visibility(self):
+        """Delegate _visibility to the wrapped element (the proxy holds no fields of its own)."""
+        return self._element._visibility
+
     def __dir__(self):
         """Get the attribute list from the real element."""
         return dir(self._element)
+
+    def get(self, element_name: str):
+        """Resolve a child by name on the wrapped element, wrapping it as a proxy when needed."""
+        hmap = getattr(self._element, "_element_hash_map", {})
+        if element_name not in hmap:
+            return None
+        return self.__getattr__(element_name)
 
     def __getattr__(self, name):
         """Get the attribute from the real element."""

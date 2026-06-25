@@ -28,8 +28,8 @@ from .assert_constraint_usage import AssertConstraintUsage
 from .requirement_usage import RequirementUsage
 
 
-class SatisfyRequirementUsage(RequirementUsage, AssertConstraintUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.SatisfyRequirementUsage'."""
+class SatisfyRequirementUsage(AssertConstraintUsage, RequirementUsage):
+    """Java class 'com.ansys.metamodel.sysml2.SatisfyRequirementUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

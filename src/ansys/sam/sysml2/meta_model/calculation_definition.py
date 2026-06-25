@@ -29,7 +29,7 @@ from .function import Function
 
 
 class CalculationDefinition(ActionDefinition, Function):
-    """Java class 'com.ansys.medini.metamodel.sysml.CalculationDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.CalculationDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
