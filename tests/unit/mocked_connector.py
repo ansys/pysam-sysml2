@@ -54,6 +54,18 @@ class MockedSysML2APIConnector(SysML2APIConnector):
             raise ProjectNotFoundException(f"Project {project_id} not found")
         return json.loads(elements_file.read_text(encoding="utf-8"))
 
+    def _load_library_elements(self, project_id: str) -> list:
+        """Load library elements served only through ``get_element_by_id``.
+
+        Library elements (such as ``SI::kilogram``) are no longer exposed by the elements
+        route, so they live in a separate ``library.json`` fixture and are excluded from
+        ``get_all_elements`` and ``execute_query``.
+        """
+        library_file = MODELTESTSET / f"project_{project_id}" / "library.json"
+        if not library_file.exists():
+            return []
+        return json.loads(library_file.read_text(encoding="utf-8"))
+
     def get_projects(self) -> list:
         """Get all projects."""
         return list(self._projects.values())
@@ -119,7 +131,7 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         """Get a single element by ID."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        elements = self._load_elements(project_id)
+        elements = self._load_elements(project_id) + self._load_library_elements(project_id)
         for el in elements:
             if el.get("@id") == element_id:
                 return el

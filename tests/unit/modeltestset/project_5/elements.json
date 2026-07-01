@@ -1,0 +1,666 @@
+[
+    {
+        "@type": "Package",
+        "@id": "pkg-root",
+        "identifier": "pkg-root",
+        "name": "complex-expr",
+        "qualifiedName": "complex-expr",
+        "owner": null,
+        "owningNamespace": null,
+        "ownedElement": [
+            {
+                "@id": "attr-plus"
+            },
+            {
+                "@id": "attr-kg"
+            },
+            {
+                "@id": "attr-ref"
+            },
+            {
+                "@id": "attr-nested"
+            },
+            {
+                "@id": "attr-not"
+            }
+        ]
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "attr-plus",
+        "identifier": "attr-plus",
+        "name": "attribute",
+        "qualifiedName": "complex-expr::attribute",
+        "owner": {
+            "@id": "pkg-root"
+        },
+        "ownedElement": [
+            {
+                "@id": "op-plus"
+            }
+        ],
+        "valuation": {
+            "@id": "fv-plus"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-plus",
+        "identifier": "fv-plus",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "op-plus"
+        }
+    },
+    {
+        "@type": "OperatorExpression",
+        "@id": "op-plus",
+        "identifier": "op-plus",
+        "name": null,
+        "owner": {
+            "@id": "attr-plus"
+        },
+        "operator": "+",
+        "input": [
+            {
+                "@id": "plus-operand-1"
+            },
+            {
+                "@id": "plus-operand-2"
+            }
+        ],
+        "ownedMember": [
+            {
+                "@id": "plus-operand-1"
+            },
+            {
+                "@id": "plus-operand-2"
+            }
+        ]
+    },
+    {
+        "@type": "Feature",
+        "@id": "plus-operand-1",
+        "identifier": "plus-operand-1",
+        "name": null,
+        "owner": {
+            "@id": "op-plus"
+        },
+        "valuation": {
+            "@id": "fv-plus-operand-1"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-plus-operand-1",
+        "identifier": "fv-plus-operand-1",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "literal-plus-1"
+        }
+    },
+    {
+        "@type": "LiteralInteger",
+        "@id": "literal-plus-1",
+        "identifier": "literal-plus-1",
+        "name": null,
+        "owner": {
+            "@id": "plus-operand-1"
+        },
+        "value": 5
+    },
+    {
+        "@type": "Feature",
+        "@id": "plus-operand-2",
+        "identifier": "plus-operand-2",
+        "name": null,
+        "owner": {
+            "@id": "op-plus"
+        },
+        "valuation": {
+            "@id": "fv-plus-operand-2"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-plus-operand-2",
+        "identifier": "fv-plus-operand-2",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "literal-plus-2"
+        }
+    },
+    {
+        "@type": "LiteralInteger",
+        "@id": "literal-plus-2",
+        "identifier": "literal-plus-2",
+        "name": null,
+        "owner": {
+            "@id": "plus-operand-2"
+        },
+        "value": 5
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "attr-kg",
+        "identifier": "attr-kg",
+        "name": "attribute1",
+        "qualifiedName": "complex-expr::attribute1",
+        "owner": {
+            "@id": "pkg-root"
+        },
+        "ownedElement": [
+            {
+                "@id": "op-kg"
+            }
+        ],
+        "valuation": {
+            "@id": "fv-kg"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-kg",
+        "identifier": "fv-kg",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "op-kg"
+        }
+    },
+    {
+        "@type": "OperatorExpression",
+        "@id": "op-kg",
+        "identifier": "op-kg",
+        "name": null,
+        "owner": {
+            "@id": "attr-kg"
+        },
+        "operator": "[",
+        "input": [
+            {
+                "@id": "kg-value-operand"
+            },
+            {
+                "@id": "kg-unit-operand"
+            }
+        ],
+        "ownedMember": [
+            {
+                "@id": "kg-value-operand"
+            },
+            {
+                "@id": "kg-unit-operand"
+            }
+        ]
+    },
+    {
+        "@type": "Feature",
+        "@id": "kg-value-operand",
+        "identifier": "kg-value-operand",
+        "name": null,
+        "owner": {
+            "@id": "op-kg"
+        },
+        "valuation": {
+            "@id": "fv-kg-value"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-kg-value",
+        "identifier": "fv-kg-value",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "literal-kg"
+        }
+    },
+    {
+        "@type": "LiteralInteger",
+        "@id": "literal-kg",
+        "identifier": "literal-kg",
+        "name": null,
+        "owner": {
+            "@id": "kg-value-operand"
+        },
+        "value": 5
+    },
+    {
+        "@type": "Feature",
+        "@id": "kg-unit-operand",
+        "identifier": "kg-unit-operand",
+        "name": null,
+        "owner": {
+            "@id": "op-kg"
+        },
+        "valuation": {
+            "@id": "fv-kg-unit"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-kg-unit",
+        "identifier": "fv-kg-unit",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "fre-kg"
+        }
+    },
+    {
+        "@type": "FeatureReferenceExpression",
+        "@id": "fre-kg",
+        "identifier": "fre-kg",
+        "name": null,
+        "owner": {
+            "@id": "kg-unit-operand"
+        },
+        "referent": {
+            "@id": "si-kilogram"
+        }
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "attr-ref",
+        "identifier": "attr-ref",
+        "name": "attribute2",
+        "qualifiedName": "complex-expr::attribute2",
+        "owner": {
+            "@id": "pkg-root"
+        },
+        "ownedElement": [
+            {
+                "@id": "op-ref"
+            }
+        ],
+        "valuation": {
+            "@id": "fv-ref"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-ref",
+        "identifier": "fv-ref",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "op-ref"
+        }
+    },
+    {
+        "@type": "OperatorExpression",
+        "@id": "op-ref",
+        "identifier": "op-ref",
+        "name": null,
+        "owner": {
+            "@id": "attr-ref"
+        },
+        "operator": "+",
+        "input": [
+            {
+                "@id": "ref-operand-1"
+            },
+            {
+                "@id": "ref-operand-2"
+            }
+        ],
+        "ownedMember": [
+            {
+                "@id": "ref-operand-1"
+            },
+            {
+                "@id": "ref-operand-2"
+            }
+        ]
+    },
+    {
+        "@type": "Feature",
+        "@id": "ref-operand-1",
+        "identifier": "ref-operand-1",
+        "name": null,
+        "owner": {
+            "@id": "op-ref"
+        },
+        "valuation": {
+            "@id": "fv-ref-operand-1"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-ref-operand-1",
+        "identifier": "fv-ref-operand-1",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "fre-attr-plus"
+        }
+    },
+    {
+        "@type": "FeatureReferenceExpression",
+        "@id": "fre-attr-plus",
+        "identifier": "fre-attr-plus",
+        "name": null,
+        "owner": {
+            "@id": "ref-operand-1"
+        },
+        "referent": {
+            "@id": "attr-plus"
+        }
+    },
+    {
+        "@type": "Feature",
+        "@id": "ref-operand-2",
+        "identifier": "ref-operand-2",
+        "name": null,
+        "owner": {
+            "@id": "op-ref"
+        },
+        "valuation": {
+            "@id": "fv-ref-operand-2"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-ref-operand-2",
+        "identifier": "fv-ref-operand-2",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "fre-attr-kg"
+        }
+    },
+    {
+        "@type": "FeatureReferenceExpression",
+        "@id": "fre-attr-kg",
+        "identifier": "fre-attr-kg",
+        "name": null,
+        "owner": {
+            "@id": "ref-operand-2"
+        },
+        "referent": {
+            "@id": "attr-kg"
+        }
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "attr-nested",
+        "identifier": "attr-nested",
+        "name": "attribute3",
+        "qualifiedName": "complex-expr::attribute3",
+        "owner": {
+            "@id": "pkg-root"
+        },
+        "ownedElement": [
+            {
+                "@id": "op-outer"
+            }
+        ],
+        "valuation": {
+            "@id": "fv-nested"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-nested",
+        "identifier": "fv-nested",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "op-outer"
+        }
+    },
+    {
+        "@type": "OperatorExpression",
+        "@id": "op-outer",
+        "identifier": "op-outer",
+        "name": null,
+        "owner": {
+            "@id": "attr-nested"
+        },
+        "operator": "+",
+        "input": [
+            {
+                "@id": "outer-operand-1"
+            },
+            {
+                "@id": "outer-operand-2"
+            }
+        ],
+        "ownedMember": [
+            {
+                "@id": "outer-operand-1"
+            },
+            {
+                "@id": "outer-operand-2"
+            }
+        ]
+    },
+    {
+        "@type": "Feature",
+        "@id": "outer-operand-1",
+        "identifier": "outer-operand-1",
+        "name": null,
+        "owner": {
+            "@id": "op-outer"
+        },
+        "valuation": {
+            "@id": "fv-outer-operand-1"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-outer-operand-1",
+        "identifier": "fv-outer-operand-1",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "op-inner"
+        }
+    },
+    {
+        "@type": "OperatorExpression",
+        "@id": "op-inner",
+        "identifier": "op-inner",
+        "name": null,
+        "owner": {
+            "@id": "outer-operand-1"
+        },
+        "operator": "+",
+        "input": [
+            {
+                "@id": "inner-operand-1"
+            },
+            {
+                "@id": "inner-operand-2"
+            }
+        ],
+        "ownedMember": [
+            {
+                "@id": "inner-operand-1"
+            },
+            {
+                "@id": "inner-operand-2"
+            }
+        ]
+    },
+    {
+        "@type": "Feature",
+        "@id": "inner-operand-1",
+        "identifier": "inner-operand-1",
+        "name": null,
+        "owner": {
+            "@id": "op-inner"
+        },
+        "valuation": {
+            "@id": "fv-inner-operand-1"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-inner-operand-1",
+        "identifier": "fv-inner-operand-1",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "literal-inner-1"
+        }
+    },
+    {
+        "@type": "LiteralInteger",
+        "@id": "literal-inner-1",
+        "identifier": "literal-inner-1",
+        "name": null,
+        "owner": {
+            "@id": "inner-operand-1"
+        },
+        "value": 1
+    },
+    {
+        "@type": "Feature",
+        "@id": "inner-operand-2",
+        "identifier": "inner-operand-2",
+        "name": null,
+        "owner": {
+            "@id": "op-inner"
+        },
+        "valuation": {
+            "@id": "fv-inner-operand-2"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-inner-operand-2",
+        "identifier": "fv-inner-operand-2",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "literal-inner-2"
+        }
+    },
+    {
+        "@type": "LiteralInteger",
+        "@id": "literal-inner-2",
+        "identifier": "literal-inner-2",
+        "name": null,
+        "owner": {
+            "@id": "inner-operand-2"
+        },
+        "value": 2
+    },
+    {
+        "@type": "Feature",
+        "@id": "outer-operand-2",
+        "identifier": "outer-operand-2",
+        "name": null,
+        "owner": {
+            "@id": "op-outer"
+        },
+        "valuation": {
+            "@id": "fv-outer-operand-2"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-outer-operand-2",
+        "identifier": "fv-outer-operand-2",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "literal-outer-2"
+        }
+    },
+    {
+        "@type": "LiteralInteger",
+        "@id": "literal-outer-2",
+        "identifier": "literal-outer-2",
+        "name": null,
+        "owner": {
+            "@id": "outer-operand-2"
+        },
+        "value": 3
+    },
+    {
+        "@type": "AttributeUsage",
+        "@id": "attr-not",
+        "identifier": "attr-not",
+        "name": "attribute4",
+        "qualifiedName": "complex-expr::attribute4",
+        "owner": {
+            "@id": "pkg-root"
+        },
+        "ownedElement": [
+            {
+                "@id": "op-not"
+            }
+        ],
+        "valuation": {
+            "@id": "fv-not"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-not",
+        "identifier": "fv-not",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "op-not"
+        }
+    },
+    {
+        "@type": "OperatorExpression",
+        "@id": "op-not",
+        "identifier": "op-not",
+        "name": null,
+        "owner": {
+            "@id": "attr-not"
+        },
+        "operator": "not",
+        "input": [
+            {
+                "@id": "not-operand"
+            }
+        ],
+        "ownedMember": [
+            {
+                "@id": "not-operand"
+            }
+        ]
+    },
+    {
+        "@type": "Feature",
+        "@id": "not-operand",
+        "identifier": "not-operand",
+        "name": null,
+        "owner": {
+            "@id": "op-not"
+        },
+        "valuation": {
+            "@id": "fv-not-operand"
+        }
+    },
+    {
+        "@type": "FeatureValue",
+        "@id": "fv-not-operand",
+        "identifier": "fv-not-operand",
+        "name": null,
+        "owner": null,
+        "value": {
+            "@id": "literal-not"
+        }
+    },
+    {
+        "@type": "LiteralBoolean",
+        "@id": "literal-not",
+        "identifier": "literal-not",
+        "name": null,
+        "owner": {
+            "@id": "not-operand"
+        },
+        "value": true
+    }
+]

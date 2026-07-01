@@ -129,3 +129,52 @@ class TestValues:
 
         with pytest.raises(ProjectNotFoundException):
             connector.get_project_by_id(project_id)
+
+    def test_create_attribute_arithmetic_expression(self, connector, project_factory):
+        """Create an attribute, set an arithmetic complex expression, verify roundtrip."""
+        project = project_factory(model="bike", kind="scripting")
+        bike = project.get_root_package().Structure.Bike
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="complexArithmetic", owner=bike.frame)
+
+        bike.frame.complexArithmetic.parse_and_set_value("5 + 5 + 5")
+
+        assert bike.frame.complexArithmetic.get_value() == "5 + 5 + 5"
+
+    def test_create_attribute_reference_expression(self, connector, project_factory):
+        """Reference an already-created attribute from a second attribute's expression."""
+        project = project_factory(model="bike", kind="scripting")
+        bike = project.get_root_package().Structure.Bike
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="baseValue", owner=bike.frame)
+        bike.frame.baseValue.parse_and_set_value("5 + 5")
+        factory.create_attribute_usage(declared_name="refValue", owner=bike.frame)
+
+        bike.frame.refValue.parse_and_set_value("baseValue + baseValue")
+
+        assert bike.frame.baseValue.get_value() == "5 + 5"
+        assert bike.frame.refValue.get_value() == "baseValue + baseValue"
+
+    def test_create_attribute_usage_with_expression_tag(self, connector, project_factory):
+        """Create an attribute usage with the expression already set at creation time."""
+        project = project_factory(model="bike", kind="scripting")
+        bike = project.get_root_package().Structure.Bike
+        factory = Factory(project, connector)
+
+        factory.create_attribute_usage(
+            declared_name="preSetExpr", owner=bike.frame, expression="5 + 5 + 5"
+        )
+
+        assert bike.frame.preSetExpr.get_value() == "5 + 5 + 5"
+
+    def test_create_attribute_expression_sysml(self, connector, project_factory):
+        """SysML-kind: create an attribute, set an arithmetic expression, read it via .get()."""
+        project = project_factory(model="bike", kind="sysml")
+        bike = project.get_root_package().get("Structure").get("Bike")
+        frame = bike.get("frame")
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="complexArithmetic", owner=frame)
+
+        frame.get("complexArithmetic").parse_and_set_value("5 + 5 + 5")
+
+        assert frame.get("complexArithmetic").get_value() == "5 + 5 + 5"
