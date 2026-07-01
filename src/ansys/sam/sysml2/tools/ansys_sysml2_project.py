@@ -30,8 +30,35 @@ from ansys.sam.sysml2.tools.ansys_project import AnsysProject
 class AnsysSysML2Project(AnsysProject, ProjectImpl):
     """Complete Ansys SysML project implementation with integrated capabilities."""
 
-    def _get_project(self, sysml2_connector: AnsysSysML2APIConnector) -> Project:
-        """Load a SysML project."""
+    def _get_project(
+        self,
+        sysml2_connector: AnsysSysML2APIConnector,
+        resolve_libraries: bool = False,
+        progress: bool = False,
+        progress_log=None,
+    ) -> Project:
+        """
+        Load a SysML project.
+
+        Parameters
+        ----------
+        sysml2_connector : AnsysSysML2APIConnector
+            Connector used to load the project.
+        resolve_libraries : bool, default: False
+            When ``True``, resolve and map library element contents so they can be navigated.
+        progress : bool, default: False
+            When ``True``, emit live build metrics to standard error during the build.
+        progress_log : str or pathlib.Path, optional
+            When set, append recap lines here and fetched ids to a sibling
+            ``elements_fetched.log``.
+
+        Returns
+        -------
+        Project
+            The loaded SysML project.
+        """
         project_manager = SysML2ProjectManager(connector=sysml2_connector)
-        project = project_manager.get_sysml_project(self._project_id)
+        project = project_manager.get_sysml_project(
+            self._project_id, resolve_libraries, progress, progress_log
+        )
         return project

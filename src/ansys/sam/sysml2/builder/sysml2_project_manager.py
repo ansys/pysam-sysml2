@@ -22,10 +22,13 @@
 
 """Director class for project building."""
 
+from pathlib import Path
+
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
+from ansys.sam.sysml2.tools.timing import profile_entrypoint
 
 
 class SysML2ProjectManager:
@@ -52,19 +55,77 @@ class SysML2ProjectManager:
         """
         return self._connector.get_projects()
 
-    def get_sysml_project(self, project_id: str) -> Project:
-        """Get a SysML project with its ID from the API and map it in a Python object."""
+    @profile_entrypoint
+    def get_sysml_project(
+        self,
+        project_id: str,
+        resolve_libraries: bool = False,
+        progress: bool = False,
+        progress_log: str | Path | None = None,
+    ) -> Project:
+        """
+        Get a SysML project with its ID from the API and map it in a Python object.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to load.
+        resolve_libraries : bool, default: False
+            When ``True``, library element contents are resolved and mapped so they can be
+            navigated. Only applied on first load; a cached project is returned as-is.
+        progress : bool, default: False
+            When ``True``, emit live build metrics to standard error during the build.
+        progress_log : str or pathlib.Path, optional
+            When set, append recap lines here and fetched ids to a sibling
+            ``elements_fetched.log``.
+
+        Returns
+        -------
+        Project
+            The requested project, built from the API or returned from cache.
+        """
         project = self._sysml_projects.get(project_id)
         if project is None:
-            project = SysML2ProjectBuilder(self._connector).build_sysml_project(project_id)
+            project = SysML2ProjectBuilder(self._connector).build_sysml_project(
+                project_id, resolve_libraries, progress, progress_log
+            )
             self._sysml_projects[project_id] = project
         return project
 
-    def get_scripting_project(self, project_id: str) -> ScriptingProject:
-        """Get a scripting project with its ID from the API and map it in a Python object."""
+    @profile_entrypoint
+    def get_scripting_project(
+        self,
+        project_id: str,
+        resolve_libraries: bool = False,
+        progress: bool = False,
+        progress_log: str | Path | None = None,
+    ) -> ScriptingProject:
+        """
+        Get a scripting project with its ID from the API and map it in a Python object.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to load.
+        resolve_libraries : bool, default: False
+            When ``True``, library element contents are resolved and mapped so they can be
+            navigated. Only applied on first load; a cached project is returned as-is.
+        progress : bool, default: False
+            When ``True``, emit live build metrics to standard error during the build.
+        progress_log : str or pathlib.Path, optional
+            When set, append recap lines here and fetched ids to a sibling
+            ``elements_fetched.log``.
+
+        Returns
+        -------
+        ScriptingProject
+            The requested project, built from the API or returned from cache.
+        """
         project = self._scripting_projects.get(project_id)
         if project is None:
-            project = SysML2ProjectBuilder(self._connector).build_scripting_project(project_id)
+            project = SysML2ProjectBuilder(self._connector).build_scripting_project(
+                project_id, resolve_libraries, progress, progress_log
+            )
             self._scripting_projects[project_id] = project
         return project
 

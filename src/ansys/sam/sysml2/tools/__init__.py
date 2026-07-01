@@ -21,5 +21,17 @@
 # SOFTWARE.
 """Tools module for PySAM SysML2."""
 
-from .factory import Factory  # noqa as we export name
-from .sysmltools import SysMLTools  # noqa as we export name
+__all__ = ["Factory", "SysMLTools"]
+
+
+def __getattr__(name):
+    """Lazily resolve exported names to avoid import cycles at package import time."""
+    if name == "Factory":
+        from .factory import Factory
+
+        return Factory
+    if name == "SysMLTools":
+        from .sysmltools import SysMLTools
+
+        return SysMLTools
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
