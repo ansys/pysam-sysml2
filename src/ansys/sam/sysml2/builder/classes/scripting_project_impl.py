@@ -37,6 +37,8 @@ class ScriptingProjectImpl(ScriptingProject):
     _unresolved_fields: list[UnresolvedField]
     _name: str
     _resolve_libraries: bool = False
+    _progress: bool = False
+    _progress_log = None
 
     def __init__(self, project_id: str, name: str):
         """
