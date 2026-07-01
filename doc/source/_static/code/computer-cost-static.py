@@ -57,8 +57,8 @@ def assess_cost(element: Element):
         cost = cost_attribute.get_value()
         if type(cost) is int:
             return cost
-        elif type(cost) is tuple:  # a tuple means an int value and a unit
-            return cost[0]
+        elif type(cost) is str:  # a "<value> [<unit>]" expression rendered as text
+            return float(cost.split(" [")[0])
         raise ValueError(f"Problem of value type for the cost of {element._name}")
     cost = 0
     for sub_element in element.owned_element:

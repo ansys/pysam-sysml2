@@ -48,11 +48,12 @@ bike = my_bike_project.get_root_package().get("Structure").get("Bike")
 # see computer-cost-static.py for a computation of weight
 # through a recursive way (replace "cost" with "weight")
 
-bike_weight = (
-    bike.get("frontWheel").get("rim").get("weight").get_value()[0]
-    + bike.get("frontWheel").get("tire").get("weight").get_value()[0]
-    + bike.get("rearWheel").get("rim").get("weight").get_value()[0]
-    + bike.get("rearWheel").get("tire").get("weight").get_value()[0]
-    + bike.get("frame").get("weight").get_value()[0]
-)
+weight_features = [
+    bike.get("frontWheel").get("rim").get("weight"),
+    bike.get("frontWheel").get("tire").get("weight"),
+    bike.get("rearWheel").get("rim").get("weight"),
+    bike.get("rearWheel").get("tire").get("weight"),
+    bike.get("frame").get("weight"),
+]
+bike_weight = sum(float(f.get_value().split()[0]) for f in weight_features)
 print(bike_weight)

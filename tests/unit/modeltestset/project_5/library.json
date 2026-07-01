@@ -1,0 +1,13 @@
+[
+    {
+        "@type": "AttributeUsage",
+        "@id": "si-kilogram",
+        "identifier": "si-kilogram",
+        "declaredShortName": "kg",
+        "declaredName": "kilogram",
+        "shortName": "kg",
+        "name": "kilogram",
+        "qualifiedName": "SI::kilogram",
+        "isLibraryElement": true
+    }
+]
