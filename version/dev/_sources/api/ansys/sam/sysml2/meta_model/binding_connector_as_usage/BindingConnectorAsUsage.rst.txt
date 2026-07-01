@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`BindingConnectorAsUsage`
+================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.binding_connector_as_usage.BindingConnectorAsUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connector_as_usage.ConnectorAsUsage`, :py:obj:`ansys.sam.sysml2.meta_model.binding_connector.BindingConnector`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.BindingConnectorAsUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.binding_connector_as_usage import BindingConnectorAsUsage
+
+
+
+
+

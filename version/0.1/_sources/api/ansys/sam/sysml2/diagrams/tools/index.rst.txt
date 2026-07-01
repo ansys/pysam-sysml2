@@ -1,0 +1,92 @@
+
+
+
+
+
+
+The ``tools`` package
+=========================
+
+.. py:module:: ansys.sam.sysml2.diagrams.tools
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: tools
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader`
+            - Diagram downloader for PySAM SysML2 diagram library.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> sam_diagram_downloader</api/ansys/sam/sysml2/diagrams/tools/sam_diagram_downloader/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Tools module for the PySAM SysML2 diagram library.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

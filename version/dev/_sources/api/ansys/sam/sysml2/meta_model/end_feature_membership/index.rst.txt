@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``end_feature_membership.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.end_feature_membership
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: end_feature_membership
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.end_feature_membership.EndFeatureMembership`
+            - Java class 'com.ansys.medini.metamodel.sysml.EndFeatureMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> EndFeatureMembership</api/ansys/sam/sysml2/meta_model/end_feature_membership/EndFeatureMembership>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated end feature membership class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

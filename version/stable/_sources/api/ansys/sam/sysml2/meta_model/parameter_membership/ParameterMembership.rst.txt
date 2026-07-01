@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`ParameterMembership`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.parameter_membership.ParameterMembership(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ParameterMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ParameterMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_member_parameter`
+            - Get the owned member parameter property.
+          * - :py:attr:`~member_parameter`
+            - Get the member parameter property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.parameter_membership import ParameterMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_member_parameter
+   :type: Feature
+
+
+   
+   Get the owned member parameter property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property owned member parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: member_parameter
+   :type: None
+
+
+   
+   Get the member parameter property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property member parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
