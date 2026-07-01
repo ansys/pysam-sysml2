@@ -22,6 +22,8 @@
 
 """Project builder."""
 
+from pathlib import Path
+
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
@@ -41,6 +43,8 @@ from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
 from ansys.sam.sysml2.exception.mapper_exception import MapperException
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.observer.observer import ModificationObserver
+from ansys.sam.sysml2.tools.progress import BuildProgressReporter
+from ansys.sam.sysml2.tools.timing import timed
 
 _SCRIPTING_KEEP = {"get_value", "parse_and_set_value", "set_value", "delete"}
 _SYSML_KEEP = {"get", "get_value", "parse_and_set_value", "set_value", "delete"}
@@ -66,7 +70,13 @@ class SysML2ProjectBuilder:
         """
         self._connector = connector
 
-    def build_sysml_project(self, project_id: str, resolve_libraries: bool = False) -> Project:
+    def build_sysml_project(
+        self,
+        project_id: str,
+        resolve_libraries: bool = False,
+        progress: bool = False,
+        progress_log: str | Path | None = None,
+    ) -> Project:
         """
         Call the API with the specified project ID and build the SysML project from JSON.
 
@@ -77,6 +87,11 @@ class SysML2ProjectBuilder:
         resolve_libraries : bool, default: False
             When ``True``, keep library elements' references so their contents are resolved
             and mapped during the build.
+        progress : bool, default: False
+            When ``True``, emit live build metrics to standard error during the build.
+        progress_log : str or pathlib.Path, optional
+            When set, append recap lines here and fetched ids to a sibling
+            ``elements_fetched.log``.
 
         Returns
         -------
@@ -86,11 +101,17 @@ class SysML2ProjectBuilder:
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
         project._resolve_libraries = resolve_libraries
+        project._progress = progress
+        project._progress_log = progress_log
         self.__build_project(project)
         return project
 
     def build_scripting_project(
-        self, project_id: str, resolve_libraries: bool = False
+        self,
+        project_id: str,
+        resolve_libraries: bool = False,
+        progress: bool = False,
+        progress_log: str | Path | None = None,
     ) -> ScriptingProject:
         """
         Call the API with the specified project ID and build the scripting project from JSON.
@@ -102,6 +123,11 @@ class SysML2ProjectBuilder:
         resolve_libraries : bool, default: False
             When ``True``, keep library elements' references so their contents are resolved
             and mapped during the build.
+        progress : bool, default: False
+            When ``True``, emit live build metrics to standard error during the build.
+        progress_log : str or pathlib.Path, optional
+            When set, append recap lines here and fetched ids to a sibling
+            ``elements_fetched.log``.
 
         Returns
         -------
@@ -111,6 +137,8 @@ class SysML2ProjectBuilder:
         project_info = self._connector.get_project_by_id(project_id)
         project = ScriptingProjectImpl(project_id, project_info["name"])
         project._resolve_libraries = resolve_libraries
+        project._progress = progress
+        project._progress_log = progress_log
         self.__build_project(project)
         return project
 
@@ -123,20 +151,34 @@ class SysML2ProjectBuilder:
         self._resolve_inherited_link(project)
         self._add_write_access(project)
 
+    @timed
     def _build_project_element(self, project: Project | ScriptingProject):
         """Build all project elements in the project."""
+        reporter = BuildProgressReporter(
+            enabled=getattr(project, "_progress", False),
+            label=str(project._id),
+            log_path=getattr(project, "_progress_log", None),
+        )
         elements = self._connector.get_all_elements(project_id=project._id)
         self._map_element_in_project(project, elements)
+        reporter.bulk_loaded(elements)
         missing_elements = self._resolve_fields(project)
         seen = missing_elements.copy()
+        round_no = 0
         while missing_elements:
+            round_no += 1
+            queried = list(missing_elements)
+            reporter.round_start(round_no, queried)
             new_element = self._get_missing(project, missing_elements)
             self._map_element_in_project(project, new_element)
             missing_elements = self._resolve_fields(project)
             missing_elements.difference_update(seen)
             seen.update(missing_elements)
+            reporter.round(round_no, queried, new_element, len(project._env), len(missing_elements))
+        reporter.done(len(project._env), round_no)
         self.extract_root_and_check_names(project)
 
+    @timed
     def extract_root_and_check_names(self, project: Project | ScriptingProject):
         """Extract root elements and resolve inherited names in a single pass."""
         roots = []
@@ -190,6 +232,7 @@ class SysML2ProjectBuilder:
         else:
             raise MapperException(f"No mapper found for project type: {type(project).__name__}")
 
+    @timed
     def _map_element_in_project(self, project: Project | ScriptingProject, elements: list):
         """
         Map all elements and add them to the context project.
@@ -211,6 +254,7 @@ class SysML2ProjectBuilder:
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
 
+    @timed
     def _resolve_fields(self, project: Project | ScriptingProject) -> set[str]:
         """
         Resolve all fields and return missing IDs.
@@ -239,6 +283,7 @@ class SysML2ProjectBuilder:
         project._unresolved_fields = [f for f in unresolved_fields if f not in resolved_fields]
         return missing
 
+    @timed
     def _get_missing(
         self, project: Project | ScriptingProject, missing_elements: set[str]
     ) -> list[dict]:
@@ -269,6 +314,7 @@ class SysML2ProjectBuilder:
         query.where = cp
         return self._connector.execute_query(project._id, query.to_json())
 
+    @timed
     def _resolve_inherited_link(self, project: Project | ScriptingProject):
         """Refresh per-element hash map and owned-name set; proxies are created lazily on access."""
         if isinstance(project, ScriptingProject):
@@ -322,6 +368,7 @@ class SysML2ProjectBuilder:
         for element in project._env.values():
             element._observer = project_modification_observer
 
+    @timed
     def reload_project(
         self,
         modification_observer: ModificationObserver,
