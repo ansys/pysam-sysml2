@@ -28,7 +28,7 @@ from .feature_membership import FeatureMembership
 
 
 class ObjectiveMembership(FeatureMembership):
-    """Java class 'com.ansys.medini.metamodel.sysml.ObjectiveMembership'."""
+    """Java class 'com.ansys.metamodel.sysml2.ObjectiveMembership'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

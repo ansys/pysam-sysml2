@@ -28,7 +28,7 @@ from .usage import Usage
 
 
 class AttributeUsage(Usage):
-    """Java class 'com.ansys.medini.metamodel.sysml.AttributeUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.AttributeUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

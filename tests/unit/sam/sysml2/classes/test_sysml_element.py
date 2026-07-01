@@ -25,21 +25,18 @@
 import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
+from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
-from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3, PROJECT_ID_4
+from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
 class TestSysMLElement:
 
     @pytest.fixture
-    def old_format_project(self, connector) -> ScriptingProject:
-        manager = SysML2ProjectManager(connector)
-        return manager.get_scripting_project(PROJECT_ID_4)
-
-    @pytest.fixture
-    def new_format_project(self, connector) -> ScriptingProject:
+    def project(self, connector) -> ScriptingProject:
         manager = SysML2ProjectManager(connector)
         return manager.get_scripting_project(PROJECT_ID_3)
 
@@ -50,24 +47,17 @@ class TestSysMLElement:
         mocker.patch.object(root._observer, "reload_project")
         attr = root.PartDefinition.attribute
 
-        attr._name = "NewAttr"
+        attr._declaredName = "NewAttr"
 
-        assert attr._name == "NewAttr"
+        assert attr._declaredName == "NewAttr"
 
-    def test_expression_get_value_old_format(self, old_format_project):
-        package = old_format_project.get_root_package()
-
-        assert package.Structure.Frame.weight.get_value() == ("2", "kg")
-
-    def test_expression_get_value_new_format(self, new_format_project):
-        package = new_format_project.get_root_package()
+    def test_expression_get_value(self, project):
+        package = project.get_root_package()
 
         assert package.Feature.myExpressionFeature.get_value() == (10, "kg")
 
-    def test_expression_set_value_new_format(
-        self, connector, new_format_project, mocker
-    ):
-        package = new_format_project.get_root_package()
+    def test_expression_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -75,14 +65,14 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_expression_complex_value_throws_error(self, new_format_project):
-        package = new_format_project.get_root_package()
+    def test_expression_complex_value_throws_error(self, project):
+        package = project.get_root_package()
 
         with pytest.raises(UnsupportedValueExpression):
             package.Feature.myComplexExpressionFeature.get_value()
 
-    def test_int_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_int_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -92,8 +82,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_string_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_string_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -103,8 +93,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_bool_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_bool_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -114,8 +104,8 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_float_get_set_value(self, connector, new_format_project, mocker):
-        package = new_format_project.get_root_package()
+    def test_float_get_set_value(self, connector, project, mocker):
+        package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
@@ -136,4 +126,83 @@ class TestSysMLElement:
         )
 
         with pytest.raises(BadRequestConnectionException):
-            root._name = ["ShouldFail"]
+            root._declaredName = ["ShouldFail"]
+
+
+class TestSysMLElementGet:
+    """The get(name) accessor reaches children whose names dot access cannot express."""
+
+    def _build_parent_with_spaced_child(self):
+        child = SysMLElement("child-id")
+        child._identifier = "child-id"
+        child._declaredName = "Part Definition"
+        parent = SysMLElement("parent-id")
+        parent._element_hash_map = {"Part Definition": child}
+        parent._owned_names = {"Part Definition"}
+        return parent, child
+
+    def test_get_returns_owned_child_with_spaced_name(self):
+        parent, child = self._build_parent_with_spaced_child()
+
+        assert parent.get("Part Definition") is child
+
+    def test_get_returns_none_for_missing_name(self):
+        parent, _ = self._build_parent_with_spaced_child()
+
+        assert parent.get("missing") is None
+
+    def test_get_through_inherited_element_proxy(self):
+        parent, _ = self._build_parent_with_spaced_child()
+        owner = SysMLElement("owner-id")
+        owner._owner = None
+        proxy = InheritedElement(owner, parent)
+
+        resolved = proxy.get("Part Definition")
+
+        assert resolved is not None
+        assert resolved._declaredName == "Part Definition"
+        assert proxy.get("missing") is None
+
+
+class TestSysMLElementDir:
+    """dir() lists value and connection helpers only when applicable."""
+
+    def test_value_methods_hidden_on_non_feature(self):
+        # The scripting mapper sets __class__ to a subclass named after the @type.
+        comment_cls = type("Comment", (SysMLElement,), {})
+        element = comment_cls("element_id")
+
+        listing = dir(element)
+        assert "get_value" not in listing
+        assert "set_value" not in listing
+        assert "parse_and_set_value" not in listing
+
+    def test_value_methods_listed_on_feature_descendant(self):
+        part_usage_cls = type("PartUsage", (SysMLElement,), {})
+        element = part_usage_cls("element_id")
+
+        listing = dir(element)
+        assert "get_value" in listing
+        assert "set_value" in listing
+        assert "parse_and_set_value" in listing
+
+    def test_source_target_hidden_without_ends(self):
+        element = SysMLElement("element_id")
+
+        listing = dir(element)
+        assert "get_source" not in listing
+        assert "get_target" not in listing
+
+    def test_get_source_listed_when_source_populated(self):
+        element = SysMLElement("element_id")
+        element._source = [SysMLElement("end_id")]
+
+        assert "get_source" in dir(element)
+        assert "get_target" not in dir(element)
+
+    def test_get_target_listed_when_target_populated(self):
+        element = SysMLElement("element_id")
+        element._target = [SysMLElement("end_id")]
+
+        assert "get_target" in dir(element)
+        assert "get_source" not in dir(element)

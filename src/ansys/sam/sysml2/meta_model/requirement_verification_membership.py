@@ -28,7 +28,7 @@ from .requirement_constraint_membership import RequirementConstraintMembership
 
 
 class RequirementVerificationMembership(RequirementConstraintMembership):
-    """Java class 'com.ansys.medini.metamodel.sysml.RequirementVerificationMembership'."""
+    """Java class 'com.ansys.metamodel.sysml2.RequirementVerificationMembership'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -41,7 +41,34 @@ class RequirementVerificationMembership(RequirementConstraintMembership):
         """
         super().__init__(element_id)
 
+        self._owned_requirement = None
         self._verified_requirement = None
+
+    @property
+    def owned_requirement(self) -> "RequirementUsage":  # noqa: F821
+        """
+        Get the owned requirement property.
+
+        Returns
+        -------
+        "RequirementUsage"
+            Value of property owned requirement.
+        """
+        return self._owned_requirement
+
+    @owned_requirement.setter
+    def owned_requirement(self, value: "RequirementUsage"):  # noqa: F821
+        """
+        Set the owned_requirement property.
+
+        Parameters
+        ----------
+        value: "RequirementUsage"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "owned_requirement", value)
+        self._owned_requirement = value
 
     @property
     def verified_requirement(self) -> "RequirementUsage":  # noqa: F821
