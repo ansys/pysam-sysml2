@@ -313,10 +313,6 @@ class ValueHelper:
         """
         Return the short name of a unit referent, fetching it when not yet resolved.
 
-        Library elements (such as ``SI::kilogram``) are no longer served by the elements
-        route, so a ``referent`` may still be an unresolved id string; in that case the
-        element is fetched on demand through the connector.
-
         Parameters
         ----------
         element : object
