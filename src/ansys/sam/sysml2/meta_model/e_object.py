@@ -45,8 +45,8 @@ class EObject:
         self._element_hash_map = {}
 
     def __dir__(self):
-        """Children are reachable via get(), not dot; hide the internal proxy cache."""
-        names = [a for a in super().__dir__() if a != "_proxy_cache" and not a.startswith("#")]
+        """Expose the public SysML API only: hide single-underscore backing fields."""
+        names = [a for a in super().__dir__() if not (a.startswith("_") and not a.startswith("__"))]
         if not ValueHelper.is_value_capable(self):
             names = [a for a in names if a not in ("get_value", "set_value", "parse_and_set_value")]
         if not getattr(self, "source", None):
