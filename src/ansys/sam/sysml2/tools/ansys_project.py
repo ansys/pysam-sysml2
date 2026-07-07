@@ -47,6 +47,7 @@ class AnsysProject:
         organization_id: str,
         project_id: str,
         use_ssl: bool = True,
+        resolve_libraries: bool = False,
     ) -> None:
         """
         Initialize the AnsysProject with connection parameters.
@@ -63,10 +64,13 @@ class AnsysProject:
             Unique identifier of the project to manage.
         use_ssl : bool, optional
             Whether to use SSL/TLS for connections. Default is True.
+        resolve_libraries : bool, optional
+            When True, resolve and map library element contents so they can be navigated.
+            Default is False.
         """
         self._project_id = project_id
         self.__diagrams_available = False
-        self._initialize_components(server_url, token, organization_id, use_ssl)
+        self._initialize_components(server_url, token, organization_id, use_ssl, resolve_libraries)
 
     def _initialize_components(
         self,
@@ -74,6 +78,7 @@ class AnsysProject:
         token: str,
         organization_id: str,
         use_ssl: bool = True,
+        resolve_libraries: bool = False,
     ) -> None:
         """Initialize all internal components and establish connections."""
         sysml2_connector = AnsysSysML2APIConnector(
@@ -87,7 +92,7 @@ class AnsysProject:
             server_url=server_url, token=token, use_ssl=use_ssl
         )
 
-        project = self._get_project(sysml2_connector)
+        project = self._get_project(sysml2_connector, resolve_libraries)
 
         for attr_name, attr_value in project.__dict__.items():
             if attr_name.startswith("_"):
@@ -97,8 +102,26 @@ class AnsysProject:
 
         self._initialize_diagram_capabilities()
 
-    def _get_project(self, sysml2_connector: AnsysSysML2APIConnector):
-        """Retrieve the correct project type."""
+    def _get_project(
+        self,
+        sysml2_connector: AnsysSysML2APIConnector,
+        resolve_libraries: bool = False,
+    ):
+        """
+        Retrieve the correct project type.
+
+        Parameters
+        ----------
+        sysml2_connector : AnsysSysML2APIConnector
+            Connector used to load the project.
+        resolve_libraries : bool, default: False
+            When ``True``, resolve and map library element contents so they can be navigated.
+
+        Returns
+        -------
+        Project or ScriptingProject
+            The loaded project, provided by the concrete subclass.
+        """
         raise NotImplementedError
 
     def _initialize_diagram_capabilities(self) -> None:

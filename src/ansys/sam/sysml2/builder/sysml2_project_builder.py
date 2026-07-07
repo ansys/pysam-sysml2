@@ -66,17 +66,51 @@ class SysML2ProjectBuilder:
         """
         self._connector = connector
 
-    def build_sysml_project(self, project_id: str) -> Project:
-        """Call the API with the specified project ID and build the SysML project from JSON."""
+    def build_sysml_project(self, project_id: str, resolve_libraries: bool = False) -> Project:
+        """
+        Call the API with the specified project ID and build the SysML project from JSON.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to build.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' references so their contents are resolved
+            and mapped during the build.
+
+        Returns
+        -------
+        Project
+            The fully built SysML project.
+        """
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
+        project._resolve_libraries = resolve_libraries
         self.__build_project(project)
         return project
 
-    def build_scripting_project(self, project_id: str) -> ScriptingProject:
-        """Call the API with the specified project ID and build the scripting project from JSON."""
+    def build_scripting_project(
+        self, project_id: str, resolve_libraries: bool = False
+    ) -> ScriptingProject:
+        """
+        Call the API with the specified project ID and build the scripting project from JSON.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to build.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' references so their contents are resolved
+            and mapped during the build.
+
+        Returns
+        -------
+        ScriptingProject
+            The fully built scripting project.
+        """
         project_info = self._connector.get_project_by_id(project_id)
         project = ScriptingProjectImpl(project_id, project_info["name"])
+        project._resolve_libraries = resolve_libraries
         self.__build_project(project)
         return project
 
@@ -171,9 +205,10 @@ class SysML2ProjectBuilder:
         """
         unresolved_fields = []
         mapper = self._get_mapper(project)
+        resolve_libraries = getattr(project, "_resolve_libraries", False)
         for element in elements:
             existing_element = project.find_element_by_id(element["@id"])
-            mapped_element = mapper.map(element, existing_element)
+            mapped_element = mapper.map(element, existing_element, resolve_libraries)
             project.add_element(mapped_element.get_element())
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
@@ -303,6 +338,7 @@ class SysML2ProjectBuilder:
             Project instance to reload.
         """
         modification_observer.stop()
+        project._resolve_libraries = False  # libraries are static; never re-resolve on reload
         self._build_project_element(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)

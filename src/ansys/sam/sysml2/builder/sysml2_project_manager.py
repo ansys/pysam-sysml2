@@ -52,19 +52,55 @@ class SysML2ProjectManager:
         """
         return self._connector.get_projects()
 
-    def get_sysml_project(self, project_id: str) -> Project:
-        """Get a SysML project with its ID from the API and map it in a Python object."""
+    def get_sysml_project(self, project_id: str, resolve_libraries: bool = False) -> Project:
+        """
+        Get a SysML project with its ID from the API and map it in a Python object.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to load.
+        resolve_libraries : bool, default: False
+            When ``True``, library element contents are resolved and mapped so they can be
+            navigated. Only applied on first load; a cached project is returned as-is.
+
+        Returns
+        -------
+        Project
+            The requested project, built from the API or returned from cache.
+        """
         project = self._sysml_projects.get(project_id)
         if project is None:
-            project = SysML2ProjectBuilder(self._connector).build_sysml_project(project_id)
+            project = SysML2ProjectBuilder(self._connector).build_sysml_project(
+                project_id, resolve_libraries
+            )
             self._sysml_projects[project_id] = project
         return project
 
-    def get_scripting_project(self, project_id: str) -> ScriptingProject:
-        """Get a scripting project with its ID from the API and map it in a Python object."""
+    def get_scripting_project(
+        self, project_id: str, resolve_libraries: bool = False
+    ) -> ScriptingProject:
+        """
+        Get a scripting project with its ID from the API and map it in a Python object.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to load.
+        resolve_libraries : bool, default: False
+            When ``True``, library element contents are resolved and mapped so they can be
+            navigated. Only applied on first load; a cached project is returned as-is.
+
+        Returns
+        -------
+        ScriptingProject
+            The requested project, built from the API or returned from cache.
+        """
         project = self._scripting_projects.get(project_id)
         if project is None:
-            project = SysML2ProjectBuilder(self._connector).build_scripting_project(project_id)
+            project = SysML2ProjectBuilder(self._connector).build_scripting_project(
+                project_id, resolve_libraries
+            )
             self._scripting_projects[project_id] = project
         return project
 
