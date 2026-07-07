@@ -162,3 +162,39 @@ class TestEObjectDir:
 
         assert "get_target" in dir(element)
         assert "get_source" not in dir(element)
+
+
+class TestEObjectDirPublicOnly:
+    """dir() exposes the public SysML API only, hiding single-underscore backing fields."""
+
+    def test_public_properties_listed(self):
+        element = PartUsage("element_id")
+
+        listing = dir(element)
+        assert "declared_name" in listing
+        assert "name" in listing
+        assert "id" in listing
+        assert "owned_element" in listing
+
+    def test_single_underscore_backing_fields_hidden(self):
+        element = PartUsage("element_id")
+
+        listing = dir(element)
+        assert "_declared_name" not in listing
+        assert "_name" not in listing
+        assert "_owner" not in listing
+        assert "_id" not in listing
+        assert "_proxy_cache" not in listing
+
+    def test_no_single_underscore_names_at_all(self):
+        element = PartUsage("element_id")
+
+        private = [
+            a for a in dir(element) if a.startswith("_") and not a.startswith("__")
+        ]
+        assert private == []
+
+    def test_dunders_still_listed(self):
+        element = PartUsage("element_id")
+
+        assert "__class__" in dir(element)
