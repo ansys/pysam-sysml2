@@ -36,6 +36,7 @@ class ScriptingProjectImpl(ScriptingProject):
     _root: list[SysMLElement]
     _unresolved_fields: list[UnresolvedField]
     _name: str
+    _resolve_libraries: bool = False
 
     def __init__(self, project_id: str, name: str):
         """
