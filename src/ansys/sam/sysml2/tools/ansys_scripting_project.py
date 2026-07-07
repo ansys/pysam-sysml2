@@ -30,8 +30,26 @@ from ansys.sam.sysml2.tools.ansys_project import AnsysProject
 class AnsysScriptingProject(AnsysProject, ScriptingProjectImpl):
     """Complete Ansys Scripting project implementation with integrated capabilities."""
 
-    def _get_project(self, sysml2_connector: AnsysSysML2APIConnector) -> ScriptingProject:
-        """Load a scripting project."""
+    def _get_project(
+        self,
+        sysml2_connector: AnsysSysML2APIConnector,
+        resolve_libraries: bool = False,
+    ) -> ScriptingProject:
+        """
+        Load a scripting project.
+
+        Parameters
+        ----------
+        sysml2_connector : AnsysSysML2APIConnector
+            Connector used to load the project.
+        resolve_libraries : bool, default: False
+            When ``True``, resolve and map library element contents so they can be navigated.
+
+        Returns
+        -------
+        ScriptingProject
+            The loaded scripting project.
+        """
         project_manager = SysML2ProjectManager(connector=sysml2_connector)
-        project = project_manager.get_scripting_project(self._project_id)
+        project = project_manager.get_scripting_project(self._project_id, resolve_libraries)
         return project
