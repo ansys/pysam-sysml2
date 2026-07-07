@@ -147,9 +147,7 @@ class SysML2ProjectBuilder:
                     roots.append(element)
         elif isinstance(project, ScriptingProject):
             for element in project._env.values():
-                resolved = SysMLUtil.check_inherited_name(element)
-                object.__setattr__(element, "_name", resolved)
-                element._declaredName = resolved
+                element._declaredName = SysMLUtil.check_inherited_name(element)
                 if self._is_logical_root(element, "_owner"):
                     roots.append(element)
         else:
@@ -291,29 +289,31 @@ class SysML2ProjectBuilder:
                 delattr(element, x)
 
     def __get_all_element(self, element: SysMLElement) -> dict:
-        """Return owned + inherited children of a scripting element keyed by ``_name``."""
+        """Return owned + inherited children of a scripting element keyed by ``_declaredName``."""
         all_element = getattr(element, "_ownedElement", []).copy()
         all_element.extend(getattr(element, "_inheritedFeature", []))
-        return {x._name: x for x in all_element if isinstance(x, SysMLElement)}
+        return {x._declaredName: x for x in all_element if isinstance(x, SysMLElement)}
 
     def __get_owned_names(self, element: SysMLElement) -> set[str]:
-        """Return the names of owned (non-inherited) children of a scripting element."""
+        """Return the declared names of owned (non-inherited) children of a scripting element."""
         return {
-            x._name
+            x._declaredName
             for x in getattr(element, "_ownedElement", [])
-            if isinstance(x, SysMLElement) and x._name is not None
+            if isinstance(x, SysMLElement) and x._declaredName
         }
 
     def __get_all_sysml_element(self, element: Element) -> dict:
-        """Return owned + inherited children of a metamodel element keyed by ``name``."""
+        """Return owned + inherited children of a metamodel element keyed by ``declared_name``."""
         all_element = element.owned_element.copy()
         all_element.extend(getattr(element, "inherited_feature", []).copy())
-        return {x.name: x for x in all_element if isinstance(x, Element)}
+        return {x.declared_name: x for x in all_element if isinstance(x, Element)}
 
     def __get_sysml_owned_names(self, element: Element) -> set[str]:
-        """Return the names of owned (non-inherited) children of a metamodel element."""
+        """Return the declared names of owned (non-inherited) children of a metamodel element."""
         return {
-            x.name for x in element.owned_element if isinstance(x, Element) and x.name is not None
+            x.declared_name
+            for x in element.owned_element
+            if isinstance(x, Element) and x.declared_name
         }
 
     def _add_write_access(self, project: Project | ScriptingProject):

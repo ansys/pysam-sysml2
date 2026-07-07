@@ -22,7 +22,6 @@
 
 """Private implementation for a scripting project."""
 
-from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
@@ -132,9 +131,7 @@ class ScriptingProjectImpl(ScriptingProject):
         List[SysMLElement]
             List of elements retrieved.
         """
-        return [
-            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == element_name
-        ]
+        return [el for el in self._env.values() if el._declaredName == element_name]
 
     def start_transactional_mode(self) -> None:
         """
