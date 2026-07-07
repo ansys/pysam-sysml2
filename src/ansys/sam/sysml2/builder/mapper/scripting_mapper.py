@@ -38,7 +38,12 @@ class ScriptingMapper(Mapper):
 
     class_cache = {}
 
-    def map(self, json_element: dict, mapped_element: SysMLElement) -> MappedElement:
+    def map(
+        self,
+        json_element: dict,
+        mapped_element: SysMLElement,
+        resolve_libraries: bool = False,
+    ) -> MappedElement:
         """
         Map the JSON into a python element.
 
@@ -48,6 +53,9 @@ class ScriptingMapper(Mapper):
             Element data.
         mapped_element : SysMLElement
             Existing element.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' unresolved references so their contents
+            are resolved and mapped.
 
         Returns
         -------
@@ -57,9 +65,14 @@ class ScriptingMapper(Mapper):
         if TYPE_KEY not in json_element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(json_element, mapped_element)
+        return self.__build_element(json_element, mapped_element, resolve_libraries)
 
-    def __build_element(self, data: dict, element: SysMLElement | None) -> MappedElement:
+    def __build_element(
+        self,
+        data: dict,
+        element: SysMLElement | None,
+        resolve_libraries: bool = False,
+    ) -> MappedElement:
         """
         Map element data to python object.
 
@@ -69,6 +82,9 @@ class ScriptingMapper(Mapper):
             Element data.
         element : SysMLElement
             Existing element.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' unresolved references so their contents
+            are resolved and mapped.
 
         Returns
         -------
@@ -82,7 +98,7 @@ class ScriptingMapper(Mapper):
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
         self.__update_element_definition(data, element)
-        if getattr(element, "_isLibraryElement", False):
+        if not resolve_libraries and getattr(element, "_isLibraryElement", False):
             unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 
