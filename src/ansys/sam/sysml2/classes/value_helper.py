@@ -146,9 +146,10 @@ class ValueHelper:
         """
         Update directly the value of the feature.
 
-        When no literal exists a ``FeatureValue`` is created. When a literal of the
-        same type already exists it is updated in place through its identity. When
-        the literal type changes the old literal is dropped before a new
+        When no value exists a ``FeatureValue`` is created. When a literal of the same
+        type already exists it is updated in place through its identity. On any value
+        kind switch, including literal to operator expression (``set_value`` to
+        ``parse_and_set_value``) and back, the old value is dropped before a new
         ``FeatureValue`` is created.
 
         Parameters
@@ -163,8 +164,8 @@ class ValueHelper:
             Existing literal held by the feature, if any.
         """
         target_type = self._literal_type_name(value_type)
-        if literal is not None and target_type is not None:
-            if type(literal).__name__ == target_type:
+        if literal is not None:
+            if target_type is not None and type(literal).__name__ == target_type:
                 self._commit_literal_update(element, literal, target_type, new_value)
             else:
                 self._commit_literal_drop(element, literal)
@@ -226,63 +227,123 @@ class ValueHelper:
         value = getattr(valuation, self.prefix + "value", None)
         if value is None:
             return None
+        if getattr(value, self.prefix + "operator", None) is not None:
+            return self._render_expression(element, value)
         if hasattr(value, self.prefix + "value"):
             return getattr(value, self.prefix + "value")
-        else:
-            return self._parse_expression(value)
+        raise UnsupportedValueExpression("Expression not supported!")
 
-    def _parse_expression(self, value):
-        """Parse an operator expression and return (value, unit_name) tuple."""
-        if getattr(value, self.prefix + "operator", None) != "[":
-            raise UnsupportedValueExpression("Expression not supported!")
+    def _render_expression(self, element, value):
+        """
+        Render an operator expression to text by walking its ``input`` operands.
 
-        if hasattr(value, "_ownedMember"):
-            owned_member = getattr(value, "_ownedMember", [])
-        else:
-            owned_member = getattr(value, "owned_member", [])
+        Binary and n-ary operators join their operands (``5 + 5``), a unary operator
+        prefixes its single operand (``not true``), and a unit expression (operator
+        ``[``) renders as ``value [unit]`` (``5 [kg]``).
 
-        elements = [
-            x
-            for x in owned_member
-            if hasattr(x, self.prefix + "valuation")
-            and hasattr(getattr(x, self.prefix + "valuation"), self.prefix + "value")
-        ]
+        Parameters
+        ----------
+        element : object
+            Feature owning the expression, used to resolve referents.
+        value : object
+            Operator expression to render.
 
-        if not elements:
+        Returns
+        -------
+        str
+            The rendered expression text.
+        """
+        operator = getattr(value, self.prefix + "operator", None)
+        operands = self._input_operands(value)
+        if not operands:
             raise UnsupportedValueExpression("No values found in expression")
+        rendered = [self._render_operand(element, operand) for operand in operands]
+        if operator == "[":
+            if len(rendered) < 2:
+                raise UnsupportedValueExpression("Expression not supported!")
+            return f"{rendered[0]} [{rendered[1]}]"
+        if len(rendered) == 1:
+            return f"{operator} {rendered[0]}"
+        return f" {operator} ".join(rendered)
 
-        try:
-            literal = getattr(
-                getattr(elements[0], self.prefix + "valuation"),
-                self.prefix + "value",
-            )
-            result_value = getattr(literal, self.prefix + "value")
-            referents = [
-                getattr(
-                    getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
-                    self.prefix + "referent",
-                )
-                for x in elements
-                if hasattr(
-                    getattr(getattr(x, self.prefix + "valuation"), self.prefix + "value"),
-                    self.prefix + "referent",
-                )
-            ]
-        except AttributeError:
-            raise UnsupportedValueExpression("No values found in expression")
+    def _input_operands(self, value):
+        """Return each ``input`` operand's underlying expression via its valuation."""
+        operands = []
+        for member in getattr(value, self.prefix + "input", []) or []:
+            valuation = getattr(member, self.prefix + "valuation", None)
+            operand = getattr(valuation, self.prefix + "value", None) if valuation else None
+            if operand is not None:
+                operands.append(operand)
+        return operands
 
-        return (result_value, self._extract_unit_name(referents))
+    def _render_operand(self, element, operand):
+        """
+        Render a single operand of an operator expression.
 
-    def _extract_unit_name(self, referents):
-        """Extract the unit name from referents, if any, otherwise return None."""
-        if not referents:
+        A nested expression recurses, a reference renders as its referent name, and a
+        literal renders as its value (booleans lowercased to match the editor).
+
+        Parameters
+        ----------
+        element : object
+            Feature owning the expression, used to resolve referents.
+        operand : object
+            Operand to render.
+
+        Returns
+        -------
+        str
+            The rendered operand text.
+        """
+        if getattr(operand, self.prefix + "operator", None) is not None:
+            return self._render_expression(element, operand)
+        if hasattr(operand, self.prefix + "referent"):
+            name = self._resolve_referent_name(element, getattr(operand, self.prefix + "referent"))
+            if name is None:
+                raise UnsupportedValueExpression("Unresolved reference in expression")
+            return name
+        if hasattr(operand, self.prefix + "value"):
+            literal = getattr(operand, self.prefix + "value")
+            if isinstance(literal, bool):
+                return "true" if literal else "false"
+            return str(literal)
+        raise UnsupportedValueExpression("Expression not supported!")
+
+    def _resolve_referent_name(self, element, referent):
+        """
+        Return the short name of a unit referent, fetching it when not yet resolved.
+
+        Parameters
+        ----------
+        element : object
+            Feature owning the expression, used to reach the connector.
+        referent : str or object
+            Referent id (unresolved) or a resolved element.
+
+        Returns
+        -------
+        str or None
+            The referent short name, or ``None`` when it cannot be resolved.
+        """
+        if referent is None:
             return None
-
-        unit = referents[0]
-        if hasattr(unit, self.prefix + "short_name"):
-            return getattr(unit, self.prefix + "short_name")
-        elif hasattr(unit, self.prefix + "shortName"):
-            return getattr(unit, self.prefix + "shortName")
-        elif hasattr(unit, self.prefix + "name"):
-            return getattr(unit, self.prefix + "name")
+        if isinstance(referent, str):
+            fetched = self._fetch_element(element, referent)
+            if fetched is None:
+                return None
+            return fetched.get("shortName") or fetched.get("name")
+        for attribute in ("short_name", "shortName", "name"):
+            if hasattr(referent, self.prefix + attribute):
+                name = getattr(referent, self.prefix + attribute)
+                if name:
+                    return name
         return None
+
+    def _fetch_element(self, element, element_id):
+        """Fetch a single element by id through the owning project's connector."""
+        observer = getattr(element, "_observer", None)
+        connector = getattr(observer, "_connector", None)
+        project_id = getattr(observer, "_project_id", None)
+        if connector is None or project_id is None:
+            return None
+        return connector.get_element_by_id(project_id, element_id)
