@@ -1,0 +1,95 @@
+[
+    {
+        "@type": "PartUsage",
+        "@id": "a6000000-0000-0000-0000-00000000000a",
+        "identifier": "a6000000-0000-0000-0000-00000000000a",
+        "name": "",
+        "ownedElement": [],
+        "ownedRelationship": [],
+        "qualifiedName": "project-6::",
+        "owner": {
+            "@id": "e6000000-0000-0000-0000-000000000006"
+        },
+        "ownedAnnotation": [],
+        "comment": [],
+        "documentation": [],
+        "visibility": "public",
+        "shortName": "",
+        "textualRepresentation": [],
+        "ownedInheritedRelationship": [],
+        "aliasIds": [],
+        "owningNamespace": {
+            "@id": "e6000000-0000-0000-0000-000000000006"
+        },
+        "ownedMember": [],
+        "ownedMembership": [],
+        "ownedImport": [],
+        "member": [],
+        "ownedFeatureMembership": [],
+        "ownedEndFeature": [],
+        "isAbstract": false,
+        "multiplicity": null,
+        "isSufficient": false,
+        "ownedFeature": [],
+        "feature": [],
+        "inheritedFeature": [],
+        "isUnique": true,
+        "isOrdered": false,
+        "isComposite": true,
+        "isEnd": false,
+        "ownedSubsetting": [],
+        "ownedRedefinition": [],
+        "ownedTyping": [],
+        "ownedTypeFeaturing": [],
+        "subsettedFeature": [],
+        "redefinedFeature": [],
+        "direction": "undefined",
+        "valuation": null,
+        "defaultValue": null,
+        "owningFeatureMembership": null,
+        "type": [],
+        "inherited": false,
+        "inheritingType": null,
+        "chainingFeature": [],
+        "featureValueExpression": null,
+        "nestedUsage": [],
+        "nestedPart": [],
+        "isVariation": false,
+        "isSubject": false,
+        "definition": [],
+        "isIndividual": false,
+        "isActor": false,
+        "isStakeholder": false
+    },
+    {
+        "@type": "Package",
+        "@id": "e6000000-0000-0000-0000-000000000006",
+        "identifier": "e6000000-0000-0000-0000-000000000006",
+        "name": "project-6",
+        "ownedElement": [
+            {
+                "@id": "a6000000-0000-0000-0000-00000000000a"
+            }
+        ],
+        "ownedRelationship": [],
+        "qualifiedName": "project-6",
+        "owner": null,
+        "ownedAnnotation": [],
+        "comment": [],
+        "documentation": [],
+        "visibility": "public",
+        "shortName": "",
+        "textualRepresentation": [],
+        "ownedInheritedRelationship": [],
+        "aliasIds": [],
+        "owningNamespace": null,
+        "ownedMember": [
+            {
+                "@id": "a6000000-0000-0000-0000-00000000000a"
+            }
+        ],
+        "ownedMembership": [],
+        "ownedImport": [],
+        "member": []
+    }
+]
