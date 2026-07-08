@@ -54,6 +54,25 @@ class MockedSysML2APIConnector(SysML2APIConnector):
             raise ProjectNotFoundException(f"Project {project_id} not found")
         return json.loads(elements_file.read_text(encoding="utf-8"))
 
+    def _load_library_elements(self, project_id: str) -> list:
+        lib_file = MODELTESTSET / f"project_{project_id}" / "library_elements.json"
+        if not lib_file.exists():
+            return []
+        return json.loads(lib_file.read_text(encoding="utf-8"))
+
+    def _extract_ids(self, query: dict) -> set:
+        """Collect every value whose constraint targets the ``@id`` property."""
+        ids: set = set()
+        if isinstance(query, dict):
+            if query.get("property") == "@id" and "value" in query:
+                ids.add(query["value"])
+            for value in query.values():
+                ids |= self._extract_ids(value)
+        elif isinstance(query, list):
+            for item in query:
+                ids |= self._extract_ids(item)
+        return ids
+
     def get_projects(self) -> list:
         """Get all projects."""
         return list(self._projects.values())
@@ -135,10 +154,11 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         return [el for el in elements if el.get("owner") is None]
 
     def execute_query(self, project_id: str, query: str) -> dict:
-        """Return all elements."""
+        """Return the library elements matching the query's @id constraints."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        return self._load_elements(project_id)
+        wanted = self._extract_ids(json.loads(query))
+        return [el for el in self._load_library_elements(project_id) if el.get("@id") in wanted]
 
     def create_commit(self, project_id: str, commit: str) -> dict:
         """Return a realistic CommitDto response."""
