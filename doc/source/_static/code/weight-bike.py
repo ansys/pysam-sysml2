@@ -47,11 +47,12 @@ my_bike_project = project_manager.get_scripting_project("<Bike Project ID>")
 # Then we can use the following code to get the PartDefinition of the bike
 bike = my_bike_project.get_root_package().Structure.Bike
 
-bike_weight = (
-    bike.frontWheel.rim.weight.get_value()[0]
-    + bike.frontWheel.tire.weight.get_value()[0]
-    + bike.rearWheel.rim.weight.get_value()[0]
-    + bike.rearWheel.tire.weight.get_value()[0]
-    + bike.frame.weight.get_value()[0]
-)
+weight_features = [
+    bike.frontWheel.rim.weight,
+    bike.frontWheel.tire.weight,
+    bike.rearWheel.rim.weight,
+    bike.rearWheel.tire.weight,
+    bike.frame.weight,
+]
+bike_weight = sum(float(f.get_value().split()[0]) for f in weight_features)
 print(bike_weight)

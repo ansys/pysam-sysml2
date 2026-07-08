@@ -42,16 +42,43 @@ Function :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
 --------------------------------------------------------------------------
 
 The :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` function handles more complex
-expressions:
+expressions. The text you pass is sent as-is to the server, which builds the corresponding
+expression; :meth:`get_value() <SysMLElement.get_value>` then returns its rendered text form:
 
 .. code:: python
 
     >>> myFeature.parse_and_set_value("10 [m]")
     >>> myFeature.get_value()
-    (10, "m")
-    >>> myFeature.parse_and_set_value("2 + 10 [kg]")
+    '10 [m]'
+    >>> myFeature.parse_and_set_value("5 + 5")
     >>> myFeature.get_value()
-    Exception UnsupportedValueExpression raised
+    '5 + 5'
+    >>> myFeature.parse_and_set_value("baseValue * 3")
+    >>> myFeature.get_value()
+    'baseValue * 3'
+    >>> myFeature.parse_and_set_value("not true")
+    >>> myFeature.get_value()
+    'not true'
+
+.. note::
+
+    :meth:`set_value() <SysMLElement.set_value>` and
+    :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` are not interchangeable, even
+    for the same text. :meth:`set_value() <SysMLElement.set_value>` stores a string literal, returned
+    verbatim, while :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` builds an
+    expression, returned in its rendered (normalized) form:
+
+    .. code:: python
+
+        >>> myFeature.set_value("1+2+3")
+        >>> myFeature.get_value()
+        '1+2+3'
+        >>> myFeature.parse_and_set_value("1+2+3")
+        >>> myFeature.get_value()
+        '1 + 2 + 3'
+
+    Switching a feature between a literal and an expression (in either direction) drops the previous
+    value and recreates it, so the feature always reflects the latest call.
 
 Create new elements
 ===================
@@ -75,7 +102,7 @@ Provide the element type and any number of keyword arguments representing its at
 .. code:: python
 
     new_attribute_usage = factory.create_attribute_usage(
-        name="new_attribute_usage",
+        declared_name="new_attribute_usage",
     )
 
 This creates a new ``AttributeUsage`` element at the root of your project. The
@@ -106,13 +133,13 @@ frame.
             .. code:: python
 
                 new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-                    name="lengthWithValue",
+                    declared_name="lengthWithValue",
                     owner=bike.frame,
                     value=60
                 )
 
                 new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-                    name="lengthWithExpression",
+                    declared_name="lengthWithExpression",
                     owner=bike.frame,
                     expression="60 [cm]"
                 )
@@ -122,13 +149,13 @@ frame.
             .. code:: python
 
                 new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-                    name="lengthWithValue",
+                    declared_name="lengthWithValue",
                     owner=bike.get("frame"),
                     value=60
                 )
 
                 new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-                    name="lengthWithExpression",
+                    declared_name="lengthWithExpression",
                     owner=bike.get("frame"),
                     expression="60 [cm]"
                 )
@@ -148,7 +175,7 @@ properties like names.
 
         .. code:: python
 
-            >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+            >>> my_attribute = factory.create_attribute_usage(declared_name="OriginalName")
             >>> my_attribute._name = "New Name"
             New Name
 
@@ -156,7 +183,7 @@ properties like names.
 
         .. code:: python
 
-            >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+            >>> my_attribute = factory.create_attribute_usage(declared_name="OriginalName")
             >>> my_attribute.name = "New Name"
             New Name
 

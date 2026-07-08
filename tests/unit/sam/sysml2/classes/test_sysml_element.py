@@ -29,7 +29,6 @@ from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
-from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
@@ -54,7 +53,7 @@ class TestSysMLElement:
     def test_expression_get_value(self, project):
         package = project.get_root_package()
 
-        assert package.Feature.myExpressionFeature.get_value() == (10, "kg")
+        assert package.Feature.myExpressionFeature.get_value() == "10 [kg]"
 
     def test_expression_set_value(self, connector, project, mocker):
         package = project.get_root_package()
@@ -63,13 +62,14 @@ class TestSysMLElement:
 
         package.Feature.myExpressionFeature.parse_and_set_value("20 [kg]")
 
-        assert commit_spy.call_count == 1
+        assert commit_spy.call_count == 2
 
-    def test_expression_complex_value_throws_error(self, project):
+    def test_expression_complex_value_renders_as_text(self, project):
         package = project.get_root_package()
 
-        with pytest.raises(UnsupportedValueExpression):
-            package.Feature.myComplexExpressionFeature.get_value()
+        assert (
+            package.Feature.myComplexExpressionFeature.get_value() == "10 [kg] + 6 [kg]"
+        )
 
     def test_int_get_set_value(self, connector, project, mocker):
         package = project.get_root_package()
