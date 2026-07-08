@@ -40,7 +40,7 @@ class TestStaticNoNameLookup:
     def test_get_resolves_noname_child_by_element_type_id(self, project):
         root = project.get_root_package()
 
-        child = root.get("PartUsage::a6000000-0000-0000-0000-00000000000a")
+        child = root.get("ConnectionUsage::4C27A76D-EB0D-4391-806F-C6103E0F41AB")
 
         assert child is not None
         assert child.id == PROJECT_6_NONAME_ID
@@ -49,10 +49,12 @@ class TestStaticNoNameLookup:
         child = project.find_element_by_id(PROJECT_6_NONAME_ID)
 
         assert child.name == ""
-        assert child.declared_name == "PartUsage::a6000000-0000-0000-0000-00000000000a"
+        assert child.declared_name == "ConnectionUsage::4C27A76D-EB0D-4391-806F-C6103E0F41AB"
 
     def test_find_elements_by_name_matches_element_type_id(self, project):
-        matches = project.find_elements_by_name("PartUsage::a6000000-0000-0000-0000-00000000000a")
+        matches = project.find_elements_by_name(
+            "ConnectionUsage::4C27A76D-EB0D-4391-806F-C6103E0F41AB"
+        )
 
         assert len(matches) == 1
         assert matches[0].id == PROJECT_6_NONAME_ID
@@ -75,12 +77,14 @@ class TestScriptingNoNameLookup:
     def test_dot_access_resolves_noname_child(self, project):
         root = project.get_root_package()
 
-        assert root.PartUsage_a6000000_0000_0000_0000_00000000000a._id == PROJECT_6_NONAME_ID
+        assert (
+            root.ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB._id == PROJECT_6_NONAME_ID
+        )
 
     def test_get_resolves_noname_child_by_dot_safe_fallback(self, project):
         root = project.get_root_package()
 
-        child = root.get("PartUsage_a6000000_0000_0000_0000_00000000000a")
+        child = root.get("ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB")
 
         assert child is not None
         assert child._id == PROJECT_6_NONAME_ID
@@ -89,10 +93,12 @@ class TestScriptingNoNameLookup:
         child = project.find_element_by_id(PROJECT_6_NONAME_ID)
 
         assert child._name == ""
-        assert child._declaredName == "PartUsage_a6000000_0000_0000_0000_00000000000a"
+        assert child._declaredName == "ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB"
 
     def test_find_elements_by_name_matches_fallback(self, project):
-        matches = project.find_elements_by_name("PartUsage_a6000000_0000_0000_0000_00000000000a")
+        matches = project.find_elements_by_name(
+            "ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB"
+        )
 
         assert len(matches) == 1
         assert matches[0]._id == PROJECT_6_NONAME_ID
