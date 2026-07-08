@@ -22,7 +22,6 @@
 
 """Private implementation for a project."""
 
-from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.meta_model.element import Element
@@ -132,9 +131,7 @@ class ProjectImpl(Project):
         List[Element]
             List of elements retrieved.
         """
-        return [
-            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == element_name
-        ]
+        return [el for el in self._env.values() if el.declared_name == element_name]
 
     def start_transactional_mode(self) -> None:
         """
