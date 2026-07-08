@@ -26,7 +26,6 @@ import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.feature import Feature
 from ansys.sam.sysml2.meta_model.part_usage import PartUsage
@@ -51,9 +50,8 @@ class TestEObject:
 
     def test_expression_get_values(self, project: Project):
         package = project.get_root_package()
-        assert package.get("Feature").get("myExpressionFeature").get_value() == (
-            10,
-            "kg",
+        assert (
+            package.get("Feature").get("myExpressionFeature").get_value() == "10 [kg]"
         )
 
     def test_expression_set_value(self, project: Project, mocker):
@@ -63,10 +61,12 @@ class TestEObject:
         value = package.get("Feature").get("myExpressionFeature").get_value()
         assert value is not None
 
-    def test_expression_complex_value_throws_error(self, project: Project):
+    def test_expression_complex_value_renders_as_text(self, project: Project):
         package = project.get_root_package()
-        with pytest.raises(UnsupportedValueExpression):
+        assert (
             package.get("Feature").get("myComplexExpressionFeature").get_value()
+            == "10 [kg] + 6 [kg]"
+        )
 
     def test_int_get_values(self, project: Project):
         package = project.get_root_package()

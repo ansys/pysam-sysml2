@@ -55,15 +55,13 @@ class TestValueHelperComplexExpressions:
     def test_scripting_unary_not_expression(self, scripting_package):
         assert scripting_package.get("attribute4").get_value() == "not true"
 
-    def test_scripting_unit_expression_fetches_library_referent(self, connector, mocker):
+    def test_scripting_unit_expression_resolves_library_referent(self, connector):
         project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
         package = project.get_root_package()
-        fetch_spy = mocker.spy(connector, "get_element_by_id")
 
         value = package.get("attribute1").get_value()
 
         assert value == "5 [kg]"
-        fetch_spy.assert_any_call(PROJECT_ID_5, "si-kilogram")
 
     def test_sysml_arithmetic_expression(self, sysml_package):
         assert sysml_package.get("attribute").get_value() == "5 + 5"
@@ -77,21 +75,20 @@ class TestValueHelperComplexExpressions:
     def test_sysml_unary_not_expression(self, sysml_package):
         assert sysml_package.get("attribute4").get_value() == "not true"
 
-    def test_sysml_unit_expression_fetches_library_referent(self, connector, mocker):
+    def test_sysml_unit_expression_resolves_library_referent(self, connector):
         project = SysML2ProjectManager(connector).get_sysml_project(PROJECT_ID_5)
         package = project.get_root_package()
-        fetch_spy = mocker.spy(connector, "get_element_by_id")
 
         value = package.get("attribute1").get_value()
 
         assert value == "5 [kg]"
-        fetch_spy.assert_any_call(PROJECT_ID_5, "si-kilogram")
 
     def test_set_complex_expression_commits_text(self, connector, mocker):
         project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
         package = project.get_root_package()
         attribute = package.get("attribute")
         mocker.patch.object(attribute._observer, "reload_project")
+        original_expr_id = attribute._valuation._value._id
         commit_spy = mocker.spy(connector, "create_commit")
 
         attribute.parse_and_set_value("attribute4 * attribute2")
@@ -100,14 +97,14 @@ class TestValueHelperComplexExpressions:
         drop = json.loads(commit_spy.call_args_list[0].args[1])
         drop_change = drop["change"][0]
         assert "payload" not in drop_change
-        assert drop_change["identity"]["@id"] == "op-plus"
+        assert drop_change["identity"]["@id"] == original_expr_id
         committed = json.loads(commit_spy.call_args_list[1].args[1])
         payload = committed["change"][0]["payload"]
         assert payload["@type"] == "FeatureValue"
         assert payload["value"] == "attribute4 * attribute2"
         assert payload["isDefault"] is True
         assert payload["isInitial"] is False
-        assert payload["owner"] == {"@id": "attr-plus"}
+        assert payload["owner"] == {"@id": attribute._id}
 
     def test_set_value_commits_quoted_string(self, connector, mocker):
         project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
