@@ -138,7 +138,7 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         """Get a single element by ID."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        elements = self._load_elements(project_id)
+        elements = self._load_elements(project_id) + self._load_library_elements(project_id)
         for el in elements:
             if el.get("@id") == element_id:
                 return el

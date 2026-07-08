@@ -86,8 +86,6 @@ structure:
 
 .. code:: bash
 
-    >>> myExpressionFeature.get_value()
-    (10, 'kg')
     >>> myIntFeature.get_value()
     10
     >>> myStringFeature.get_value()
@@ -96,12 +94,25 @@ structure:
     False
     >>> myFloatFeature.get_value()
     10.56
+    >>> myUnitFeature.get_value()
+    '10 [kg]'
+    >>> myArithmeticFeature.get_value()
+    '5 + 5'
+    >>> myReferenceFeature.get_value()
+    'baseValue + baseValue'
+    >>> myBooleanExpressionFeature.get_value()
+    'not true'
 
 The :meth:`get_value() <SysMLElement.get_value>` function supports:
 
-- All primitive types, such as LiteralInteger and LiteralString - Returns the value directly.
-- Simple expressions, such as ``<value> [<unit>]`` - Returns a tuple:
-  ``(<value>,<unit short name>)``.
+- All primitive types, such as ``LiteralInteger``, ``LiteralString``, ``LiteralBoolean``, and
+  ``LiteralRational`` - returns the value directly as its native Python type.
+- Expressions - returns the rendered text form of the expression, including:
+
+  - unit expressions, such as ``<value> [<unit>]`` (for example ``'10 [kg]'``);
+  - arithmetic expressions (for example ``'5 + 5'``);
+  - reference expressions that name other features (for example ``'baseValue + baseValue'``);
+  - unary expressions (for example ``'not true'``).
 
 Underscore access
 =================
