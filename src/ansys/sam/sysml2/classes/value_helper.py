@@ -328,16 +328,38 @@ class ValueHelper:
         if referent is None:
             return None
         if isinstance(referent, str):
-            fetched = self._fetch_element(element, referent)
-            if fetched is None:
-                return None
-            return fetched.get("shortName") or fetched.get("name")
+            resolved = self._resolve_into_env(element, referent)
+            if resolved is not None:
+                referent = resolved
+            else:
+                fetched = self._fetch_element(element, referent)
+                if fetched is None:
+                    return None
+                return fetched.get("shortName") or fetched.get("name")
         for attribute in ("short_name", "shortName", "name"):
             if hasattr(referent, self.prefix + attribute):
                 name = getattr(referent, self.prefix + attribute)
                 if name:
                     return name
         return None
+
+    def _resolve_into_env(self, element, element_id):
+        """Resolve a referent id into the project env, returning the mapped element.
+
+        Reaches the owning project through the element's observer and delegates to the
+        builder so the fetched library element is mapped and cached in the env, just
+        like the build's mapping process. Returns ``None`` when there is no project to
+        resolve against, so the caller can fall back to a raw fetch.
+        """
+        observer = getattr(element, "_observer", None)
+        project = getattr(observer, "_project", None)
+        connector = getattr(observer, "_connector", None)
+        if project is None or connector is None:
+            return None
+        from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
+
+        builder = SysML2ProjectBuilder(connector)
+        return builder.resolve_element_on_demand(project, element_id)
 
     def _fetch_element(self, element, element_id):
         """Fetch a single element by id through the owning project's connector."""

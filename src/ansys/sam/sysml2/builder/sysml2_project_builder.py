@@ -38,6 +38,7 @@ from ansys.sam.sysml2.dto.query.constraints_classes import (
 )
 from ansys.sam.sysml2.dto.query.query_class import Query
 from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
+from ansys.sam.sysml2.exception.connector_exception import ElementNotFoundException
 from ansys.sam.sysml2.exception.mapper_exception import MapperException
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.observer.observer import ModificationObserver
@@ -124,18 +125,58 @@ class SysML2ProjectBuilder:
         self._add_write_access(project)
 
     def _build_project_element(self, project: Project | ScriptingProject):
-        """Build all project elements in the project."""
+        """Build all project elements in the project.
+
+        When ``project._resolve_libraries`` is ``True`` every referenced library
+        element is fetched and mapped (full eager mode). Otherwise only the library
+        referents used inside feature-value expressions are prefetched; any other
+        library element is left unresolved and resolved on demand at ``get_value``.
+        """
         elements = self._connector.get_all_elements(project_id=project._id)
         self._map_element_in_project(project, elements)
         missing_elements = self._resolve_fields(project)
-        seen = missing_elements.copy()
-        while missing_elements:
-            new_element = self._get_missing(project, missing_elements)
-            self._map_element_in_project(project, new_element)
-            missing_elements = self._resolve_fields(project)
-            missing_elements.difference_update(seen)
-            seen.update(missing_elements)
+        if getattr(project, "_resolve_libraries", False):
+            seen = missing_elements.copy()
+            while missing_elements:
+                new_element = self._get_missing(project, missing_elements)
+                self._map_element_in_project(project, new_element)
+                missing_elements = self._resolve_fields(project)
+                missing_elements.difference_update(seen)
+                seen.update(missing_elements)
+        else:
+            referents = self._collect_expression_referents(project, missing_elements)
+            if referents:
+                new_element = self._get_missing(project, referents)
+                self._map_element_in_project(project, new_element)
+                self._resolve_fields(project)
         self.extract_root_and_check_names(project)
+
+    def _collect_expression_referents(
+        self, project: Project | ScriptingProject, missing_elements: set[str]
+    ) -> set[str]:
+        """Return the missing IDs that are referents of expression operands.
+
+        Only these library elements are needed to render feature values, so the lean
+        build fetches just this subset instead of the whole referenced library.
+
+        Parameters
+        ----------
+        project : Project | ScriptingProject
+            Context project.
+        missing_elements : set[str]
+            All missing element IDs left after resolving local references.
+
+        Returns
+        -------
+        set[str]
+            Missing IDs referenced through a ``referent`` field.
+        """
+        referents = {
+            field.get_id()
+            for field in project._unresolved_fields
+            if field._owning_feature.endswith("referent")
+        }
+        return referents & missing_elements
 
     def extract_root_and_check_names(self, project: Project | ScriptingProject):
         """Extract root elements and resolve inherited names in a single pass."""
@@ -268,6 +309,41 @@ class SysML2ProjectBuilder:
             cp = PrimitiveConstraint(property_name="@id", value=next(iter(missing_elements)))
         query.where = cp
         return self._connector.execute_query(project._id, query.to_json())
+
+    def resolve_element_on_demand(
+        self, project: Project | ScriptingProject, element_id: str
+    ) -> Element | SysMLElement | None:
+        """Fetch, map, and resolve a single element into the project env on demand.
+
+        Used to lazily bring in a library element referenced by a feature value that
+        was not prefetched at build time. The element is mapped and added to
+        ``project._env`` exactly like the build's mapping process, so subsequent
+        reads resolve it from the env without another fetch.
+
+        Parameters
+        ----------
+        project : Project | ScriptingProject
+            Context project.
+        element_id : str
+            ID of the element to resolve.
+
+        Returns
+        -------
+        Element | SysMLElement | None
+            The resolved element, or ``None`` when it cannot be fetched.
+        """
+        existing = project.find_element_by_id(element_id)
+        if existing is not None:
+            return existing
+        try:
+            element = self._connector.get_element_by_id(project._id, element_id)
+        except ElementNotFoundException:
+            return None
+        if element is None:
+            return None
+        self._map_element_in_project(project, [element])
+        self._resolve_fields(project)
+        return project.find_element_by_id(element_id)
 
     def _resolve_inherited_link(self, project: Project | ScriptingProject):
         """Refresh per-element hash map and owned-name set; proxies are created lazily on access."""
