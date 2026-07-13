@@ -43,7 +43,7 @@ tests = [
     "pytest-cov==7.1.0",
     "pytest-mock==3.15.1",
 ]
-checks = ["prek==0.4.5"]
+checks = ["prek==0.4.6"]
 
 [project.urls]
 Source = "https://github.com/ansys/pysam-sysml2"
