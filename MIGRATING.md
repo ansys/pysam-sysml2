@@ -17,7 +17,7 @@ You are likely impacted if your code does any of the following:
 - navigates ownership or containment relationships
 - reads or writes visibility, kind, or parameter direction directly on elements
 - renames model elements
-- accesses connection endpoints
+- accesses connection ends
 - reads or writes feature values
 - relies on Python-native return values from `get_value()`
 
@@ -32,7 +32,7 @@ You are likely impacted if your code does any of the following:
 | Similar membership-owned properties | directly on element | now on `owning_membership` |
 | Name updates | `element.name = "..."` | `element.declared_name = "..."` |
 | Libraries | no direct access | `project.get_libraries_packages()` |
-| Connection endpoints | directly usable in all cases | may require resolving `FeatureChaining` |
+| Connection ends | directly usable in all cases | may require resolving `FeatureChaining` |
 | Feature values | Python-native values or tuples | raw SysML v2 expression objects |
 
 ---
