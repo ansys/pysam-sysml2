@@ -33,6 +33,12 @@ PySAM SysML2 provides a Python scripting interface for SysML2 models. It loads m
 
 PySAM SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architecture Modeler (SAM) <https://www.ansys.com/products/connect/ansys-system-architecture-modeler>`_.
 
+Testing the migration branch
+============================
+
+If you are testing the upcoming migration changes on the `junk/183-all-prs` branch, see the
+`migration guide <https://github.com/ansys/pysam-sysml2/blob/junk/183-all-prs/MIGRATING.md>`_.
+
 Prerequisites
 =============
 
