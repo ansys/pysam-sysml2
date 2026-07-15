@@ -29,6 +29,7 @@ from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
@@ -53,7 +54,8 @@ class TestSysMLElement:
     def test_expression_get_value(self, project):
         package = project.get_root_package()
 
-        assert package.Feature.myExpressionFeature.get_value() == "10 [kg]"
+        value = package.Feature.myExpressionFeature.get_value()
+        assert SysMLTools.serialize_expression(value) == "10 [kg]"
 
     def test_expression_set_value(self, connector, project, mocker):
         package = project.get_root_package()
@@ -67,16 +69,15 @@ class TestSysMLElement:
     def test_expression_complex_value_renders_as_text(self, project):
         package = project.get_root_package()
 
-        assert (
-            package.Feature.myComplexExpressionFeature.get_value() == "10 [kg] + 6 [kg]"
-        )
+        value = package.Feature.myComplexExpressionFeature.get_value()
+        assert SysMLTools.serialize_expression(value) == "10 [kg] + 6 [kg]"
 
     def test_int_get_set_value(self, connector, project, mocker):
         package = project.get_root_package()
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
-        assert package.Feature.myIntFeature.get_value() == 10
+        assert package.Feature.myIntFeature.get_value()._value == 10
 
         package.Feature.myIntFeature.set_value(20)
 
@@ -87,7 +88,7 @@ class TestSysMLElement:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
-        assert package.Feature.myStringFeature.get_value() == "Hello"
+        assert package.Feature.myStringFeature.get_value()._value == "Hello"
 
         package.Feature.myStringFeature.set_value("World")
 
@@ -98,7 +99,7 @@ class TestSysMLElement:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
-        assert package.Feature.myBoolFeature.get_value() is False
+        assert package.Feature.myBoolFeature.get_value()._value is False
 
         package.Feature.myBoolFeature.set_value(True)
 
@@ -109,7 +110,7 @@ class TestSysMLElement:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
-        assert package.Feature.myFloatFeature.get_value() == pytest.approx(10.56)
+        assert package.Feature.myFloatFeature.get_value()._value == pytest.approx(10.56)
 
         package.Feature.myFloatFeature.set_value(20.5)
 

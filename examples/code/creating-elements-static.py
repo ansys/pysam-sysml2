@@ -26,7 +26,7 @@ import requests
 from urllib3.exceptions import InsecureRequestWarning
 
 from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
-from ansys.sam.sysml2.tools import Factory
+from ansys.sam.sysml2.tools import Factory, SysMLTools
 
 # Used to disable warnings
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -50,4 +50,4 @@ new_bicycle_frame_length = factory.create_attribute_usage(name="length", owner=b
 
 new_bicycle_frame_length.parse_and_set_value("60 [cm]")
 
-print(bike.get("frame").get("length").get_value())
+print(SysMLTools.serialize_expression(bike.get("frame").get("length").get_value()))

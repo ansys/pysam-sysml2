@@ -22,12 +22,17 @@ All SysML2 properties are accessible using dot notation.
     >>> package.owned_element
     [..,..]
 
-The utility function ``get_value`` extracts the value from a feature element.
+The utility function ``get_value`` returns the value element of a feature. Read the literal value
+through ``value``, or render any value element as text with ``SysMLTools.serialize_expression``.
 
 .. code:: python
 
     >>> myFeature.get_value()
+    <LiteralInteger>
+    >>> myFeature.get_value().value
     5
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    '5'
 
 
 Model elements
@@ -81,33 +86,51 @@ Function :meth:`get_value() <SysMLElement.get_value>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The :meth:`get_value() <SysMLElement.get_value>` function works only for the SysML ``Feature``
-element. Use this top-level function to get the value of the feature without reading the internal
-structure:
+element. It returns the feature's value element (a literal such as ``LiteralInteger`` or an
+expression such as ``OperatorExpression``) without reading the internal structure:
 
-.. code:: bash
+.. code:: python
 
     >>> myIntFeature.get_value()
-    10
-    >>> myStringFeature.get_value()
-    "Hello"
-    >>> myBoolFeature.get_value()
-    False
-    >>> myFloatFeature.get_value()
-    10.56
-    >>> myUnitFeature.get_value()
-    '10 [kg]'
+    <LiteralInteger>
     >>> myArithmeticFeature.get_value()
+    <OperatorExpression>
+
+Read the literal value directly through ``_value``:
+
+.. code:: python
+
+    >>> myIntFeature.get_value()._value
+    10
+    >>> myStringFeature.get_value()._value
+    'Hello'
+    >>> myBoolFeature.get_value()._value
+    False
+    >>> myFloatFeature.get_value()._value
+    10.56
+
+Render any value element (literal or expression) as text with
+``SysMLTools.serialize_expression``:
+
+.. code:: python
+
+    >>> from ansys.sam.sysml2.tools import SysMLTools
+    >>> SysMLTools.serialize_expression(myIntFeature.get_value())
+    '10'
+    >>> SysMLTools.serialize_expression(myUnitFeature.get_value())
+    '10 [kg]'
+    >>> SysMLTools.serialize_expression(myArithmeticFeature.get_value())
     '5 + 5'
-    >>> myReferenceFeature.get_value()
+    >>> SysMLTools.serialize_expression(myReferenceFeature.get_value())
     'baseValue + baseValue'
-    >>> myBooleanExpressionFeature.get_value()
+    >>> SysMLTools.serialize_expression(myBooleanExpressionFeature.get_value())
     'not true'
 
-The :meth:`get_value() <SysMLElement.get_value>` function supports:
+``SysMLTools.serialize_expression`` supports:
 
-- All primitive types, such as ``LiteralInteger``, ``LiteralString``, ``LiteralBoolean``, and
-  ``LiteralRational`` - returns the value directly as its native Python type.
-- Expressions - returns the rendered text form of the expression, including:
+- All primitive literals, such as ``LiteralInteger``, ``LiteralString``, ``LiteralBoolean``, and
+  ``LiteralRational``, which render as text (for example ``'10'``).
+- Expressions, which render in their text form, including:
 
   - unit expressions, such as ``<value> [<unit>]`` (for example ``'10 [kg]'``);
   - arithmetic expressions (for example ``'5 + 5'``);

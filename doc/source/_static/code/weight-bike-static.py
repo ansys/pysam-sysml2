@@ -27,6 +27,7 @@ import requests
 from urllib3.exceptions import InsecureRequestWarning
 
 from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
+from ansys.sam.sysml2.tools import SysMLTools
 
 # Used to disable warnings
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -55,5 +56,7 @@ weight_features = [
     bike.get("rearWheel").get("tire").get("weight"),
     bike.get("frame").get("weight"),
 ]
-bike_weight = sum(float(f.get_value().split()[0]) for f in weight_features)
+bike_weight = sum(
+    float(SysMLTools.serialize_expression(f.get_value()).split()[0]) for f in weight_features
+)
 print(bike_weight)
