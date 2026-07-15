@@ -36,8 +36,8 @@ PySAM SysML2 works with the Ansys SysML2 modeling tool, `Ansys System Architectu
 Testing the migration branch
 ============================
 
-If you are testing the upcoming migration changes on the `junk/183-all-prs` branch, see the
-`migration guide <https://github.com/ansys/pysam-sysml2/blob/junk/183-all-prs/MIGRATING.md>`_.
+If you are testing the upcoming migration changes on the `maint/183-align-mm` branch, see the
+`migration guide <https://github.com/ansys/pysam-sysml2/blob/maint/183-align-mm/MIGRATING.md>`_.
 
 Prerequisites
 =============
