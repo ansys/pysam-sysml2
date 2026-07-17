@@ -127,6 +127,7 @@ class SysMLMapper(Mapper):
         """
         from ansys.sam.sysml2.tools.name_utils import NameUtils
 
+        field_values = self._convert_enum(element, field_name, field_values)
         field_name = "_" + NameUtils.to_snake_case(field_name)
         if isinstance(field_values, list):
             return self._add_list_to_field(element, field_name, field_values)

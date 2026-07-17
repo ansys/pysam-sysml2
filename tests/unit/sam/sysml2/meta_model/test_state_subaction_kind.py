@@ -20,11 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Generated  test class from metamodel."""
-
-from __future__ import annotations
-
-import pytest
+"""Generated state subaction kind test class from metamodel."""
 
 from ansys.sam.sysml2.meta_model.state_subaction_kind import StateSubactionKind
 
@@ -32,23 +28,14 @@ from ansys.sam.sysml2.meta_model.state_subaction_kind import StateSubactionKind
 class TestStateSubactionKind:
     """Test class for Java class 'com.ansys.metamodel.sysml2.StateSubactionKind'."""
 
-    @pytest.fixture
-    def element(self):
-        """Create test element."""
-        return StateSubactionKind()
+    def test_entry(self):
+        """Test ENTRY member."""
+        assert StateSubactionKind.ENTRY == "entry"
 
-    def test_by_name(self, element):
-        """Test getter for by name property."""
-        _ = element.by_name
+    def test_do(self):
+        """Test DO member."""
+        assert StateSubactionKind.DO == "do"
 
-    def test_literal(self, element):
-        """Test getter for literal property."""
-        _ = element.literal
-
-    def test_name(self, element):
-        """Test getter for name property."""
-        _ = element.name
-
-    def test_value(self, element):
-        """Test getter for value property."""
-        _ = element.value
+    def test_exit(self):
+        """Test EXIT member."""
+        assert StateSubactionKind.EXIT == "exit"
