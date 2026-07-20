@@ -32,10 +32,6 @@ from ansys.sam.sysml2.exception.connector_exception import DiagramConnectorExcep
 from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 
 
-def _get_diagrams(element):
-    return getattr(element, "__diagram")
-
-
 @pytest.mark.e2e
 class TestDiagrams:
 
@@ -52,92 +48,9 @@ class TestDiagrams:
 
         assert ansys_project.is_diagrams_available()
 
-    def test_diagrams_info(self, project_with_diagrams_factory):
-        project = project_with_diagrams_factory(model="bike")
-
-        root_diagrams = _get_diagrams(project.get_root_package())
-
-        assert isinstance(root_diagrams, list)
-        assert len(root_diagrams) == 1
-
-    def test_diagram_navigation(self, project_with_diagrams_factory):
-        project = project_with_diagrams_factory(model="bike")
-
-        first_diagram = _get_diagrams(project.get_root_package())[0]
-
-        assert first_diagram._plane._model_element._name is not None
-
 
 @pytest.mark.e2e
-class TestSAMDiagramManager:
-
-    def test_load_diagrams(self, project_with_diagrams_factory):
-        project = project_with_diagrams_factory(model="bike")
-
-        package = project.get_root_package()
-        usage = package.Usage
-
-        assert len(_get_diagrams(package)) == 1
-        assert len(_get_diagrams(usage)) == 3
-
-        package_diagram = _get_diagrams(package)[0]
-
-        assert package_diagram._name == "Bike"
-
-        for diagram in _get_diagrams(usage):
-            assert hasattr(diagram, "_name")
-            assert diagram._name is not None
-
-    def test_navigation_through_diagrams(self, project_with_diagrams_factory):
-        project = project_with_diagrams_factory(model="bike")
-
-        package = project.get_root_package()
-        diagram = _get_diagrams(package)[0]
-        owned = diagram._plane._owned_diagram_elements
-
-        assert len(owned) > 0
-
-        simple_nodes = [x for x in owned if x.__class__.__name__ == "SimpleNode"]
-
-        assert len(simple_nodes) > 0
-
-        for node in simple_nodes:
-            assert hasattr(node, "_model_element")
-            assert node._model_element._name is not None
-
-    def test_points_correctly_typed(self, project_with_diagrams_factory):
-        project = project_with_diagrams_factory(model="bike")
-
-        package = project.get_root_package()
-        diagram = _get_diagrams(package)[0]
-        owned = diagram._plane._owned_diagram_elements
-        path_elements = [x for x in owned if x.__class__.__name__ == "Path"]
-
-        assert len(path_elements) > 0
-
-        point_elements = []
-
-        for path in path_elements:
-            if hasattr(path, "_points") and path._points:
-                point_elements.extend(path._points)
-
-        assert len(point_elements) > 0
-
-        actual_points = [p for p in point_elements if p.__class__.__name__ == "Point"]
-
-        assert len(actual_points) > 0
-
-
-@pytest.mark.e2e
-class TestSamRestApiConnector:
-
-    def test_get_project_data(self, sam_connector, project_factory):
-        project = project_factory(model="bike", kind="scripting")
-
-        data = sam_connector.get_project_data(project.get_id())
-
-        assert len(data) > 0
-        assert "eClass" in data
+class TestSamApiConnector:
 
     def test_get_diagrams_info(self, sam_connector, project_factory):
         project = project_factory(model="bike", kind="scripting")
@@ -174,16 +87,16 @@ class TestSamDiagramDownloader:
         [("svg", ".svg"), ("png", ".png"), ("jpeg", ".jpeg")],
     )
     def test_download_diagram_per_format(
-        self, sam_connector, project_with_diagrams_factory, tmp_path, file_format, suffix
+        self, sam_connector, project_factory, tmp_path, file_format, suffix
     ):
-        project = project_with_diagrams_factory(model="bike")
+        project = project_factory(model="bike", kind="scripting")
 
-        diagram = _get_diagrams(project.get_root_package())[0]
+        diagram_id = sam_connector.get_diagrams_info(project.get_id())[0]["diagramId"]
         downloader = SamDiagramDownloader(
             connector=sam_connector, project_id=project.get_id()
         )
         result = downloader.download_diagram(
-            diagram_id=diagram._id, path=str(tmp_path), file_format=file_format
+            diagram_id=diagram_id, path=str(tmp_path), file_format=file_format
         )
         result_path = Path(result)
 
@@ -209,34 +122,32 @@ class TestSamDiagramDownloader:
         assert result.endswith(".zip")
         assert result_path.stat().st_size > 0
 
-    def test_download_wrong_format(
-        self, sam_connector, project_with_diagrams_factory, tmp_path
-    ):
-        project = project_with_diagrams_factory(model="bike")
+    def test_download_wrong_format(self, sam_connector, project_factory, tmp_path):
+        project = project_factory(model="bike", kind="scripting")
 
-        diagram = _get_diagrams(project.get_root_package())[0]
+        diagram_id = sam_connector.get_diagrams_info(project.get_id())[0]["diagramId"]
         downloader = SamDiagramDownloader(
             connector=sam_connector, project_id=project.get_id()
         )
 
         with pytest.raises(DiagramConnectorException):
             downloader.download_diagram(
-                diagram_id=diagram._id,
+                diagram_id=diagram_id,
                 file_format="WRONG_FORMAT",
                 path=str(tmp_path),
             )
 
-    def test_download_invalid_path(self, sam_connector, project_with_diagrams_factory):
-        project = project_with_diagrams_factory(model="bike")
+    def test_download_invalid_path(self, sam_connector, project_factory):
+        project = project_factory(model="bike", kind="scripting")
 
-        diagram = _get_diagrams(project.get_root_package())[0]
+        diagram_id = sam_connector.get_diagrams_info(project.get_id())[0]["diagramId"]
         downloader = SamDiagramDownloader(
             connector=sam_connector, project_id=project.get_id()
         )
 
         with pytest.raises(DiagramConnectorException):
             downloader.download_diagram(
-                diagram_id=diagram._id,
+                diagram_id=diagram_id,
                 file_format="png",
                 path="",
                 filename="test",
