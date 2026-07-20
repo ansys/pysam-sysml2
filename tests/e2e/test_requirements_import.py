@@ -55,7 +55,7 @@ class TestRequirementsImportScripting:
         factory = Factory(project, connector)
 
         for row in rows:
-            req = factory.create_requirement_usage(name=row["title"], owner=bike)
+            req = factory.create_requirement_usage(declared_name=row["title"], owner=bike)
             req._text = [row["description"]]
             req._reqId = row["id"]
         bike = project.get_root_package().Structure.Bike
@@ -77,7 +77,7 @@ class TestRequirementsImportScripting:
         factory = Factory(project, connector)
         project.start_transactional_mode()
         for row in rows:
-            req = factory.create_requirement_usage(name=row["title"], owner=bike)
+            req = factory.create_requirement_usage(declared_name=row["title"], owner=bike)
             req._text = [row["description"]]
             req._reqId = row["id"]
         project.stop_transactional_mode()
@@ -103,7 +103,7 @@ class TestRequirementsImportSysML:
 
         factory = Factory(project, connector)
         for row in rows:
-            req = factory.create_requirement_usage(name=row["title"], owner=bike)
+            req = factory.create_requirement_usage(declared_name=row["title"], owner=bike)
             req._text = [row["description"]]
             req._reqId = row["id"]
         bike = project.get_root_package().get("Structure").get("Bike")
@@ -125,7 +125,7 @@ class TestRequirementsImportSysML:
         factory = Factory(project, connector)
         project.start_transactional_mode()
         for row in rows:
-            req = factory.create_requirement_usage(name=row["title"], owner=bike)
+            req = factory.create_requirement_usage(declared_name=row["title"], owner=bike)
             req._text = [row["description"]]
             req._reqId = row["id"]
         project.stop_transactional_mode()

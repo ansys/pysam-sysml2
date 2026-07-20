@@ -45,7 +45,9 @@ bike = project.get_root_package().get("Structure").get("Bike")
 
 factory = Factory(project, ansyssysml2apiconnector)
 
-new_bicycle_frame_length = factory.create_attribute_usage(name="length", owner=bike.get("frame"))
+new_bicycle_frame_length = factory.create_attribute_usage(
+    declared_name="length", owner=bike.get("frame")
+)
 
 new_bicycle_frame_length.parse_and_set_value("60 [cm]")
 

@@ -45,7 +45,7 @@ class TestCommitsScripting:
         change = DataVersion()
         change.identify(bike_front_wheel_id)
         change.add_change("@type", bike_front_wheel_type)
-        change.add_change("name", "RenamedByE2E")
+        change.add_change("declaredName", "RenamedByE2E")
         commit.add_change(change)
         response = connector.create_commit(project.get_id(), commit.to_json())
 
@@ -137,7 +137,7 @@ class TestCommitsScripting:
         bike = project.get_root_package().Structure.Bike
 
         factory = Factory(project, connector)
-        req = factory.create_requirement_usage(name="testReq", owner=bike)
+        req = factory.create_requirement_usage(declared_name="testReq", owner=bike)
         req._text.extend([
             "The bicycle shall not exceed 15 kg.",
             "Measured under standard conditions.",

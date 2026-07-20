@@ -61,10 +61,10 @@ class TestAnsysSysML2Project:
         assert project._factory._project_id == PROJECT_ID_1
 
         project.start_transactional_mode()
-        new_pkg = project._factory.create_package(name="my_package", owner=root)
+        new_pkg = project._factory.create_package(declared_name="my_package", owner=root)
         project.stop_transactional_mode()
 
         assert isinstance(new_pkg, Package)
-        assert new_pkg.name == "my_package"
+        assert new_pkg.declared_name == "my_package"
         assert project.is_diagrams_available() is False
         assert project._downloader is None
