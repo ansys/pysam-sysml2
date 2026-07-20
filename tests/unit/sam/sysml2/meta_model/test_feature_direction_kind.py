@@ -30,12 +30,12 @@ class TestFeatureDirectionKind:
 
     def test_in(self):
         """Test IN member."""
-        assert FeatureDirectionKind.IN == "in"
+        assert FeatureDirectionKind.IN.value == "in"
 
     def test_inout(self):
         """Test INOUT member."""
-        assert FeatureDirectionKind.INOUT == "inout"
+        assert FeatureDirectionKind.INOUT.value == "inout"
 
     def test_out(self):
         """Test OUT member."""
-        assert FeatureDirectionKind.OUT == "out"
+        assert FeatureDirectionKind.OUT.value == "out"

@@ -30,12 +30,12 @@ class TestStateSubactionKind:
 
     def test_entry(self):
         """Test ENTRY member."""
-        assert StateSubactionKind.ENTRY == "entry"
+        assert StateSubactionKind.ENTRY.value == "entry"
 
     def test_do(self):
         """Test DO member."""
-        assert StateSubactionKind.DO == "do"
+        assert StateSubactionKind.DO.value == "do"
 
     def test_exit(self):
         """Test EXIT member."""
-        assert StateSubactionKind.EXIT == "exit"
+        assert StateSubactionKind.EXIT.value == "exit"

@@ -25,7 +25,7 @@
 from enum import Enum
 
 
-class StateSubactionKind(str, Enum):
+class StateSubactionKind(Enum):
     """Java class 'com.ansys.metamodel.sysml2.StateSubactionKind'."""
 
     ENTRY = "entry"

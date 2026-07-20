@@ -25,7 +25,7 @@
 from enum import Enum
 
 
-class TransitionFeatureKind(str, Enum):
+class TransitionFeatureKind(Enum):
     """Java class 'com.ansys.metamodel.sysml2.TransitionFeatureKind'."""
 
     TRIGGER = "trigger"

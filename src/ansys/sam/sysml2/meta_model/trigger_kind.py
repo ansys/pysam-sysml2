@@ -25,7 +25,7 @@
 from enum import Enum
 
 
-class TriggerKind(str, Enum):
+class TriggerKind(Enum):
     """Java class 'com.ansys.metamodel.sysml2.TriggerKind'."""
 
     WHEN = "when"

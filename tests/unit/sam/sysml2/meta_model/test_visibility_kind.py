@@ -30,12 +30,12 @@ class TestVisibilityKind:
 
     def test_private(self):
         """Test PRIVATE member."""
-        assert VisibilityKind.PRIVATE == "private"
+        assert VisibilityKind.PRIVATE.value == "private"
 
     def test_protected(self):
         """Test PROTECTED member."""
-        assert VisibilityKind.PROTECTED == "protected"
+        assert VisibilityKind.PROTECTED.value == "protected"
 
     def test_public(self):
         """Test PUBLIC member."""
-        assert VisibilityKind.PUBLIC == "public"
+        assert VisibilityKind.PUBLIC.value == "public"

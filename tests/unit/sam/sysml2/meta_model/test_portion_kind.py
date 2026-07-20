@@ -30,8 +30,8 @@ class TestPortionKind:
 
     def test_timeslice(self):
         """Test TIMESLICE member."""
-        assert PortionKind.TIMESLICE == "timeslice"
+        assert PortionKind.TIMESLICE.value == "timeslice"
 
     def test_snapshot(self):
         """Test SNAPSHOT member."""
-        assert PortionKind.SNAPSHOT == "snapshot"
+        assert PortionKind.SNAPSHOT.value == "snapshot"

@@ -25,7 +25,7 @@
 from enum import Enum
 
 
-class VisibilityKind(str, Enum):
+class VisibilityKind(Enum):
     """Java class 'com.ansys.metamodel.sysml2.VisibilityKind'."""
 
     PRIVATE = "private"

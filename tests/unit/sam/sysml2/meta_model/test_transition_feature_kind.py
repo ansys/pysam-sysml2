@@ -30,12 +30,12 @@ class TestTransitionFeatureKind:
 
     def test_trigger(self):
         """Test TRIGGER member."""
-        assert TransitionFeatureKind.TRIGGER == "trigger"
+        assert TransitionFeatureKind.TRIGGER.value == "trigger"
 
     def test_guard(self):
         """Test GUARD member."""
-        assert TransitionFeatureKind.GUARD == "guard"
+        assert TransitionFeatureKind.GUARD.value == "guard"
 
     def test_effect(self):
         """Test EFFECT member."""
-        assert TransitionFeatureKind.EFFECT == "effect"
+        assert TransitionFeatureKind.EFFECT.value == "effect"

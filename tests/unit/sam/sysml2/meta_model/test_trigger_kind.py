@@ -30,12 +30,12 @@ class TestTriggerKind:
 
     def test_when(self):
         """Test WHEN member."""
-        assert TriggerKind.WHEN == "when"
+        assert TriggerKind.WHEN.value == "when"
 
     def test_at(self):
         """Test AT member."""
-        assert TriggerKind.AT == "at"
+        assert TriggerKind.AT.value == "at"
 
     def test_after(self):
         """Test AFTER member."""
-        assert TriggerKind.AFTER == "after"
+        assert TriggerKind.AFTER.value == "after"

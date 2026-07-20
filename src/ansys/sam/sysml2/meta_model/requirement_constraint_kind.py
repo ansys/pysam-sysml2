@@ -25,7 +25,7 @@
 from enum import Enum
 
 
-class RequirementConstraintKind(str, Enum):
+class RequirementConstraintKind(Enum):
     """Java class 'com.ansys.metamodel.sysml2.RequirementConstraintKind'."""
 
     ASSUMPTION = "assumption"

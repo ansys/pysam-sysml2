@@ -25,7 +25,7 @@
 from enum import Enum
 
 
-class FeatureDirectionKind(str, Enum):
+class FeatureDirectionKind(Enum):
     """Java class 'com.ansys.metamodel.sysml2.FeatureDirectionKind'."""
 
     IN = "in"

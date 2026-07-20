@@ -30,8 +30,8 @@ class TestRequirementConstraintKind:
 
     def test_assumption(self):
         """Test ASSUMPTION member."""
-        assert RequirementConstraintKind.ASSUMPTION == "assumption"
+        assert RequirementConstraintKind.ASSUMPTION.value == "assumption"
 
     def test_requirement(self):
         """Test REQUIREMENT member."""
-        assert RequirementConstraintKind.REQUIREMENT == "requirement"
+        assert RequirementConstraintKind.REQUIREMENT.value == "requirement"

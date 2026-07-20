@@ -25,7 +25,7 @@
 from enum import Enum
 
 
-class PortionKind(str, Enum):
+class PortionKind(Enum):
     """Java class 'com.ansys.metamodel.sysml2.PortionKind'."""
 
     TIMESLICE = "timeslice"
