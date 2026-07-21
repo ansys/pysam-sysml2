@@ -101,7 +101,7 @@ class TestValues:
         project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
         factory = Factory(project, connector)
-        factory.create_attribute_usage(name="length", owner=bike.frame)
+        factory.create_attribute_usage(declared_name="length", owner=bike.frame)
 
         bike.frame.length.parse_and_set_value("60 [cm]")
         value = SysMLTools.serialize_expression(bike.frame.length.get_value())
