@@ -11,7 +11,6 @@ initializing all necessary connectors. It explains how to perform these tasks:
 - Simplify project initialization with a single class.
 - Download diagrams (single and batch).
 - Create new elements.
-- Navigate through project diagrams.
 - Retrieve diagram information.
 
 .. note::
@@ -22,9 +21,9 @@ initializing all necessary connectors. It explains how to perform these tasks:
     of these classes:
 
     - :class:`AnsysSysML2APIConnector <ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector>`,
-    - :class:`SamRestApiConnector <ansys.sam.sysml2.diagrams.api.sam_rest_api_connector.SamRestApiConnector>`,
+    - :class:`SamApiConnector <ansys.sam.sysml2.diagrams.api.sam_api_connector.SamApiConnector>`,
     - :class:`SysML2ProjectManager <ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager>`,
-    - :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>`.
+    - :class:`SamDiagramDownloader <ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader>`.
 
 Prerequisites for simplified SAM
 ================================
@@ -59,13 +58,13 @@ Key advantages
 ==============
 
 Compared to the traditional approach described in
-:ref:`Download diagrams and navigate elements<Download_Example>`, using the simplified
+:ref:`Download diagrams<Download_Example>`, using the simplified
 :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` / :class:`AnsysScriptingProject <ansys.sam.sysml2.tools.ansys_scripting_project.AnsysScriptingProject>` class
 offers these advantages:
 
 - **Single initialization**: One class automatically handles all connectors.
 - **Built-in diagram management**: Removes the need to manually create and manage the
-  :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>`
+  :class:`SamDiagramDownloader <ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader>`
   class.
 - **Streamlined API**: Provides direct access to project operations without managing multiple
   connector instances.

@@ -39,9 +39,8 @@ pytest
 Python
 REST
 SAM
-SAM REST API Connector
-SAMDiagramManager
-SamRestApiConnector
+SAM API Connector
+SamApiConnector
 subaction
 subsetting
 SysML2

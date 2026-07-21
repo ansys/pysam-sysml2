@@ -30,8 +30,7 @@ import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
-from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
-from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
+from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.exception.connector_exception import ProjectNotFoundException
 
 from ._sam_binary_import import import_project as _import_project
@@ -67,8 +66,8 @@ def project_manager(connector):
 
 @pytest.fixture(scope="session")
 def sam_connector():
-    """Provide a SamRestApiConnector for diagram operations."""
-    return SamRestApiConnector(
+    """Provide a SamApiConnector for diagram operations."""
+    return SamApiConnector(
         server_url=os.environ["SAM_SERVER_URL"],
         token=os.environ["SAM_TOKEN"],
         use_ssl=os.environ.get("SAM_USE_SSL", "true").lower() == "true",
@@ -138,23 +137,3 @@ def project_factory(connector, project_manager):
             connector.delete_project(project_id)
         except ProjectNotFoundException:
             pass
-
-
-@pytest.fixture
-def project_with_diagrams_factory(project_factory, sam_connector):
-    """Factory fixture: create a project (scripting or sysml) with diagrams loaded.
-
-    Usage::
-
-        def test_something(project_with_diagrams_factory):
-            project = project_with_diagrams_factory(model="bike", kind="scripting")
-            ...
-    """
-
-    def _load(model: str = "bike", kind: str = "scripting"):
-        project = project_factory(model=model, kind=kind)
-        with SAMDiagramManager(connector=sam_connector) as diagrams:
-            diagrams.load_diagrams(model=project)
-        return project
-
-    return _load

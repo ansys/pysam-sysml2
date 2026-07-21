@@ -39,9 +39,6 @@ from ansys.sam.sysml2.api.ansys_sysml2_api_connector import (  # noqa: F401, E40
 from ansys.sam.sysml2.builder.sysml2_project_manager import (  # noqa: F401, E402 as we export name
     SysML2ProjectManager,
 )
-from ansys.sam.sysml2.diagrams.sam_diagram_manager import (  # noqa: F401, E402 as we export name
-    SAMDiagramManager,
-)
 
 # IPython completer patch
 # ------------------------------------------------------------------------------
