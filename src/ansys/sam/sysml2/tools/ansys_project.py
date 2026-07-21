@@ -26,8 +26,7 @@ from pathlib import Path
 from typing import Union
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
-from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
+from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader import SamDiagramDownloader
 from ansys.sam.sysml2.exception.connector_exception import DiagramNotAvailableException
 from ansys.sam.sysml2.tools.factory import Factory
@@ -88,9 +87,7 @@ class AnsysProject:
             use_ssl=use_ssl,
         )
 
-        self.__sam_connector = SamRestApiConnector(
-            server_url=server_url, token=token, use_ssl=use_ssl
-        )
+        self.__sam_connector = SamApiConnector(server_url=server_url, token=token, use_ssl=use_ssl)
 
         project = self._get_project(sysml2_connector, resolve_libraries)
 
@@ -127,9 +124,7 @@ class AnsysProject:
     def _initialize_diagram_capabilities(self) -> None:
         """Initialize diagram download capabilities with graceful error handling."""
         try:
-            with SAMDiagramManager(connector=self.__sam_connector) as diagram_manager:
-                diagram_manager.load_diagrams(model=self)
-
+            self.__sam_connector.get_diagrams_info(self._project_id)
             self._downloader = SamDiagramDownloader(
                 connector=self.__sam_connector, project_id=self._project_id
             )

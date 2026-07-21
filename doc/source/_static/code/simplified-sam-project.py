@@ -40,8 +40,8 @@ diagrams_status = project.is_diagrams_available()
 print(f"Diagrams Status : {'Available' if diagrams_status else 'Unavailable'}", end="\n\n")
 
 SAVE_IMAGE_PATH = "The path of the directory you want to save your diagrams into"
-first_diagram = project.get_root_package().__diagram[0]
-first_diagram_id = first_diagram._id
+diagrams_info = project.get_project_diagrams_info()
+first_diagram_id = diagrams_info[0]["diagramId"]
 
 # -----------------------------------------
 # Download ZIP file containing diagrams
@@ -62,27 +62,17 @@ path = project.download_diagram(
 )
 print(f"> Diagram saved at: {path}\n")
 
-usage_diagrams = project.get_root_package().Usage.__diagram
-for i, diagram in enumerate(usage_diagrams, 1):
+for i, diagram in enumerate(diagrams_info, 1):
     project.download_diagram(
-        diagram_id=diagram._id, file_format="png", path=SAVE_IMAGE_PATH + "/Usage"
+        diagram_id=diagram["diagramId"], file_format="png", path=SAVE_IMAGE_PATH + "/all"
     )
-    print(f"> Saved Usage diagram #{i}: {diagram._plane._model_element._name}\n")
-
-# -----------------------------------------
-# Navigate through diagrams
-# -----------------------------------------
-
-print(first_diagram._plane._model_element._name, end="\n")
-
-for diagram in project.get_root_package().Usage.__diagram:
-    print("Diagram name:", diagram._name, end="\n")
+    print(f"> Saved diagram #{i}: {diagram['name']}\n")
 
 # -----------------------------------------
 # Create element
 # -----------------------------------------
 
-project.factory.create_attribute_usage(name="NewAttr")
+project.factory.create_attribute_usage(declared_name="NewAttr")
 
 # -----------------------------------------
 # Get diagrams information
