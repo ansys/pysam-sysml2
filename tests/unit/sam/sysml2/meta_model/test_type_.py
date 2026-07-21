@@ -64,6 +64,10 @@ class TestType:
         """Test getter for feature property."""
         _ = element.feature
 
+    def test_feature_exclude_implied(self, element):
+        """Test getter for feature exclude implied property."""
+        _ = element.feature_exclude_implied
+
     def test_feature_membership(self, element):
         """Test getter for feature membership property."""
         _ = element.feature_membership
@@ -75,6 +79,10 @@ class TestType:
     def test_inherited_membership(self, element):
         """Test getter for inherited membership property."""
         _ = element.inherited_membership
+
+    def test_inherited_membership_exclude_implied(self, element):
+        """Test getter for inherited membership exclude implied property."""
+        _ = element.inherited_membership_exclude_implied
 
     def test_input(self, element):
         """Test getter for input property."""
