@@ -26,6 +26,7 @@ import json
 
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
+from ansys.sam.sysml2.meta_model.feature_direction_kind import FeatureDirectionKind
 
 
 class TestCommit:
@@ -112,3 +113,23 @@ class TestCommit:
 
         assert result["owningProject"]["@id"] == "1"
         assert result["previousCommit"]["@id"] == "head"
+
+    def test_add_change_enum_stored_as_literal(self):
+        dv = DataVersion()
+        dv.add_change("direction", FeatureDirectionKind.IN)
+
+        value = dv.to_json()["payload"]["direction"]
+
+        assert value == "in"
+        assert type(value) is str
+
+    def test_commit_enum_round_trip(self):
+        commit = Commit("proj-1")
+        change = DataVersion()
+        change.identify("elem-1")
+        change.add_change("direction", FeatureDirectionKind.IN)
+        commit.add_change(change)
+
+        result = json.loads(commit.to_json())
+
+        assert result["change"][0]["payload"]["direction"] == "in"

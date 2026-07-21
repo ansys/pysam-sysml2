@@ -29,6 +29,25 @@ from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.meta_model.feature_direction_kind import FeatureDirectionKind
+from ansys.sam.sysml2.meta_model.portion_kind import PortionKind
+from ansys.sam.sysml2.meta_model.requirement_constraint_kind import RequirementConstraintKind
+from ansys.sam.sysml2.meta_model.state_subaction_kind import StateSubactionKind
+from ansys.sam.sysml2.meta_model.transition_feature_kind import TransitionFeatureKind
+from ansys.sam.sysml2.meta_model.trigger_kind import TriggerKind
+from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind
+
+dict_of_classes = {
+    "direction": FeatureDirectionKind,
+    "portionKind": PortionKind,
+    "visibility": VisibilityKind,
+    "kind": {
+        "RequirementConstraintMembership": RequirementConstraintKind,
+        "StateSubactionMembership": StateSubactionKind,
+        "TransitionFeatureMembership": TransitionFeatureKind,
+        "TriggerInvocationExpression": TriggerKind,
+    },
+}
 
 
 class Mapper(ABC):
@@ -59,6 +78,37 @@ class Mapper(ABC):
         MappedElement
             Mapper element.
         """
+
+    def _convert_enum(self, element, field_name: str, field_values):
+        """Translate an API string into its Kind enum member.
+
+        For ``kind`` (used by several element types) the target enum depends on
+        the element type; other enum fields map directly by name.
+
+        Parameters
+        ----------
+        element : Element | SysMLElement
+            Destination element, used to disambiguate ``kind``.
+        field_name : str
+            Raw JSON field name.
+        field_values : Any
+            Field value; only ``str`` values are converted.
+
+        Returns
+        -------
+        Any
+            The matching enum member, or the original value when the field is not
+            an enum field or the literal is unknown.
+        """
+        enum_cls = dict_of_classes.get(field_name)
+        if isinstance(enum_cls, dict):
+            enum_cls = enum_cls.get(type(element).__name__)
+        if enum_cls is None or not isinstance(field_values, str):
+            return field_values
+        member = getattr(enum_cls, field_values.upper(), None)
+        if member is None:
+            print(f"Warning: '{field_values}' is not a valid {enum_cls.__name__}")
+        return member or field_values
 
     def _add_default_field(self, element, field_name: str, field_value) -> list:
         """Set a scalar field on the element.

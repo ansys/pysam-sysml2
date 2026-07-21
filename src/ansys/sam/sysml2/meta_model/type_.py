@@ -48,9 +48,13 @@ class Type(Namespace):
         self._directed_feature = ObservedList(self, "directed_feature")
         self._end_feature = ObservedList(self, "end_feature")
         self._feature = ObservedList(self, "feature")
+        self._feature_exclude_implied = ObservedList(self, "feature_exclude_implied")
         self._feature_membership = ObservedList(self, "feature_membership")
         self._inherited_feature = ObservedList(self, "inherited_feature")
         self._inherited_membership = ObservedList(self, "inherited_membership")
+        self._inherited_membership_exclude_implied = ObservedList(
+            self, "inherited_membership_exclude_implied"
+        )
         self._input = ObservedList(self, "input")
         self._intersecting_type = ObservedList(self, "intersecting_type")
         self._multiplicity = None
@@ -147,6 +151,18 @@ class Type(Namespace):
         return self._feature
 
     @property
+    def feature_exclude_implied(self) -> list["Feature"]:  # noqa: F821
+        """
+        Get the feature exclude implied property.
+
+        Returns
+        -------
+        list["Feature"]
+            Value of property feature exclude implied.
+        """
+        return self._feature_exclude_implied
+
+    @property
     def feature_membership(self) -> list["FeatureMembership"]:  # noqa: F821
         """
         Get the feature membership property.
@@ -181,6 +197,18 @@ class Type(Namespace):
             Value of property inherited membership.
         """
         return self._inherited_membership
+
+    @property
+    def inherited_membership_exclude_implied(self) -> list["Membership"]:  # noqa: F821
+        """
+        Get the inherited membership exclude implied property.
+
+        Returns
+        -------
+        list["Membership"]
+            Value of property inherited membership exclude implied.
+        """
+        return self._inherited_membership_exclude_implied
 
     @property
     def input(self) -> list["Feature"]:  # noqa: F821

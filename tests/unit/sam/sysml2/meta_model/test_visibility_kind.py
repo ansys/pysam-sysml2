@@ -20,11 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Generated  test class from metamodel."""
-
-from __future__ import annotations
-
-import pytest
+"""Generated visibility kind test class from metamodel."""
 
 from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind
 
@@ -32,23 +28,14 @@ from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind
 class TestVisibilityKind:
     """Test class for Java class 'com.ansys.metamodel.sysml2.VisibilityKind'."""
 
-    @pytest.fixture
-    def element(self):
-        """Create test element."""
-        return VisibilityKind()
+    def test_private(self):
+        """Test PRIVATE member."""
+        assert VisibilityKind.PRIVATE.value == "private"
 
-    def test_by_name(self, element):
-        """Test getter for by name property."""
-        _ = element.by_name
+    def test_protected(self):
+        """Test PROTECTED member."""
+        assert VisibilityKind.PROTECTED.value == "protected"
 
-    def test_literal(self, element):
-        """Test getter for literal property."""
-        _ = element.literal
-
-    def test_name(self, element):
-        """Test getter for name property."""
-        _ = element.name
-
-    def test_value(self, element):
-        """Test getter for value property."""
-        _ = element.value
+    def test_public(self):
+        """Test PUBLIC member."""
+        assert VisibilityKind.PUBLIC.value == "public"

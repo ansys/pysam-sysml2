@@ -48,6 +48,8 @@ class DataVersion:
         value: Any
             Value of the change.
         """
+        from enum import Enum
+
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
         from ansys.sam.sysml2.data_structures.observed_list import ObservedList
         from ansys.sam.sysml2.meta_model.e_object import EObject
@@ -70,6 +72,8 @@ class DataVersion:
                 )
                 for x in value
             ]
+        elif isinstance(value, Enum):
+            self.payload[key] = value.value
         else:
             self.payload[key] = value
 
