@@ -22,7 +22,7 @@
 
 """Unit tests for AnsysScriptingProject using mocker to inject MockedConnectors."""
 
-from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
+from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 from ansys.sam.sysml2.tools.factory import Factory
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
@@ -38,8 +38,8 @@ class TestAnsysScriptingProject:
             return_value=MockedSysML2APIConnector(),
         )
         mocker.patch.object(
-            SamRestApiConnector,
-            "get_project_data",
+            SamApiConnector,
+            "get_diagrams_info",
             side_effect=RuntimeError("diagrams not available in unit tests"),
         )
 

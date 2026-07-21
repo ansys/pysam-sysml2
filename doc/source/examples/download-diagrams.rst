@@ -1,13 +1,13 @@
 .. _Download_Example:
 
-Download diagrams and navigate elements
-#######################################
+Download diagrams
+#################
 
 This example shows how to work with the ``Bike`` model in a SysML v2 project using the
 Ansys SAM API. It explains how to perform these tasks:
 
-- Load and download diagrams.
-- Navigate and save diagram content.
+- Download diagrams (single and batch).
+- Retrieve diagram information.
 
 .. note::
 
@@ -35,20 +35,17 @@ Python example
 
         .. literalinclude:: ../_static/code/download-diagrams.py
             :language: python
-            :caption: Work with diagrams using SAMDiagramManager
+            :caption: Work with diagrams using the SAM API
             :linenos:
 
     .. tab-item:: Static approach
 
         .. literalinclude:: ../_static/code/download-diagrams-static.py
             :language: python
-            :caption: Work with diagrams using SAMDiagramManager
+            :caption: Work with diagrams using the SAM API
             :linenos:
 
 .. note::
 
     - Replace placeholder values with your actual SAM configuration.
-    - Always use the
-      :class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>`
-      class within a context manager (``with`` statement).
     - Retrieve diagram content in various formats, such as ``png`` and ``svg``.
