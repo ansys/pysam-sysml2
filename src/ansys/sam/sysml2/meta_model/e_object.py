@@ -49,10 +49,6 @@ class EObject:
         names = [a for a in super().__dir__() if not (a.startswith("_") and not a.startswith("__"))]
         if not ValueHelper.is_value_capable(self):
             names = [a for a in names if a not in ("get_value", "set_value", "parse_and_set_value")]
-        if not getattr(self, "source", None):
-            names = [a for a in names if a != "get_source"]
-        if not getattr(self, "target", None):
-            names = [a for a in names if a != "get_target"]
         from ansys.sam.sysml2.tools.deprecation import is_visibility_shim, visibility_alias_listed
 
         if (
@@ -82,29 +78,6 @@ class EObject:
         if element_name not in hmap:
             return None
         return self._resolve_child(element_name, hmap)
-
-    def get_target(self) -> "Element | None":  # noqa: F821
-        """Return the resolved leaf element pointed to by ``self.target``, or None."""
-        return self._resolve_end(getattr(self, "target", []) or [])
-
-    def get_source(self) -> "Element | None":  # noqa: F821
-        """Return the resolved leaf element pointed to by ``self.source``, or None."""
-        return self._resolve_end(getattr(self, "source", []) or [])
-
-    def _resolve_end(self, ends):
-        """Walk the first end's ``chaining_feature`` via ``self.owner.get``; else passthrough."""
-        if not ends:
-            return None
-        end = ends[0]
-        chain = getattr(end, "chaining_feature", None) or []
-        if not chain:
-            return end
-        current = getattr(self, "owner", None)
-        for hop in chain:
-            if current is None:
-                return None
-            current = current.get(hop.name)
-        return current
 
     @property
     def id(self):

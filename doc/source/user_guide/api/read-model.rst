@@ -131,6 +131,41 @@ With underscore (``_``) access, you can find all SysML2 methods:
     In this first PySAM SysML2 version, only existing fields (with data) are linked, which means
     that you might not find a function that exists in SysML V2.
 
+.. _Feature_Chaining_Section:
+
+Resolve connection ends (feature chaining)
+==========================================
+
+A connection end (``source`` or ``target``) does not always point directly at the element you
+expect. An end is an *end feature* that can reference its target through a **feature chaining**, a
+path such as ``a.b.c``. Because of redefinition and inheritance, the element a chaining resolves to
+is *context dependent*: the same feature can resolve to a different element depending on where it is
+observed.
+
+Reading ``connection.source`` (static) or ``connection._source`` (dynamic) directly therefore
+returns the raw end feature, not the meaningful element it represents. Use
+:class:`SysMLTools <ansys.sam.sysml2.tools.sysmltools.SysMLTools>`
+to resolve an end within its connection context:
+
+.. code:: python
+
+    from ansys.sam.sysml2.tools import SysMLTools
+
+    source = SysMLTools().resolve_feature_chaining(connection, "source")
+    target = SysMLTools().resolve_feature_chaining(connection, "target")
+
+    # Or resolve both ends at once:
+    source, target = SysMLTools().get_connector_ends(connection)
+
+``SysMLTools``:
+
+- Resolves each end within the connection's owner as context, so feature chaining, inheritance, and
+  redefinition are all accounted for.
+- Auto-detects whether you use the static (:class:`Project <ansys.sam.sysml2.classes.project.Project>`)
+  or dynamic (scripting) representation from the element you pass in, so the same call works for both
+  approaches.
+- Returns the resolved representative element, or ``None`` when the end or context is missing.
+
 .. only:: html
 
     .. grid:: 2

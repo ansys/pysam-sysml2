@@ -185,24 +185,3 @@ class TestSysMLElementDir:
         assert "get_value" in listing
         assert "set_value" in listing
         assert "parse_and_set_value" in listing
-
-    def test_source_target_hidden_without_ends(self):
-        element = SysMLElement("element_id")
-
-        listing = dir(element)
-        assert "get_source" not in listing
-        assert "get_target" not in listing
-
-    def test_get_source_listed_when_source_populated(self):
-        element = SysMLElement("element_id")
-        element._source = [SysMLElement("end_id")]
-
-        assert "get_source" in dir(element)
-        assert "get_target" not in dir(element)
-
-    def test_get_target_listed_when_target_populated(self):
-        element = SysMLElement("element_id")
-        element._target = [SysMLElement("end_id")]
-
-        assert "get_target" in dir(element)
-        assert "get_source" not in dir(element)
