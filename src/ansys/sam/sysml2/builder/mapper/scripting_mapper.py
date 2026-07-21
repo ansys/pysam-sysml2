@@ -94,10 +94,10 @@ class ScriptingMapper(Mapper):
         unresolved_fields = []
         if element is None:
             element = SysMLElement(element_id=data["@id"])
+        self.__update_element_definition(data, element)
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        self.__update_element_definition(data, element)
         if not resolve_libraries and getattr(element, "_isLibraryElement", False):
             unresolved_fields = []
         return MappedElement(element, unresolved_fields)
@@ -143,6 +143,7 @@ class ScriptingMapper(Mapper):
         List[UnresolvedField]
             List of all unresolved fields.
         """
+        field_values = self._convert_enum(element, field_name, field_values)
         field_name = "_" + field_name
         if isinstance(field_values, list):
             return self._add_list_to_field(element, field_name, field_values)
