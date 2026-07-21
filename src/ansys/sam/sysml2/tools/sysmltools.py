@@ -44,3 +44,23 @@ class SysMLTools:
             ``True`` if yes, ``False`` otherwise.
         """
         return element.__class__.__name__.split(".")[-1] == element_type
+
+    @staticmethod
+    def serialize_expression(value):
+        """
+        Render a value element to its text form.
+
+        Parameters
+        ----------
+        value : SysMLElement or Element
+            Value element returned by ``get_value`` (a literal or an operator expression).
+
+        Returns
+        -------
+        str or None
+            The rendered text (for example ``"1 + 1"`` or ``"5 [kg]"``), or ``None`` when
+            ``value`` is ``None``.
+        """
+        from ansys.sam.sysml2.classes.value_helper import ValueHelper
+
+        return ValueHelper.serialize(value)

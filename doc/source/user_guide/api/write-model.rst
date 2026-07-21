@@ -24,16 +24,16 @@ The :meth:`set_value() <SysMLElement.set_value>` function supports all primitive
 .. code:: python
 
     >>> myFeature.set_value(True)
-    >>> myFeature.get_value()
+    >>> myFeature.get_value()._value
     True
     >>> myFeature.set_value(10)
-    >>> myFeature.get_value()
+    >>> myFeature.get_value()._value
     10
     >>> myFeature.set_value("Hello")
-    >>> myFeature.get_value()
-    Hello
+    >>> myFeature.get_value()._value
+    'Hello'
     >>> myFeature.set_value(10.5)
-    >>> myFeature.get_value()
+    >>> myFeature.get_value()._value
     10.5
 
 The model updates after you set all values to ensure accuracy.
@@ -43,38 +43,41 @@ Function :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
 
 The :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` function handles more complex
 expressions. The text you pass is sent as-is to the server, which builds the corresponding
-expression; :meth:`get_value() <SysMLElement.get_value>` then returns its rendered text form:
+expression; :meth:`get_value() <SysMLElement.get_value>` then returns the expression element, which
+``SysMLTools.serialize_expression`` renders as text:
 
 .. code:: python
 
+    >>> from ansys.sam.sysml2.tools import SysMLTools
     >>> myFeature.parse_and_set_value("10 [m]")
-    >>> myFeature.get_value()
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
     '10 [m]'
     >>> myFeature.parse_and_set_value("5 + 5")
-    >>> myFeature.get_value()
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
     '5 + 5'
     >>> myFeature.parse_and_set_value("baseValue * 3")
-    >>> myFeature.get_value()
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
     'baseValue * 3'
     >>> myFeature.parse_and_set_value("not true")
-    >>> myFeature.get_value()
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
     'not true'
 
 .. note::
 
     :meth:`set_value() <SysMLElement.set_value>` and
     :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` are not interchangeable, even
-    for the same text. :meth:`set_value() <SysMLElement.set_value>` stores a string literal, returned
-    verbatim, while :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` builds an
-    expression, returned in its rendered (normalized) form:
+    for the same text. :meth:`set_value() <SysMLElement.set_value>` stores a string literal, whose
+    ``_value`` is returned verbatim, while
+    :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` builds an expression, which
+    ``SysMLTools.serialize_expression`` renders in its normalized form:
 
     .. code:: python
 
         >>> myFeature.set_value("1+2+3")
-        >>> myFeature.get_value()
+        >>> myFeature.get_value()._value
         '1+2+3'
         >>> myFeature.parse_and_set_value("1+2+3")
-        >>> myFeature.get_value()
+        >>> SysMLTools.serialize_expression(myFeature.get_value())
         '1 + 2 + 3'
 
     Switching a feature between a literal and an expression (in either direction) drops the previous
@@ -190,7 +193,7 @@ properties like names.
 Moving elements
 ---------------
 
-Use ``append()`` - on the owned element property - to move an element to a different container.
+Use ``append()`` on the owned element property to move an element to a different container.
 The element is automatically removed from its current container.
 
 .. tab-set::
