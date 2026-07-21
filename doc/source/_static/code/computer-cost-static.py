@@ -30,6 +30,7 @@ from ansys.sam.sysml2.meta_model.attribute_usage import AttributeUsage
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.package import Package
 from ansys.sam.sysml2.meta_model.part_usage import PartUsage
+from ansys.sam.sysml2.tools import SysMLTools
 
 # Used to disable warnings
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -54,12 +55,8 @@ def assess_cost(element: Element):
     """Calculate the cost of element."""
     cost_attribute: AttributeUsage = element.get("cost")
     if (cost_attribute is not None) and (cost_attribute.get_value() is not None):
-        cost = cost_attribute.get_value()
-        if type(cost) is int:
-            return cost
-        elif type(cost) is str:  # a "<value> [<unit>]" expression rendered as text
-            return float(cost.split(" [")[0])
-        raise ValueError(f"Problem of value type for the cost of {element._name}")
+        cost = SysMLTools.serialize_expression(cost_attribute.get_value())
+        return float(cost.split()[0])
     cost = 0
     for sub_element in element.owned_element:
         if isinstance(sub_element, PartUsage):

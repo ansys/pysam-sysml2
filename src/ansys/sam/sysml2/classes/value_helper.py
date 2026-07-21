@@ -71,6 +71,17 @@ class ValueHelper:
             raise UnsupportedValueExpression("Can't read value of non feature element")
 
     @staticmethod
+    def serialize(value):
+        """Render a value element (literal or operator expression) to its text form."""
+        if value is None:
+            return None
+        # Local import avoids circular import with classes.sysml_element.
+        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+
+        prefix = "_" if isinstance(value, SysMLElement) else ""
+        return ValueHelper(prefix)._serialize_value(value)
+
+    @staticmethod
     def set_or_update_value(element, value_type: type, new_value: Union[str | int | float | bool]):
         """
         Create the commit to set or update the value of type ``value_type``.
@@ -220,17 +231,21 @@ class ValueHelper:
             return str(new_value)
 
     def _get_value(self, element):
-        """Get the value of the feature via the valuation chain."""
+        """Return the feature's value element (literal or expression) via the valuation chain."""
         valuation = getattr(element, self.prefix + "valuation", None)
         if valuation is None:
             return None
-        value = getattr(valuation, self.prefix + "value", None)
-        if value is None:
-            return None
+        return getattr(valuation, self.prefix + "value", None)
+
+    def _serialize_value(self, value):
+        """Render a value element (expression or literal) to its text form."""
         if getattr(value, self.prefix + "operator", None) is not None:
-            return self._render_expression(element, value)
+            return self._render_expression(value, value)
         if hasattr(value, self.prefix + "value"):
-            return getattr(value, self.prefix + "value")
+            literal = getattr(value, self.prefix + "value")
+            if isinstance(literal, bool):
+                return "true" if literal else "false"
+            return str(literal)
         raise UnsupportedValueExpression("Expression not supported!")
 
     def _render_expression(self, element, value):

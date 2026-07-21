@@ -50,12 +50,8 @@ real_systems = project.get_root_package().RealSystems
 def assess_cost(element):
     """Calculate the cost of element."""
     if hasattr(element, "cost") and (element.cost.get_value() is not None):
-        cost = element.cost.get_value()
-        if type(cost) is int:
-            return cost
-        elif type(cost) is str:  # a "<value> [<unit>]" expression rendered as text
-            return float(cost.split(" [")[0])
-        raise ValueError(f"Problem of value type for the cost of {element._name}")
+        cost = SysMLTools.serialize_expression(element.cost.get_value())
+        return float(cost.split()[0])
     cost = 0
     for sub_element in element._ownedElement:
         if SysMLTools.isinstance(sub_element, "PartUsage"):
