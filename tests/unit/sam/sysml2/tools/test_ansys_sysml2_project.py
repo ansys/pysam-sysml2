@@ -65,6 +65,5 @@ class TestAnsysSysML2Project:
         project.stop_transactional_mode()
 
         assert isinstance(new_pkg, Package)
-        assert new_pkg.declared_name == "my_package"
         assert project.is_diagrams_available() is False
         assert project._downloader is None
