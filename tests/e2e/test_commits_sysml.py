@@ -45,7 +45,7 @@ class TestCommitsSysML:
         change = DataVersion()
         change.identify(bike_front_wheel_id)
         change.add_change("@type", bike_front_wheel_type)
-        change.add_change("name", "RenamedByE2ESysML")
+        change.add_change("declaredName", "RenamedByE2ESysML")
         commit.add_change(change)
         response = connector.create_commit(project.get_id(), commit.to_json())
 
