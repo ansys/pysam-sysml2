@@ -29,6 +29,7 @@ from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.feature import Feature
 from ansys.sam.sysml2.meta_model.part_usage import PartUsage
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 
 
@@ -50,9 +51,8 @@ class TestEObject:
 
     def test_expression_get_values(self, project: Project):
         package = project.get_root_package()
-        assert (
-            package.get("Feature").get("myExpressionFeature").get_value() == "10 [kg]"
-        )
+        value = package.get("Feature").get("myExpressionFeature").get_value()
+        assert SysMLTools.serialize_expression(value) == "10 [kg]"
 
     def test_expression_set_value(self, project: Project, mocker):
         package = project.get_root_package()
@@ -63,14 +63,12 @@ class TestEObject:
 
     def test_expression_complex_value_renders_as_text(self, project: Project):
         package = project.get_root_package()
-        assert (
-            package.get("Feature").get("myComplexExpressionFeature").get_value()
-            == "10 [kg] + 6 [kg]"
-        )
+        value = package.get("Feature").get("myComplexExpressionFeature").get_value()
+        assert SysMLTools.serialize_expression(value) == "10 [kg] + 6 [kg]"
 
     def test_int_get_values(self, project: Project):
         package = project.get_root_package()
-        assert package.get("Feature").get("myIntFeature").get_value() == 10
+        assert package.get("Feature").get("myIntFeature").get_value().value == 10
 
     def test_int_set_value(self, connector, project: Project, mocker):
         package = project.get_root_package()
@@ -81,7 +79,7 @@ class TestEObject:
 
     def test_string_get_values(self, project: Project):
         package = project.get_root_package()
-        assert package.get("Feature").get("myStringFeature").get_value() == "Hello"
+        assert package.get("Feature").get("myStringFeature").get_value().value == "Hello"
 
     def test_string_set_value(self, connector, project: Project, mocker):
         package = project.get_root_package()
@@ -92,7 +90,7 @@ class TestEObject:
 
     def test_bool_get_values(self, project: Project):
         package = project.get_root_package()
-        assert package.get("Feature").get("myBoolFeature").get_value() is False
+        assert package.get("Feature").get("myBoolFeature").get_value().value is False
 
     def test_bool_set_value(self, connector, project: Project, mocker):
         package = project.get_root_package()
@@ -105,7 +103,7 @@ class TestEObject:
         package = project.get_root_package()
         assert package.get("Feature").get(
             "myFloatFeature"
-        ).get_value() == pytest.approx(10.56)
+        ).get_value().value == pytest.approx(10.56)
 
     def test_float_set_value(self, connector, project: Project, mocker):
         package = project.get_root_package()

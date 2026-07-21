@@ -27,6 +27,7 @@ import json
 import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 from tests.unit.const import PROJECT_ID_5
 
 
@@ -44,16 +45,21 @@ class TestValueHelperComplexExpressions:
         return project.get_root_package()
 
     def test_scripting_arithmetic_expression(self, scripting_package):
-        assert scripting_package.get("attribute").get_value() == "5 + 5"
+        value = scripting_package.get("attribute").get_value()
+        assert SysMLTools.isinstance(value, "OperatorExpression")
+        assert SysMLTools.serialize_expression(value) == "5 + 5"
 
     def test_scripting_nested_arithmetic_expression(self, scripting_package):
-        assert scripting_package.get("attribute3").get_value() == "1 + 2 + 3"
+        value = scripting_package.get("attribute3").get_value()
+        assert SysMLTools.serialize_expression(value) == "1 + 2 + 3"
 
     def test_scripting_reference_expression(self, scripting_package):
-        assert scripting_package.get("attribute2").get_value() == "attribute + attribute1"
+        value = scripting_package.get("attribute2").get_value()
+        assert SysMLTools.serialize_expression(value) == "attribute + attribute1"
 
     def test_scripting_unary_not_expression(self, scripting_package):
-        assert scripting_package.get("attribute4").get_value() == "not true"
+        value = scripting_package.get("attribute4").get_value()
+        assert SysMLTools.serialize_expression(value) == "not true"
 
     def test_scripting_unit_expression_resolves_library_referent(self, connector):
         project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
@@ -61,19 +67,24 @@ class TestValueHelperComplexExpressions:
 
         value = package.get("attribute1").get_value()
 
-        assert value == "5 [kg]"
+        assert SysMLTools.serialize_expression(value) == "5 [kg]"
 
     def test_sysml_arithmetic_expression(self, sysml_package):
-        assert sysml_package.get("attribute").get_value() == "5 + 5"
+        value = sysml_package.get("attribute").get_value()
+        assert SysMLTools.isinstance(value, "OperatorExpression")
+        assert SysMLTools.serialize_expression(value) == "5 + 5"
 
     def test_sysml_nested_arithmetic_expression(self, sysml_package):
-        assert sysml_package.get("attribute3").get_value() == "1 + 2 + 3"
+        value = sysml_package.get("attribute3").get_value()
+        assert SysMLTools.serialize_expression(value) == "1 + 2 + 3"
 
     def test_sysml_reference_expression(self, sysml_package):
-        assert sysml_package.get("attribute2").get_value() == "attribute + attribute1"
+        value = sysml_package.get("attribute2").get_value()
+        assert SysMLTools.serialize_expression(value) == "attribute + attribute1"
 
     def test_sysml_unary_not_expression(self, sysml_package):
-        assert sysml_package.get("attribute4").get_value() == "not true"
+        value = sysml_package.get("attribute4").get_value()
+        assert SysMLTools.serialize_expression(value) == "not true"
 
     def test_sysml_unit_expression_resolves_library_referent(self, connector):
         project = SysML2ProjectManager(connector).get_sysml_project(PROJECT_ID_5)
@@ -81,7 +92,7 @@ class TestValueHelperComplexExpressions:
 
         value = package.get("attribute1").get_value()
 
-        assert value == "5 [kg]"
+        assert SysMLTools.serialize_expression(value) == "5 [kg]"
 
     def test_set_complex_expression_commits_text(self, connector, mocker):
         project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
