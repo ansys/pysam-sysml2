@@ -9,12 +9,12 @@ Write data to your model
 Update a feature value
 ======================
 
-You have two functions for updating the value of a feature:
+You have two ways of updating the value of a feature:
 
 .. currentmodule:: ansys.sam.sysml2.classes.sysml_element
 
 - :meth:`set_value() <SysMLElement.set_value>`
-- :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
+- ``SysMLTools.parse_and_set_value``
 
 Function :meth:`set_value() <SysMLElement.set_value>`
 ------------------------------------------------------
@@ -38,10 +38,10 @@ The :meth:`set_value() <SysMLElement.set_value>` function supports all primitive
 
 The model updates after you set all values to ensure accuracy.
 
-Function :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
---------------------------------------------------------------------------
+Function ``SysMLTools.parse_and_set_value``
+-------------------------------------------
 
-The :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` function handles more complex
+The ``SysMLTools.parse_and_set_value`` function handles more complex
 expressions. The text you pass is sent as-is to the server, which builds the corresponding
 expression; :meth:`get_value() <SysMLElement.get_value>` then returns the expression element, which
 ``SysMLTools.serialize_expression`` renders as text:
@@ -49,26 +49,26 @@ expression; :meth:`get_value() <SysMLElement.get_value>` then returns the expres
 .. code:: python
 
     >>> from ansys.sam.sysml2.tools import SysMLTools
-    >>> myFeature.parse_and_set_value("10 [m]")
+    >>> SysMLTools.parse_and_set_value(myFeature, "10 [m]")
     >>> SysMLTools.serialize_expression(myFeature.get_value())
     '10 [m]'
-    >>> myFeature.parse_and_set_value("5 + 5")
+    >>> SysMLTools.parse_and_set_value(myFeature, "5 + 5")
     >>> SysMLTools.serialize_expression(myFeature.get_value())
     '5 + 5'
-    >>> myFeature.parse_and_set_value("baseValue * 3")
+    >>> SysMLTools.parse_and_set_value(myFeature, "baseValue * 3")
     >>> SysMLTools.serialize_expression(myFeature.get_value())
     'baseValue * 3'
-    >>> myFeature.parse_and_set_value("not true")
+    >>> SysMLTools.parse_and_set_value(myFeature, "not true")
     >>> SysMLTools.serialize_expression(myFeature.get_value())
     'not true'
 
 .. note::
 
     :meth:`set_value() <SysMLElement.set_value>` and
-    :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` are not interchangeable, even
+    ``SysMLTools.parse_and_set_value`` are not interchangeable, even
     for the same text. :meth:`set_value() <SysMLElement.set_value>` stores a string literal, whose
     ``_value`` is returned verbatim, while
-    :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` builds an expression, which
+    ``SysMLTools.parse_and_set_value`` builds an expression, which
     ``SysMLTools.serialize_expression`` renders in its normalized form:
 
     .. code:: python
@@ -76,7 +76,7 @@ expression; :meth:`get_value() <SysMLElement.get_value>` then returns the expres
         >>> myFeature.set_value("1+2+3")
         >>> myFeature.get_value()._value
         '1+2+3'
-        >>> myFeature.parse_and_set_value("1+2+3")
+        >>> SysMLTools.parse_and_set_value(myFeature, "1+2+3")
         >>> SysMLTools.serialize_expression(myFeature.get_value())
         '1 + 2 + 3'
 
@@ -229,8 +229,8 @@ When you perform write operations, the model is updated after each operation to 
 
             my_bike_project.start_transactional_mode()
 
-            bike.frontWheel.rim.weight.parse_and_set_value("0.5 [kg]")
-            bike.rearWheel.rim.weight.parse_and_set_value("0.8 [kg]")
+            SysMLTools.parse_and_set_value(bike.frontWheel.rim.weight, "0.5 [kg]")
+            SysMLTools.parse_and_set_value(bike.rearWheel.rim.weight, "0.8 [kg]")
 
             my_bike_project.stop_transactional_mode()
 
@@ -240,8 +240,8 @@ When you perform write operations, the model is updated after each operation to 
 
             my_bike_project.start_transactional_mode()
 
-            bike.get("frontWheel").get("rim").get("weight").parse_and_set_value("0.5 [kg]")
-            bike.get("rearWheel").get("rim").get("weight").parse_and_set_value("0.8 [kg]")
+            SysMLTools.parse_and_set_value(bike.get("frontWheel").get("rim").get("weight"), "0.5 [kg]")
+            SysMLTools.parse_and_set_value(bike.get("rearWheel").get("rim").get("weight"), "0.8 [kg]")
 
             my_bike_project.stop_transactional_mode()
 

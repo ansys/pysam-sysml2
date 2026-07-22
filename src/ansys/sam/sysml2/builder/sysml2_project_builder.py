@@ -42,8 +42,8 @@ from ansys.sam.sysml2.exception.mapper_exception import MapperException
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 
-_SCRIPTING_KEEP = {"get_value", "parse_and_set_value", "set_value", "delete"}
-_SYSML_KEEP = {"get", "get_value", "parse_and_set_value", "set_value", "delete"}
+_SCRIPTING_KEEP = {"get_value", "set_value", "delete"}
+_SYSML_KEEP = {"get", "get_value", "set_value", "delete"}
 
 
 class SysML2ProjectBuilder:
