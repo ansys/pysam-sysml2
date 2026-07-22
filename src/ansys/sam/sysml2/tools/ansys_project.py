@@ -47,6 +47,8 @@ class AnsysProject:
         project_id: str,
         use_ssl: bool = True,
         resolve_libraries: bool = False,
+        progress: bool = False,
+        progress_log: Union[str, Path, None] = None,
     ) -> None:
         """
         Initialize the AnsysProject with connection parameters.
@@ -66,10 +68,16 @@ class AnsysProject:
         resolve_libraries : bool, optional
             When True, resolve and map library element contents so they can be navigated.
             Default is False.
+        progress : bool, optional
+            When True, emit live build progress to standard error. Default is False.
+        progress_log : str or Path, optional
+            When set, also write detailed per-round element ids/types to this file.
         """
         self._project_id = project_id
         self.__diagrams_available = False
-        self._initialize_components(server_url, token, organization_id, use_ssl, resolve_libraries)
+        self._initialize_components(
+            server_url, token, organization_id, use_ssl, resolve_libraries, progress, progress_log
+        )
 
     def _initialize_components(
         self,
@@ -78,6 +86,8 @@ class AnsysProject:
         organization_id: str,
         use_ssl: bool = True,
         resolve_libraries: bool = False,
+        progress: bool = False,
+        progress_log: Union[str, Path, None] = None,
     ) -> None:
         """Initialize all internal components and establish connections."""
         sysml2_connector = AnsysSysML2APIConnector(
@@ -89,7 +99,7 @@ class AnsysProject:
 
         self.__sam_connector = SamApiConnector(server_url=server_url, token=token, use_ssl=use_ssl)
 
-        project = self._get_project(sysml2_connector, resolve_libraries)
+        project = self._get_project(sysml2_connector, resolve_libraries, progress, progress_log)
 
         for attr_name, attr_value in project.__dict__.items():
             if attr_name.startswith("_"):
@@ -103,6 +113,8 @@ class AnsysProject:
         self,
         sysml2_connector: AnsysSysML2APIConnector,
         resolve_libraries: bool = False,
+        progress: bool = False,
+        progress_log: Union[str, Path, None] = None,
     ):
         """
         Retrieve the correct project type.
@@ -113,6 +125,11 @@ class AnsysProject:
             Connector used to load the project.
         resolve_libraries : bool, default: False
             When ``True``, resolve and map library element contents so they can be navigated.
+        progress : bool, default: False
+            When ``True``, emit live build metrics to standard error during the build.
+        progress_log : str or pathlib.Path, optional
+            When set, append recap lines here and fetched ids to a sibling
+            ``elements_fetched.log``.
 
         Returns
         -------

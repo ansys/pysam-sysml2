@@ -41,6 +41,7 @@ from ansys.sam.sysml2.exception.connector_exception import (
     ProjectNotFoundException,
     UnauthorizedConnectionException,
 )
+from ansys.sam.sysml2.tools.timing import timed
 
 
 class TemplateSysML2APIConnector(SysML2APIConnector):
@@ -172,6 +173,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request.json_body = body
         return self._send_request(http_request=http_request, call=requests.put)
 
+    @timed
     def get_all_elements(self, project_id: str) -> list:
         """
         Get all elements of a given project.
@@ -194,6 +196,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             call=requests.get,
         )
 
+    @timed
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """
         Get information of a given element.
@@ -237,6 +240,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         )
         return self._send_request(http_request=http_request, call=requests.get)
 
+    @timed
     def execute_query(self, project_id: str, query: str) -> dict:
         """
         Send a query to the standard API using the connector.
@@ -281,6 +285,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = HttpRequest(url=url)
         return self._add_authentication_field(http_request=http_request)
 
+    @timed
     def _send_request(self, http_request: HttpRequest, call: Callable) -> object:
         """
         Send the HTTP request using the provided call function.
