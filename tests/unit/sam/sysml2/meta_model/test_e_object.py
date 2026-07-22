@@ -26,6 +26,7 @@ import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
+from ansys.sam.sysml2.classes.sysml_inherited_element import SysMLInheritedElement
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.feature import Feature
 from ansys.sam.sysml2.meta_model.part_usage import PartUsage
@@ -111,6 +112,18 @@ class TestEObject:
         commit_spy = mocker.spy(connector, "create_commit")
         package.get("Feature").get("myFloatFeature").set_value(20.5)
         assert commit_spy.call_count == 1
+
+
+class TestSysMLInheritedElement:
+    """The inherited-element proxy exposes the wrapped element's real UUID."""
+
+    def test_proxy_exposes_real_uuid(self):
+        element = Element("base-uuid")
+        owner = Element("owner-uuid")
+        proxy = SysMLInheritedElement(owner, element)
+
+        assert proxy.id == element.id
+        assert "/?" not in proxy.id
 
 
 class TestEObjectDir:

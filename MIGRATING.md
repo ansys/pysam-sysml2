@@ -197,6 +197,8 @@ source, target = SysMLTools().get_connector_ends(connection)
 
 Replace any element-level `get_source()` / `get_target()` calls (and the former `RepresentativeResolver`) with `SysMLTools`. It auto-detects whether you use the static or dynamic representation from the element you pass in, accounts for feature chaining, inheritance, and redefinition, and returns `None` when the end or context is missing.
 
+> **Note:** Inherited elements now expose their real UUID (metamodel `.id`) instead of a self-built composed path such as `owner_id/?child_id`.
+
 ---
 
 ## 6. Feature values

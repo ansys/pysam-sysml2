@@ -164,6 +164,15 @@ class TestSysMLElementGet:
         assert resolved._declaredName == "Part Definition"
         assert proxy.get("missing") is None
 
+    def test_inherited_element_proxy_exposes_real_uuid(self):
+        parent, _ = self._build_parent_with_spaced_child()
+        owner = SysMLElement("owner-id")
+        owner._owner = None
+        proxy = InheritedElement(owner, parent)
+
+        assert proxy._id == parent._id
+        assert "/?" not in proxy._id
+
 
 class TestSysMLElementDir:
     """dir() lists value and connection helpers only when applicable."""
