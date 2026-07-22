@@ -1,0 +1,164 @@
+
+
+
+
+
+
+:class:`SamDiagramDownloader`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader(connector: ansys.sam.sysml2.diagrams.api.SamApiConnector, project_id: str)
+
+   
+   Provides for managing and downloading diagrams.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SamDiagramDownloader
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~download_diagram`
+            - Download a single diagram and save it to disk.
+          * - :py:attr:`~download_all_diagrams`
+            - Download all diagrams as a ZIP archive.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader import SamDiagramDownloader
+
+
+
+Method detail
+-------------
+
+.. py:method:: download_diagram(diagram_id: str, path: Union[str, pathlib.Path], file_format: str = 'svg', filename: str = '') -> str
+
+   
+   Download a single diagram and save it to disk.
+
+
+   :Parameters:
+
+       **diagram_id** : :class:`python:str`
+           ID of the diagram to download.
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Destination file or directory.
+
+       **file_format** : :class:`python:str`
+           Format of the diagram (``'svg'``, ``'png'``, or ``'jpeg'``).
+
+       **filename** : :class:`python:str`, :obj:`optional`
+           Name of the file. The default is the diagram ID.
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Return the path of the file created.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+       :obj:`DiagramConnectorException`
+           If the download fails or HTTP response is not 200.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: download_all_diagrams(path: Union[str, pathlib.Path], file_format: str = 'svg', filename: str = '') -> str
+
+   
+   Download all diagrams as a ZIP archive.
+
+
+   :Parameters:
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Destination directory or file path for the ZIP archive.
+
+       **file_format** : :class:`python:str`, default: 'svg'
+           Format of the diagrams (``'png'``, ``'jpeg'``, or ``'svg'``).
+
+       **filename** : :class:`python:str`, :obj:`optional`
+           Name of the file. The default is ``'{project_id}_{file_format}_diagrams.zip'``.
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Path to the saved ZIP archive.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramConnectorException`
+           If the download fails or HTTP response is not 200.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

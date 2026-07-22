@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`Succession`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.succession.Succession(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connector.Connector`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Succession'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Succession
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~guard_expression`
+            - Get the guard expression property.
+          * - :py:attr:`~trigger_step`
+            - Get the trigger step property.
+          * - :py:attr:`~transition_step`
+            - Get the transition step property.
+          * - :py:attr:`~effect_step`
+            - Get the effect step property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.succession import Succession
+
+Property detail
+---------------
+
+.. py:property:: guard_expression
+   :type: list[Expression]
+
+
+   
+   Get the guard expression property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property guard expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: trigger_step
+   :type: list[Step]
+
+
+   
+   Get the trigger step property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Step"]
+           Value of property trigger step.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: transition_step
+   :type: Step
+
+
+   
+   Get the transition step property.
+
+
+
+
+
+   :Returns:
+
+       "Step"
+           Value of property transition step.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: effect_step
+   :type: list[Step]
+
+
+   
+   Get the effect step property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Step"]
+           Value of property effect step.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

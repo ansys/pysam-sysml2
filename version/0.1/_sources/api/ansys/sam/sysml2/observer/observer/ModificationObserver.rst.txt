@@ -1,0 +1,217 @@
+
+
+
+
+
+
+:class:`ModificationObserver`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.observer.observer.ModificationObserver(project, connector: ansys.sam.sysml2.api.sysml2_api_connector.SysML2APIConnector)
+
+   
+   Modification observer for SysML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ModificationObserver
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~notify`
+            - Catch a modification notification.
+          * - :py:attr:`~list_notify`
+            - Catch modification on a list.
+          * - :py:attr:`~reload_project`
+            - Reload of the project.
+          * - :py:attr:`~stop_observer`
+            - Disconnect the observer.
+          * - :py:attr:`~start_observer`
+            - Connect the observer.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.observer.observer import ModificationObserver
+
+
+
+Method detail
+-------------
+
+.. py:method:: notify(element_id: str, name: str, value: object)
+
+   
+   Catch a modification notification.
+
+
+   :Parameters:
+
+       **element_id** : :class:`python:str`
+           Modified element ID.
+
+       **name** : :class:`python:str`
+           Key of the modified field.
+
+       **value** : :obj:`object`
+           Value of the modified field.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: list_notify(element_id: str, name: str, list_content)
+
+   
+   Catch modification on a list.
+
+
+   :Parameters:
+
+       **element_id** : :class:`python:str`
+           Modified element ID.
+
+       **name** : :class:`python:str`
+           Key of the modified field.
+
+       **list_content** : :obj:`Any`
+           Updated content of the modified list field.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: reload_project()
+
+   
+   Reload of the project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: stop_observer()
+
+   
+   Disconnect the observer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: start_observer()
+
+   
+   Connect the observer.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

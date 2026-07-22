@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``namespace.py`` module
+===========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.namespace
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: namespace
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.namespace.Namespace`
+            - Java class 'com.ansys.medini.metamodel.sysml.Namespace'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Namespace</api/ansys/sam/sysml2/meta_model/namespace/Namespace>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated namespace class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

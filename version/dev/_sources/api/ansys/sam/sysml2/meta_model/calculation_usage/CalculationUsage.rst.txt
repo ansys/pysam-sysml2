@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`CalculationUsage`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.calculation_usage.CalculationUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`, :py:obj:`ansys.sam.sysml2.meta_model.expression.Expression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.CalculationUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: CalculationUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~calculation_definition`
+            - Get the calculation definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.calculation_usage import CalculationUsage
+
+Property detail
+---------------
+
+.. py:property:: calculation_definition
+   :type: Function
+
+
+   
+   Get the calculation definition property.
+
+
+
+
+
+   :Returns:
+
+       "Function"
+           Value of property calculation definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

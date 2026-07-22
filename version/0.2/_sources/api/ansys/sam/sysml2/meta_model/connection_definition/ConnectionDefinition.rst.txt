@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ConnectionDefinition`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.connection_definition.ConnectionDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.part_definition.PartDefinition`, :py:obj:`ansys.sam.sysml2.meta_model.association_structure.AssociationStructure`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ConnectionDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ConnectionDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~connection_end`
+            - Get the connection end property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.connection_definition import ConnectionDefinition
+
+Property detail
+---------------
+
+.. py:property:: connection_end
+   :type: List[Usage]
+
+
+   
+   Get the connection end property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Usage"]
+           Value of property connection end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,478 @@
+
+
+
+
+
+
+:class:`Type`
+=============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.type_.Type(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.namespace.Namespace`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Type'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Type
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~multiplicity`
+            - Get the multiplicity property.
+          * - :py:attr:`~set_multiplicity`
+            - Get the set multiplicity property.
+          * - :py:attr:`~owned_end_feature`
+            - Get the owned end feature property.
+          * - :py:attr:`~is_sufficient`
+            - Get the is sufficient property.
+          * - :py:attr:`~is_abstract`
+            - Get the is abstract property.
+          * - :py:attr:`~owned_feature`
+            - Get the owned feature property.
+          * - :py:attr:`~set_is_abstract`
+            - Get the set is abstract property.
+          * - :py:attr:`~all_feature`
+            - Get the all feature property.
+          * - :py:attr:`~directed_feature`
+            - Get the directed feature property.
+          * - :py:attr:`~feature`
+            - Get the feature property.
+          * - :py:attr:`~owned_specialization`
+            - Get the owned specialization property.
+          * - :py:attr:`~owned_inherited_feature`
+            - Get the owned inherited feature property.
+          * - :py:attr:`~owned_feature_membership`
+            - Get the owned feature membership property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.type_ import Type
+
+Property detail
+---------------
+
+.. py:property:: multiplicity
+   :type: Multiplicity
+
+
+   
+   Get the multiplicity property.
+
+
+
+
+
+   :Returns:
+
+       "Multiplicity"
+           Value of property multiplicity.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_multiplicity
+   :type: bool
+
+
+   
+   Get the set multiplicity property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set multiplicity.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_end_feature
+   :type: List[Feature]
+
+
+   
+   Get the owned end feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property owned end feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_sufficient
+   :type: bool
+
+
+   
+   Get the is sufficient property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is sufficient.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_abstract
+   :type: bool
+
+
+   
+   Get the is abstract property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is abstract.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_feature
+   :type: List[Feature]
+
+
+   
+   Get the owned feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property owned feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_abstract
+   :type: bool
+
+
+   
+   Get the set is abstract property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is abstract.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: all_feature
+   :type: List[Feature]
+
+
+   
+   Get the all feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property all feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: directed_feature
+   :type: List[Feature]
+
+
+   
+   Get the directed feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property directed feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: feature
+   :type: List[Feature]
+
+
+   
+   Get the feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_specialization
+   :type: List[Specialization]
+
+
+   
+   Get the owned specialization property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Specialization"]
+           Value of property owned specialization.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_inherited_feature
+   :type: List[Feature]
+
+
+   
+   Get the owned inherited feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property owned inherited feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_feature_membership
+   :type: List[FeatureMembership]
+
+
+   
+   Get the owned feature membership property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["FeatureMembership"]
+           Value of property owned feature membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

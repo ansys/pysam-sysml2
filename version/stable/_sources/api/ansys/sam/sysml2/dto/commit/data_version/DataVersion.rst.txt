@@ -1,0 +1,177 @@
+
+
+
+
+
+
+:class:`DataVersion`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.dto.commit.data_version.DataVersion
+
+   
+   Data payload for a single element version in a commit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: DataVersion
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~identify`
+            - Set the identity with the given element ID of the data version.
+          * - :py:attr:`~add_change`
+            - Add the change into the data version. Also serialize the data if it's needed.
+          * - :py:attr:`~to_json`
+            - Serialize the data into a JSON dict.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~payload`
+            - 
+          * - :py:attr:`~identity`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.commit.data_version import DataVersion
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: payload
+   :type:  dict
+
+.. py:attribute:: identity
+   :type:  str
+   :value: None
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: identify(element_id: str)
+
+   
+   Set the identity with the given element ID of the data version.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: add_change(key: str, value: Any)
+
+   
+   Add the change into the data version. Also serialize the data if it's needed.
+
+
+   :Parameters:
+
+       **key: str**
+           Key of the change.
+
+       **value: Any**
+           Value of the change.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: to_json() -> dict
+
+   
+   Serialize the data into a JSON dict.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

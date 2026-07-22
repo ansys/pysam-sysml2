@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`AnsysSysML2Project`
+===========================
+
+
+.. py:class:: ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project(server_url: str, token: str, organization_id: str, project_id: str, use_ssl: bool = True)
+
+   Bases: :py:obj:`ansys.sam.sysml2.tools.ansys_project.AnsysProject`, :py:obj:`ansys.sam.sysml2.builder.classes.project_impl.ProjectImpl`
+
+
+   
+   Complete Ansys SysML project implementation with integrated capabilities.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.ansys_sysml2_project import AnsysSysML2Project
+
+
+
+
+
