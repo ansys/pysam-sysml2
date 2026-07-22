@@ -29,22 +29,21 @@ from ansys.sam.sysml2.meta_model.part_usage import PartUsage
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 
+def _cost_amount(value):
+    """Return the integer cost from a value element (plain literal or ``N [unit]``)."""
+    try:
+        rendered = SysMLTools.serialize_expression(value)
+    except UnsupportedValueExpression:
+        return None
+    return int(rendered.split()[0]) if rendered else None
+
+
 def _assess_cost_scripting(element):
     """Recursively calculate cost from the model tree."""
     if getattr(element, "cost", None):
-        try:
-            cost = element.cost.get_value()
-        except UnsupportedValueExpression:
-            cost = None
-        if cost is not None:
-            if isinstance(cost, int):
-                return cost
-            elif isinstance(cost, tuple):
-                return cost[0]
-            else:
-                raise ValueError(
-                    f"Problem of value type for the cost of {element._name}"
-                )
+        amount = _cost_amount(element.cost.get_value())
+        if amount is not None:
+            return amount
     cost = 0
     for sub_element in element._ownedElement:
         if SysMLTools.isinstance(sub_element, "PartUsage"):
@@ -56,19 +55,9 @@ def _assess_cost_sysml(element):
     """Recursively calculate cost from the model tree."""
     cost_feature = element.get("cost")
     if cost_feature is not None:
-        try:
-            cost = cost_feature.get_value()
-        except UnsupportedValueExpression:
-            cost = None
-        if cost is not None:
-            if isinstance(cost, int):
-                return cost
-            elif isinstance(cost, tuple):
-                return cost[0]
-            else:
-                raise ValueError(
-                    f"Problem of value type for the cost of {element.name}"
-                )
+        amount = _cost_amount(cost_feature.get_value())
+        if amount is not None:
+            return amount
     cost = 0
     for sub_element in element.owned_element:
         if isinstance(sub_element, PartUsage):

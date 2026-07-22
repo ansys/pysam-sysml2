@@ -42,7 +42,6 @@ ELEMENT_TYPES = [
     ("create_state_usage", "StateUsage"),
 ]
 
-
 class TestFactory:
 
     @pytest.fixture
@@ -60,10 +59,10 @@ class TestFactory:
         project.start_transactional_mode()
         create_fn = getattr(factory, factory_method)
 
-        elem = create_fn(name="test_elem", owner=root)
+        elem = create_fn(declared_name="test_elem", owner=root)
 
         assert elem.__class__.__name__ == element_type
-        assert elem._name == "test_elem"
+        assert elem._declared_name == "test_elem"
 
         project.stop_transactional_mode()
 
@@ -81,10 +80,10 @@ class TestFactory:
         project.start_transactional_mode()
         create_fn = getattr(factory, factory_method)
 
-        elem = create_fn(name="test_elem", owner=root)
+        elem = create_fn(declared_name="test_elem", owner=root)
 
         assert elem.__class__.__name__ == element_type
-        assert elem.name == "test_elem"
+        assert elem.declared_name == "test_elem"
 
         project.stop_transactional_mode()
 
@@ -98,14 +97,14 @@ class TestFactory:
         root = project.get_root_package()
         commit_spy = mocker.spy(project_manager._connector, "create_commit")
         project.start_transactional_mode()
-        new_attr = factory.create_attribute_usage(name="new_attribute", owner=root)
+        new_attr = factory.create_attribute_usage(declared_name="new_attribute", owner=root)
 
         new_part = factory.create_part_definition(
-            name="new_part_def", owner=root, owned_elements=[new_attr]
+            declared_name="new_part_def", owner=root, owned_elements=[new_attr]
         )
 
         assert new_part.__class__.__name__ == "PartDefinition"
-        assert new_part._name == "new_part_def"
+        assert new_part._declared_name == "new_part_def"
         assert len(new_part._owned_elements) == 1
 
         project.stop_transactional_mode()
@@ -122,7 +121,7 @@ class TestFactory:
         )
 
         with pytest.raises(BadRequestConnectionException) as exc:
-            factory._create_element(element_type=None, name="test")
+            factory._create_element(element_type=None, declared_name="test")
 
     def test_create_element_owner_invalid(self, project_manager, mocker):
         project = project_manager.get_scripting_project(PROJECT_ID_2)
@@ -134,7 +133,7 @@ class TestFactory:
         )
 
         with pytest.raises(BadRequestConnectionException):
-            factory.create_attribute_usage(name="new_attribute")
+            factory.create_attribute_usage(declared_name="new_attribute")
 
     def test_create_element_with_invalid_owner_attr(self, project_manager):
         project = project_manager.get_scripting_project(PROJECT_ID_2)
@@ -143,5 +142,5 @@ class TestFactory:
 
         with pytest.raises(AttributeError):
             factory.create_attribute_usage(
-                name="new_attribute", owner=root.UNDEFINED_ELEMENT
+                declared_name="new_attribute", owner=root.UNDEFINED_ELEMENT
             )

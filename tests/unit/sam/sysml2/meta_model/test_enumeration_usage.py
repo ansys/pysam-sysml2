@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.enumeration_usage import EnumerationUsage
 
 
 class TestEnumerationUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.EnumerationUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.EnumerationUsage'."""
 
     @pytest.fixture
     def element(self):
@@ -42,7 +42,5 @@ class TestEnumerationUsage:
         assert element.id == "element_id"
 
     def test_enumeration_definition(self, element):
-        """Test getter and setter for enumeration definition property."""
-        value = "test_value"
-        element.enumeration_definition = value
-        assert element.enumeration_definition == value
+        """Test getter for enumeration definition property."""
+        _ = element.enumeration_definition

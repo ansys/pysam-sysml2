@@ -3,62 +3,39 @@ Work with diagrams
 
 .. warning::
 
-    Functionalities for loading, downloading, and navigating diagrams are available only for
+    Functionalities for downloading diagrams are available only for
     projects of type ``SAM``.
 
-This page explains how to load, download, and navigate diagrams from your SysML v2 project using
-the SAM REST API.
-
-Load diagrams
-=============
-
-Before interacting with diagrams, load them using the
-:class:`SamDiagramDownloader <ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader>`
-context manager, which requires an :mod:`API <ansys.sam.sysml2.api>` connector.
-
-Create a
-:class:`SamRestApiConnector <ansys.sam.sysml2.diagrams.api.sam_rest_api_connector.SamRestApiConnector>`:
-
-.. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 42-46
-    :language: python
-    :caption: Create SAM REST API connector
-
-Load diagrams from a project and make them available for further operations like downloading:
-
-.. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 56-57
-    :language: python
-    :caption: Load diagrams using SAM diagram manager
-
-Outside the ``with`` block, the
-:class:`SamDiagramDownloader <ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader>`
-context manager is no longer active. This ensures proper setup and cleanup of resources when
-working with diagrams.
+This page explains how to download diagrams from your SysML v2 project using
+the SAM API.
 
 Download diagrams
 =================
 
-Load diagrams inside an
-:class:`SAMDiagramManager <ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager>`
-context before downloading them.
+Before downloading diagrams, create a
+:class:`SamApiConnector <ansys.sam.sysml2.diagrams.api.sam_api_connector.SamApiConnector>`:
 
-Also, instantiate an
+.. literalinclude:: ../../_static/code/download-diagrams.py
+    :lines: 41-45
+    :language: python
+    :caption: Create a SAM API connector
+
+Then instantiate a
 :class:`SamDiagramDownloader <ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader>`
 object:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 61
+    :lines: 59
     :language: python
     :caption: Create a SAM diagram downloader
 
 Download all diagrams
 ---------------------
 
-After loading diagrams, download all diagrams and save them into a ZIP archive:
+Download all diagrams and save them into a ZIP archive:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 71-76
+    :lines: 69-74
     :language: python
     :caption: Download all diagrams with custom parameters
 
@@ -72,73 +49,34 @@ If you do not specify parameters, these defaults are used to format and name you
 Get and download a single diagram
 ---------------------------------
 
-Get a single diagram and download it in a given format:
+List the available diagrams with ``get_diagrams_info``, pick one, and download it in a given format:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 79-80
+    :lines: 77-78
     :language: python
-    :caption: Get a single diagram
+    :caption: Get a single diagram identifier
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 82-87
+    :lines: 80-85
     :language: python
     :caption: Download this single diagram
 
 Download diagrams in a loop
 ---------------------------
 
-Iterate through diagrams inside a specific section of your model, such as the `Usage` section:
+Retrieve the diagram information for the project:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 90
+    :lines: 55
     :language: python
-    :caption: Get desired diagrams
+    :caption: Get the diagrams information
+
+Then iterate through the diagrams and download each one:
 
 .. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 91-95
+    :lines: 88-92
     :language: python
-    :caption: Download diagrams from Usage section in a loop
-
-Navigate the model from diagrams
-================================
-
-Each diagram object links to a model element. You can access its name or other metadata.
-
-Get diagram metadata
---------------------
-
-.. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 90
-    :language: python
-    :caption: Get desired diagram
-
-.. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 101
-    :language: python
-    :caption: Get diagram metadata from the model element
-
-Getting the diagram metadata returns the name of the associated model element that the diagram
-represents.
-
-Loop through diagrams
----------------------
-
-Print the names of diagrams from a section of the model:
-
-.. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 90
-    :language: python
-    :caption: Get desired diagrams
-
-.. literalinclude:: ../../_static/code/download-diagrams.py
-    :lines: 103-104
-    :language: python
-    :caption: Loop through diagrams and print names
-
-.. note::
-
-    Navigate through ``_plane``, ``_model_element``, and ``_owned_diagram_elements`` to
-    discover the logical elements that the diagram ties to.
+    :caption: Download diagrams in a loop
 
 .. only:: html
 

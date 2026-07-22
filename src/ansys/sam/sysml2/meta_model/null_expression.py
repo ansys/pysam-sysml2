@@ -26,7 +26,7 @@ from .expression import Expression
 
 
 class NullExpression(Expression):
-    """Java class 'com.ansys.medini.metamodel.sysml.NullExpression'."""
+    """Java class 'com.ansys.metamodel.sysml2.NullExpression'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

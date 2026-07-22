@@ -27,6 +27,7 @@ import requests
 from urllib3.exceptions import InsecureRequestWarning
 
 from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
+from ansys.sam.sysml2.tools import SysMLTools
 
 # Used to disable warnings
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -48,11 +49,16 @@ my_bike_project = project_manager.get_sysml_project("<Bike Project ID>")
 bike = my_bike_project.get_root_package().get("Structure").get("Bike")
 
 rim = my_bike_project.get_root_package().get("Structure").get("Rim")
-print(f"Default rim weight: {rim.get('weight').get_value()}")
-print(
-    f"Default frontWheel rim weight: {bike.get('frontWheel').get('rim').get('weight').get_value()}"
-)
-print(f"Default RearWheel rim weight: {bike.get('rearWheel').get('rim').get('weight').get_value()}")
+
+
+def render(feature):
+    """Return the feature value expression as text."""
+    return SysMLTools.serialize_expression(feature.get_value())
+
+
+print(f"Default rim weight: {render(rim.get('weight'))}")
+print(f"Default frontWheel rim weight: {render(bike.get('frontWheel').get('rim').get('weight'))}")
+print(f"Default RearWheel rim weight: {render(bike.get('rearWheel').get('rim').get('weight'))}")
 
 
 my_bike_project.start_transactional_mode()
@@ -65,6 +71,6 @@ bike.get("rearWheel").get("rim").get("weight").parse_and_set_value("0.8 [kg]")
 my_bike_project.stop_transactional_mode()
 
 
-print(f"Actual rim weight: {rim.get('weight').get_value()}")
-print(f"New frontWheel rim weight: {bike.get('frontWheel').get('rim').get('weight').get_value()}")
-print(f"New RearWheel rim weight: {bike.get('rearWheel').get('rim').get('weight').get_value()}")
+print(f"Actual rim weight: {render(rim.get('weight'))}")
+print(f"New frontWheel rim weight: {render(bike.get('frontWheel').get('rim').get('weight'))}")
+print(f"New RearWheel rim weight: {render(bike.get('rearWheel').get('rim').get('weight'))}")

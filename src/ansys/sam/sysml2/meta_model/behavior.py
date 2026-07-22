@@ -28,7 +28,7 @@ from .class_ import Class
 
 
 class Behavior(Class):
-    """Java class 'com.ansys.medini.metamodel.sysml.Behavior'."""
+    """Java class 'com.ansys.metamodel.sysml2.Behavior'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -41,21 +41,8 @@ class Behavior(Class):
         """
         super().__init__(element_id)
 
-        self._step = ObservedList(self, "step")
         self._parameter = ObservedList(self, "parameter")
-        self._general_parameter = ObservedList(self, "general_parameter")
-
-    @property
-    def step(self) -> list["Step"]:  # noqa: F821
-        """
-        Get the step property.
-
-        Returns
-        -------
-        list["Step"]
-            Value of property step.
-        """
-        return self._step
+        self._step = ObservedList(self, "step")
 
     @property
     def parameter(self) -> list["Feature"]:  # noqa: F821
@@ -70,13 +57,13 @@ class Behavior(Class):
         return self._parameter
 
     @property
-    def general_parameter(self) -> list["Feature"]:  # noqa: F821
+    def step(self) -> list["Step"]:  # noqa: F821
         """
-        Get the general parameter property.
+        Get the step property.
 
         Returns
         -------
-        list["Feature"]
-            Value of property general parameter.
+        list["Step"]
+            Value of property step.
         """
-        return self._general_parameter
+        return self._step

@@ -20,35 +20,22 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Generated  test class from metamodel."""
-
-from __future__ import annotations
-
-import pytest
+"""Generated trigger kind test class from metamodel."""
 
 from ansys.sam.sysml2.meta_model.trigger_kind import TriggerKind
 
 
 class TestTriggerKind:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.TriggerKind'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.TriggerKind'."""
 
-    @pytest.fixture
-    def element(self):
-        """Create test element."""
-        return TriggerKind()
+    def test_when(self):
+        """Test WHEN member."""
+        assert TriggerKind.WHEN.value == "when"
 
-    def test_name(self, element):
-        """Test getter for name property."""
-        _ = element.name
+    def test_at(self):
+        """Test AT member."""
+        assert TriggerKind.AT.value == "at"
 
-    def test_value(self, element):
-        """Test getter for value property."""
-        _ = element.value
-
-    def test_by_name(self, element):
-        """Test getter for by name property."""
-        _ = element.by_name
-
-    def test_literal(self, element):
-        """Test getter for literal property."""
-        _ = element.literal
+    def test_after(self):
+        """Test AFTER member."""
+        assert TriggerKind.AFTER.value == "after"

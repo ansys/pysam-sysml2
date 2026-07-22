@@ -22,7 +22,6 @@
 
 """Private implementation for a scripting project."""
 
-from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
@@ -35,8 +34,8 @@ class ScriptingProjectImpl(ScriptingProject):
     _env: dict
     _root: list[SysMLElement]
     _unresolved_fields: list[UnresolvedField]
-    _libraries_ids: set[str]
     _name: str
+    _resolve_libraries: bool = False
 
     def __init__(self, project_id: str, name: str):
         """
@@ -54,7 +53,6 @@ class ScriptingProjectImpl(ScriptingProject):
         self._root = []
         self._name = name
         self._unresolved_fields = []
-        self._libraries_ids = set()
         self._env = {}
 
     def add_element(self, element: SysMLElement):
@@ -72,29 +70,32 @@ class ScriptingProjectImpl(ScriptingProject):
         """
         self._unresolved_fields.extend(unresolved_fields)
 
-    def get_root(self) -> list[SysMLElement]:
-        """
-        Get a list of root packages.
-
-        Returns
-        -------
-        List[SysMLElement]
-            List of root packages.
-        """
-        return self._root
-
     def get_id(self) -> str:
         """Get the project ID."""
         return self._id
 
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
-        matches = [
-            x for x in self._root if x.__class__.__name__ == "Package" and x._name == self._name
-        ]
+        matches = [x for x in self._root if x.__class__.__name__ == "Package"]
         if not matches:
             raise ValueError("No root Package found in project.")
         return matches[0]
+
+    def get_libraries_packages(self) -> list[SysMLElement]:
+        """
+        Get the libraries packages.
+
+        Returns
+        -------
+        List[SysMLElement]
+            List of libraries packages.
+        """
+        matches = [
+            x._importedElement for x in self._root if x.__class__.__name__ == "NamespaceImport"
+        ]
+        if not matches:
+            raise ValueError("No libraries packages found in project.")
+        return matches
 
     def get_name(self) -> str:
         """Get the project name."""
@@ -130,9 +131,7 @@ class ScriptingProjectImpl(ScriptingProject):
         List[SysMLElement]
             List of elements retrieved.
         """
-        return [
-            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == element_name
-        ]
+        return [el for el in self._env.values() if el._declaredName == element_name]
 
     def start_transactional_mode(self) -> None:
         """

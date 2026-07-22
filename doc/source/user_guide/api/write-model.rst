@@ -24,16 +24,16 @@ The :meth:`set_value() <SysMLElement.set_value>` function supports all primitive
 .. code:: python
 
     >>> myFeature.set_value(True)
-    >>> myFeature.get_value()
+    >>> myFeature.get_value()._value
     True
     >>> myFeature.set_value(10)
-    >>> myFeature.get_value()
+    >>> myFeature.get_value()._value
     10
     >>> myFeature.set_value("Hello")
-    >>> myFeature.get_value()
-    Hello
+    >>> myFeature.get_value()._value
+    'Hello'
     >>> myFeature.set_value(10.5)
-    >>> myFeature.get_value()
+    >>> myFeature.get_value()._value
     10.5
 
 The model updates after you set all values to ensure accuracy.
@@ -42,16 +42,46 @@ Function :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
 --------------------------------------------------------------------------
 
 The :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` function handles more complex
-expressions:
+expressions. The text you pass is sent as-is to the server, which builds the corresponding
+expression; :meth:`get_value() <SysMLElement.get_value>` then returns the expression element, which
+``SysMLTools.serialize_expression`` renders as text:
 
 .. code:: python
 
+    >>> from ansys.sam.sysml2.tools import SysMLTools
     >>> myFeature.parse_and_set_value("10 [m]")
-    >>> myFeature.get_value()
-    (10, "m")
-    >>> myFeature.parse_and_set_value("2 + 10 [kg]")
-    >>> myFeature.get_value()
-    Exception UnsupportedValueExpression raised
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    '10 [m]'
+    >>> myFeature.parse_and_set_value("5 + 5")
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    '5 + 5'
+    >>> myFeature.parse_and_set_value("baseValue * 3")
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    'baseValue * 3'
+    >>> myFeature.parse_and_set_value("not true")
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    'not true'
+
+.. note::
+
+    :meth:`set_value() <SysMLElement.set_value>` and
+    :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` are not interchangeable, even
+    for the same text. :meth:`set_value() <SysMLElement.set_value>` stores a string literal, whose
+    ``_value`` is returned verbatim, while
+    :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>` builds an expression, which
+    ``SysMLTools.serialize_expression`` renders in its normalized form:
+
+    .. code:: python
+
+        >>> myFeature.set_value("1+2+3")
+        >>> myFeature.get_value()._value
+        '1+2+3'
+        >>> myFeature.parse_and_set_value("1+2+3")
+        >>> SysMLTools.serialize_expression(myFeature.get_value())
+        '1 + 2 + 3'
+
+    Switching a feature between a literal and an expression (in either direction) drops the previous
+    value and recreates it, so the feature always reflects the latest call.
 
 Create new elements
 ===================
@@ -75,7 +105,7 @@ Provide the element type and any number of keyword arguments representing its at
 .. code:: python
 
     new_attribute_usage = factory.create_attribute_usage(
-        name="new_attribute_usage",
+        declared_name="new_attribute_usage",
     )
 
 This creates a new ``AttributeUsage`` element at the root of your project. The
@@ -106,13 +136,13 @@ frame.
             .. code:: python
 
                 new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-                    name="lengthWithValue",
+                    declared_name="lengthWithValue",
                     owner=bike.frame,
                     value=60
                 )
 
                 new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-                    name="lengthWithExpression",
+                    declared_name="lengthWithExpression",
                     owner=bike.frame,
                     expression="60 [cm]"
                 )
@@ -122,13 +152,13 @@ frame.
             .. code:: python
 
                 new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-                    name="lengthWithValue",
+                    declared_name="lengthWithValue",
                     owner=bike.get("frame"),
                     value=60
                 )
 
                 new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-                    name="lengthWithExpression",
+                    declared_name="lengthWithExpression",
                     owner=bike.get("frame"),
                     expression="60 [cm]"
                 )
@@ -148,7 +178,7 @@ properties like names.
 
         .. code:: python
 
-            >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+            >>> my_attribute = factory.create_attribute_usage(declared_name="OriginalName")
             >>> my_attribute._name = "New Name"
             New Name
 
@@ -156,14 +186,14 @@ properties like names.
 
         .. code:: python
 
-            >>> my_attribute = factory.create_attribute_usage(name="OriginalName")
+            >>> my_attribute = factory.create_attribute_usage(declared_name="OriginalName")
             >>> my_attribute.name = "New Name"
             New Name
 
 Moving elements
 ---------------
 
-Use ``append()`` - on the owned element property - to move an element to a different container.
+Use ``append()`` on the owned element property to move an element to a different container.
 The element is automatically removed from its current container.
 
 .. tab-set::

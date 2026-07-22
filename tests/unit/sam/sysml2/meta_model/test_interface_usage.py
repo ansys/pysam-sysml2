@@ -22,15 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-from __future__ import annotations
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.interface_usage import InterfaceUsage
 
 
 class TestInterfaceUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.InterfaceUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.InterfaceUsage'."""
 
     @pytest.fixture
     def element(self):
@@ -42,7 +41,5 @@ class TestInterfaceUsage:
         assert element.id == "element_id"
 
     def test_interface_definition(self, element):
-        """Test getter and setter for interface definition property."""
-        value = "test_value"
-        element.interface_definition = value
-        assert element.interface_definition == value
+        """Test getter for interface definition property."""
+        _ = element.interface_definition

@@ -39,28 +39,41 @@ from ansys.sam.sysml2.api.ansys_sysml2_api_connector import (  # noqa: F401, E40
 from ansys.sam.sysml2.builder.sysml2_project_manager import (  # noqa: F401, E402 as we export name
     SysML2ProjectManager,
 )
-from ansys.sam.sysml2.diagrams.sam_diagram_manager import (  # noqa: F401, E402 as we export name
-    SAMDiagramManager,
-)
 
 # IPython completer patch
 # ------------------------------------------------------------------------------
 
 
-def _patch_completer():
-    """Disable Jedi and enable greedy completion in IPython.
+def _complete_element_attrs(obj, prev_completions):
+    """Return the element's own ``__dir__`` so conditional gating wins over IPython ``dir2()``."""
+    try:
+        return list(obj.__dir__())
+    except Exception:
+        return prev_completions
 
-    Jedi performs static analysis and ignores ``__dir__``/``__getattr__``.
-    Disabling it makes IPython call ``__dir__()`` on live objects, which is
-    required for dynamic autocompletion on SysML proxy elements.
-    """
+
+def _patch_completer():
+    """Disable Jedi, enable greedy completion, and make IPython honor the element ``__dir__``."""
     try:
         ip = get_ipython()  # noqa: F821
-        if ip is not None:
-            ip.Completer.use_jedi = False
-            ip.Completer.greedy = True
     except NameError:
-        pass
+        return
+    if ip is None:
+        return
+    ip.Completer.use_jedi = False
+    ip.Completer.greedy = True
+    try:
+        from IPython.utils.generics import complete_object
+
+        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+        from ansys.sam.sysml2.meta_model.e_object import EObject
+    except ImportError:
+        return
+    register = getattr(complete_object, "register", None)
+    if register is None:
+        register = complete_object.when_type
+    register(SysMLElement, _complete_element_attrs)
+    register(EObject, _complete_element_attrs)
 
 
 _patch_completer()

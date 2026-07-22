@@ -26,7 +26,7 @@ from .feature_membership import FeatureMembership
 
 
 class EndFeatureMembership(FeatureMembership):
-    """Java class 'com.ansys.medini.metamodel.sysml.EndFeatureMembership'."""
+    """Java class 'com.ansys.metamodel.sysml2.EndFeatureMembership'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

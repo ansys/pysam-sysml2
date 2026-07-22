@@ -111,6 +111,11 @@ class ObservedList(list):
         return super().reverse()
 
     @mount_observer_and_access
+    def clear(self):
+        """Override the list clear method."""
+        return super().clear()
+
+    @mount_observer_and_access
     def __iadd__(self, value):
         """Override the list __iadd__ method."""
         return super().__iadd__(value)

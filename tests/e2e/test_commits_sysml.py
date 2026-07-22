@@ -27,6 +27,7 @@ import pytest
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 
 @pytest.mark.e2e
@@ -44,7 +45,7 @@ class TestCommitsSysML:
         change = DataVersion()
         change.identify(bike_front_wheel_id)
         change.add_change("@type", bike_front_wheel_type)
-        change.add_change("name", "RenamedByE2ESysML")
+        change.add_change("declaredName", "RenamedByE2ESysML")
         commit.add_change(change)
         response = connector.create_commit(project.get_id(), commit.to_json())
 
@@ -59,12 +60,16 @@ class TestCommitsSysML:
         bike_front_wheel_rim = bike_front_wheel.get("rim")
         bike_front_wheel_rim_weight = bike_front_wheel_rim.get("weight")
 
-        original_bike_front_wheel_rim_weight = bike_front_wheel_rim_weight.get_value()
+        original_bike_front_wheel_rim_weight = SysMLTools.serialize_expression(
+            bike_front_wheel_rim_weight.get_value()
+        )
         bike_front_wheel_rim_weight.parse_and_set_value("500 [g]")
-        updated_bike_front_wheel_rim_weight = bike_front_wheel_rim_weight.get_value()
+        updated_bike_front_wheel_rim_weight = SysMLTools.serialize_expression(
+            bike_front_wheel_rim_weight.get_value()
+        )
 
         assert updated_bike_front_wheel_rim_weight != original_bike_front_wheel_rim_weight
-        assert updated_bike_front_wheel_rim_weight == (500, "g")
+        assert updated_bike_front_wheel_rim_weight == "500 [g]"
 
     def test_create_commit_empty_change_sysml(self, connector, project_factory):
         """Commit with no DataVersion raises BadRequestConnectionException."""

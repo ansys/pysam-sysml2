@@ -33,8 +33,6 @@ class TestSysML2ProjectBuilderScripting:
 
         project = builder.build_scripting_project(PROJECT_ID_1)
 
-        assert len(project.get_root()) == 1
-        assert project.get_root()[0]._name == "project-1"
         assert project.get_root_package()._name == "project-1"
 
     def test_find_element_by_id(self, connector):
@@ -53,13 +51,14 @@ class TestSysML2ProjectBuilderScripting:
 
         assert any(el._id == PROJECT_1_ATTR_ID for el in elements)
 
-    def test_root_elements_have_no_owner(self, connector):
+    def test_namespace_elements_have_no_owner(self, connector):
         builder = SysML2ProjectBuilder(connector)
 
         project = builder.build_scripting_project(PROJECT_ID_1)
 
-        for root in project.get_root():
-            assert getattr(root, "_owner", None) is None
+        owner = project.get_root_package()._owner
+        assert owner is not None
+        assert getattr(owner, "_owner", None) is None
 
 
 class TestSysML2ProjectBuilderSysML:
@@ -69,8 +68,6 @@ class TestSysML2ProjectBuilderSysML:
 
         project = builder.build_sysml_project(PROJECT_ID_1)
 
-        assert len(project.get_root()) == 1
-        assert project.get_root()[0].name == "project-1"
         assert project.get_root_package().name == "project-1"
 
     def test_find_element_by_id_sysml(self, connector):
@@ -89,10 +86,11 @@ class TestSysML2ProjectBuilderSysML:
 
         assert any(el.id == PROJECT_1_ATTR_ID for el in elements)
 
-    def test_root_elements_have_no_owner_sysml(self, connector):
+    def test_namespace_elements_have_no_owner_sysml(self, connector):
         builder = SysML2ProjectBuilder(connector)
 
         project = builder.build_sysml_project(PROJECT_ID_1)
 
-        for root in project.get_root():
-            assert root.owner is None
+        owner = project.get_root_package().owner
+        assert owner is not None
+        assert owner.owner is None

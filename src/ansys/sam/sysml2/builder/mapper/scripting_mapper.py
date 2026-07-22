@@ -29,7 +29,6 @@ from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
-from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 TYPE_KEY = "@type"
 
@@ -40,19 +39,23 @@ class ScriptingMapper(Mapper):
     class_cache = {}
 
     def map(
-        self, namespace: str, json_element: dict, mapped_element: SysMLElement
+        self,
+        json_element: dict,
+        mapped_element: SysMLElement,
+        resolve_libraries: bool = False,
     ) -> MappedElement:
         """
         Map the JSON into a python element.
 
         Parameters
         ----------
-        namespace : str
-            Project namespace.
         json_element : dict
             Element data.
         mapped_element : SysMLElement
             Existing element.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' unresolved references so their contents
+            are resolved and mapped.
 
         Returns
         -------
@@ -62,22 +65,26 @@ class ScriptingMapper(Mapper):
         if TYPE_KEY not in json_element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(namespace, json_element, mapped_element)
+        return self.__build_element(json_element, mapped_element, resolve_libraries)
 
     def __build_element(
-        self, namespace: str, data: dict, element: SysMLElement | None
+        self,
+        data: dict,
+        element: SysMLElement | None,
+        resolve_libraries: bool = False,
     ) -> MappedElement:
         """
         Map element data to python object.
 
         Parameters
         ----------
-        namespace : str
-            Project namespace.
         data : dict
             Element data.
         element : SysMLElement
             Existing element.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' unresolved references so their contents
+            are resolved and mapped.
 
         Returns
         -------
@@ -87,13 +94,11 @@ class ScriptingMapper(Mapper):
         unresolved_fields = []
         if element is None:
             element = SysMLElement(element_id=data["@id"])
+        self.__update_element_definition(data, element)
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        self.__update_element_definition(data, element)
-        if not element._qualifiedName.startswith(namespace) and not SysMLTools.isinstance(
-            element, "FeatureValue"
-        ):
+        if not resolve_libraries and getattr(element, "_isLibraryElement", False):
             unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 
@@ -138,6 +143,7 @@ class ScriptingMapper(Mapper):
         List[UnresolvedField]
             List of all unresolved fields.
         """
+        field_values = self._convert_enum(element, field_name, field_values)
         field_name = "_" + field_name
         if isinstance(field_values, list):
             return self._add_list_to_field(element, field_name, field_values)
