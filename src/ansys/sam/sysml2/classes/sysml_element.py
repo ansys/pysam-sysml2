@@ -52,7 +52,7 @@ class SysMLElement:
         children = [k for k in hmap if k is not None]
         names = set(list(base) + children)
         if not ValueHelper.is_value_capable(self):
-            names.difference_update({"get_value", "set_value", "parse_and_set_value"})
+            names.difference_update({"get_value", "set_value"})
         if not getattr(self, "_source", None):
             names.discard("get_source")
         if not getattr(self, "_target", None):
@@ -100,10 +100,6 @@ class SysMLElement:
     def get_value(self):
         """Get the value of the feature."""
         return ValueHelper.get_value_for_scripting_element(self)
-
-    def parse_and_set_value(self, value: str):
-        """Parse the value and create the valuation part in the feature."""
-        ValueHelper.set_or_update_value(self, "operator", value)
 
     def set_value(self, new_value: str | int | float | bool):
         """Update the feature value."""

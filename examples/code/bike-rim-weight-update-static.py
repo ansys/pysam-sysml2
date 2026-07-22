@@ -60,8 +60,8 @@ print(f"Default rim weight: {render(rim.get('weight'))}")
 print(f"Default frontWheel rim weight: {render(bike.get('frontWheel').get('rim').get('weight'))}")
 print(f"Default RearWheel rim weight: {render(bike.get('rearWheel').get('rim').get('weight'))}")
 
-bike.get("frontWheel").get("rim").get("weight").parse_and_set_value("0.5 [kg]")
-bike.get("rearWheel").get("rim").get("weight").parse_and_set_value("0.8 [kg]")
+SysMLTools.parse_and_set_value(bike.get("frontWheel").get("rim").get("weight"), "0.5 [kg]")
+SysMLTools.parse_and_set_value(bike.get("rearWheel").get("rim").get("weight"), "0.8 [kg]")
 
 print(f"Actual rim weight: {render(rim.get('weight'))}")
 print(f"New frontWheel rim weight: {render(bike.get('frontWheel').get('rim').get('weight'))}")
