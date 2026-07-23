@@ -30,7 +30,7 @@ You are likely impacted if your code does any of the following:
 | Area | Before | Now |
 |---|---|---|
 | Containment / owner | `element.owner` | `element.owning_membership` or `element.owning_namespace` depending on intent |
-| Visibility | `element.visibility` | `element.owning_membership.visibility` |
+| Visibility | `element.visibility` | `SysMLTools.get_element_visibility(element)` (write via `element.owning_membership.visibility`) |
 | Similar membership-owned properties | directly on element | now on `owning_membership` |
 | Enum properties | `"out"` (string) | `FeatureDirectionKind.OUT` (enum member) |
 | Name updates | `element.name = "..."` | `element.declared_name = "..."` |
@@ -91,8 +91,16 @@ au.visibility
 
 ### Now
 
+To read the visibility of an element, use the helper:
+
 ```python
-au.owning_membership.visibility
+SysMLTools.get_element_visibility(au)
+```
+
+It reads the value from the element's owning membership (or its owning feature membership for features) and works for both the scripting and metamodel flavors, returning `None` when the element has no owning membership. The value is a `VisibilityKind` enum member (see [7. Enum-valued properties](#7-enum-valued-properties)). To write, set it on the owning membership directly:
+
+```python
+au.owning_membership.visibility = VisibilityKind.PUBLIC
 ```
 
 The same pattern applies to other properties such as:
@@ -103,7 +111,7 @@ The same pattern applies to other properties such as:
 
 ### What to do
 
-If your code reads or writes these properties directly on the element, update it to go through `owning_membership`.
+To read visibility, use `SysMLTools.get_element_visibility(element)`. For other membership-owned properties (or to write visibility), go through `owning_membership`.
 
 ---
 

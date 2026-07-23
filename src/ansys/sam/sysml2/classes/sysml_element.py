@@ -57,21 +57,12 @@ class SysMLElement:
             names.discard("get_source")
         if not getattr(self, "_target", None):
             names.discard("get_target")
-        from ansys.sam.sysml2.tools.deprecation import visibility_alias_listed
-
-        if visibility_alias_listed(self, "_visibility", "_owningMembership"):
-            names.add("_visibility")
         return sorted(names)
 
     def __getattr__(self, name):
         """Resolve hash-map children lazily; only fires when normal attribute lookup fails."""
         if name.startswith("__") and name.endswith("__"):
             raise AttributeError(name)
-        from ansys.sam.sysml2.tools.deprecation import UNHANDLED, scripting_deprecated_get
-
-        shimmed = scripting_deprecated_get(self, name)
-        if shimmed is not UNHANDLED:
-            return shimmed
         hmap = self.__dict__.get("_element_hash_map", {})
         if name not in hmap:
             raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
@@ -88,11 +79,9 @@ class SysMLElement:
         return result
 
     def __setattr__(self, name: str, value: object):
-        """Intercept attribute assignment: deprecated shims first, then notify the observer."""
-        from ansys.sam.sysml2.tools.deprecation import scripting_deprecated_set
-
-        if scripting_deprecated_set(self, name, value):
-            return
+        """Intercept attribute assignment; ``_name`` is read-only (use ``_declaredName``)."""
+        if name == "_name":
+            raise AttributeError("'_name' is read-only; use '_declaredName' to rename the element.")
         if name != "_observer" and getattr(self, "_observer", None) is not None:
             self._observer.notify(self._id, name, value)
         super().__setattr__(name, value)

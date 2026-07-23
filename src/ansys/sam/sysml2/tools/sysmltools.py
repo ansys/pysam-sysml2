@@ -64,3 +64,35 @@ class SysMLTools:
         from ansys.sam.sysml2.classes.value_helper import ValueHelper
 
         return ValueHelper.serialize(value)
+
+    @staticmethod
+    def get_element_visibility(element):
+        """
+        Return the visibility of an element, read from its owning membership.
+
+        Visibility lives on the membership that owns the element. That membership is an
+        ``OwningMembership`` for most elements and a ``FeatureMembership`` for features,
+        so this helper falls back to the owning feature membership when the generic
+        owning membership is not set. It resolves the value for both
+        the metamodel and scripting flavors.
+
+        Parameters
+        ----------
+        element : SysMLElement or Element
+            Element whose visibility is read.
+
+        Returns
+        -------
+        VisibilityKind or None
+            The owning membership's visibility, or ``None`` when the element has no
+            owning membership.
+        """
+        for attr in ("owning_membership", "owning_feature_membership"):
+            membership = getattr(element, attr, None)
+            if membership is not None:
+                return membership.visibility
+        for attr in ("_owningMembership", "_owningFeatureMembership"):
+            membership = getattr(element, attr, None)
+            if membership is not None:
+                return getattr(membership, "_visibility", None)
+        return None
