@@ -30,7 +30,7 @@ You are likely impacted if your code does any of the following:
 | Area | Before | Now |
 |---|---|---|
 | Containment / owner | `element.owner` | `element.owning_membership` or `element.owning_namespace` depending on intent |
-| Visibility | `element.visibility` | `SysMLTools.get_element_visibility(element)` (write via `element.owning_membership.visibility`) |
+| Visibility | `element.visibility` | `SysMLTools.get_element_visibility(element)` / `SysMLTools.set_element_visibility(element, ...)` |
 | Similar membership-owned properties | directly on element | now on `owning_membership` |
 | Enum properties | `"out"` (string) | `FeatureDirectionKind.OUT` (enum member) |
 | Name updates | `element.name = "..."` | `element.declared_name = "..."` |
@@ -97,7 +97,13 @@ To read the visibility of an element, use the helper:
 SysMLTools.get_element_visibility(au)
 ```
 
-It reads the value from the element's owning membership (or its owning feature membership for features) and works for both the scripting and metamodel flavors, returning `None` when the element has no owning membership. The value is a `VisibilityKind` enum member (see [7. Enum-valued properties](#7-enum-valued-properties)). To write, set it on the owning membership directly:
+It reads the value from the element's owning membership (or its owning feature membership for features) and works for both the scripting and metamodel flavors, returning `None` when the element has no owning membership. The value is a `VisibilityKind` enum member (see [7. Enum-valued properties](#7-enum-valued-properties)). To write, use the matching helper:
+
+```python
+SysMLTools.set_element_visibility(au, VisibilityKind.PUBLIC)
+```
+
+It writes to the same owning membership (or owning feature membership for features) for both flavors, and raises when the element has no owning membership. If you already hold the membership, you can still set it directly:
 
 ```python
 au.owning_membership.visibility = VisibilityKind.PUBLIC
@@ -111,7 +117,7 @@ The same pattern applies to other properties such as:
 
 ### What to do
 
-To read visibility, use `SysMLTools.get_element_visibility(element)`. For other membership-owned properties (or to write visibility), go through `owning_membership`.
+To read visibility, use `SysMLTools.get_element_visibility(element)`; to write it, use `SysMLTools.set_element_visibility(element, VisibilityKind.<VALUE>)`. For other membership-owned properties, go through `owning_membership`.
 
 ---
 

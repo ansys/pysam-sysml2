@@ -22,6 +22,8 @@
 
 """Unit tests for SysMLTools helpers."""
 
+import pytest
+
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.feature import Feature
@@ -75,3 +77,49 @@ class TestGetElementVisibility:
         element = SysMLElement("element_id")
 
         assert SysMLTools.get_element_visibility(element) is None
+
+
+class TestSetElementVisibility:
+    """Visibility is written on the element's owning membership, for both flavors."""
+
+    def test_metamodel_sets_owning_membership_visibility(self):
+        element = Element("element_id")
+        membership = OwningMembership("membership_id")
+        element.owning_membership = membership
+
+        SysMLTools.set_element_visibility(element, VisibilityKind.PUBLIC)
+
+        assert membership.visibility == VisibilityKind.PUBLIC
+
+    def test_metamodel_sets_owning_feature_membership_visibility(self):
+        feature = Feature("feature_id")
+        membership = FeatureMembership("membership_id")
+        feature.owning_feature_membership = membership
+
+        SysMLTools.set_element_visibility(feature, VisibilityKind.PRIVATE)
+
+        assert membership.visibility == VisibilityKind.PRIVATE
+
+    def test_scripting_sets_owning_membership_visibility(self):
+        element = SysMLElement("element_id")
+        membership = SysMLElement("membership_id")
+        element._owningMembership = membership
+
+        SysMLTools.set_element_visibility(element, VisibilityKind.PROTECTED)
+
+        assert membership._visibility == VisibilityKind.PROTECTED
+
+    def test_scripting_sets_owning_feature_membership_visibility(self):
+        element = SysMLElement("element_id")
+        membership = SysMLElement("membership_id")
+        element._owningFeatureMembership = membership
+
+        SysMLTools.set_element_visibility(element, VisibilityKind.PUBLIC)
+
+        assert membership._visibility == VisibilityKind.PUBLIC
+
+    def test_without_owning_membership_raises(self):
+        element = Element("element_id")
+
+        with pytest.raises(AttributeError, match="owning membership"):
+            SysMLTools.set_element_visibility(element, VisibilityKind.PUBLIC)

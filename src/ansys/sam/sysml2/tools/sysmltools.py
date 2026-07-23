@@ -96,3 +96,37 @@ class SysMLTools:
             if membership is not None:
                 return getattr(membership, "_visibility", None)
         return None
+
+    @staticmethod
+    def set_element_visibility(element, visibility):
+        """
+        Set the visibility of an element on its owning membership.
+
+        Visibility lives on the membership that owns the element (an ``OwningMembership``
+        for most elements, a ``FeatureMembership`` for features). This helper writes the
+        value on that membership for both the metamodel and scripting flavors. Use
+        :meth:`get_element_visibility` to read it back.
+
+        Parameters
+        ----------
+        element : SysMLElement or Element
+            Element whose visibility is set.
+        visibility : VisibilityKind
+            New visibility value.
+
+        Raises
+        ------
+        AttributeError
+            If the element has no owning membership to store the value on.
+        """
+        for attr in ("owning_membership", "owning_feature_membership"):
+            membership = getattr(element, attr, None)
+            if membership is not None:
+                membership.visibility = visibility
+                return
+        for attr in ("_owningMembership", "_owningFeatureMembership"):
+            membership = getattr(element, attr, None)
+            if membership is not None:
+                membership._visibility = visibility
+                return
+        raise AttributeError("Cannot set visibility: the element has no owning membership.")
