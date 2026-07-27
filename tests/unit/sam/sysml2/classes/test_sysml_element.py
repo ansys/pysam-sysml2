@@ -51,6 +51,12 @@ class TestSysMLElement:
 
         assert attr._declaredName == "NewAttr"
 
+    def test_setting_underscore_name_raises_pointing_to_declared_name(self):
+        element = SysMLElement("element_id")
+
+        with pytest.raises(AttributeError, match="_declaredName"):
+            element._name = "RenamedPart"
+
     def test_expression_get_value(self, project):
         package = project.get_root_package()
 

@@ -53,14 +53,6 @@ class EObject:
             names = [a for a in names if a != "get_source"]
         if not getattr(self, "target", None):
             names = [a for a in names if a != "get_target"]
-        from ansys.sam.sysml2.tools.deprecation import is_visibility_shim, visibility_alias_listed
-
-        if (
-            "visibility" in names
-            and is_visibility_shim(type(self))
-            and not visibility_alias_listed(self, "_visibility", "_owning_membership")
-        ):
-            names = [a for a in names if a != "visibility"]
         return sorted(names)
 
     def _resolve_child(self, name, hmap):
