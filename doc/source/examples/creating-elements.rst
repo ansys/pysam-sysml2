@@ -59,7 +59,7 @@ You just created a new element and assigned a parsed value to it.
 
     You can also assign a value directly when creating the element, without using the
     :meth:`set_value() <SysMLElement.set_value>` or
-    :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
+    ``SysMLTools.parse_and_set_value``
     method. There are two ways:
 
     - ``value=...`` for simple values (such as numbers).

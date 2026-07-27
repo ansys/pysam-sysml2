@@ -61,7 +61,7 @@ class TestValues:
 
         assert original_front_weight == "1 [kg]"
 
-        bike.frontWheel.rim.weight.parse_and_set_value("500 [g]")
+        SysMLTools.parse_and_set_value(bike.frontWheel.rim.weight, "500 [g]")
         updated_front_weight = SysMLTools.serialize_expression(
             bike.frontWheel.rim.weight.get_value()
         )
@@ -84,8 +84,8 @@ class TestValues:
         assert original_rear_weight == "1 [kg]"
 
         project.start_transactional_mode()
-        bike.frontWheel.rim.weight.parse_and_set_value("500 [g]")
-        bike.rearWheel.rim.weight.parse_and_set_value("750 [g]")
+        SysMLTools.parse_and_set_value(bike.frontWheel.rim.weight, "500 [g]")
+        SysMLTools.parse_and_set_value(bike.rearWheel.rim.weight, "750 [g]")
         project.stop_transactional_mode()
 
         updated_front_weight = SysMLTools.serialize_expression(
@@ -103,7 +103,7 @@ class TestValues:
         factory = Factory(project, connector)
         factory.create_attribute_usage(declared_name="length", owner=bike.frame)
 
-        bike.frame.length.parse_and_set_value("60 [cm]")
+        SysMLTools.parse_and_set_value(bike.frame.length, "60 [cm]")
         value = SysMLTools.serialize_expression(bike.frame.length.get_value())
 
         assert value == "60 [cm]"
@@ -146,7 +146,7 @@ class TestValues:
         factory = Factory(project, connector)
         factory.create_attribute_usage(declared_name="complexArithmetic", owner=bike.frame)
 
-        bike.frame.complexArithmetic.parse_and_set_value("5 + 5 + 5")
+        SysMLTools.parse_and_set_value(bike.frame.complexArithmetic, "5 + 5 + 5")
 
         assert (
             SysMLTools.serialize_expression(bike.frame.complexArithmetic.get_value()) == "5 + 5 + 5"
@@ -158,10 +158,10 @@ class TestValues:
         bike = project.get_root_package().Structure.Bike
         factory = Factory(project, connector)
         factory.create_attribute_usage(declared_name="baseValue", owner=bike.frame)
-        bike.frame.baseValue.parse_and_set_value("5 + 5")
+        SysMLTools.parse_and_set_value(bike.frame.baseValue, "5 + 5")
         factory.create_attribute_usage(declared_name="refValue", owner=bike.frame)
 
-        bike.frame.refValue.parse_and_set_value("baseValue + baseValue")
+        SysMLTools.parse_and_set_value(bike.frame.refValue, "baseValue + baseValue")
 
         assert SysMLTools.serialize_expression(bike.frame.baseValue.get_value()) == "5 + 5"
         assert (
@@ -189,7 +189,7 @@ class TestValues:
         factory = Factory(project, connector)
         factory.create_attribute_usage(declared_name="complexArithmetic", owner=frame)
 
-        frame.get("complexArithmetic").parse_and_set_value("5 + 5 + 5")
+        SysMLTools.parse_and_set_value(frame.get("complexArithmetic"), "5 + 5 + 5")
 
         assert (
             SysMLTools.serialize_expression(frame.get("complexArithmetic").get_value())
@@ -235,7 +235,7 @@ class TestValues:
         factory = Factory(project, connector)
         factory.create_attribute_usage(declared_name="first", owner=root)
 
-        root.first.parse_and_set_value("1+2+3+4+5")
+        SysMLTools.parse_and_set_value(root.first, "1+2+3+4+5")
 
         assert SysMLTools.serialize_expression(root.first.get_value()) == "1 + 2 + 3 + 4 + 5"
 
@@ -251,7 +251,7 @@ class TestValues:
         root.first.set_value("first_value")
         assert root.first.get_value()._value == "first_value"
 
-        root.first.parse_and_set_value("second + third * 3")
+        SysMLTools.parse_and_set_value(root.first, "second + third * 3")
 
         assert SysMLTools.serialize_expression(root.first.get_value()) == "second + third * 3"
 
@@ -264,7 +264,7 @@ class TestValues:
 
         assert SysMLTools.serialize_expression(root.flag.get_value()) == "not false"
 
-        root.flag.parse_and_set_value("not true")
+        SysMLTools.parse_and_set_value(root.flag, "not true")
 
         assert SysMLTools.serialize_expression(root.flag.get_value()) == "not true"
 
@@ -278,7 +278,7 @@ class TestValues:
 
         assert root.notAttrStr.get_value()._value == "not false"
 
-        root.notAttrStr.parse_and_set_value("second * 3")
+        SysMLTools.parse_and_set_value(root.notAttrStr, "second * 3")
         assert SysMLTools.serialize_expression(root.notAttrStr.get_value()) == "second * 3"
 
         root.notAttrStr.set_value("not true")

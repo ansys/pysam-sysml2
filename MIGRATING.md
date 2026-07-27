@@ -37,6 +37,7 @@ You are likely impacted if your code does any of the following:
 | Libraries | no direct access | `project.get_libraries_packages()` |
 | Connection ends | directly usable in all cases, then via `element.get_source()` / `element.get_target()` | `SysMLTools().resolve_feature_chaining(...)` or `SysMLTools().get_connector_ends(...)` |
 | Feature values | Python-native values or tuples | value element (`.value` for literals, `SysMLTools.serialize_expression(...)` for expressions) |
+| Setting expression values | `feature.parse_and_set_value(...)` | `SysMLTools.parse_and_set_value(feature, ...)` |
 | Diagrams | navigable diagram model via REST API | removed (image download only) |
 
 ---
@@ -211,6 +212,8 @@ source, target = SysMLTools().get_connector_ends(connection)
 
 Replace any element-level `get_source()` / `get_target()` calls (and the former `RepresentativeResolver`) with `SysMLTools`. It auto-detects whether you use the static or dynamic representation from the element you pass in, accounts for feature chaining, inheritance, and redefinition, and returns `None` when the end or context is missing.
 
+> **Note:** Inherited elements now expose their real UUID (metamodel `.id`) instead of a self-built composed path such as `owner_id/?child_id`.
+
 ---
 
 ## 6. Feature values
@@ -224,7 +227,7 @@ Feature value handling has changed significantly.
   - a 2-item tuple when a unit was involved, or
   - nothing
 - `set_value()` directly set the value
-- `parse_and_set_value()` parsed an expression and created the corresponding SysML v2 expression
+- `parse_and_set_value()` was a method on the feature that parsed an expression and created the corresponding SysML v2 expression
 
 ### Now
 
@@ -243,6 +246,14 @@ For a literal value, read its `.value` property directly:
 False
 >>> myFloatFeature.get_value().value
 10.56
+```
+
+To set an expression value, use `SysMLTools.parse_and_set_value`, which is no longer a method on the feature:
+
+```python
+>>> from ansys.sam.sysml2.tools import SysMLTools
+>>> SysMLTools.parse_and_set_value(myFeature, "5 + 5")
+>>> SysMLTools.parse_and_set_value(myUnitFeature, "10 [kg]")
 ```
 
 For an expression value (or when you want a serialized representation), use `SysMLTools.serialize_expression`:
@@ -265,7 +276,7 @@ For an expression value (or when you want a serialized representation), use `Sys
 
 If your code previously expected `get_value()` to return Python-native values, adapt it to handle value elements instead: read `.value` for literals, and use `SysMLTools.serialize_expression()` for expressions.
 
-If you relied on `parse_and_set_value()`, it is still available on the feature; the serialization helper is now provided by `SysMLTools`.
+If you relied on `feature.parse_and_set_value(...)`, replace it with `SysMLTools.parse_and_set_value(feature, ...)`. It is no longer a method on the feature; both writing expressions and serializing them are now provided by `SysMLTools`.
 
 ---
 

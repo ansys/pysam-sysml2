@@ -160,8 +160,8 @@ class ValueHelper:
         When no value exists a ``FeatureValue`` is created. When a literal of the same
         type already exists it is updated in place through its identity. On any value
         kind switch, including literal to operator expression (``set_value`` to
-        ``parse_and_set_value``) and back, the old value is dropped before a new
-        ``FeatureValue`` is created.
+        ``SysMLTools.parse_and_set_value``) and back, the old value is dropped before a
+        new ``FeatureValue`` is created.
 
         Parameters
         ----------
