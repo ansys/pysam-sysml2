@@ -64,3 +64,24 @@ class SysMLTools:
         from ansys.sam.sysml2.classes.value_helper import ValueHelper
 
         return ValueHelper.serialize(value)
+
+    @staticmethod
+    def parse_and_set_value(feature, expression: str):
+        """
+        Parse an expression and set it as the feature's value.
+
+        The text is sent as-is to the server, which builds the corresponding SysML v2
+        expression (for example a unit expression, an arithmetic expression, or a
+        reference expression). Use :meth:`serialize_expression` to render the resulting
+        value element back to text.
+
+        Parameters
+        ----------
+        feature : SysMLElement or Element
+            Feature whose value is set or updated.
+        expression : str
+            Expression text to parse (for example ``"10 [m]"`` or ``"5 + 5"``).
+        """
+        from ansys.sam.sysml2.classes.value_helper import ValueHelper
+
+        ValueHelper.set_or_update_value(feature, "operator", expression)

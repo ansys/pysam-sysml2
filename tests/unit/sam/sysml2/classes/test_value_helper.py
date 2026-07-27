@@ -102,7 +102,7 @@ class TestValueHelperComplexExpressions:
         original_expr_id = attribute._valuation._value._id
         commit_spy = mocker.spy(connector, "create_commit")
 
-        attribute.parse_and_set_value("attribute4 * attribute2")
+        SysMLTools.parse_and_set_value(attribute, "attribute4 * attribute2")
 
         assert commit_spy.call_count == 2
         drop = json.loads(commit_spy.call_args_list[0].args[1])

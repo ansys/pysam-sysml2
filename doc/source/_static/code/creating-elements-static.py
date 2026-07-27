@@ -49,6 +49,6 @@ new_bicycle_frame_length = factory.create_attribute_usage(
     declared_name="length", owner=bike.get("frame")
 )
 
-new_bicycle_frame_length.parse_and_set_value("60 [cm]")
+SysMLTools.parse_and_set_value(new_bicycle_frame_length, "60 [cm]")
 
 print(SysMLTools.serialize_expression(bike.get("frame").get("length").get_value()))
