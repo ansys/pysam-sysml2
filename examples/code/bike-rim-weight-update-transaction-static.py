@@ -64,8 +64,8 @@ print(f"Default RearWheel rim weight: {render(bike.get('rearWheel').get('rim').g
 my_bike_project.start_transactional_mode()
 
 
-bike.get("frontWheel").get("rim").get("weight").parse_and_set_value("0.5 [kg]")
-bike.get("rearWheel").get("rim").get("weight").parse_and_set_value("0.8 [kg]")
+SysMLTools.parse_and_set_value(bike.get("frontWheel").get("rim").get("weight"), "0.5 [kg]")
+SysMLTools.parse_and_set_value(bike.get("rearWheel").get("rim").get("weight"), "0.8 [kg]")
 
 
 my_bike_project.stop_transactional_mode()

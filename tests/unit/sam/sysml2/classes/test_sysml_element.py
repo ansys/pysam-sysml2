@@ -62,7 +62,7 @@ class TestSysMLElement:
         mocker.patch.object(package._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
-        package.Feature.myExpressionFeature.parse_and_set_value("20 [kg]")
+        SysMLTools.parse_and_set_value(package.Feature.myExpressionFeature, "20 [kg]")
 
         assert commit_spy.call_count == 2
 
@@ -185,7 +185,7 @@ class TestSysMLElementDir:
         listing = dir(element)
         assert "get_value" in listing
         assert "set_value" in listing
-        assert "parse_and_set_value" in listing
+        assert "parse_and_set_value" not in listing
 
     def test_source_target_hidden_without_ends(self):
         element = SysMLElement("element_id")

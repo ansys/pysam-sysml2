@@ -319,6 +319,7 @@ from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind as Visibi
 from ansys.sam.sysml2.meta_model.while_loop_action_usage import (
     WhileLoopActionUsage as WhileLoopActionUsage,
 )
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 
 class Factory:
@@ -2451,7 +2452,7 @@ class Factory:
         if "value" in kwargs:
             element.set_value(kwargs.get("value"))
         elif "expression" in kwargs:
-            element.parse_and_set_value(kwargs.get("expression"))
+            SysMLTools.parse_and_set_value(element, kwargs.get("expression"))
         return element
 
     def _extract_created_element(self, element_type: str, existing_elements: set):
