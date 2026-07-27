@@ -64,7 +64,7 @@ class TestCommitsScripting:
 
         assert original_front_wheel_rim_weight == "1 [kg]"
 
-        bike_front_wheel_rim_weight.parse_and_set_value("500 [g]")
+        SysMLTools.parse_and_set_value(bike_front_wheel_rim_weight, "500 [g]")
         updated_front_wheel_rim_weight = SysMLTools.serialize_expression(
             bike_front_wheel_rim_weight.get_value()
         )

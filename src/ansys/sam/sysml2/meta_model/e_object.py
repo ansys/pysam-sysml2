@@ -48,7 +48,7 @@ class EObject:
         """Expose the public SysML API only: hide single-underscore backing fields."""
         names = [a for a in super().__dir__() if not (a.startswith("_") and not a.startswith("__"))]
         if not ValueHelper.is_value_capable(self):
-            names = [a for a in names if a not in ("get_value", "set_value", "parse_and_set_value")]
+            names = [a for a in names if a not in ("get_value", "set_value")]
         if not getattr(self, "source", None):
             names = [a for a in names if a != "get_source"]
         if not getattr(self, "target", None):
@@ -131,10 +131,6 @@ class EObject:
         if self._observer is not None:
             self._observer.delete_element(self.id)
         del self
-
-    def parse_and_set_value(self, value: str):
-        """Parse the value and create the valuation part in the Feature."""
-        ValueHelper.set_or_update_value(self, "operator", value)
 
     def set_value(self, new_value: str | int | float | bool):
         """Update the Feature value."""
