@@ -24,35 +24,6 @@
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
 
-def build_composed_name(owner, element, is_inherited):
-    """
-    Build a composed name for the inherited element.
-
-    Parameters
-    ----------
-    owner : SysMLElement
-        The owner of the inherited element.
-    element : SysMLElement
-        The inherited element.
-    is_inherited : bool
-        Whether the element is inherited or not.
-
-    Returns
-    -------
-    str
-         The composed name for the inherited element.
-    """
-    is_contained_in_inherited_element = isinstance(owner, InheritedElement)
-    if is_inherited:
-        is_inherited = (
-            element in getattr(owner, "_inheritedFeature", []) or is_contained_in_inherited_element
-        )
-        if is_contained_in_inherited_element:
-            return f"{owner._id}/?{element._identifier}"
-        return f"{build_composed_name(owner._owner, owner, is_inherited)}/?{element._id}"
-    return ""
-
-
 class InheritedElement(SysMLElement):
     """Proxy that exposes an inherited element under its on-the-fly owner."""
 
@@ -61,7 +32,7 @@ class InheritedElement(SysMLElement):
         super().__init__("")
         self._observer = owner._observer
         self._element = element
-        self._id = build_composed_name(owner, element, True)
+        self._id = element._id
         self._owner = owner
 
     def __setattr__(self, name, value):
