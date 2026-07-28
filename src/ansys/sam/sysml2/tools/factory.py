@@ -321,6 +321,22 @@ from ansys.sam.sysml2.meta_model.while_loop_action_usage import (
 )
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
+# Default (element type, owning membership type) per ``add_*`` kind.
+_ADD_SPECS: dict[str, tuple[str, str]] = {
+    "attribute": ("AttributeUsage", "FeatureMembership"),
+    "actor": ("PartUsage", "ActorMembership"),
+    "stakeholder": ("PartUsage", "StakeholderMembership"),
+    "subject": ("PartUsage", "SubjectMembership"),
+    "objective": ("RequirementUsage", "ObjectiveMembership"),
+    "requirement_constraint": ("ConstraintUsage", "RequirementConstraintMembership"),
+    "requirement_verification": ("RequirementUsage", "RequirementVerificationMembership"),
+    "framed_concern": ("ConcernUsage", "FramedConcernMembership"),
+    "variant": ("PartUsage", "VariantMembership"),
+    "view_rendering": ("RenderingUsage", "ViewRenderingMembership"),
+    "result_expression": ("LiteralInteger", "ResultExpressionMembership"),
+    "return_parameter": ("ReferenceUsage", "ReturnParameterMembership"),
+}
+
 
 class Factory:
     """Provides the Python factory class for creating new SysML elements."""
@@ -2346,6 +2362,182 @@ class Factory:
             The new model element
         """
         return self._create_element("WhileLoopActionUsage", **kwargs)
+
+    def add_attribute(self, **kwargs) -> AttributeUsage:
+        """
+        Add a new AttributeUsage owned through a FeatureMembership (experimental).
+
+        Returns
+        -------
+        AttributeUsage
+            The new model element
+        """
+        return self._add_element_with_membership("attribute", **kwargs)
+
+    def add_actor(self, **kwargs) -> PartUsage:
+        """
+        Add a new actor owned through an ActorMembership (experimental).
+
+        Returns
+        -------
+        PartUsage
+            The new model element
+        """
+        return self._add_element_with_membership("actor", **kwargs)
+
+    def add_stakeholder(self, **kwargs) -> PartUsage:
+        """
+        Add a new stakeholder owned through a StakeholderMembership (experimental).
+
+        Returns
+        -------
+        PartUsage
+            The new model element
+        """
+        return self._add_element_with_membership("stakeholder", **kwargs)
+
+    def add_subject(self, **kwargs) -> PartUsage:
+        """
+        Add a new subject owned through a SubjectMembership (experimental).
+
+        Returns
+        -------
+        PartUsage
+            The new model element
+        """
+        return self._add_element_with_membership("subject", **kwargs)
+
+    def add_objective(self, **kwargs) -> RequirementUsage:
+        """
+        Add a new objective owned through an ObjectiveMembership (experimental).
+
+        Returns
+        -------
+        RequirementUsage
+            The new model element
+        """
+        return self._add_element_with_membership("objective", **kwargs)
+
+    def add_requirement_constraint(self, **kwargs) -> ConstraintUsage:
+        """
+        Add a new constraint owned through a RequirementConstraintMembership (experimental).
+
+        Returns
+        -------
+        ConstraintUsage
+            The new model element
+        """
+        return self._add_element_with_membership("requirement_constraint", **kwargs)
+
+    def add_requirement_verification(self, **kwargs) -> RequirementUsage:
+        """
+        Add a new requirement owned through a RequirementVerificationMembership (experimental).
+
+        Returns
+        -------
+        RequirementUsage
+            The new model element
+        """
+        return self._add_element_with_membership("requirement_verification", **kwargs)
+
+    def add_framed_concern(self, **kwargs) -> ConcernUsage:
+        """
+        Add a new concern owned through a FramedConcernMembership (experimental).
+
+        Returns
+        -------
+        ConcernUsage
+            The new model element
+        """
+        return self._add_element_with_membership("framed_concern", **kwargs)
+
+    def add_variant(self, **kwargs) -> PartUsage:
+        """
+        Add a new variant owned through a VariantMembership (experimental).
+
+        Returns
+        -------
+        PartUsage
+            The new model element
+        """
+        return self._add_element_with_membership("variant", **kwargs)
+
+    def add_view_rendering(self, **kwargs) -> RenderingUsage:
+        """
+        Add a new rendering owned through a ViewRenderingMembership (experimental).
+
+        Returns
+        -------
+        RenderingUsage
+            The new model element
+        """
+        return self._add_element_with_membership("view_rendering", **kwargs)
+
+    def add_result_expression(self, **kwargs) -> LiteralInteger:
+        """
+        Add a new result expression owned through a ResultExpressionMembership (experimental).
+
+        Returns
+        -------
+        LiteralInteger
+            The new model element
+        """
+        return self._add_element_with_membership("result_expression", **kwargs)
+
+    def add_return_parameter(self, **kwargs) -> ReferenceUsage:
+        """
+        Add a new return parameter owned through a ReturnParameterMembership (experimental).
+
+        Returns
+        -------
+        ReferenceUsage
+            The new model element
+        """
+        return self._add_element_with_membership("return_parameter", **kwargs)
+
+    def _add_element_with_membership(
+        self, spec_key: str, element_type: str | None = None, **kwargs
+    ) -> Element | SysMLElement:
+        """Create an element and its typed owning membership in a single commit.
+
+        Parameters
+        ----------
+        spec_key : str
+            Key into ``_ADD_SPECS`` selecting the default element type and membership type.
+        element_type : str, optional
+            Overrides the default element type of the specification.
+        kwargs : Any
+            Other parameters of the new element (for example ``owner`` and ``declared_name``).
+
+        Returns
+        -------
+        Union[Element|SysMLElement]
+            Created element.
+
+        Warnings
+        --------
+        Experimental and unstable. Setting ``owner`` makes the server auto-create an
+        ``OwningMembership`` while this typed membership is added in the same commit; the
+        server intermittently keeps both, which corrupts the model. Do not rely on it in
+        production.
+        """
+        default_element_type, membership_type = _ADD_SPECS[spec_key]
+        element_type = element_type or default_element_type
+        owner = kwargs.get("owner")
+        observer = self._project.get_root_package()._observer
+        opened_transaction = not observer._is_transactional_mode
+        if opened_transaction:
+            self._project.start_transactional_mode()
+        try:
+            element = self._create_element(element_type, **kwargs)
+            self._create_element(membership_type, owner=owner, owned_related_element=[element])
+        finally:
+            if opened_transaction:
+                self._project.stop_transactional_mode()
+        if opened_transaction:
+            element_id = getattr(element, "_id", None) or getattr(element, "id", None)
+            return self._project._env.get(element_id, element)
+        return element
 
     def _create_element(self, element_type: str, **kwargs) -> Element | SysMLElement:
         """Create a new element in the model and return it.

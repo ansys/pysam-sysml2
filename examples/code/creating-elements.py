@@ -48,6 +48,9 @@ factory = Factory(project, ansyssysml2apiconnector)
 
 new_bicycle_frame_length = factory.create_attribute_usage(declared_name="length", owner=bike.frame)
 
+# Experimental: add_* also creates the owning membership (here a FeatureMembership).
+new_bicycle_frame_mass = factory.add_attribute(declared_name="mass", owner=bike.frame)
+
 SysMLTools.parse_and_set_value(bike.frame.length, "60 [cm]")
 
 length = project.get_root_package().Structure.Bike.frame.length

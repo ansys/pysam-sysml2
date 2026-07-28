@@ -50,6 +50,9 @@ new_bicycle_frame_length = factory.create_attribute_usage(
     declared_name="length", owner=bike.get("frame")
 )
 
+# Experimental: add_* also creates the owning membership (here a FeatureMembership).
+new_bicycle_frame_mass = factory.add_attribute(declared_name="mass", owner=bike.get("frame"))
+
 SysMLTools.parse_and_set_value(new_bicycle_frame_length, "60 [cm]")
 
 print(SysMLTools.serialize_expression(bike.get("frame").get("length").get_value()))

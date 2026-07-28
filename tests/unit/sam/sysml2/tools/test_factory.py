@@ -22,6 +22,8 @@
 
 """Unit tests for Factory using MockedConnector + mocker for error propagation."""
 
+import json
+
 import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
@@ -41,6 +43,34 @@ ELEMENT_TYPES = [
     ("create_requirement_usage", "RequirementUsage"),
     ("create_state_usage", "StateUsage"),
 ]
+
+# add_* method, expected element type, expected owning membership type
+ADD_METHODS = [
+    ("add_attribute", "AttributeUsage", "FeatureMembership"),
+    ("add_actor", "PartUsage", "ActorMembership"),
+    ("add_stakeholder", "PartUsage", "StakeholderMembership"),
+    ("add_subject", "PartUsage", "SubjectMembership"),
+    ("add_objective", "RequirementUsage", "ObjectiveMembership"),
+    ("add_requirement_constraint", "ConstraintUsage", "RequirementConstraintMembership"),
+    ("add_requirement_verification", "RequirementUsage", "RequirementVerificationMembership"),
+    ("add_framed_concern", "ConcernUsage", "FramedConcernMembership"),
+    ("add_variant", "PartUsage", "VariantMembership"),
+    ("add_view_rendering", "RenderingUsage", "ViewRenderingMembership"),
+    ("add_result_expression", "LiteralInteger", "ResultExpressionMembership"),
+    ("add_return_parameter", "ReferenceUsage", "ReturnParameterMembership"),
+]
+
+
+def _owner_id(element):
+    """Return the identifier of an element regardless of the (scripting/sysml) flavor."""
+    return getattr(element, "_id", None) or element.id
+
+
+def _changes_by_type(commit_spy):
+    """Parse the single emitted commit into a mapping of element ``@type`` to its change."""
+    assert commit_spy.call_count == 1
+    commit = json.loads(commit_spy.call_args.args[1])
+    return {change["payload"]["@type"]: change for change in commit["change"]}
 
 class TestFactory:
 
@@ -144,3 +174,75 @@ class TestFactory:
             factory.create_attribute_usage(
                 declared_name="new_attribute", owner=root.UNDEFINED_ELEMENT
             )
+
+    @pytest.mark.parametrize("factory_method,element_type,membership_type", ADD_METHODS)
+    def test_add_element_with_membership_scripting(
+        self, project_manager, factory_method, element_type, membership_type, mocker
+    ):
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
+        factory = Factory(project, project_manager._connector)
+        root = project.get_root_package()
+        commit_spy = mocker.spy(project_manager._connector, "create_commit")
+
+        element = getattr(factory, factory_method)(declared_name="test_elem", owner=root)
+
+        assert element.__class__.__name__ == element_type
+
+        changes = _changes_by_type(commit_spy)
+        element_change = changes[element_type]
+        membership_change = changes[membership_type]
+        element_id = element_change["identity"]["@id"]
+        assert element_change["payload"]["declaredName"] == "test_elem"
+        assert element_change["payload"]["owner"] == {"@id": _owner_id(root)}
+        assert membership_change["payload"]["owner"] == {"@id": _owner_id(root)}
+        assert membership_change["payload"]["ownedRelatedElement"] == [{"@id": element_id}]
+
+    @pytest.mark.parametrize("factory_method,element_type,membership_type", ADD_METHODS)
+    def test_add_element_with_membership_sysml(
+        self, connector, factory_method, element_type, membership_type, mocker
+    ):
+        manager = SysML2ProjectManager(connector)
+        project = manager.get_sysml_project(PROJECT_ID_2)
+        factory = Factory(project, manager._connector)
+        root = project.get_root_package()
+        commit_spy = mocker.spy(manager._connector, "create_commit")
+
+        element = getattr(factory, factory_method)(declared_name="test_elem", owner=root)
+
+        assert element.__class__.__name__ == element_type
+
+        changes = _changes_by_type(commit_spy)
+        element_change = changes[element_type]
+        element_id = element_change["identity"]["@id"]
+        assert element_change["payload"]["declaredName"] == "test_elem"
+        assert changes[membership_type]["payload"]["ownedRelatedElement"] == [{"@id": element_id}]
+
+    def test_add_element_with_membership_type_override(self, project_manager, mocker):
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
+        factory = Factory(project, project_manager._connector)
+        root = project.get_root_package()
+        commit_spy = mocker.spy(project_manager._connector, "create_commit")
+
+        element = factory.add_attribute(
+            declared_name="test_elem", owner=root, element_type="ReferenceUsage"
+        )
+
+        assert element.__class__.__name__ == "ReferenceUsage"
+        changes = _changes_by_type(commit_spy)
+        assert "ReferenceUsage" in changes
+        assert "FeatureMembership" in changes
+
+    def test_add_element_with_membership_joins_open_transaction(self, project_manager, mocker):
+        project = project_manager.get_scripting_project(PROJECT_ID_2)
+        factory = Factory(project, project_manager._connector)
+        root = project.get_root_package()
+        commit_spy = mocker.spy(project_manager._connector, "create_commit")
+
+        project.start_transactional_mode()
+        factory.add_actor(declared_name="test_elem", owner=root)
+
+        assert commit_spy.call_count == 0
+
+        project.stop_transactional_mode()
+
+        assert commit_spy.call_count == 1
