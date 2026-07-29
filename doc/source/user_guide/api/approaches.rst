@@ -19,6 +19,17 @@ This library provides access to SysML2 objects hosted on a SysML2 server. In the
      - Static
      - Traditional IDEs (VS Code, PyCharm)
 
+.. note::
+
+   Both approaches now sit on the **same generated metamodel**. They return the
+   same generated classes and share the same data; only the *notation* differs.
+   In the dynamic approach, each element is composed at runtime as
+   ``(DynamicEObject, GeneratedClass)``: the ``DynamicEObject`` mixin adds dot
+   navigation to children and the ``_camelCase`` accessors, while the underlying
+   snake_case properties (``owned_element``, ``declared_name``, ...) are provided
+   by the generated class through the MRO. As a result, ``isinstance(el,
+   PartUsage)`` works natively in both approaches.
+
 Dynamic approach
 ================
 
@@ -27,9 +38,11 @@ The **scripting approach** is designed for interactive environments like **Jupyt
 Dynamic key characteristics
 ---------------------------
 
-- **Optimized for auto-completion**: After typing a ``.`` (dot), the auto-completion suggestions display the **contained objects** within the current object. This makes it easy to navigate the SysML2 model hierarchy interactively.
+- **Optimized for auto-completion**: After typing a ``.`` (dot), the auto-completion suggestions display the **contained objects** within the current object, together with the ``_camelCase`` SysML2 accessors. The snake_case data properties are hidden from completion to keep the dynamic notation front and center. This makes it easy to navigate the SysML2 model hierarchy interactively.
 
-- **SysML2 properties are underscore-prefixed**: To access native SysML2 properties (such as ``name``, ``isAbstract``, ``multiplicity``, etc.), you must prefix them with an underscore (``_``).
+- **SysML2 properties are underscore-prefixed**: To access native SysML2 properties (such as ``name``, ``isAbstract``, ``multiplicity``, etc.), you must prefix them with an underscore (``_``). The equivalent generated snake_case properties still work at runtime.
+
+- **No-name elements stay dot-navigable**: Elements without a name receive a dot-safe fallback name ``ClassName_<id>`` (dashes replaced by underscores), so they remain reachable through dot notation, for example ``root.ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB``.
 
 Dynamic example
 ---------------
@@ -59,7 +72,7 @@ Static key characteristics
 
 - **Direct access to properties**: SysML2 properties are accessed directly without any prefix.
 
-- **Classic access to contained elements**: The elements contained within a model element can be accessed through the ``owned_element`` property or ``get("<name>")`` method. Adding an element in another element's ``owned_element`` list is also possible. It is also possible at the creation time with something like ``factory.create_<sysml_type>_usage(name="<element_name>", owner=<container>)``. See the :ref:`create example <Creating_Example>` for more information.
+- **Classic access to contained elements**: The elements contained within a model element can be accessed through the ``owned_element`` property or ``get("<name>")`` method. Adding an element in another element's ``owned_element`` list is also possible. It is also possible at the creation time with something like ``factory.create_<sysml_type>_usage(declared_name="<element_name>", owner=<container>)``. Note that ``name`` is derived and read-only: use ``declared_name`` to name an element. Static no-name elements use the ``ClassName::<id>`` fallback, resolvable with ``get("ClassName::<id>")``. See the :ref:`create example <Creating_Example>` for more information.
 
 Static example
 --------------
@@ -94,7 +107,7 @@ Summary
      - Dynamic (at runtime)
      - Static (at execution)
    * - **Auto-completion shows**
-     - Contained objects
+     - Contained objects + ``_camelCase`` accessors
      - SysML2 properties
    * - **SysML2 properties**
      - Prefixed with ``_``

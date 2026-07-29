@@ -31,6 +31,8 @@ from ansys.sam.sysml2.meta_model.element import Element
 class SysMLUtil:
     """Provides utility methods for SysML element name resolution and class lookup."""
 
+    _dynamic_class_cache: dict[str, type] = {}
+
     @staticmethod
     def check_inherited_name(element: SysMLElement) -> str:
         """Resolve the name with a dot-safe ``ClassName_<id>`` fallback when empty."""
@@ -41,12 +43,18 @@ class SysMLUtil:
         return f"{class_name}_{element._id}".replace("-", "_")
 
     @staticmethod
-    def check_sysml_inherited_name(element: Element) -> str:
-        """Resolve the element name with a ``ClassName::id`` fallback when null or empty."""
+    def check_sysml_inherited_name(element: Element, dot_safe: bool = False) -> str:
+        """Resolve the element name, with a ``ClassName::id`` (or dot-safe) fallback."""
         name = getattr(element, "name", None)
         if name:
             return name
-        return element.__class__.__name__.split(".")[-1] + "::" + element.id
+        declared_name = getattr(element, "declared_name", None)
+        if declared_name:
+            return declared_name
+        class_name = element.__class__.__name__.split(".")[-1]
+        if dot_safe:
+            return f"{class_name}_{element.id}".replace("-", "_")
+        return f"{class_name}::{element.id}"
 
     @staticmethod
     def get_sysml_constructor(element_type: str) -> type[EObject]:
@@ -66,3 +74,15 @@ class SysMLUtil:
             )
         except AttributeError:
             raise ImportError(f"'{element_type}' class not found in module '{module_name}'.")
+
+    @staticmethod
+    def get_dynamic_constructor(element_type: str) -> type[EObject]:
+        """Get a class composing the dynamic mixin in front of the generated class."""
+        from ansys.sam.sysml2.classes.dynamic_e_object import DynamicEObject
+
+        cached = SysMLUtil._dynamic_class_cache.get(element_type)
+        if cached is None:
+            base = SysMLUtil.get_sysml_constructor(element_type)
+            cached = type(element_type, (DynamicEObject, base), {})
+            SysMLUtil._dynamic_class_cache[element_type] = cached
+        return cached

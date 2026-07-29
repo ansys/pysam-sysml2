@@ -100,12 +100,12 @@ class TestFactory:
         new_attr = factory.create_attribute_usage(declared_name="new_attribute", owner=root)
 
         new_part = factory.create_part_definition(
-            declared_name="new_part_def", owner=root, owned_elements=[new_attr]
+            declared_name="new_part_def", owner=root, owned_element=[new_attr]
         )
 
         assert new_part.__class__.__name__ == "PartDefinition"
         assert new_part._declared_name == "new_part_def"
-        assert len(new_part._owned_elements) == 1
+        assert len(new_part._owned_element) == 1
 
         project.stop_transactional_mode()
 

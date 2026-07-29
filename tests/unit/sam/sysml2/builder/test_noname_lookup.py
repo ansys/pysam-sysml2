@@ -26,7 +26,6 @@ import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from tests.unit.const import PROJECT_6_NONAME_ID, PROJECT_ID_1, PROJECT_ID_6
 
 
@@ -68,10 +67,10 @@ class TestStaticNoNameLookup:
 
 
 class TestScriptingNoNameLookup:
-    """Scripting no-name children resolve through the dot-safe declared name fallback."""
+    """Scripting (dynamic) no-name children resolve through a dot-safe declared name."""
 
     @pytest.fixture
-    def project(self, connector) -> ScriptingProject:
+    def project(self, connector) -> Project:
         return SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_6)
 
     def test_dot_access_resolves_noname_child(self, project):

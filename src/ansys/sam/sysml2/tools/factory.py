@@ -2387,30 +2387,21 @@ class Factory:
         from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
         element_id = str(uuid4())
-        is_scripting = not isinstance(self._project, Project)
-        if not is_scripting:
-            constructor = SysMLUtil.get_sysml_constructor(element_type)
-            instance = constructor(element_id)
+        if getattr(self._project, "_dynamic", False):
+            constructor = SysMLUtil.get_dynamic_constructor(element_type)
         else:
-            instance = SysMLElement(element_id)
-            instance.__class__ = type(element_type, (SysMLElement,), {})
-            self._init_scripting_observed_lists(instance, element_type)
+            constructor = SysMLUtil.get_sysml_constructor(element_type)
+        instance = constructor(element_id)
 
         instance._observer = self._project.get_root_package()._observer
         instance._observer.notify(element_id, "@type", element_type)
         for key, value in kwargs.items():
-            attr_name = key
-            if is_scripting and not key.startswith("_"):
-                attr_name = "_" + key
             if isinstance(value, list):
-                if not hasattr(instance, attr_name):
-                    setattr(instance, attr_name, ObservedList(owner=instance, name=attr_name))
-                getattr(instance, attr_name).extend(value)
-            elif attr_name in ("name", "_name"):
-                object.__setattr__(instance, "_name", value)
-                instance._observer.notify(instance._id, attr_name, value)
+                if not hasattr(instance, key):
+                    setattr(instance, key, ObservedList(owner=instance, name=key))
+                getattr(instance, key).extend(value)
             else:
-                setattr(instance, attr_name, value)
+                setattr(instance, key, value)
         self._project.add_element(instance)
         return instance
 

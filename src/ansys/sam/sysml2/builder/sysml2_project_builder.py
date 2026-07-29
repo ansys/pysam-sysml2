@@ -24,9 +24,9 @@
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
-from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.builder.derived_collections import fill_derived_collections
+from ansys.sam.sysml2.builder.mapper.dynamic_sysml_mapper import DynamicSysMLMapper
 from ansys.sam.sysml2.builder.mapper.mapper import Mapper
 from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
 from ansys.sam.sysml2.builder.mapper.sysml_mapper import SysMLMapper
@@ -54,6 +54,7 @@ class SysML2ProjectBuilder:
     _mappers: dict[str, Mapper] = {
         "Scripting": ScriptingMapper(),
         "SysML": SysMLMapper(),
+        "Dynamic": DynamicSysMLMapper(),
     }
 
     def __init__(self, connector: SysML2APIConnector):
@@ -130,7 +131,8 @@ class SysML2ProjectBuilder:
             The fully built scripting project.
         """
         project_info = self._connector.get_project_by_id(project_id)
-        project = ScriptingProjectImpl(project_id, project_info["name"])
+        project = ProjectImpl(project_id, project_info["name"])
+        project._dynamic = True
         project._resolve_libraries = resolve_libraries
         project._includes_derived = includes_derived
         project._includes_inherited = includes_inherited
@@ -177,8 +179,11 @@ class SysML2ProjectBuilder:
         """Extract root elements and resolve inherited names in a single pass."""
         roots = []
         if isinstance(project, Project):
+            dot_safe = getattr(project, "_dynamic", False)
             for element in project._env.values():
-                element.declared_name = SysMLUtil.check_sysml_inherited_name(element)
+                element.declared_name = SysMLUtil.check_sysml_inherited_name(
+                    element, dot_safe=dot_safe
+                )
                 if element.id in root_ids:
                     roots.append(element)
         elif isinstance(project, ScriptingProject):
@@ -213,6 +218,8 @@ class SysML2ProjectBuilder:
             If no mapper is found for the project type.
         """
         if isinstance(project, Project):
+            if getattr(project, "_dynamic", False):
+                return self._mappers.get("Dynamic")
             return self._mappers.get("SysML")
         elif isinstance(project, ScriptingProject):
             return self._mappers.get("Scripting")

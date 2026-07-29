@@ -521,6 +521,48 @@ queries). Unresolved library references are not inserted into those collections.
 
 ---
 
+## 11. Unified metamodel: one model, two notations
+
+The static and dynamic approaches now share the **same generated metamodel**. Both entry points return the same generated classes; there is no longer a separate mapping per approach.
+
+- `SysML2ProjectManager(connector).get_sysml_project(...)` returns the static representation.
+- `SysML2ProjectManager(connector).get_scripting_project(...)` returns the dynamic representation.
+
+In the dynamic representation, each element is an instance of a class composed at runtime as `(DynamicEObject, GeneratedClass)`. The `DynamicEObject` mixin adds the dynamic conveniences (dot navigation to children and `_camelCase` accessors) on top of the generated class, while all data still lives in the generated snake_case properties through the MRO.
+
+### `isinstance` now works natively
+
+Because dynamic elements inherit from the generated classes, standard type checks work directly:
+
+```python
+from ansys.sam.sysml2.meta_model import PartUsage
+
+isinstance(element, PartUsage)   # True in both static and dynamic
+```
+
+### Notation: `_camelCase` and snake_case
+
+In the dynamic representation you can read the SysML v2 properties through their `_camelCase` accessors (`element._ownedElement`, `element._declaredName`), and children are reachable by dot notation (`package.Structure.Bike`). The underlying snake_case properties (`owned_element`, `declared_name`) still work at runtime.
+
+Autocompletion (for example in Jupyter) exposes the `_camelCase` accessors and named children, and hides the snake_case data properties to keep the dynamic notation front and center.
+
+### No-name elements
+
+Elements without a name receive a generated fallback name, which differs between the two representations:
+
+- **Dynamic**: a dot-safe `ClassName_<id>` (dashes replaced by underscores), so it stays reachable through dot notation, e.g. `root.ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB`.
+- **Static**: `ClassName::<id>`, e.g. `root.get("ConnectionUsage::4C27A76D-EB0D-4391-806F-C6103E0F41AB")`.
+
+### Creating elements with the factory
+
+Element creation goes through `declared_name=` (not `name=`, which is derived and read-only):
+
+```python
+factory.create_part_usage(declared_name="myPart")
+```
+
+---
+
 ## Recommended checks for users testing `183-all`
 
 If you are currently testing `183-all`, we recommend reviewing any code that:
