@@ -27,39 +27,68 @@ from ansys.sam.sysml2.tools.name_utils import NameUtils
 class DynamicEObject:
     """Dynamic-notation behaviour mixed in front of a generated metamodel class."""
 
-    def _resolve_property(self, name: str):
-        """Return the property matched by a ``_camelCase`` accessor and its descriptor."""
-        if not name.startswith("_") or name.startswith("__"):
-            return None, None
-        prop = NameUtils.to_snake_case(name[1:])
-        if name == "_" + prop:
-            return None, None
-        attr = getattr(type(self), prop, None)
-        if isinstance(attr, property):
-            return prop, attr
-        return None, None
+    def _property_for_scripting_field(self, field_name: str):
+        """Return the property name a scripting ``_field`` write targets, or ``None``.
+
+        Parameters
+        ----------
+        field_name : str
+            Attribute being written, for example ``_declaredName`` or ``_name``.
+
+        Returns
+        -------
+        str or None
+            The snake_case property name (``declared_name``, ``name``, ...) when the
+            class exposes it as a property, otherwise ``None`` (plain private field).
+        """
+        if not field_name.startswith("_") or field_name.startswith("__"):
+            return None
+        property_name = NameUtils.to_snake_case(field_name[1:])
+        descriptor = getattr(type(self), property_name, None)
+        return property_name if isinstance(descriptor, property) else None
+
+    def __init__(self, *args, **kwargs):
+        """Build the element, then enable scripting writes once construction is finished."""
+        object.__setattr__(self, "_scripting_writes_enabled", False)
+        object.__setattr__(self, "_is_writing_through_property", False)
+        super().__init__(*args, **kwargs)
+        object.__setattr__(self, "_scripting_writes_enabled", True)
 
     def __getattr__(self, name):
         """Resolve a ``_camelCase`` property or a named child; only fires on lookup failure."""
         if name.startswith("__") and name.endswith("__"):
             raise AttributeError(name)
-        prop, _ = self._resolve_property(name)
-        if prop is not None:
-            return getattr(self, prop)
-        hmap = self.__dict__.get("_element_hash_map", {})
-        if name in hmap:
-            return self._resolve_child(name, hmap)
+        property_name = self._property_for_scripting_field(name)
+        if property_name is not None:
+            return getattr(self, property_name)
+        children = self.__dict__.get("_element_hash_map", {})
+        if name in children:
+            return self._resolve_child(name, children)
         raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
 
     def __setattr__(self, name, value):
-        """Route a ``_camelCase`` accessor to its property; leave backing fields untouched."""
-        prop, attr = self._resolve_property(name)
-        if prop is not None:
-            if attr.fset is None:
-                raise AttributeError(f"'{prop}' is read-only")
-            setattr(self, prop, value)
+        """Mirror static write semantics: send a scripting ``_field`` write to its property.
+
+        A read-only property (no setter) raises ``AttributeError`` exactly as in the
+        static model; a writable property runs its setter and notifies the observer.
+        Internal writes stay raw in two cases: during construction, and while a routed
+        setter is writing its own backing field.
+        """
+        if not self.__dict__.get("_scripting_writes_enabled", False):
+            super().__setattr__(name, value)
             return
-        super().__setattr__(name, value)
+        if self.__dict__.get("_is_writing_through_property", False):
+            super().__setattr__(name, value)
+            return
+        property_name = self._property_for_scripting_field(name)
+        if property_name is None:
+            super().__setattr__(name, value)
+            return
+        object.__setattr__(self, "_is_writing_through_property", True)
+        try:
+            setattr(self, property_name, value)
+        finally:
+            object.__setattr__(self, "_is_writing_through_property", False)
 
     def __dir__(self):
         """Expose the dynamic view: ``_camelCase`` accessors, named children and action methods."""

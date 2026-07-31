@@ -11,15 +11,15 @@ Update a feature value
 
 You have two ways of updating the value of a feature:
 
-.. currentmodule:: ansys.sam.sysml2.classes.sysml_element
+.. currentmodule:: ansys.sam.sysml2.meta_model.e_object
 
-- :meth:`set_value() <SysMLElement.set_value>`
+- :meth:`set_value() <EObject.set_value>`
 - ``SysMLTools.parse_and_set_value``
 
-Function :meth:`set_value() <SysMLElement.set_value>`
+Function :meth:`set_value() <EObject.set_value>`
 ------------------------------------------------------
 
-The :meth:`set_value() <SysMLElement.set_value>` function supports all primitive types:
+The :meth:`set_value() <EObject.set_value>` function supports all primitive types:
 
 .. code:: python
 
@@ -43,7 +43,7 @@ Function ``SysMLTools.parse_and_set_value``
 
 The ``SysMLTools.parse_and_set_value`` function handles more complex
 expressions. The text you pass is sent as-is to the server, which builds the corresponding
-expression; :meth:`get_value() <SysMLElement.get_value>` then returns the expression element, which
+expression; :meth:`get_value() <EObject.get_value>` then returns the expression element, which
 ``SysMLTools.serialize_expression`` renders as text:
 
 .. code:: python
@@ -64,9 +64,9 @@ expression; :meth:`get_value() <SysMLElement.get_value>` then returns the expres
 
 .. note::
 
-    :meth:`set_value() <SysMLElement.set_value>` and
+    :meth:`set_value() <EObject.set_value>` and
     ``SysMLTools.parse_and_set_value`` are not interchangeable, even
-    for the same text. :meth:`set_value() <SysMLElement.set_value>` stores a string literal, whose
+    for the same text. :meth:`set_value() <EObject.set_value>` stores a string literal, whose
     ``_value`` is returned verbatim, while
     ``SysMLTools.parse_and_set_value`` builds an expression, which
     ``SysMLTools.serialize_expression`` renders in its normalized form:

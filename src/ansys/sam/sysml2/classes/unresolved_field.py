@@ -22,23 +22,23 @@
 
 """Unresolved field class."""
 
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.meta_model.element import Element
 
 
 class UnresolvedField:
     """Provides for resolving unresolved fields."""
 
-    _owner: SysMLElement
+    _owner: Element
     _owning_feature: str
     _element_id: str
 
-    def __init__(self, owner: SysMLElement, owning_feature: str, element_id: str):
+    def __init__(self, owner: Element, owning_feature: str, element_id: str):
         """
         Construct a new instance.
 
         Parameters
         ----------
-        owner : SysMLElement
+        owner : Element
             Owner element of the unresolved field.
         owning_feature : str
             Name of the owning feature.
@@ -53,13 +53,13 @@ class UnresolvedField:
         """Get the missing element ID."""
         return self._element_id
 
-    def resolve(self, element: SysMLElement):
+    def resolve(self, element: Element):
         """
         Resolve the fields.
 
         Parameters
         ----------
-        element : SysMLElement
+        element : Element
             Missing element.
         """
         field = getattr(self._owner, self._owning_feature, None)
@@ -69,4 +69,4 @@ class UnresolvedField:
             field.append(element)
         else:
             field = element
-        setattr(self._owner, self._owning_feature, field)
+        object.__setattr__(self._owner, self._owning_feature, field)

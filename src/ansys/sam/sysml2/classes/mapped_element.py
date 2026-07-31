@@ -24,23 +24,23 @@
 
 from typing import List
 
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
+from ansys.sam.sysml2.meta_model.element import Element
 
 
 class MappedElement:
     """Provides a mapped element class."""
 
-    _element: SysMLElement
+    _element: Element
     _unresolved_fields: List[UnresolvedField]
 
-    def __init__(self, element: SysMLElement, unresolved_fields: List[UnresolvedField]):
+    def __init__(self, element: Element, unresolved_fields: List[UnresolvedField]):
         """
         Construct a new instance.
 
         Parameters
         ----------
-        element : SysMLElement
+        element : Element
             Mapped element.
         unresolved_fields : List[UnresolvedField]
             List of all unresolved fields.
@@ -48,7 +48,7 @@ class MappedElement:
         self._element = element
         self._unresolved_fields = unresolved_fields
 
-    def get_element(self) -> SysMLElement:
+    def get_element(self) -> Element:
         """Get the mapped element."""
         return self._element
 

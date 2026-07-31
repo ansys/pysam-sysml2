@@ -29,8 +29,8 @@ from ansys.sam.sysml2.classes.project import Project
 from tests.unit.const import PROJECT_6_NONAME_ID, PROJECT_ID_1, PROJECT_ID_6
 
 
-class TestStaticNoNameLookup:
-    """SysML (static) no-name children resolve through declared_name = ElementType::ID."""
+class TestSysMLNoNameLookup:
+    """SysML no-name children resolve through declared_name = ElementType::ID."""
 
     @pytest.fixture
     def project(self, connector) -> Project:
@@ -67,7 +67,7 @@ class TestStaticNoNameLookup:
 
 
 class TestScriptingNoNameLookup:
-    """Scripting (dynamic) no-name children resolve through a dot-safe declared name."""
+    """Scripting no-name children resolve through a dot-safe declared name."""
 
     @pytest.fixture
     def project(self, connector) -> Project:

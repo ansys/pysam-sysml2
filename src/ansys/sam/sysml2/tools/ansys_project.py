@@ -115,7 +115,7 @@ class AnsysProject:
 
         Returns
         -------
-        Project or ScriptingProject
+        Project
             The loaded project, provided by the concrete subclass.
         """
         raise NotImplementedError

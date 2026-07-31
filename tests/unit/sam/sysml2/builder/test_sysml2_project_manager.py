@@ -164,7 +164,7 @@ class TestSysML2ProjectManagerSysML:
 class TestSysML2ProjectManagerEdgeCases:
 
     def test_dual_mode_cache_override(self, connector):
-        """Both modes share the generated metamodel; scripting is flagged dynamic."""
+        """Both modes share the generated metamodel; scripting is flagged via ``_scripting``."""
         manager = SysML2ProjectManager(connector)
 
         scripting = manager.get_scripting_project(PROJECT_ID_1)
@@ -173,8 +173,8 @@ class TestSysML2ProjectManagerEdgeCases:
         assert isinstance(scripting, Project)
         assert isinstance(sysml, Project)
         assert scripting is not sysml
-        assert scripting._dynamic is True
-        assert getattr(sysml, "_dynamic", False) is False
+        assert scripting._scripting is True
+        assert getattr(sysml, "_scripting", False) is False
 
     def test_update_invalidates_cache(self, connector):
         """After update, the cached project is evicted and must be rebuilt."""

@@ -25,8 +25,6 @@ from uuid import uuid4
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 from ansys.sam.sysml2.meta_model.accept_action_usage import AcceptActionUsage as AcceptActionUsage
@@ -326,17 +324,15 @@ class Factory:
     """Provides the Python factory class for creating new SysML elements."""
 
     _project_id: str
-    _project: Project | ScriptingProject
+    _project: Project
     _connector: AnsysSysML2APIConnector
 
-    def __init__(
-        self, project: Project | ScriptingProject, connector: AnsysSysML2APIConnector
-    ) -> None:
+    def __init__(self, project: Project, connector: AnsysSysML2APIConnector) -> None:
         """Initialize a new instance.
 
         Parameters
         ----------
-        project: Project | ScriptingProject
+        project: Project
             Project to be modified by the factory.
         connector: AnsysSysML2APIConnector
             Connector to make API calls.
@@ -2349,7 +2345,7 @@ class Factory:
         """
         return self._create_element("WhileLoopActionUsage", **kwargs)
 
-    def _create_element(self, element_type: str, **kwargs) -> Element | SysMLElement:
+    def _create_element(self, element_type: str, **kwargs) -> Element:
         """Create a new element in the model and return it.
 
         Parameters
@@ -2361,7 +2357,7 @@ class Factory:
 
         Returns
         -------
-        Element | SysMLElement
+        Element
             Created element.
         """
         if self._project.get_root_package()._observer._is_transactional_mode:
@@ -2380,15 +2376,15 @@ class Factory:
 
         Returns
         -------
-        [SysMLElement|Element]
+        Element
             Created element.
         """
         from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
         from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
         element_id = str(uuid4())
-        if getattr(self._project, "_dynamic", False):
-            constructor = SysMLUtil.get_dynamic_constructor(element_type)
+        if getattr(self._project, "_scripting", False):
+            constructor = SysMLUtil.get_scripting_constructor(element_type)
         else:
             constructor = SysMLUtil.get_sysml_constructor(element_type)
         instance = constructor(element_id)
@@ -2435,7 +2431,7 @@ class Factory:
 
         Returns
         -------
-        [SysMLElement|Element]
+        Element
             Created element.
         """
         existing_elements = set(self._project._env.keys())
@@ -2475,7 +2471,7 @@ class Factory:
 
         Returns
         -------
-        SysMLElement
+        Element
             Created element.
         """
         from ansys.sam.sysml2.tools import SysMLTools

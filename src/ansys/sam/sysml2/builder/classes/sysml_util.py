@@ -23,7 +23,6 @@
 
 import importlib
 
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.meta_model.e_object import EObject
 from ansys.sam.sysml2.meta_model.element import Element
 
@@ -31,16 +30,7 @@ from ansys.sam.sysml2.meta_model.element import Element
 class SysMLUtil:
     """Provides utility methods for SysML element name resolution and class lookup."""
 
-    _dynamic_class_cache: dict[str, type] = {}
-
-    @staticmethod
-    def check_inherited_name(element: SysMLElement) -> str:
-        """Resolve the name with a dot-safe ``ClassName_<id>`` fallback when empty."""
-        name = getattr(element, "_name", None)
-        if name:
-            return name
-        class_name = element.__class__.__name__.split(".")[-1]
-        return f"{class_name}_{element._id}".replace("-", "_")
+    _scripting_class_cache: dict[str, type] = {}
 
     @staticmethod
     def check_sysml_inherited_name(element: Element, dot_safe: bool = False) -> str:
@@ -76,13 +66,13 @@ class SysMLUtil:
             raise ImportError(f"'{element_type}' class not found in module '{module_name}'.")
 
     @staticmethod
-    def get_dynamic_constructor(element_type: str) -> type[EObject]:
+    def get_scripting_constructor(element_type: str) -> type[EObject]:
         """Get a class composing the dynamic mixin in front of the generated class."""
         from ansys.sam.sysml2.classes.dynamic_e_object import DynamicEObject
 
-        cached = SysMLUtil._dynamic_class_cache.get(element_type)
+        cached = SysMLUtil._scripting_class_cache.get(element_type)
         if cached is None:
             base = SysMLUtil.get_sysml_constructor(element_type)
             cached = type(element_type, (DynamicEObject, base), {})
-            SysMLUtil._dynamic_class_cache[element_type] = cached
+            SysMLUtil._scripting_class_cache[element_type] = cached
         return cached

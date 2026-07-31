@@ -27,7 +27,6 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
-    from ansys.sam.sysml2.classes.sysml_element import SysMLElement
     from ansys.sam.sysml2.meta_model.element import Element
 
 
@@ -58,11 +57,11 @@ class ObservedList(list):
     """React (notification) on each list operation."""
 
     _name: str
-    _owner: "Element" | "SysMLElement"  # noqa: F821
+    _owner: "Element"  # noqa: F821
 
     def __init__(
         self,
-        owner: "Element" | "SysMLElement",  # noqa: F821
+        owner: "Element",  # noqa: F821
         name: str,
         *args,
     ):
@@ -70,7 +69,7 @@ class ObservedList(list):
 
         Parameters
         ----------
-        owner : Element | SysMLElement
+        owner : Element
             Owner of this list.
         name : str
             Name of the structural feature (owned element).

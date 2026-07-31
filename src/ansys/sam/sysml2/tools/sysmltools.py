@@ -35,7 +35,7 @@ class SysMLTools:
 
         Parameters
         ----------
-        element : SysMLElement
+        element : Element
             Element to check.
         element_type : str
             SysML class name.
@@ -54,7 +54,7 @@ class SysMLTools:
 
         Parameters
         ----------
-        value : SysMLElement or Element
+        value : Element
             Value element returned by ``get_value`` (a literal or an operator expression).
 
         Returns
@@ -75,12 +75,11 @@ class SysMLTools:
         Visibility lives on the membership that owns the element. That membership is an
         ``OwningMembership`` for most elements and a ``FeatureMembership`` for features,
         so this helper falls back to the owning feature membership when the generic
-        owning membership is not set. It resolves the value for both
-        the metamodel and scripting flavors.
+        owning membership is not set.
 
         Parameters
         ----------
-        element : SysMLElement or Element
+        element : Element
             Element whose visibility is read.
 
         Returns
@@ -93,10 +92,6 @@ class SysMLTools:
             membership = getattr(element, attribute_name, None)
             if membership is not None:
                 return membership.visibility
-        for attribute_name in ("_owningMembership", "_owningFeatureMembership"):
-            membership = getattr(element, attribute_name, None)
-            if membership is not None:
-                return getattr(membership, "_visibility", None)
         return None
 
     @staticmethod
@@ -106,12 +101,11 @@ class SysMLTools:
 
         Visibility lives on the membership that owns the element (an ``OwningMembership``
         for most elements, a ``FeatureMembership`` for features). This helper writes the
-        value on that membership for both the metamodel and scripting flavors. Use
-        :meth:`get_element_visibility` to read it back.
+        value on that membership. Use :meth:`get_element_visibility` to read it back.
 
         Parameters
         ----------
-        element : SysMLElement or Element
+        element : Element
             Element whose visibility is set.
         visibility : VisibilityKind
             New visibility value.
@@ -125,11 +119,6 @@ class SysMLTools:
             membership = getattr(element, attribute_name, None)
             if membership is not None:
                 membership.visibility = visibility
-                return
-        for attribute_name in ("_owningMembership", "_owningFeatureMembership"):
-            membership = getattr(element, attribute_name, None)
-            if membership is not None:
-                membership._visibility = visibility
                 return
         raise AttributeError("Cannot set visibility: the element has no owning membership.")
 
@@ -145,7 +134,7 @@ class SysMLTools:
 
         Parameters
         ----------
-        feature : SysMLElement or Element
+        feature : Element
             Feature whose value is set or updated.
         expression : str
             Expression text to parse (for example ``"10 [m]"`` or ``"5 + 5"``).
