@@ -22,7 +22,6 @@
 """File management utilities for diagram operations."""
 
 from pathlib import Path
-from typing import Union
 
 import requests
 
@@ -32,7 +31,7 @@ class FileManager:
 
     @staticmethod
     def save_binary_content(
-        content: bytes, path: Union[str, Path], filename: str, file_format: str
+        content: bytes, path: str | Path, filename: str, file_format: str
     ) -> Path:
         """
         Save binary content to a file.
@@ -65,9 +64,7 @@ class FileManager:
         return file_path
 
     @staticmethod
-    def save_response_content(
-        response: requests.Response, path: Union[str, Path], filename: str
-    ) -> Path:
+    def save_response_content(response: requests.Response, path: str | Path, filename: str) -> Path:
         """
         Save streamed response content to a file.
 
@@ -96,7 +93,7 @@ class FileManager:
         return file_path
 
     @staticmethod
-    def resolve_file_path(path: Union[str, Path], filename: str) -> Path:
+    def resolve_file_path(path: str | Path, filename: str) -> Path:
         """
         Resolve a valid file path from the given path and default filename.
 

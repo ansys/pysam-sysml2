@@ -43,13 +43,13 @@ def mount_observer_and_access(function):
 
     def wrapper(self, *args):
         """Notify observer."""
-        val = function(self, *args)
+        result = function(self, *args)
         if hasattr(self._owner, "_observer") and self._owner._observer is not None:
             owner_id = getattr(self._owner, "_id", None)
             if owner_id is None:
                 owner_id = getattr(self._owner, "id")
             self._owner._observer.list_notify(owner_id, self._name, self)
-        return val
+        return result
 
     return wrapper
 
@@ -70,7 +70,7 @@ class ObservedList(list):
 
         Parameters
         ----------
-        owner : Union[Element | SysMLElement]
+        owner : Element | SysMLElement
             Owner of this list.
         name : str
             Name of the structural feature (owned element).

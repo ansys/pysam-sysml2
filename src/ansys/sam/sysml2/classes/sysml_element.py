@@ -48,8 +48,8 @@ class SysMLElement:
     def __dir__(self):
         """List owned + inherited child names alongside normal attributes."""
         base = list(super().__dir__())
-        hmap = self.__dict__.get("_element_hash_map", {})
-        children = [k for k in hmap if k is not None]
+        element_hash_map = self.__dict__.get("_element_hash_map", {})
+        children = [name for name in element_hash_map if name is not None]
         names = set(list(base) + children)
         if not ValueHelper.is_value_capable(self):
             names.difference_update({"get_value", "set_value"})
@@ -63,16 +63,16 @@ class SysMLElement:
         """Resolve hash-map children lazily; only fires when normal attribute lookup fails."""
         if name.startswith("__") and name.endswith("__"):
             raise AttributeError(name)
-        hmap = self.__dict__.get("_element_hash_map", {})
-        if name not in hmap:
+        element_hash_map = self.__dict__.get("_element_hash_map", {})
+        if name not in element_hash_map:
             raise AttributeError(f"'{type(self).__name__}' object has no attribute '{name}'")
-        return self._resolve_child(name, hmap)
+        return self._resolve_child(name, element_hash_map)
 
-    def _resolve_child(self, name, hmap):
+    def _resolve_child(self, name, element_hash_map):
         """Return the owned child, or an ``InheritedElement`` proxy, cached under its name."""
         from ansys.sam.sysml2.classes.inherited_element import InheritedElement
 
-        child = hmap[name]
+        child = element_hash_map[name]
         is_owned = name in self.__dict__.get("_owned_names", set())
         result = child if is_owned else InheritedElement(self, child)
         self.__dict__[name] = result
@@ -96,8 +96,8 @@ class SysMLElement:
 
     def get(self, element_name: str):
         """Find an owned or inherited child by name (e.g. names with spaces)."""
-        hmap = self.__dict__.get("_element_hash_map", {})
-        if element_name not in hmap:
+        element_hash_map = self.__dict__.get("_element_hash_map", {})
+        if element_name not in element_hash_map:
             return None
         return self.__getattr__(element_name)
 
@@ -118,10 +118,10 @@ class SysMLElement:
         if not chain:
             return end
         current = getattr(self, "_owner", None)
-        for hop in chain:
+        for feature in chain:
             if current is None:
                 return None
-            current = getattr(current, hop._name, None)
+            current = getattr(current, feature._name, None)
         return current
 
     def delete(self):

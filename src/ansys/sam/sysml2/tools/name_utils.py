@@ -43,8 +43,8 @@ class NameUtils:
     @staticmethod
     def to_key(string: str) -> str:
         """Convert a camelCase or PascalCase string to _snake_case attribute name."""
-        attr = NameUtils.to_snake_case(string)
-        return f"_{attr}"
+        snake_name = NameUtils.to_snake_case(string)
+        return f"_{snake_name}"
 
     @staticmethod
     def snake_to_camel(key: str) -> str:

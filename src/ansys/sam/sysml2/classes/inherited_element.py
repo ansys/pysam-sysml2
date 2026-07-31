@@ -48,8 +48,8 @@ class InheritedElement(SysMLElement):
 
     def get(self, element_name: str):
         """Resolve a child by name on the wrapped element, wrapping it as a proxy when needed."""
-        hmap = getattr(self._element, "_element_hash_map", {})
-        if element_name not in hmap:
+        element_hash_map = getattr(self._element, "_element_hash_map", {})
+        if element_name not in element_hash_map:
             return None
         return self.__getattr__(element_name)
 

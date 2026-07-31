@@ -361,8 +361,8 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         """
         Handle 404 (Not Found) HTTP responses and raise appropriate exceptions.
 
-        This method parses the response content and raises specific exceptions
-        based on the error description provided in the response.
+        The response content is parsed and a specific exception is raised based on the
+        error description it contains.
 
         Parameters
         ----------

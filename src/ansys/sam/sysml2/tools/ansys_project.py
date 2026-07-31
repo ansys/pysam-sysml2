@@ -23,7 +23,6 @@
 """Ansys Base Project to facilitate use of PySAM SysML2 library."""
 
 from pathlib import Path
-from typing import Union
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
@@ -95,7 +94,7 @@ class AnsysProject:
             if attr_name.startswith("_"):
                 setattr(self, attr_name, attr_value)
 
-        self._factory = Factory(project=self, conn=sysml2_connector)
+        self._factory = Factory(project=self, connector=sysml2_connector)
 
         self._initialize_diagram_capabilities()
 
@@ -136,7 +135,7 @@ class AnsysProject:
     def download_diagram(
         self,
         diagram_id: str,
-        path: Union[str, Path],
+        path: str | Path,
         file_format: str = "svg",
         filename: str = "",
     ) -> str:
@@ -177,7 +176,7 @@ class AnsysProject:
 
     def download_all_diagrams(
         self,
-        path: Union[str, Path],
+        path: str | Path,
         file_format: str = "svg",
         filename: str = "",
     ) -> str:

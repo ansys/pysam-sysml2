@@ -22,7 +22,6 @@
 
 """Value helper class for Feature's value."""
 
-from typing import Union
 from uuid import uuid4
 
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
@@ -61,7 +60,6 @@ class ValueHelper:
     @staticmethod
     def get_value_for_sysml_element(element):
         """Get the value of the feature."""
-        # Local import avoids circular import with meta_model.feature.
         from ansys.sam.sysml2.meta_model.feature import Feature
 
         instance = ValueHelper("")
@@ -75,14 +73,13 @@ class ValueHelper:
         """Render a value element (literal or operator expression) to its text form."""
         if value is None:
             return None
-        # Local import avoids circular import with classes.sysml_element.
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 
         prefix = "_" if isinstance(value, SysMLElement) else ""
         return ValueHelper(prefix)._serialize_value(value)
 
     @staticmethod
-    def set_or_update_value(element, value_type: type, new_value: Union[str | int | float | bool]):
+    def set_or_update_value(element, value_type: type, new_value: str | int | float | bool):
         """
         Create the commit to set or update the value of type ``value_type``.
 
@@ -92,7 +89,7 @@ class ValueHelper:
             Element whose feature value is updated.
         value_type : type
             Value type of the new value.
-        new_value : Union[str | int | float | bool]
+        new_value : str | int | float | bool
             New value to update to.
         """
         from ansys.sam.sysml2.classes.sysml_element import SysMLElement
@@ -221,7 +218,7 @@ class ValueHelper:
         commit.add_change(change)
         element._observer._connector.create_commit(project_id, commit.to_json())
 
-    def _adapt_value(self, new_value: Union[str | int | float | bool]):
+    def _adapt_value(self, new_value: str | int | float | bool):
         """Convert the value to JSON format."""
         if isinstance(new_value, bool):
             return "true" if new_value else "false"
