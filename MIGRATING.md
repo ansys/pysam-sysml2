@@ -16,7 +16,7 @@ You are likely impacted if your code does any of the following:
 
 - navigates ownership or containment relationships
 - reads or writes visibility, kind, or parameter direction directly on elements
-- reads enum-valued properties (`direction`, `visibility`, `kind`, `portionKind`) as strings
+- reads enum-valued properties (`direction`, `visibility`, `kind`, `portion_kind` / `_portionKind`) as strings
 - renames model elements
 - accesses or resolves connection ends (feature chaining)
 - reads or writes feature values
@@ -282,7 +282,7 @@ If you relied on `feature.parse_and_set_value(...)`, replace it with `SysMLTools
 
 ## 7. Enum-valued properties
 
-Enumeration-typed properties now return **enum members** instead of plain strings. This applies to `direction` (`FeatureDirectionKind`), `visibility` (`VisibilityKind`), `portionKind` (`PortionKind`), and `kind` (resolved to `RequirementConstraintKind`, `StateSubactionKind`, `TransitionFeatureKind`, or `TriggerKind` depending on the owning element).
+Enumeration-typed properties now return **enum members** instead of plain strings. The property name depends on the approach: the SysML (metamodel) approach exposes a snake_case public property, while the scripting approach exposes the raw `_`-prefixed camelCase backing field. This applies to `direction` / `_direction` (`FeatureDirectionKind`), `visibility` / `_visibility` (`VisibilityKind`), `portion_kind` / `_portionKind` (`PortionKind`), and `kind` / `_kind` (resolved to `RequirementConstraintKind`, `StateSubactionKind`, `TransitionFeatureKind`, or `TriggerKind` depending on the owning element).
 
 ### Before
 
@@ -310,6 +310,35 @@ This also affects the properties from [2. Visibility and related properties](#2-
 - assign enum members (for example `FeatureDirectionKind.IN`) instead of strings
 - compare against enum members rather than string literals
 - use `.name` (`'IN'`) or `.value` (`'in'`) when you need a string representation
+
+### Importing the kind classes
+
+Each kind is a standard `enum.Enum`. Import it either from its own module or, thanks to the
+package `__init__`, directly from `ansys.sam.sysml2.meta_model`:
+
+```python
+# from the dedicated module
+from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind
+
+# or several at once from the package
+from ansys.sam.sysml2.meta_model import VisibilityKind, FeatureDirectionKind
+```
+
+### Available kinds
+
+| Kind class | Possible enum values | Property definition |
+|---|---|---|
+| `FeatureDirectionKind` | `IN`, `INOUT`, `OUT` | Property `direction` defined by the class `Feature`. |
+| `PortionKind` | `TIMESLICE`, `SNAPSHOT` | Property `portion_kind` defined by the class `OccurrenceUsage`. |
+| `RequirementConstraintKind` | `ASSUMPTION`, `REQUIREMENT` | Property `kind` defined by the class `RequirementConstraintMembership`. |
+| `StateSubactionKind` | `ENTRY`, `DO`, `EXIT` | Property `kind` defined by the class `StateSubactionMembership`. |
+| `TransitionFeatureKind` | `TRIGGER`, `GUARD`, `EFFECT` | Property `kind` defined by the class `TransitionFeatureMembership`. |
+| `TriggerKind` | `WHEN`, `AT`, `AFTER` | Property `kind` defined by the class `TriggerInvocationExpression`. |
+| `VisibilityKind` | `PRIVATE`, `PROTECTED`, `PUBLIC` | Property `visibility` defined by the class `Membership`. |
+
+The "Property definition" column uses the SysML (metamodel) snake_case name. In the scripting
+approach, the same properties are exposed as `_`-prefixed camelCase backing fields (for example
+`_portionKind`, `_direction`, `_visibility`).
 
 ---
 
@@ -354,7 +383,7 @@ If you are currently testing `183-all`, we recommend reviewing any code that:
 
 1. uses `owner`
 2. accesses visibility, kind, or parameter direction directly on elements
-3. compares enum-valued properties (`direction`, `visibility`, `kind`, `portionKind`) against strings
+3. compares enum-valued properties (`direction`, `visibility`, `kind`, `portion_kind` / `_portionKind`) against strings
 4. assigns to `name`
 5. inspects or resolves connection endpoints (directly, or via the removed `get_source()` / `get_target()`; now through `SysMLTools`)
 6. expects `get_value()` to return Python-native values
