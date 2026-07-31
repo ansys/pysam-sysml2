@@ -154,7 +154,8 @@ class SysMLTools:
 
         ValueHelper.set_or_update_value(feature, "operator", expression)
 
-    def resolve_feature_chaining(self, connection, end: str = "source"):
+    @staticmethod
+    def resolve_feature_chaining(connection, end: str = "source"):
         """
         Resolve a connection end within the connection's own context.
 
@@ -175,7 +176,8 @@ class SysMLTools:
             raise ValueError(f"end must be 'source' or 'target', got {end!r}")
         return resolve_connector_end(connection, end)
 
-    def get_connector_ends(self, connection):
+    @staticmethod
+    def get_connector_ends(connection):
         """
         Resolve both ends of a connector at once.
 

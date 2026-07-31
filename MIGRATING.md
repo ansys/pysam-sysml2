@@ -35,7 +35,7 @@ You are likely impacted if your code does any of the following:
 | Enum properties | `"out"` (string) | `FeatureDirectionKind.OUT` (enum member) |
 | Name updates | `element.name = "..."` | `element.declared_name = "..."` |
 | Libraries | no direct access | `project.get_libraries_packages()` |
-| Connection ends | directly usable in all cases, then via `element.get_source()` / `element.get_target()` | `SysMLTools().resolve_feature_chaining(...)` or `SysMLTools().get_connector_ends(...)` |
+| Connection ends | directly usable in all cases, then via `element.get_source()` / `element.get_target()` | `SysMLTools.resolve_feature_chaining(...)` or `SysMLTools.get_connector_ends(...)` |
 | Feature values | Python-native values or tuples | value element (`.value` for literals, `SysMLTools.serialize_expression(...)` for expressions) |
 | Setting expression values | `feature.parse_and_set_value(...)` | `SysMLTools.parse_and_set_value(feature, ...)` |
 | Diagrams | navigable diagram model via REST API | removed (image download only) |
@@ -201,11 +201,11 @@ target = connection.get_target()
 ```python
 from ansys.sam.sysml2.tools import SysMLTools
 
-source = SysMLTools().resolve_feature_chaining(connection, "source")
-target = SysMLTools().resolve_feature_chaining(connection, "target")
+source = SysMLTools.resolve_feature_chaining(connection, "source")
+target = SysMLTools.resolve_feature_chaining(connection, "target")
 
 # Or resolve both ends at once:
-source, target = SysMLTools().get_connector_ends(connection)
+source, target = SysMLTools.get_connector_ends(connection)
 ```
 
 ### What to do

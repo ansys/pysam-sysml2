@@ -174,11 +174,11 @@ to resolve an end within its connection context:
 
     from ansys.sam.sysml2.tools import SysMLTools
 
-    source = SysMLTools().resolve_feature_chaining(connection, "source")
-    target = SysMLTools().resolve_feature_chaining(connection, "target")
+    source = SysMLTools.resolve_feature_chaining(connection, "source")
+    target = SysMLTools.resolve_feature_chaining(connection, "target")
 
     # Or resolve both ends at once:
-    source, target = SysMLTools().get_connector_ends(connection)
+    source, target = SysMLTools.get_connector_ends(connection)
 
 ``SysMLTools``:
 
