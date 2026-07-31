@@ -87,12 +87,12 @@ class SysMLTools:
             The owning membership's visibility, or ``None`` when the element has no
             owning membership.
         """
-        for attr in ("owning_membership", "owning_feature_membership"):
-            membership = getattr(element, attr, None)
+        for attribute_name in ("owning_membership", "owning_feature_membership"):
+            membership = getattr(element, attribute_name, None)
             if membership is not None:
                 return membership.visibility
-        for attr in ("_owningMembership", "_owningFeatureMembership"):
-            membership = getattr(element, attr, None)
+        for attribute_name in ("_owningMembership", "_owningFeatureMembership"):
+            membership = getattr(element, attribute_name, None)
             if membership is not None:
                 return getattr(membership, "_visibility", None)
         return None
@@ -119,13 +119,13 @@ class SysMLTools:
         AttributeError
             If the element has no owning membership to store the value on.
         """
-        for attr in ("owning_membership", "owning_feature_membership"):
-            membership = getattr(element, attr, None)
+        for attribute_name in ("owning_membership", "owning_feature_membership"):
+            membership = getattr(element, attribute_name, None)
             if membership is not None:
                 membership.visibility = visibility
                 return
-        for attr in ("_owningMembership", "_owningFeatureMembership"):
-            membership = getattr(element, attr, None)
+        for attribute_name in ("_owningMembership", "_owningFeatureMembership"):
+            membership = getattr(element, attribute_name, None)
             if membership is not None:
                 membership._visibility = visibility
                 return

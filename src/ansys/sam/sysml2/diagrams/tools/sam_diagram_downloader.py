@@ -22,7 +22,6 @@
 """Diagram downloader for PySAM SysML2 diagram library."""
 
 from pathlib import Path
-from typing import Union
 
 from ansys.sam.sysml2.diagrams.api import SamApiConnector
 from ansys.sam.sysml2.diagrams.utils import FileManager
@@ -49,7 +48,7 @@ class SamDiagramDownloader:
     def download_diagram(
         self,
         diagram_id: str,
-        path: Union[str, Path],
+        path: str | Path,
         file_format: str = "svg",
         filename: str = "",
     ) -> str:
@@ -101,7 +100,7 @@ class SamDiagramDownloader:
 
     def download_all_diagrams(
         self,
-        path: Union[str, Path],
+        path: str | Path,
         file_format: str = "svg",
         filename: str = "",
     ) -> str:

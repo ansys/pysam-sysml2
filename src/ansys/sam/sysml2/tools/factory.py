@@ -327,21 +327,23 @@ class Factory:
 
     _project_id: str
     _project: Project | ScriptingProject
-    _conn: AnsysSysML2APIConnector
+    _connector: AnsysSysML2APIConnector
 
-    def __init__(self, project: Project | ScriptingProject, conn: AnsysSysML2APIConnector) -> None:
+    def __init__(
+        self, project: Project | ScriptingProject, connector: AnsysSysML2APIConnector
+    ) -> None:
         """Initialize a new instance.
 
         Parameters
         ----------
         project: Project | ScriptingProject
             Project to be modified by the factory.
-        conn: AnsysSysML2APIConnector
+        connector: AnsysSysML2APIConnector
             Connector to make API calls.
         """
         self._project_id = project._id
         self._project = project
-        self._conn = conn
+        self._connector = connector
 
     def create_accept_action_usage(self, **kwargs) -> AcceptActionUsage:
         """
@@ -2359,7 +2361,7 @@ class Factory:
 
         Returns
         -------
-        Union[Element|SysMLElement]
+        Element | SysMLElement
             Created element.
         """
         if self._project.get_root_package()._observer._is_transactional_mode:
@@ -2407,8 +2409,6 @@ class Factory:
                     setattr(instance, attr_name, ObservedList(owner=instance, name=attr_name))
                 getattr(instance, attr_name).extend(value)
             elif attr_name in ("name", "_name"):
-                # ``name`` is read-only in the new metamodel: write the backing field
-                # directly (both flavors store it as ``_name``) and stack the change.
                 object.__setattr__(instance, "_name", value)
                 instance._observer.notify(instance._id, attr_name, value)
             else:
@@ -2445,7 +2445,7 @@ class Factory:
 
         commit.add_change(change)
 
-        self._conn.create_commit(self._project_id, commit.to_json())
+        self._connector.create_commit(self._project_id, commit.to_json())
         self._reload_project()
 
         element = self._extract_created_element(element_type, existing_elements)
@@ -2489,6 +2489,6 @@ class Factory:
         """Reload the project."""
         from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 
-        builder = SysML2ProjectBuilder(self._conn)
+        builder = SysML2ProjectBuilder(self._connector)
         observer = self._project.get_root_package()._observer
         builder.reload_project(observer, self._project)

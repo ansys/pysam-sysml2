@@ -137,11 +137,9 @@ class ScriptingProjectImpl(ScriptingProject):
         """
         Start a transactional mode for model edition.
 
-        This method will stop direct update for the model,
-        and register all changes until you commit or stop the transactional mode.
-
-        Warning, all calculated modifications will not be applied,
-        until the commit of all changes.
+        Direct model updates are suspended and every change is registered until the
+        transaction is committed or stopped. Calculated modifications are applied only
+        once all changes are committed.
         """
         self.get_root_package()._observer.set_transactional_mode(True)
 
@@ -149,6 +147,6 @@ class ScriptingProjectImpl(ScriptingProject):
         """
         Stop the current transaction.
 
-        This method will close the current transaction and commit all changes to the server.
+        Close the current transaction and commit all changes to the server.
         """
         self.get_root_package()._observer.set_transactional_mode(False)

@@ -22,7 +22,7 @@
 """SAM API connector for the diagram info and image service."""
 
 import json
-from typing import Callable, Union
+from typing import Callable
 
 import requests
 
@@ -182,7 +182,7 @@ class SamApiConnector:
 
     def _send_request_binary(
         self, http_request: HttpRequest, call: Callable, stream: bool = False
-    ) -> Union[bytes, requests.Response]:
+    ) -> bytes | requests.Response:
         """
         Send an HTTP request and return binary content or response object.
 

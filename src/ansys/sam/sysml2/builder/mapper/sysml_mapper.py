@@ -117,7 +117,7 @@ class SysMLMapper(Mapper):
             Destination element.
         field_name : str
             Field name.
-        field_values : Union[dict | list | str]
+        field_values : dict | list | str
             Field value.
 
         Returns
