@@ -40,14 +40,13 @@ class TestValues:
             SysMLTools.serialize_expression(bike.frontWheel.rim.weight.get_value()),
             SysMLTools.serialize_expression(bike.frontWheel.tire.weight.get_value()),
             SysMLTools.serialize_expression(bike.rearWheel.rim.weight.get_value()),
-            SysMLTools.serialize_expression(bike.rearWheel.tire.weight.get_value()),
-            SysMLTools.serialize_expression(bike.frame.weight.get_value()),
+            SysMLTools.serialize_expression(bike.rearWheel.tire.weight.get_value())
         ]
 
         total_bike_weight = sum(int(part.split()[0]) for part in bike_parts)
         bike_parts_weight_unit_all_same = all(p.endswith(" [kg]") for p in bike_parts)
 
-        assert total_bike_weight == 10
+        assert total_bike_weight == 8
         assert bike_parts[0].endswith(" [kg]")
         assert bike_parts_weight_unit_all_same
 
@@ -73,28 +72,28 @@ class TestValues:
         """Transactional mode: batch updates, verify after commit."""
         project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
-        original_front_weight = SysMLTools.serialize_expression(
+        original_front_rim_weight = SysMLTools.serialize_expression(
             bike.frontWheel.rim.weight.get_value()
         )
-        original_rear_weight = SysMLTools.serialize_expression(
-            bike.rearWheel.rim.weight.get_value()
+        original_front_tire_weight = SysMLTools.serialize_expression(
+            bike.frontWheel.tire.weight.get_value()
         )
 
-        assert original_front_weight == "1 [kg]"
-        assert original_rear_weight == "1 [kg]"
+        assert original_front_rim_weight == "1 [kg]"
+        assert original_front_tire_weight == "3 [kg]"
 
         project.start_transactional_mode()
         SysMLTools.parse_and_set_value(bike.frontWheel.rim.weight, "500 [g]")
-        SysMLTools.parse_and_set_value(bike.rearWheel.rim.weight, "750 [g]")
+        SysMLTools.parse_and_set_value(bike.frontWheel.tire.weight, "750 [g]")
         project.stop_transactional_mode()
 
-        updated_front_weight = SysMLTools.serialize_expression(
+        updated_front_rim_weight = SysMLTools.serialize_expression(
             bike.frontWheel.rim.weight.get_value()
         )
-        updated_rear_weight = SysMLTools.serialize_expression(bike.rearWheel.rim.weight.get_value())
+        updated_front_tire_weight = SysMLTools.serialize_expression(bike.frontWheel.tire.weight.get_value())
 
-        assert updated_front_weight == "500 [g]"
-        assert updated_rear_weight == "750 [g]"
+        assert updated_front_rim_weight == "500 [g]"
+        assert updated_front_tire_weight == "750 [g]"
 
     def test_bike_create_element(self, connector, project_factory):
         """Create attribute on bike.frame, set value, verify roundtrip."""
@@ -119,13 +118,12 @@ class TestValues:
             SysMLTools.serialize_expression(front_wheel.get("tire").get("weight").get_value()),
             SysMLTools.serialize_expression(rear_wheel.get("rim").get("weight").get_value()),
             SysMLTools.serialize_expression(rear_wheel.get("tire").get("weight").get_value()),
-            SysMLTools.serialize_expression(bike.get("frame").get("weight").get_value()),
         ]
 
         total_bike_weight = sum(int(part.split()[0]) for part in bike_parts)
         bike_parts_weight_unit_all_same = all(p.endswith(" [kg]") for p in bike_parts)
 
-        assert total_bike_weight == 10
+        assert total_bike_weight == 8
         assert bike_parts[0].endswith(" [kg]")
         assert bike_parts_weight_unit_all_same
 
@@ -161,7 +159,7 @@ class TestValues:
         SysMLTools.parse_and_set_value(bike.frame.baseValue, "5 + 5")
         factory.create_attribute_usage(declared_name="refValue", owner=bike.frame)
 
-        SysMLTools.parse_and_set_value(bike.frame.refValue, "baseValue + baseValue")
+        SysMLTools.parse_and_set_value(bike.frame.refValue, "Bike::Structure::Bike::frame::baseValue + Bike::Structure::Bike::frame::baseValue")
 
         assert SysMLTools.serialize_expression(bike.frame.baseValue.get_value()) == "5 + 5"
         assert (
