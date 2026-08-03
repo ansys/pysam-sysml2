@@ -58,9 +58,28 @@ class SamApiConnector:
         self._token = token
         self._use_ssl = use_ssl
 
+    def get_organizations(self) -> dict:
+        """Get all organizations."""
+        http_request = self._build_http_request(endpoint=f"/organizations")
+        return self._send_request(http_request=http_request, call=requests.get)
+
+    def get_organization_by_id(self, organization_id: str) -> dict:
+        """Get organization information for the given ID."""
+        for organization in self.get_organizations():
+            if organization["organizationId"] == organization_id:
+                return organization
+        raise ValueError(f"Organization with ID {organization_id} not found")
+
+    def get_organization_by_name(self, organization_name: str) -> dict:
+        """Get organization information for the given name."""
+        for organization in self.get_organizations():
+            if organization["name"] == organization_name:
+                return organization
+        raise ValueError(f"Organization with name {organization_name} not found")
+
     def get_diagrams_info(self, project_id: str) -> dict:
         """Get metadata and information for all diagrams within a specific project."""
-        http_request = self._build_image_http_request(endpoint=f"/projects/{project_id}/diagrams")
+        http_request = self._build_http_request(endpoint=f"/projects/{project_id}/diagrams")
         return self._send_request(http_request=http_request, call=requests.get)
 
     def get_single_diagram_info(self, project_id: str, diagram_id: str) -> dict:
@@ -74,7 +93,7 @@ class SamApiConnector:
         diagram_id: str
             Diagram ID of the diagram to get information on.
         """
-        http_request = self._build_image_http_request(
+        http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}"
         )
         return self._send_request(http_request=http_request, call=requests.get)
@@ -90,7 +109,7 @@ class SamApiConnector:
         diagram_id: str
             Diagram ID of the diagram to download.
         """
-        http_request = self._build_image_http_request(
+        http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/svg"
         )
         return self._send_request_binary(http_request=http_request, call=requests.get)
@@ -106,7 +125,7 @@ class SamApiConnector:
         diagram_id: str
             Diagram ID of the diagram to download.
         """
-        http_request = self._build_image_http_request(
+        http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/png"
         )
         return self._send_request_binary(http_request=http_request, call=requests.get)
@@ -122,7 +141,7 @@ class SamApiConnector:
         diagram_id: str
             Diagram ID of the diagram to download.
         """
-        http_request = self._build_image_http_request(
+        http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/diagrams/{diagram_id}/jpeg"
         )
         return self._send_request_binary(http_request=http_request, call=requests.get)
@@ -138,7 +157,7 @@ class SamApiConnector:
         file_format: str
             File format of the diagram images contained in the ZIP archive.
         """
-        http_request = self._build_image_http_request(
+        http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/diagrams/all/{file_format}"
         )
         return self._send_request_binary(http_request=http_request, call=requests.get, stream=True)
@@ -220,7 +239,7 @@ class SamApiConnector:
             case _:
                 raise DiagramConnectorException(response.content)
 
-    def _build_image_http_request(self, endpoint: str) -> HttpRequest:
+    def _build_http_request(self, endpoint: str) -> HttpRequest:
         """Build HTTP request for image API endpoints."""
         url = self._build_image_endpoint(endpoint)
         http_request = HttpRequest(url=url)

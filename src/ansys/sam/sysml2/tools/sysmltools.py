@@ -151,3 +151,26 @@ class SysMLTools:
         from ansys.sam.sysml2.classes.value_helper import ValueHelper
 
         ValueHelper.set_or_update_value(feature, "operator", expression)
+
+
+    @staticmethod
+    def get_project_by_name(projects: list, project_name: str) -> dict:
+        """
+        Get information for a given project name.
+
+        Parameters
+        ----------
+        projects : list
+            List of projects.
+        project_name : str
+            Name of the project.
+
+        Returns
+        -------
+        dict
+            Information for the project.
+        """
+        for project in projects:
+            if project["name"] == project_name:
+                return project
+        raise ValueError(f"Project with name {project_name} not found")
