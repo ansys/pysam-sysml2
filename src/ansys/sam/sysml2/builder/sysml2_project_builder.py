@@ -26,6 +26,7 @@ from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+from ansys.sam.sysml2.builder.derived_collections import fill_derived_collections
 from ansys.sam.sysml2.builder.mapper.mapper import Mapper
 from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
 from ansys.sam.sysml2.builder.mapper.sysml_mapper import SysMLMapper
@@ -142,6 +143,7 @@ class SysML2ProjectBuilder:
         # library elements (bulk in get_all_elements, or per-UUID fetch).
         # https://github.com/ansys/pysam-sysml2/issues/183
         self._build_project_element(project)
+        fill_derived_collections(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
 
@@ -367,6 +369,7 @@ class SysML2ProjectBuilder:
         modification_observer.stop()
         project._resolve_libraries = False  # libraries are static; never re-resolve on reload
         self._build_project_element(project)
+        fill_derived_collections(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
         modification_observer.start()
