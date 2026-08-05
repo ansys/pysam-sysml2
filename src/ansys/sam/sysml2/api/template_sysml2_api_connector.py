@@ -172,7 +172,12 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request.json_body = body
         return self._send_request(http_request=http_request, call=requests.put)
 
-    def get_all_elements(self, project_id: str) -> list:
+    def get_all_elements(
+        self,
+        project_id: str,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
+    ) -> list:
         """
         Get all elements of a given project.
 
@@ -180,6 +185,10 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         ----------
         project_id : str
             ID of the project.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties in the response.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features in the response.
 
         Returns
         -------
@@ -189,6 +198,10 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/elements"
         )
+        http_request.params = {
+            "includesDerived": str(includes_derived).lower(),
+            "includesInherited": str(includes_inherited).lower(),
+        }
         return self._send_request(
             http_request=http_request,
             call=requests.get,

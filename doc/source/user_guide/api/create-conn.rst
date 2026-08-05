@@ -25,7 +25,7 @@ The ``SysML2APIConnector`` class is typically used with project managers for hig
 * ``get_projects()``: Returns all projects of the connected user.
 * ``get_project_by_id(project_id)``: Returns project information for the given ID.
 * ``create_project(project_name, project_description)``: Creates a project with the specified name and description.
-* ``get_all_elements(project_id)``: Returns all elements of the given project.
+* ``get_all_elements(project_id, includes_derived=True, includes_inherited=True)``: Returns all elements of the given project. Set ``includes_derived`` to ``False`` to omit derived properties, or ``includes_inherited`` to ``False`` to omit inherited memberships and features.
 * ``get_element_by_id(project_id, element_id)``: Returns element information for the given project and element IDs.
 * ``get_root_elements(project_id)``: Returns all root elements of the project.
 * ``execute_query(project_id, query)``: Sends a query (in JSON format) to the standard API.

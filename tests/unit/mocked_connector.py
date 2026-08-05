@@ -128,7 +128,12 @@ class MockedSysML2APIConnector(SysML2APIConnector):
             project["description"] = project_description
         return project.copy()
 
-    def get_all_elements(self, project_id: str) -> list:
+    def get_all_elements(
+        self,
+        project_id: str,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
+    ) -> list:
         """Get all elements of a project."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")

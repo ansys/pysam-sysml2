@@ -100,8 +100,29 @@ class SysML2APIConnector(ABC):
         """
 
     @abstractmethod
-    def get_all_elements(self, project_id: str) -> list:
-        """Get all elements of the given project."""
+    def get_all_elements(
+        self,
+        project_id: str,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
+    ) -> list:
+        """
+        Get all elements of the given project.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties in the response.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features in the response.
+
+        Returns
+        -------
+        list
+            List of all elements.
+        """
 
     @abstractmethod
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:

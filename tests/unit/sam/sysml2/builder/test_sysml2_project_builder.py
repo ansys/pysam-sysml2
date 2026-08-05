@@ -94,3 +94,20 @@ class TestSysML2ProjectBuilderSysML:
         owner = project.get_root_package().owner
         assert owner is not None
         assert owner.owner is None
+
+
+class TestSysML2ProjectBuilderIncludesFlags:
+
+    def test_build_sysml_project_passes_includes_flags(self, connector, mocker):
+        get_all_elements = mocker.patch.object(connector, "get_all_elements", wraps=connector.get_all_elements)
+        builder = SysML2ProjectBuilder(connector)
+
+        builder.build_sysml_project(
+            PROJECT_ID_1,
+            includes_derived=False,
+            includes_inherited=False,
+        )
+
+        get_all_elements.assert_called()
+        assert get_all_elements.call_args.kwargs["includes_derived"] is False
+        assert get_all_elements.call_args.kwargs["includes_inherited"] is False
