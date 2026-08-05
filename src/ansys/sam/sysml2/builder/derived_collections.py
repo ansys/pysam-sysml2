@@ -26,9 +26,13 @@ from __future__ import annotations
 
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
+from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
+from ansys.sam.sysml2.meta_model.annotation import Annotation
+from ansys.sam.sysml2.meta_model.documentation import Documentation
 from ansys.sam.sysml2.meta_model.feature import Feature
 from ansys.sam.sysml2.meta_model.feature_membership import FeatureMembership
+from ansys.sam.sysml2.meta_model.import_ import Import
 from ansys.sam.sysml2.meta_model.membership import Membership
 from ansys.sam.sysml2.meta_model.namespace import Namespace
 from ansys.sam.sysml2.meta_model.owning_membership import OwningMembership
@@ -42,8 +46,14 @@ _OWNED_MEMBER_FEATURE = "ownedMemberFeature"
 _MEMBER_ELEMENT = "memberElement"
 _OWNED_ELEMENT = "ownedElement"
 _OWNED_MEMBERSHIP = "ownedMembership"
+_OWNED_MEMBER = "ownedMember"
+_OWNED_IMPORT = "ownedImport"
+_OWNED_ANNOTATION = "ownedAnnotation"
+_DOCUMENTATION = "documentation"
 _OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership"
 _OWNED_FEATURE = "ownedFeature"
+_FEATURE_MEMBERSHIP = "featureMembership"
+_FEATURE = "feature"
 _INHERITED_MEMBERSHIP = "inheritedMembership"
 _INHERITED_FEATURE = "inheritedFeature"
 
@@ -66,6 +76,9 @@ _FEATURE_MEMBERSHIP_TYPE_NAMES = _metamodel_type_names(FeatureMembership)
 _FEATURE_TYPE_NAMES = _metamodel_type_names(Feature)
 _NAMESPACE_TYPE_NAMES = _metamodel_type_names(Namespace)
 _TYPE_TYPE_NAMES = _metamodel_type_names(Type)
+_IMPORT_TYPE_NAMES = _metamodel_type_names(Import)
+_ANNOTATION_TYPE_NAMES = _metamodel_type_names(Annotation)
+_DOCUMENTATION_TYPE_NAMES = _metamodel_type_names(Documentation)
 
 
 def fill_derived_collections(project: Project | ScriptingProject) -> None:
@@ -103,20 +116,21 @@ def _derive_collections_for_element(element, is_scripting: bool) -> None:
     )
 
     owned_memberships = _filter_by_type(owned_relationships, _MEMBERSHIP_TYPE_NAMES)
-    owning_memberships = _filter_by_type(
-        owned_relationships, _OWNING_MEMBERSHIP_TYPE_NAMES
-    )
-    feature_memberships = _filter_by_type(
-        owned_relationships, _FEATURE_MEMBERSHIP_TYPE_NAMES
-    )
+    owning_memberships = _filter_by_type(owned_relationships, _OWNING_MEMBERSHIP_TYPE_NAMES)
+    feature_memberships = _filter_by_type(owned_relationships, _FEATURE_MEMBERSHIP_TYPE_NAMES)
+    owned_annotations = _filter_by_type(owned_relationships, _ANNOTATION_TYPE_NAMES)
+    owned_imports = _filter_by_type(owned_relationships, _IMPORT_TYPE_NAMES)
 
+    owned_elements = _collect_targets(
+        owning_memberships,
+        _attribute_name(_OWNED_MEMBER_ELEMENT, is_scripting),
+    )
+    _set_collection(element, _attribute_name(_OWNED_ELEMENT, is_scripting), owned_elements)
+    _set_collection(element, _attribute_name(_OWNED_ANNOTATION, is_scripting), owned_annotations)
     _set_collection(
         element,
-        _attribute_name(_OWNED_ELEMENT, is_scripting),
-        _collect_targets(
-            owning_memberships,
-            _attribute_name(_OWNED_MEMBER_ELEMENT, is_scripting),
-        ),
+        _attribute_name(_DOCUMENTATION, is_scripting),
+        _filter_by_type(owned_elements, _DOCUMENTATION_TYPE_NAMES),
     )
 
     if _has_type(element, _NAMESPACE_TYPE_NAMES):
@@ -125,51 +139,67 @@ def _derive_collections_for_element(element, is_scripting: bool) -> None:
             _attribute_name(_OWNED_MEMBERSHIP, is_scripting),
             owned_memberships,
         )
+        # API ownedMember matches ownedElement (OwningMembership targets only).
+        _set_collection(element, _attribute_name(_OWNED_MEMBER, is_scripting), owned_elements)
+        _set_collection(element, _attribute_name(_OWNED_IMPORT, is_scripting), owned_imports)
 
     if not _has_type(element, _TYPE_TYPE_NAMES):
         return
+
+    owned_features = _collect_features_from_memberships(feature_memberships, is_scripting)
+    inherited_feature_memberships = _filter_by_type(
+        _as_list(getattr(element, _attribute_name(_INHERITED_MEMBERSHIP, is_scripting), None)),
+        _FEATURE_MEMBERSHIP_TYPE_NAMES,
+    )
+    inherited_features = _collect_features_from_memberships(
+        inherited_feature_memberships, is_scripting
+    )
 
     _set_collection(
         element,
         _attribute_name(_OWNED_FEATURE_MEMBERSHIP, is_scripting),
         feature_memberships,
     )
-    _set_collection(
-        element,
-        _attribute_name(_OWNED_FEATURE, is_scripting),
-        _collect_owned_features(feature_memberships, is_scripting),
-    )
+    _set_collection(element, _attribute_name(_OWNED_FEATURE, is_scripting), owned_features)
     _set_collection(
         element,
         _attribute_name(_INHERITED_FEATURE, is_scripting),
-        _collect_inherited_features(element, is_scripting),
+        inherited_features,
+    )
+    _set_collection(
+        element,
+        _attribute_name(_FEATURE_MEMBERSHIP, is_scripting),
+        feature_memberships + inherited_feature_memberships,
+    )
+    _set_collection(
+        element,
+        _attribute_name(_FEATURE, is_scripting),
+        owned_features + inherited_features,
     )
 
 
-def _collect_owned_features(feature_memberships: list, is_scripting: bool) -> list:
-    """Return features pointed by feature memberships."""
+def _collect_features_from_memberships(feature_memberships: list, is_scripting: bool) -> list:
+    """Return resolved features pointed by feature memberships."""
     owned_member_feature = _attribute_name(_OWNED_MEMBER_FEATURE, is_scripting)
     owned_member_element = _attribute_name(_OWNED_MEMBER_ELEMENT, is_scripting)
+    member_element = _attribute_name(_MEMBER_ELEMENT, is_scripting)
     features = []
     for membership in feature_memberships:
         feature = getattr(membership, owned_member_feature, None)
         if feature is None:
             feature = getattr(membership, owned_member_element, None)
-        if feature is not None and _has_type(feature, _FEATURE_TYPE_NAMES):
+        if feature is None:
+            feature = getattr(membership, member_element, None)
+        if feature is not None and _is_resolved_feature(feature):
             features.append(feature)
     return features
 
 
-def _collect_inherited_features(element, is_scripting: bool) -> list:
-    """Return features pointed by inherited memberships, when present."""
-    inherited_memberships = _as_list(
-        getattr(element, _attribute_name(_INHERITED_MEMBERSHIP, is_scripting), None)
-    )
-    return _collect_targets(
-        inherited_memberships,
-        _attribute_name(_MEMBER_ELEMENT, is_scripting),
-        allowed_types=_FEATURE_TYPE_NAMES,
-    )
+def _is_resolved_feature(element) -> bool:
+    """Return whether ``element`` is a resolved Feature (not an unresolved ref)."""
+    if isinstance(element, UnresolvedField):
+        return False
+    return _has_type(element, _FEATURE_TYPE_NAMES)
 
 
 def _collect_targets(
@@ -177,11 +207,11 @@ def _collect_targets(
     target_attribute: str,
     allowed_types: frozenset[str] | None = None,
 ) -> list:
-    """Collect non-null targets from relationships, optionally filtered by type."""
+    """Collect non-null resolved targets from relationships, optionally filtered by type."""
     targets = []
     for relationship in relationships:
         target = getattr(relationship, target_attribute, None)
-        if target is None:
+        if target is None or isinstance(target, UnresolvedField):
             continue
         if allowed_types is not None and not _has_type(target, allowed_types):
             continue

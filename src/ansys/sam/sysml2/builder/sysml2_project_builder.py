@@ -147,7 +147,7 @@ class SysML2ProjectBuilder:
         self._resolve_inherited_link(project)
         self._add_write_access(project)
 
-    def _build_project_element(self, project: Project | ScriptingProject):
+    def _build_project_element(self, project: Project | ScriptingProject) -> None:
         """Build all project elements in the project."""
         roots_json = self._connector.get_root_elements(project_id=project._id)
         root_ids = {root["@id"] for root in roots_json}

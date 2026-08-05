@@ -109,5 +109,6 @@ class TestSysML2ProjectBuilderIncludesFlags:
         )
 
         get_all_elements.assert_called()
-        assert get_all_elements.call_args.kwargs["includes_derived"] is False
-        assert get_all_elements.call_args.kwargs["includes_inherited"] is False
+        first_call_kwargs = get_all_elements.call_args_list[0].kwargs
+        assert first_call_kwargs["includes_derived"] is False
+        assert first_call_kwargs["includes_inherited"] is False
