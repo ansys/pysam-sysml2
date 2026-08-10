@@ -4,6 +4,8 @@ ANSYS
 Ansys SysML2 API Connector
 AnsysSysML2APIConnector
 API
+accessor
+accessors
 boolean
 class
 DiagramDownloader
@@ -21,6 +23,7 @@ kwargs
 Makefile
 metaclass
 metamodel
+mixin
 myBoolFeature
 myExpressionFeature
 myFloatFeature
@@ -41,6 +44,7 @@ REST
 SAM
 SAM API Connector
 SamApiConnector
+snake_case
 subaction
 subsetting
 SysML2

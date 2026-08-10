@@ -26,8 +26,8 @@ The ``SysML2APIConnector`` class is typically used with project managers for hig
 * ``get_project_by_id(project_id)``: Returns project information for the given ID.
 * ``create_project(project_name, project_description)``: Creates a project with the specified name and description.
 * ``get_all_elements(project_id, **kwargs)``: Returns all elements of the given project.
-  Extra keyword arguments are forwarded as query parameters (snake_case is converted to
-  camelCase). For example, ``includes_derived=False`` and ``includes_inherited=True`` map
+  Extra keyword arguments are forwarded as query parameters (``snake_case`` is converted to
+  ``camelCase``). For example, ``includes_derived=False`` and ``includes_inherited=True`` map
   to the API flags ``includesDerived`` / ``includesInherited``.
 * ``get_element_by_id(project_id, element_id)``: Returns element information for the given project and element IDs.
 * ``get_root_elements(project_id)``: Returns all root elements of the project.

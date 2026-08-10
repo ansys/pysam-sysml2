@@ -460,15 +460,13 @@ Drop any code that built or navigated in-memory diagram element/plane objects th
 ## 10. Element fetch flags and derived collections
 
 With the aligned metamodel, the SysML v2 `/elements` payload grew (implicits and related
-data). The API therefore exposes query flags to control what is returned:
+data). The API therefore exposes query flags to limit what is returned:
 
 - `includesDerived` — derived collections such as `ownedElement`, `ownedFeature`, `feature`
 - `includesInherited` — inherited memberships and features
 
-### Connector: generic query kwargs
-
-`get_all_elements` no longer hard-codes those flags in its signature. Extra keyword
-arguments are forwarded as HTTP query parameters (snake_case → camelCase):
+Previously, `get_all_elements` only took `project_id`. You can now pass optional keyword
+arguments that are forwarded as HTTP query parameters (``snake_case`` → camelCase):
 
 ```python
 connector.get_all_elements(
@@ -478,14 +476,8 @@ connector.get_all_elements(
 )
 ```
 
-If you pass no kwargs, no query parameters are sent and the server defaults apply.
-
-### Project manager / builder
-
-`SysML2ProjectManager` and `SysML2ProjectBuilder` keep **typed** flags
-`includes_derived` / `includes_inherited` (defaults `True`, backward compatible) on
-`get_sysml_project` / `get_scripting_project` / `build_*`. They are part of the project
-cache key and drive client-side derivation.
+The same flags are available on the project manager / builder (`get_sysml_project`,
+`get_scripting_project`, `build_*`; defaults `True`).
 
 Recommended lighter load (when you still need inherited memberships):
 
@@ -497,15 +489,10 @@ project = manager.get_sysml_project(
 )
 ```
 
-### Client-side derived collections
-
 When `includes_derived=False`, PySAM rebuilds the main local derived collections from
 `ownedRelationship` (and from `inheritedMembership` when present), including for example
 `ownedElement`, `ownedMembership`, `ownedMember`, `ownedFeature`, `feature`, and
-`inheritedFeature`.
-
-Unresolved library references are **not** inserted into those collections (no
-`UnresolvedField` placeholders).
+`inheritedFeature`. Unresolved library references are not inserted into those collections.
 
 ---
 
@@ -521,8 +508,7 @@ If you are currently testing `183-all`, we recommend reviewing any code that:
 6. expects `get_value()` to return Python-native values
 7. writes requirement text through `text` / `_text` (now via `Documentation.body`)
 8. builds or navigates diagrams through the diagram REST API
-9. calls `get_all_elements` with a fixed signature, or needs a lighter `/elements` payload
-   (`includes_derived` / `includes_inherited`)
+9. needs a lighter `/elements` payload (`includes_derived` / `includes_inherited`)
 
 ---
 
