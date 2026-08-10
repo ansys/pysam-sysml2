@@ -21,6 +21,7 @@ You are likely impacted if your code does any of the following:
 - accesses or resolves connection ends (feature chaining)
 - reads or writes feature values
 - relies on Python-native return values from `get_value()`
+- writes requirement text or documentation
 - builds or navigates diagrams through the diagram REST API
 
 ---
@@ -38,6 +39,7 @@ You are likely impacted if your code does any of the following:
 | Connection ends | directly usable in all cases, then via `element.get_source()` / `element.get_target()` | `SysMLTools().resolve_feature_chaining(...)` or `SysMLTools().get_connector_ends(...)` |
 | Feature values | Python-native values or tuples | value element (`.value` for literals, `SysMLTools.serialize_expression(...)` for expressions) |
 | Setting expression values | `feature.parse_and_set_value(...)` | `SysMLTools.parse_and_set_value(feature, ...)` |
+| Requirement text / documentation | `req._text = ["..."]` (or assign/extend on `text`) | create+append `Documentation` to add; edit `documentation.body` to update; read via `text` |
 | Diagrams | navigable diagram model via REST API | removed (image download only) |
 
 ---
@@ -342,7 +344,83 @@ approach, the same properties are exposed as `_`-prefixed camelCase backing fiel
 
 ---
 
-## 8. Diagram navigation / REST API removed
+## 8. Requirement text via Documentation
+
+Requirement textual content is no longer written through `text` / `_text`.
+
+In the new metamodel, the writable object is a `Documentation` element (with a `body`) attached through the element's `documentation` collection. The requirement's `text` / `_text` property remains available for **reading** the derived content.
+
+### Before
+
+```python
+# scripting
+req._text = ["The bicycle shall not exceed 15 kg."]
+req._text.extend([
+    "Measured under standard conditions.",
+    "Excludes accessories.",
+])
+
+# SysML
+req.text = ["The bicycle shall not exceed 15 kg."]
+```
+
+### Now — create documentation
+
+When the requirement has no documentation yet, create a `Documentation` and append it:
+
+```python
+from ansys.sam.sysml2.tools.factory import Factory
+
+factory = Factory(project, connector)
+
+# scripting
+documentation = factory.create_documentation(
+    body="The bicycle shall not exceed 15 kg.\nMeasured under standard conditions.\nExcludes accessories."
+)
+req._documentation.append(documentation)
+
+# SysML
+documentation = factory.create_documentation(
+    body="The bicycle shall not exceed 15 kg.\nMeasured under standard conditions.\nExcludes accessories."
+)
+req.documentation.append(documentation)
+```
+
+Multiline requirement text belongs in a single `body` string (use `\n` between lines), rather than as separate list entries on `text`.
+
+### Now — update existing documentation
+
+If the `RequirementUsage` already exists and already has a `Documentation`, **edit that documentation's `body`**. Do not recreate or re-append a new `Documentation`.
+
+```python
+# scripting
+req._documentation[0]._body = (
+    "The bicycle shall not exceed 15 kg.\nMeasured under ISO conditions.\nExcludes accessories."
+)
+
+# SysML
+req.documentation[0].body = (
+    "The bicycle shall not exceed 15 kg.\nMeasured under ISO conditions.\nExcludes accessories."
+)
+```
+
+### Reading text
+
+Keep using the derived `text` / `_text` property to read the requirement content:
+
+```python
+# scripting
+assert "Measured under ISO conditions." in req._text[0]
+
+# SysML
+assert "Measured under ISO conditions." in req.text[0]
+```
+
+On the SysML approach, the requirement identifier is also exposed as `req_id` (not `_reqId`).
+
+---
+
+## 9. Diagram navigation / REST API removed
 
 Diagram functionality is specific to projects of type **SAM**.
 
@@ -387,7 +465,8 @@ If you are currently testing `183-all`, we recommend reviewing any code that:
 4. assigns to `name`
 5. inspects or resolves connection endpoints (directly, or via the removed `get_source()` / `get_target()`; now through `SysMLTools`)
 6. expects `get_value()` to return Python-native values
-7. builds or navigates diagrams through the diagram REST API
+7. writes requirement text through `text` / `_text` (now via `Documentation.body`)
+8. builds or navigates diagrams through the diagram REST API
 
 ---
 
