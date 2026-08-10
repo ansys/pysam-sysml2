@@ -143,26 +143,16 @@ class TestCommitsScripting:
 
         factory = Factory(project, connector)
         req = factory.create_requirement_usage(declared_name="testReq", owner=bike)
-        req._text.extend([
-            "The bicycle shall not exceed 15 kg.",
-            "Measured under standard conditions.",
-            "Excludes accessories.",
-        ])
+        documentation = factory.create_documentation(body="The bicycle shall not exceed 15 kg.\nMeasured under standard conditions.\nExcludes accessories.")
+        req._documentation.append(documentation)
         text_after_set = project.get_root_package().Structure.Bike.testReq._text
 
-        assert len(text_after_set) == 3
-        assert text_after_set[1] == "Measured under standard conditions."
+        assert text_after_set[0].split("\n")[1] == "Measured under standard conditions."
 
-        req._text.clear()
-        req._text.extend([
-            "The bicycle shall not exceed 15 kg.",
-            "Measured under ISO conditions.",
-            "Excludes accessories.",
-        ])
-        text_after_replace = project.get_root_package().Structure.Bike.testReq._text
+        documentation._body = "The bicycle shall not exceed 15 kg.\nMeasured under ISO conditions.\nExcludes accessories."
+        text_after_replace = project.get_root_package().Structure.Bike.testReq._documentation[0]._body
 
-        assert len(text_after_replace) == 3
-        assert text_after_replace[1] == "Measured under ISO conditions."
+        assert text_after_replace.split("\n")[1] == "Measured under ISO conditions."
 
     def test_create_commit_set_invalid_key_via_scripting(self, project_factory):
         """Setting invalid attribute via scripting project raises BadRequestConnectionException."""
