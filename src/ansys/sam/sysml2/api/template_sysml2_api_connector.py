@@ -172,12 +172,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request.json_body = body
         return self._send_request(http_request=http_request, call=requests.put)
 
-    def get_all_elements(
-        self,
-        project_id: str,
-        includes_derived: bool = True,
-        includes_inherited: bool = True,
-    ) -> list:
+    def get_all_elements(self, project_id: str, **kwargs) -> list:
         """
         Get all elements of a given project.
 
@@ -185,10 +180,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         ----------
         project_id : str
             ID of the project.
-        includes_derived : bool, default: True
-            When ``True``, include derived properties in the response.
-        includes_inherited : bool, default: True
-            When ``True``, include inherited memberships and features in the response.
+        **kwargs
+            Optional query parameters forwarded to the ``/elements`` endpoint
+            (for example ``includes_derived`` / ``includes_inherited``).
 
         Returns
         -------
@@ -198,10 +192,14 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/elements"
         )
-        http_request.params = {
-            "includesDerived": str(includes_derived).lower(),
-            "includesInherited": str(includes_inherited).lower(),
-        }
+        if kwargs:
+            from ansys.sam.sysml2.tools.name_utils import NameUtils
+
+            params = {}
+            for key, value in kwargs.items():
+                param_key = NameUtils.snake_to_camel(key)
+                params[param_key] = str(value).lower() if isinstance(value, bool) else value
+            http_request.params = params
         return self._send_request(
             http_request=http_request,
             call=requests.get,

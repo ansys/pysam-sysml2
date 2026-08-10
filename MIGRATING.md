@@ -23,6 +23,7 @@ You are likely impacted if your code does any of the following:
 - relies on Python-native return values from `get_value()`
 - writes requirement text or documentation
 - builds or navigates diagrams through the diagram REST API
+- calls `get_all_elements` directly, or loads projects while controlling derived / inherited payload size
 
 ---
 
@@ -41,6 +42,7 @@ You are likely impacted if your code does any of the following:
 | Setting expression values | `feature.parse_and_set_value(...)` | `SysMLTools.parse_and_set_value(feature, ...)` |
 | Requirement text / documentation | `req._text = ["..."]` (or assign/extend on `text`) | create+append `Documentation` to add; edit `documentation.body` to update; read via `text` |
 | Diagrams | navigable diagram model via REST API | removed (image download only) |
+| Element fetch / derived collections | `get_all_elements(project_id)` only; derived collections always from API | `get_all_elements(project_id, **kwargs)`; optional `includes_derived` / `includes_inherited`; client rebuild when derived is omitted |
 
 ---
 
@@ -455,6 +457,58 @@ Drop any code that built or navigated in-memory diagram element/plane objects th
 
 ---
 
+## 10. Element fetch flags and derived collections
+
+With the aligned metamodel, the SysML v2 `/elements` payload grew (implicits and related
+data). The API therefore exposes query flags to control what is returned:
+
+- `includesDerived` — derived collections such as `ownedElement`, `ownedFeature`, `feature`
+- `includesInherited` — inherited memberships and features
+
+### Connector: generic query kwargs
+
+`get_all_elements` no longer hard-codes those flags in its signature. Extra keyword
+arguments are forwarded as HTTP query parameters (snake_case → camelCase):
+
+```python
+connector.get_all_elements(
+    project_id,
+    includes_derived=False,
+    includes_inherited=True,
+)
+```
+
+If you pass no kwargs, no query parameters are sent and the server defaults apply.
+
+### Project manager / builder
+
+`SysML2ProjectManager` and `SysML2ProjectBuilder` keep **typed** flags
+`includes_derived` / `includes_inherited` (defaults `True`, backward compatible) on
+`get_sysml_project` / `get_scripting_project` / `build_*`. They are part of the project
+cache key and drive client-side derivation.
+
+Recommended lighter load (when you still need inherited memberships):
+
+```python
+project = manager.get_sysml_project(
+    project_id,
+    includes_derived=False,
+    includes_inherited=True,
+)
+```
+
+### Client-side derived collections
+
+When `includes_derived=False`, PySAM rebuilds the main local derived collections from
+`ownedRelationship` (and from `inheritedMembership` when present), including for example
+`ownedElement`, `ownedMembership`, `ownedMember`, `ownedFeature`, `feature`, and
+`inheritedFeature`.
+
+Unresolved library references are **not** inserted into those collections (no
+`UnresolvedField` placeholders).
+
+---
+
 ## Recommended checks for users testing `183-all`
 
 If you are currently testing `183-all`, we recommend reviewing any code that:
@@ -467,6 +521,8 @@ If you are currently testing `183-all`, we recommend reviewing any code that:
 6. expects `get_value()` to return Python-native values
 7. writes requirement text through `text` / `_text` (now via `Documentation.body`)
 8. builds or navigates diagrams through the diagram REST API
+9. calls `get_all_elements` with a fixed signature, or needs a lighter `/elements` payload
+   (`includes_derived` / `includes_inherited`)
 
 ---
 
