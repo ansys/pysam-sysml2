@@ -147,11 +147,23 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         )
 
     def get_root_elements(self, project_id: str) -> list:
-        """Get root elements."""
+        """Get the root Namespace, its owned members, and the root imports."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
         elements = self._load_elements(project_id)
-        return [el for el in elements if el.get("owner") is None]
+        by_id = {element["@id"]: element for element in elements}
+        roots = {}
+        for element in elements:
+            if element.get("owner") is not None:
+                continue
+            if element.get("@type") == "Namespace":
+                roots[element["@id"]] = element
+                for ref in element.get("ownedMember", []):
+                    if ref["@id"] in by_id:
+                        roots[ref["@id"]] = by_id[ref["@id"]]
+            elif element.get("@type") == "NamespaceImport":
+                roots[element["@id"]] = element
+        return list(roots.values())
 
     def execute_query(self, project_id: str, query: str) -> dict:
         """Return the library elements matching the query's @id constraints."""

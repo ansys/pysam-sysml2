@@ -125,8 +125,16 @@ class SysML2ProjectBuilder:
 
     def _build_project_element(self, project: Project | ScriptingProject):
         """Build all project elements in the project."""
-        elements = self._connector.get_all_elements(project_id=project._id)
-        self._map_element_in_project(project, elements)
+        roots_json = self._connector.get_root_elements(project_id=project._id)
+        root_ids = {root["@id"] for root in roots_json}
+
+        elements_json = self._connector.get_all_elements(project_id=project._id)
+        known_ids = {element["@id"] for element in elements_json}
+        # The API omits the root Namespace from /elements; mapping an element twice would
+        # stack a second UnresolvedField and duplicate it in list fields on resolve.
+        elements_json.extend(root for root in roots_json if root["@id"] not in known_ids)
+
+        self._map_element_in_project(project, elements_json)
         missing_elements = self._resolve_fields(project)
         seen = missing_elements.copy()
         while missing_elements:
@@ -135,20 +143,20 @@ class SysML2ProjectBuilder:
             missing_elements = self._resolve_fields(project)
             missing_elements.difference_update(seen)
             seen.update(missing_elements)
-        self.extract_root_and_check_names(project)
+        self.extract_root_and_check_names(project, root_ids)
 
-    def extract_root_and_check_names(self, project: Project | ScriptingProject):
+    def extract_root_and_check_names(self, project: Project | ScriptingProject, root_ids: set[str]):
         """Extract root elements and resolve inherited names in a single pass."""
         roots = []
         if isinstance(project, Project):
             for element in project._env.values():
                 element.declared_name = SysMLUtil.check_sysml_inherited_name(element)
-                if self._is_logical_root(element, "owner"):
+                if element.id in root_ids:
                     roots.append(element)
         elif isinstance(project, ScriptingProject):
             for element in project._env.values():
                 element._declaredName = SysMLUtil.check_inherited_name(element)
-                if self._is_logical_root(element, "_owner"):
+                if element._id in root_ids:
                     roots.append(element)
         else:
             raise TypeError(
@@ -156,13 +164,6 @@ class SysML2ProjectBuilder:
                 "Expected Project or ScriptingProject."
             )
         project._root = roots
-
-    def _is_logical_root(self, element, owner_attr: str) -> bool:
-        """Decide whether ``element`` is a user-facing root of the model."""
-        owner = getattr(element, owner_attr, None)
-        if owner is None:
-            return element.__class__.__name__ != "Namespace"
-        return owner.__class__.__name__ == "Namespace" and getattr(owner, owner_attr, None) is None
 
     def _get_mapper(self, project: Project | ScriptingProject) -> Mapper:
         """
