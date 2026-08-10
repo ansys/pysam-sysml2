@@ -26,9 +26,9 @@ This library provides access to SysML2 objects hosted on a SysML2 server. In the
    In the dynamic approach, each element is composed at runtime as
    ``(DynamicEObject, GeneratedClass)``: the ``DynamicEObject`` mixin adds dot
    navigation to children and the ``_camelCase`` accessors, while the underlying
-   snake_case properties (``owned_element``, ``declared_name``, ...) are provided
-   by the generated class through the MRO. As a result, ``isinstance(el,
-   PartUsage)`` works natively in both approaches.
+   ``snake_case`` properties (``owned_element``, ``declared_name``, and others)
+   are provided by the generated class through the MRO. As a result,
+   ``isinstance(el, PartUsage)`` works natively in both approaches.
 
 Dynamic approach
 ================
@@ -38,9 +38,9 @@ The **scripting approach** is designed for interactive environments like **Jupyt
 Dynamic key characteristics
 ---------------------------
 
-- **Optimized for auto-completion**: After typing a ``.`` (dot), the auto-completion suggestions display the **contained objects** within the current object, together with the ``_camelCase`` SysML2 accessors. The snake_case data properties are hidden from completion to keep the dynamic notation front and center. This makes it easy to navigate the SysML2 model hierarchy interactively.
+- **Optimized for auto-completion**: After typing a ``.`` (dot), the auto-completion suggestions display the **contained objects** within the current object, together with the ``_camelCase`` SysML2 accessors. The ``snake_case`` data properties are hidden from completion to keep the dynamic notation front and center. This makes it easy to navigate the SysML2 model hierarchy interactively.
 
-- **SysML2 properties are underscore-prefixed**: To access native SysML2 properties (such as ``name``, ``isAbstract``, ``multiplicity``, etc.), you must prefix them with an underscore (``_``). The equivalent generated snake_case properties still work at runtime.
+- **SysML2 properties are underscore-prefixed**: To access native SysML2 properties (such as ``name``, ``isAbstract``, ``multiplicity``, etc.), you must prefix them with an underscore (``_``). The equivalent generated ``snake_case`` properties still work at runtime.
 
 - **No-name elements stay dot-navigable**: Elements without a name receive a dot-safe fallback name ``ClassName_<id>`` (dashes replaced by underscores), so they remain reachable through dot notation, for example ``root.ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB``.
 
