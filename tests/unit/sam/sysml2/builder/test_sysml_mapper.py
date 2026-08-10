@@ -145,3 +145,17 @@ class TestSysMLMapper:
         element = sysml_mapper.map(data, None).get_element()
 
         assert element.is_abstract is True
+
+    def test_literal_string_value_unescapes_kerml(self, sysml_mapper: SysMLMapper):
+        """API KerML-escaped LiteralString.value is decoded on map."""
+        data = {
+            "@id": "literal_id",
+            "@type": "LiteralString",
+            "value": "try\\\\to",
+        }
+
+        element = sysml_mapper.map(data, None).get_element()
+
+        assert element.__class__.__name__ == "LiteralString"
+        assert element.value == "try\\to"
+        assert element.value.count("\\") == 1

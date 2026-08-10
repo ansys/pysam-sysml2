@@ -22,11 +22,15 @@
 
 """Value helper class for Feature's value."""
 
+import re
 from uuid import uuid4
 
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 from ansys.sam.sysml2.exception.runtime_exception import UnsupportedValueExpression
+
+_KERML_UNESCAPE_RE = re.compile(r'\\([\\"nrt]|.)')
+_KERML_UNESCAPE_MAP = {"\\": "\\", '"': '"', "n": "\n", "r": "\r", "t": "\t"}
 
 
 class ValueHelper:
@@ -218,12 +222,38 @@ class ValueHelper:
         commit.add_change(change)
         element._observer._connector.create_commit(project_id, commit.to_json())
 
+    @staticmethod
+    def escape_kerml_string(text: str) -> str:
+        """Escape a string for use inside a KerML string literal."""
+        return (
+            text.replace("\\", "\\\\")
+            .replace('"', '\\"')
+            .replace("\n", "\\n")
+            .replace("\r", "\\r")
+            .replace("\t", "\\t")
+        )
+
+    @staticmethod
+    def unescape_kerml_string(text: str) -> str:
+        r"""Decode KerML escapes; leave already-decoded strings (real \n/\r/\t) unchanged."""
+        if any(char in text for char in "\n\r\t"):
+            return text
+        return _KERML_UNESCAPE_RE.sub(
+            lambda match: _KERML_UNESCAPE_MAP.get(match.group(1), match.group(1)),
+            text,
+        )
+
     def _adapt_value(self, new_value: str | int | float | bool):
-        """Convert the value to JSON format."""
+        """
+        Convert the value for a new ``FeatureValue`` payload.
+
+        Strings are serialized as a quoted KerML string literal with escapes so the
+        server can parse them when creating a ``FeatureValue``.
+        """
         if isinstance(new_value, bool):
             return "true" if new_value else "false"
         if isinstance(new_value, str):
-            return f'"{new_value}"'
+            return f'"{ValueHelper.escape_kerml_string(new_value)}"'
         else:
             return str(new_value)
 

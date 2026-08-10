@@ -27,6 +27,7 @@ import json
 import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+from ansys.sam.sysml2.classes.value_helper import ValueHelper
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 from tests.unit.const import PROJECT_ID_5
 
@@ -130,3 +131,63 @@ class TestValueHelperComplexExpressions:
         payload = committed["change"][-1]["payload"]
         assert payload["@type"] == "FeatureValue"
         assert payload["value"] == '"attribute4 * attribute2"'
+
+    def test_adapt_value_escapes_kerml_string_literal(self):
+        helper = ValueHelper("_")
+
+        assert helper._adapt_value("Hello\\World") == '"Hello\\\\World"'
+        assert helper._adapt_value("try\\to") == '"try\\\\to"'
+        assert helper._adapt_value('say "hi"') == '"say \\"hi\\""'
+        assert helper._adapt_value("a\tb\nc\rd") == '"a\\tb\\nc\\rd"'
+
+    def test_unescape_kerml_string(self):
+        assert ValueHelper.unescape_kerml_string("try\\\\to") == "try\\to"
+        assert ValueHelper.unescape_kerml_string("Hello\\\\World") == "Hello\\World"
+        assert ValueHelper.unescape_kerml_string('say \\"hi\\"') == 'say "hi"'
+        assert ValueHelper.unescape_kerml_string("a\\tb\\nc\\rd") == "a\tb\nc\rd"
+
+    def test_unescape_kerml_string_leaves_decoded_controls(self):
+        decoded = "try\\\\\nto"
+        assert decoded.count("\\") == 2
+        assert "\n" in decoded
+        assert ValueHelper.unescape_kerml_string(decoded) == decoded
+
+    def test_escape_unescape_kerml_string_roundtrip(self):
+        samples = [
+            "Hello\\World",
+            'say "hi"',
+            "a\tb\nc",
+            "plain",
+            "try\\\\\nto",
+        ]
+        for sample in samples:
+            escaped = ValueHelper.escape_kerml_string(sample)
+            assert ValueHelper.unescape_kerml_string(escaped) == sample
+
+    def test_set_value_commits_escaped_backslash_string(self, connector, mocker):
+        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+        package = project.get_root_package()
+        attribute = package.get("attribute")
+        mocker.patch.object(attribute._observer, "reload_project")
+        commit_spy = mocker.spy(connector, "create_commit")
+
+        attribute.set_value("Hello\\World")
+
+        committed = json.loads(commit_spy.call_args.args[1])
+        payload = committed["change"][-1]["payload"]
+        assert payload["@type"] == "FeatureValue"
+        assert payload["value"] == '"Hello\\\\World"'
+
+    def test_set_value_commits_escaped_quote_string(self, connector, mocker):
+        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+        package = project.get_root_package()
+        attribute = package.get("attribute")
+        mocker.patch.object(attribute._observer, "reload_project")
+        commit_spy = mocker.spy(connector, "create_commit")
+
+        attribute.set_value('say "hi"')
+
+        committed = json.loads(commit_spy.call_args.args[1])
+        payload = committed["change"][-1]["payload"]
+        assert payload["@type"] == "FeatureValue"
+        assert payload["value"] == '"say \\"hi\\""'

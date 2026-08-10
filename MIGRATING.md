@@ -280,6 +280,24 @@ If your code previously expected `get_value()` to return Python-native values, a
 
 If you relied on `feature.parse_and_set_value(...)`, replace it with `SysMLTools.parse_and_set_value(feature, ...)`. It is no longer a method on the feature; both writing expressions and serializing them are now provided by `SysMLTools`.
 
+### String literals and backslashes
+
+`LiteralString` values are exchanged with the server using KerML string-literal escaping.
+
+- **Create** a string value with `set_value(...)`: PySAM wraps and escapes the text as a KerML literal before the server parses it (so content such as `Hello\World` or embedded quotes round-trips correctly).
+- **Update** an existing `LiteralString` in place: PySAM still writes the raw Python string (unchanged).
+- **Read** (`get_value().value` / `._value`): if the API returns KerML-escaped text, PySAM unescapes it to the decoded content. Values that already contain real control characters (`\n`, `\r`, `\t`) are left as-is so already-decoded payloads are not corrupted.
+
+```python
+>>> attr.set_value("try\\to")
+>>> attr.get_value().value
+'try\\to'
+>>> attr.get_value().value.count("\\")
+1
+```
+
+If your scripts compared `LiteralString` values against KerML-escaped forms (for example expecting `'try\\\\to'` when the model holds a single backslash), update those comparisons to the decoded content.
+
 ---
 
 ## 7. Enum-valued properties
