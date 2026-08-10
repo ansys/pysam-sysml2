@@ -76,10 +76,12 @@ class ScriptingProjectImpl(ScriptingProject):
 
     def get_root_package(self) -> SysMLElement:
         """Get the root package."""
-        matches = [x for x in self._root if x.__class__.__name__ == "Package"]
-        if not matches:
-            raise ValueError("No root Package found in project.")
-        return matches[0]
+        namespace = next((x for x in self._root if x.__class__.__name__ == "Namespace"), None)
+        if namespace is not None:
+            for member in namespace._ownedMember:
+                if member.__class__.__name__ == "Package":
+                    return member
+        raise ValueError("No root Package found in project.")
 
     def get_libraries_packages(self) -> list[SysMLElement]:
         """
