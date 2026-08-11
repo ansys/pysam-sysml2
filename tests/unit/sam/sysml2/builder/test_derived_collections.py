@@ -28,14 +28,23 @@ from ansys.sam.sysml2.builder.derived_collections import fill_derived_collection
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.meta_model.annotation import Annotation
+from ansys.sam.sysml2.meta_model.attribute_definition import AttributeDefinition
 from ansys.sam.sysml2.meta_model.attribute_usage import AttributeUsage
 from ansys.sam.sysml2.meta_model.documentation import Documentation
+from ansys.sam.sysml2.meta_model.enumeration_definition import EnumerationDefinition
+from ansys.sam.sysml2.meta_model.enumeration_usage import EnumerationUsage
+from ansys.sam.sysml2.meta_model.feature import Feature
+from ansys.sam.sysml2.meta_model.feature_chaining import FeatureChaining
 from ansys.sam.sysml2.meta_model.feature_membership import FeatureMembership
+from ansys.sam.sysml2.meta_model.feature_typing import FeatureTyping
 from ansys.sam.sysml2.meta_model.membership import Membership
 from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport
 from ansys.sam.sysml2.meta_model.owning_membership import OwningMembership
 from ansys.sam.sysml2.meta_model.package import Package
 from ansys.sam.sysml2.meta_model.part_definition import PartDefinition
+from ansys.sam.sysml2.meta_model.reference_subsetting import ReferenceSubsetting
+from ansys.sam.sysml2.meta_model.subclassification import Subclassification
+from ansys.sam.sysml2.meta_model.subsetting import Subsetting
 from tests.unit.const import PROJECT_ID_1
 
 
@@ -175,6 +184,154 @@ class TestFillDerivedCollectionsSysML:
             inherited_feature_membership,
         ]
 
+    def test_attribute_definition_from_owned_feature_typing(self):
+        project = ProjectImpl("p1", "project")
+        project._includes_derived = False
+
+        attribute = AttributeUsage("attribute4")
+        enumeration = EnumerationDefinition("EnumDef")
+        typing = FeatureTyping("ft")
+        typing.type_ = enumeration
+        typing.general = enumeration
+        attribute.owned_relationship.append(typing)
+
+        project._env = {
+            attribute.id: attribute,
+            enumeration.id: enumeration,
+            typing.id: typing,
+        }
+
+        fill_derived_collections(project)
+
+        assert attribute.owned_typing == [typing]
+        assert list(attribute.type_) == [enumeration]
+        assert list(attribute.definition) == [enumeration]
+        assert list(attribute.attribute_definition) == [enumeration]
+
+    def test_type_includes_subsetted_feature_types(self):
+        project = ProjectImpl("p1", "project")
+        project._includes_derived = False
+
+        base_attribute = AttributeUsage("base")
+        enumeration = EnumerationDefinition("EnumDef")
+        base_typing = FeatureTyping("base_ft")
+        base_typing.type_ = enumeration
+        base_attribute.owned_relationship.append(base_typing)
+
+        redefining = AttributeUsage("redef")
+        subsetting = Subsetting("sub")
+        subsetting.subsetted_feature = base_attribute
+        subsetting.general = base_attribute
+        redefining.owned_relationship.append(subsetting)
+
+        project._env = {
+            base_attribute.id: base_attribute,
+            enumeration.id: enumeration,
+            base_typing.id: base_typing,
+            redefining.id: redefining,
+            subsetting.id: subsetting,
+        }
+
+        fill_derived_collections(project)
+
+        assert list(redefining.type_) == [enumeration]
+        assert list(redefining.attribute_definition) == [enumeration]
+
+    def test_type_includes_last_chaining_feature_types(self):
+        project = ProjectImpl("p1", "project")
+        project._includes_derived = False
+
+        first = AttributeUsage("first")
+        last = AttributeUsage("last")
+        enumeration = EnumerationDefinition("EnumDef")
+        last_typing = FeatureTyping("last_ft")
+        last_typing.type_ = enumeration
+        last.owned_relationship.append(last_typing)
+
+        chain = AttributeUsage("chain")
+        chaining_first = FeatureChaining("cf1")
+        chaining_last = FeatureChaining("cf2")
+        chaining_first.chaining_feature = first
+        chaining_last.chaining_feature = last
+        chain.owned_relationship.extend([chaining_first, chaining_last])
+
+        project._env = {
+            first.id: first,
+            last.id: last,
+            enumeration.id: enumeration,
+            last_typing.id: last_typing,
+            chain.id: chain,
+            chaining_first.id: chaining_first,
+            chaining_last.id: chaining_last,
+        }
+
+        fill_derived_collections(project)
+
+        assert list(chain.chaining_feature) == [first, last]
+        assert list(chain.type_) == [enumeration]
+        assert list(chain.attribute_definition) == [enumeration]
+
+    def test_owned_element_includes_reference_subsetting_related_element(self):
+        project = ProjectImpl("p1", "project")
+        project._includes_derived = False
+
+        usage = AttributeUsage("usage")
+        owned_feature = Feature("owned_via_ref")
+        reference_subsetting = ReferenceSubsetting("rs")
+        reference_subsetting.owned_related_element.append(owned_feature)
+        usage.owned_relationship.append(reference_subsetting)
+
+        project._env = {
+            usage.id: usage,
+            owned_feature.id: owned_feature,
+            reference_subsetting.id: reference_subsetting,
+        }
+
+        fill_derived_collections(project)
+
+        assert usage.owned_element == [owned_feature]
+        assert usage.owned_member == []
+
+    def test_owned_specialization_on_attribute_definition(self):
+        project = ProjectImpl("p1", "project")
+        project._includes_derived = False
+
+        attribute_definition = AttributeDefinition("AttrDef")
+        general = AttributeDefinition("General")
+        subclassification = Subclassification("sc")
+        subclassification.general = general
+        attribute_definition.owned_relationship.append(subclassification)
+
+        project._env = {
+            attribute_definition.id: attribute_definition,
+            general.id: general,
+            subclassification.id: subclassification,
+        }
+
+        fill_derived_collections(project)
+
+        assert attribute_definition.owned_specialization == [subclassification]
+
+    def test_enumeration_usage_seeds_type_from_enumeration_definition(self):
+        project = ProjectImpl("p1", "project")
+        project._includes_derived = False
+
+        enumeration = EnumerationDefinition("EnumDef")
+        usage = EnumerationUsage("field1")
+        usage._enumeration_definition = enumeration
+
+        project._env = {
+            enumeration.id: enumeration,
+            usage.id: usage,
+        }
+
+        fill_derived_collections(project)
+
+        assert list(usage.type_) == [enumeration]
+        assert list(usage.definition) == [enumeration]
+        assert list(usage.attribute_definition) == [enumeration]
+        assert usage.enumeration_definition is enumeration
+
     def test_noop_when_includes_derived_true(self):
         project = ProjectImpl("p1", "project")
         project._includes_derived = True
@@ -200,6 +357,7 @@ class TestFillDerivedCollectionsScripting:
         owning = SysMLElement("own")
         owning.__class__ = type("OwningMembership", (SysMLElement,), {})
         owning._ownedMemberElement = child
+        owning._ownedRelatedElement = [child]
         package._ownedRelationship = [owning]
 
         project._env = {
