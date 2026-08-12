@@ -36,118 +36,104 @@ from ansys.sam.sysml2.tools.model_reader import ModelReader
 class FeatureChainingResolver:
     """Resolve connection ends and feature chains in a SysML model."""
 
-    @staticmethod
-    def resolve_connector_end(connection, end):
-        """Find the element that one end of ``connection`` points to."""
-        model = ModelReader(connection)
-        ends = model.get(connection, end, [])
-        context = model.get(connection, "owner")
-        return FeatureChainingResolver._resolve_end(model, ends, context)
+    def __init__(self, element):
+        """Keep the seed element and a reader matched to its model kind."""
+        self._element = element
+        self._model = ModelReader(element)
 
-    @staticmethod
-    def resolve_end(ends, context):
+    def resolve_connector_end(self, end):
+        """Find the element that one end of the seed connection points to."""
+        ends = self._model.get(self._element, end, [])
+        context = self._model.get(self._element, "owner")
+        return self._resolve_end(ends, context)
+
+    def resolve_end(self, ends, context):
         """Find the element that the first end of ``ends`` points to, seen from ``context``."""
         if not ends or context is None:
             return None
-        return FeatureChainingResolver._resolve_end(ModelReader(ends[0]), ends, context)
+        return self._resolve_end(ends, context)
 
-    @staticmethod
-    def resolve_representative(element, context):
+    def resolve_representative(self, element, context):
         """Find the element that ``element`` points to, seen from ``context``."""
-        return FeatureChainingResolver._resolve(ModelReader(element), element, context)
+        return self._resolve(element, context)
 
-    @staticmethod
-    def _resolve_end(model, ends, context):
+    def _resolve_end(self, ends, context):
         """Resolve the first end; when it points straight at something, return it unchanged."""
         if not ends or context is None:
             return None
         end = ends[0]
-        resolved = FeatureChainingResolver._resolve(model, end, context)
+        resolved = self._resolve(end, context)
         # A direct end (no chain) already points at the right element.
-        if resolved is None and not model.is_chaining(end):
+        if resolved is None and not self._model.is_chaining(end):
             return end
         return resolved
 
-    @staticmethod
-    def _resolve(model, element, context):
+    def _resolve(self, element, context):
         """Follow a chain of features, or look up a single element."""
-        if model.is_chaining(element):
-            return FeatureChainingResolver._walk_chaining(model, element, context)
-        return FeatureChainingResolver._resolve_in_context(model, element, context, climb=True)
+        if self._model.is_chaining(element):
+            return self._walk_chaining(element, context)
+        return self._resolve_in_context(element, context, climb=True)
 
-    @staticmethod
-    def _walk_chaining(model, feature, context):
+    def _walk_chaining(self, feature, context):
         """Follow the chain one feature at a time, each step searched inside the previous result."""
         current = context
-        for index, chaining in enumerate(model.get(feature, "owned_feature_chaining", [])):
+        for index, chaining in enumerate(self._model.get(feature, "owned_feature_chaining", [])):
             if current is None:
                 return None
-            step = model.get(chaining, "chaining_feature")
+            step = self._model.get(chaining, "chaining_feature")
             # Only the first step may search up through parent parts; later steps stay local.
-            current = FeatureChainingResolver._resolve_in_context(
-                model, step, current, climb=(index == 0)
-            )
+            current = self._resolve_in_context(step, current, climb=(index == 0))
         return current
 
-    @staticmethod
-    def _resolve_in_context(model, element, context, climb):
+    def _resolve_in_context(self, element, context, climb):
         """Look for ``element`` inside ``context``; go up to the parent when allowed."""
         if context is None or element is None:
             return None
         if context is element:
             return context
-        inherited_element_class = model.get_inherited_element_class()
-        if isinstance(context, inherited_element_class) and model.unwrap(context) is element:
+        inherited_element_class = self._model.get_inherited_element_class()
+        if isinstance(context, inherited_element_class) and self._model.unwrap(context) is element:
             return context
 
-        match = FeatureChainingResolver._find(
-            model, model.get(context, "owned_element", []), element
-        )
-        if match is None and model.is_a(context, Namespace):
+        match = self._find(self._model.get(context, "owned_element", []), element)
+        if match is None and self._model.is_a(context, Namespace):
             members = [
-                model.get(m, "member_element")
-                for m in model.get(context, "imported_membership", [])
+                self._model.get(m, "member_element")
+                for m in self._model.get(context, "imported_membership", [])
             ]
-            match = FeatureChainingResolver._find(model, members, element)
-        if match is None and model.is_a(context, Type) and model.is_a(element, Feature):
-            inherited = model.get(model.unwrap(context), "inherited_feature", [])
-            match = FeatureChainingResolver._find(model, inherited, element)
+            match = self._find(members, element)
+        if match is None and self._model.is_a(context, Type) and self._model.is_a(element, Feature):
+            inherited = self._model.get(self._model.unwrap(context), "inherited_feature", [])
+            match = self._find(inherited, element)
 
         if match is not None:
-            return FeatureChainingResolver._scope(model, match, context)
+            return self._scope(match, context)
         if climb:
-            return FeatureChainingResolver._resolve_in_context(
-                model, element, model.get(context, "owner"), climb
-            )
+            return self._resolve_in_context(element, self._model.get(context, "owner"), climb)
         return None
 
-    @staticmethod
-    def _scope(model, found, context):
+    def _scope(self, found, context):
         """Return the found element as-is when ``context`` owns it, otherwise wrap it."""
-        inherited_element_class = model.get_inherited_element_class()
+        inherited_element_class = self._model.get_inherited_element_class()
         if isinstance(context, inherited_element_class):
             return inherited_element_class(context, found)
-        owning_membership = model.get(found, "owning_membership")
-        owned_relationship = model.get(context, "owned_relationship", [])
+        owning_membership = self._model.get(found, "owning_membership")
+        owned_relationship = self._model.get(context, "owned_relationship", [])
         if owning_membership is not None and owning_membership in owned_relationship:
             return found
         return inherited_element_class(context, found)
 
-    @staticmethod
-    def _find(model, candidates, reference):
+    def _find(self, candidates, reference):
         """Return the first candidate matching ``reference``, or a feature that redefines it."""
         for candidate in candidates:
-            if candidate is not None and FeatureChainingResolver._matches(
-                model, candidate, reference
-            ):
+            if candidate is not None and self._matches(candidate, reference):
                 return candidate
         return None
 
-    @staticmethod
-    def _matches(model, candidate, reference):
+    def _matches(self, candidate, reference):
         """Return True when ``candidate`` is the reference, or a feature that redefines it."""
         if candidate is reference:
             return True
-        if model.is_a(candidate, Feature):
-            return reference in model.redefined_features(candidate)
+        if self._model.is_a(candidate, Feature):
+            return reference in self._model.redefined_features(candidate)
         return False

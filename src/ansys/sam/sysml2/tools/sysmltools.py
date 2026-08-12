@@ -174,7 +174,7 @@ class SysMLTools:
         """
         if end not in ("source", "target"):
             raise ValueError(f"end must be 'source' or 'target', got {end!r}")
-        return FeatureChainingResolver.resolve_connector_end(connection, end)
+        return FeatureChainingResolver(connection).resolve_connector_end(end)
 
     @staticmethod
     def get_connector_ends(connection):
@@ -191,7 +191,8 @@ class SysMLTools:
         tuple
             The resolved ``(source, target)`` representatives.
         """
+        resolver = FeatureChainingResolver(connection)
         return (
-            FeatureChainingResolver.resolve_connector_end(connection, "source"),
-            FeatureChainingResolver.resolve_connector_end(connection, "target"),
+            resolver.resolve_connector_end("source"),
+            resolver.resolve_connector_end("target"),
         )
