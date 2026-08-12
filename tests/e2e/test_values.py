@@ -295,3 +295,57 @@ class TestValues:
         root.first.set_value("second_value")
 
         assert root.first.get_value()._value == "second_value"
+
+    def test_backslash_create_and_read(self, connector, project_factory):
+        """Create a string with a backslash via set_value and read it back unchanged."""
+        project = project_factory(model="bike", kind="scripting")
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="pathAttr", owner=root)
+
+        root.pathAttr.set_value("Hello\\World")
+
+        value = root.pathAttr.get_value()._value
+        assert value == "Hello\\World"
+        assert value.count("\\") == 1
+
+    def test_backslash_update_in_place(self, connector, project_factory):
+        """Update an existing LiteralString in place with a backslash value."""
+        project = project_factory(model="bike", kind="scripting")
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="pathAttr", owner=root)
+
+        root.pathAttr.set_value("plain")
+        root.pathAttr.set_value("try\\to")
+
+        value = root.pathAttr.get_value()._value
+        assert value == "try\\to"
+        assert value.count("\\") == 1
+
+    def test_backslash_parse_and_set_value_quoted_kerml(self, connector, project_factory):
+        """parse_and_set_value accepts a quoted KerML string literal with escapes."""
+        project = project_factory(model="bike", kind="scripting")
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="pathAttr", owner=root)
+
+        SysMLTools.parse_and_set_value(root.pathAttr, '"Hello\\\\World"')
+
+        value = root.pathAttr.get_value()._value
+        assert value == "Hello\\World"
+        assert value.count("\\") == 1
+
+    def test_backslash_newline_roundtrip(self, connector, project_factory):
+        """Roundtrip a string with two backslashes and a real newline."""
+        project = project_factory(model="bike", kind="scripting")
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="pathAttr", owner=root)
+
+        root.pathAttr.set_value("try\\\\\nto")
+
+        value = root.pathAttr.get_value()._value
+        assert value == "try\\\\\nto"
+        assert value.count("\\") == 2
+        assert "\n" in value
