@@ -22,7 +22,7 @@
 
 """Tool module for SysML elements."""
 
-from ansys.sam.sysml2.tools._feature_chaining import resolve_connector_end
+from ansys.sam.sysml2.tools.feature_chaining_resolver import FeatureChainingResolver
 
 
 class SysMLTools:
@@ -174,7 +174,7 @@ class SysMLTools:
         """
         if end not in ("source", "target"):
             raise ValueError(f"end must be 'source' or 'target', got {end!r}")
-        return resolve_connector_end(connection, end)
+        return FeatureChainingResolver.resolve_connector_end(connection, end)
 
     @staticmethod
     def get_connector_ends(connection):
@@ -192,6 +192,6 @@ class SysMLTools:
             The resolved ``(source, target)`` representatives.
         """
         return (
-            resolve_connector_end(connection, "source"),
-            resolve_connector_end(connection, "target"),
+            FeatureChainingResolver.resolve_connector_end(connection, "source"),
+            FeatureChainingResolver.resolve_connector_end(connection, "target"),
         )
