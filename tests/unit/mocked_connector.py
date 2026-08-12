@@ -36,6 +36,56 @@ from ansys.sam.sysml2.exception.connector_exception import (
 MODELTESTSET = Path(__file__).resolve().parent / "modeltestset"
 
 
+_DERIVED_ELEMENT_KEYS = frozenset(
+    {
+        "ownedElement",
+        "ownedMembership",
+        "ownedMember",
+        "ownedImport",
+        "ownedAnnotation",
+        "documentation",
+        "ownedFeature",
+        "ownedFeatureMembership",
+        "feature",
+        "featureMembership",
+        "inheritedFeature",
+        "inheritedMembership",
+        "inheritedMembershipExcludeImplied",
+        "ownedSpecialization",
+        "ownedTyping",
+        "ownedSubsetting",
+        "ownedRedefinition",
+        "chainingFeature",
+        "type",
+        "definition",
+        "attributeDefinition",
+        "partDefinition",
+        "itemDefinition",
+        "portDefinition",
+        "occurrenceDefinition",
+        "actionDefinition",
+        "allocationDefinition",
+        "connectionDefinition",
+        "stateDefinition",
+        "flowDefinition",
+        "interfaceDefinition",
+        "enumerationDefinition",
+        "requirementDefinition",
+        "constraintDefinition",
+        "calculationDefinition",
+        "caseDefinition",
+        "analysisCaseDefinition",
+        "verificationCaseDefinition",
+        "useCaseDefinition",
+        "concernDefinition",
+        "viewpointDefinition",
+        "viewDefinition",
+        "renderingDefinition",
+        "metadataDefinition",
+    }
+)
+
+
 class MockedSysML2APIConnector(SysML2APIConnector):
     """Returns canned JSON responses from modeltestset/ fixtures."""
 
@@ -53,6 +103,18 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         if not elements_file.exists():
             raise ProjectNotFoundException(f"Project {project_id} not found")
         return json.loads(elements_file.read_text(encoding="utf-8"))
+
+    @staticmethod
+    def _strip_derived_properties(elements: list) -> list:
+        stripped = []
+        for element in elements:
+            cleaned = {
+                key: value
+                for key, value in element.items()
+                if key not in _DERIVED_ELEMENT_KEYS
+            }
+            stripped.append(cleaned)
+        return stripped
 
     def _load_library_elements(self, project_id: str) -> list:
         lib_file = MODELTESTSET / f"project_{project_id}" / "library_elements.json"
@@ -128,11 +190,14 @@ class MockedSysML2APIConnector(SysML2APIConnector):
             project["description"] = project_description
         return project.copy()
 
-    def get_all_elements(self, project_id: str) -> list:
+    def get_all_elements(self, project_id: str, **kwargs) -> list:
         """Get all elements of a project."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        return self._load_elements(project_id)
+        elements = self._load_elements(project_id)
+        if not kwargs.get("includes_derived", True):
+            elements = self._strip_derived_properties(elements)
+        return elements
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """Get a single element by ID."""

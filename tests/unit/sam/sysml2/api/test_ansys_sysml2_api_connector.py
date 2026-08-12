@@ -29,6 +29,14 @@ from ansys.sam.sysml2.classes.http_request import HttpRequest
 from tests.unit.const import VALID_ORGANIZATION, VALID_TOKEN
 
 
+class _MockResponse:
+    """Minimal mock HTTP response."""
+
+    def __init__(self, status_code, content=b""):
+        self.status_code = status_code
+        self.content = content
+
+
 @pytest.fixture
 def connector():
     return AnsysSysML2APIConnector(
@@ -66,3 +74,21 @@ class TestAnsysSysML2APIConnector:
         )
 
         assert c._server_url == "http://fake-server"
+
+    def test_get_all_elements_query_params(self, connector, mocker):
+        mock_get = mocker.patch(
+            "requests.get",
+            return_value=_MockResponse(200, content=b"[]"),
+        )
+
+        connector.get_all_elements(
+            "project-1",
+            includes_derived=False,
+            includes_inherited=False,
+        )
+
+        mock_get.assert_called_once()
+        assert mock_get.call_args.kwargs["params"] == {
+            "includesDerived": "false",
+            "includesInherited": "false",
+        }

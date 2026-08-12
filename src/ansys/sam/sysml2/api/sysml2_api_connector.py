@@ -100,8 +100,23 @@ class SysML2APIConnector(ABC):
         """
 
     @abstractmethod
-    def get_all_elements(self, project_id: str) -> list:
-        """Get all elements of the given project."""
+    def get_all_elements(self, project_id: str, **kwargs) -> list:
+        """
+        Get all elements of the given project.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project.
+        **kwargs
+            Optional query parameters forwarded to the ``/elements`` endpoint
+            (for example ``includes_derived`` / ``includes_inherited``).
+
+        Returns
+        -------
+        list
+            List of all elements.
+        """
 
     @abstractmethod
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
