@@ -132,3 +132,17 @@ class TestScriptingMapper:
         assert element._id == "element_id"
         assert element.__class__.__name__ == "PartUsage"
         assert element._owner is owner
+
+    def test_literal_string_value_unescapes_kerml(self, scripting_mapper: ScriptingMapper):
+        """API KerML-escaped LiteralString.value is decoded on map."""
+        data = {
+            "@id": "literal_id",
+            "@type": "LiteralString",
+            "value": "try\\\\to",
+        }
+
+        element = scripting_mapper.map(data, None).get_element()
+
+        assert element.__class__.__name__ == "LiteralString"
+        assert element._value == "try\\to"
+        assert element._value.count("\\") == 1

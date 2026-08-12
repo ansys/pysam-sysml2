@@ -129,6 +129,14 @@ class Mapper(ABC):
         """
         # Bypass the scripting read-only guard on ``_name``: this is deserialization,
         # not a user edit, so it must not raise or stack an observer change.
+        if (
+            field_name == "_value"
+            and type(element).__name__ == "LiteralString"
+            and isinstance(field_value, str)
+        ):
+            from ansys.sam.sysml2.classes.value_helper import ValueHelper
+
+            field_value = ValueHelper.unescape_kerml_string(field_value)
         object.__setattr__(element, field_name, field_value)
         return []
 
