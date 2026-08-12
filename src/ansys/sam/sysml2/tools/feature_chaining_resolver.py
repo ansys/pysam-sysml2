@@ -37,9 +37,9 @@ class FeatureChainingResolver:
     """Resolve connection ends and feature chains in a SysML model."""
 
     def __init__(self, element):
-        """Keep the seed element and a reader matched to its model kind."""
+        """Keep the seed element and a metamodel reader."""
         self._element = element
-        self._model = ModelReader(element)
+        self._model = ModelReader()
 
     def resolve_connector_end(self, end):
         """Find the element that one end of the seed connection points to."""

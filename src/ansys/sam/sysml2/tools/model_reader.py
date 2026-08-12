@@ -20,38 +20,25 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Read a SysML model the same way for scripting and metamodel elements."""
+"""Read SysML model elements through the generated metamodel properties."""
 
+from ansys.sam.sysml2.classes.sysml_inherited_element import SysMLInheritedElement
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.feature import Feature
-from ansys.sam.sysml2.tools.name_utils import NameUtils
 
 
 class ModelReader:
-    """Read a SysML model the same way, whether it comes from the scripting API or the metamodel."""
+    """Read metamodel elements with a single snake_case property vocabulary."""
 
-    def __init__(self, element):
-        """Detect the model kind and keep the class used to wrap inherited elements."""
-        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-
-        self._scripting = isinstance(element, SysMLElement)
-        if self._scripting:
-            from ansys.sam.sysml2.classes.inherited_element import InheritedElement
-
-            self._inherited_element_class = InheritedElement
-        else:
-            from ansys.sam.sysml2.classes.sysml_inherited_element import SysMLInheritedElement
-
-            self._inherited_element_class = SysMLInheritedElement
+    _inherited_element_class = SysMLInheritedElement
 
     def get_inherited_element_class(self):
         """Return the class used to wrap an inherited element under a parent part."""
         return self._inherited_element_class
 
     def get(self, element, key, default=None):
-        """Read a field of ``element`` by its plain name."""
-        name = f"_{NameUtils.snake_to_camel(key)}" if self._scripting else key
-        value = getattr(element, name, default)
+        """Read a field of ``element`` by its snake_case property name."""
+        value = getattr(element, key, default)
         if value is None and default is not None:
             return default
         return value
@@ -87,14 +74,8 @@ class ModelReader:
         return result
 
     def _metamodel_class(self, element):
-        """Return the metamodel class of ``element``, for both model kinds."""
+        """Return the metamodel class of ``element``."""
         element = self.unwrap(element)
         if isinstance(element, Element):
             return type(element)
-        # Scripting objects are plain data: map their class name to a metamodel class.
-        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
-
-        try:
-            return SysMLUtil.get_sysml_constructor(type(element).__name__)
-        except ImportError:
-            return None
+        return None

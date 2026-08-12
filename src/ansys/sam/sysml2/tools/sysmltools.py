@@ -150,14 +150,14 @@ class SysMLTools:
 
         Parameters
         ----------
-        connection : Element | SysMLElement
+        connection : Element
             Connection (or relationship) whose end is resolved.
         end : str
             Which end to resolve: ``"source"`` (default) or ``"target"``.
 
         Returns
         -------
-        Element | SysMLElement | None
+        Element or None
             The resolved representative element, or ``None`` when the end or
             context is missing.
         """
@@ -172,7 +172,7 @@ class SysMLTools:
 
         Parameters
         ----------
-        connection : Element | SysMLElement
+        connection : Element
             Connection (or relationship) whose ends are resolved.
 
         Returns

@@ -105,8 +105,4 @@ class DynamicEObject:
         children = {name for name in self.__dict__.get("_element_hash_map", {}) if name}
         if not ValueHelper.is_value_capable(self):
             methods.difference_update({"get_value", "set_value"})
-        if not getattr(self, "source", None):
-            methods.discard("get_source")
-        if not getattr(self, "target", None):
-            methods.discard("get_target")
         return sorted(accessors | methods | children)
