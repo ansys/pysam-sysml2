@@ -24,7 +24,10 @@
 
 import pytest
 
-from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+from ansys.sam.sysml2.builder.sysml2_project_manager import (
+    SysML2ProjectManager,
+    _ProjectCacheKey,
+)
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.exception.connector_exception import (
@@ -33,6 +36,13 @@ from ansys.sam.sysml2.exception.connector_exception import (
     ProjectNotFoundException,
 )
 from tests.unit.const import PROJECT_ID_1
+
+_DEFAULT_CACHE_KEY = _ProjectCacheKey(
+    project_id=PROJECT_ID_1,
+    resolve_libraries=False,
+    includes_derived=True,
+    includes_inherited=True,
+)
 
 
 class TestSysML2ProjectManagerScripting:
@@ -71,12 +81,14 @@ class TestSysML2ProjectManagerScripting:
 
         manager.get_scripting_project(PROJECT_ID_1)
 
-        assert PROJECT_ID_1 in manager._scripting_projects
+        assert _DEFAULT_CACHE_KEY in manager._scripting_projects
 
         result = manager.delete_project(PROJECT_ID_1)
 
         assert result["@id"] == PROJECT_ID_1
-        assert PROJECT_ID_1 not in manager._scripting_projects
+        assert PROJECT_ID_1 not in {
+            key.project_id for key in manager._scripting_projects
+        }
 
     def test_delete_project_not_found(self, connector):
         manager = SysML2ProjectManager(connector)
@@ -89,7 +101,7 @@ class TestSysML2ProjectManagerScripting:
 
         manager.get_scripting_project(PROJECT_ID_1)
 
-        assert PROJECT_ID_1 in manager._scripting_projects
+        assert _DEFAULT_CACHE_KEY in manager._scripting_projects
 
         result = manager.update_project(
             PROJECT_ID_1, name="NewName", description="NewDesc"
@@ -98,7 +110,9 @@ class TestSysML2ProjectManagerScripting:
         assert result["@id"] == PROJECT_ID_1
         assert result["name"] == "NewName"
         assert result["description"] == "NewDesc"
-        assert PROJECT_ID_1 not in manager._scripting_projects
+        assert PROJECT_ID_1 not in {
+            key.project_id for key in manager._scripting_projects
+        }
 
     def test_update_project_not_found(self, connector):
         manager = SysML2ProjectManager(connector)
@@ -167,11 +181,13 @@ class TestSysML2ProjectManagerEdgeCases:
 
         original = manager.get_scripting_project(PROJECT_ID_1)
 
-        assert PROJECT_ID_1 in manager._scripting_projects
+        assert _DEFAULT_CACHE_KEY in manager._scripting_projects
 
         manager.update_project(PROJECT_ID_1, name="UpdatedName")
 
-        assert PROJECT_ID_1 not in manager._scripting_projects
+        assert PROJECT_ID_1 not in {
+            key.project_id for key in manager._scripting_projects
+        }
 
         rebuilt = manager.get_scripting_project(PROJECT_ID_1)
 
@@ -182,7 +198,7 @@ class TestSysML2ProjectManagerEdgeCases:
 
         manager.get_scripting_project(PROJECT_ID_1)
 
-        assert PROJECT_ID_1 in manager._scripting_projects
+        assert _DEFAULT_CACHE_KEY in manager._scripting_projects
 
         mocker.patch.object(
             connector,
@@ -193,14 +209,14 @@ class TestSysML2ProjectManagerEdgeCases:
         with pytest.raises(ProjectNotFoundException):
             manager.update_project(PROJECT_ID_1, name="NewName")
 
-        assert PROJECT_ID_1 in manager._scripting_projects
+        assert _DEFAULT_CACHE_KEY in manager._scripting_projects
 
     def test_delete_project_propagates_error(self, connector, mocker):
         manager = SysML2ProjectManager(connector)
 
         manager.get_scripting_project(PROJECT_ID_1)
 
-        assert PROJECT_ID_1 in manager._scripting_projects
+        assert _DEFAULT_CACHE_KEY in manager._scripting_projects
 
         mocker.patch.object(
             connector,
@@ -211,7 +227,7 @@ class TestSysML2ProjectManagerEdgeCases:
         with pytest.raises(ProjectNotFoundException):
             manager.delete_project(PROJECT_ID_1)
 
-        assert PROJECT_ID_1 in manager._scripting_projects
+        assert _DEFAULT_CACHE_KEY in manager._scripting_projects
 
     def test_get_projects_connection_error(self, connector, mocker):
         mocker.patch.object(
@@ -224,3 +240,25 @@ class TestSysML2ProjectManagerEdgeCases:
 
         with pytest.raises(ConnectorConnectionException):
             manager.get_projects()
+
+    def test_scripting_project_cache_by_includes_flags(self, connector):
+        manager = SysML2ProjectManager(connector)
+
+        default_project = manager.get_scripting_project(PROJECT_ID_1)
+        excluded_project = manager.get_scripting_project(
+            PROJECT_ID_1,
+            includes_derived=False,
+            includes_inherited=False,
+        )
+
+        assert default_project is not excluded_project
+        assert _DEFAULT_CACHE_KEY in manager._scripting_projects
+        assert (
+            _ProjectCacheKey(
+                project_id=PROJECT_ID_1,
+                resolve_libraries=False,
+                includes_derived=False,
+                includes_inherited=False,
+            )
+            in manager._scripting_projects
+        )

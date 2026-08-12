@@ -26,6 +26,7 @@ from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+from ansys.sam.sysml2.builder.derived_collections import fill_derived_collections
 from ansys.sam.sysml2.builder.mapper.mapper import Mapper
 from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
 from ansys.sam.sysml2.builder.mapper.sysml_mapper import SysMLMapper
@@ -66,7 +67,13 @@ class SysML2ProjectBuilder:
         """
         self._connector = connector
 
-    def build_sysml_project(self, project_id: str, resolve_libraries: bool = False) -> Project:
+    def build_sysml_project(
+        self,
+        project_id: str,
+        resolve_libraries: bool = False,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
+    ) -> Project:
         """
         Call the API with the specified project ID and build the SysML project from JSON.
 
@@ -77,6 +84,10 @@ class SysML2ProjectBuilder:
         resolve_libraries : bool, default: False
             When ``True``, keep library elements' references so their contents are resolved
             and mapped during the build.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API ``/elements`` response.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features from the API response.
 
         Returns
         -------
@@ -86,11 +97,17 @@ class SysML2ProjectBuilder:
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
         project._resolve_libraries = resolve_libraries
+        project._includes_derived = includes_derived
+        project._includes_inherited = includes_inherited
         self.__build_project(project)
         return project
 
     def build_scripting_project(
-        self, project_id: str, resolve_libraries: bool = False
+        self,
+        project_id: str,
+        resolve_libraries: bool = False,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
     ) -> ScriptingProject:
         """
         Call the API with the specified project ID and build the scripting project from JSON.
@@ -102,6 +119,10 @@ class SysML2ProjectBuilder:
         resolve_libraries : bool, default: False
             When ``True``, keep library elements' references so their contents are resolved
             and mapped during the build.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API ``/elements`` response.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features from the API response.
 
         Returns
         -------
@@ -111,6 +132,8 @@ class SysML2ProjectBuilder:
         project_info = self._connector.get_project_by_id(project_id)
         project = ScriptingProjectImpl(project_id, project_info["name"])
         project._resolve_libraries = resolve_libraries
+        project._includes_derived = includes_derived
+        project._includes_inherited = includes_inherited
         self.__build_project(project)
         return project
 
@@ -120,15 +143,20 @@ class SysML2ProjectBuilder:
         # library elements (bulk in get_all_elements, or per-UUID fetch).
         # https://github.com/ansys/pysam-sysml2/issues/183
         self._build_project_element(project)
+        fill_derived_collections(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
 
-    def _build_project_element(self, project: Project | ScriptingProject):
+    def _build_project_element(self, project: Project | ScriptingProject) -> None:
         """Build all project elements in the project."""
         roots_json = self._connector.get_root_elements(project_id=project._id)
         root_ids = {root["@id"] for root in roots_json}
 
-        elements_json = self._connector.get_all_elements(project_id=project._id)
+        elements_json = self._connector.get_all_elements(
+            project_id=project._id,
+            includes_derived=project._includes_derived,
+            includes_inherited=project._includes_inherited,
+        )
         known_ids = {element["@id"] for element in elements_json}
         # The API omits the root Namespace from /elements; mapping an element twice would
         # stack a second UnresolvedField and duplicate it in list fields on resolve.
@@ -341,6 +369,7 @@ class SysML2ProjectBuilder:
         modification_observer.stop()
         project._resolve_libraries = False  # libraries are static; never re-resolve on reload
         self._build_project_element(project)
+        fill_derived_collections(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
         modification_observer.start()
