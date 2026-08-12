@@ -53,10 +53,6 @@ class SysMLElement:
         names = set(list(base) + children)
         if not ValueHelper.is_value_capable(self):
             names.difference_update({"get_value", "set_value"})
-        if not getattr(self, "_source", None):
-            names.discard("get_source")
-        if not getattr(self, "_target", None):
-            names.discard("get_target")
         return sorted(names)
 
     def __getattr__(self, name):
@@ -100,29 +96,6 @@ class SysMLElement:
         if element_name not in element_hash_map:
             return None
         return self.__getattr__(element_name)
-
-    def get_target(self):
-        """Return the resolved leaf element pointed to by ``self._target``, or None."""
-        return self._resolve_end(getattr(self, "_target", []) or [])
-
-    def get_source(self):
-        """Return the resolved leaf element pointed to by ``self._source``, or None."""
-        return self._resolve_end(getattr(self, "_source", []) or [])
-
-    def _resolve_end(self, ends):
-        """Walk the first end's ``_chainingFeature`` via attribute access; else passthrough."""
-        if not ends:
-            return None
-        end = ends[0]
-        chain = getattr(end, "_chainingFeature", None) or []
-        if not chain:
-            return end
-        current = getattr(self, "_owner", None)
-        for feature in chain:
-            if current is None:
-                return None
-            current = getattr(current, feature._name, None)
-        return current
 
     def delete(self):
         """Delete the element from the model via the observer's commit to the server."""

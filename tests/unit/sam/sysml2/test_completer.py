@@ -32,7 +32,7 @@ class TestCompleteElementAttrs:
     def test_returns_object_dir_not_class_dir_union(self):
         element = SysMLElement("element_id")
 
-        assert _complete_element_attrs(element, ["get_source", "get_value"]) == sorted(
+        assert _complete_element_attrs(element, ["id", "get_value"]) == sorted(
             element.__dir__()
         )
 
