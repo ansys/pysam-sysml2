@@ -208,7 +208,10 @@ class ValueHelper:
         commit = Commit(project_id)
         change = DataVersion()
         change.add_change("@type", literal_type)
-        change.add_change("value", self._adapt_value(new_value))
+        if literal_type == "LiteralString" and isinstance(new_value, str):
+            change.add_change("value", ValueHelper.escape_kerml_string(new_value))
+        else:
+            change.add_change("value", self._adapt_value(new_value))
         change.identify(literal._id)
         commit.add_change(change)
         element._observer._connector.create_commit(project_id, commit.to_json())

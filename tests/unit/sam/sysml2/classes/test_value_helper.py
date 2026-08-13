@@ -193,7 +193,7 @@ class TestValueHelperComplexExpressions:
         assert payload["value"] == '"say \\"hi\\""'
 
     def test_commit_literal_update_escapes_kerml_string(self, mocker):
-        """In-place LiteralString updates must KerML-escape like FeatureValue creates."""
+        """In-place LiteralString updates escape content without wrapping quotes."""
         helper = ValueHelper("_")
         connector = mocker.Mock()
         observer = mocker.Mock()
@@ -210,5 +210,5 @@ class TestValueHelperComplexExpressions:
         assert committed_change["identity"]["@id"] == "literal-id"
         assert committed_change["payload"] == {
             "@type": "LiteralString",
-            "value": '"try\\\\to"',
+            "value": "try\\\\to",
         }
