@@ -28,10 +28,10 @@ import pytest
 
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 from tests.unit.const import PROJECT_ID_1
-
 
 class TestObserverTransactional:
     """Transactional mode defers every change into a single commit at stop time.
@@ -98,6 +98,46 @@ class TestObserverTransactional:
 
         assert payload["change"][0]["identity"]["@id"] == "id"
         assert "payload" not in payload["change"][0]
+
+    def test_transactional_create_defers_list_links_after_creates(self, observer, connector, mocker):
+        """List links on a create are a separate update after all creates."""
+        commit_mock = mocker.patch.object(connector, "create_commit")
+        requirement_id = "req-id"
+        documentation_id = "doc-id"
+        documentation = SysMLElement(documentation_id)
+
+        observer.set_transactional_mode(True)
+        observer.notify(requirement_id, "@type", "RequirementUsage")
+        observer.notify(requirement_id, "declaredName", "MassLimit")
+        observer.notify(requirement_id, "owner", "bike-id")
+        observer.notify(documentation_id, "@type", "Documentation")
+        observer.notify(documentation_id, "body", "Shall not exceed 15 kg")
+        observer.list_notify(requirement_id, "documentation", [documentation])
+        observer.notify(requirement_id, "reqId", "REQ-001")
+        observer.set_transactional_mode(False)
+
+        changes = json.loads(commit_mock.call_args.args[1])["change"]
+        requirement_create, documentation_create, documentation_link = changes
+
+        assert requirement_create["identity"]["@id"] == requirement_id
+        assert requirement_create["payload"] == {
+            "@type": "RequirementUsage",
+            "declaredName": "MassLimit",
+            "owner": "bike-id",
+            "reqId": "REQ-001",
+        }
+        assert "documentation" not in requirement_create["payload"]
+
+        assert documentation_create["identity"]["@id"] == documentation_id
+        assert documentation_create["payload"] == {
+            "@type": "Documentation",
+            "body": "Shall not exceed 15 kg",
+        }
+
+        assert documentation_link["identity"]["@id"] == requirement_id
+        assert documentation_link["payload"] == {
+            "documentation": [{"@id": documentation_id}],
+        }
 
 
 class TestObserverImmediate:

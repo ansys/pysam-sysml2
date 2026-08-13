@@ -208,7 +208,7 @@ class ValueHelper:
         commit = Commit(project_id)
         change = DataVersion()
         change.add_change("@type", literal_type)
-        change.add_change("value", new_value)
+        change.add_change("value", self._adapt_value(new_value))
         change.identify(literal._id)
         commit.add_change(change)
         element._observer._connector.create_commit(project_id, commit.to_json())
