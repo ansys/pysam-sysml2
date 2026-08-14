@@ -2401,25 +2401,6 @@ class Factory:
         self._project.add_element(instance)
         return instance
 
-    def _init_scripting_observed_lists(self, instance: SysMLElement, element_type: str) -> None:
-        """Copy empty ObservedList slots from the SysML constructor onto a scripting instance."""
-        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
-        from ansys.sam.sysml2.data_structures.observed_list import ObservedList
-
-        try:
-            constructor = SysMLUtil.get_sysml_constructor(element_type)
-        except ImportError:
-            return
-
-        prototype = constructor(instance._id)
-        for attribute_name, attribute_value in prototype.__dict__.items():
-            if isinstance(attribute_value, ObservedList):
-                setattr(
-                    instance,
-                    attribute_name,
-                    ObservedList(owner=instance, name=attribute_value._name),
-                )
-
     def _direct_create_element(self, element_type, **kwargs):
         """
         Create a new element from the API.
