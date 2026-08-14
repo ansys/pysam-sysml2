@@ -141,7 +141,7 @@ class SysML2APIConnector(ABC):
         """Get all root elements of the project."""
 
     @abstractmethod
-    def execute_query(self, project_id: str, query: str) -> dict:
+    def execute_query(self, project_id: str, query: str, **kwargs) -> dict:
         """
         Send a query to the standard API using the connector.
 
@@ -151,6 +151,9 @@ class SysML2APIConnector(ABC):
             Project ID.
         query : str
             Query in JSON format.
+        **kwargs
+            Optional query parameters forwarded to the ``/query-results`` endpoint
+            (for example ``includes_derived`` / ``includes_inherited``).
 
         Returns
         -------

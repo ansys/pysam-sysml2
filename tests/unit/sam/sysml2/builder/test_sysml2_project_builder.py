@@ -112,3 +112,19 @@ class TestSysML2ProjectBuilderIncludesFlags:
         first_call_kwargs = get_all_elements.call_args_list[0].kwargs
         assert first_call_kwargs["includes_derived"] is False
         assert first_call_kwargs["includes_inherited"] is False
+
+    def test_get_missing_passes_includes_flags(self, connector, mocker):
+        builder = SysML2ProjectBuilder(connector)
+        project = builder.build_sysml_project(
+            PROJECT_ID_1,
+            includes_derived=False,
+            includes_inherited=False,
+        )
+        execute_query = mocker.patch.object(connector, "execute_query", return_value=[])
+
+        builder._get_missing(project, {"missing-id"})
+
+        execute_query.assert_called()
+        call_kwargs = execute_query.call_args.kwargs
+        assert call_kwargs["includes_derived"] is False
+        assert call_kwargs["includes_inherited"] is False
