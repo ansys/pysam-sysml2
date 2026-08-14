@@ -30,7 +30,6 @@ from ansys.sam.sysml2.dto.query.constraints_classes import (
 )
 from ansys.sam.sysml2.dto.query.query_class import Query
 from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
-from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
 from ansys.sam.sysml2.exception.query_exception import InvalidQuery
 
 
@@ -77,14 +76,15 @@ class TestQueries:
 
     @pytest.mark.parametrize("kind", ["scripting", "sysml"])
     def test_query_invalid_property(self, connector, project_factory, kind):
-        """Query on non-existent property raises BadRequestConnectionException."""
+        """Query on non-existent property returns no matches."""
         project = project_factory(model="bike", kind=kind)
 
         query = Query()
         query.where = PrimitiveConstraint("nonExistentProperty", "value")
 
-        with pytest.raises(BadRequestConnectionException):
-            connector.execute_query(project.get_id(), query.to_json())
+        result = connector.execute_query(project.get_id(), query.to_json())
+
+        assert result == []
 
     def test_query_invalid_composite_constraint(self):
         """Composite constraint with fewer than 2 children raises InvalidQuery client-side."""
