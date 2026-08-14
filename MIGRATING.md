@@ -494,6 +494,11 @@ connector.get_all_elements(
 )
 ```
 
+The same kwargs are accepted by `execute_query` and forwarded to the ``/query-results``
+endpoint. When the project builder resolves unresolved IDs via queries, it passes the
+project's `includes_derived` / `includes_inherited` flags so missing elements match the
+bulk `/elements` payload.
+
 The same flags are available on the project manager / builder (`get_sysml_project`,
 `get_scripting_project`, `build_*`; defaults `True`).
 
@@ -510,8 +515,9 @@ project = manager.get_sysml_project(
 When `includes_derived=False`, PySAM rebuilds the main local derived collections from
 `ownedRelationship` (and from `inheritedMembership` when present), including for example
 `ownedElement`, `ownedMembership`, `ownedMember`, `ownedFeature`, `feature`,
-`inheritedFeature`, and requirement `text` from each attached `documentation.body`.
-Unresolved library references are not inserted into those collections.
+`inheritedFeature`, and requirement `text` from each attached `documentation.body`. This
+runs once over the whole project (bulk elements and any elements fetched later via
+queries). Unresolved library references are not inserted into those collections.
 
 ---
 

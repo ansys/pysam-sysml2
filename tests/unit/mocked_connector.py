@@ -230,12 +230,15 @@ class MockedSysML2APIConnector(SysML2APIConnector):
                 roots[element["@id"]] = element
         return list(roots.values())
 
-    def execute_query(self, project_id: str, query: str) -> dict:
+    def execute_query(self, project_id: str, query: str, **kwargs) -> dict:
         """Return the library elements matching the query's @id constraints."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
         wanted = self._extract_ids(json.loads(query))
-        return [el for el in self._load_library_elements(project_id) if el.get("@id") in wanted]
+        elements = [el for el in self._load_library_elements(project_id) if el.get("@id") in wanted]
+        if not kwargs.get("includes_derived", True):
+            elements = self._strip_derived_properties(elements)
+        return elements
 
     def create_commit(self, project_id: str, commit: str) -> dict:
         """Return a realistic CommitDto response."""
