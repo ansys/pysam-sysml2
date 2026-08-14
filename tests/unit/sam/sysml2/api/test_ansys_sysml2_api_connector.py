@@ -92,3 +92,22 @@ class TestAnsysSysML2APIConnector:
             "includesDerived": "false",
             "includesInherited": "false",
         }
+
+    def test_execute_query_query_params(self, connector, mocker):
+        mock_post = mocker.patch(
+            "requests.post",
+            return_value=_MockResponse(200, content=b"[]"),
+        )
+
+        connector.execute_query(
+            "project-1",
+            "{}",
+            includes_derived=False,
+            includes_inherited=False,
+        )
+
+        mock_post.assert_called_once()
+        assert mock_post.call_args.kwargs["params"] == {
+            "includesDerived": "false",
+            "includesInherited": "false",
+        }

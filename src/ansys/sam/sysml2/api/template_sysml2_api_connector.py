@@ -192,14 +192,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/elements"
         )
-        if kwargs:
-            from ansys.sam.sysml2.tools.name_utils import NameUtils
-
-            params = {}
-            for key, value in kwargs.items():
-                param_key = NameUtils.snake_to_camel(key)
-                params[param_key] = str(value).lower() if isinstance(value, bool) else value
-            http_request.params = params
+        self._set_query_params(http_request, kwargs)
         return self._send_request(
             http_request=http_request,
             call=requests.get,
@@ -248,7 +241,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         )
         return self._send_request(http_request=http_request, call=requests.get)
 
-    def execute_query(self, project_id: str, query: str) -> dict:
+    def execute_query(self, project_id: str, query: str, **kwargs) -> dict:
         """
         Send a query to the standard API using the connector.
 
@@ -258,6 +251,9 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             ID of the project.
         query : str
             Query in JSON format.
+        **kwargs
+            Optional query parameters forwarded to the ``/query-results`` endpoint
+            (for example ``includes_derived`` / ``includes_inherited``).
 
         Returns
         -------
@@ -266,6 +262,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         """
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/query-results")
         http_request.json_body = json.loads(query)
+        self._set_query_params(http_request, kwargs)
         return self._send_request(http_request=http_request, call=requests.post)
 
     def create_commit(self, project_id: str, commit: str) -> dict:
@@ -273,6 +270,19 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/commit")
         http_request.json_body = json.loads(commit)
         return self._send_request(http_request=http_request, call=requests.post)
+
+    @staticmethod
+    def _set_query_params(http_request: HttpRequest, kwargs: dict) -> None:
+        """Forward optional kwargs as camelCase HTTP query parameters."""
+        if not kwargs:
+            return
+        from ansys.sam.sysml2.tools.name_utils import NameUtils
+
+        params = {}
+        for key, value in kwargs.items():
+            param_key = NameUtils.snake_to_camel(key)
+            params[param_key] = str(value).lower() if isinstance(value, bool) else value
+        http_request.params = params
 
     def _build_http_request(self, endpoint: str) -> HttpRequest:
         """

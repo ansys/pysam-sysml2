@@ -296,7 +296,12 @@ class SysML2ProjectBuilder:
         else:
             cp = PrimitiveConstraint(property_name="@id", value=next(iter(missing_elements)))
         query.where = cp
-        return self._connector.execute_query(project._id, query.to_json())
+        return self._connector.execute_query(
+            project._id,
+            query.to_json(),
+            includes_derived=project._includes_derived,
+            includes_inherited=project._includes_inherited,
+        )
 
     def _resolve_inherited_link(self, project: Project | ScriptingProject):
         """Refresh per-element hash map and owned-name set; proxies are created lazily on access."""
