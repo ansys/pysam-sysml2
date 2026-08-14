@@ -81,6 +81,7 @@ _OWNED_MEMBER = "ownedMember"
 _OWNED_IMPORT = "ownedImport"
 _OWNED_ANNOTATION = "ownedAnnotation"
 _DOCUMENTATION = "documentation"
+_TEXT = "text"
 _OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership"
 _OWNED_FEATURE = "ownedFeature"
 _FEATURE_MEMBERSHIP = "featureMembership"
@@ -218,11 +219,13 @@ def _derive_collections_for_element(element, is_scripting: bool) -> None:
 
     _set_collection(element, _attribute_name(_OWNED_ELEMENT, is_scripting), owned_elements)
     _set_collection(element, _attribute_name(_OWNED_ANNOTATION, is_scripting), owned_annotations)
+    documentation = _filter_by_type(owned_elements, _DOCUMENTATION_TYPE_NAMES)
     _set_collection(
         element,
         _attribute_name(_DOCUMENTATION, is_scripting),
-        _filter_by_type(owned_elements, _DOCUMENTATION_TYPE_NAMES),
+        documentation,
     )
+    _derive_requirement_text(element, documentation, is_scripting)
 
     if _has_type(element, _NAMESPACE_TYPE_NAMES):
         _set_collection(
@@ -510,6 +513,19 @@ def _has_type(element, type_names: frozenset[str]) -> bool:
     """Return whether ``element``'s class name is in ``type_names``."""
     class_name = element.__class__.__name__.split(".")[-1]
     return class_name in type_names
+
+
+def _derive_requirement_text(element, documentation: list, is_scripting: bool) -> None:
+    """Fill ``text`` from documentation bodies when the element exposes ``_text``."""
+    text_attribute = _attribute_name(_TEXT, is_scripting)
+    if not hasattr(element, text_attribute):
+        return
+    bodies = []
+    for document in documentation:
+        body = getattr(document, "_body", None)
+        if body:
+            bodies.append(body)
+    _set_collection(element, text_attribute, bodies)
 
 
 def _as_list(value) -> list:

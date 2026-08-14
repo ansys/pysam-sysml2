@@ -2384,6 +2384,7 @@ class Factory:
             Created element.
         """
         from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+        from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
         element_id = str(uuid4())
         is_scripting = not isinstance(self._project, Project)
@@ -2393,6 +2394,7 @@ class Factory:
         else:
             instance = SysMLElement(element_id)
             instance.__class__ = type(element_type, (SysMLElement,), {})
+            self._init_scripting_observed_lists(instance, element_type)
 
         instance._observer = self._project.get_root_package()._observer
         instance._observer.notify(element_id, "@type", element_type)
@@ -2402,10 +2404,6 @@ class Factory:
                 attr_name = "_" + key
             if isinstance(value, list):
                 if not hasattr(instance, attr_name):
-                    from ansys.sam.sysml2.data_structures.observed_list import (
-                        ObservedList,
-                    )
-
                     setattr(instance, attr_name, ObservedList(owner=instance, name=attr_name))
                 getattr(instance, attr_name).extend(value)
             elif attr_name in ("name", "_name"):
@@ -2415,6 +2413,25 @@ class Factory:
                 setattr(instance, attr_name, value)
         self._project.add_element(instance)
         return instance
+
+    def _init_scripting_observed_lists(self, instance: SysMLElement, element_type: str) -> None:
+        """Copy empty ObservedList slots from the SysML constructor onto a scripting instance."""
+        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+        from ansys.sam.sysml2.data_structures.observed_list import ObservedList
+
+        try:
+            constructor = SysMLUtil.get_sysml_constructor(element_type)
+        except ImportError:
+            return
+
+        prototype = constructor(instance._id)
+        for attribute_name, attribute_value in prototype.__dict__.items():
+            if isinstance(attribute_value, ObservedList):
+                setattr(
+                    instance,
+                    attribute_name,
+                    ObservedList(owner=instance, name=attribute_value._name),
+                )
 
     def _direct_create_element(self, element_type, **kwargs):
         """
