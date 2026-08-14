@@ -43,6 +43,7 @@ from ansys.sam.sysml2.meta_model.owning_membership import OwningMembership
 from ansys.sam.sysml2.meta_model.package import Package
 from ansys.sam.sysml2.meta_model.part_definition import PartDefinition
 from ansys.sam.sysml2.meta_model.reference_subsetting import ReferenceSubsetting
+from ansys.sam.sysml2.meta_model.requirement_usage import RequirementUsage
 from ansys.sam.sysml2.meta_model.subclassification import Subclassification
 from ansys.sam.sysml2.meta_model.subsetting import Subsetting
 from tests.unit.const import PROJECT_ID_1
@@ -113,6 +114,30 @@ class TestFillDerivedCollectionsSysML:
         assert package.owned_annotation == [annotation]
         assert package.owned_import == [namespace_import]
         assert package.owned_member == [documentation]
+
+    def test_requirement_text_from_documentation_body(self):
+        project = ProjectImpl("p1", "project")
+        project._includes_derived = False
+
+        requirement = RequirementUsage("req")
+        documentation = Documentation("doc")
+        documentation.body = "The bicycle shall not exceed 15 kg total weight"
+        owning = OwningMembership("own")
+        owning.owned_member_element = documentation
+        requirement.owned_relationship.append(owning)
+
+        project._env = {
+            requirement.id: requirement,
+            documentation.id: documentation,
+            owning.id: owning,
+        }
+
+        fill_derived_collections(project)
+
+        assert requirement.documentation == [documentation]
+        assert list(requirement.text) == [
+            "The bicycle shall not exceed 15 kg total weight",
+        ]
 
     def test_owned_member_ignores_plain_membership(self):
         project = ProjectImpl("p1", "project")

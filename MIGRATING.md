@@ -509,8 +509,9 @@ project = manager.get_sysml_project(
 
 When `includes_derived=False`, PySAM rebuilds the main local derived collections from
 `ownedRelationship` (and from `inheritedMembership` when present), including for example
-`ownedElement`, `ownedMembership`, `ownedMember`, `ownedFeature`, `feature`, and
-`inheritedFeature`. Unresolved library references are not inserted into those collections.
+`ownedElement`, `ownedMembership`, `ownedMember`, `ownedFeature`, `feature`,
+`inheritedFeature`, and requirement `text` from each attached `documentation.body`.
+Unresolved library references are not inserted into those collections.
 
 ---
 

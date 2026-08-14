@@ -235,19 +235,67 @@ class ModificationObserver:
         """Connect the observer."""
         self._working_observer = True
 
+    @staticmethod
+    def _normalized_fields(
+        stacked_changes: list[tuple[str, Any]],
+    ) -> list[tuple[str, Any]]:
+        """Strip leading underscores from scripting-style field names."""
+        fields = []
+        for field_name, value in stacked_changes:
+            if field_name.startswith("_"):
+                field_name = field_name[1:]
+            fields.append((field_name, value))
+        return fields
+
+    @staticmethod
+    def _is_create(fields: list[tuple[str, Any]]) -> bool:
+        """Return True when the stacked fields include an element ``@type``."""
+        for field_name, _value in fields:
+            if field_name == "@type":
+                return True
+        return False
+
+    @staticmethod
+    def _partition_create_fields_and_list_links(
+        fields: list[tuple[str, Any]],
+    ) -> tuple[list[tuple[str, Any]], list[tuple[str, Any]]]:
+        """Split non-list create fields from list link fields."""
+        create_fields = []
+        list_links = []
+        for field_name, value in fields:
+            if isinstance(value, list):
+                list_links.append((field_name, value))
+            else:
+                create_fields.append((field_name, value))
+        return create_fields, list_links
+
+    def _add_change(self, commit: Commit, element_id: str, fields: list[tuple[str, Any]]) -> None:
+        """Build a DataVersion from fields and append it to the commit."""
+        change = DataVersion()
+        if not element_id.startswith("value:"):
+            change.identify(element_id)
+        for field_name, value in fields:
+            change.add_change(field_name, value)
+        commit.add_change(change)
+
     def _commit_stack(self):
         """Commit all stacked changes."""
         commit = Commit(self._project_id)
-        for key, changes in self._stack.items():
-            change = DataVersion()
-            if not key.startswith("value:"):
-                change.identify(key)
-            for field in changes:
-                field_name = field[0]
-                if field_name.startswith("_"):
-                    field_name = field_name[1:]
-                change.add_change(field_name, field[1])
-            commit.add_change(change)
+        deferred_list_updates = []
+
+        for element_id, stacked_changes in self._stack.items():
+            fields = self._normalized_fields(stacked_changes)
+            if self._is_create(fields):
+                create_fields, list_links = self._partition_create_fields_and_list_links(fields)
+                self._add_change(commit, element_id, create_fields)
+                if list_links:
+                    deferred_list_updates.append((element_id, list_links))
+            else:
+                self._add_change(commit, element_id, fields)
+
+        for element_id, list_links in deferred_list_updates:
+            self._add_change(commit, element_id, list_links)
+
         if len(commit.changes) > 0:
             self._connector.create_commit(self._project_id, commit.to_json())
             self.reload_project()
