@@ -112,7 +112,11 @@ def project_factory(connector, project_manager):
     Usage::
 
         def test_something(project_factory):
-            project = project_factory(model="bike", kind="scripting")
+            project = project_factory(
+                model="bike",
+                kind="scripting",
+                includes_derived=False,
+            )
             ...
 
     Multiple projects may be created in one test; all are cleaned up.
@@ -121,13 +125,26 @@ def project_factory(connector, project_manager):
     """
     created_ids: list[str] = []
 
-    def _load(model: str = "bike", kind: str = "scripting"):
+    def _load(
+        model: str = "bike",
+        kind: str = "scripting",
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
+    ):
         project_id = _create_project(connector, model)
         created_ids.append(project_id)
         if kind == "scripting":
-            return project_manager.get_scripting_project(project_id)
+            return project_manager.get_scripting_project(
+                project_id,
+                includes_derived=includes_derived,
+                includes_inherited=includes_inherited,
+            )
         if kind == "sysml":
-            return project_manager.get_sysml_project(project_id)
+            return project_manager.get_sysml_project(
+                project_id,
+                includes_derived=includes_derived,
+                includes_inherited=includes_inherited,
+            )
         raise ValueError(f"Unknown project kind: {kind!r}")
 
     yield _load
