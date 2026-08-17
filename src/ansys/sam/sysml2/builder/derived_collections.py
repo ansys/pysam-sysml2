@@ -25,7 +25,6 @@
 from __future__ import annotations
 
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 from ansys.sam.sysml2.meta_model.allocation_definition import AllocationDefinition
@@ -168,39 +167,30 @@ _SCALAR_DEFINITION_TYPE_NAMES = tuple(
 )
 
 
-def fill_derived_collections(project: Project | ScriptingProject) -> None:
+def fill_derived_collections(project: Project) -> None:
     """
     Populate main derived collections when the API omitted them.
 
     Parameters
     ----------
-    project : Project | ScriptingProject
+    project : Project
         Built project whose elements already have resolved relationships.
     """
     if getattr(project, "_includes_derived", True):
         return
 
-    is_scripting = isinstance(project, ScriptingProject)
     for element in project._env.values():
-        _derive_collections_for_element(element, is_scripting)
+        _derive_collections_for_element(element)
 
 
-def _attribute_name(json_key: str, is_scripting: bool) -> str:
-    """
-    Resolve an API JSON key to the Python attribute used by mappers.
-
-    Scripting stores ``_ownedElement``; SysML stores ``_owned_element``.
-    """
-    if is_scripting:
-        return "_" + json_key
+def _attribute_name(json_key: str) -> str:
+    """Resolve an API JSON key to the metamodel ``_snake_case`` attribute."""
     return NameUtils.to_key(json_key)
 
 
-def _derive_collections_for_element(element, is_scripting: bool) -> None:
+def _derive_collections_for_element(element) -> None:
     """Fill owned/inherited/typing collections for one element from its relationships."""
-    owned_relationships = _as_list(
-        getattr(element, _attribute_name(_OWNED_RELATIONSHIP, is_scripting), None)
-    )
+    owned_relationships = _as_list(getattr(element, _attribute_name(_OWNED_RELATIONSHIP), None))
 
     owned_memberships = _filter_by_type(owned_relationships, _MEMBERSHIP_TYPE_NAMES)
     owning_memberships = _filter_by_type(owned_relationships, _OWNING_MEMBERSHIP_TYPE_NAMES)
@@ -209,33 +199,29 @@ def _derive_collections_for_element(element, is_scripting: bool) -> None:
     owned_imports = _filter_by_type(owned_relationships, _IMPORT_TYPE_NAMES)
 
     # KerML Element::ownedElement = ownedRelationship.ownedRelatedElement.
-    owned_elements = _collect_owned_related_elements(owned_relationships, is_scripting)
+    owned_elements = _collect_owned_related_elements(owned_relationships)
     owned_members = _collect_targets(
         owning_memberships,
-        _attribute_name(_OWNED_MEMBER_ELEMENT, is_scripting),
+        _attribute_name(_OWNED_MEMBER_ELEMENT),
     )
     # Fall back to ownedMemberElement when ownedRelatedElement is empty (unit fixtures).
     owned_elements = _dedupe_preserve_order(owned_elements + owned_members)
 
-    _set_collection(element, _attribute_name(_OWNED_ELEMENT, is_scripting), owned_elements)
-    _set_collection(element, _attribute_name(_OWNED_ANNOTATION, is_scripting), owned_annotations)
+    _set_collection(element, _attribute_name(_OWNED_ELEMENT), owned_elements)
+    _set_collection(element, _attribute_name(_OWNED_ANNOTATION), owned_annotations)
     documentation = _filter_by_type(owned_elements, _DOCUMENTATION_TYPE_NAMES)
-    _set_collection(
-        element,
-        _attribute_name(_DOCUMENTATION, is_scripting),
-        documentation,
-    )
-    _derive_requirement_text(element, documentation, is_scripting)
+    _set_collection(element, _attribute_name(_DOCUMENTATION), documentation)
+    _derive_requirement_text(element, documentation)
 
     if _has_type(element, _NAMESPACE_TYPE_NAMES):
         _set_collection(
             element,
-            _attribute_name(_OWNED_MEMBERSHIP, is_scripting),
+            _attribute_name(_OWNED_MEMBERSHIP),
             owned_memberships,
         )
         # ownedMember is OwningMembership targets only (may be narrower than ownedElement).
-        _set_collection(element, _attribute_name(_OWNED_MEMBER, is_scripting), owned_members)
-        _set_collection(element, _attribute_name(_OWNED_IMPORT, is_scripting), owned_imports)
+        _set_collection(element, _attribute_name(_OWNED_MEMBER), owned_members)
+        _set_collection(element, _attribute_name(_OWNED_IMPORT), owned_imports)
 
     if not _has_type(element, _TYPE_TYPE_NAMES):
         return
@@ -243,80 +229,76 @@ def _derive_collections_for_element(element, is_scripting: bool) -> None:
     owned_specializations = _filter_by_type(owned_relationships, _SPECIALIZATION_TYPE_NAMES)
     _set_collection(
         element,
-        _attribute_name(_OWNED_SPECIALIZATION, is_scripting),
+        _attribute_name(_OWNED_SPECIALIZATION),
         owned_specializations,
     )
 
-    owned_features = _collect_features_from_memberships(feature_memberships, is_scripting)
+    owned_features = _collect_features_from_memberships(feature_memberships)
     inherited_feature_memberships = _filter_by_type(
-        _as_list(getattr(element, _attribute_name(_INHERITED_MEMBERSHIP, is_scripting), None)),
+        _as_list(getattr(element, _attribute_name(_INHERITED_MEMBERSHIP), None)),
         _FEATURE_MEMBERSHIP_TYPE_NAMES,
     )
-    inherited_features = _collect_features_from_memberships(
-        inherited_feature_memberships, is_scripting
-    )
+    inherited_features = _collect_features_from_memberships(inherited_feature_memberships)
 
     _set_collection(
         element,
-        _attribute_name(_OWNED_FEATURE_MEMBERSHIP, is_scripting),
+        _attribute_name(_OWNED_FEATURE_MEMBERSHIP),
         feature_memberships,
     )
-    _set_collection(element, _attribute_name(_OWNED_FEATURE, is_scripting), owned_features)
+    _set_collection(element, _attribute_name(_OWNED_FEATURE), owned_features)
     _set_collection(
         element,
-        _attribute_name(_INHERITED_FEATURE, is_scripting),
+        _attribute_name(_INHERITED_FEATURE),
         inherited_features,
     )
     _set_collection(
         element,
-        _attribute_name(_FEATURE_MEMBERSHIP, is_scripting),
+        _attribute_name(_FEATURE_MEMBERSHIP),
         feature_memberships + inherited_feature_memberships,
     )
     _set_collection(
         element,
-        _attribute_name(_FEATURE, is_scripting),
+        _attribute_name(_FEATURE),
         owned_features + inherited_features,
     )
 
     if _has_type(element, _FEATURE_TYPE_NAMES):
-        _derive_feature_typing_collections(element, owned_relationships, is_scripting)
+        _derive_feature_typing_collections(element, owned_relationships)
 
 
-def _derive_feature_typing_collections(
-    feature, owned_relationships: list, is_scripting: bool
-) -> None:
+def _derive_feature_typing_collections(feature, owned_relationships: list) -> None:
     """Fill typing-related derived collections for a Feature (KerML deriveFeatureType)."""
     owned_typings = _filter_by_type(owned_relationships, _FEATURE_TYPING_TYPE_NAMES)
     owned_subsettings = _filter_by_type(owned_relationships, _SUBSETTING_TYPE_NAMES)
     owned_redefinitions = _filter_by_type(owned_relationships, _REDEFINITION_TYPE_NAMES)
     chaining_features = _collect_targets(
         _filter_by_type(owned_relationships, _FEATURE_CHAINING_TYPE_NAMES),
-        _attribute_name(_CHAINING_FEATURE, is_scripting),
+        _attribute_name(_CHAINING_FEATURE),
     )
 
-    _set_collection(feature, _attribute_name(_OWNED_TYPING, is_scripting), owned_typings)
+    _set_collection(feature, _attribute_name(_OWNED_TYPING), owned_typings)
     _set_collection(
         feature,
-        _attribute_name(_OWNED_SUBSETTING, is_scripting),
+        _attribute_name(_OWNED_SUBSETTING),
         owned_subsettings,
     )
     _set_collection(
         feature,
-        _attribute_name(_OWNED_REDEFINITION, is_scripting),
+        _attribute_name(_OWNED_REDEFINITION),
         owned_redefinitions,
     )
     _set_collection(
         feature,
-        _attribute_name(_CHAINING_FEATURE, is_scripting),
+        _attribute_name(_CHAINING_FEATURE),
         chaining_features,
     )
 
-    feature_types = _collect_feature_types(feature, is_scripting, visited=set())
+    feature_types = _collect_feature_types(feature, visited=set())
     if not feature_types:
-        enumeration_definition = _resolve_enumeration_definition(feature, is_scripting)
+        enumeration_definition = _resolve_enumeration_definition(feature)
         if enumeration_definition is not None:
             feature_types = [enumeration_definition]
-    _set_collection(feature, _attribute_name(_TYPE, is_scripting), feature_types)
+    _set_collection(feature, _attribute_name(_TYPE), feature_types)
 
     if not _has_type(feature, _USAGE_TYPE_NAMES):
         return
@@ -324,11 +306,11 @@ def _derive_feature_typing_collections(
     definitions = _filter_by_type(feature_types, _CLASSIFIER_TYPE_NAMES)
     if not definitions:
         definitions = feature_types
-    _set_collection(feature, _attribute_name(_DEFINITION, is_scripting), definitions)
-    _fill_definition_views(feature, definitions, is_scripting)
+    _set_collection(feature, _attribute_name(_DEFINITION), definitions)
+    _fill_definition_views(feature, definitions)
 
 
-def _collect_feature_types(feature, is_scripting: bool, visited: set[int]) -> list:
+def _collect_feature_types(feature, visited: set[int]) -> list:
     """
     Collect Feature types per KerML deriveFeatureType (local graph in ``_env``).
 
@@ -340,58 +322,56 @@ def _collect_feature_types(feature, is_scripting: bool, visited: set[int]) -> li
         return []
     visited.add(feature_key)
 
-    owned_relationships = _as_list(
-        getattr(feature, _attribute_name(_OWNED_RELATIONSHIP, is_scripting), None)
-    )
+    owned_relationships = _as_list(getattr(feature, _attribute_name(_OWNED_RELATIONSHIP), None))
     types = []
 
     for typing in _filter_by_type(owned_relationships, _FEATURE_TYPING_TYPE_NAMES):
-        typing_type = _resolve_typing_type(typing, is_scripting)
+        typing_type = _resolve_typing_type(typing)
         if typing_type is not None:
             types.append(typing_type)
 
     for subsetting in _filter_by_type(owned_relationships, _SUBSETTING_TYPE_NAMES):
-        subsetted = _resolve_subsetted_feature(subsetting, is_scripting)
+        subsetted = _resolve_subsetted_feature(subsetting)
         if subsetted is not None:
-            types.extend(_collect_feature_types(subsetted, is_scripting, visited))
+            types.extend(_collect_feature_types(subsetted, visited))
 
     chaining_features = _collect_targets(
         _filter_by_type(owned_relationships, _FEATURE_CHAINING_TYPE_NAMES),
-        _attribute_name(_CHAINING_FEATURE, is_scripting),
+        _attribute_name(_CHAINING_FEATURE),
     )
     if chaining_features:
-        types.extend(_collect_feature_types(chaining_features[-1], is_scripting, visited))
+        types.extend(_collect_feature_types(chaining_features[-1], visited))
 
     return _dedupe_preserve_order(types)
 
 
-def _resolve_typing_type(typing, is_scripting: bool):
+def _resolve_typing_type(typing):
     """Return the Type applied by a FeatureTyping, if resolved."""
-    type_attribute = _attribute_name(_TYPE, is_scripting)
-    general_attribute = _attribute_name(_GENERAL, is_scripting)
+    type_attribute = _attribute_name(_TYPE)
+    general_attribute = _attribute_name(_GENERAL)
     typing_type = getattr(typing, type_attribute, None)
-    if typing_type is None and not is_scripting:
+    if typing_type is None:
         typing_type = getattr(typing, "type_", None)
     if typing_type is None:
         typing_type = getattr(typing, general_attribute, None)
-        if typing_type is None and not is_scripting:
+        if typing_type is None:
             typing_type = getattr(typing, "general", None)
     if typing_type is None or isinstance(typing_type, UnresolvedField):
         return None
     return typing_type
 
 
-def _resolve_subsetted_feature(subsetting, is_scripting: bool):
+def _resolve_subsetted_feature(subsetting):
     """Return the subsetted/redefined feature of a Subsetting, if resolved."""
-    subsetted_attribute = _attribute_name(_SUBSETTED_FEATURE, is_scripting)
-    redefined_attribute = _attribute_name(_REDEFINED_FEATURE, is_scripting)
-    general_attribute = _attribute_name(_GENERAL, is_scripting)
+    subsetted_attribute = _attribute_name(_SUBSETTED_FEATURE)
+    redefined_attribute = _attribute_name(_REDEFINED_FEATURE)
+    general_attribute = _attribute_name(_GENERAL)
     subsetted = getattr(subsetting, subsetted_attribute, None)
     if subsetted is None:
         subsetted = getattr(subsetting, redefined_attribute, None)
     if subsetted is None:
         subsetted = getattr(subsetting, general_attribute, None)
-        if subsetted is None and not is_scripting:
+        if subsetted is None:
             subsetted = getattr(subsetting, "general", None)
     if subsetted is None or isinstance(subsetted, UnresolvedField):
         return None
@@ -400,36 +380,34 @@ def _resolve_subsetted_feature(subsetting, is_scripting: bool):
     return subsetted
 
 
-def _fill_definition_views(usage, definitions: list, is_scripting: bool) -> None:
+def _fill_definition_views(usage, definitions: list) -> None:
     """Fill Usage *Definition views filtered from ``definitions``."""
     for json_key, type_names in _LIST_DEFINITION_TYPE_NAMES:
-        if not _usage_has_definition_attribute(usage, json_key, is_scripting):
+        if not _usage_has_definition_attribute(usage, json_key):
             continue
         matches = _filter_by_type(definitions, type_names)
-        _set_collection(usage, _attribute_name(json_key, is_scripting), matches)
+        _set_collection(usage, _attribute_name(json_key), matches)
 
     for json_key, type_names in _SCALAR_DEFINITION_TYPE_NAMES:
-        if not _usage_has_definition_attribute(usage, json_key, is_scripting):
+        if not _usage_has_definition_attribute(usage, json_key):
             continue
         matches = _filter_by_type(definitions, type_names)
-        attribute_name = _attribute_name(json_key, is_scripting)
+        attribute_name = _attribute_name(json_key)
         setattr(usage, attribute_name, matches[0] if matches else None)
 
 
-def _usage_has_definition_attribute(usage, json_key: str, is_scripting: bool) -> bool:
+def _usage_has_definition_attribute(usage, json_key: str) -> bool:
     """Return whether ``usage`` exposes the given definition attribute."""
-    attribute_name = _attribute_name(json_key, is_scripting)
+    attribute_name = _attribute_name(json_key)
     if hasattr(usage, attribute_name):
         return True
-    if is_scripting:
-        return False
     snake = NameUtils.to_snake_case(json_key)
     return hasattr(usage, snake)
 
 
-def _collect_owned_related_elements(owned_relationships: list, is_scripting: bool) -> list:
+def _collect_owned_related_elements(owned_relationships: list) -> list:
     """Collect resolved ``ownedRelatedElement`` targets from all owned relationships."""
-    owned_related_element = _attribute_name(_OWNED_RELATED_ELEMENT, is_scripting)
+    owned_related_element = _attribute_name(_OWNED_RELATED_ELEMENT)
     elements = []
     for relationship in owned_relationships:
         for target in _as_list(getattr(relationship, owned_related_element, None)):
@@ -439,22 +417,22 @@ def _collect_owned_related_elements(owned_relationships: list, is_scripting: boo
     return elements
 
 
-def _resolve_enumeration_definition(feature, is_scripting: bool):
+def _resolve_enumeration_definition(feature):
     """Return a resolved ``enumerationDefinition`` already present on the feature, if any."""
-    attribute_name = _attribute_name(_ENUMERATION_DEFINITION, is_scripting)
+    attribute_name = _attribute_name(_ENUMERATION_DEFINITION)
     enumeration_definition = getattr(feature, attribute_name, None)
-    if enumeration_definition is None and not is_scripting:
+    if enumeration_definition is None:
         enumeration_definition = getattr(feature, "enumeration_definition", None)
     if enumeration_definition is None or isinstance(enumeration_definition, UnresolvedField):
         return None
     return enumeration_definition
 
 
-def _collect_features_from_memberships(feature_memberships: list, is_scripting: bool) -> list:
+def _collect_features_from_memberships(feature_memberships: list) -> list:
     """Return resolved features pointed by feature memberships."""
-    owned_member_feature = _attribute_name(_OWNED_MEMBER_FEATURE, is_scripting)
-    owned_member_element = _attribute_name(_OWNED_MEMBER_ELEMENT, is_scripting)
-    member_element = _attribute_name(_MEMBER_ELEMENT, is_scripting)
+    owned_member_feature = _attribute_name(_OWNED_MEMBER_FEATURE)
+    owned_member_element = _attribute_name(_OWNED_MEMBER_ELEMENT)
+    member_element = _attribute_name(_MEMBER_ELEMENT)
     features = []
     for membership in feature_memberships:
         feature = getattr(membership, owned_member_feature, None)
@@ -515,9 +493,9 @@ def _has_type(element, type_names: frozenset[str]) -> bool:
     return class_name in type_names
 
 
-def _derive_requirement_text(element, documentation: list, is_scripting: bool) -> None:
+def _derive_requirement_text(element, documentation: list) -> None:
     """Fill ``text`` from documentation bodies when the element exposes ``_text``."""
-    text_attribute = _attribute_name(_TEXT, is_scripting)
+    text_attribute = _attribute_name(_TEXT)
     if not hasattr(element, text_attribute):
         return
     bodies = []

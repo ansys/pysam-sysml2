@@ -29,7 +29,6 @@ from ansys.sam.sysml2.builder.sysml2_project_manager import (
     _ProjectCacheKey,
 )
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 from ansys.sam.sysml2.exception.connector_exception import (
     ConnectorConnectionException,
     ProjectAlreadyExistsException,
@@ -165,15 +164,17 @@ class TestSysML2ProjectManagerSysML:
 class TestSysML2ProjectManagerEdgeCases:
 
     def test_dual_mode_cache_override(self, connector):
-        """Loading same project as scripting then sysml must return different types."""
+        """Both modes share the generated metamodel; scripting is flagged via ``_scripting``."""
         manager = SysML2ProjectManager(connector)
 
         scripting = manager.get_scripting_project(PROJECT_ID_1)
         sysml = manager.get_sysml_project(PROJECT_ID_1)
 
-        assert isinstance(scripting, ScriptingProject)
+        assert isinstance(scripting, Project)
         assert isinstance(sysml, Project)
-        assert type(scripting) != type(sysml)
+        assert scripting is not sysml
+        assert scripting._scripting is True
+        assert getattr(sysml, "_scripting", False) is False
 
     def test_update_invalidates_cache(self, connector):
         """After update, the cached project is evicted and must be rebuilt."""

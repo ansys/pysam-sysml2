@@ -65,14 +65,12 @@ def _patch_completer():
     try:
         from IPython.utils.generics import complete_object
 
-        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
         from ansys.sam.sysml2.meta_model.e_object import EObject
     except ImportError:
         return
     register = getattr(complete_object, "register", None)
     if register is None:
         register = complete_object.when_type
-    register(SysMLElement, _complete_element_attrs)
     register(EObject, _complete_element_attrs)
 
 

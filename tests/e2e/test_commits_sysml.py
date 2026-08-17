@@ -79,3 +79,13 @@ class TestCommitsSysML:
 
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit(project.get_id(), commit.to_json())
+
+    def test_unknown_attribute_stays_local_via_sysml(self, project_factory):
+        """Unknown sysml fields stay local and do not commit to the server."""
+        project = project_factory(model="bike", kind="sysml")
+        bike = project.get_root_package().get("Structure").get("Bike")
+
+        bike.invalid_key = "SomeValue"
+
+        assert bike.invalid_key == "SomeValue"
+        assert not hasattr(type(bike), "invalid_key")

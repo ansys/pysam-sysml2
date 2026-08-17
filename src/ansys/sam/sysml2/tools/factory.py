@@ -25,8 +25,6 @@ from uuid import uuid4
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 from ansys.sam.sysml2.meta_model.accept_action_usage import AcceptActionUsage as AcceptActionUsage
@@ -326,17 +324,15 @@ class Factory:
     """Provides the Python factory class for creating new SysML elements."""
 
     _project_id: str
-    _project: Project | ScriptingProject
+    _project: Project
     _connector: AnsysSysML2APIConnector
 
-    def __init__(
-        self, project: Project | ScriptingProject, connector: AnsysSysML2APIConnector
-    ) -> None:
+    def __init__(self, project: Project, connector: AnsysSysML2APIConnector) -> None:
         """Initialize a new instance.
 
         Parameters
         ----------
-        project: Project | ScriptingProject
+        project: Project
             Project to be modified by the factory.
         connector: AnsysSysML2APIConnector
             Connector to make API calls.
@@ -2349,7 +2345,7 @@ class Factory:
         """
         return self._create_element("WhileLoopActionUsage", **kwargs)
 
-    def _create_element(self, element_type: str, **kwargs) -> Element | SysMLElement:
+    def _create_element(self, element_type: str, **kwargs) -> Element:
         """Create a new element in the model and return it.
 
         Parameters
@@ -2361,7 +2357,7 @@ class Factory:
 
         Returns
         -------
-        Element | SysMLElement
+        Element
             Created element.
         """
         if self._project.get_root_package()._observer._is_transactional_mode:
@@ -2380,58 +2376,30 @@ class Factory:
 
         Returns
         -------
-        [SysMLElement|Element]
+        Element
             Created element.
         """
         from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
         from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
         element_id = str(uuid4())
-        is_scripting = not isinstance(self._project, Project)
-        if not is_scripting:
-            constructor = SysMLUtil.get_sysml_constructor(element_type)
-            instance = constructor(element_id)
+        if getattr(self._project, "_scripting", False):
+            constructor = SysMLUtil.get_scripting_constructor(element_type)
         else:
-            instance = SysMLElement(element_id)
-            instance.__class__ = type(element_type, (SysMLElement,), {})
-            self._init_scripting_observed_lists(instance, element_type)
+            constructor = SysMLUtil.get_sysml_constructor(element_type)
+        instance = constructor(element_id)
 
         instance._observer = self._project.get_root_package()._observer
         instance._observer.notify(element_id, "@type", element_type)
         for key, value in kwargs.items():
-            attr_name = key
-            if is_scripting and not key.startswith("_"):
-                attr_name = "_" + key
             if isinstance(value, list):
-                if not hasattr(instance, attr_name):
-                    setattr(instance, attr_name, ObservedList(owner=instance, name=attr_name))
-                getattr(instance, attr_name).extend(value)
-            elif attr_name in ("name", "_name"):
-                object.__setattr__(instance, "_name", value)
-                instance._observer.notify(instance._id, attr_name, value)
+                if not hasattr(instance, key):
+                    setattr(instance, key, ObservedList(owner=instance, name=key))
+                getattr(instance, key).extend(value)
             else:
-                setattr(instance, attr_name, value)
+                setattr(instance, key, value)
         self._project.add_element(instance)
         return instance
-
-    def _init_scripting_observed_lists(self, instance: SysMLElement, element_type: str) -> None:
-        """Copy empty ObservedList slots from the SysML constructor onto a scripting instance."""
-        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
-        from ansys.sam.sysml2.data_structures.observed_list import ObservedList
-
-        try:
-            constructor = SysMLUtil.get_sysml_constructor(element_type)
-        except ImportError:
-            return
-
-        prototype = constructor(instance._id)
-        for attribute_name, attribute_value in prototype.__dict__.items():
-            if isinstance(attribute_value, ObservedList):
-                setattr(
-                    instance,
-                    attribute_name,
-                    ObservedList(owner=instance, name=attribute_value._name),
-                )
 
     def _direct_create_element(self, element_type, **kwargs):
         """
@@ -2444,7 +2412,7 @@ class Factory:
 
         Returns
         -------
-        [SysMLElement|Element]
+        Element
             Created element.
         """
         existing_elements = set(self._project._env.keys())
@@ -2484,7 +2452,7 @@ class Factory:
 
         Returns
         -------
-        SysMLElement
+        Element
             Created element.
         """
         from ansys.sam.sysml2.tools import SysMLTools

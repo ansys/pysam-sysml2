@@ -23,23 +23,31 @@
 """Tests for SysMLUtil name resolution."""
 
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+
+_ID = "53f1d978-9696-4c68-bb93-4d38571fa4a5"
 
 
 class TestCheckInheritedName:
-    """Scripting fallback names must be dot-safe Python identifiers."""
+    """No-name fallback differs: sysml uses ``::``, scripting uses a dot-safe identifier."""
 
-    def test_returns_real_name_when_present(self):
-        element = SysMLElement("53f1d978-9696-4c68-bb93-4d38571fa4a5")
-        object.__setattr__(element, "_name", "MyPart")
+    def _make_part_definition(self):
+        return SysMLUtil.get_sysml_constructor("PartDefinition")(_ID)
 
-        assert SysMLUtil.check_inherited_name(element) == "MyPart"
+    def test_returns_declared_name_when_present(self):
+        element = self._make_part_definition()
+        element.declared_name = "MyPart"
 
-    def test_fallback_replaces_colons_and_dashes_with_underscores(self):
-        part_def_cls = type("PartDefinition", (SysMLElement,), {})
-        element = part_def_cls("53f1d978-9696-4c68-bb93-4d38571fa4a5")
+        assert SysMLUtil.check_sysml_inherited_name(element) == "MyPart"
 
-        resolved = SysMLUtil.check_inherited_name(element)
+    def test_sysml_fallback_uses_double_colon(self):
+        element = self._make_part_definition()
+
+        assert SysMLUtil.check_sysml_inherited_name(element) == f"PartDefinition::{_ID}"
+
+    def test_scripting_fallback_is_dot_safe_identifier(self):
+        element = self._make_part_definition()
+
+        resolved = SysMLUtil.check_sysml_inherited_name(element, dot_safe=True)
 
         assert resolved == "PartDefinition_53f1d978_9696_4c68_bb93_4d38571fa4a5"
         assert "::" not in resolved

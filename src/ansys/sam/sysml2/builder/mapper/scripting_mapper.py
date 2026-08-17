@@ -19,135 +19,15 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+"""Scripting mapper reusing the SysML mapping on scripting-notation classes."""
 
-"""JSON mapper class."""
-
-from ansys.sam.sysml2.builder.mapper.mapper import Mapper
-from ansys.sam.sysml2.classes.mapped_element import MappedElement
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
-from ansys.sam.sysml2.exception.mapper_exception import (
-    InvalidProjectJSONMapperException,
-)
-
-TYPE_KEY = "@type"
+from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+from ansys.sam.sysml2.builder.mapper.sysml_mapper import SysMLMapper
 
 
-class ScriptingMapper(Mapper):
-    """JSON mapper for scripting-layer SysML elements."""
+class ScriptingMapper(SysMLMapper):
+    """JSON mapper building generated elements composed with the dynamic mixin."""
 
-    class_cache = {}
-
-    def map(
-        self,
-        json_element: dict,
-        mapped_element: SysMLElement,
-        resolve_libraries: bool = False,
-    ) -> MappedElement:
-        """
-        Map the JSON into a python element.
-
-        Parameters
-        ----------
-        json_element : dict
-            Element data.
-        mapped_element : SysMLElement
-            Existing element.
-        resolve_libraries : bool, default: False
-            When ``True``, keep library elements' unresolved references so their contents
-            are resolved and mapped.
-
-        Returns
-        -------
-        MappedElement
-            Mapped element.
-        """
-        if TYPE_KEY not in json_element:
-            raise InvalidProjectJSONMapperException("Not valid sysml element data")
-
-        return self.__build_element(json_element, mapped_element, resolve_libraries)
-
-    def __build_element(
-        self,
-        data: dict,
-        element: SysMLElement | None,
-        resolve_libraries: bool = False,
-    ) -> MappedElement:
-        """
-        Map element data to python object.
-
-        Parameters
-        ----------
-        data : dict
-            Element data.
-        element : SysMLElement
-            Existing element.
-        resolve_libraries : bool, default: False
-            When ``True``, keep library elements' unresolved references so their contents
-            are resolved and mapped.
-
-        Returns
-        -------
-        MappedElement
-            Mapped element with the SysML element and its unresolved fields.
-        """
-        unresolved_fields = []
-        if element is None:
-            element = SysMLElement(element_id=data["@id"])
-        self.__update_element_definition(data, element)
-        for k, v in data.items():
-            if not k.startswith("@"):
-                unresolved_fields.extend(self.__add_fields(element, k, v))
-        if not resolve_libraries and getattr(element, "_isLibraryElement", False):
-            unresolved_fields = []
-        return MappedElement(element, unresolved_fields)
-
-    def __update_element_definition(self, data: dict, element: SysMLElement) -> None:
-        """
-        Update the default SysML element definition to the SysML element.
-
-        Parameters
-        ----------
-        data : dict
-            Element data.
-        element : SysMLElement
-            Associated element.
-        """
-        element_type = data[TYPE_KEY]
-        try:
-            element.__class__ = self.class_cache[element_type]
-        except KeyError:
-            self.class_cache[element_type] = type(element_type, (SysMLElement,), {})
-            element.__class__ = self.class_cache[element_type]
-
-    def __add_fields(
-        self,
-        element: SysMLElement,
-        field_name: str,
-        field_values: dict | list | str,
-    ) -> list[UnresolvedField]:
-        """
-        Associate element and value with key.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            Destination element.
-        field_name : str
-            Field name.
-        field_values : dict | list | str
-            Field value.
-
-        Returns
-        -------
-        List[UnresolvedField]
-            List of all unresolved fields.
-        """
-        field_values = self._convert_enum(element, field_name, field_values)
-        field_name = "_" + field_name
-        if isinstance(field_values, list):
-            return self._add_list_to_field(element, field_name, field_values)
-        if isinstance(field_values, dict):
-            return self._add_element_to_field(element, field_name, field_values)
-        else:
-            return self._add_default_field(element, field_name, field_values)
+    def _get_constructor(self, element_type: str):
+        """Get the scripting constructor for the element type."""
+        return SysMLUtil.get_scripting_constructor(element_type)

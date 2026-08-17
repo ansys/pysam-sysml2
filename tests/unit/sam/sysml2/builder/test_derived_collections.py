@@ -23,10 +23,10 @@
 """Unit tests for client-side derived collection filling."""
 
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
-from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
+from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.builder.derived_collections import fill_derived_collections
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.classes.dynamic_e_object import DynamicEObject
 from ansys.sam.sysml2.meta_model.annotation import Annotation
 from ansys.sam.sysml2.meta_model.attribute_definition import AttributeDefinition
 from ansys.sam.sysml2.meta_model.attribute_usage import AttributeUsage
@@ -372,23 +372,28 @@ class TestFillDerivedCollectionsSysML:
 class TestFillDerivedCollectionsScripting:
 
     def test_owned_element_and_owned_member_from_owning_membership(self):
-        project = ScriptingProjectImpl("p1", "project")
+        project = ProjectImpl("p1", "project")
+        project._scripting = True
         project._includes_derived = False
 
-        package = SysMLElement("pkg")
-        package.__class__ = type("Package", (SysMLElement,), {})
-        child = SysMLElement("child")
-        child.__class__ = type("PartDefinition", (SysMLElement,), {})
-        owning = SysMLElement("own")
-        owning.__class__ = type("OwningMembership", (SysMLElement,), {})
+        package = SysMLUtil.get_scripting_constructor("Package")("pkg")
+        child = SysMLUtil.get_scripting_constructor("PartDefinition")("child")
+        owning = SysMLUtil.get_scripting_constructor("OwningMembership")("own")
+
         owning._ownedMemberElement = child
-        owning._ownedRelatedElement = [child]
-        package._ownedRelationship = [owning]
+        try:
+            owning._ownedRelatedElement = [child]
+        except AttributeError:
+            owning._ownedRelatedElement.append(child)
+        try:
+            package._ownedRelationship = [owning]
+        except AttributeError:
+            package._ownedRelationship.append(owning)
 
         project._env = {
-            package._id: package,
-            child._id: child,
-            owning._id: owning,
+            package.id: package,
+            child.id: child,
+            owning.id: owning,
         }
 
         fill_derived_collections(project)
@@ -412,7 +417,7 @@ class TestSysML2ProjectBuilderDerivedCollections:
         root = project.get_root_package()
         assert root._ownedElement
         assert root._ownedMember
-        assert all(isinstance(child, SysMLElement) for child in root._ownedElement)
+        assert all(isinstance(child, DynamicEObject) for child in root._ownedElement)
 
     def test_build_sysml_project_without_derived_fills_owned_element(self, connector):
         builder = SysML2ProjectBuilder(connector)

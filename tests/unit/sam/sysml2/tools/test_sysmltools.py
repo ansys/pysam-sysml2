@@ -24,7 +24,7 @@
 
 import pytest
 
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.feature import Feature
 from ansys.sam.sysml2.meta_model.feature_membership import FeatureMembership
@@ -36,7 +36,7 @@ from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 class TestGetElementVisibility:
     """Visibility is read from the element's owning membership, for both flavors."""
 
-    def test_metamodel_reads_owning_membership_visibility(self):
+    def test_sysml_reads_owning_membership_visibility(self):
         element = Element("element_id")
         membership = OwningMembership("membership_id")
         membership.visibility = VisibilityKind.PUBLIC
@@ -44,7 +44,7 @@ class TestGetElementVisibility:
 
         assert SysMLTools.get_element_visibility(element) == VisibilityKind.PUBLIC
 
-    def test_metamodel_falls_back_to_owning_feature_membership(self):
+    def test_sysml_falls_back_to_owning_feature_membership(self):
         feature = Feature("feature_id")
         membership = FeatureMembership("membership_id")
         membership.visibility = VisibilityKind.PUBLIC
@@ -52,29 +52,29 @@ class TestGetElementVisibility:
 
         assert SysMLTools.get_element_visibility(feature) == VisibilityKind.PUBLIC
 
-    def test_metamodel_without_owning_membership_returns_none(self):
+    def test_sysml_without_owning_membership_returns_none(self):
         element = Element("element_id")
 
         assert SysMLTools.get_element_visibility(element) is None
 
     def test_scripting_reads_owning_membership_visibility(self):
-        element = SysMLElement("element_id")
-        membership = SysMLElement("membership_id")
-        object.__setattr__(membership, "_visibility", VisibilityKind.PRIVATE)
+        element = SysMLUtil.get_scripting_constructor("PartUsage")("element_id")
+        membership = SysMLUtil.get_scripting_constructor("OwningMembership")("membership_id")
+        membership._visibility = VisibilityKind.PRIVATE
         element._owningMembership = membership
 
         assert SysMLTools.get_element_visibility(element) == VisibilityKind.PRIVATE
 
     def test_scripting_falls_back_to_owning_feature_membership(self):
-        element = SysMLElement("element_id")
-        membership = SysMLElement("membership_id")
-        object.__setattr__(membership, "_visibility", VisibilityKind.PUBLIC)
+        element = SysMLUtil.get_scripting_constructor("PartUsage")("element_id")
+        membership = SysMLUtil.get_scripting_constructor("FeatureMembership")("membership_id")
+        membership._visibility = VisibilityKind.PUBLIC
         element._owningFeatureMembership = membership
 
         assert SysMLTools.get_element_visibility(element) == VisibilityKind.PUBLIC
 
     def test_scripting_without_owning_membership_returns_none(self):
-        element = SysMLElement("element_id")
+        element = SysMLUtil.get_scripting_constructor("PartUsage")("element_id")
 
         assert SysMLTools.get_element_visibility(element) is None
 
@@ -82,7 +82,7 @@ class TestGetElementVisibility:
 class TestSetElementVisibility:
     """Visibility is written on the element's owning membership, for both flavors."""
 
-    def test_metamodel_sets_owning_membership_visibility(self):
+    def test_sysml_sets_owning_membership_visibility(self):
         element = Element("element_id")
         membership = OwningMembership("membership_id")
         element.owning_membership = membership
@@ -91,7 +91,7 @@ class TestSetElementVisibility:
 
         assert membership.visibility == VisibilityKind.PUBLIC
 
-    def test_metamodel_sets_owning_feature_membership_visibility(self):
+    def test_sysml_sets_owning_feature_membership_visibility(self):
         feature = Feature("feature_id")
         membership = FeatureMembership("membership_id")
         feature.owning_feature_membership = membership
@@ -101,8 +101,8 @@ class TestSetElementVisibility:
         assert membership.visibility == VisibilityKind.PRIVATE
 
     def test_scripting_sets_owning_membership_visibility(self):
-        element = SysMLElement("element_id")
-        membership = SysMLElement("membership_id")
+        element = SysMLUtil.get_scripting_constructor("PartUsage")("element_id")
+        membership = SysMLUtil.get_scripting_constructor("OwningMembership")("membership_id")
         element._owningMembership = membership
 
         SysMLTools.set_element_visibility(element, VisibilityKind.PROTECTED)
@@ -110,8 +110,8 @@ class TestSetElementVisibility:
         assert membership._visibility == VisibilityKind.PROTECTED
 
     def test_scripting_sets_owning_feature_membership_visibility(self):
-        element = SysMLElement("element_id")
-        membership = SysMLElement("membership_id")
+        element = SysMLUtil.get_scripting_constructor("PartUsage")("element_id")
+        membership = SysMLUtil.get_scripting_constructor("FeatureMembership")("membership_id")
         element._owningFeatureMembership = membership
 
         SysMLTools.set_element_visibility(element, VisibilityKind.PUBLIC)

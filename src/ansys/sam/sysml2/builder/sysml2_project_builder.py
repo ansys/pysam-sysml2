@@ -24,15 +24,12 @@
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
-from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.builder.derived_collections import fill_derived_collections
 from ansys.sam.sysml2.builder.mapper.mapper import Mapper
 from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
 from ansys.sam.sysml2.builder.mapper.sysml_mapper import SysMLMapper
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.dto.query.constraints_classes import (
     CompositeConstraint,
     PrimitiveConstraint,
@@ -43,7 +40,6 @@ from ansys.sam.sysml2.exception.mapper_exception import MapperException
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 
-_SCRIPTING_KEEP = {"get_value", "set_value", "delete"}
 _SYSML_KEEP = {"get", "get_value", "set_value", "delete"}
 
 
@@ -52,8 +48,8 @@ class SysML2ProjectBuilder:
 
     _connector: SysML2APIConnector
     _mappers: dict[str, Mapper] = {
-        "Scripting": ScriptingMapper(),
         "SysML": SysMLMapper(),
+        "Scripting": ScriptingMapper(),
     }
 
     def __init__(self, connector: SysML2APIConnector):
@@ -108,7 +104,7 @@ class SysML2ProjectBuilder:
         resolve_libraries: bool = False,
         includes_derived: bool = True,
         includes_inherited: bool = True,
-    ) -> ScriptingProject:
+    ) -> Project:
         """
         Call the API with the specified project ID and build the scripting project from JSON.
 
@@ -126,18 +122,19 @@ class SysML2ProjectBuilder:
 
         Returns
         -------
-        ScriptingProject
-            The fully built scripting project.
+        Project
+            The fully built dynamic project.
         """
         project_info = self._connector.get_project_by_id(project_id)
-        project = ScriptingProjectImpl(project_id, project_info["name"])
+        project = ProjectImpl(project_id, project_info["name"])
+        project._scripting = True
         project._resolve_libraries = resolve_libraries
         project._includes_derived = includes_derived
         project._includes_inherited = includes_inherited
         self.__build_project(project)
         return project
 
-    def __build_project(self, project: Project | ScriptingProject):
+    def __build_project(self, project: Project):
         """Build the project from JSON."""
         # TODO(agrzecho): re-introduce library element tracking once the API exposes
         # library elements (bulk in get_all_elements, or per-UUID fetch).
@@ -147,7 +144,7 @@ class SysML2ProjectBuilder:
         self._resolve_inherited_link(project)
         self._add_write_access(project)
 
-    def _build_project_element(self, project: Project | ScriptingProject) -> None:
+    def _build_project_element(self, project: Project) -> None:
         """Build all project elements in the project."""
         roots_json = self._connector.get_root_elements(project_id=project._id)
         root_ids = {root["@id"] for root in roots_json}
@@ -173,33 +170,30 @@ class SysML2ProjectBuilder:
             seen.update(missing_elements)
         self.extract_root_and_check_names(project, root_ids)
 
-    def extract_root_and_check_names(self, project: Project | ScriptingProject, root_ids: set[str]):
+    def extract_root_and_check_names(self, project: Project, root_ids: set[str]):
         """Extract root elements and resolve inherited names in a single pass."""
         roots = []
         if isinstance(project, Project):
+            dot_safe = getattr(project, "_scripting", False)
             for element in project._env.values():
-                element.declared_name = SysMLUtil.check_sysml_inherited_name(element)
+                element.declared_name = SysMLUtil.check_sysml_inherited_name(
+                    element, dot_safe=dot_safe
+                )
                 if element.id in root_ids:
-                    roots.append(element)
-        elif isinstance(project, ScriptingProject):
-            for element in project._env.values():
-                element._declaredName = SysMLUtil.check_inherited_name(element)
-                if element._id in root_ids:
                     roots.append(element)
         else:
             raise TypeError(
-                f"Unsupported project type: {type(project).__name__}. "
-                "Expected Project or ScriptingProject."
+                f"Unsupported project type: {type(project).__name__}. Expected Project."
             )
         project._root = roots
 
-    def _get_mapper(self, project: Project | ScriptingProject) -> Mapper:
+    def _get_mapper(self, project: Project) -> Mapper:
         """
         Get the correct mapper.
 
         Parameters
         ----------
-        project : Project | ScriptingProject
+        project : Project
             Context project.
 
         Returns
@@ -213,19 +207,19 @@ class SysML2ProjectBuilder:
             If no mapper is found for the project type.
         """
         if isinstance(project, Project):
+            if getattr(project, "_scripting", False):
+                return self._mappers.get("Scripting")
             return self._mappers.get("SysML")
-        elif isinstance(project, ScriptingProject):
-            return self._mappers.get("Scripting")
         else:
             raise MapperException(f"No mapper found for project type: {type(project).__name__}")
 
-    def _map_element_in_project(self, project: Project | ScriptingProject, elements: list):
+    def _map_element_in_project(self, project: Project, elements: list):
         """
         Map all elements and add them to the context project.
 
         Parameters
         ----------
-        project : Project | ScriptingProject
+        project : Project
             Context project.
         elements : list[dict]
             All elements to map.
@@ -240,13 +234,13 @@ class SysML2ProjectBuilder:
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
 
-    def _resolve_fields(self, project: Project | ScriptingProject) -> set[str]:
+    def _resolve_fields(self, project: Project) -> set[str]:
         """
         Resolve all fields and return missing IDs.
 
         Parameters
         ----------
-        project : Project | ScriptingProject
+        project : Project
             Context project.
 
         Returns
@@ -268,15 +262,13 @@ class SysML2ProjectBuilder:
         project._unresolved_fields = [f for f in unresolved_fields if f not in resolved_fields]
         return missing
 
-    def _get_missing(
-        self, project: Project | ScriptingProject, missing_elements: set[str]
-    ) -> list[dict]:
+    def _get_missing(self, project: Project, missing_elements: set[str]) -> list[dict]:
         """
         Get all missing elements from the API.
 
         Parameters
         ----------
-        project : Project | ScriptingProject
+        project : Project
             Current context.
         missing_elements : set[str]
             All missing element IDs.
@@ -303,38 +295,18 @@ class SysML2ProjectBuilder:
             includes_inherited=project._includes_inherited,
         )
 
-    def _resolve_inherited_link(self, project: Project | ScriptingProject):
+    def _resolve_inherited_link(self, project: Project):
         """Refresh per-element hash map and owned-name set; proxies are created lazily on access."""
-        if isinstance(project, ScriptingProject):
-            for element in project._env.copy().values():
-                self._clear_element(element, _SCRIPTING_KEEP)
-                element._element_hash_map = self.__get_all_element(element)
-                element._owned_names = self.__get_owned_names(element)
-        else:
-            for element in project._env.copy().values():
-                self._clear_element(element, _SYSML_KEEP)
-                element._element_hash_map = self.__get_all_sysml_element(element)
-                element._owned_names = self.__get_sysml_owned_names(element)
+        for element in project._env.copy().values():
+            self._clear_element(element, _SYSML_KEEP)
+            element._element_hash_map = self.__get_all_sysml_element(element)
+            element._owned_names = self.__get_sysml_owned_names(element)
 
     def _clear_element(self, element, keep: set[str]) -> None:
         """Drop stale pre-wrapped proxies from a previous build before refilling."""
         for x in list(element.__dict__.keys()):
             if not x.startswith("_") and x not in keep:
                 delattr(element, x)
-
-    def __get_all_element(self, element: SysMLElement) -> dict:
-        """Return owned + inherited children of a scripting element keyed by ``_declaredName``."""
-        all_element = getattr(element, "_ownedElement", []).copy()
-        all_element.extend(getattr(element, "_inheritedFeature", []))
-        return {x._declaredName: x for x in all_element if isinstance(x, SysMLElement)}
-
-    def __get_owned_names(self, element: SysMLElement) -> set[str]:
-        """Return the declared names of owned (non-inherited) children of a scripting element."""
-        return {
-            x._declaredName
-            for x in getattr(element, "_ownedElement", [])
-            if isinstance(x, SysMLElement) and x._declaredName
-        }
 
     def __get_all_sysml_element(self, element: Element) -> dict:
         """Return owned + inherited children of a metamodel element keyed by ``declared_name``."""
@@ -350,7 +322,7 @@ class SysML2ProjectBuilder:
             if isinstance(x, Element) and x.declared_name
         }
 
-    def _add_write_access(self, project: Project | ScriptingProject):
+    def _add_write_access(self, project: Project):
         """Add write rules access on the project."""
         project_modification_observer = ModificationObserver(project, self._connector)
         for element in project._env.values():
@@ -359,7 +331,7 @@ class SysML2ProjectBuilder:
     def reload_project(
         self,
         modification_observer: ModificationObserver,
-        project: Project | ScriptingProject,
+        project: Project,
     ):
         """
         Reload the project and update all its elements.
@@ -368,7 +340,7 @@ class SysML2ProjectBuilder:
         ----------
         modification_observer : ModificationObserver
             Observer instance.
-        project : Project | ScriptingProject
+        project : Project
             Project instance to reload.
         """
         modification_observer.stop()

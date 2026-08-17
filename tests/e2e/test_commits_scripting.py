@@ -155,9 +155,11 @@ class TestCommitsScripting:
         assert text_after_replace.split("\n")[1] == "Measured under ISO conditions."
 
     def test_create_commit_set_invalid_key_via_scripting(self, project_factory):
-        """Setting invalid attribute via scripting project raises BadRequestConnectionException."""
+        """Unknown scripting fields stay local and do not commit to the server."""
         project = project_factory(model="bike", kind="scripting")
         bike = project.get_root_package().Structure.Bike
 
-        with pytest.raises(BadRequestConnectionException):
-            bike._invalidKey = "SomeValue"
+        bike._invalidKey = "SomeValue"
+
+        assert bike._invalidKey == "SomeValue"
+        assert not hasattr(type(bike), "invalid_key")

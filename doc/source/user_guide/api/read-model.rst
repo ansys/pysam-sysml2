@@ -58,10 +58,10 @@ To parse the project, you can use dot access or underscore access.
 Dot access
 ----------
 
-.. currentmodule:: ansys.sam.sysml2.classes.sysml_element
+.. currentmodule:: ansys.sam.sysml2.meta_model.e_object
 
 With dot access, you can access all direct named elements of your SysML element. Also, you can
-access some useful top-level functions, such as :meth:`get_value() <SysMLElement.get_value>`.
+access some useful top-level functions, such as :meth:`get_value() <EObject.get_value>`.
 
 Sub-elements
 ~~~~~~~~~~~~
@@ -82,10 +82,10 @@ which have names, to the container element.
 - **Names with spaces**: You cannot access elements with spaces in their names (for example, "bike
   frame") using dot notation. Python identifiers cannot contain spaces.
 
-Function :meth:`get_value() <SysMLElement.get_value>`
+Function :meth:`get_value() <EObject.get_value>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The :meth:`get_value() <SysMLElement.get_value>` function works only for the SysML ``Feature``
+The :meth:`get_value() <EObject.get_value>` function works only for the SysML ``Feature``
 element. It returns the feature's value element (a literal such as ``LiteralInteger`` or an
 expression such as ``OperatorExpression``) without reading the internal structure:
 

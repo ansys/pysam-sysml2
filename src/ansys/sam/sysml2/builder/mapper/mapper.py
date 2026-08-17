@@ -25,7 +25,6 @@ from abc import ABC, abstractmethod
 from io import UnsupportedOperation
 
 from ansys.sam.sysml2.classes.mapped_element import MappedElement
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 from ansys.sam.sysml2.meta_model.element import Element
@@ -57,7 +56,7 @@ class Mapper(ABC):
     def map(
         self,
         json_element: dict,
-        mapped_element: Element | SysMLElement,
+        mapped_element: Element,
         resolve_libraries: bool = False,
     ) -> MappedElement:
         """
@@ -67,7 +66,7 @@ class Mapper(ABC):
         ----------
         json_element : dict
             Data.
-        mapped_element : Element | SysMLElement
+        mapped_element : Element
             Existing element.
         resolve_libraries : bool, default: False
             When ``True``, library elements keep their unresolved references so their
@@ -87,7 +86,7 @@ class Mapper(ABC):
 
         Parameters
         ----------
-        element : Element | SysMLElement
+        element : Element
             Destination element, used to disambiguate ``kind``.
         field_name : str
             Raw JSON field name.
@@ -115,7 +114,7 @@ class Mapper(ABC):
 
         Parameters
         ----------
-        element : Element | SysMLElement
+        element : Element
             Destination element.
         field_name : str
             Field name.
@@ -127,8 +126,6 @@ class Mapper(ABC):
         list
             Empty list because the field is already resolved.
         """
-        # Bypass the scripting read-only guard on ``_name``: this is deserialization,
-        # not a user edit, so it must not raise or stack an observer change.
         if (
             field_name == "_value"
             and type(element).__name__ == "LiteralString"
@@ -145,7 +142,7 @@ class Mapper(ABC):
 
         Parameters
         ----------
-        element : Element | SysMLElement
+        element : Element
             Destination element.
         key : str
             Field name.
@@ -157,7 +154,7 @@ class Mapper(ABC):
         list[UnresolvedField]
             List containing the unresolved field.
         """
-        setattr(element, key, value["@id"])
+        object.__setattr__(element, key, value["@id"])
         return [UnresolvedField(element, key, value["@id"])]
 
     def _add_list_to_field(self, element, key: str, field_values: list) -> list[UnresolvedField]:
@@ -165,7 +162,7 @@ class Mapper(ABC):
 
         Parameters
         ----------
-        element : Element | SysMLElement
+        element : Element
             Destination element.
         key : str
             Field name.
@@ -178,14 +175,14 @@ class Mapper(ABC):
             List of all unresolved fields created for reference items.
         """
         if all(isinstance(value, dict) for value in field_values):
-            setattr(
+            object.__setattr__(
                 element,
                 key,
                 ObservedList(element, key, *[value["@id"] for value in field_values]),
             )
             return [UnresolvedField(element, key, value["@id"]) for value in field_values]
         elif not any(isinstance(value, dict) for value in field_values):
-            setattr(
+            object.__setattr__(
                 element,
                 key,
                 ObservedList(element, key, *field_values),

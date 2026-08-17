@@ -56,12 +56,6 @@ class ValueHelper:
         return issubclass(mm_class, Feature)
 
     @staticmethod
-    def get_value_for_scripting_element(element):
-        """Get the value of the feature."""
-        instance = ValueHelper("_")
-        return instance._get_value(element)
-
-    @staticmethod
     def get_value_for_sysml_element(element):
         """Get the value of the feature."""
         from ansys.sam.sysml2.meta_model.feature import Feature
@@ -77,10 +71,7 @@ class ValueHelper:
         """Render a value element (literal or operator expression) to its text form."""
         if value is None:
             return None
-        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-
-        prefix = "_" if isinstance(value, SysMLElement) else ""
-        return ValueHelper(prefix)._serialize_value(value)
+        return ValueHelper("")._serialize_value(value)
 
     @staticmethod
     def set_or_update_value(element, value_type: type, new_value: str | int | float | bool):
@@ -89,17 +80,14 @@ class ValueHelper:
 
         Parameters
         ----------
-        element : SysMLElement or Element
+        element : Element
             Element whose feature value is updated.
         value_type : type
             Value type of the new value.
         new_value : str | int | float | bool
             New value to update to.
         """
-        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-
-        prefix = "_" if isinstance(element, SysMLElement) else ""
-        instance = ValueHelper(prefix)
+        instance = ValueHelper("")
         literal = instance._find_existing_literal(element)
         if element._observer._is_transactional_mode:
             instance._add_to_stack(element, value_type, new_value, literal)
@@ -133,13 +121,13 @@ class ValueHelper:
 
         Parameters
         ----------
-        element : [SysMLElement|Element]
+        element : Element
             Feature of the container.
         value_type : str
             Value type of the new value.
         new_value : Any
             New value to update to.
-        literal : [SysMLElement|Element], optional
+        literal : Element, optional
             Existing literal held by the feature, if any.
         """
         if literal is not None:
@@ -166,13 +154,13 @@ class ValueHelper:
 
         Parameters
         ----------
-        element : [SysMLElement|Element]
+        element : Element
             Feature of the container.
         value_type : str
             Value type of the new value.
         new_value : Any
             New value to update to.
-        literal : [SysMLElement|Element], optional
+        literal : Element, optional
             Existing literal held by the feature, if any.
         """
         target_type = self._literal_type_name(value_type)

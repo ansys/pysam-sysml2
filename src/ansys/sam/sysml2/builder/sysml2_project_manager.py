@@ -27,7 +27,6 @@ from typing import NamedTuple
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
 
 
 class _ProjectCacheKey(NamedTuple):
@@ -44,7 +43,7 @@ class SysML2ProjectManager:
 
     _connector: SysML2APIConnector
     _sysml_projects: dict[_ProjectCacheKey, Project]
-    _scripting_projects: dict[_ProjectCacheKey, ScriptingProject]
+    _scripting_projects: dict[_ProjectCacheKey, Project]
 
     def __init__(self, connector: SysML2APIConnector):
         """Construct a new instance with a specified SysML2 API Connector."""
@@ -110,7 +109,7 @@ class SysML2ProjectManager:
         resolve_libraries: bool = False,
         includes_derived: bool = True,
         includes_inherited: bool = True,
-    ) -> ScriptingProject:
+    ) -> Project:
         """
         Get a scripting project with its ID from the API and map it in a Python object.
 
@@ -128,7 +127,7 @@ class SysML2ProjectManager:
 
         Returns
         -------
-        ScriptingProject
+        Project
             The requested project, built from the API or returned from cache.
         """
         cache_key = self._project_cache_key(
@@ -181,7 +180,7 @@ class SysML2ProjectManager:
         self,
         name: str,
         description: str = "Project description",
-    ) -> ScriptingProject:
+    ) -> Project:
         """
         Create a new project on the server and return it as a Scripting Project.
 
@@ -194,7 +193,7 @@ class SysML2ProjectManager:
 
         Returns
         -------
-        ScriptingProject
+        Project
             The newly created project, fully built from the API.
         """
         project_data = self._connector.create_project(name, description)

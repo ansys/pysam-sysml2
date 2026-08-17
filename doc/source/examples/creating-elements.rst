@@ -53,12 +53,12 @@ structure and assign it a value.
 
 You just created a new element and assigned a parsed value to it.
 
-.. currentmodule:: ansys.sam.sysml2.classes.sysml_element
+.. currentmodule:: ansys.sam.sysml2.meta_model.e_object
 
 .. note::
 
     You can also assign a value directly when creating the element, without using the
-    :meth:`set_value() <SysMLElement.set_value>` or
+    :meth:`set_value() <EObject.set_value>` or
     ``SysMLTools.parse_and_set_value``
     method. There are two ways:
 

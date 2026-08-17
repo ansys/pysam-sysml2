@@ -25,7 +25,6 @@
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.meta_model.element import Element
-from ansys.sam.sysml2.meta_model.namespace import Namespace
 from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport
 from ansys.sam.sysml2.meta_model.package import Package
 
@@ -39,6 +38,7 @@ class ProjectImpl(Project):
     _unresolved_fields: list[UnresolvedField]
     _name: str
     _resolve_libraries: bool = False
+    _scripting: bool = False
 
     def __init__(self, project_id: str, name: str):
         """
@@ -79,9 +79,7 @@ class ProjectImpl(Project):
 
     def get_root_package(self) -> Package:
         """Get the root package."""
-        # ``Package`` subclasses ``Namespace``, so an exact type match is required to skip
-        # the root packages the API also returns in /roots.
-        namespace = next((x for x in self._root if type(x) is Namespace), None)
+        namespace = next((x for x in self._root if type(x).__name__ == "Namespace"), None)
         if namespace is not None:
             for member in namespace.owned_member:
                 if isinstance(member, Package):

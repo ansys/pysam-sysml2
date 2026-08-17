@@ -67,6 +67,10 @@ class SysMLMapper(Mapper):
 
         return self.__build_element(json_element, mapped_element, resolve_libraries)
 
+    def _get_constructor(self, element_type: str):
+        """Get the constructor for the element type."""
+        return SysMLUtil.get_sysml_constructor(element_type)
+
     def __build_element(
         self,
         data: dict,
@@ -93,7 +97,7 @@ class SysMLMapper(Mapper):
         """
         unresolved_fields = []
         if element is None:
-            constructor = SysMLUtil.get_sysml_constructor(data[TYPE_KEY])
+            constructor = self._get_constructor(data[TYPE_KEY])
             element = constructor(element_id=data["@id"])
         for k, v in data.items():
             if not k.startswith("@"):

@@ -23,14 +23,14 @@
 """Tests for the IPython completion hook that makes the element __dir__ authoritative."""
 
 from ansys.sam.sysml2 import _complete_element_attrs
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 
 
 class TestCompleteElementAttrs:
     """``_complete_element_attrs`` must return the element's own ``__dir__``."""
 
     def test_returns_object_dir_not_class_dir_union(self):
-        element = SysMLElement("element_id")
+        element = SysMLUtil.get_scripting_constructor("PartUsage")("element_id")
 
         assert _complete_element_attrs(element, ["id", "get_value"]) == sorted(
             element.__dir__()

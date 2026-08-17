@@ -28,8 +28,8 @@ import pytest
 
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
+from ansys.sam.sysml2.meta_model.documentation import Documentation
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 from tests.unit.const import PROJECT_ID_1
 
@@ -104,7 +104,7 @@ class TestObserverTransactional:
         commit_mock = mocker.patch.object(connector, "create_commit")
         requirement_id = "req-id"
         documentation_id = "doc-id"
-        documentation = SysMLElement(documentation_id)
+        documentation = Documentation(documentation_id)
 
         observer.set_transactional_mode(True)
         observer.notify(requirement_id, "@type", "RequirementUsage")
@@ -161,8 +161,9 @@ class TestObserverImmediate:
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
-        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-        valid_el = SysMLElement("valid_id")
+        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+
+        valid_el = SysMLUtil.get_scripting_constructor("PartUsage")("valid_id")
 
         root._ownedElement.append(valid_el)
 
