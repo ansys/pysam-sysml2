@@ -28,6 +28,15 @@ from abc import ABC, abstractmethod
 class SysML2APIConnector(ABC):
     """Provides the SysML2 API Connector interface."""
 
+    def default_includes_derived(self) -> bool:
+        """
+        Default ``includes_derived`` for project loads when the caller omits it.
+
+        SAM populates derived collections in ``/elements`` payloads; OMG SST omits them
+        and PySAM rebuilds them locally from ``ownedRelationship``.
+        """
+        return True
+
     @abstractmethod
     def get_projects(self) -> list:
         """Get all projects of the connected user."""

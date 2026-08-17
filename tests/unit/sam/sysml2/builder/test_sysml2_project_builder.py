@@ -98,6 +98,21 @@ class TestSysML2ProjectBuilderSysML:
 
 class TestSysML2ProjectBuilderIncludesFlags:
 
+    def test_build_sysml_project_defaults_includes_derived_false_for_sst(self, mocker):
+        from ansys.sam.sysml2.api.sst_sysml2_api_connector import SstSysML2APIConnector
+
+        connector = SstSysML2APIConnector("http://localhost:9001")
+        mocker.patch.object(connector, "get_project_by_id", return_value={"name": "p"})
+        mocker.patch.object(connector, "get_root_elements", return_value=[])
+        get_all_elements = mocker.patch.object(connector, "get_all_elements", return_value=[])
+        builder = SysML2ProjectBuilder(connector)
+
+        project = builder.build_sysml_project("proj-1")
+
+        assert project._includes_derived is False
+        get_all_elements.assert_called()
+        assert get_all_elements.call_args.kwargs["includes_derived"] is False
+
     def test_build_sysml_project_passes_includes_flags(self, connector, mocker):
         get_all_elements = mocker.patch.object(connector, "get_all_elements", wraps=connector.get_all_elements)
         builder = SysML2ProjectBuilder(connector)

@@ -189,8 +189,11 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         list
             List of all elements.
         """
+        commit_ref = self._commit_ref(project_id)
+        if commit_ref is None:
+            return []
         http_request = self._build_http_request(
-            endpoint=f"/projects/{project_id}/commits/head/elements"
+            endpoint=f"/projects/{project_id}/commits/{commit_ref}/elements"
         )
         self._set_query_params(http_request, kwargs)
         return self._send_request(
@@ -214,8 +217,11 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         dict
             Information of the element.
         """
+        commit_ref = self._commit_ref(project_id)
+        if commit_ref is None:
+            raise ElementNotFoundException(f"Element {element_id} not found (empty head)")
         http_request = self._build_http_request(
-            endpoint=f"/projects/{project_id}/commits/head/elements/{element_id}"
+            endpoint=f"/projects/{project_id}/commits/{commit_ref}/elements/{element_id}"
         )
         return self._send_request(
             http_request=http_request,
@@ -236,8 +242,11 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         list
             All root elements.
         """
+        commit_ref = self._commit_ref(project_id)
+        if commit_ref is None:
+            return []
         http_request = self._build_http_request(
-            endpoint=f"/projects/{project_id}/commits/head/roots"
+            endpoint=f"/projects/{project_id}/commits/{commit_ref}/roots"
         )
         return self._send_request(http_request=http_request, call=requests.get)
 
@@ -267,7 +276,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
 
     def create_commit(self, project_id: str, commit: str) -> dict:
         """Send a commit, provided as a JSON string, to the standard API."""
-        http_request = self._build_http_request(endpoint=f"/projects/{project_id}/commit")
+        http_request = self._build_http_request(endpoint=f"/projects/{project_id}/commits")
         http_request.json_body = json.loads(commit)
         return self._send_request(http_request=http_request, call=requests.post)
 
@@ -283,6 +292,14 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             param_key = NameUtils.snake_to_camel(key)
             params[param_key] = str(value).lower() if isinstance(value, bool) else value
         http_request.params = params
+
+    def _commit_ref(self, project_id: str) -> str | None:
+        """
+        Resolve the commit segment used in read paths (``/commits/{ref}/...``).
+
+        SAM accepts the alias ``head``; OMG SST requires a branch-head UUID.
+        """
+        return "head"
 
     def _build_http_request(self, endpoint: str) -> HttpRequest:
         """
@@ -333,7 +350,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         except Exception as e:
             raise ConnectorConnectionException(e)
 
-        if response.status_code == 200:
+        if response.status_code in (200, 201):
             try:
                 return json.loads(response.content)
             except Exception as e:

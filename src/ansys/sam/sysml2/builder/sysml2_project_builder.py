@@ -43,6 +43,16 @@ from ansys.sam.sysml2.observer.observer import ModificationObserver
 _SYSML_KEEP = {"get", "get_value", "set_value", "delete"}
 
 
+def _resolve_includes_derived(
+    connector: SysML2APIConnector,
+    includes_derived: bool | None,
+) -> bool:
+    """Resolve ``includes_derived`` using connector defaults when omitted."""
+    if includes_derived is not None:
+        return includes_derived
+    return connector.default_includes_derived()
+
+
 class SysML2ProjectBuilder:
     """Provides the SysML2 project builder."""
 
@@ -67,7 +77,7 @@ class SysML2ProjectBuilder:
         self,
         project_id: str,
         resolve_libraries: bool = False,
-        includes_derived: bool = True,
+        includes_derived: bool | None = None,
         includes_inherited: bool = True,
     ) -> Project:
         """
@@ -80,8 +90,9 @@ class SysML2ProjectBuilder:
         resolve_libraries : bool, default: False
             When ``True``, keep library elements' references so their contents are resolved
             and mapped during the build.
-        includes_derived : bool, default: True
+        includes_derived : bool | None, default: None
             When ``True``, include derived properties from the API ``/elements`` response.
+            When ``None``, use ``connector.default_includes_derived()`` (``False`` on SST).
         includes_inherited : bool, default: True
             When ``True``, include inherited memberships and features from the API response.
 
@@ -90,6 +101,7 @@ class SysML2ProjectBuilder:
         Project
             The fully built SysML project.
         """
+        includes_derived = _resolve_includes_derived(self._connector, includes_derived)
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
         project._resolve_libraries = resolve_libraries
@@ -102,7 +114,7 @@ class SysML2ProjectBuilder:
         self,
         project_id: str,
         resolve_libraries: bool = False,
-        includes_derived: bool = True,
+        includes_derived: bool | None = None,
         includes_inherited: bool = True,
     ) -> Project:
         """
@@ -115,8 +127,9 @@ class SysML2ProjectBuilder:
         resolve_libraries : bool, default: False
             When ``True``, keep library elements' references so their contents are resolved
             and mapped during the build.
-        includes_derived : bool, default: True
+        includes_derived : bool | None, default: None
             When ``True``, include derived properties from the API ``/elements`` response.
+            When ``None``, use ``connector.default_includes_derived()`` (``False`` on SST).
         includes_inherited : bool, default: True
             When ``True``, include inherited memberships and features from the API response.
 
@@ -125,6 +138,7 @@ class SysML2ProjectBuilder:
         Project
             The fully built dynamic project.
         """
+        includes_derived = _resolve_includes_derived(self._connector, includes_derived)
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
         project._scripting = True

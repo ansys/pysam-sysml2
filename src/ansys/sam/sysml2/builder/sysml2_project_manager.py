@@ -25,7 +25,10 @@
 from typing import NamedTuple
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
-from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
+from ansys.sam.sysml2.builder.sysml2_project_builder import (
+    SysML2ProjectBuilder,
+    _resolve_includes_derived,
+)
 from ansys.sam.sysml2.classes.project import Project
 
 
@@ -66,7 +69,7 @@ class SysML2ProjectManager:
         self,
         project_id: str,
         resolve_libraries: bool = False,
-        includes_derived: bool = True,
+        includes_derived: bool | None = None,
         includes_inherited: bool = True,
     ) -> Project:
         """
@@ -79,8 +82,9 @@ class SysML2ProjectManager:
         resolve_libraries : bool, default: False
             When ``True``, library element contents are resolved and mapped so they can be
             navigated. Only applied on first load; a cached project is returned as-is.
-        includes_derived : bool, default: True
+        includes_derived : bool | None, default: None
             When ``True``, include derived properties from the API ``/elements`` response.
+            When ``None``, use ``connector.default_includes_derived()`` (``False`` on SST).
         includes_inherited : bool, default: True
             When ``True``, include inherited memberships and features from the API response.
 
@@ -89,6 +93,7 @@ class SysML2ProjectManager:
         Project
             The requested project, built from the API or returned from cache.
         """
+        includes_derived = _resolve_includes_derived(self._connector, includes_derived)
         cache_key = self._project_cache_key(
             project_id, resolve_libraries, includes_derived, includes_inherited
         )
@@ -107,7 +112,7 @@ class SysML2ProjectManager:
         self,
         project_id: str,
         resolve_libraries: bool = False,
-        includes_derived: bool = True,
+        includes_derived: bool | None = None,
         includes_inherited: bool = True,
     ) -> Project:
         """
@@ -120,8 +125,9 @@ class SysML2ProjectManager:
         resolve_libraries : bool, default: False
             When ``True``, library element contents are resolved and mapped so they can be
             navigated. Only applied on first load; a cached project is returned as-is.
-        includes_derived : bool, default: True
+        includes_derived : bool | None, default: None
             When ``True``, include derived properties from the API ``/elements`` response.
+            When ``None``, use ``connector.default_includes_derived()`` (``False`` on SST).
         includes_inherited : bool, default: True
             When ``True``, include inherited memberships and features from the API response.
 
@@ -130,6 +136,7 @@ class SysML2ProjectManager:
         Project
             The requested project, built from the API or returned from cache.
         """
+        includes_derived = _resolve_includes_derived(self._connector, includes_derived)
         cache_key = self._project_cache_key(
             project_id, resolve_libraries, includes_derived, includes_inherited
         )
@@ -170,8 +177,8 @@ class SysML2ProjectManager:
         cache_key = _ProjectCacheKey(
             project_id=project_id,
             resolve_libraries=False,
-            includes_derived=True,
-            includes_inherited=True,
+            includes_derived=project._includes_derived,
+            includes_inherited=project._includes_inherited,
         )
         self._sysml_projects[cache_key] = project
         return project
@@ -202,8 +209,8 @@ class SysML2ProjectManager:
         cache_key = _ProjectCacheKey(
             project_id=project_id,
             resolve_libraries=False,
-            includes_derived=True,
-            includes_inherited=True,
+            includes_derived=project._includes_derived,
+            includes_inherited=project._includes_inherited,
         )
         self._scripting_projects[cache_key] = project
         return project

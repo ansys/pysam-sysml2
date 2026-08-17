@@ -23,7 +23,7 @@
 
 from uuid import uuid4
 
-from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
+from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.dto.commit.commit_class import Commit
 from ansys.sam.sysml2.dto.commit.data_version import DataVersion
@@ -325,16 +325,16 @@ class Factory:
 
     _project_id: str
     _project: Project
-    _connector: AnsysSysML2APIConnector
+    _connector: SysML2APIConnector
 
-    def __init__(self, project: Project, connector: AnsysSysML2APIConnector) -> None:
+    def __init__(self, project: Project, connector: SysML2APIConnector) -> None:
         """Initialize a new instance.
 
         Parameters
         ----------
         project: Project
             Project to be modified by the factory.
-        connector: AnsysSysML2APIConnector
+        connector: SysML2APIConnector
             Connector to make API calls.
         """
         self._project_id = project._id
