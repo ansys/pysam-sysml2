@@ -92,14 +92,19 @@ class MockedSysML2APIConnector(SysML2APIConnector):
     def __init__(self):
         super().__init__()
         self._projects = {}
+        self._project_dirs = {}
         for project_dir in sorted(MODELTESTSET.iterdir()):
             project_file = project_dir / "project.json"
             if project_file.exists():
                 data = json.loads(project_file.read_text(encoding="utf-8"))
                 self._projects[data["@id"]] = data
+                self._project_dirs[data["@id"]] = project_dir
 
     def _load_elements(self, project_id: str) -> list:
-        elements_file = MODELTESTSET / f"project_{project_id}" / "elements.json"
+        project_dir = self._project_dirs.get(project_id)
+        if project_dir is None:
+            raise ProjectNotFoundException(f"Project {project_id} not found")
+        elements_file = project_dir / "elements.json"
         if not elements_file.exists():
             raise ProjectNotFoundException(f"Project {project_id} not found")
         return json.loads(elements_file.read_text(encoding="utf-8"))
@@ -117,7 +122,10 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         return stripped
 
     def _load_library_elements(self, project_id: str) -> list:
-        lib_file = MODELTESTSET / f"project_{project_id}" / "library_elements.json"
+        project_dir = self._project_dirs.get(project_id)
+        if project_dir is None:
+            return []
+        lib_file = project_dir / "library_elements.json"
         if not lib_file.exists():
             return []
         return json.loads(lib_file.read_text(encoding="utf-8"))
