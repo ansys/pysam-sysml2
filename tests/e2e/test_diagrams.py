@@ -35,8 +35,8 @@ from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 @pytest.mark.e2e
 class TestDiagrams:
 
-    def test_diagrams_available(self, project_factory):
-        project = project_factory(model="bike", kind="scripting")
+    def test_diagrams_available(self, project_factory, includes_derived):
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         ansys_project = AnsysScriptingProject(
             server_url=os.environ["SAM_SERVER_URL"],
@@ -52,16 +52,16 @@ class TestDiagrams:
 @pytest.mark.e2e
 class TestSamApiConnector:
 
-    def test_get_diagrams_info(self, sam_connector, project_factory):
-        project = project_factory(model="bike", kind="scripting")
+    def test_get_diagrams_info(self, sam_connector, project_factory, includes_derived):
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         diagrams_info = sam_connector.get_diagrams_info(project.get_id())
 
         assert len(diagrams_info) == 4
         assert diagrams_info[0]["name"] == "Bike"
 
-    def test_get_single_diagram_info(self, sam_connector, project_factory):
-        project = project_factory(model="bike", kind="scripting")
+    def test_get_single_diagram_info(self, sam_connector, project_factory, includes_derived):
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         diagrams_info = sam_connector.get_diagrams_info(project.get_id())
         bike_entry = next(d for d in diagrams_info if d["name"] == "Bike")
@@ -72,8 +72,8 @@ class TestSamApiConnector:
         assert info["name"] == "Bike"
         assert info["diagramId"] == diagram_id
 
-    def test_get_single_diagram_info_unknown(self, sam_connector, project_factory):
-        project = project_factory(model="bike", kind="scripting")
+    def test_get_single_diagram_info_unknown(self, sam_connector, project_factory, includes_derived):
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         with pytest.raises(DiagramConnectorException):
             sam_connector.get_single_diagram_info(project.get_id(), "unknown")
@@ -87,9 +87,9 @@ class TestSamDiagramDownloader:
         [("svg", ".svg"), ("png", ".png"), ("jpeg", ".jpeg")],
     )
     def test_download_diagram_per_format(
-        self, sam_connector, project_factory, tmp_path, file_format, suffix
+        self, sam_connector, project_factory, includes_derived, tmp_path, file_format, suffix
     ):
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         diagram_id = sam_connector.get_diagrams_info(project.get_id())[0]["diagramId"]
         downloader = SamDiagramDownloader(
@@ -106,9 +106,9 @@ class TestSamDiagramDownloader:
 
     @pytest.mark.parametrize("file_format", ["svg", "png", "jpeg"])
     def test_download_all_diagrams_per_format(
-        self, sam_connector, project_factory, tmp_path, file_format
+        self, sam_connector, project_factory, includes_derived, tmp_path, file_format
     ):
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         downloader = SamDiagramDownloader(
             connector=sam_connector, project_id=project.get_id()
@@ -122,8 +122,8 @@ class TestSamDiagramDownloader:
         assert result.endswith(".zip")
         assert result_path.stat().st_size > 0
 
-    def test_download_wrong_format(self, sam_connector, project_factory, tmp_path):
-        project = project_factory(model="bike", kind="scripting")
+    def test_download_wrong_format(self, sam_connector, project_factory, includes_derived, tmp_path):
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         diagram_id = sam_connector.get_diagrams_info(project.get_id())[0]["diagramId"]
         downloader = SamDiagramDownloader(
@@ -137,8 +137,8 @@ class TestSamDiagramDownloader:
                 path=str(tmp_path),
             )
 
-    def test_download_invalid_path(self, sam_connector, project_factory):
-        project = project_factory(model="bike", kind="scripting")
+    def test_download_invalid_path(self, sam_connector, project_factory, includes_derived):
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         diagram_id = sam_connector.get_diagrams_info(project.get_id())[0]["diagramId"]
         downloader = SamDiagramDownloader(

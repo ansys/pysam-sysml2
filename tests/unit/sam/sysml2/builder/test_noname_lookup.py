@@ -33,8 +33,10 @@ class TestSysMLNoNameLookup:
     """SysML no-name children resolve through declared_name = ElementType::ID."""
 
     @pytest.fixture
-    def project(self, connector) -> Project:
-        return SysML2ProjectManager(connector).get_sysml_project(PROJECT_ID_6)
+    def project(self, connector, includes_derived) -> Project:
+        return SysML2ProjectManager(connector).get_sysml_project(
+            PROJECT_ID_6, includes_derived=includes_derived
+        )
 
     def test_get_resolves_noname_child_by_element_type_id(self, project):
         root = project.get_root_package()
@@ -58,9 +60,11 @@ class TestSysMLNoNameLookup:
         assert len(matches) == 1
         assert matches[0].id == PROJECT_6_NONAME_ID
 
-    def test_named_child_still_resolves(self, connector):
+    def test_named_child_still_resolves(self, connector, includes_derived):
         """A named element is still reachable by its real name (declared_name == name)."""
-        project = SysML2ProjectManager(connector).get_sysml_project(PROJECT_ID_1)
+        project = SysML2ProjectManager(connector).get_sysml_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
 
         assert root.get("PartDefinition").get("attribute") is not None
@@ -70,8 +74,10 @@ class TestScriptingNoNameLookup:
     """Scripting no-name children resolve through a dot-safe declared name."""
 
     @pytest.fixture
-    def project(self, connector) -> Project:
-        return SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_6)
+    def project(self, connector, includes_derived) -> Project:
+        return SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_6, includes_derived=includes_derived
+        )
 
     def test_dot_access_resolves_noname_child(self, project):
         root = project.get_root_package()

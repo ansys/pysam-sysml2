@@ -34,9 +34,9 @@ from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 @pytest.mark.e2e
 class TestCommitsScripting:
 
-    def test_create_commit_successful(self, connector, project_factory):
+    def test_create_commit_successful(self, connector, project_factory, includes_derived):
         """Create a valid commit (rename element), verify server accepts it."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
         bike_front_wheel = bike.frontWheel
         bike_front_wheel_id = bike_front_wheel._id
@@ -53,9 +53,9 @@ class TestCommitsScripting:
         assert response["@type"] == "Commit"
         assert response["owningProject"]["@id"] == project.get_id()
 
-    def test_create_commit_set_attribute(self, project_factory):
+    def test_create_commit_set_attribute(self, project_factory, includes_derived):
         """Set attribute via scripting project, verify roundtrip."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
         bike_front_wheel_rim_weight = bike.frontWheel.rim.weight
         original_front_wheel_rim_weight = SysMLTools.serialize_expression(
@@ -72,18 +72,18 @@ class TestCommitsScripting:
         assert updated_front_wheel_rim_weight != original_front_wheel_rim_weight
         assert updated_front_wheel_rim_weight == "500 [g]"
 
-    def test_create_commit_empty_change(self, connector, project_factory):
+    def test_create_commit_empty_change(self, connector, project_factory, includes_derived):
         """Commit with no DataVersion raises BadRequestConnectionException."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         commit = Commit(project.get_id())
 
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit(project.get_id(), commit.to_json())
 
-    def test_create_commit_none_type(self, connector, project_factory):
+    def test_create_commit_none_type(self, connector, project_factory, includes_derived):
         """Commit for new element with None @type raises BadRequestConnectionException."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         commit = Commit(project.get_id())
         change = DataVersion()
@@ -93,9 +93,9 @@ class TestCommitsScripting:
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit(project.get_id(), commit.to_json())
 
-    def test_create_commit_missing_type(self, connector, project_factory):
+    def test_create_commit_missing_type(self, connector, project_factory, includes_derived):
         """Commit for new element without @type raises BadRequestConnectionException."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
 
         commit = Commit(project.get_id())
         change = DataVersion()
@@ -104,9 +104,9 @@ class TestCommitsScripting:
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit(project.get_id(), commit.to_json())
 
-    def test_create_commit_invalid_key(self, connector, project_factory):
+    def test_create_commit_invalid_key(self, connector, project_factory, includes_derived):
         """Commit with invalid key raises BadRequestConnectionException."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
         bike_front_wheel = bike.frontWheel
         bike_front_wheel_id = bike_front_wheel._id
@@ -120,9 +120,9 @@ class TestCommitsScripting:
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit(project.get_id(), commit.to_json())
 
-    def test_create_commit_invalid_attribute_type(self, connector, project_factory):
+    def test_create_commit_invalid_attribute_type(self, connector, project_factory, includes_derived):
         """Commit with wrong value type raises BadRequestConnectionException."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
         bike_front_wheel = bike.frontWheel
         bike_front_wheel_id = bike_front_wheel._id
@@ -136,9 +136,9 @@ class TestCommitsScripting:
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit(project.get_id(), commit.to_json())
 
-    def test_create_commit_replace_list(self, connector, project_factory):
+    def test_create_commit_replace_list(self, connector, project_factory, includes_derived):
         """Create a RequirementUsage, set its _text list, then replace it."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
 
         factory = Factory(project, connector)
@@ -154,9 +154,9 @@ class TestCommitsScripting:
 
         assert text_after_replace.split("\n")[1] == "Measured under ISO conditions."
 
-    def test_create_commit_set_invalid_key_via_scripting(self, project_factory):
+    def test_create_commit_set_invalid_key_via_scripting(self, project_factory, includes_derived):
         """Unknown scripting fields stay local and do not commit to the server."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
 
         bike._invalidKey = "SomeValue"

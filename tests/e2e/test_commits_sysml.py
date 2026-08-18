@@ -33,9 +33,9 @@ from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 @pytest.mark.e2e
 class TestCommitsSysML:
 
-    def test_create_commit_successful(self, connector, project_factory):
+    def test_create_commit_successful(self, connector, project_factory, includes_derived):
         """Create a valid commit (rename element) via sysml project."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
         bike = project.get_root_package().get("Structure").get("Bike")
         bike_front_wheel = bike.get("frontWheel")
         bike_front_wheel_id = bike_front_wheel.id
@@ -52,9 +52,9 @@ class TestCommitsSysML:
         assert response["@type"] == "Commit"
         assert response["owningProject"]["@id"] == project.get_id()
 
-    def test_create_commit_set_attribute_via_sysml(self, project_factory):
+    def test_create_commit_set_attribute_via_sysml(self, project_factory, includes_derived):
         """Set attribute via sysml API (.get() navigation), verify roundtrip."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
         bike = project.get_root_package().get("Structure").get("Bike")
         bike_front_wheel = bike.get("frontWheel")
         bike_front_wheel_rim = bike_front_wheel.get("rim")
@@ -71,18 +71,18 @@ class TestCommitsSysML:
         assert updated_bike_front_wheel_rim_weight != original_bike_front_wheel_rim_weight
         assert updated_bike_front_wheel_rim_weight == "500 [g]"
 
-    def test_create_commit_empty_change_sysml(self, connector, project_factory):
+    def test_create_commit_empty_change_sysml(self, connector, project_factory, includes_derived):
         """Commit with no DataVersion raises BadRequestConnectionException."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
 
         commit = Commit(project.get_id())
 
         with pytest.raises(BadRequestConnectionException):
             connector.create_commit(project.get_id(), commit.to_json())
 
-    def test_unknown_attribute_stays_local_via_sysml(self, project_factory):
+    def test_unknown_attribute_stays_local_via_sysml(self, project_factory, includes_derived):
         """Unknown sysml fields stay local and do not commit to the server."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
         bike = project.get_root_package().get("Structure").get("Bike")
 
         bike.invalid_key = "SomeValue"

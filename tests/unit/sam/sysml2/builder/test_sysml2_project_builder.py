@@ -28,33 +28,41 @@ from tests.unit.const import PROJECT_1_ATTR_ID, PROJECT_ID_1
 
 class TestSysML2ProjectBuilderScripting:
 
-    def test_build_scripting_project(self, connector):
+    def test_build_scripting_project(self, connector, includes_derived):
         builder = SysML2ProjectBuilder(connector)
 
-        project = builder.build_scripting_project(PROJECT_ID_1)
+        project = builder.build_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
 
         assert project.get_root_package()._name == "project-1"
 
-    def test_find_element_by_id(self, connector):
+    def test_find_element_by_id(self, connector, includes_derived):
         builder = SysML2ProjectBuilder(connector)
-        project = builder.build_scripting_project(PROJECT_ID_1)
+        project = builder.build_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
 
         element = project.find_element_by_id(PROJECT_1_ATTR_ID)
 
         assert element._name == "attribute"
 
-    def test_find_elements_by_name(self, connector):
+    def test_find_elements_by_name(self, connector, includes_derived):
         builder = SysML2ProjectBuilder(connector)
-        project = builder.build_scripting_project(PROJECT_ID_1)
+        project = builder.build_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
 
         elements = project.find_elements_by_name("attribute")
 
         assert any(el._id == PROJECT_1_ATTR_ID for el in elements)
 
-    def test_namespace_elements_have_no_owner(self, connector):
+    def test_namespace_elements_have_no_owner(self, connector, includes_derived):
         builder = SysML2ProjectBuilder(connector)
 
-        project = builder.build_scripting_project(PROJECT_ID_1)
+        project = builder.build_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
 
         owner = project.get_root_package()._owner
         assert owner is not None
@@ -63,33 +71,41 @@ class TestSysML2ProjectBuilderScripting:
 
 class TestSysML2ProjectBuilderSysML:
 
-    def test_build_sysml_project(self, connector):
+    def test_build_sysml_project(self, connector, includes_derived):
         builder = SysML2ProjectBuilder(connector)
 
-        project = builder.build_sysml_project(PROJECT_ID_1)
+        project = builder.build_sysml_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
 
         assert project.get_root_package().name == "project-1"
 
-    def test_find_element_by_id_sysml(self, connector):
+    def test_find_element_by_id_sysml(self, connector, includes_derived):
         builder = SysML2ProjectBuilder(connector)
-        project = builder.build_sysml_project(PROJECT_ID_1)
+        project = builder.build_sysml_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
 
         element = project.find_element_by_id(PROJECT_1_ATTR_ID)
 
         assert element.name == "attribute"
 
-    def test_find_elements_by_name_sysml(self, connector):
+    def test_find_elements_by_name_sysml(self, connector, includes_derived):
         builder = SysML2ProjectBuilder(connector)
-        project = builder.build_sysml_project(PROJECT_ID_1)
+        project = builder.build_sysml_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
 
         elements = project.find_elements_by_name("attribute")
 
         assert any(el.id == PROJECT_1_ATTR_ID for el in elements)
 
-    def test_namespace_elements_have_no_owner_sysml(self, connector):
+    def test_namespace_elements_have_no_owner_sysml(self, connector, includes_derived):
         builder = SysML2ProjectBuilder(connector)
 
-        project = builder.build_sysml_project(PROJECT_ID_1)
+        project = builder.build_sysml_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
 
         owner = project.get_root_package().owner
         assert owner is not None

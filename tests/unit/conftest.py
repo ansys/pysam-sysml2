@@ -27,6 +27,12 @@ import pytest
 from tests.unit.mocked_connector import MockedSysML2APIConnector
 
 
+@pytest.fixture(params=[True, False], ids=["with_derived", "without_derived"])
+def includes_derived(request):
+    """Run project-loading tests with and without API-derived collections."""
+    return request.param
+
+
 @pytest.fixture
 def connector():
     """Provide a fresh MockedSysML2APIConnector per test."""

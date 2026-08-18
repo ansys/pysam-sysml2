@@ -43,9 +43,9 @@ def _read_requirements_csv():
 @pytest.mark.e2e
 class TestRequirementsImportScripting:
 
-    def test_import_requirements_from_csv(self, connector, project_factory):
+    def test_import_requirements_from_csv(self, connector, project_factory, includes_derived):
         """Import 10 requirements from CSV into bike project via scripting project."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
 
         rows = _read_requirements_csv()
@@ -64,9 +64,9 @@ class TestRequirementsImportScripting:
             assert req._name == row["title"]
             assert row["description"] in req._text
 
-    def test_import_requirements_transactional(self, connector, project_factory):
+    def test_import_requirements_transactional(self, connector, project_factory, includes_derived):
         """Import 10 requirements in transactional mode (single commit) via scripting project."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
 
         rows = _read_requirements_csv()
@@ -91,9 +91,9 @@ class TestRequirementsImportScripting:
 @pytest.mark.e2e
 class TestRequirementsImportSysML:
 
-    def test_import_requirements_from_csv(self, connector, project_factory):
+    def test_import_requirements_from_csv(self, connector, project_factory, includes_derived):
         """Import 10 requirements from CSV into bike project via SysML project."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
         bike = project.get_root_package().get("Structure").get("Bike")
 
         rows = _read_requirements_csv()
@@ -112,9 +112,9 @@ class TestRequirementsImportSysML:
             assert req.name == row["title"]
             assert row["description"] in req.text
 
-    def test_import_requirements_transactional(self, connector, project_factory):
+    def test_import_requirements_transactional(self, connector, project_factory, includes_derived):
         """Import 10 requirements in transactional mode (single commit) via SysML project."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
         bike = project.get_root_package().get("Structure").get("Bike")
 
         rows = _read_requirements_csv()
