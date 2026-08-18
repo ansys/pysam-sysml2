@@ -51,6 +51,9 @@ class Type(Namespace):
         self._feature_exclude_implied = ObservedList(self, "feature_exclude_implied")
         self._feature_membership = ObservedList(self, "feature_membership")
         self._inherited_feature = ObservedList(self, "inherited_feature")
+        self._inherited_feature_exclude_implicit = ObservedList(
+            self, "inherited_feature_exclude_implicit"
+        )
         self._inherited_membership = ObservedList(self, "inherited_membership")
         self._inherited_membership_exclude_implied = ObservedList(
             self, "inherited_membership_exclude_implied"
@@ -67,6 +70,9 @@ class Type(Namespace):
         self._owned_feature_membership = ObservedList(self, "owned_feature_membership")
         self._owned_intersecting = ObservedList(self, "owned_intersecting")
         self._owned_specialization = ObservedList(self, "owned_specialization")
+        self._owned_specialization_exclude_implied = ObservedList(
+            self, "owned_specialization_exclude_implied"
+        )
         self._owned_unioning = ObservedList(self, "owned_unioning")
         self._unioning_type = ObservedList(self, "unioning_type")
         self._compatible_with = False
@@ -185,6 +191,18 @@ class Type(Namespace):
             Value of property inherited feature.
         """
         return self._inherited_feature
+
+    @property
+    def inherited_feature_exclude_implicit(self) -> list["Feature"]:  # noqa: F821
+        """
+        Get the inherited feature exclude implicit property.
+
+        Returns
+        -------
+        list["Feature"]
+            Value of property inherited feature exclude implicit.
+        """
+        return self._inherited_feature_exclude_implicit
 
     @property
     def inherited_membership(self) -> list["Membership"]:  # noqa: F821
@@ -381,6 +399,18 @@ class Type(Namespace):
             Value of property owned specialization.
         """
         return self._owned_specialization
+
+    @property
+    def owned_specialization_exclude_implied(self) -> list["Specialization"]:  # noqa: F821
+        """
+        Get the owned specialization exclude implied property.
+
+        Returns
+        -------
+        list["Specialization"]
+            Value of property owned specialization exclude implied.
+        """
+        return self._owned_specialization_exclude_implied
 
     @property
     def owned_unioning(self) -> list["Unioning"]:  # noqa: F821

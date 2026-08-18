@@ -76,6 +76,10 @@ class TestType:
         """Test getter for inherited feature property."""
         _ = element.inherited_feature
 
+    def test_inherited_feature_exclude_implicit(self, element):
+        """Test getter for inherited feature exclude implicit property."""
+        _ = element.inherited_feature_exclude_implicit
+
     def test_inherited_membership(self, element):
         """Test getter for inherited membership property."""
         _ = element.inherited_membership
@@ -135,6 +139,10 @@ class TestType:
     def test_owned_specialization(self, element):
         """Test getter for owned specialization property."""
         _ = element.owned_specialization
+
+    def test_owned_specialization_exclude_implied(self, element):
+        """Test getter for owned specialization exclude implied property."""
+        _ = element.owned_specialization_exclude_implied
 
     def test_owned_unioning(self, element):
         """Test getter for owned unioning property."""

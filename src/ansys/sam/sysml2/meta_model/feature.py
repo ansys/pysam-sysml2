@@ -53,8 +53,14 @@ class Feature(Type):
         self._owned_feature_chaining = ObservedList(self, "owned_feature_chaining")
         self._owned_feature_inverting = ObservedList(self, "owned_feature_inverting")
         self._owned_redefinition = ObservedList(self, "owned_redefinition")
+        self._owned_redefinition_exclude_implied = ObservedList(
+            self, "owned_redefinition_exclude_implied"
+        )
         self._owned_reference_subsetting = None
         self._owned_subsetting = ObservedList(self, "owned_subsetting")
+        self._owned_subsetting_exclude_implied = ObservedList(
+            self, "owned_subsetting_exclude_implied"
+        )
         self._owned_type_featuring = ObservedList(self, "owned_type_featuring")
         self._owned_typing = ObservedList(self, "owned_typing")
         self._owning_feature_membership = None
@@ -274,6 +280,18 @@ class Feature(Type):
         return self._owned_redefinition
 
     @property
+    def owned_redefinition_exclude_implied(self) -> list["Redefinition"]:  # noqa: F821
+        """
+        Get the owned redefinition exclude implied property.
+
+        Returns
+        -------
+        list["Redefinition"]
+            Value of property owned redefinition exclude implied.
+        """
+        return self._owned_redefinition_exclude_implied
+
+    @property
     def owned_reference_subsetting(self) -> "ReferenceSubsetting":  # noqa: F821
         """
         Get the owned reference subsetting property.
@@ -310,6 +328,18 @@ class Feature(Type):
             Value of property owned subsetting.
         """
         return self._owned_subsetting
+
+    @property
+    def owned_subsetting_exclude_implied(self) -> list["Subsetting"]:  # noqa: F821
+        """
+        Get the owned subsetting exclude implied property.
+
+        Returns
+        -------
+        list["Subsetting"]
+            Value of property owned subsetting exclude implied.
+        """
+        return self._owned_subsetting_exclude_implied
 
     @property
     def owned_type_featuring(self) -> list["TypeFeaturing"]:  # noqa: F821

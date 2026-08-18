@@ -20,30 +20,26 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""Generated  test class from metamodel."""
-
-import pytest
+"""Generated forwarded notification class from metamodel."""
 
 
-from ansys.sam.sysml2.meta_model.classifier import Classifier
+class ForwardedNotification:
+    """Java class 'com.ansys.metamodel.sysml2.ForwardedNotification'."""
 
+    original_event_type: int
 
-class TestClassifier:
-    """Test class for Java class 'com.ansys.metamodel.sysml2.Classifier'."""
+    def __init__(self):
+        """Construct new instance."""
+        self._original_event_type = 0
 
-    @pytest.fixture
-    def element(self):
-        """Create test element with ID."""
-        return Classifier("element_id")
+    @property
+    def original_event_type(self) -> int:
+        """
+        Get the original event type property.
 
-    def test_id_set(self, element):
-        """Test element ID is correctly set."""
-        assert element.id == "element_id"
-
-    def test_owned_subclassification(self, element):
-        """Test getter for owned subclassification property."""
-        _ = element.owned_subclassification
-
-    def test_owned_subclassification_exclude_implied(self, element):
-        """Test getter for owned subclassification exclude implied property."""
-        _ = element.owned_subclassification_exclude_implied
+        Returns
+        -------
+        int
+            Value of property original event type.
+        """
+        return self._original_event_type
