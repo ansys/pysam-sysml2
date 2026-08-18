@@ -221,7 +221,7 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         )
 
     def get_root_elements(self, project_id: str) -> list:
-        """Get the root Namespace, its owned members, and the root imports."""
+        """Get the root Namespace and its owned members (API ``/roots`` shape)."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
         elements = self._load_elements(project_id, includes_derived=True)
@@ -235,8 +235,6 @@ class MockedSysML2APIConnector(SysML2APIConnector):
                 for ref in element.get("ownedMember", []):
                     if ref["@id"] in by_id:
                         roots[ref["@id"]] = by_id[ref["@id"]]
-            elif element.get("@type") == "NamespaceImport":
-                roots[element["@id"]] = element
         return list(roots.values())
 
     def execute_query(self, project_id: str, query: str, **kwargs) -> dict:

@@ -23,7 +23,8 @@
 """Unit tests for SysML2ProjectBuilder using the mocked connector."""
 
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
-from tests.unit.const import PROJECT_1_ATTR_ID, PROJECT_ID_1
+from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport
+from tests.unit.const import PROJECT_1_ATTR_ID, PROJECT_ID_1, PROJECT_ID_5
 
 
 class TestSysML2ProjectBuilderScripting:
@@ -144,3 +145,25 @@ class TestSysML2ProjectBuilderIncludesFlags:
         call_kwargs = execute_query.call_args.kwargs
         assert call_kwargs["includes_derived"] is False
         assert call_kwargs["includes_inherited"] is False
+
+
+class TestSysML2ProjectBuilderLibraries:
+
+    def test_libraries_packages_from_elements_not_roots(self, connector, includes_derived):
+        builder = SysML2ProjectBuilder(connector)
+
+        project = builder.build_sysml_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
+
+        assert project.get_root_package().name == "project-5"
+        assert not any(isinstance(element, NamespaceImport) for element in project._root)
+        assert any(
+            isinstance(element, NamespaceImport) and element.owner is None
+            for element in project._env.values()
+        )
+
+        libraries = project.get_libraries_packages()
+
+        assert libraries
+        assert all(library is not None for library in libraries)
