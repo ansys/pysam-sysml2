@@ -37,9 +37,9 @@ from ansys.sam.sysml2.exception.query_exception import InvalidQuery
 class TestQueries:
 
     @pytest.mark.parametrize("kind", ["scripting", "sysml"])
-    def test_query_primitive_constraint_by_id(self, connector, project_factory, kind):
+    def test_query_primitive_constraint_by_id(self, connector, project_factory, includes_derived, kind):
         """Query with PrimitiveConstraint on @id returns exactly one matching element."""
-        project = project_factory(model="bike", kind=kind)
+        project = project_factory(model="bike", kind=kind, includes_derived=includes_derived)
         elements = connector.get_all_elements(project.get_id())
         target_id = elements[0]["@id"]
 
@@ -51,9 +51,9 @@ class TestQueries:
         assert result[0]["@id"] == target_id
 
     @pytest.mark.parametrize("kind", ["scripting", "sysml"])
-    def test_query_composite_or(self, connector, project_factory, kind):
+    def test_query_composite_or(self, connector, project_factory, includes_derived, kind):
         """Composite OR constraint returns elements matching either condition."""
-        project = project_factory(model="bike", kind=kind)
+        project = project_factory(model="bike", kind=kind, includes_derived=includes_derived)
         elements = connector.get_all_elements(project.get_id())
         id_a = elements[0]["@id"]
         id_b = elements[1]["@id"]
@@ -75,9 +75,9 @@ class TestQueries:
         assert id_b in result_ids
 
     @pytest.mark.parametrize("kind", ["scripting", "sysml"])
-    def test_query_invalid_property(self, connector, project_factory, kind):
+    def test_query_invalid_property(self, connector, project_factory, includes_derived, kind):
         """Query on non-existent property returns no matches."""
-        project = project_factory(model="bike", kind=kind)
+        project = project_factory(model="bike", kind=kind, includes_derived=includes_derived)
 
         query = Query()
         query.where = PrimitiveConstraint("nonExistentProperty", "value")

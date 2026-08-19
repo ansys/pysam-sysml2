@@ -34,6 +34,7 @@ from ansys.sam.sysml2.exception.connector_exception import (
 )
 
 MODELTESTSET = Path(__file__).resolve().parent / "modeltestset"
+_ELEMENTS_WITHOUT_DERIVED = "elements_includesDerived_false_includesInherited_true.json"
 
 
 _DERIVED_ELEMENT_KEYS = frozenset(
@@ -100,11 +101,12 @@ class MockedSysML2APIConnector(SysML2APIConnector):
                 self._projects[data["@id"]] = data
                 self._project_dirs[data["@id"]] = project_dir
 
-    def _load_elements(self, project_id: str) -> list:
+    def _load_elements(self, project_id: str, includes_derived: bool = True) -> list:
         project_dir = self._project_dirs.get(project_id)
         if project_dir is None:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        elements_file = project_dir / "elements.json"
+        filename = "elements.json" if includes_derived else _ELEMENTS_WITHOUT_DERIVED
+        elements_file = project_dir / filename
         if not elements_file.exists():
             raise ProjectNotFoundException(f"Project {project_id} not found")
         return json.loads(elements_file.read_text(encoding="utf-8"))
@@ -202,10 +204,9 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         """Get all elements of a project."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        elements = self._load_elements(project_id)
-        if not kwargs.get("includes_derived", True):
-            elements = self._strip_derived_properties(elements)
-        return elements
+        return self._load_elements(
+            project_id, includes_derived=kwargs.get("includes_derived", True)
+        )
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """Get a single element by ID."""
@@ -223,7 +224,7 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         """Get the root Namespace, its owned members, and the root imports."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        elements = self._load_elements(project_id)
+        elements = self._load_elements(project_id, includes_derived=True)
         by_id = {element["@id"]: element for element in elements}
         roots = {}
         for element in elements:

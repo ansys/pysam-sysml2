@@ -68,9 +68,9 @@ def _assess_cost_sysml(element):
 @pytest.mark.e2e
 class TestComputer:
 
-    def test_computer_cost_scripting(self, project_factory):
+    def test_computer_cost_scripting(self, project_factory, includes_derived):
         """Load computer model via scripting, compute cost for each real system."""
-        project = project_factory(model="computer", kind="scripting")
+        project = project_factory(model="computer", kind="scripting", includes_derived=includes_derived)
         real_systems = project.get_root_package().RealSystems
 
         total_cost = 0
@@ -81,9 +81,9 @@ class TestComputer:
 
         assert total_cost == 2900
 
-    def test_computer_cost_sysml(self, project_factory):
+    def test_computer_cost_sysml(self, project_factory, includes_derived):
         """Load computer model via sysml, compute cost for each real system."""
-        project = project_factory(model="computer", kind="sysml")
+        project = project_factory(model="computer", kind="sysml", includes_derived=includes_derived)
         real_systems = project.get_root_package().get("RealSystems")
 
         total_cost = 0

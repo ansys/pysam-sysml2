@@ -39,6 +39,12 @@ from ._sam_binary_import import import_project as _import_project
 REQUIRED_ENV_VARS = ("SAM_SERVER_URL", "SAM_ORGANIZATION_ID", "SAM_TOKEN")
 
 
+@pytest.fixture(params=[True, False], ids=["with_derived", "without_derived"])
+def includes_derived(request):
+    """Run project-loading e2e tests with and without API-derived collections."""
+    return request.param
+
+
 @pytest.fixture(scope="session", autouse=True)
 def _skip_without_env():
     """Skip every e2e test unless the connector fixtures can be built."""

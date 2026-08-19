@@ -35,8 +35,10 @@ class TestFeatureChainingStatic:
     """resolve_feature_chaining on the metamodel (static) representation."""
 
     @pytest.fixture
-    def project(self, connector):
-        return SysML2ProjectManager(connector=connector).get_sysml_project(PROJECT_ID_7)
+    def project(self, connector, includes_derived):
+        return SysML2ProjectManager(connector=connector).get_sysml_project(
+            PROJECT_ID_7, includes_derived=includes_derived
+        )
 
     def test_authoring_context_resolves_base_features(self, project):
         vehicle = project.get_root_package().get("Vehicle")
@@ -72,8 +74,10 @@ class TestFeatureChainingScripting:
     """resolve_feature_chaining on the scripting representation."""
 
     @pytest.fixture
-    def project(self, connector):
-        return SysML2ProjectManager(connector=connector).get_scripting_project(PROJECT_ID_7)
+    def project(self, connector, includes_derived):
+        return SysML2ProjectManager(connector=connector).get_scripting_project(
+            PROJECT_ID_7, includes_derived=includes_derived
+        )
 
     def test_authoring_context_resolves_base_features(self, project):
         vehicle = project.get_root_package().get("Vehicle")

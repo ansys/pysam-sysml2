@@ -143,9 +143,13 @@ class TestObserverTransactional:
 class TestObserverImmediate:
     """Tests for immediate commit flows using the mocked connector."""
 
-    def test_notify_immediate_calls_create_commit(self, connector, mocker):
+    def test_notify_immediate_calls_create_commit(
+        self, connector, includes_derived, mocker
+    ):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
@@ -155,9 +159,13 @@ class TestObserverImmediate:
         assert root._declaredName == "RenamedRoot"
         assert commit_spy.call_count == 1
 
-    def test_list_notify_immediate_calls_create_commit(self, connector, mocker):
+    def test_list_notify_immediate_calls_create_commit(
+        self, connector, includes_derived, mocker
+    ):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
@@ -169,9 +177,13 @@ class TestObserverImmediate:
 
         assert commit_spy.call_count == 1
 
-    def test_delete_element_immediate_calls_create_commit(self, connector, mocker):
+    def test_delete_element_immediate_calls_create_commit(
+        self, connector, includes_derived, mocker
+    ):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
@@ -180,10 +192,12 @@ class TestObserverImmediate:
 
         assert commit_spy.call_count == 1
 
-    def test_notify_commit_error_propagates(self, connector, mocker):
+    def test_notify_commit_error_propagates(self, connector, includes_derived, mocker):
         """Verify BadRequestConnectionException from create_commit propagates to the caller."""
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(
             connector,
@@ -194,10 +208,12 @@ class TestObserverImmediate:
         with pytest.raises(BadRequestConnectionException):
             root._declaredName = ["ShouldFail"]
 
-    def test_delete_commit_error_propagates(self, connector, mocker):
+    def test_delete_commit_error_propagates(self, connector, includes_derived, mocker):
         """Verify BadRequestConnectionException from create_commit propagates on delete."""
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(
             connector,

@@ -36,13 +36,17 @@ class TestValueHelperComplexExpressions:
     """Read and write complex expressions as text, for both project layers."""
 
     @pytest.fixture
-    def scripting_package(self, connector):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def scripting_package(self, connector, includes_derived):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         return project.get_root_package()
 
     @pytest.fixture
-    def sysml_package(self, connector):
-        project = SysML2ProjectManager(connector).get_sysml_project(PROJECT_ID_5)
+    def sysml_package(self, connector, includes_derived):
+        project = SysML2ProjectManager(connector).get_sysml_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         return project.get_root_package()
 
     def test_scripting_arithmetic_expression(self, scripting_package):
@@ -62,8 +66,12 @@ class TestValueHelperComplexExpressions:
         value = scripting_package.get("attribute4").get_value()
         assert SysMLTools.serialize_expression(value) == "not true"
 
-    def test_scripting_unit_expression_resolves_library_referent(self, connector):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def test_scripting_unit_expression_resolves_library_referent(
+        self, connector, includes_derived
+    ):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         package = project.get_root_package()
 
         value = package.get("attribute1").get_value()
@@ -87,16 +95,22 @@ class TestValueHelperComplexExpressions:
         value = sysml_package.get("attribute4").get_value()
         assert SysMLTools.serialize_expression(value) == "not true"
 
-    def test_sysml_unit_expression_resolves_library_referent(self, connector):
-        project = SysML2ProjectManager(connector).get_sysml_project(PROJECT_ID_5)
+    def test_sysml_unit_expression_resolves_library_referent(
+        self, connector, includes_derived
+    ):
+        project = SysML2ProjectManager(connector).get_sysml_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         package = project.get_root_package()
 
         value = package.get("attribute1").get_value()
 
         assert SysMLTools.serialize_expression(value) == "5 [kg]"
 
-    def test_set_complex_expression_commits_text(self, connector, mocker):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def test_set_complex_expression_commits_text(self, connector, includes_derived, mocker):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         package = project.get_root_package()
         attribute = package.get("attribute")
         mocker.patch.object(attribute._observer, "reload_project")
@@ -118,8 +132,10 @@ class TestValueHelperComplexExpressions:
         assert payload["isInitial"] is False
         assert payload["owner"] == {"@id": attribute._id}
 
-    def test_set_value_commits_quoted_string(self, connector, mocker):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def test_set_value_commits_quoted_string(self, connector, includes_derived, mocker):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         package = project.get_root_package()
         attribute = package.get("attribute")
         mocker.patch.object(attribute._observer, "reload_project")
@@ -164,8 +180,12 @@ class TestValueHelperComplexExpressions:
             escaped = ValueHelper.escape_kerml_string(sample)
             assert ValueHelper.unescape_kerml_string(escaped) == sample
 
-    def test_set_value_commits_escaped_backslash_string(self, connector, mocker):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def test_set_value_commits_escaped_backslash_string(
+        self, connector, includes_derived, mocker
+    ):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         package = project.get_root_package()
         attribute = package.get("attribute")
         mocker.patch.object(attribute._observer, "reload_project")
@@ -178,8 +198,12 @@ class TestValueHelperComplexExpressions:
         assert payload["@type"] == "FeatureValue"
         assert payload["value"] == '"Hello\\\\World"'
 
-    def test_set_value_commits_escaped_quote_string(self, connector, mocker):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def test_set_value_commits_escaped_quote_string(
+        self, connector, includes_derived, mocker
+    ):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         package = project.get_root_package()
         attribute = package.get("attribute")
         mocker.patch.object(attribute._observer, "reload_project")

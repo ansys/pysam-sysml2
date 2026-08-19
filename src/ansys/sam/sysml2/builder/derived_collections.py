@@ -38,6 +38,7 @@ from ansys.sam.sysml2.meta_model.classifier import Classifier
 from ansys.sam.sysml2.meta_model.concern_definition import ConcernDefinition
 from ansys.sam.sysml2.meta_model.data_type import DataType
 from ansys.sam.sysml2.meta_model.documentation import Documentation
+from ansys.sam.sysml2.meta_model.end_feature_membership import EndFeatureMembership
 from ansys.sam.sysml2.meta_model.enumeration_definition import EnumerationDefinition
 from ansys.sam.sysml2.meta_model.feature import Feature
 from ansys.sam.sysml2.meta_model.feature_chaining import FeatureChaining
@@ -51,13 +52,16 @@ from ansys.sam.sysml2.meta_model.membership import Membership
 from ansys.sam.sysml2.meta_model.metaclass import Metaclass
 from ansys.sam.sysml2.meta_model.namespace import Namespace
 from ansys.sam.sysml2.meta_model.owning_membership import OwningMembership
+from ansys.sam.sysml2.meta_model.parameter_membership import ParameterMembership
 from ansys.sam.sysml2.meta_model.part_definition import PartDefinition
 from ansys.sam.sysml2.meta_model.port_definition import PortDefinition
 from ansys.sam.sysml2.meta_model.predicate import Predicate
 from ansys.sam.sysml2.meta_model.redefinition import Redefinition
 from ansys.sam.sysml2.meta_model.rendering_definition import RenderingDefinition
 from ansys.sam.sysml2.meta_model.requirement_definition import RequirementDefinition
+from ansys.sam.sysml2.meta_model.return_parameter_membership import ReturnParameterMembership
 from ansys.sam.sysml2.meta_model.specialization import Specialization
+from ansys.sam.sysml2.meta_model.step import Step
 from ansys.sam.sysml2.meta_model.structure import Structure
 from ansys.sam.sysml2.meta_model.subsetting import Subsetting
 from ansys.sam.sysml2.meta_model.type_ import Type
@@ -91,6 +95,7 @@ _OWNED_SPECIALIZATION = "ownedSpecialization"
 _OWNED_TYPING = "ownedTyping"
 _OWNED_SUBSETTING = "ownedSubsetting"
 _OWNED_REDEFINITION = "ownedRedefinition"
+_OWNED_FEATURE_CHAINING = "ownedFeatureChaining"
 _CHAINING_FEATURE = "chainingFeature"
 _TYPE = "type"
 _DEFINITION = "definition"
@@ -98,6 +103,11 @@ _ENUMERATION_DEFINITION = "enumerationDefinition"
 _GENERAL = "general"
 _SUBSETTED_FEATURE = "subsettedFeature"
 _REDEFINED_FEATURE = "redefinedFeature"
+_OWNED_END_FEATURE = "ownedEndFeature"
+_END_FEATURE = "endFeature"
+_INPUT = "input"
+_OUTPUT = "output"
+_PARAMETER = "parameter"
 
 # (json_key, metamodel base type)
 _LIST_DEFINITION_FILTERS = (
@@ -145,9 +155,14 @@ def _metamodel_type_names(base: type) -> frozenset[str]:
 _MEMBERSHIP_TYPE_NAMES = _metamodel_type_names(Membership)
 _OWNING_MEMBERSHIP_TYPE_NAMES = _metamodel_type_names(OwningMembership)
 _FEATURE_MEMBERSHIP_TYPE_NAMES = _metamodel_type_names(FeatureMembership)
+_END_FEATURE_MEMBERSHIP_TYPE_NAMES = _metamodel_type_names(EndFeatureMembership)
+_PARAMETER_MEMBERSHIP_TYPE_NAMES = _metamodel_type_names(ParameterMembership)
+_RETURN_PARAMETER_MEMBERSHIP_TYPE_NAMES = _metamodel_type_names(ReturnParameterMembership)
 _FEATURE_TYPE_NAMES = _metamodel_type_names(Feature)
 _NAMESPACE_TYPE_NAMES = _metamodel_type_names(Namespace)
 _TYPE_TYPE_NAMES = _metamodel_type_names(Type)
+_STEP_TYPE_NAMES = _metamodel_type_names(Step)
+_BEHAVIOR_TYPE_NAMES = _metamodel_type_names(Behavior)
 _IMPORT_TYPE_NAMES = _metamodel_type_names(Import)
 _ANNOTATION_TYPE_NAMES = _metamodel_type_names(Annotation)
 _DOCUMENTATION_TYPE_NAMES = _metamodel_type_names(Documentation)
@@ -262,6 +277,39 @@ def _derive_collections_for_element(element) -> None:
         owned_features + inherited_features,
     )
 
+    end_feature_memberships = _filter_by_type(
+        owned_relationships, _END_FEATURE_MEMBERSHIP_TYPE_NAMES
+    )
+    owned_end_features = _collect_features_from_memberships(end_feature_memberships)
+    _set_collection(element, _attribute_name(_OWNED_END_FEATURE), owned_end_features)
+    _set_collection(element, _attribute_name(_END_FEATURE), owned_end_features)
+
+    parameter_memberships = _filter_by_type(owned_relationships, _PARAMETER_MEMBERSHIP_TYPE_NAMES)
+    return_parameter_memberships = _filter_by_type(
+        owned_relationships, _RETURN_PARAMETER_MEMBERSHIP_TYPE_NAMES
+    )
+    input_memberships = [
+        membership
+        for membership in parameter_memberships
+        if not _has_type(membership, _RETURN_PARAMETER_MEMBERSHIP_TYPE_NAMES)
+    ]
+    _set_collection(
+        element,
+        _attribute_name(_INPUT),
+        _collect_features_from_memberships(input_memberships),
+    )
+    _set_collection(
+        element,
+        _attribute_name(_OUTPUT),
+        _collect_features_from_memberships(return_parameter_memberships),
+    )
+    if _has_type(element, _STEP_TYPE_NAMES) or _has_type(element, _BEHAVIOR_TYPE_NAMES):
+        _set_collection(
+            element,
+            _attribute_name(_PARAMETER),
+            _collect_features_from_memberships(parameter_memberships),
+        )
+
     if _has_type(element, _FEATURE_TYPE_NAMES):
         _derive_feature_typing_collections(element, owned_relationships)
 
@@ -271,8 +319,9 @@ def _derive_feature_typing_collections(feature, owned_relationships: list) -> No
     owned_typings = _filter_by_type(owned_relationships, _FEATURE_TYPING_TYPE_NAMES)
     owned_subsettings = _filter_by_type(owned_relationships, _SUBSETTING_TYPE_NAMES)
     owned_redefinitions = _filter_by_type(owned_relationships, _REDEFINITION_TYPE_NAMES)
+    feature_chainings = _filter_by_type(owned_relationships, _FEATURE_CHAINING_TYPE_NAMES)
     chaining_features = _collect_targets(
-        _filter_by_type(owned_relationships, _FEATURE_CHAINING_TYPE_NAMES),
+        feature_chainings,
         _attribute_name(_CHAINING_FEATURE),
     )
 
@@ -286,6 +335,11 @@ def _derive_feature_typing_collections(feature, owned_relationships: list) -> No
         feature,
         _attribute_name(_OWNED_REDEFINITION),
         owned_redefinitions,
+    )
+    _set_collection(
+        feature,
+        _attribute_name(_OWNED_FEATURE_CHAINING),
+        feature_chainings,
     )
     _set_collection(
         feature,

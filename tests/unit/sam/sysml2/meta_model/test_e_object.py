@@ -37,13 +37,17 @@ from tests.unit.const import PROJECT_ID_1, PROJECT_ID_3
 class TestEObject:
 
     @pytest.fixture
-    def project(self, connector) -> Project:
+    def project(self, connector, includes_derived) -> Project:
         model_manager = SysML2ProjectManager(connector=connector)
-        return model_manager.get_sysml_project(PROJECT_ID_3)
+        return model_manager.get_sysml_project(
+            PROJECT_ID_3, includes_derived=includes_derived
+        )
 
-    def test_update_element(self, connector, mocker):
+    def test_update_element(self, connector, includes_derived, mocker):
         project_manager = SysML2ProjectManager(connector)
-        project = project_manager.get_sysml_project(PROJECT_ID_1)
+        project = project_manager.get_sysml_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         elem = root.get("PartDefinition").get("attribute")

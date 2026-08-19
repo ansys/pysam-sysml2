@@ -41,8 +41,10 @@ class TestDynamicEObjectNavigation:
     """Dot navigation and _camelCase access resolve over the generated metamodel."""
 
     @pytest.fixture
-    def project(self, connector):
-        return SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def project(self, connector, includes_derived):
+        return SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
 
     def test_dot_navigation_matches_get(self, project):
         root = project.get_root_package()
@@ -86,8 +88,12 @@ class TestDynamicEObjectNavigation:
 class TestDynamicEObjectWrite:
     """Writes through the scripting notation route through the metamodel property setters."""
 
-    def test_writable_camel_case_routes_through_observer(self, connector, mocker):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def test_writable_camel_case_routes_through_observer(
+        self, connector, includes_derived, mocker
+    ):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         attribute = project.get_root_package().get("attribute")
         mocker.patch.object(attribute._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
@@ -98,8 +104,10 @@ class TestDynamicEObjectWrite:
         assert commit_spy.call_count == 1
         assert "renamed_attribute" in commit_spy.call_args.args[1]
 
-    def test_read_only_camel_case_write_raises(self, connector):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def test_read_only_camel_case_write_raises(self, connector, includes_derived):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         attribute = project.get_root_package().get("attribute")
 
         with pytest.raises(AttributeError):
@@ -137,8 +145,10 @@ class TestDynamicEObjectWrite:
 class TestDynamicEObjectValuesAndFactory:
     """Value access and Factory creation behave as on the unified model."""
 
-    def test_get_and_set_value(self, connector, mocker):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_5)
+    def test_get_and_set_value(self, connector, includes_derived, mocker):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_5, includes_derived=includes_derived
+        )
         attribute = project.get_root_package().get("attribute")
 
         assert SysMLTools.serialize_expression(attribute.get_value()) == "5 + 5"
@@ -150,8 +160,10 @@ class TestDynamicEObjectValuesAndFactory:
 
         assert commit_spy.call_count >= 1
 
-    def test_factory_creates_scripting_element(self, connector):
-        project = SysML2ProjectManager(connector).get_scripting_project(PROJECT_ID_2)
+    def test_factory_creates_scripting_element(self, connector, includes_derived):
+        project = SysML2ProjectManager(connector).get_scripting_project(
+            PROJECT_ID_2, includes_derived=includes_derived
+        )
         factory = Factory(project, connector)
         root = project.get_root_package()
         project.start_transactional_mode()
@@ -210,13 +222,17 @@ class TestSysMLElement:
     """Scripting value get/set and name updates using the ``_camelCase`` notation."""
 
     @pytest.fixture
-    def project(self, connector):
+    def project(self, connector, includes_derived):
         manager = SysML2ProjectManager(connector)
-        return manager.get_scripting_project(PROJECT_ID_3)
+        return manager.get_scripting_project(
+            PROJECT_ID_3, includes_derived=includes_derived
+        )
 
-    def test_update_element_name(self, connector, mocker):
+    def test_update_element_name(self, connector, includes_derived, mocker):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         attr = root.PartDefinition.attribute
@@ -290,9 +306,11 @@ class TestSysMLElement:
 
         assert commit_spy.call_count == 1
 
-    def test_setattr_commit_rejected(self, connector, mocker):
+    def test_setattr_commit_rejected(self, connector, includes_derived, mocker):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(
             connector,
