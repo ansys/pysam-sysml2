@@ -95,6 +95,7 @@ from .flow_end import FlowEnd as FlowEnd
 from .flow_usage import FlowUsage as FlowUsage
 from .for_loop_action_usage import ForLoopActionUsage as ForLoopActionUsage
 from .fork_node import ForkNode as ForkNode
+from .forwarded_notification import ForwardedNotification as ForwardedNotification
 from .framed_concern_membership import FramedConcernMembership as FramedConcernMembership
 from .function import Function as Function
 from .if_action_usage import IfActionUsage as IfActionUsage

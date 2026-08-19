@@ -142,6 +142,9 @@ from ansys.sam.sysml2.meta_model.for_loop_action_usage import (
     ForLoopActionUsage as ForLoopActionUsage,
 )
 from ansys.sam.sysml2.meta_model.fork_node import ForkNode as ForkNode
+from ansys.sam.sysml2.meta_model.forwarded_notification import (
+    ForwardedNotification as ForwardedNotification,
+)
 from ansys.sam.sysml2.meta_model.framed_concern_membership import (
     FramedConcernMembership as FramedConcernMembership,
 )
@@ -1143,6 +1146,17 @@ class Factory:
             The new model element
         """
         return self._create_element("ForkNode", **kwargs)
+
+    def create_forwarded_notification(self, **kwargs) -> ForwardedNotification:
+        """
+        Create a new ForwardedNotification.
+
+        Returns
+        -------
+        ForwardedNotification
+            The new model element
+        """
+        return self._create_element("ForwardedNotification", **kwargs)
 
     def create_framed_concern_membership(self, **kwargs) -> FramedConcernMembership:
         """

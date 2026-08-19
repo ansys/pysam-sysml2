@@ -42,6 +42,9 @@ class Classifier(Type):
         super().__init__(element_id)
 
         self._owned_subclassification = ObservedList(self, "owned_subclassification")
+        self._owned_subclassification_exclude_implied = ObservedList(
+            self, "owned_subclassification_exclude_implied"
+        )
 
     @property
     def owned_subclassification(self) -> list["Subclassification"]:  # noqa: F821
@@ -54,3 +57,15 @@ class Classifier(Type):
             Value of property owned subclassification.
         """
         return self._owned_subclassification
+
+    @property
+    def owned_subclassification_exclude_implied(self) -> list["Subclassification"]:  # noqa: F821
+        """
+        Get the owned subclassification exclude implied property.
+
+        Returns
+        -------
+        list["Subclassification"]
+            Value of property owned subclassification exclude implied.
+        """
+        return self._owned_subclassification_exclude_implied

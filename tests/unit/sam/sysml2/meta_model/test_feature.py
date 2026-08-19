@@ -92,6 +92,10 @@ class TestFeature:
         """Test getter for owned redefinition property."""
         _ = element.owned_redefinition
 
+    def test_owned_redefinition_exclude_implied(self, element):
+        """Test getter for owned redefinition exclude implied property."""
+        _ = element.owned_redefinition_exclude_implied
+
     def test_owned_reference_subsetting(self, element):
         """Test getter and setter for owned reference subsetting property."""
         value = "test_value"
@@ -101,6 +105,10 @@ class TestFeature:
     def test_owned_subsetting(self, element):
         """Test getter for owned subsetting property."""
         _ = element.owned_subsetting
+
+    def test_owned_subsetting_exclude_implied(self, element):
+        """Test getter for owned subsetting exclude implied property."""
+        _ = element.owned_subsetting_exclude_implied
 
     def test_owned_type_featuring(self, element):
         """Test getter for owned type featuring property."""
