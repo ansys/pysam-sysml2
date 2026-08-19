@@ -95,7 +95,16 @@ class ProjectImpl(Project):
         List[Package]
             List of libraries packages.
         """
-        matches = [x._imported_element for x in self._root if isinstance(x, NamespaceImport)]
+        matches = []
+        for element in self._env.values():
+            if not isinstance(element, NamespaceImport):
+                continue
+            if element.owner is not None:
+                continue
+            imported = element.imported_element
+            if imported is None or isinstance(imported, UnresolvedField):
+                continue
+            matches.append(imported)
         if not matches:
             raise ValueError("No libraries packages found in project.")
         return matches
