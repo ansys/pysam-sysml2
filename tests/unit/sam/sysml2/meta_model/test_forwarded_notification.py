@@ -24,26 +24,17 @@
 
 import pytest
 
+from ansys.sam.sysml2.meta_model.forwarded_notification import ForwardedNotification
 
-from ansys.sam.sysml2.meta_model.classifier import Classifier
 
-
-class TestClassifier:
-    """Test class for Java class 'com.ansys.metamodel.sysml2.Classifier'."""
+class TestForwardedNotification:
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ForwardedNotification'."""
 
     @pytest.fixture
     def element(self):
-        """Create test element with ID."""
-        return Classifier("element_id")
+        """Create test element."""
+        return ForwardedNotification()
 
-    def test_id_set(self, element):
-        """Test element ID is correctly set."""
-        assert element.id == "element_id"
-
-    def test_owned_subclassification(self, element):
-        """Test getter for owned subclassification property."""
-        _ = element.owned_subclassification
-
-    def test_owned_subclassification_exclude_implied(self, element):
-        """Test getter for owned subclassification exclude implied property."""
-        _ = element.owned_subclassification_exclude_implied
+    def test_original_event_type(self, element):
+        """Test getter for original event type property."""
+        _ = element.original_event_type
