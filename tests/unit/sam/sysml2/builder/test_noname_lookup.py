@@ -39,7 +39,7 @@ class TestSysMLNoNameLookup:
     def test_get_resolves_noname_child_by_element_type_id(self, project):
         root = project.get_root_package()
 
-        child = root.get("ConnectionUsage::4C27A76D-EB0D-4391-806F-C6103E0F41AB")
+        child = root.get("ConnectionUsage::a0ec0440-85ed-4777-9671-957cd81177d6")
 
         assert child is not None
         assert child.id == PROJECT_6_NONAME_ID
@@ -48,11 +48,11 @@ class TestSysMLNoNameLookup:
         child = project.find_element_by_id(PROJECT_6_NONAME_ID)
 
         assert child.name == ""
-        assert child.declared_name == "ConnectionUsage::4C27A76D-EB0D-4391-806F-C6103E0F41AB"
+        assert child.declared_name == "ConnectionUsage::a0ec0440-85ed-4777-9671-957cd81177d6"
 
     def test_find_elements_by_name_matches_element_type_id(self, project):
         matches = project.find_elements_by_name(
-            "ConnectionUsage::4C27A76D-EB0D-4391-806F-C6103E0F41AB"
+            "ConnectionUsage::a0ec0440-85ed-4777-9671-957cd81177d6"
         )
 
         assert len(matches) == 1
@@ -77,13 +77,13 @@ class TestScriptingNoNameLookup:
         root = project.get_root_package()
 
         assert (
-            root.ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB._id == PROJECT_6_NONAME_ID
+            root.ConnectionUsage_a0ec0440_85ed_4777_9671_957cd81177d6._id == PROJECT_6_NONAME_ID
         )
 
     def test_get_resolves_noname_child_by_dot_safe_fallback(self, project):
         root = project.get_root_package()
 
-        child = root.get("ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB")
+        child = root.get("ConnectionUsage_a0ec0440_85ed_4777_9671_957cd81177d6")
 
         assert child is not None
         assert child._id == PROJECT_6_NONAME_ID
@@ -92,11 +92,11 @@ class TestScriptingNoNameLookup:
         child = project.find_element_by_id(PROJECT_6_NONAME_ID)
 
         assert child._name == ""
-        assert child._declaredName == "ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB"
+        assert child._declaredName == "ConnectionUsage_a0ec0440_85ed_4777_9671_957cd81177d6"
 
     def test_find_elements_by_name_matches_fallback(self, project):
         matches = project.find_elements_by_name(
-            "ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB"
+            "ConnectionUsage_a0ec0440_85ed_4777_9671_957cd81177d6"
         )
 
         assert len(matches) == 1

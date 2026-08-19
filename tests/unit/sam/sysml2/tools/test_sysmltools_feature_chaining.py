@@ -40,7 +40,7 @@ class TestFeatureChainingStatic:
 
     def test_authoring_context_resolves_base_features(self, project):
         vehicle = project.get_root_package().get("Vehicle")
-        connection = vehicle.get("ConnectionUsage::cac44166-105a-412b-ae47-b7fe2d1adb4c")
+        connection = vehicle.get("ConnectionUsage::2d0e9768-bd43-4725-bfb1-aea835a45e56")
 
         source = SysMLTools().resolve_feature_chaining(connection, "source")
         target = SysMLTools().resolve_feature_chaining(connection, "target")
@@ -50,7 +50,7 @@ class TestFeatureChainingStatic:
 
     def test_transit_context_resolves_renamed_redefinitions(self, project):
         transit = project.get_root_package().get("Transit")
-        connection = transit.get("ConnectionUsage::cac44166-105a-412b-ae47-b7fe2d1adb4c")
+        connection = transit.get("ConnectionUsage::2d0e9768-bd43-4725-bfb1-aea835a45e56")
 
         source = SysMLTools().resolve_feature_chaining(connection, "source")
         target = SysMLTools().resolve_feature_chaining(connection, "target")
@@ -60,7 +60,7 @@ class TestFeatureChainingStatic:
 
     def test_electric_transit_context_resolves_deepest_redefinitions(self, project):
         electric = project.get_root_package().get("ElectricTransit")
-        connection = electric.get("ConnectionUsage::cac44166-105a-412b-ae47-b7fe2d1adb4c")
+        connection = electric.get("ConnectionUsage::2d0e9768-bd43-4725-bfb1-aea835a45e56")
 
         source, target = SysMLTools().get_connector_ends(connection)
 
@@ -77,7 +77,7 @@ class TestFeatureChainingScripting:
 
     def test_authoring_context_resolves_base_features(self, project):
         vehicle = project.get_root_package().get("Vehicle")
-        connection = vehicle.get("ConnectionUsage_cac44166_105a_412b_ae47_b7fe2d1adb4c")
+        connection = vehicle.get("ConnectionUsage_2d0e9768_bd43_4725_bfb1_aea835a45e56")
 
         source = SysMLTools().resolve_feature_chaining(connection, "source")
         target = SysMLTools().resolve_feature_chaining(connection, "target")
@@ -87,7 +87,7 @@ class TestFeatureChainingScripting:
 
     def test_transit_context_resolves_renamed_redefinitions(self, project):
         transit = project.get_root_package().get("Transit")
-        connection = transit.get("ConnectionUsage_cac44166_105a_412b_ae47_b7fe2d1adb4c")
+        connection = transit.get("ConnectionUsage_2d0e9768_bd43_4725_bfb1_aea835a45e56")
 
         source = SysMLTools().resolve_feature_chaining(connection, "source")
         target = SysMLTools().resolve_feature_chaining(connection, "target")
@@ -97,7 +97,7 @@ class TestFeatureChainingScripting:
 
     def test_electric_transit_context_resolves_deepest_redefinitions(self, project):
         electric = project.get_root_package().get("ElectricTransit")
-        connection = electric.get("ConnectionUsage_cac44166_105a_412b_ae47_b7fe2d1adb4c")
+        connection = electric.get("ConnectionUsage_2d0e9768_bd43_4725_bfb1_aea835a45e56")
 
         source, target = SysMLTools().get_connector_ends(connection)
 
