@@ -57,6 +57,8 @@ weight_features = [
     bike.get("frame").get("weight"),
 ]
 bike_weight = sum(
-    float(SysMLTools.serialize_expression(f.get_value()).split()[0]) for f in weight_features
+    float(SysMLTools.serialize_expression(f.get_value()).split()[0])
+    for f in weight_features
+    if f.get_value() is not None
 )
 print(bike_weight)

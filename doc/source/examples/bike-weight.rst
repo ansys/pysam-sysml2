@@ -105,21 +105,21 @@ To get the weight of each piece, use the ``weight`` attribute with dot notation:
     .. tab-item:: Dynamic approach
 
         .. literalinclude:: ../_static/code/weight-bike.py
-            :lines: 51-60
+            :lines: 51-62
             :language: python
             :caption: Calculate total bike weight by summing component weights
 
     .. tab-item:: Static approach
 
         .. literalinclude:: ../_static/code/weight-bike-static.py
-            :lines: 52-61
+            :lines: 52-63
             :language: python
             :caption: Calculate total bike weight by summing component weights
 
 Print the bike weight:
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 61
+    :lines: 63
     :language: python
     :caption: Print the calculated bike weight
 
