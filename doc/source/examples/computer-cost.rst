@@ -5,7 +5,7 @@ Calculate computer cost
 
 Download the computer model used in this example and import it into a new project to work on.
 
-#. Download the model: :download:`Computer Model <../_static/code/computer.xmi>`.
+#. Download the model: :download:`Computer Model <../_static/code/computer.kpar>`.
 
 #. Open the SAM editor in your browser and select the desired organization (for example, *MyOrga*).
 
@@ -13,7 +13,7 @@ Download the computer model used in this example and import it into a new projec
 
 #. Select **Choose File** for the **File to import** option.
 
-#. Select the ``computer.xmi`` file that you just downloaded. The project name is automatically
+#. Select the ``computer.kpar`` file that you just downloaded. The project name is automatically
    set to ``computer``.
 
 #. Click **Import** and wait for the project to load.

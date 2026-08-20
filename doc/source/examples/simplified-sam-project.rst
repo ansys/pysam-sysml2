@@ -32,7 +32,7 @@ Ensure that you meet these prerequisites:
 
 - A running SAM server instance.
 - A valid organization ID, project ID, and token.
-- The ``bike.xmi`` model imported into your project.
+- The ``bike.kpar`` model imported into your project.
 
 Simplified Python example
 =========================

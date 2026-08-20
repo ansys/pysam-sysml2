@@ -6,7 +6,7 @@ Create a new element
 Make sure that you have access to a valid server and a project containing the ``Bike`` structure.
 If you do not have a project containing the ``Bike`` structure, perform the following steps:
 
-#. Download the model: :download:`Bike Model <../_static/code/bike.xmi>`.
+#. Download the model: :download:`Bike Model <../_static/code/bike.kpar>`.
 
 #. Open the SAM editor in your browser and select the desired organization (for example, *MyOrga*).
 
@@ -14,7 +14,7 @@ If you do not have a project containing the ``Bike`` structure, perform the foll
 
 #. Select **Choose File** for the **File to import** option.
 
-#. Select the ``bike.xmi`` file that you just downloaded. The project name is automatically set to
+#. Select the ``bike.kpar`` file that you just downloaded. The project name is automatically set to
    ``bike``.
 
 #. Click **Import** and wait for the project to load.
