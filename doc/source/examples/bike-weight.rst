@@ -5,7 +5,7 @@ Calculate bike weight
 
 Download the bike model used in this example and import it into a new project to work on.
 
-#. Download the model: :download:`Bike Model <../_static/code/bike.xmi>`.
+#. Download the model: :download:`Bike Model <../_static/code/bike.kpar>`.
 
 #. Open the SAM editor in your browser and select the desired organization (for example, *MyOrga*).
 
@@ -13,7 +13,7 @@ Download the bike model used in this example and import it into a new project to
 
 #. Select **Choose File** for the **File to import** option.
 
-#. Select the ``bike.xmi`` file that you just downloaded. The project name is automatically set to
+#. Select the ``bike.kpar`` file that you just downloaded. The project name is automatically set to
    ``bike``.
 
 #. Click **Import** and wait for the project to load.
@@ -42,7 +42,7 @@ To obtain the required data, see :ref:`Find organization ID <Info_O_Id_Section>`
 :ref:`Find authentication token <Info_B_Token_Section>`.
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 25-40
+    :lines: 25-41
     :language: python
     :caption: Import libraries and create a connection to the SysML2 API server
 
@@ -58,14 +58,14 @@ After logging in, load the ``bike`` project.
    .. tab-item:: Dynamic approach
 
       .. literalinclude:: ../_static/code/weight-bike.py
-         :lines: 42-44
+         :lines: 43-45
          :language: python
          :caption: Load the bike project with the project manager
 
    .. tab-item:: Static approach
 
       .. literalinclude:: ../_static/code/weight-bike-static.py
-         :lines: 42-44
+         :lines: 43-45
          :language: python
          :caption: Load the bike project with the project manager
 
@@ -83,14 +83,14 @@ After loading the project, get the ``Bike`` element. As explained in
     .. tab-item:: Dynamic approach
 
         .. literalinclude:: ../_static/code/weight-bike.py
-            :lines: 48
+            :lines: 45
             :language: python
             :caption: Get the bike element from the project structure
 
     .. tab-item:: Static approach
 
         .. literalinclude:: ../_static/code/weight-bike-static.py
-            :lines: 46
+            :lines: 45
             :language: python
             :caption: Get the bike element from the project structure
 
@@ -105,21 +105,21 @@ To get the weight of each piece, use the ``weight`` attribute with dot notation:
     .. tab-item:: Dynamic approach
 
         .. literalinclude:: ../_static/code/weight-bike.py
-            :lines: 50-57
+            :lines: 51-62
             :language: python
             :caption: Calculate total bike weight by summing component weights
 
     .. tab-item:: Static approach
 
         .. literalinclude:: ../_static/code/weight-bike-static.py
-            :lines: 51-58
+            :lines: 52-63
             :language: python
             :caption: Calculate total bike weight by summing component weights
 
 Print the bike weight:
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 58
+    :lines: 63
     :language: python
     :caption: Print the calculated bike weight
 
