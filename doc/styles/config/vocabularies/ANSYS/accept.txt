@@ -4,6 +4,8 @@ ANSYS
 Ansys SysML2 API Connector
 AnsysSysML2APIConnector
 API
+accessor
+accessors
 boolean
 class
 DiagramDownloader
@@ -21,6 +23,7 @@ kwargs
 Makefile
 metaclass
 metamodel
+mixin
 myBoolFeature
 myExpressionFeature
 myFloatFeature
@@ -39,9 +42,9 @@ pytest
 Python
 REST
 SAM
-SAM REST API Connector
-SAMDiagramManager
-SamRestApiConnector
+SAM API Connector
+SamApiConnector
+snake_case
 subaction
 subsetting
 SysML2
@@ -51,4 +54,5 @@ SysML2ProjectManager
 SysMLElement
 SysMLTools
 theme_contact_mail
+unary
 Vale

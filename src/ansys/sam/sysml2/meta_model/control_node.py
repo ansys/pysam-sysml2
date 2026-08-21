@@ -26,7 +26,7 @@ from .action_usage import ActionUsage
 
 
 class ControlNode(ActionUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.ControlNode'."""
+    """Java class 'com.ansys.metamodel.sysml2.ControlNode'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

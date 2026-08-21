@@ -33,7 +33,7 @@ This connector:
 - allows you to create project managers to access models for a specific organization and user
 
 .. literalinclude:: ../_static/code/weight-bike.py
-    :lines: 35-40
+    :lines: 36-41
     :language: python
     :caption: Connect to the SysML2 API server
 
@@ -47,14 +47,14 @@ As mentioned, you can create a project manager with the connector to access proj
     .. tab-item:: Dynamic approach
 
         .. literalinclude:: ../_static/code/weight-bike.py
-            :lines: 42-44
+            :lines: 43-45
             :language: python
             :caption: Create the project manager and load a project
 
     .. tab-item:: Static approach
 
         .. literalinclude:: ../_static/code/weight-bike-static.py
-            :lines: 42-44
+            :lines: 43-45
             :language: python
             :caption: Create the project manager and load a project
 

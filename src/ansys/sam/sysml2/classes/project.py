@@ -33,23 +33,14 @@ class Project(ABC):
     """Provides the project interface for users."""
 
     @property
-    def root(self) -> List[Package]:
-        """Get a list of root packages."""
-        return self.get_root()
+    def id(self) -> str:
+        """Get the project ID."""
+        return self.get_id()
 
     @property
     def name(self) -> str:
         """Get the project name."""
         return self.get_name()
-
-    @property
-    def root_package(self) -> Package:
-        """Get the root package."""
-        return self.get_root_package()
-
-    @abstractmethod
-    def get_root(self) -> List[Package]:
-        """Get a list of root packages."""
 
     @abstractmethod
     def get_id(self) -> str:
@@ -62,6 +53,10 @@ class Project(ABC):
     @abstractmethod
     def get_root_package(self) -> Package:
         """Get the root package."""
+
+    @abstractmethod
+    def get_libraries_packages(self) -> list[Package]:
+        """Get the libraries packages."""
 
     @abstractmethod
     def find_element_by_id(self, element_id: str) -> Element:
@@ -100,11 +95,9 @@ class Project(ABC):
         """
         Start a transactional mode for model edition.
 
-        This method will stop direct update for the model,
-        and register all changes until you commit or stop the transactional mode.
-
-        Warning, all calculated modifications will not be applied,
-        until the commit of all changes.
+        Direct model updates are suspended and every change is registered until the
+        transaction is committed or stopped. Calculated modifications are applied only
+        once all changes are committed.
         """
 
     @abstractmethod
@@ -112,5 +105,5 @@ class Project(ABC):
         """
         Stop the current transaction.
 
-        This method will close the current transaction and commit all changes to the server.
+        Close the current transaction and commit all changes to the server.
         """

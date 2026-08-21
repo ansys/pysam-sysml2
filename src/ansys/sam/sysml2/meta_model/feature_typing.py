@@ -28,7 +28,7 @@ from .specialization import Specialization
 
 
 class FeatureTyping(Specialization):
-    """Java class 'com.ansys.medini.metamodel.sysml.FeatureTyping'."""
+    """Java class 'com.ansys.metamodel.sysml2.FeatureTyping'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -41,9 +41,35 @@ class FeatureTyping(Specialization):
         """
         super().__init__(element_id)
 
+        self._owning_feature = None
         self._type_ = None
         self._typed_feature = None
-        self._owning_feature = None
+
+    @property
+    def owning_feature(self) -> "Feature":  # noqa: F821
+        """
+        Get the owning feature property.
+
+        Returns
+        -------
+        "Feature"
+            Value of property owning feature.
+        """
+        return self._owning_feature
+
+    @owning_feature.setter
+    def owning_feature(self, value: "Feature"):  # noqa: F821
+        """
+        Set the owning_feature property.
+
+        Parameters
+        ----------
+        value: "Feature"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "owning_feature", value)
+        self._owning_feature = value
 
     @property
     def type_(self) -> "Type":  # noqa: F821
@@ -96,29 +122,3 @@ class FeatureTyping(Specialization):
         if self._observer is not None:
             self._observer.notify(self.id, "typed_feature", value)
         self._typed_feature = value
-
-    @property
-    def owning_feature(self) -> "Feature":  # noqa: F821
-        """
-        Get the owning feature property.
-
-        Returns
-        -------
-        "Feature"
-            Value of property owning feature.
-        """
-        return self._owning_feature
-
-    @owning_feature.setter
-    def owning_feature(self, value: "Feature"):  # noqa: F821
-        """
-        Set the owning_feature property.
-
-        Parameters
-        ----------
-        value: "Feature"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "owning_feature", value)
-        self._owning_feature = value

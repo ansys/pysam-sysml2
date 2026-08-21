@@ -27,7 +27,6 @@ from __future__ import annotations
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
-    from ansys.sam.sysml2.classes.sysml_element import SysMLElement
     from ansys.sam.sysml2.meta_model.element import Element
 
 
@@ -43,13 +42,13 @@ def mount_observer_and_access(function):
 
     def wrapper(self, *args):
         """Notify observer."""
-        val = function(self, *args)
+        result = function(self, *args)
         if hasattr(self._owner, "_observer") and self._owner._observer is not None:
             owner_id = getattr(self._owner, "_id", None)
             if owner_id is None:
                 owner_id = getattr(self._owner, "id")
             self._owner._observer.list_notify(owner_id, self._name, self)
-        return val
+        return result
 
     return wrapper
 
@@ -58,11 +57,11 @@ class ObservedList(list):
     """React (notification) on each list operation."""
 
     _name: str
-    _owner: "Element" | "SysMLElement"  # noqa: F821
+    _owner: "Element"  # noqa: F821
 
     def __init__(
         self,
-        owner: "Element" | "SysMLElement",  # noqa: F821
+        owner: "Element",  # noqa: F821
         name: str,
         *args,
     ):
@@ -70,7 +69,7 @@ class ObservedList(list):
 
         Parameters
         ----------
-        owner : Union[Element | SysMLElement]
+        owner : Element
             Owner of this list.
         name : str
             Name of the structural feature (owned element).
@@ -109,6 +108,11 @@ class ObservedList(list):
     def reverse(self):
         """Override the list reverse method."""
         return super().reverse()
+
+    @mount_observer_and_access
+    def clear(self):
+        """Override the list clear method."""
+        return super().clear()
 
     @mount_observer_and_access
     def __iadd__(self, value):

@@ -22,7 +22,7 @@
 
 """Unit tests for AnsysScriptingProject using mocker to inject MockedConnectors."""
 
-from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
+from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
 from ansys.sam.sysml2.tools.factory import Factory
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
@@ -38,8 +38,8 @@ class TestAnsysScriptingProject:
             return_value=MockedSysML2APIConnector(),
         )
         mocker.patch.object(
-            SamRestApiConnector,
-            "get_project_data",
+            SamApiConnector,
+            "get_diagrams_info",
             side_effect=RuntimeError("diagrams not available in unit tests"),
         )
 
@@ -62,10 +62,10 @@ class TestAnsysScriptingProject:
         assert project._factory._project_id == PROJECT_ID_1
 
         project.start_transactional_mode()
-        new_pkg = project._factory.create_package(name="my_package", owner=root)
+        new_pkg = project._factory.create_package(declared_name="my_package", owner=root)
         project.stop_transactional_mode()
 
         assert SysMLTools.isinstance(new_pkg, "Package")
-        assert new_pkg._name == "my_package"
+        assert new_pkg._declared_name == "my_package"
         assert project.is_diagrams_available() is False
         assert project._downloader is None

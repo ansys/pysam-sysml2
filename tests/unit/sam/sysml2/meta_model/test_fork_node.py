@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.fork_node import ForkNode
 
 
 class TestForkNode:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ForkNode'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ForkNode'."""
 
     @pytest.fixture
     def element(self):

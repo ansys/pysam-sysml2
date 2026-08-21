@@ -26,8 +26,8 @@ from .data_type import DataType
 from .definition import Definition
 
 
-class AttributeDefinition(Definition, DataType):
-    """Java class 'com.ansys.medini.metamodel.sysml.AttributeDefinition'."""
+class AttributeDefinition(DataType, Definition):
+    """Java class 'com.ansys.metamodel.sysml2.AttributeDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

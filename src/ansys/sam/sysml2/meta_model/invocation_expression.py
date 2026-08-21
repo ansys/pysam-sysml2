@@ -22,13 +22,11 @@
 
 """Generated invocation expression class from metamodel."""
 
-from ansys.sam.sysml2.data_structures.observed_list import ObservedList
-
-from .expression import Expression
+from .instantiation_expression import InstantiationExpression
 
 
-class InvocationExpression(Expression):
-    """Java class 'com.ansys.medini.metamodel.sysml.InvocationExpression'."""
+class InvocationExpression(InstantiationExpression):
+    """Java class 'com.ansys.metamodel.sysml2.InvocationExpression'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -40,17 +38,3 @@ class InvocationExpression(Expression):
 
         """
         super().__init__(element_id)
-
-        self._argument = ObservedList(self, "argument")
-
-    @property
-    def argument(self) -> list["Expression"]:  # noqa: F821
-        """
-        Get the argument property.
-
-        Returns
-        -------
-        list["Expression"]
-            Value of property argument.
-        """
-        return self._argument

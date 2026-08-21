@@ -30,7 +30,7 @@ from .calculation_usage import CalculationUsage
 
 
 class CaseUsage(CalculationUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.CaseUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.CaseUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.
@@ -45,8 +45,8 @@ class CaseUsage(CalculationUsage):
 
         self._actor_parameter = ObservedList(self, "actor_parameter")
         self._case_definition = None
-        self._subject_parameter = None
         self._objective_requirement = None
+        self._subject_parameter = None
 
     @property
     def actor_parameter(self) -> list["PartUsage"]:  # noqa: F821
@@ -87,32 +87,6 @@ class CaseUsage(CalculationUsage):
         self._case_definition = value
 
     @property
-    def subject_parameter(self) -> "Usage":  # noqa: F821
-        """
-        Get the subject parameter property.
-
-        Returns
-        -------
-        "Usage"
-            Value of property subject parameter.
-        """
-        return self._subject_parameter
-
-    @subject_parameter.setter
-    def subject_parameter(self, value: "Usage"):  # noqa: F821
-        """
-        Set the subject_parameter property.
-
-        Parameters
-        ----------
-        value: "Usage"
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "subject_parameter", value)
-        self._subject_parameter = value
-
-    @property
     def objective_requirement(self) -> "RequirementUsage":  # noqa: F821
         """
         Get the objective requirement property.
@@ -137,3 +111,29 @@ class CaseUsage(CalculationUsage):
         if self._observer is not None:
             self._observer.notify(self.id, "objective_requirement", value)
         self._objective_requirement = value
+
+    @property
+    def subject_parameter(self) -> "Usage":  # noqa: F821
+        """
+        Get the subject parameter property.
+
+        Returns
+        -------
+        "Usage"
+            Value of property subject parameter.
+        """
+        return self._subject_parameter
+
+    @subject_parameter.setter
+    def subject_parameter(self, value: "Usage"):  # noqa: F821
+        """
+        Set the subject_parameter property.
+
+        Parameters
+        ----------
+        value: "Usage"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "subject_parameter", value)
+        self._subject_parameter = value

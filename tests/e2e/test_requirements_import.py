@@ -43,9 +43,9 @@ def _read_requirements_csv():
 @pytest.mark.e2e
 class TestRequirementsImportScripting:
 
-    def test_import_requirements_from_csv(self, connector, project_factory):
+    def test_import_requirements_from_csv(self, connector, project_factory, includes_derived):
         """Import 10 requirements from CSV into bike project via scripting project."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
 
         rows = _read_requirements_csv()
@@ -53,21 +53,20 @@ class TestRequirementsImportScripting:
         assert len(rows) == 10
 
         factory = Factory(project, connector)
-
         for row in rows:
-            req = factory.create_requirement_usage(name=row["title"], owner=bike)
-            req._text = [row["description"]]
+            req = factory.create_requirement_usage(declared_name=row["title"], owner=bike)
+            documentation = factory.create_documentation(body=row["description"])
+            req._documentation.append(documentation)
             req._reqId = row["id"]
-        bike = project.get_root_package().Structure.Bike
 
         for row in rows:
             req = getattr(bike, row["title"])
             assert req._name == row["title"]
             assert row["description"] in req._text
 
-    def test_import_requirements_transactional(self, connector, project_factory):
+    def test_import_requirements_transactional(self, connector, project_factory, includes_derived):
         """Import 10 requirements in transactional mode (single commit) via scripting project."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
 
         rows = _read_requirements_csv()
@@ -77,11 +76,11 @@ class TestRequirementsImportScripting:
         factory = Factory(project, connector)
         project.start_transactional_mode()
         for row in rows:
-            req = factory.create_requirement_usage(name=row["title"], owner=bike)
-            req._text = [row["description"]]
+            req = factory.create_requirement_usage(declared_name=row["title"], owner=bike)
+            documentation = factory.create_documentation(body=row["description"])
+            req._documentation.append(documentation)
             req._reqId = row["id"]
         project.stop_transactional_mode()
-        bike = project.get_root_package().Structure.Bike
 
         for row in rows:
             req = getattr(bike, row["title"])
@@ -92,9 +91,9 @@ class TestRequirementsImportScripting:
 @pytest.mark.e2e
 class TestRequirementsImportSysML:
 
-    def test_import_requirements_from_csv(self, connector, project_factory):
+    def test_import_requirements_from_csv(self, connector, project_factory, includes_derived):
         """Import 10 requirements from CSV into bike project via SysML project."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
         bike = project.get_root_package().get("Structure").get("Bike")
 
         rows = _read_requirements_csv()
@@ -103,19 +102,19 @@ class TestRequirementsImportSysML:
 
         factory = Factory(project, connector)
         for row in rows:
-            req = factory.create_requirement_usage(name=row["title"], owner=bike)
-            req._text = [row["description"]]
-            req._reqId = row["id"]
-        bike = project.get_root_package().get("Structure").get("Bike")
+            req = factory.create_requirement_usage(declared_name=row["title"], owner=bike)
+            documentation = factory.create_documentation(body=row["description"])
+            req.documentation.append(documentation)
+            req.req_id = row["id"]
 
         for row in rows:
             req = bike.get(row["title"])
-            assert req is not None
             assert req.name == row["title"]
+            assert row["description"] in req.text
 
-    def test_import_requirements_transactional(self, connector, project_factory):
+    def test_import_requirements_transactional(self, connector, project_factory, includes_derived):
         """Import 10 requirements in transactional mode (single commit) via SysML project."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
         bike = project.get_root_package().get("Structure").get("Bike")
 
         rows = _read_requirements_csv()
@@ -125,13 +124,13 @@ class TestRequirementsImportSysML:
         factory = Factory(project, connector)
         project.start_transactional_mode()
         for row in rows:
-            req = factory.create_requirement_usage(name=row["title"], owner=bike)
-            req._text = [row["description"]]
-            req._reqId = row["id"]
+            req = factory.create_requirement_usage(declared_name=row["title"], owner=bike)
+            documentation = factory.create_documentation(body=row["description"])
+            req.documentation.append(documentation)
+            req.req_id = row["id"]
         project.stop_transactional_mode()
-        bike = project.get_root_package().get("Structure").get("Bike")
 
         for row in rows:
             req = bike.get(row["title"])
-            assert req is not None
             assert req.name == row["title"]
+            assert row["description"] in req.text

@@ -34,6 +34,57 @@ from ansys.sam.sysml2.exception.connector_exception import (
 )
 
 MODELTESTSET = Path(__file__).resolve().parent / "modeltestset"
+_ELEMENTS_WITHOUT_DERIVED = "elements_includesDerived_false_includesInherited_true.json"
+
+
+_DERIVED_ELEMENT_KEYS = frozenset(
+    {
+        "ownedElement",
+        "ownedMembership",
+        "ownedMember",
+        "ownedImport",
+        "ownedAnnotation",
+        "documentation",
+        "ownedFeature",
+        "ownedFeatureMembership",
+        "feature",
+        "featureMembership",
+        "inheritedFeature",
+        "inheritedMembership",
+        "inheritedMembershipExcludeImplied",
+        "ownedSpecialization",
+        "ownedTyping",
+        "ownedSubsetting",
+        "ownedRedefinition",
+        "chainingFeature",
+        "type",
+        "definition",
+        "attributeDefinition",
+        "partDefinition",
+        "itemDefinition",
+        "portDefinition",
+        "occurrenceDefinition",
+        "actionDefinition",
+        "allocationDefinition",
+        "connectionDefinition",
+        "stateDefinition",
+        "flowDefinition",
+        "interfaceDefinition",
+        "enumerationDefinition",
+        "requirementDefinition",
+        "constraintDefinition",
+        "calculationDefinition",
+        "caseDefinition",
+        "analysisCaseDefinition",
+        "verificationCaseDefinition",
+        "useCaseDefinition",
+        "concernDefinition",
+        "viewpointDefinition",
+        "viewDefinition",
+        "renderingDefinition",
+        "metadataDefinition",
+    }
+)
 
 
 class MockedSysML2APIConnector(SysML2APIConnector):
@@ -42,17 +93,57 @@ class MockedSysML2APIConnector(SysML2APIConnector):
     def __init__(self):
         super().__init__()
         self._projects = {}
+        self._project_dirs = {}
         for project_dir in sorted(MODELTESTSET.iterdir()):
             project_file = project_dir / "project.json"
             if project_file.exists():
                 data = json.loads(project_file.read_text(encoding="utf-8"))
                 self._projects[data["@id"]] = data
+                self._project_dirs[data["@id"]] = project_dir
 
-    def _load_elements(self, project_id: str) -> list:
-        elements_file = MODELTESTSET / f"project_{project_id}" / "elements.json"
+    def _load_elements(self, project_id: str, includes_derived: bool = True) -> list:
+        project_dir = self._project_dirs.get(project_id)
+        if project_dir is None:
+            raise ProjectNotFoundException(f"Project {project_id} not found")
+        filename = "elements.json" if includes_derived else _ELEMENTS_WITHOUT_DERIVED
+        elements_file = project_dir / filename
         if not elements_file.exists():
             raise ProjectNotFoundException(f"Project {project_id} not found")
         return json.loads(elements_file.read_text(encoding="utf-8"))
+
+    @staticmethod
+    def _strip_derived_properties(elements: list) -> list:
+        stripped = []
+        for element in elements:
+            cleaned = {
+                key: value
+                for key, value in element.items()
+                if key not in _DERIVED_ELEMENT_KEYS
+            }
+            stripped.append(cleaned)
+        return stripped
+
+    def _load_library_elements(self, project_id: str) -> list:
+        project_dir = self._project_dirs.get(project_id)
+        if project_dir is None:
+            return []
+        lib_file = project_dir / "library_elements.json"
+        if not lib_file.exists():
+            return []
+        return json.loads(lib_file.read_text(encoding="utf-8"))
+
+    def _extract_ids(self, query: dict) -> set:
+        """Collect every value whose constraint targets the ``@id`` property."""
+        ids: set = set()
+        if isinstance(query, dict):
+            if query.get("property") == "@id" and "value" in query:
+                ids.add(query["value"])
+            for value in query.values():
+                ids |= self._extract_ids(value)
+        elif isinstance(query, list):
+            for item in query:
+                ids |= self._extract_ids(item)
+        return ids
 
     def get_projects(self) -> list:
         """Get all projects."""
@@ -109,17 +200,19 @@ class MockedSysML2APIConnector(SysML2APIConnector):
             project["description"] = project_description
         return project.copy()
 
-    def get_all_elements(self, project_id: str) -> list:
+    def get_all_elements(self, project_id: str, **kwargs) -> list:
         """Get all elements of a project."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        return self._load_elements(project_id)
+        return self._load_elements(
+            project_id, includes_derived=kwargs.get("includes_derived", True)
+        )
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
         """Get a single element by ID."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        elements = self._load_elements(project_id)
+        elements = self._load_elements(project_id) + self._load_library_elements(project_id)
         for el in elements:
             if el.get("@id") == element_id:
                 return el
@@ -128,17 +221,31 @@ class MockedSysML2APIConnector(SysML2APIConnector):
         )
 
     def get_root_elements(self, project_id: str) -> list:
-        """Get root elements."""
+        """Get the root Namespace and its owned members (API ``/roots`` shape)."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        elements = self._load_elements(project_id)
-        return [el for el in elements if el.get("owner") is None]
+        elements = self._load_elements(project_id, includes_derived=True)
+        by_id = {element["@id"]: element for element in elements}
+        roots = {}
+        for element in elements:
+            if element.get("owner") is not None:
+                continue
+            if element.get("@type") == "Namespace":
+                roots[element["@id"]] = element
+                for ref in element.get("ownedMember", []):
+                    if ref["@id"] in by_id:
+                        roots[ref["@id"]] = by_id[ref["@id"]]
+        return list(roots.values())
 
-    def execute_query(self, project_id: str, query: str) -> dict:
-        """Return all elements."""
+    def execute_query(self, project_id: str, query: str, **kwargs) -> dict:
+        """Return the library elements matching the query's @id constraints."""
         if project_id not in self._projects:
             raise ProjectNotFoundException(f"Project {project_id} not found")
-        return self._load_elements(project_id)
+        wanted = self._extract_ids(json.loads(query))
+        elements = [el for el in self._load_library_elements(project_id) if el.get("@id") in wanted]
+        if not kwargs.get("includes_derived", True):
+            elements = self._strip_derived_properties(elements)
+        return elements
 
     def create_commit(self, project_id: str, commit: str) -> dict:
         """Return a realistic CommitDto response."""

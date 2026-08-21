@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.literal_integer import LiteralInteger
 
 
 class TestLiteralInteger:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.LiteralInteger'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.LiteralInteger'."""
 
     @pytest.fixture
     def element(self):

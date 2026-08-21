@@ -24,38 +24,8 @@
 from ansys.sam.sysml2.meta_model.e_object import EObject
 
 
-def build_composed_name(owner, element, is_inherited):
-    """
-    Build a composed name for the inherited element.
-
-    Parameters
-    ----------
-    owner : EObject
-        The owner of the inherited element.
-    element : EObject
-        The inherited element.
-    is_inherited : bool
-        Whether the element is inherited or not.
-
-    Returns
-    -------
-    str
-         The composed name for the inherited element.
-    """
-    is_contained_in_inherited_element = isinstance(owner, SysMLInheritedElement)
-    if is_inherited:
-        is_inherited = (
-            element in getattr(owner, "owned_inherited_feature", [])
-            or is_contained_in_inherited_element
-        )
-        if is_contained_in_inherited_element:
-            return f"{owner.id}/?{element.identifier}"
-        return f"{build_composed_name(owner.owner, owner, is_inherited)}/?{element.id}"
-    return ""
-
-
 class SysMLInheritedElement(EObject):
-    """A proxy class for the element that is not created yet."""
+    """Proxy that exposes an inherited element under its on-the-fly owner."""
 
     def __init__(self, owner, element):
         """Construct a new instance."""
@@ -63,12 +33,16 @@ class SysMLInheritedElement(EObject):
         self._observer = owner._observer
         self._element = element
         self._element_hash_map = element._element_hash_map
-        self.id = build_composed_name(owner, element, True)
+        self.id = element.id
         self.owner = owner
 
     def __dir__(self):
         """Get the attribute list from the real element."""
         return dir(self._element)
+
+    def get_value(self):
+        """Read the value from the wrapped feature (the proxy itself is not a Feature)."""
+        return self._element.get_value()
 
     def __getattr__(self, name):
         """Get the attribute from the real element."""

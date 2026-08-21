@@ -26,7 +26,7 @@ from .connector import Connector
 
 
 class BindingConnector(Connector):
-    """Java class 'com.ansys.medini.metamodel.sysml.BindingConnector'."""
+    """Java class 'com.ansys.metamodel.sysml2.BindingConnector'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

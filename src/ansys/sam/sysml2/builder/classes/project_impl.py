@@ -22,10 +22,10 @@
 
 """Private implementation for a project."""
 
-from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport
 from ansys.sam.sysml2.meta_model.package import Package
 
 
@@ -36,8 +36,9 @@ class ProjectImpl(Project):
     _env: dict
     _root: list[Element]
     _unresolved_fields: list[UnresolvedField]
-    _libraries_ids: set[str]
     _name: str
+    _resolve_libraries: bool = False
+    _scripting: bool = False
 
     def __init__(self, project_id: str, name: str):
         """
@@ -55,7 +56,6 @@ class ProjectImpl(Project):
         self._root = []
         self._name = name
         self._unresolved_fields = []
-        self._libraries_ids = set()
         self._env = {}
 
     def add_element(self, element: Element):
@@ -73,27 +73,41 @@ class ProjectImpl(Project):
         """
         self._unresolved_fields.extend(unresolved_fields)
 
-    def get_root(self) -> list[Package]:
-        """
-        Get a list of root packages.
-
-        Returns
-        -------
-        List[Package]
-            List of root packages.
-        """
-        return self._root
-
     def get_id(self) -> str:
         """Get the project ID."""
         return self._id
 
     def get_root_package(self) -> Package:
         """Get the root package."""
-        matches = [x for x in self._root if isinstance(x, Package) and x.name == self._name]
+        namespace = next((x for x in self._root if type(x).__name__ == "Namespace"), None)
+        if namespace is not None:
+            for member in namespace.owned_member:
+                if isinstance(member, Package):
+                    return member
+        raise ValueError("No root Package found in project.")
+
+    def get_libraries_packages(self) -> list[Package]:
+        """
+        Get the libraries packages.
+
+        Returns
+        -------
+        List[Package]
+            List of libraries packages.
+        """
+        matches = []
+        for element in self._env.values():
+            if not isinstance(element, NamespaceImport):
+                continue
+            if element.owner is not None:
+                continue
+            imported = element.imported_element
+            if imported is None or isinstance(imported, UnresolvedField):
+                continue
+            matches.append(imported)
         if not matches:
-            raise ValueError("No root Package found in project.")
-        return matches[0]
+            raise ValueError("No libraries packages found in project.")
+        return matches
 
     def get_name(self) -> str:
         """Get the project name."""
@@ -129,19 +143,15 @@ class ProjectImpl(Project):
         List[Element]
             List of elements retrieved.
         """
-        return [
-            el for el in self._env.values() if SysMLUtil.check_inherited_name(el) == element_name
-        ]
+        return [el for el in self._env.values() if el.declared_name == element_name]
 
     def start_transactional_mode(self) -> None:
         """
         Start a transactional mode for model edition.
 
-        This method will stop direct update for the model,
-        and register all changes until you commit or stop the transactional mode.
-
-        Warning, all calculated modifications will not be applied,
-        until the commit of all changes.
+        Direct model updates are suspended and every change is registered until the
+        transaction is committed or stopped. Calculated modifications are applied only
+        once all changes are committed.
         """
         self.get_root_package()._observer.set_transactional_mode(True)
 
@@ -149,6 +159,6 @@ class ProjectImpl(Project):
         """
         Stop the current transaction.
 
-        This method will close the current transaction and commit all changes to the server.
+        Close the current transaction and commit all changes to the server.
         """
         self.get_root_package()._observer.set_transactional_mode(False)

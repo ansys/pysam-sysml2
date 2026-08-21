@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.predicate import Predicate
 
 
 class TestPredicate:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Predicate'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Predicate'."""
 
     @pytest.fixture
     def element(self):

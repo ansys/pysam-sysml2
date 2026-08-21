@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.state_subaction_membership import StateSubactio
 
 
 class TestStateSubactionMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.StateSubactionMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.StateSubactionMembership'."""
 
     @pytest.fixture
     def element(self):

@@ -28,7 +28,7 @@ from .action_usage import ActionUsage
 
 
 class IfActionUsage(ActionUsage):
-    """Java class 'com.ansys.medini.metamodel.sysml.IfActionUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.IfActionUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

@@ -21,17 +21,35 @@
 """Ansys Scripting Project to facilitate use of PySAM SysML2 library."""
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
-from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
+from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
+from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.tools.ansys_project import AnsysProject
 
 
-class AnsysScriptingProject(AnsysProject, ScriptingProjectImpl):
+class AnsysScriptingProject(AnsysProject, ProjectImpl):
     """Complete Ansys Scripting project implementation with integrated capabilities."""
 
-    def _get_project(self, sysml2_connector: AnsysSysML2APIConnector) -> ScriptingProject:
-        """Load a scripting project."""
+    def _get_project(
+        self,
+        sysml2_connector: AnsysSysML2APIConnector,
+        resolve_libraries: bool = False,
+    ) -> Project:
+        """
+        Load a scripting project.
+
+        Parameters
+        ----------
+        sysml2_connector : AnsysSysML2APIConnector
+            Connector used to load the project.
+        resolve_libraries : bool, default: False
+            When ``True``, resolve and map library element contents so they can be navigated.
+
+        Returns
+        -------
+        Project
+            The loaded scripting project.
+        """
         project_manager = SysML2ProjectManager(connector=sysml2_connector)
-        project = project_manager.get_scripting_project(self._project_id)
+        project = project_manager.get_scripting_project(self._project_id, resolve_libraries)
         return project

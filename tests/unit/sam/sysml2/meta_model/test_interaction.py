@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.interaction import Interaction
 
 
 class TestInteraction:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.Interaction'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.Interaction'."""
 
     @pytest.fixture
     def element(self):

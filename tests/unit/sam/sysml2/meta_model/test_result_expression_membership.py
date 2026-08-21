@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.result_expression_membership import ResultExpre
 
 
 class TestResultExpressionMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ResultExpressionMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ResultExpressionMembership'."""
 
     @pytest.fixture
     def element(self):
@@ -42,5 +42,7 @@ class TestResultExpressionMembership:
         assert element.id == "element_id"
 
     def test_owned_result_expression(self, element):
-        """Test getter for owned result expression property."""
-        _ = element.owned_result_expression
+        """Test getter and setter for owned result expression property."""
+        value = "test_value"
+        element.owned_result_expression = value
+        assert element.owned_result_expression == value

@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.enumeration_definition import EnumerationDefinition
 
 
 class TestEnumerationDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.EnumerationDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.EnumerationDefinition'."""
 
     @pytest.fixture
     def element(self):

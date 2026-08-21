@@ -29,9 +29,9 @@ import pytest
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
+from ansys.sam.sysml2.meta_model.documentation import Documentation
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 from tests.unit.const import PROJECT_ID_1
-
 
 class TestObserverTransactional:
     """Transactional mode defers every change into a single commit at stop time.
@@ -99,38 +99,91 @@ class TestObserverTransactional:
         assert payload["change"][0]["identity"]["@id"] == "id"
         assert "payload" not in payload["change"][0]
 
+    def test_transactional_create_defers_list_links_after_creates(self, observer, connector, mocker):
+        """List links on a create are a separate update after all creates."""
+        commit_mock = mocker.patch.object(connector, "create_commit")
+        requirement_id = "req-id"
+        documentation_id = "doc-id"
+        documentation = Documentation(documentation_id)
+
+        observer.set_transactional_mode(True)
+        observer.notify(requirement_id, "@type", "RequirementUsage")
+        observer.notify(requirement_id, "declaredName", "MassLimit")
+        observer.notify(requirement_id, "owner", "bike-id")
+        observer.notify(documentation_id, "@type", "Documentation")
+        observer.notify(documentation_id, "body", "Shall not exceed 15 kg")
+        observer.list_notify(requirement_id, "documentation", [documentation])
+        observer.notify(requirement_id, "reqId", "REQ-001")
+        observer.set_transactional_mode(False)
+
+        changes = json.loads(commit_mock.call_args.args[1])["change"]
+        requirement_create, documentation_create, documentation_link = changes
+
+        assert requirement_create["identity"]["@id"] == requirement_id
+        assert requirement_create["payload"] == {
+            "@type": "RequirementUsage",
+            "declaredName": "MassLimit",
+            "owner": "bike-id",
+            "reqId": "REQ-001",
+        }
+        assert "documentation" not in requirement_create["payload"]
+
+        assert documentation_create["identity"]["@id"] == documentation_id
+        assert documentation_create["payload"] == {
+            "@type": "Documentation",
+            "body": "Shall not exceed 15 kg",
+        }
+
+        assert documentation_link["identity"]["@id"] == requirement_id
+        assert documentation_link["payload"] == {
+            "documentation": [{"@id": documentation_id}],
+        }
+
 
 class TestObserverImmediate:
     """Tests for immediate commit flows using the mocked connector."""
 
-    def test_notify_immediate_calls_create_commit(self, connector, mocker):
+    def test_notify_immediate_calls_create_commit(
+        self, connector, includes_derived, mocker
+    ):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
 
-        root._name = "RenamedRoot"
+        root._declaredName = "RenamedRoot"
 
-        assert root._name == "RenamedRoot"
+        assert root._declaredName == "RenamedRoot"
         assert commit_spy.call_count == 1
 
-    def test_list_notify_immediate_calls_create_commit(self, connector, mocker):
+    def test_list_notify_immediate_calls_create_commit(
+        self, connector, includes_derived, mocker
+    ):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
-        from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-        valid_el = SysMLElement("valid_id")
+        from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+
+        valid_el = SysMLUtil.get_scripting_constructor("PartUsage")("valid_id")
 
         root._ownedElement.append(valid_el)
 
         assert commit_spy.call_count == 1
 
-    def test_delete_element_immediate_calls_create_commit(self, connector, mocker):
+    def test_delete_element_immediate_calls_create_commit(
+        self, connector, includes_derived, mocker
+    ):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(root._observer, "reload_project")
         commit_spy = mocker.spy(connector, "create_commit")
@@ -139,10 +192,12 @@ class TestObserverImmediate:
 
         assert commit_spy.call_count == 1
 
-    def test_notify_commit_error_propagates(self, connector, mocker):
+    def test_notify_commit_error_propagates(self, connector, includes_derived, mocker):
         """Verify BadRequestConnectionException from create_commit propagates to the caller."""
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(
             connector,
@@ -151,12 +206,14 @@ class TestObserverImmediate:
         )
 
         with pytest.raises(BadRequestConnectionException):
-            root._name = ["ShouldFail"]
+            root._declaredName = ["ShouldFail"]
 
-    def test_delete_commit_error_propagates(self, connector, mocker):
+    def test_delete_commit_error_propagates(self, connector, includes_derived, mocker):
         """Verify BadRequestConnectionException from create_commit propagates on delete."""
         manager = SysML2ProjectManager(connector)
-        project = manager.get_scripting_project(PROJECT_ID_1)
+        project = manager.get_scripting_project(
+            PROJECT_ID_1, includes_derived=includes_derived
+        )
         root = project.get_root_package()
         mocker.patch.object(
             connector,

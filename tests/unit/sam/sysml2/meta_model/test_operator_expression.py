@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.operator_expression import OperatorExpression
 
 
 class TestOperatorExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.OperatorExpression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.OperatorExpression'."""
 
     @pytest.fixture
     def element(self):

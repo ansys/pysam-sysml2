@@ -25,10 +25,28 @@ from abc import ABC, abstractmethod
 from io import UnsupportedOperation
 
 from ansys.sam.sysml2.classes.mapped_element import MappedElement
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.meta_model.feature_direction_kind import FeatureDirectionKind
+from ansys.sam.sysml2.meta_model.portion_kind import PortionKind
+from ansys.sam.sysml2.meta_model.requirement_constraint_kind import RequirementConstraintKind
+from ansys.sam.sysml2.meta_model.state_subaction_kind import StateSubactionKind
+from ansys.sam.sysml2.meta_model.transition_feature_kind import TransitionFeatureKind
+from ansys.sam.sysml2.meta_model.trigger_kind import TriggerKind
+from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind
+
+dict_of_classes = {
+    "direction": FeatureDirectionKind,
+    "portionKind": PortionKind,
+    "visibility": VisibilityKind,
+    "kind": {
+        "RequirementConstraintMembership": RequirementConstraintKind,
+        "StateSubactionMembership": StateSubactionKind,
+        "TransitionFeatureMembership": TransitionFeatureKind,
+        "TriggerInvocationExpression": TriggerKind,
+    },
+}
 
 
 class Mapper(ABC):
@@ -37,21 +55,22 @@ class Mapper(ABC):
     @abstractmethod
     def map(
         self,
-        namespace: str,
         json_element: dict,
-        mapped_element: Element | SysMLElement,
+        mapped_element: Element,
+        resolve_libraries: bool = False,
     ) -> MappedElement:
         """
         Map a JSON element to a Python object and return unresolved references.
 
         Parameters
         ----------
-        namespace : str
-            Current namespace.
         json_element : dict
             Data.
-        mapped_element : Element | SysMLElement
+        mapped_element : Element
             Existing element.
+        resolve_libraries : bool, default: False
+            When ``True``, library elements keep their unresolved references so their
+            contents are resolved and mapped; otherwise those references are dropped.
 
         Returns
         -------
@@ -59,12 +78,43 @@ class Mapper(ABC):
             Mapper element.
         """
 
+    def _convert_enum(self, element, field_name: str, field_values):
+        """Translate an API string into its Kind enum member.
+
+        For ``kind`` (used by several element types) the target enum depends on
+        the element type; other enum fields map directly by name.
+
+        Parameters
+        ----------
+        element : Element
+            Destination element, used to disambiguate ``kind``.
+        field_name : str
+            Raw JSON field name.
+        field_values : Any
+            Field value; only ``str`` values are converted.
+
+        Returns
+        -------
+        Any
+            The matching enum member, or the original value when the field is not
+            an enum field or the literal is unknown.
+        """
+        enum_cls = dict_of_classes.get(field_name)
+        if isinstance(enum_cls, dict):
+            enum_cls = enum_cls.get(type(element).__name__)
+        if enum_cls is None or not isinstance(field_values, str):
+            return field_values
+        member = getattr(enum_cls, field_values.upper(), None)
+        if member is None:
+            print(f"Warning: '{field_values}' is not a valid {enum_cls.__name__}")
+        return member or field_values
+
     def _add_default_field(self, element, field_name: str, field_value) -> list:
         """Set a scalar field on the element.
 
         Parameters
         ----------
-        element : Element | SysMLElement
+        element : Element
             Destination element.
         field_name : str
             Field name.
@@ -76,7 +126,15 @@ class Mapper(ABC):
         list
             Empty list because the field is already resolved.
         """
-        setattr(element, field_name, field_value)
+        if (
+            field_name == "_value"
+            and type(element).__name__ == "LiteralString"
+            and isinstance(field_value, str)
+        ):
+            from ansys.sam.sysml2.classes.value_helper import ValueHelper
+
+            field_value = ValueHelper.unescape_kerml_string(field_value)
+        object.__setattr__(element, field_name, field_value)
         return []
 
     def _add_element_to_field(self, element, key: str, value: dict) -> list[UnresolvedField]:
@@ -84,7 +142,7 @@ class Mapper(ABC):
 
         Parameters
         ----------
-        element : Element | SysMLElement
+        element : Element
             Destination element.
         key : str
             Field name.
@@ -96,7 +154,7 @@ class Mapper(ABC):
         list[UnresolvedField]
             List containing the unresolved field.
         """
-        setattr(element, key, value["@id"])
+        object.__setattr__(element, key, value["@id"])
         return [UnresolvedField(element, key, value["@id"])]
 
     def _add_list_to_field(self, element, key: str, field_values: list) -> list[UnresolvedField]:
@@ -104,7 +162,7 @@ class Mapper(ABC):
 
         Parameters
         ----------
-        element : Element | SysMLElement
+        element : Element
             Destination element.
         key : str
             Field name.
@@ -117,14 +175,14 @@ class Mapper(ABC):
             List of all unresolved fields created for reference items.
         """
         if all(isinstance(value, dict) for value in field_values):
-            setattr(
+            object.__setattr__(
                 element,
                 key,
                 ObservedList(element, key, *[value["@id"] for value in field_values]),
             )
             return [UnresolvedField(element, key, value["@id"]) for value in field_values]
         elif not any(isinstance(value, dict) for value in field_values):
-            setattr(
+            object.__setattr__(
                 element,
                 key,
                 ObservedList(element, key, *field_values),

@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.stakeholder_membership import StakeholderMember
 
 
 class TestStakeholderMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.StakeholderMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.StakeholderMembership'."""
 
     @pytest.fixture
     def element(self):

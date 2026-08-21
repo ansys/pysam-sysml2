@@ -20,11 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""Unit tests for ScriptingMapper KerML string unescaping."""
+
 import pytest
 
 from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
-from ansys.sam.sysml2.exception.mapper_exception import InvalidProjectJSONMapperException
+from ansys.sam.sysml2.classes.dynamic_e_object import DynamicEObject
 
 
 class TestScriptingMapper:
@@ -33,102 +34,10 @@ class TestScriptingMapper:
     def scripting_mapper(self):
         return ScriptingMapper()
 
-    def test_check_valid_sysml_element(self, scripting_mapper: ScriptingMapper):
-        data = {
-            "@id": "element_id",
-            "@type": "PartUsage",
-            "qualifiedName": "pp::p",
-        }
-
-        element = scripting_mapper.map("pp", data, None).get_element()
-
-        assert isinstance(element, SysMLElement)
-        assert element._id == "element_id"
-        assert element.__class__.__name__ == "PartUsage"
-
-    def test_invalid_sysml_element(self, scripting_mapper: ScriptingMapper):
-        data = {
-            "@id": "element_id",
-        }
-
-        with pytest.raises(InvalidProjectJSONMapperException):
-            scripting_mapper.map("pp", data, None)
-
-    def test_create_element_string_field(self, scripting_mapper: ScriptingMapper):
-        data = {
-            "@id": "element_id",
-            "@type": "PartUsage",
-            "name": "Element",
-            "qualifiedName": "pp::p",
-        }
-
-        element = scripting_mapper.map("pp", data, None).get_element()
-
-        assert isinstance(element, SysMLElement)
-        assert element._id == "element_id"
-        assert element.__class__.__name__ == "PartUsage"
-        assert element._name == "Element"
-
-    def test_create_element_list_field(self, scripting_mapper: ScriptingMapper):
-        data_1 = {
-            "@id": "element_id",
-            "@type": "PartUsage",
-            "subElements": [{"@id": "sub_element_id"}],
-            "qualifiedName": "pp::p",
-        }
-
-        element = scripting_mapper.map("pp", data_1, None).get_element()
-
-        assert isinstance(element, SysMLElement)
-        assert element._id == "element_id"
-        assert element.__class__.__name__ == "PartUsage"
-        assert len(element._subElements) == 1
-
-    def test_create_element_list_text(self, scripting_mapper: ScriptingMapper):
-        data_1 = {
-            "@id": "element_id",
-            "@type": "PartUsage",
-            "text": ["Content"],
-            "qualifiedName": "pp::p",
-        }
-
-        element = scripting_mapper.map("pp", data_1, None).get_element()
-
-        assert isinstance(element, SysMLElement)
-        assert element._id == "element_id"
-        assert element.__class__.__name__ == "PartUsage"
-        assert len(element._text) == 1
-
-    def test_create_element_reference_field(self, scripting_mapper: ScriptingMapper):
-        data = {
-            "@id": "element_id",
-            "@type": "PartUsage",
-            "owner": {"@id": "part_id"},
-            "qualifiedName": "pp::p",
-        }
-        owner = {
-            "@id": "part_id",
-            "@type": "Part",
-            "name": "Part",
-            "qualifiedName": "pp::p",
-        }
-
-        mapped_element = scripting_mapper.map("pp", data, None)
-        mapped_owner = scripting_mapper.map("pp", owner, None)
-        element = mapped_element.get_element()
-        owner = mapped_owner.get_element()
-        unresolved_fields = (
-            mapped_element.get_unresolved_fields()
-            + mapped_owner.get_unresolved_fields()
-        )
-        env = {"element_id": element, "part_id": owner}
-        for unresolved_field in unresolved_fields:
-            element_id = unresolved_field.get_id()
-            el = env.get(element_id, None)
-            if el is not None:
-                unresolved_field.resolve(el)
-
-        assert isinstance(element, SysMLElement)
-        assert element._id == "element_id"
-        assert element.__class__.__name__ == "PartUsage"
-        assert element._owner is owner
+    def test_literal_string_value_unescapes_kerml(self, scripting_mapper):
+        data = {"@id": "literal_id", "@type": "LiteralString", "value": "try\\\\to"}
+        element = scripting_mapper.map(data, None).get_element()
+        assert element.__class__.__name__ == "LiteralString"
+        assert isinstance(element, DynamicEObject)
+        assert element._value == "try\\to"
+        assert element._value.count("\\") == 1

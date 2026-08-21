@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.literal_string import LiteralString
 
 
 class TestLiteralString:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.LiteralString'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.LiteralString'."""
 
     @pytest.fixture
     def element(self):
