@@ -86,7 +86,7 @@ jobs:
       fail-fast: false
     steps:
       - name: "Build a wheelhouse of the Python library"
-        uses: ansys/actions/build-wheelhouse@e2075e950bdec40b816670160e98c4c184c7b281 #v11.0.0
+        uses: ansys/actions/build-wheelhouse@d98e1a4008dab392f8c114a483c2c5624076ccd6 #v11.0.1
         with:
           library-name: ${{ env.PACKAGE_NAME }}
           operating-system: ${{ matrix.os }}
