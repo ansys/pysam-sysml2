@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``decision_node.py`` module
+===============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.decision_node
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: decision_node
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.decision_node.DecisionNode`
+            - Java class 'com.ansys.medini.metamodel.sysml.DecisionNode'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> DecisionNode</api/ansys/sam/sysml2/meta_model/decision_node/DecisionNode>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated decision node class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

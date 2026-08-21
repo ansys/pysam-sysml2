@@ -1,0 +1,121 @@
+
+
+
+
+
+
+:class:`EMFJSONMapper`
+======================
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.builder.emf_json_mapper.EMFJSONMapper
+
+   
+   Provides the EMFJSON mapper for a diagram element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: EMFJSONMapper
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~map`
+            - Convert JSON-like dictionary data into a diagram element.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~class_cache`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.builder.emf_json_mapper import EMFJSONMapper
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: class_cache
+   :type:  dict
+
+
+
+Method detail
+-------------
+
+.. py:method:: map(data: dict) -> ansys.sam.sysml2.diagrams.classes.MappedElement
+
+   
+   Convert JSON-like dictionary data into a diagram element.
+
+
+   :Parameters:
+
+       **data** : :class:`python:dict`
+           Input JSON data representing the element to map.
+
+
+
+   :Returns:
+
+       :obj:`MappedElement`
+           Object containing the mapped diagram element and any unresolved references.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

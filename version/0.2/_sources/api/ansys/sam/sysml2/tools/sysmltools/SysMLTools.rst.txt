@@ -1,0 +1,111 @@
+
+
+
+
+
+
+:class:`SysMLTools`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.tools.sysmltools.SysMLTools
+
+   
+   Provides the static class for all SysML tools.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+.. py:currentmodule:: SysMLTools
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+
+   .. tab-item:: Static methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~isinstance`
+            - Check the type of an element.
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.sysmltools import SysMLTools
+
+
+
+Method detail
+-------------
+
+.. py:method:: isinstance(element, type: str) -> bool
+   :staticmethod:
+
+
+   
+   Check the type of an element.
+
+
+   :Parameters:
+
+       **element** : :obj:`SysMLElement`
+           Element to check
+
+       **type** : :class:`python:str`
+           SysML class name.
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           ``True`` if yes, ``False`` otherwise.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

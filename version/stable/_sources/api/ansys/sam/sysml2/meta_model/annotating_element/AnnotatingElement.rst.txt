@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`AnnotatingElement`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.annotating_element.AnnotatingElement(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.element.Element`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AnnotatingElement'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AnnotatingElement
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~annotation`
+            - Get the annotation property.
+          * - :py:attr:`~annotated_element`
+            - Get the annotated element property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.annotating_element import AnnotatingElement
+
+Property detail
+---------------
+
+.. py:property:: annotation
+   :type: List[Annotation]
+
+
+   
+   Get the annotation property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Annotation"]
+           Value of property annotation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: annotated_element
+   :type: List[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the annotated element property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Element"]
+           Value of property annotated element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

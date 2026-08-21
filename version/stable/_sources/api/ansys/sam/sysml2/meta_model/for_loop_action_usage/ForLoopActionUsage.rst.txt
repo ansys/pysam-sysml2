@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ForLoopActionUsage`
+===========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.for_loop_action_usage.ForLoopActionUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.loop_action_usage.LoopActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ForLoopActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ForLoopActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~loop_variable`
+            - Get the loop variable property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.for_loop_action_usage import ForLoopActionUsage
+
+Property detail
+---------------
+
+.. py:property:: loop_variable
+   :type: None
+
+
+   
+   Get the loop variable property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property loop variable.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

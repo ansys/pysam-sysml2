@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ExhibitStateUsage`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.exhibit_state_usage.ExhibitStateUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.state_usage.StateUsage`, :py:obj:`ansys.sam.sysml2.meta_model.perform_action_usage.PerformActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ExhibitStateUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ExhibitStateUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~exhibited_state`
+            - Get the exhibited state property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.exhibit_state_usage import ExhibitStateUsage
+
+Property detail
+---------------
+
+.. py:property:: exhibited_state
+   :type: None
+
+
+   
+   Get the exhibited state property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property exhibited state.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

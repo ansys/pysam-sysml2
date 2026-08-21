@@ -1,0 +1,92 @@
+
+
+
+
+
+
+The ``observer`` package
+============================
+
+.. py:module:: ansys.sam.sysml2.observer
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: observer
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.observer.observer`
+            - Observer class.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> observer</api/ansys/sam/sysml2/observer/observer/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Observer package.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

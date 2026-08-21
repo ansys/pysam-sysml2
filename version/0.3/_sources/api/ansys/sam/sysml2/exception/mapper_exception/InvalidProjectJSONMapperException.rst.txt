@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`InvalidProjectJSONMapperException`
+==========================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.mapper_exception.InvalidProjectJSONMapperException
+
+   Bases: :py:obj:`MapperException`
+
+
+   
+   Exception when the give project JSON is invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.mapper_exception import InvalidProjectJSONMapperException
+
+
+
+
+

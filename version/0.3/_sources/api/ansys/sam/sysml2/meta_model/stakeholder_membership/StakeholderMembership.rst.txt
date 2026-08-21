@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`StakeholderMembership`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.stakeholder_membership.StakeholderMembership(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.parameter_membership.ParameterMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.StakeholderMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: StakeholderMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_stakeholder_parameter`
+            - Get the owned stakeholder parameter property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.stakeholder_membership import StakeholderMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_stakeholder_parameter
+   :type: PartUsage
+
+
+   
+   Get the owned stakeholder parameter property.
+
+
+
+
+
+   :Returns:
+
+       "PartUsage"
+           Value of property owned stakeholder parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

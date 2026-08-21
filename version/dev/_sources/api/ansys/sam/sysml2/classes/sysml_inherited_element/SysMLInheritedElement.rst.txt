@@ -1,0 +1,167 @@
+
+
+
+
+
+
+:class:`SysMLInheritedElement`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.classes.sysml_inherited_element.SysMLInheritedElement(owner, element)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.e_object.EObject`
+
+
+   
+   A proxy class for the element that is not created yet.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+.. py:currentmodule:: SysMLInheritedElement
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~id`
+            - Get the id of the element.
+          * - :py:attr:`~owner`
+            - 
+
+
+
+   .. tab-item:: Special methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~__dir__`
+            - Get the attribute list from the real element.
+          * - :py:attr:`~__getattr__`
+            - Get the attribute from the real element.
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.sysml_inherited_element import SysMLInheritedElement
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: id
+
+   
+   Get the id of the element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:attribute:: owner
+
+
+
+Method detail
+-------------
+
+.. py:method:: __dir__()
+
+   
+   Get the attribute list from the real element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __getattr__(name)
+
+   
+   Get the attribute from the real element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

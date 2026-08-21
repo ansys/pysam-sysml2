@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`Documentation`
+======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.documentation.Documentation(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.comment.Comment`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Documentation'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Documentation
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~documented_element`
+            - Get the documented element property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.documentation import Documentation
+
+Property detail
+---------------
+
+.. py:property:: documented_element
+   :type: Element
+
+
+   
+   Get the documented element property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property documented element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

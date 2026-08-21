@@ -1,0 +1,261 @@
+
+
+
+
+
+
+:class:`Connector`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.connector.Connector(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`, :py:obj:`ansys.sam.sysml2.meta_model.feature.Feature`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Connector'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Connector
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~source_feature`
+            - Get the source feature property.
+          * - :py:attr:`~connector_end`
+            - Get the connector end property.
+          * - :py:attr:`~association`
+            - Get the association property.
+          * - :py:attr:`~is_directed`
+            - Get the is directed property.
+          * - :py:attr:`~target_feature`
+            - Get the target feature property.
+          * - :py:attr:`~related_feature`
+            - Get the related feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.connector import Connector
+
+Property detail
+---------------
+
+.. py:property:: source_feature
+   :type: None
+
+
+   
+   Get the source feature property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property source feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: connector_end
+   :type: List[ansys.sam.sysml2.meta_model.feature.Feature]
+
+
+   
+   Get the connector end property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property connector end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: association
+   :type: List[Association]
+
+
+   
+   Get the association property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Association"]
+           Value of property association.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_directed
+   :type: bool
+
+
+   
+   Get the is directed property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is directed.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: target_feature
+   :type: List[ansys.sam.sysml2.meta_model.feature.Feature]
+
+
+   
+   Get the target feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property target feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: related_feature
+   :type: List[ansys.sam.sysml2.meta_model.feature.Feature]
+
+
+   
+   Get the related feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property related feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

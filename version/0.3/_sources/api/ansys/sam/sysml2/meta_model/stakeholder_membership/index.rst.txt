@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``stakeholder_membership.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.stakeholder_membership
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: stakeholder_membership
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.stakeholder_membership.StakeholderMembership`
+            - Java class 'com.ansys.medini.metamodel.sysml.StakeholderMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> StakeholderMembership</api/ansys/sam/sysml2/meta_model/stakeholder_membership/StakeholderMembership>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated stakeholder membership class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

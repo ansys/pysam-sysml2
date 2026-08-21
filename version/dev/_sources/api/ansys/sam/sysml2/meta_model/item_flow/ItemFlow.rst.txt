@@ -1,0 +1,230 @@
+
+
+
+
+
+
+:class:`ItemFlow`
+=================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.item_flow.ItemFlow(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.step.Step`, :py:obj:`ansys.sam.sysml2.meta_model.connector.Connector`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ItemFlow'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ItemFlow
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~item_type`
+            - Get the item type property.
+          * - :py:attr:`~item_feature`
+            - Get the item feature property.
+          * - :py:attr:`~source_output_feature`
+            - Get the source output feature property.
+          * - :py:attr:`~target_input_feature`
+            - Get the target input feature property.
+          * - :py:attr:`~item_flow_end`
+            - Get the item flow end property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.item_flow import ItemFlow
+
+Property detail
+---------------
+
+.. py:property:: item_type
+   :type: list[Classifier]
+
+
+   
+   Get the item type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Classifier"]
+           Value of property item type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: item_feature
+   :type: ItemFeature
+
+
+   
+   Get the item feature property.
+
+
+
+
+
+   :Returns:
+
+       "ItemFeature"
+           Value of property item feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: source_output_feature
+   :type: Feature
+
+
+   
+   Get the source output feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property source output feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: target_input_feature
+   :type: Feature
+
+
+   
+   Get the target input feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property target input feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: item_flow_end
+   :type: list[ItemFlowEnd]
+
+
+   
+   Get the item flow end property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ItemFlowEnd"]
+           Value of property item flow end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

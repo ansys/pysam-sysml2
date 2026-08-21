@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`AnsysScriptingProject`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.tools.ansys_scripting_project.AnsysScriptingProject(server_url: str, token: str, organization_id: str, project_id: str, use_ssl: bool = True)
+
+   Bases: :py:obj:`ansys.sam.sysml2.tools.ansys_project.AnsysProject`, :py:obj:`ansys.sam.sysml2.builder.classes.scripting_project_impl.ScriptingProjectImpl`
+
+
+   
+   Complete Ansys Scripting project implementation with integrated capabilities.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.ansys_scripting_project import AnsysScriptingProject
+
+
+
+
+

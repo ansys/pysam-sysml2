@@ -1,0 +1,266 @@
+
+
+
+
+
+
+:class:`EObject`
+================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.e_object.EObject(element_id: str)
+
+   
+   Base class of the metamodel.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: EObject
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get`
+            - Find an owned element by its name.
+          * - :py:attr:`~get_value`
+            - Return the value of the feature.
+          * - :py:attr:`~delete`
+            - Delete the element from the model via the observer's commit to the server.
+          * - :py:attr:`~parse_and_set_value`
+            - Parse the value and create the valuation part in the Feature.
+          * - :py:attr:`~set_value`
+            - Update the Feature value.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~id`
+            - Get the id of the element.
+          * - :py:attr:`~identifier`
+            - Get the identifier of the element.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.e_object import EObject
+
+Property detail
+---------------
+
+.. py:property:: id
+
+   
+   Get the id of the element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: identifier
+
+   
+   Get the identifier of the element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: get(element_name: str) -> Element
+
+   
+   Find an owned element by its name.
+
+
+   :Parameters:
+
+       **element_name** : :class:`python:str`
+           Element name
+
+
+
+   :Returns:
+
+       :obj:`Element`
+           The Element or None if not found
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_value()
+
+   
+   Return the value of the feature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: delete()
+
+   
+   Delete the element from the model via the observer's commit to the server.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: parse_and_set_value(value: str)
+
+   
+   Parse the value and create the valuation part in the Feature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: set_value(new_value: Union[str | int | float | bool])
+
+   
+   Update the Feature value.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

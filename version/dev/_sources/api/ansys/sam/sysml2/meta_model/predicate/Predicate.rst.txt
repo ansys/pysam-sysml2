@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Predicate`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.predicate.Predicate(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.function.Function`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Predicate'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.predicate import Predicate
+
+
+
+
+

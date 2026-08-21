@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`SendActionUsage`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.send_action_usage.SendActionUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.SendActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SendActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~payload_argument`
+            - Get the payload argument property.
+          * - :py:attr:`~receiver_argument`
+            - Get the receiver argument property.
+          * - :py:attr:`~sender_argument`
+            - Get the sender argument property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.send_action_usage import SendActionUsage
+
+Property detail
+---------------
+
+.. py:property:: payload_argument
+   :type: Expression
+
+
+   
+   Get the payload argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property payload argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: receiver_argument
+   :type: Expression
+
+
+   
+   Get the receiver argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property receiver argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: sender_argument
+   :type: Expression
+
+
+   
+   Get the sender argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property sender argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

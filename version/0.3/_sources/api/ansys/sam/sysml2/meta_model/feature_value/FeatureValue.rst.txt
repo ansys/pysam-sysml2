@@ -1,0 +1,230 @@
+
+
+
+
+
+
+:class:`FeatureValue`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature_value.FeatureValue(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.membership.Membership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.FeatureValue'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureValue
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value`
+            - Get the value property.
+          * - :py:attr:`~set_is_initial`
+            - Get the set is initial property.
+          * - :py:attr:`~is_default`
+            - Get the is default property.
+          * - :py:attr:`~set_is_default`
+            - Get the set is default property.
+          * - :py:attr:`~is_initial`
+            - Get the is initial property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature_value import FeatureValue
+
+Property detail
+---------------
+
+.. py:property:: value
+   :type: Expression
+
+
+   
+   Get the value property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_initial
+   :type: bool
+
+
+   
+   Get the set is initial property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is initial.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_default
+   :type: bool
+
+
+   
+   Get the is default property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is default.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_default
+   :type: bool
+
+
+   
+   Get the set is default property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is default.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_initial
+   :type: bool
+
+
+   
+   Get the is initial property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is initial.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

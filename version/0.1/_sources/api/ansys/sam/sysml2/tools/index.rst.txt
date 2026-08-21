@@ -1,0 +1,102 @@
+
+
+
+
+
+
+The ``tools`` package
+=========================
+
+.. py:module:: ansys.sam.sysml2.tools
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: tools
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.ansys_sysml2_project`
+            - Ansys SysML2 project to facilitate use of PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.factory`
+            - Factory class to create new elements.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.sysmltools`
+            - Tool module for SysML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> ansys_sysml2_project</api/ansys/sam/sysml2/tools/ansys_sysml2_project/index>
+    <span class="nf nf-fa-file"></span> factory</api/ansys/sam/sysml2/tools/factory/index>
+    <span class="nf nf-fa-file"></span> sysmltools</api/ansys/sam/sysml2/tools/sysmltools/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Tools module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
