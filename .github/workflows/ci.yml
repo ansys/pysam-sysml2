@@ -122,7 +122,7 @@ jobs:
       fail-fast: false
     steps:
       - name: "Run pytest"
-        uses: ansys/actions/tests-pytest@e2075e950bdec40b816670160e98c4c184c7b281 #v11.0.0
+        uses: ansys/actions/tests-pytest@0b23d99e6800f16337ff173fcfbfcc1251130e99 #v11.0.2
         with:
           python-version: ${{ matrix.python-version }}
           pytest-extra-args: "--cov=ansys.sam --cov-report=term --cov-report=html:.cov/html"
