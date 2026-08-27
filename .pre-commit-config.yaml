@@ -15,6 +15,10 @@ repos:
       - id: add-license-headers
         args:
           - --start_year=2024
+        exclude: |
+          (?x)^(
+              examples/code/example_identifiers.py.template
+          )
 
   - repo: https://github.com/numpy/numpydoc
     rev: v1.10.0
