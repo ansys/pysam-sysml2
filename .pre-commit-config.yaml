@@ -19,7 +19,8 @@ repos:
         exclude: |
           (?x)^(
               tests/unit/const\.py|
-              tests/unit/sam/sysml2/builder/test_noname_lookup\.py
+              tests/unit/sam/sysml2/builder/test_noname_lookup\.py|
+              examples/code/example_identifiers.py.template
           )$
 
   - repo: https://github.com/numpy/numpydoc
