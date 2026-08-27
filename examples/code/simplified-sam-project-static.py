@@ -22,6 +22,9 @@
 
 """Ansys SysML2 project static example for PySAM SysML2."""
 
+from example_identifiers import BIKE_PROJECT_ID, SAM_ORGANIZATION_ID, SAM_SERVER_URL, SAM_TOKEN
+
+# See example_identifiers.py.template for credentials and project IDs.
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
@@ -30,11 +33,11 @@ from ansys.sam.sysml2.tools.ansys_sysml2_project import AnsysSysML2Project
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 project = AnsysSysML2Project(
-    server_url="<SAM Server URL>",
-    organization_id="<Orga ID>",  # The organization ID
-    token="<Token>",  # Your authorization token
+    server_url=SAM_SERVER_URL,
+    organization_id=SAM_ORGANIZATION_ID,
+    token=SAM_TOKEN,
     use_ssl=False,  # If the server hasn't a valid SSL
-    project_id="<Bike Project ID>",  # The project ID
+    project_id=BIKE_PROJECT_ID,
 )
 
 diagrams_status = project.is_diagrams_available()
