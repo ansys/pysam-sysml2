@@ -22,8 +22,6 @@
 
 """Director class for project building."""
 
-from typing import Dict, List
-
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 from ansys.sam.sysml2.classes.project import Project
@@ -34,14 +32,16 @@ class SysML2ProjectManager:
     """Provides the director class for loading and managing projects."""
 
     _connector: SysML2APIConnector
-    _constructed_project: Dict[(str, ScriptingProject)]
+    _sysml_projects: dict[str, Project]
+    _scripting_projects: dict[str, ScriptingProject]
 
     def __init__(self, connector: SysML2APIConnector):
         """Construct a new instance with a specified SysML2 API Connector."""
         self._connector = connector
-        self._constructed_project = dict()
+        self._sysml_projects = {}
+        self._scripting_projects = {}
 
-    def get_projects(self) -> List[dict]:
+    def get_projects(self) -> list[dict]:
         """
         Get all projects of the connected user.
 
@@ -54,18 +54,18 @@ class SysML2ProjectManager:
 
     def get_sysml_project(self, project_id: str) -> Project:
         """Get a SysML project with its ID from the API and map it in a Python object."""
-        project = self._constructed_project.get(project_id, None)
+        project = self._sysml_projects.get(project_id)
         if project is None:
             project = SysML2ProjectBuilder(self._connector).build_sysml_project(project_id)
-            self._constructed_project[project_id] = project
+            self._sysml_projects[project_id] = project
         return project
 
     def get_scripting_project(self, project_id: str) -> ScriptingProject:
         """Get a scripting project with its ID from the API and map it in a Python object."""
-        project = self._constructed_project.get(project_id, None)
+        project = self._scripting_projects.get(project_id)
         if project is None:
             project = SysML2ProjectBuilder(self._connector).build_scripting_project(project_id)
-            self._constructed_project[project_id] = project
+            self._scripting_projects[project_id] = project
         return project
 
     def create_sysml_project(
@@ -91,7 +91,7 @@ class SysML2ProjectManager:
         project_data = self._connector.create_project(name, description)
         project_id = project_data["@id"]
         project = SysML2ProjectBuilder(self._connector).build_sysml_project(project_id)
-        self._constructed_project[project_id] = project
+        self._sysml_projects[project_id] = project
         return project
 
     def create_scripting_project(
@@ -117,7 +117,7 @@ class SysML2ProjectManager:
         project_data = self._connector.create_project(name, description)
         project_id = project_data["@id"]
         project = SysML2ProjectBuilder(self._connector).build_scripting_project(project_id)
-        self._constructed_project[project_id] = project
+        self._scripting_projects[project_id] = project
         return project
 
     def delete_project(self, project_id: str) -> dict:
@@ -135,7 +135,8 @@ class SysML2ProjectManager:
             Confirmation containing ``@type`` and ``@id`` of the deleted project.
         """
         result = self._connector.delete_project(project_id)
-        self._constructed_project.pop(project_id, None)
+        self._scripting_projects.pop(project_id, None)
+        self._sysml_projects.pop(project_id, None)
         return result
 
     def update_project(
@@ -162,5 +163,6 @@ class SysML2ProjectManager:
             Updated project record.
         """
         result = self._connector.update_project(project_id, name, description)
-        self._constructed_project.pop(project_id, None)
+        self._scripting_projects.pop(project_id, None)
+        self._sysml_projects.pop(project_id, None)
         return result

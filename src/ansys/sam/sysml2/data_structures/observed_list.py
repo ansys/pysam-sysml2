@@ -24,7 +24,11 @@
 
 from __future__ import annotations
 
-from typing import Any, Union
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+    from ansys.sam.sysml2.meta_model.element import Element
 
 
 def mount_observer_and_access(function):
@@ -53,13 +57,12 @@ def mount_observer_and_access(function):
 class ObservedList(list):
     """React (notification) on each list operation."""
 
-    _content: list
     _name: str
-    _owner: Union["Element" | "SysMLElement"]  # noqa: F821
+    _owner: "Element" | "SysMLElement"  # noqa: F821
 
     def __init__(
         self,
-        owner: Union["Element" | "SysMLElement"],  #  noqa: F821
+        owner: "Element" | "SysMLElement",  # noqa: F821
         name: str,
         *args,
     ):
@@ -72,7 +75,7 @@ class ObservedList(list):
         name : str
             Name of the structural feature (owned element).
         """
-        if len(args) > 0:
+        if args:
             super().extend(args)
         self._owner = owner
         self._name = name

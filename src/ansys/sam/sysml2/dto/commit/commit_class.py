@@ -31,14 +31,14 @@ from ansys.sam.sysml2.dto.commit.data_version import DataVersion
 class Commit:
     """Creates and structures a standard PySAM SysML2 commit."""
 
-    project_id: str = None
+    project_id: str | None = None
     changes: List[DataVersion]
     previous_commit_id: str = "head"
 
     def __init__(self, project_id: str):
         """Initialize an instance."""
         self.project_id = project_id
-        self.changes = list()
+        self.changes = []
 
     def add_change(self, change: DataVersion):
         """
@@ -51,7 +51,7 @@ class Commit:
         """
         self.changes.append(change)
 
-    def to_json(self):
+    def to_json(self) -> str:
         """
         Serialize the commit data into JSON data.
 

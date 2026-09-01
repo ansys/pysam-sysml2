@@ -22,24 +22,22 @@
 
 """Generated literal integer class from metamodel."""
 
-from __future__ import annotations
-
 from .literal_expression import LiteralExpression
 
 
 class LiteralInteger(LiteralExpression):
     """Java class 'com.ansys.medini.metamodel.sysml.LiteralInteger'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._value = 0
 

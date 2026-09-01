@@ -59,7 +59,7 @@ Key advantages
 ==============
 
 Compared to the traditional approach described in
-:ref:`Download diagrams and create new elements<Download_Example>`, using the simplified
+:ref:`Download diagrams and navigate elements<Download_Example>`, using the simplified
 :class:`AnsysSysML2Project <ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project>` / :class:`AnsysScriptingProject <ansys.sam.sysml2.tools.ansys_scripting_project.AnsysScriptingProject>` class
 offers these advantages:
 

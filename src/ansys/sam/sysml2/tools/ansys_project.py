@@ -99,7 +99,7 @@ class AnsysProject:
 
     def _get_project(self, sysml2_connector: AnsysSysML2APIConnector):
         """Retrieve the correct project type."""
-        return None
+        raise NotImplementedError
 
     def _initialize_diagram_capabilities(self) -> None:
         """Initialize diagram download capabilities with graceful error handling."""

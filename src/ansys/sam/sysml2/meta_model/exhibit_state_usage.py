@@ -31,39 +31,39 @@ from .state_usage import StateUsage
 class ExhibitStateUsage(StateUsage, PerformActionUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.ExhibitStateUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._exhibited_state = None
 
     @property
-    def exhibited_state(self) -> None:  # noqa: F821
+    def exhibited_state(self) -> "StateUsage":  # noqa: F821
         """
         Get the exhibited state property.
 
         Returns
         -------
-        None
+        "StateUsage"
             Value of property exhibited state.
         """
         return self._exhibited_state
 
     @exhibited_state.setter
-    def exhibited_state(self, value: None):  # noqa: F821
+    def exhibited_state(self, value: "StateUsage"):  # noqa: F821
         """
         Set the exhibited_state property.
 
         Parameters
         ----------
-        value: None
+        value: "StateUsage"
             New value.
         """
         if self._observer is not None:

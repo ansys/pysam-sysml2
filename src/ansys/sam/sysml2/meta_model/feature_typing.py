@@ -30,16 +30,16 @@ from .specialization import Specialization
 class FeatureTyping(Specialization):
     """Java class 'com.ansys.medini.metamodel.sysml.FeatureTyping'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._type_ = None
         self._typed_feature = None
@@ -48,23 +48,23 @@ class FeatureTyping(Specialization):
     @property
     def type_(self) -> "Type":  # noqa: F821
         """
-        Get the ``type_`` property.
+        Get the type property.
 
         Returns
         -------
-        Type
-            Value of property ``type_``.
+        "Type"
+            Value of property type.
         """
         return self._type_
 
     @type_.setter
     def type_(self, value: "Type"):  # noqa: F821
         """
-        Set the ``type_`` property.
+        Set the type_ property.
 
         Parameters
         ----------
-        value: Type
+        value: "Type"
             New value.
         """
         if self._observer is not None:
@@ -98,25 +98,25 @@ class FeatureTyping(Specialization):
         self._typed_feature = value
 
     @property
-    def owning_feature(self) -> None:  # noqa: F821
+    def owning_feature(self) -> "Feature":  # noqa: F821
         """
         Get the owning feature property.
 
         Returns
         -------
-        None
+        "Feature"
             Value of property owning feature.
         """
         return self._owning_feature
 
     @owning_feature.setter
-    def owning_feature(self, value: None):  # noqa: F821
+    def owning_feature(self, value: "Feature"):  # noqa: F821
         """
         Set the owning_feature property.
 
         Parameters
         ----------
-        value: None
+        value: "Feature"
             New value.
         """
         if self._observer is not None:

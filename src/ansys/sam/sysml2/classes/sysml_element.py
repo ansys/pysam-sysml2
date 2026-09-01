@@ -21,7 +21,7 @@
 # SOFTWARE.
 """Python base class for SysML elements."""
 
-from typing import Union
+from __future__ import annotations
 
 from ansys.sam.sysml2.classes.value_helper import ValueHelper
 from ansys.sam.sysml2.observer.observer import ModificationObserver
@@ -31,7 +31,7 @@ class SysMLElement:
     """Provides the Python base class for all SysML elements."""
 
     _id: str
-    _observer: ModificationObserver = None
+    _observer: ModificationObserver | None = None
     _element_hash_map: dict = {}
 
     def __init__(self, element_id: str) -> None:
@@ -49,7 +49,6 @@ class SysMLElement:
         """Get the attribute list from the real element."""
         base = super().__dir__()
         hmap = self.__dict__.get("_element_hash_map", {})
-        print("hmap:", hmap)
         children = [k for k in hmap if k is not None]
         return sorted(set(list(base) + children))
 
@@ -106,7 +105,7 @@ class SysMLElement:
         """Parse the value and create the valuation part in the feature."""
         ValueHelper.set_or_update_value(self, "operator", value)
 
-    def set_value(self, new_value: Union[str | int | float | bool]):
+    def set_value(self, new_value: str | int | float | bool):
         """Update the feature value."""
         ValueHelper.set_or_update_value(self, type(new_value), new_value)
 

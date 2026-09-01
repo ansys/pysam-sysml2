@@ -21,7 +21,6 @@
 # SOFTWARE.
 """Factory class to create new elements."""
 
-from typing import Union
 from uuid import uuid4
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
@@ -198,17 +197,15 @@ class Factory:
     """Provides the Python factory class for creating new SysML elements."""
 
     _project_id: str
-    _project: Union[Project | ScriptingProject]
+    _project: Project | ScriptingProject
     _conn: AnsysSysML2APIConnector
 
-    def __init__(
-        self, project: Union[Project | ScriptingProject], conn: AnsysSysML2APIConnector
-    ) -> None:
+    def __init__(self, project: Project | ScriptingProject, conn: AnsysSysML2APIConnector) -> None:
         """Initialize a new instance.
 
         Parameters
         ----------
-        project: Union[Project | ScriptingProject]
+        project: Project | ScriptingProject
             Project to be modified by the factory.
         conn: AnsysSysML2APIConnector
             Connector to make API calls.
@@ -1757,7 +1754,7 @@ class Factory:
         """
         return self._create_element("SuccessionFlowConnectionUsage", **kwargs)
 
-    def _create_element(self, element_type: str, **kwargs) -> Union[Element | SysMLElement]:
+    def _create_element(self, element_type: str, **kwargs) -> Element | SysMLElement:
         """Create a new element in the model and return it.
 
         Parameters
@@ -1794,7 +1791,8 @@ class Factory:
         from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 
         element_id = str(uuid4())
-        if isinstance(self._project, Project):
+        is_scripting = not isinstance(self._project, Project)
+        if not is_scripting:
             constructor = SysMLUtil.get_sysml_constructor(element_type)
             instance = constructor(element_id)
         else:
@@ -1804,16 +1802,19 @@ class Factory:
         instance._observer = self._project.get_root_package()._observer
         instance._observer.notify(element_id, "@type", element_type)
         for key, value in kwargs.items():
+            attr_name = key
+            if is_scripting and not key.startswith("_"):
+                attr_name = "_" + key
             if isinstance(value, list):
-                if not hasattr(instance, key):
+                if not hasattr(instance, attr_name):
                     from ansys.sam.sysml2.data_structures.observed_list import (
                         ObservedList,
                     )
 
-                    setattr(instance, key, ObservedList(owner=instance, name=key))
-                getattr(instance, key).extend(value)
+                    setattr(instance, attr_name, ObservedList(owner=instance, name=attr_name))
+                getattr(instance, attr_name).extend(value)
             else:
-                setattr(instance, key, value)
+                setattr(instance, attr_name, value)
         self._project.add_element(instance)
         return instance
 
@@ -1850,9 +1851,9 @@ class Factory:
         self._reload_project()
 
         element = self._extract_created_element(element_type, existing_elements)
-        if "value" in kwargs.keys():
+        if "value" in kwargs:
             element.set_value(kwargs.get("value"))
-        elif "expression" in kwargs.keys():
+        elif "expression" in kwargs:
             element.parse_and_set_value(kwargs.get("expression"))
         return element
 
@@ -1875,10 +1876,12 @@ class Factory:
 
         diff_elements = set(self._project._env.keys()).difference(existing_elements)
 
-        new_elements_ids = list(
+        new_elements_ids = [
             x for x in diff_elements if SysMLTools.isinstance(self._project._env[x], element_type)
-        )
+        ]
 
+        if len(new_elements_ids) == 0:
+            raise ValueError(f"No element of type '{element_type}' found after reload")
         if len(new_elements_ids) > 1:
             raise ValueError("Too many elements of this type found on reload")
 

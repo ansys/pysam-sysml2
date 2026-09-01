@@ -30,40 +30,40 @@ from .loop_action_usage import LoopActionUsage
 class WhileLoopActionUsage(LoopActionUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.WhileLoopActionUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._while_argument = None
         self._until_argument = None
 
     @property
-    def while_argument(self) -> None:  # noqa: F821
+    def while_argument(self) -> "Expression":  # noqa: F821
         """
         Get the while argument property.
 
         Returns
         -------
-        None
+        "Expression"
             Value of property while argument.
         """
         return self._while_argument
 
     @while_argument.setter
-    def while_argument(self, value: None):  # noqa: F821
+    def while_argument(self, value: "Expression"):  # noqa: F821
         """
         Set the while_argument property.
 
         Parameters
         ----------
-        value: None
+        value: "Expression"
             New value.
         """
         if self._observer is not None:

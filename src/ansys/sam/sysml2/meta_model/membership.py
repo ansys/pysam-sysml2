@@ -30,16 +30,16 @@ from .relationship import Relationship
 class Membership(Relationship):
     """Java class 'com.ansys.medini.metamodel.sysml.Membership'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._member_name = ""
         self._member_element = None
@@ -73,25 +73,25 @@ class Membership(Relationship):
         self._member_name = value
 
     @property
-    def member_element(self) -> None:  # noqa: F821
+    def member_element(self) -> "Element":  # noqa: F821
         """
         Get the member element property.
 
         Returns
         -------
-        None
+        "Element"
             Value of property member element.
         """
         return self._member_element
 
     @member_element.setter
-    def member_element(self, value: None):  # noqa: F821
+    def member_element(self, value: "Element"):  # noqa: F821
         """
         Set the member_element property.
 
         Parameters
         ----------
-        value: None
+        value: "Element"
             New value.
         """
         if self._observer is not None:
@@ -125,25 +125,25 @@ class Membership(Relationship):
         self._owned_member_element = value
 
     @property
-    def membership_owning_namespace(self) -> None:  # noqa: F821
+    def membership_owning_namespace(self) -> "Namespace":  # noqa: F821
         """
         Get the membership owning namespace property.
 
         Returns
         -------
-        None
+        "Namespace"
             Value of property membership owning namespace.
         """
         return self._membership_owning_namespace
 
     @membership_owning_namespace.setter
-    def membership_owning_namespace(self, value: None):  # noqa: F821
+    def membership_owning_namespace(self, value: "Namespace"):  # noqa: F821
         """
         Set the membership_owning_namespace property.
 
         Parameters
         ----------
-        value: None
+        value: "Namespace"
             New value.
         """
         if self._observer is not None:

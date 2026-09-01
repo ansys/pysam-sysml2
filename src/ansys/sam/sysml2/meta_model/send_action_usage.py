@@ -30,20 +30,32 @@ from .action_usage import ActionUsage
 class SendActionUsage(ActionUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.SendActionUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
+        """
+        super().__init__(element_id)
+
+        self._sender_argument = None
         self._payload_argument = None
         self._receiver_argument = None
-        self._sender_argument = None
+
+    @property
+    def sender_argument(self) -> "Expression":  # noqa: F821
+        """
+        Get the sender argument property.
+
+        Returns
+        -------
+        "Expression"
+            Value of property sender argument.
+        """
+        return self._sender_argument
 
     @property
     def payload_argument(self) -> "Expression":  # noqa: F821
@@ -68,15 +80,3 @@ class SendActionUsage(ActionUsage):
             Value of property receiver argument.
         """
         return self._receiver_argument
-
-    @property
-    def sender_argument(self) -> "Expression":  # noqa: F821
-        """
-        Get the sender argument property.
-
-        Returns
-        -------
-        "Expression"
-            Value of property sender argument.
-        """
-        return self._sender_argument

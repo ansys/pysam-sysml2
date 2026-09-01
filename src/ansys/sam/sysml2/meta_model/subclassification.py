@@ -30,72 +30,72 @@ from .specialization import Specialization
 class Subclassification(Specialization):
     """Java class 'com.ansys.medini.metamodel.sysml.Subclassification'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
-        self._subclassifier = None
+        """
+        super().__init__(element_id)
+
         self._superclassifier = None
+        self._subclassifier = None
         self._owning_classifier = None
 
     @property
-    def subclassifier(self) -> None:  # noqa: F821
-        """
-        Get the subclassifier property.
-
-        Returns
-        -------
-        None
-            Value of property subclassifier.
-        """
-        return self._subclassifier
-
-    @subclassifier.setter
-    def subclassifier(self, value: None):  # noqa: F821
-        """
-        Set the subclassifier property.
-
-        Parameters
-        ----------
-        value: None
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "subclassifier", value)
-        self._subclassifier = value
-
-    @property
-    def superclassifier(self) -> None:  # noqa: F821
+    def superclassifier(self) -> "Classifier":  # noqa: F821
         """
         Get the superclassifier property.
 
         Returns
         -------
-        None
+        "Classifier"
             Value of property superclassifier.
         """
         return self._superclassifier
 
     @superclassifier.setter
-    def superclassifier(self, value: None):  # noqa: F821
+    def superclassifier(self, value: "Classifier"):  # noqa: F821
         """
         Set the superclassifier property.
 
         Parameters
         ----------
-        value: None
+        value: "Classifier"
             New value.
         """
         if self._observer is not None:
             self._observer.notify(self.id, "superclassifier", value)
         self._superclassifier = value
+
+    @property
+    def subclassifier(self) -> "Classifier":  # noqa: F821
+        """
+        Get the subclassifier property.
+
+        Returns
+        -------
+        "Classifier"
+            Value of property subclassifier.
+        """
+        return self._subclassifier
+
+    @subclassifier.setter
+    def subclassifier(self, value: "Classifier"):  # noqa: F821
+        """
+        Set the subclassifier property.
+
+        Parameters
+        ----------
+        value: "Classifier"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "subclassifier", value)
+        self._subclassifier = value
 
     @property
     def owning_classifier(self) -> "Classifier":  # noqa: F821

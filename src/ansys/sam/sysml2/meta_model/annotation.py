@@ -30,16 +30,16 @@ from .relationship import Relationship
 class Annotation(Relationship):
     """Java class 'com.ansys.medini.metamodel.sysml.Annotation'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._annotated_element = None
         self._annotating_element = None
@@ -71,25 +71,25 @@ class Annotation(Relationship):
         self._annotated_element = value
 
     @property
-    def annotating_element(self) -> None:  # noqa: F821
+    def annotating_element(self) -> "AnnotatingElement":  # noqa: F821
         """
         Get the annotating element property.
 
         Returns
         -------
-        None
+        "AnnotatingElement"
             Value of property annotating element.
         """
         return self._annotating_element
 
     @annotating_element.setter
-    def annotating_element(self, value: None):  # noqa: F821
+    def annotating_element(self, value: "AnnotatingElement"):  # noqa: F821
         """
         Set the annotating_element property.
 
         Parameters
         ----------
-        value: None
+        value: "AnnotatingElement"
             New value.
         """
         if self._observer is not None:

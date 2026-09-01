@@ -75,14 +75,22 @@ PySAM SysML2 follows the PEP8 standard as outlined in the `PyAnsys development g
 Testing
 ^^^^^^^
 
-PySAM SysML2 uses `pytest <https://docs.pytest.org/en/stable/>`_.
-In the main directory, run this command:
+PySAM SysML2 uses `pytest <https://docs.pytest.org/en/stable/>`_ and has two
+test suites: **unit tests** and **end-to-end (E2E) tests**.
+
+Unit tests (contributors)
+""""""""""""""""""""""""""
+
+Unit tests live in ``tests/unit/`` and run against mocked server responses.
+No external server or Docker setup is required. From the repository root, run:
 
 .. code::
 
     pytest
 
-Tests are in the ``tests`` folder. Add your own tests for non-regression.
+This executes the unit test suite by default (configured via ``testpaths`` in
+``pyproject.toml``). Add your own unit tests for non-regression when
+contributing new features or bug fixes.
 
 To run tests with coverage:
 
@@ -91,6 +99,18 @@ To run tests with coverage:
     pytest --cov=ansys.sam.sysml2 --cov-report=html
 
 This generates a coverage report in ``htmlcov/index.html``.
+
+E2E tests (maintainers)
+""""""""""""""""""""""""
+
+End-to-end tests live in ``tests/e2e/`` and run against a live SAM server
+instance. They validate the full library stack including connector, project
+management, model navigation, commits, queries, and diagrams.
+
+.. note::
+   E2E tests are maintained and executed by the SAM development team. They run
+   automatically in another pipeline when a pull request is submitted.
+   Contributors should focus on unit tests for local validation.
 
 Documentation
 ^^^^^^^^^^^^^
@@ -151,23 +171,38 @@ Pre-commit hooks
 ^^^^^^^^^^^^^^^^
 
 PySAM SysML2 uses pre-commit hooks to automatically check code quality before each commit.
-Pre-commit runs various checks including code formatting, linting, and style validation.
+The hooks cover code formatting, linting, and style validation, and are declared in the
+``.pre-commit-config.yaml`` file at the repository root.
 
-To install the pre-commit hooks:
-
-.. code::
-
-    pre-commit install
-
-Once installed, the hooks run automatically when you run the ``git commit`` command. The pre-commit configuration is defined in the ``.pre-commit-config.yaml`` file.
-
-To manually run all pre-commit hooks on all files:
+For local development, PySAM SysML2 recommends `prek <https://prek.j178.dev/>`_, a faster
+drop-in alternative to `pre-commit <https://pre-commit.com/>`_ that reads the same
+``.pre-commit-config.yaml`` file. The ``prek`` package is already declared in the
+``checks`` optional dependency group, so a ``pip install -e ".[checks]"`` installs it.
+Otherwise, install it directly with:
 
 .. code::
 
-    pre-commit run --all-files
+    pip install prek
 
-If a hook fails, fix the reported issues and commit again. Some hooks (like ``ruff``) can automatically fix issues.
+To install the git hook so the checks run automatically on every ``git commit``:
+
+.. code::
+
+    prek install
+
+.. note::
+   If you previously ran ``pre-commit install`` in this repository, run
+   ``prek install -f`` once to replace the existing git hook shim.
+
+To manually run all hooks on every file in the repository:
+
+.. code::
+
+    prek run --all-files
+
+If a hook fails, fix the reported issues and commit again. Some hooks (like ``ruff``)
+automatically fix issues. The CI/CD pipeline enforces the exact same hooks, so passing
+locally with ``prek`` matches the result on GitHub.
 
 
 Quality checks workflow
@@ -180,9 +215,9 @@ Before submitting a pull request, ensure all quality checks pass:
 3. **Check code style**: ``ruff check .``
 4. **Format code**: ``ruff format .``
 5. **Check documentation style**: ``cd doc; vale sync; vale .``
-6. **Run pre-commit checks**: ``pre-commit run --all-files``
+6. **Run pre-commit checks**: ``prek run --all-files``
 
-The CI/CD pipeline automatically run these checks on multiple Python versions (3.10, 3.11, 3.12, 3.13, and 3.14) when you submit your pull request.
+The CI/CD pipeline automatically run these checks on multiple Python versions (3.12, 3.13, and 3.14) when you submit your pull request.
 
 .. note::
    While you can run tests locally on your installed Python version, the CI/CD pipeline ensures compatibility across all supported Python versions.

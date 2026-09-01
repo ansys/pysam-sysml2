@@ -24,8 +24,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .case_usage import CaseUsage
@@ -34,16 +32,16 @@ from .case_usage import CaseUsage
 class VerificationCaseUsage(CaseUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.VerificationCaseUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._verification_case_definition = None
         self._verified_requirement = ObservedList(self, "verified_requirement")
@@ -75,13 +73,13 @@ class VerificationCaseUsage(CaseUsage):
         self._verification_case_definition = value
 
     @property
-    def verified_requirement(self) -> List["RequirementUsage"]:  # noqa: F821
+    def verified_requirement(self) -> list["RequirementUsage"]:  # noqa: F821
         """
         Get the verified requirement property.
 
         Returns
         -------
-        List["RequirementUsage"]
+        list["RequirementUsage"]
             Value of property verified requirement.
         """
         return self._verified_requirement

@@ -24,8 +24,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 from ansys.sam.sysml2.data_structures.observed_list import ObservedList
 
 from .usage import Usage
@@ -34,108 +32,44 @@ from .usage import Usage
 class OccurrenceUsage(Usage):
     """Java class 'com.ansys.medini.metamodel.sysml.OccurrenceUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
-        self._portion_kind = None
-        self._set_is_individual = False
-        self._is_individual = None
+        """
+        super().__init__(element_id)
+
         self._portioning_feature = None
         self._occurrence_definition = ObservedList(self, "occurrence_definition")
         self._individual_definition = None
+        self._is_individual = False
+        self._portion_kind = None
+        self._set_is_individual = False
 
     @property
-    def portion_kind(self) -> None:  # noqa: F821
-        """
-        Get the portion kind property.
-
-        Returns
-        -------
-        None
-            Value of property portion kind.
-        """
-        return self._portion_kind
-
-    @portion_kind.setter
-    def portion_kind(self, value: None):  # noqa: F821
-        """
-        Set the portion_kind property.
-
-        Parameters
-        ----------
-        value: None
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "portion_kind", value)
-        self._portion_kind = value
-
-    @property
-    def set_is_individual(self) -> bool:  # noqa: F821
-        """
-        Get the set is individual property.
-
-        Returns
-        -------
-        bool
-            Value of property set is individual.
-        """
-        return self._set_is_individual
-
-    @property
-    def is_individual(self) -> None:  # noqa: F821
-        """
-        Get the is individual property.
-
-        Returns
-        -------
-        None
-            Value of property is individual.
-        """
-        return self._is_individual
-
-    @is_individual.setter
-    def is_individual(self, value: None):  # noqa: F821
-        """
-        Set the is_individual property.
-
-        Parameters
-        ----------
-        value: None
-            New value.
-        """
-        if self._observer is not None:
-            self._observer.notify(self.id, "is_individual", value)
-        self._is_individual = value
-
-    @property
-    def portioning_feature(self) -> None:  # noqa: F821
+    def portioning_feature(self) -> "PortioningFeature":  # noqa: F821
         """
         Get the portioning feature property.
 
         Returns
         -------
-        None
+        "PortioningFeature"
             Value of property portioning feature.
         """
         return self._portioning_feature
 
     @portioning_feature.setter
-    def portioning_feature(self, value: None):  # noqa: F821
+    def portioning_feature(self, value: "PortioningFeature"):  # noqa: F821
         """
         Set the portioning_feature property.
 
         Parameters
         ----------
-        value: None
+        value: "PortioningFeature"
             New value.
         """
         if self._observer is not None:
@@ -143,13 +77,13 @@ class OccurrenceUsage(Usage):
         self._portioning_feature = value
 
     @property
-    def occurrence_definition(self) -> List["Class"]:  # noqa: F821
+    def occurrence_definition(self) -> list["Class"]:  # noqa: F821
         """
         Get the occurrence definition property.
 
         Returns
         -------
-        List["Class"]
+        list["Class"]
             Value of property occurrence definition.
         """
         return self._occurrence_definition
@@ -179,3 +113,67 @@ class OccurrenceUsage(Usage):
         if self._observer is not None:
             self._observer.notify(self.id, "individual_definition", value)
         self._individual_definition = value
+
+    @property
+    def is_individual(self) -> bool:  # noqa: F821
+        """
+        Get the is individual property.
+
+        Returns
+        -------
+        bool
+            Value of property is individual.
+        """
+        return self._is_individual
+
+    @is_individual.setter
+    def is_individual(self, value: bool):  # noqa: F821
+        """
+        Set the is_individual property.
+
+        Parameters
+        ----------
+        value: bool
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "is_individual", value)
+        self._is_individual = value
+
+    @property
+    def portion_kind(self) -> "PortionKind":  # noqa: F821
+        """
+        Get the portion kind property.
+
+        Returns
+        -------
+        "PortionKind"
+            Value of property portion kind.
+        """
+        return self._portion_kind
+
+    @portion_kind.setter
+    def portion_kind(self, value: "PortionKind"):  # noqa: F821
+        """
+        Set the portion_kind property.
+
+        Parameters
+        ----------
+        value: "PortionKind"
+            New value.
+        """
+        if self._observer is not None:
+            self._observer.notify(self.id, "portion_kind", value)
+        self._portion_kind = value
+
+    @property
+    def set_is_individual(self) -> bool:  # noqa: F821
+        """
+        Get the set is individual property.
+
+        Returns
+        -------
+        bool
+            Value of property set is individual.
+        """
+        return self._set_is_individual

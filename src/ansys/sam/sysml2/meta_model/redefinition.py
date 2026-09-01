@@ -30,16 +30,16 @@ from .subsetting import Subsetting
 class Redefinition(Subsetting):
     """Java class 'com.ansys.medini.metamodel.sysml.Redefinition'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._redefined_feature = None
         self._redefining_feature = None

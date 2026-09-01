@@ -1,8 +1,0 @@
-{
-    "@type": "Project",
-    "defaultBranch": {
-        "@id": "defaultBranch"
-    },
-    "name": "test-no-diagram",
-    "@id": "2"
-}

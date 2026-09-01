@@ -30,20 +30,32 @@ from .action_usage import ActionUsage
 class AssignmentActionUsage(ActionUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.AssignmentActionUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
-        """
-        super().__init__(id)
 
+        """
+        super().__init__(element_id)
+
+        self._referent = None
         self._value_expression = None
         self._target_argument = None
-        self._referent = None
+
+    @property
+    def referent(self) -> "Feature":  # noqa: F821
+        """
+        Get the referent property.
+
+        Returns
+        -------
+        "Feature"
+            Value of property referent.
+        """
+        return self._referent
 
     @property
     def value_expression(self) -> "Expression":  # noqa: F821
@@ -68,15 +80,3 @@ class AssignmentActionUsage(ActionUsage):
             Value of property target argument.
         """
         return self._target_argument
-
-    @property
-    def referent(self) -> "Feature":  # noqa: F821
-        """
-        Get the referent property.
-
-        Returns
-        -------
-        "Feature"
-            Value of property referent.
-        """
-        return self._referent

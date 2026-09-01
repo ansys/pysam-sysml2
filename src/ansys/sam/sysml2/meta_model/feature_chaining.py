@@ -30,16 +30,16 @@ from .relationship import Relationship
 class FeatureChaining(Relationship):
     """Java class 'com.ansys.medini.metamodel.sysml.FeatureChaining'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._chaining_feature = None
         self._feature_chained = None
@@ -71,25 +71,25 @@ class FeatureChaining(Relationship):
         self._chaining_feature = value
 
     @property
-    def feature_chained(self) -> None:  # noqa: F821
+    def feature_chained(self) -> "Feature":  # noqa: F821
         """
         Get the feature chained property.
 
         Returns
         -------
-        None
+        "Feature"
             Value of property feature chained.
         """
         return self._feature_chained
 
     @feature_chained.setter
-    def feature_chained(self, value: None):  # noqa: F821
+    def feature_chained(self, value: "Feature"):  # noqa: F821
         """
         Set the feature_chained property.
 
         Parameters
         ----------
-        value: None
+        value: "Feature"
             New value.
         """
         if self._observer is not None:

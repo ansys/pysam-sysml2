@@ -31,40 +31,40 @@ from .predicate import Predicate
 class ConstraintDefinition(Predicate, OccurrenceDefinition):
     """Java class 'com.ansys.medini.metamodel.sysml.ConstraintDefinition'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._constraint_expression = None
         self._set_constraint_expression = False
 
     @property
-    def constraint_expression(self) -> None:  # noqa: F821
+    def constraint_expression(self) -> "Expression":  # noqa: F821
         """
         Get the constraint expression property.
 
         Returns
         -------
-        None
+        "Expression"
             Value of property constraint expression.
         """
         return self._constraint_expression
 
     @constraint_expression.setter
-    def constraint_expression(self, value: None):  # noqa: F821
+    def constraint_expression(self, value: "Expression"):  # noqa: F821
         """
         Set the constraint_expression property.
 
         Parameters
         ----------
-        value: None
+        value: "Expression"
             New value.
         """
         if self._observer is not None:

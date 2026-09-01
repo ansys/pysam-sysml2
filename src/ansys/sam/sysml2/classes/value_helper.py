@@ -133,7 +133,7 @@ class ValueHelper:
 
     def _get_value(self, element):
         """Get the value of the feature."""
-        if hasattr(element, self.prefix + "defaultValue"):
+        if getattr(element, self.prefix + "defaultValue", None) is not None:
             value = getattr(element, self.prefix + "defaultValue")
             if hasattr(value, self.prefix + "value"):
                 return getattr(value, self.prefix + "value")
@@ -233,7 +233,7 @@ class ValueHelper:
                         self.prefix + "referent",
                     )
                 ]
-        except NameError:
+        except AttributeError:
             raise UnsupportedValueExpression("No values found in expression")
 
         return (value, self._extract_unit_name(referents))

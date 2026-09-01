@@ -30,39 +30,39 @@ from .connection_usage import ConnectionUsage
 class InterfaceUsage(ConnectionUsage):
     """Java class 'com.ansys.medini.metamodel.sysml.InterfaceUsage'."""
 
-    def __init__(self, id: str):
-        """
-        Construct new instance.
+    def __init__(self, element_id: str):
+        """Construct new instance.
 
         Parameters
         ----------
-        id : str
+        element_id : str
             Element ID.
+
         """
-        super().__init__(id)
+        super().__init__(element_id)
 
         self._interface_definition = None
 
     @property
-    def interface_definition(self) -> None:  # noqa: F821
+    def interface_definition(self) -> "InterfaceDefinition":  # noqa: F821
         """
         Get the interface definition property.
 
         Returns
         -------
-        None
+        "InterfaceDefinition"
             Value of property interface definition.
         """
         return self._interface_definition
 
     @interface_definition.setter
-    def interface_definition(self, value: None):  # noqa: F821
+    def interface_definition(self, value: "InterfaceDefinition"):  # noqa: F821
         """
         Set the interface_definition property.
 
         Parameters
         ----------
-        value: None
+        value: "InterfaceDefinition"
             New value.
         """
         if self._observer is not None:

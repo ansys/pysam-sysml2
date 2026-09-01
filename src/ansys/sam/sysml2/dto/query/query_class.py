@@ -31,8 +31,11 @@ from .constraints_classes import Constraint
 class Query:
     """Provides a data class for a query."""
 
-    where: Constraint = None
+    where: Constraint | None = None
 
     def to_json(self) -> str:
         """Get a JSON representation of the class."""
-        return dumps({"@type": "Query", "where": self.where.to_json()})
+        data: dict = {"@type": "Query"}
+        if self.where is not None:
+            data["where"] = self.where.to_json()
+        return dumps(data)
