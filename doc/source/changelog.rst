@@ -9,6 +9,45 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.3.3 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.3.3>`_ - September 02, 2026
+=========================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Fixed
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Update ansys action version due to release error
+          - `#355 <https://github.com/ansys/pysam-sysml2/pull/355>`_
+
+
+  .. tab-item:: Dependencies
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Bump ansys/actions/release-github from 11.0.2 to 11.0.3
+          - `#348 <https://github.com/ansys/pysam-sysml2/pull/348>`_
+
+        * - Bump ansys/actions/tests-pytest from 11.0.2 to 11.0.3
+          - `#349 <https://github.com/ansys/pysam-sysml2/pull/349>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Update CHANGELOG for v0.3.2
+          - `#347 <https://github.com/ansys/pysam-sysml2/pull/347>`_
+
+
 `0.3.2 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.3.2>`_ - September 01, 2026
 =========================================================================================
 
