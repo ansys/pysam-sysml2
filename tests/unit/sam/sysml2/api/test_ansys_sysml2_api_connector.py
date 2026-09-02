@@ -44,6 +44,7 @@ def connector():
         organization_id=VALID_ORGANIZATION,
         token=VALID_TOKEN,
         use_ssl=False,
+        check_version=False
     )
 
 
@@ -71,6 +72,7 @@ class TestAnsysSysML2APIConnector:
             server_url="http://fake-server/",
             organization_id=VALID_ORGANIZATION,
             token=VALID_TOKEN,
+            check_version=False
         )
 
         assert c._server_url == "http://fake-server"

@@ -22,10 +22,15 @@
 
 """Module for Ansys SysML2 API connector."""
 
+import requests
+
 from ansys.sam.sysml2.api.template_sysml2_api_connector import (
     TemplateSysML2APIConnector,
 )
 from ansys.sam.sysml2.classes.http_request import HttpRequest
+from ansys.sam.sysml2.exception.connector_exception import ConnectorException
+
+accepted_versions = ["27"]
 
 
 class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
@@ -41,6 +46,7 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
         token: str,
         organization_id: str,
         use_ssl: bool = True,
+        check_version: bool = True,
     ):
         """
         Construct a new instance.
@@ -55,6 +61,8 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
             Project organization ID.
         use_ssl : bool, default: True
             Whether the server URL uses SSL (valid HTTPS).
+        check_version : bool, default: True
+            Whether to check the version of the API.
         """
         super().__init__(use_ssl)
         if server_url.endswith("/"):
@@ -62,12 +70,25 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
         self._server_url = server_url
         self._organization_id = organization_id
         self._token = token
+        if check_version:
+            self._check_version()
 
     def _build_endpoint(self, endpoint: str) -> str:
         """Build the full URL from the API endpoint."""
         if not endpoint.startswith("/"):
             endpoint = "/" + endpoint
         return f"{self._server_url}/api/spaces/{self._organization_id}/sysml2{endpoint}"
+
+    def _check_version(self):
+        """Check the version of the API."""
+        http_request = http_request = HttpRequest(f"{self._server_url}/api/status/info")
+        response = self._send_request(http_request, requests.get)
+        version = response["build"]["version"].split(".")[0]
+        if version not in accepted_versions:
+            error_text = f"Unsupported SAM server version: {
+                response['build']['version']
+            }. Accepted versions: {', '.join(f'{v}.*' for v in accepted_versions)}"
+            raise ConnectorException(error_text)
 
     def _add_authentication_field(self, http_request: HttpRequest) -> HttpRequest:
         """

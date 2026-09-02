@@ -61,6 +61,7 @@ def connector():
         organization_id=os.environ["SAM_ORGANIZATION_ID"],
         token=os.environ["SAM_TOKEN"],
         use_ssl=os.environ.get("SAM_USE_SSL", "true").lower() == "true",
+        check_version=False
     )
 
 
