@@ -95,6 +95,7 @@ class ProjectImpl(Project):
         List[Package]
             List of libraries packages.
         """
+        # This function is to heavy and should be refactored.
         matches = []
         for element in self._env.values():
             if not isinstance(element, NamespaceImport):
