@@ -59,6 +59,7 @@ def connector():
         organization_id=VALID_ORGANIZATION,
         token=VALID_TOKEN,
         use_ssl=False,
+        check_version=False
     )
 
 
