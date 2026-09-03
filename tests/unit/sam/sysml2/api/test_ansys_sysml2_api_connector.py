@@ -22,10 +22,13 @@
 
 """Unit tests for AnsysSysML2APIConnector URL building and authentication."""
 
+import json
+
 import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.http_request import HttpRequest
+from ansys.sam.sysml2.exception.connector_exception import ConnectorConnectionException
 from tests.unit.const import VALID_ORGANIZATION, VALID_TOKEN
 
 
@@ -113,3 +116,48 @@ class TestAnsysSysML2APIConnector:
             "includesDerived": "false",
             "includesInherited": "false",
         }
+
+    def test_validated_check_version(self, connector, mocker):
+            mock_get = mocker.patch(
+                "requests.get",
+                return_value=_MockResponse(200, content=json.dumps({"build": {"version": "27.1.0"}})),
+            )
+
+            connector._check_version()
+            assert mock_get.call_count == 1
+            assert mock_get.call_args.kwargs["url"] == "http://fake-server/api/status/info"
+
+
+    def test_invalid_check_version(self, connector, mocker):
+        mock_get = mocker.patch(
+            "requests.get",
+            return_value=_MockResponse(200, content=json.dumps({"build": {"version": "26.1.0"}})),
+        )
+
+        with pytest.raises(Exception) as excinfo:
+            connector._check_version()
+
+        assert "26.1.0" in str(excinfo.value)
+        assert "Unsupported SAM server version" in str(excinfo.value)
+
+    def test_check_version_request_failure(self, connector, mocker):
+        mock_get = mocker.patch(
+            "requests.get",
+            return_value=_MockResponse(500, content=json.dumps({"error": "Internal Server Error"})),
+        )
+
+        with pytest.raises(ConnectorConnectionException) as excinfo:
+            connector._check_version()
+
+        assert "Internal Server Error" in str(excinfo.value)
+
+    def test_check_version_invalid_format(self, connector, mocker):
+            mock_get = mocker.patch(
+                "requests.get",
+                return_value=_MockResponse(200, content=json.dumps({"build": {"server_version": "26.1.0"}})),
+            )
+
+            with pytest.raises(ConnectorConnectionException) as excinfo:
+                connector._check_version()
+
+            assert "Failed to check SAM server version" in str(excinfo.value)

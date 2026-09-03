@@ -28,7 +28,10 @@ from ansys.sam.sysml2.api.template_sysml2_api_connector import (
     TemplateSysML2APIConnector,
 )
 from ansys.sam.sysml2.classes.http_request import HttpRequest
-from ansys.sam.sysml2.exception.connector_exception import ConnectorException
+from ansys.sam.sysml2.exception.connector_exception import (
+    ConnectorConnectionException,
+    ConnectorException,
+)
 
 accepted_versions = ["27"]
 
@@ -83,7 +86,10 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
         """Check the version of the API."""
         http_request = http_request = HttpRequest(f"{self._server_url}/api/status/info")
         response = self._send_request(http_request, requests.get)
-        version = response["build"]["version"].split(".")[0]
+        try:
+            version = response["build"]["version"].split(".")[0]
+        except (KeyError, TypeError):
+            raise ConnectorConnectionException("Failed to check SAM server version")
         if version not in accepted_versions:
             error_text = f"Unsupported SAM server version: {
                 response['build']['version']
