@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.null_expression import NullExpression
 
 
 class TestNullExpression:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.NullExpression'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.NullExpression'."""
 
     @pytest.fixture
     def element(self):

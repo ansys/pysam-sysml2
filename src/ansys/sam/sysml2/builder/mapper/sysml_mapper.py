@@ -29,7 +29,6 @@ from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
 from ansys.sam.sysml2.meta_model.element import Element
-from ansys.sam.sysml2.meta_model.feature_value import FeatureValue
 
 TYPE_KEY = "@type"
 
@@ -39,18 +38,24 @@ class SysMLMapper(Mapper):
 
     class_cache = {}
 
-    def map(self, namespace: str, json_element: dict, mapped_element: Element) -> MappedElement:
+    def map(
+        self,
+        json_element: dict,
+        mapped_element: Element,
+        resolve_libraries: bool = False,
+    ) -> MappedElement:
         """
         Map the JSON into a python element.
 
         Parameters
         ----------
-        namespace : str
-            Project namespace.
         json_element : dict
             Element data.
         mapped_element : Element
             Existing element.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' unresolved references so their contents
+            are resolved and mapped.
 
         Returns
         -------
@@ -60,20 +65,30 @@ class SysMLMapper(Mapper):
         if TYPE_KEY not in json_element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(namespace, json_element, mapped_element)
+        return self.__build_element(json_element, mapped_element, resolve_libraries)
 
-    def __build_element(self, namespace: str, data: dict, element: Element | None) -> MappedElement:
+    def _get_constructor(self, element_type: str):
+        """Get the constructor for the element type."""
+        return SysMLUtil.get_sysml_constructor(element_type)
+
+    def __build_element(
+        self,
+        data: dict,
+        element: Element | None,
+        resolve_libraries: bool = False,
+    ) -> MappedElement:
         """
         Map element data to python object.
 
         Parameters
         ----------
-        namespace : str
-            Project namespace.
         data : dict
             Element data.
         element : Element
             Existing element.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' unresolved references so their contents
+            are resolved and mapped.
 
         Returns
         -------
@@ -82,14 +97,12 @@ class SysMLMapper(Mapper):
         """
         unresolved_fields = []
         if element is None:
-            constructor = SysMLUtil.get_sysml_constructor(data[TYPE_KEY])
+            constructor = self._get_constructor(data[TYPE_KEY])
             element = constructor(element_id=data["@id"])
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        if not getattr(element, "qualified_name", "").startswith(namespace) and not isinstance(
-            element, FeatureValue
-        ):
+        if not resolve_libraries and getattr(element, "is_library_element", False):
             unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 
@@ -108,7 +121,7 @@ class SysMLMapper(Mapper):
             Destination element.
         field_name : str
             Field name.
-        field_values : Union[dict | list | str]
+        field_values : dict | list | str
             Field value.
 
         Returns
@@ -118,10 +131,8 @@ class SysMLMapper(Mapper):
         """
         from ansys.sam.sysml2.tools.name_utils import NameUtils
 
+        field_values = self._convert_enum(element, field_name, field_values)
         field_name = "_" + NameUtils.to_snake_case(field_name)
-        # Fix due to differences between Standard API and Metamodel
-        if field_name == "_inherited_feature":
-            field_name = "_owned_inherited_feature"
         if isinstance(field_values, list):
             return self._add_list_to_field(element, field_name, field_values)
         if isinstance(field_values, dict):

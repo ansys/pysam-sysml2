@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.verification_case_definition import VerificationCaseDefinition
 
 
 class TestVerificationCaseDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.VerificationCaseDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.VerificationCaseDefinition'."""
 
     @pytest.fixture
     def element(self):

@@ -1,0 +1,588 @@
+# Migration Guide for the `183-all` Branch
+
+This guide summarizes the most important changes in the `183-all` branch of PySAM SysML2.
+
+PySAM is being updated to better align with the SysML v2 specification. As part of that work, some APIs and behaviors have changed. If you are testing `183-all`, please review this page and update your code accordingly.
+
+> [!IMPORTANT]
+> The `183-all` branch is still under active development.
+> This guide reflects the current state of the migration and will be updated as the branch evolves.
+
+---
+
+## Who is impacted?
+
+You are likely impacted if your code does any of the following:
+
+- navigates ownership or containment relationships
+- reads or writes visibility, kind, or parameter direction directly on elements
+- reads enum-valued properties (`direction`, `visibility`, `kind`, `portion_kind` / `_portionKind`) as strings
+- renames model elements
+- accesses or resolves connection ends (feature chaining)
+- reads or writes feature values
+- relies on Python-native return values from `get_value()`
+- writes requirement text or documentation
+- builds or navigates diagrams through the diagram REST API
+- calls `get_all_elements` directly, or loads projects while controlling derived / inherited payload size
+
+---
+
+## Quick summary of breaking changes
+
+| Area | Before | Now |
+|---|---|---|
+| Containment / owner | `element.owner` | `element.owning_membership` or `element.owning_namespace` depending on intent |
+| Visibility | `element.visibility` | `SysMLTools.get_element_visibility(element)` / `SysMLTools.set_element_visibility(element, ...)` |
+| Similar membership-owned properties | directly on element | now on `owning_membership` |
+| Enum properties | `"out"` (string) | `FeatureDirectionKind.OUT` (enum member) |
+| Name updates | `element.name = "..."` | `element.declared_name = "..."` |
+| Libraries | no direct access | `project.get_libraries_packages()` |
+| Connection ends | directly usable in all cases, then via `element.get_source()` / `element.get_target()` | `SysMLTools.resolve_feature_chaining(...)` or `SysMLTools.get_connector_ends(...)` |
+| Feature values | Python-native values or tuples | value element (`.value` for literals, `SysMLTools.serialize_expression(...)` for expressions) |
+| Setting expression values | `feature.parse_and_set_value(...)` | `SysMLTools.parse_and_set_value(feature, ...)` |
+| Requirement text / documentation | `req._text = ["..."]` (or assign/extend on `text`) | create+append `Documentation` to add; edit `documentation.body` to update; read via `text` |
+| Diagrams | navigable diagram model via REST API | removed (image download only) |
+| Element fetch / derived collections | `get_all_elements(project_id)` only; derived collections always from API | `get_all_elements(project_id, **kwargs)`; optional `includes_derived` / `includes_inherited`; client rebuild when derived is omitted |
+
+---
+
+## 1. Containers and memberships
+
+PySAM now exposes intermediate membership elements explicitly.
+
+For example, if a `PartUsage` (`PU`) “contains” an `AttributeUsage` (`AU`), the actual structure is:
+
+- `PU` contains a `FeatureMembership` (`FMS`)
+- `FMS` contains `AU`
+
+This means that `AU` now has:
+
+- a **real structural container**: the membership
+- a **semantic container**: the enclosing namespace
+
+### Before
+
+```python
+au.owner
+```
+
+### Now
+
+```python
+au.owning_membership   # real structural container
+au.owning_namespace    # semantic container, close to the former au.owner
+```
+
+### What to do
+
+If your code previously used `owner`, decide which meaning you actually need:
+
+- use `owning_membership` for the actual structural parent
+- use `owning_namespace` for the semantic/logical container
+
+---
+
+## 2. Visibility and related properties
+
+Previously, visibility was exposed directly on the element.
+
+Now, visibility is stored on the **relationship / membership** that owns the element.
+
+### Before
+
+```python
+au.visibility
+```
+
+### Now
+
+To read the visibility of an element, use the helper:
+
+```python
+SysMLTools.get_element_visibility(au)
+```
+
+It reads the value from the element's owning membership (or its owning feature membership for features) and works for both the scripting and metamodel flavors, returning `None` when the element has no owning membership. The value is a `VisibilityKind` enum member (see [7. Enum-valued properties](#7-enum-valued-properties)). To write, use the matching helper:
+
+```python
+SysMLTools.set_element_visibility(au, VisibilityKind.PUBLIC)
+```
+
+It writes to the same owning membership (or owning feature membership for features) for both flavors, and raises when the element has no owning membership. If you already hold the membership, you can still set it directly:
+
+```python
+au.owning_membership.visibility = VisibilityKind.PUBLIC
+```
+
+The same pattern applies to other properties such as:
+
+- `parameterDirection`
+- `kind`
+- similar membership-owned properties
+
+### What to do
+
+To read visibility, use `SysMLTools.get_element_visibility(element)`; to write it, use `SysMLTools.set_element_visibility(element, VisibilityKind.<VALUE>)`. For other membership-owned properties, go through `owning_membership`.
+
+---
+
+## 3. Name handling
+
+The `name` property is now a **derived property**.
+
+The actual writable property is `declared_name`.
+
+### Before
+
+```python
+au.name
+au.name = "attributeUsage2"
+```
+
+### Now
+
+```python
+au.declared_name
+au.declared_name = "attributeUsage2"
+```
+
+### What to do
+
+- keep using `name` when you want the effective/derived name
+- use `declared_name` when you want to rename the element
+
+---
+
+## 4. Access to library packages
+
+Access to library packages is now available.
+
+### Before
+
+No direct access was available.
+
+### Now
+
+```python
+project.get_libraries_packages()
+```
+
+### What to do
+
+If you need to inspect or reuse library content, use this new API.
+
+---
+
+## 5. Connection endpoints and feature chaining
+
+A connection end (`source` or `target`) is an **end feature** that may reference its target through a **feature chaining**, a navigation path such as `a.b.c`. Because of inheritance and redefinition, the element a chaining resolves to is **context dependent**: the same feature can resolve to a different element depending on where it is observed.
+
+Reading `connection.source` (or `connection._source`) therefore returns the raw end feature, not the meaningful element it represents.
+
+Access to connection ends went through three stages: ends were originally directly usable in all cases, then were accessed through the element-level `get_source()` / `get_target()` helpers. Those helpers have now been removed, and end resolution lives in `SysMLTools`, which resolves each end within the connection's own context.
+
+> [!NOTE]
+> The `SysMLTools` feature-chaining resolver described in the **Now** step is still under review and has not been merged yet. The API may change before it lands.
+
+### Before
+
+```python
+# ends were directly usable in all cases
+source = connection.source
+target = connection.target
+```
+
+### Intermediate
+
+```python
+# accessed through the element-level helpers
+source = connection.get_source()
+target = connection.get_target()
+```
+
+### Now
+
+```python
+from ansys.sam.sysml2.tools import SysMLTools
+
+source = SysMLTools.resolve_feature_chaining(connection, "source")
+target = SysMLTools.resolve_feature_chaining(connection, "target")
+
+# Or resolve both ends at once:
+source, target = SysMLTools.get_connector_ends(connection)
+```
+
+### What to do
+
+Replace any element-level `get_source()` / `get_target()` calls (and the former `RepresentativeResolver`) with `SysMLTools`. It auto-detects whether you use the static or dynamic representation from the element you pass in, accounts for feature chaining, inheritance, and redefinition, and returns `None` when the end or context is missing.
+
+> **Note:** Inherited elements now expose their real UUID (metamodel `.id`) instead of a self-built composed path such as `owner_id/?child_id`.
+
+---
+
+## 6. Feature values
+
+Feature value handling has changed significantly.
+
+### Before
+
+- `get_value()` returned:
+  - a primitive value such as `int` or `str`, or
+  - a 2-item tuple when a unit was involved, or
+  - nothing
+- `set_value()` directly set the value
+- `parse_and_set_value()` was a method on the feature that parsed an expression and created the corresponding SysML v2 expression
+
+### Now
+
+- `get_value()` and `set_value()` map directly to `feature.featureValue.valuation`
+- `get_value()` does **not** perform any conversion
+- the returned value is the value **element** (a literal such as `LiteralInteger`, or an `OperatorExpression`)
+
+For a literal value, read its `.value` property directly:
+
+```python
+>>> myIntFeature.get_value().value
+10
+>>> myStringFeature.get_value().value
+'Hello'
+>>> myBoolFeature.get_value().value
+False
+>>> myFloatFeature.get_value().value
+10.56
+```
+
+To set an expression value, use `SysMLTools.parse_and_set_value`, which is no longer a method on the feature:
+
+```python
+>>> from ansys.sam.sysml2.tools import SysMLTools
+>>> SysMLTools.parse_and_set_value(myFeature, "5 + 5")
+>>> SysMLTools.parse_and_set_value(myUnitFeature, "10 [kg]")
+```
+
+For an expression value (or when you want a serialized representation), use `SysMLTools.serialize_expression`:
+
+```python
+>>> from ansys.sam.sysml2.tools import SysMLTools
+>>> SysMLTools.serialize_expression(myIntFeature.get_value())
+'10'
+>>> SysMLTools.serialize_expression(myUnitFeature.get_value())
+'10 [kg]'
+>>> SysMLTools.serialize_expression(myArithmeticFeature.get_value())
+'5 + 5'
+>>> SysMLTools.serialize_expression(myReferenceFeature.get_value())
+'baseValue + baseValue'
+>>> SysMLTools.serialize_expression(myBooleanExpressionFeature.get_value())
+'not true'
+```
+
+### What to do
+
+If your code previously expected `get_value()` to return Python-native values, adapt it to handle value elements instead: read `.value` for literals, and use `SysMLTools.serialize_expression()` for expressions.
+
+If you relied on `feature.parse_and_set_value(...)`, replace it with `SysMLTools.parse_and_set_value(feature, ...)`. It is no longer a method on the feature; both writing expressions and serializing them are now provided by `SysMLTools`.
+
+### String literals and backslashes
+
+`LiteralString` values are exchanged with the server using KerML string-literal escaping.
+
+- **Create** a string value with `set_value(...)`: PySAM wraps and escapes the text as a KerML literal before the server parses it (so content such as `Hello\World` or embedded quotes round-trips correctly).
+- **Update** an existing `LiteralString` in place: PySAM still writes the raw Python string (unchanged).
+- **Read** (`get_value().value` / `._value`): if the API returns KerML-escaped text, PySAM unescapes it to the decoded content. Values that already contain real control characters (`\n`, `\r`, `\t`) are left as-is so already-decoded payloads are not corrupted.
+
+```python
+>>> attr.set_value("try\\to")
+>>> attr.get_value().value
+'try\\to'
+>>> attr.get_value().value.count("\\")
+1
+```
+
+If your scripts compared `LiteralString` values against KerML-escaped forms (for example expecting `'try\\\\to'` when the model holds a single backslash), update those comparisons to the decoded content.
+
+---
+
+## 7. Enum-valued properties
+
+Enumeration-typed properties now return **enum members** instead of plain strings. The property name depends on the approach: the SysML (metamodel) approach exposes a snake_case public property, while the scripting approach exposes the raw `_`-prefixed camelCase backing field. This applies to `direction` / `_direction` (`FeatureDirectionKind`), `visibility` / `_visibility` (`VisibilityKind`), `portion_kind` / `_portionKind` (`PortionKind`), and `kind` / `_kind` (resolved to `RequirementConstraintKind`, `StateSubactionKind`, `TransitionFeatureKind`, or `TriggerKind` depending on the owning element).
+
+### Before
+
+```python
+>>> root.get("Parts").get("Port").direction
+'out'
+```
+
+### Now
+
+```python
+>>> root.get("Parts").get("Port").direction
+<FeatureDirectionKind.OUT: 'out'>
+>>> root.get("Parts").get("Port").direction = FeatureDirectionKind.IN
+>>> root.get("Parts").get("Port").direction
+<FeatureDirectionKind.IN: 'in'>
+>>> root.get("Parts").get("Port").direction.name
+'IN'
+```
+
+This also affects the properties from [2. Visibility and related properties](#2-visibility-and-related-properties): `owning_membership.visibility` now returns a `VisibilityKind` member rather than a string.
+
+### What to do
+
+- assign enum members (for example `FeatureDirectionKind.IN`) instead of strings
+- compare against enum members rather than string literals
+- use `.name` (`'IN'`) or `.value` (`'in'`) when you need a string representation
+
+### Importing the kind classes
+
+Each kind is a standard `enum.Enum`. Import it either from its own module or, thanks to the
+package `__init__`, directly from `ansys.sam.sysml2.meta_model`:
+
+```python
+# from the dedicated module
+from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind
+
+# or several at once from the package
+from ansys.sam.sysml2.meta_model import VisibilityKind, FeatureDirectionKind
+```
+
+### Available kinds
+
+| Kind class | Possible enum values | Property definition |
+|---|---|---|
+| `FeatureDirectionKind` | `IN`, `INOUT`, `OUT` | Property `direction` defined by the class `Feature`. |
+| `PortionKind` | `TIMESLICE`, `SNAPSHOT` | Property `portion_kind` defined by the class `OccurrenceUsage`. |
+| `RequirementConstraintKind` | `ASSUMPTION`, `REQUIREMENT` | Property `kind` defined by the class `RequirementConstraintMembership`. |
+| `StateSubactionKind` | `ENTRY`, `DO`, `EXIT` | Property `kind` defined by the class `StateSubactionMembership`. |
+| `TransitionFeatureKind` | `TRIGGER`, `GUARD`, `EFFECT` | Property `kind` defined by the class `TransitionFeatureMembership`. |
+| `TriggerKind` | `WHEN`, `AT`, `AFTER` | Property `kind` defined by the class `TriggerInvocationExpression`. |
+| `VisibilityKind` | `PRIVATE`, `PROTECTED`, `PUBLIC` | Property `visibility` defined by the class `Membership`. |
+
+The "Property definition" column uses the SysML (metamodel) snake_case name. In the scripting
+approach, the same properties are exposed as `_`-prefixed camelCase backing fields (for example
+`_portionKind`, `_direction`, `_visibility`).
+
+---
+
+## 8. Requirement text via Documentation
+
+Requirement textual content is no longer written through `text` / `_text`.
+
+In the new metamodel, the writable object is a `Documentation` element (with a `body`) attached through the element's `documentation` collection. The requirement's `text` / `_text` property remains available for **reading** the derived content.
+
+### Before
+
+```python
+# scripting
+req._text = ["The bicycle shall not exceed 15 kg."]
+req._text.extend([
+    "Measured under standard conditions.",
+    "Excludes accessories.",
+])
+
+# SysML
+req.text = ["The bicycle shall not exceed 15 kg."]
+```
+
+### Now — create documentation
+
+When the requirement has no documentation yet, create a `Documentation` and append it:
+
+```python
+from ansys.sam.sysml2.tools.factory import Factory
+
+factory = Factory(project, connector)
+
+# scripting
+documentation = factory.create_documentation(
+    body="The bicycle shall not exceed 15 kg.\nMeasured under standard conditions.\nExcludes accessories."
+)
+req._documentation.append(documentation)
+
+# SysML
+documentation = factory.create_documentation(
+    body="The bicycle shall not exceed 15 kg.\nMeasured under standard conditions.\nExcludes accessories."
+)
+req.documentation.append(documentation)
+```
+
+Multiline requirement text belongs in a single `body` string (use `\n` between lines), rather than as separate list entries on `text`.
+
+### Now — update existing documentation
+
+If the `RequirementUsage` already exists and already has a `Documentation`, **edit that documentation's `body`**. Do not recreate or re-append a new `Documentation`.
+
+```python
+# scripting
+req._documentation[0]._body = (
+    "The bicycle shall not exceed 15 kg.\nMeasured under ISO conditions.\nExcludes accessories."
+)
+
+# SysML
+req.documentation[0].body = (
+    "The bicycle shall not exceed 15 kg.\nMeasured under ISO conditions.\nExcludes accessories."
+)
+```
+
+### Reading text
+
+Keep using the derived `text` / `_text` property to read the requirement content:
+
+```python
+# scripting
+assert "Measured under ISO conditions." in req._text[0]
+
+# SysML
+assert "Measured under ISO conditions." in req.text[0]
+```
+
+On the SysML approach, the requirement identifier is also exposed as `req_id` (not `_reqId`).
+
+---
+
+## 9. Diagram navigation / REST API removed
+
+Diagram functionality is specific to projects of type **SAM**.
+
+The SAM diagram REST API used to navigate an in-memory diagram model has been removed. `SAMDiagramManager` and `SamRestApiConnector`, along with the diagram builder and diagram element/plane classes, are no longer available.
+
+Downloading diagram images (also SAM-only) is still supported through `SamApiConnector` and `SamDiagramDownloader`.
+
+### Before
+
+```python
+with SAMDiagramManager(connector=sam_connector) as diagram_manager:
+    diagram_manager.load_diagrams(model=project)
+```
+
+### Now
+
+```python
+from ansys.sam.sysml2.diagrams.api import SamApiConnector
+from ansys.sam.sysml2.diagrams.tools import SamDiagramDownloader
+
+connector = SamApiConnector(server_url=server_url, token=token)
+downloader = SamDiagramDownloader(connector=connector, project_id=project_id)
+
+connector.get_diagrams_info(project_id)
+downloader.download_diagram(diagram_id, path)
+downloader.download_all_diagrams(path)
+```
+
+### What to do
+
+Drop any code that built or navigated in-memory diagram element/plane objects through the REST API, and switch to downloading diagram images instead.
+
+---
+
+## 10. Element fetch flags and derived collections
+
+With the aligned metamodel, the SysML v2 `/elements` payload grew (implicits and related
+data). The API therefore exposes query flags to limit what is returned:
+
+- `includesDerived` — derived collections such as `ownedElement`, `ownedFeature`, `feature`
+- `includesInherited` — inherited memberships and features
+
+Previously, `get_all_elements` only took `project_id`. You can now pass optional keyword
+arguments that are forwarded as HTTP query parameters (``snake_case`` → camelCase):
+
+```python
+connector.get_all_elements(
+    project_id,
+    includes_derived=False,
+    includes_inherited=True,
+)
+```
+
+The same kwargs are accepted by `execute_query` and forwarded to the ``/query-results``
+endpoint. When the project builder resolves unresolved IDs via queries, it passes the
+project's `includes_derived` / `includes_inherited` flags so missing elements match the
+bulk `/elements` payload.
+
+The same flags are available on the project manager / builder (`get_sysml_project`,
+`get_scripting_project`, `build_*`; defaults `True`).
+
+Recommended lighter load (when you still need inherited memberships):
+
+```python
+project = manager.get_sysml_project(
+    project_id,
+    includes_derived=False,
+    includes_inherited=True,
+)
+```
+
+When `includes_derived=False`, PySAM rebuilds the main local derived collections from
+`ownedRelationship` (and from `inheritedMembership` when present), including for example
+`ownedElement`, `ownedMembership`, `ownedMember`, `ownedFeature`, `feature`,
+`inheritedFeature`, and requirement `text` from each attached `documentation.body`. This
+runs once over the whole project (bulk elements and any elements fetched later via
+queries). Unresolved library references are not inserted into those collections.
+
+---
+
+## 11. Unified metamodel: one model, two notations
+
+The static and dynamic approaches now share the **same generated metamodel**. Both entry points return the same generated classes; there is no longer a separate mapping per approach.
+
+- `SysML2ProjectManager(connector).get_sysml_project(...)` returns the static representation.
+- `SysML2ProjectManager(connector).get_scripting_project(...)` returns the dynamic representation.
+
+In the dynamic representation, each element is an instance of a class composed at runtime as `(DynamicEObject, GeneratedClass)`. The `DynamicEObject` mixin adds the dynamic conveniences (dot navigation to children and `_camelCase` accessors) on top of the generated class, while all data still lives in the generated snake_case properties through the MRO.
+
+### `isinstance` now works natively
+
+Because dynamic elements inherit from the generated classes, standard type checks work directly:
+
+```python
+from ansys.sam.sysml2.meta_model import PartUsage
+
+isinstance(element, PartUsage)   # True in both static and dynamic
+```
+
+### Notation: `_camelCase` and snake_case
+
+In the dynamic representation you can read the SysML v2 properties through their `_camelCase` accessors (`element._ownedElement`, `element._declaredName`), and children are reachable by dot notation (`package.Structure.Bike`). The underlying snake_case properties (`owned_element`, `declared_name`) still work at runtime.
+
+Autocompletion (for example in Jupyter) exposes the `_camelCase` accessors and named children, and hides the snake_case data properties to keep the dynamic notation front and center.
+
+### No-name elements
+
+Elements without a name receive a generated fallback name, which differs between the two representations:
+
+- **Dynamic**: a dot-safe `ClassName_<id>` (dashes replaced by underscores), so it stays reachable through dot notation, e.g. `root.ConnectionUsage_4C27A76D_EB0D_4391_806F_C6103E0F41AB`.
+- **Static**: `ClassName::<id>`, e.g. `root.get("ConnectionUsage::4C27A76D-EB0D-4391-806F-C6103E0F41AB")`.
+
+### Creating elements with the factory
+
+Element creation goes through `declared_name=` (not `name=`, which is derived and read-only):
+
+```python
+factory.create_part_usage(declared_name="myPart")
+```
+
+---
+
+## Recommended checks for users testing `183-all`
+
+If you are currently testing `183-all`, we recommend reviewing any code that:
+
+1. uses `owner`
+2. accesses visibility, kind, or parameter direction directly on elements
+3. compares enum-valued properties (`direction`, `visibility`, `kind`, `portion_kind` / `_portionKind`) against strings
+4. assigns to `name`
+5. inspects or resolves connection endpoints (directly, or via the removed `get_source()` / `get_target()`; now through `SysMLTools`)
+6. expects `get_value()` to return Python-native values
+7. writes requirement text through `text` / `_text` (now via `Documentation.body`)
+8. builds or navigates diagrams through the diagram REST API
+9. needs a lighter `/elements` payload (`includes_derived` / `includes_inherited`)
+
+---
+
+## Scope of this guide
+
+This file is intended to document the main migration changes for users testing the `183-all` branch.
+
+It is intentionally incremental and may be updated regularly as the migration progresses.
+
+If you encounter behavior that is not documented here yet, please treat this file as the current reference for migration-related updates on this branch.

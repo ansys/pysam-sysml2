@@ -35,7 +35,7 @@ from ansys.sam.sysml2.exception.connector_exception import (
     ProjectNotFoundException,
     UnauthorizedConnectionException,
 )
-from tests.unit.const import VALID_ORGANIZATION, VALID_TOKEN
+from tests.unit.const import VALID_ORGANIZATION, VALID_TOKEN, PROJECT_ID_1
 
 
 class _MockResponse:
@@ -59,6 +59,7 @@ def connector():
         organization_id=VALID_ORGANIZATION,
         token=VALID_TOKEN,
         use_ssl=False,
+        check_version=False
     )
 
 
@@ -67,11 +68,13 @@ class TestConnectorErrorHandling:
     def test_get_project_200_returns_json(self, connector, mocker):
         mocker.patch(
             "requests.get",
-            return_value=_MockResponse(200, content=b'{"@id": "1", "name": "P"}'),
+            return_value=_MockResponse(
+                200, content=f'{{"@id": "{PROJECT_ID_1}", "name": "P"}}'.encode()
+            ),
         )
-        result = connector.get_project_by_id("1")
+        result = connector.get_project_by_id(PROJECT_ID_1)
 
-        assert result["@id"] == "1"
+        assert result["@id"] == PROJECT_ID_1
 
     def test_get_project_200_invalid_json(self, connector, mocker):
         mocker.patch(
@@ -80,7 +83,7 @@ class TestConnectorErrorHandling:
         )
 
         with pytest.raises(InvalidElementJsonFoundException):
-            connector.get_project_by_id("1")
+            connector.get_project_by_id(PROJECT_ID_1)
 
     def test_get_project_401(self, connector, mocker):
         mocker.patch(
@@ -89,7 +92,7 @@ class TestConnectorErrorHandling:
         )
 
         with pytest.raises(UnauthorizedConnectionException):
-            connector.get_project_by_id("1")
+            connector.get_project_by_id(PROJECT_ID_1)
 
     def test_get_project_403(self, connector, mocker):
         mocker.patch(
@@ -103,7 +106,7 @@ class TestConnectorErrorHandling:
         )
 
         with pytest.raises(ConnectorConnectionException):
-            connector.get_project_by_id("1")
+            connector.get_project_by_id(PROJECT_ID_1)
 
     def test_get_project_404_project(self, connector, mocker):
         mocker.patch(
@@ -137,7 +140,7 @@ class TestConnectorErrorHandling:
         )
 
         with pytest.raises(ConnectorConnectionException):
-            connector.get_project_by_id("1")
+            connector.get_project_by_id(PROJECT_ID_1)
 
     def test_create_project_409(self, connector, mocker):
         mocker.patch(
@@ -162,7 +165,7 @@ class TestConnectorErrorHandling:
         )
 
         with pytest.raises(BadRequestConnectionException):
-            connector.create_commit("1", '{"@type": "Commit", "change": []}')
+            connector.create_commit(f"{PROJECT_ID_1}", '{"@type": "Commit", "change": []}')
 
     def test_get_project_500(self, connector, mocker):
         mocker.patch(
@@ -171,7 +174,7 @@ class TestConnectorErrorHandling:
         )
 
         with pytest.raises(ConnectorConnectionException, match="Internal Server Error"):
-            connector.get_project_by_id("1")
+            connector.get_project_by_id(PROJECT_ID_1)
 
     def test_get_project_unknown_status(self, connector, mocker):
         mocker.patch(
@@ -180,7 +183,7 @@ class TestConnectorErrorHandling:
         )
 
         with pytest.raises(HTTPResponseException):
-            connector.get_project_by_id("1")
+            connector.get_project_by_id(PROJECT_ID_1)
 
     def test_connection_error(self, connector, mocker):
         mocker.patch(
@@ -189,4 +192,4 @@ class TestConnectorErrorHandling:
         )
 
         with pytest.raises(ConnectorConnectionException):
-            connector.get_project_by_id("1")
+            connector.get_project_by_id(PROJECT_ID_1)

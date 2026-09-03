@@ -28,7 +28,7 @@ from .connection_definition import ConnectionDefinition
 
 
 class InterfaceDefinition(ConnectionDefinition):
-    """Java class 'com.ansys.medini.metamodel.sysml.InterfaceDefinition'."""
+    """Java class 'com.ansys.metamodel.sysml2.InterfaceDefinition'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

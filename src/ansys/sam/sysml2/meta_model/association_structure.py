@@ -26,8 +26,8 @@ from .association import Association
 from .structure import Structure
 
 
-class AssociationStructure(Structure, Association):
-    """Java class 'com.ansys.medini.metamodel.sysml.AssociationStructure'."""
+class AssociationStructure(Association, Structure):
+    """Java class 'com.ansys.metamodel.sysml2.AssociationStructure'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

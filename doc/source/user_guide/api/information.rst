@@ -3,7 +3,7 @@
 Find information
 ################
 
-This page explains how to find required information, such as the project ID or your authorization
+This page explains how to find required information, such as the project ID, or your authorization
 token.
 
 .. _Info_P_Id_Section:

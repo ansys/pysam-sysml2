@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.association_structure import AssociationStructu
 
 
 class TestAssociationStructure:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.AssociationStructure'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.AssociationStructure'."""
 
     @pytest.fixture
     def element(self):

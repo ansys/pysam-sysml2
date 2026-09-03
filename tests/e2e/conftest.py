@@ -30,8 +30,7 @@ import pytest
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
-from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
-from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
+from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.exception.connector_exception import ProjectNotFoundException
 
 from ._sam_binary_import import import_project as _import_project
@@ -40,17 +39,10 @@ from ._sam_binary_import import import_project as _import_project
 REQUIRED_ENV_VARS = ("SAM_SERVER_URL", "SAM_ORGANIZATION_ID", "SAM_TOKEN")
 
 
-# TEMPORARY: force all e2e tests to pass while still executing them.
-# Revert by deleting this hook.
-@pytest.hookimpl(hookwrapper=True, tryfirst=True)
-def pytest_runtest_makereport(item, call):
-    outcome = yield
-    report = outcome.get_result()
-    if report.outcome == "failed":
-        report.outcome = "passed"
-        report.longrepr = None
-        if hasattr(report, "wasxfail"):
-            del report.wasxfail
+@pytest.fixture(params=[True, False], ids=["with_derived", "without_derived"])
+def includes_derived(request):
+    """Run project-loading e2e tests with and without API-derived collections."""
+    return request.param
 
 
 @pytest.fixture(scope="session", autouse=True)
@@ -69,6 +61,7 @@ def connector():
         organization_id=os.environ["SAM_ORGANIZATION_ID"],
         token=os.environ["SAM_TOKEN"],
         use_ssl=os.environ.get("SAM_USE_SSL", "true").lower() == "true",
+        check_version=False
     )
 
 
@@ -80,8 +73,8 @@ def project_manager(connector):
 
 @pytest.fixture(scope="session")
 def sam_connector():
-    """Provide a SamRestApiConnector for diagram operations."""
-    return SamRestApiConnector(
+    """Provide a SamApiConnector for diagram operations."""
+    return SamApiConnector(
         server_url=os.environ["SAM_SERVER_URL"],
         token=os.environ["SAM_TOKEN"],
         use_ssl=os.environ.get("SAM_USE_SSL", "true").lower() == "true",
@@ -126,7 +119,11 @@ def project_factory(connector, project_manager):
     Usage::
 
         def test_something(project_factory):
-            project = project_factory(model="bike", kind="scripting")
+            project = project_factory(
+                model="bike",
+                kind="scripting",
+                includes_derived=False,
+            )
             ...
 
     Multiple projects may be created in one test; all are cleaned up.
@@ -135,13 +132,26 @@ def project_factory(connector, project_manager):
     """
     created_ids: list[str] = []
 
-    def _load(model: str = "bike", kind: str = "scripting"):
+    def _load(
+        model: str = "bike",
+        kind: str = "scripting",
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
+    ):
         project_id = _create_project(connector, model)
         created_ids.append(project_id)
         if kind == "scripting":
-            return project_manager.get_scripting_project(project_id)
+            return project_manager.get_scripting_project(
+                project_id,
+                includes_derived=includes_derived,
+                includes_inherited=includes_inherited,
+            )
         if kind == "sysml":
-            return project_manager.get_sysml_project(project_id)
+            return project_manager.get_sysml_project(
+                project_id,
+                includes_derived=includes_derived,
+                includes_inherited=includes_inherited,
+            )
         raise ValueError(f"Unknown project kind: {kind!r}")
 
     yield _load
@@ -151,23 +161,3 @@ def project_factory(connector, project_manager):
             connector.delete_project(project_id)
         except ProjectNotFoundException:
             pass
-
-
-@pytest.fixture
-def project_with_diagrams_factory(project_factory, sam_connector):
-    """Factory fixture: create a project (scripting or sysml) with diagrams loaded.
-
-    Usage::
-
-        def test_something(project_with_diagrams_factory):
-            project = project_with_diagrams_factory(model="bike", kind="scripting")
-            ...
-    """
-
-    def _load(model: str = "bike", kind: str = "scripting"):
-        project = project_factory(model=model, kind=kind)
-        with SAMDiagramManager(connector=sam_connector) as diagrams:
-            diagrams.load_diagrams(model=project)
-        return project
-
-    return _load

@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.decision_node import DecisionNode
 
 
 class TestDecisionNode:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.DecisionNode'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.DecisionNode'."""
 
     @pytest.fixture
     def element(self):

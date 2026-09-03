@@ -26,11 +26,12 @@ from __future__ import annotations
 
 import pytest
 
+
 from ansys.sam.sysml2.meta_model.state_definition import StateDefinition
 
 
 class TestStateDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.StateDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.StateDefinition'."""
 
     @pytest.fixture
     def element(self):
@@ -40,6 +41,24 @@ class TestStateDefinition:
     def test_id_set(self, element):
         """Test element ID is correctly set."""
         assert element.id == "element_id"
+
+    def test_do_action(self, element):
+        """Test getter and setter for do action property."""
+        value = "test_value"
+        element.do_action = value
+        assert element.do_action == value
+
+    def test_entry_action(self, element):
+        """Test getter and setter for entry action property."""
+        value = "test_value"
+        element.entry_action = value
+        assert element.entry_action == value
+
+    def test_exit_action(self, element):
+        """Test getter and setter for exit action property."""
+        value = "test_value"
+        element.exit_action = value
+        assert element.exit_action == value
 
     def test_state(self, element):
         """Test getter for state property."""
@@ -54,33 +73,3 @@ class TestStateDefinition:
     def test_set_is_parallel(self, element):
         """Test getter for set is parallel property."""
         _ = element.set_is_parallel
-
-    def test_do_action(self, element):
-        """Test getter and setter for do action property."""
-        value = "test_value"
-        element.do_action = value
-        assert element.do_action == value
-
-    def test_entry_action(self, element):
-        """Test getter and setter for entry action property."""
-        value = "test_value"
-        element.entry_action = value
-        assert element.entry_action == value
-
-    def test_set_do_action(self, element):
-        """Test getter for set do action property."""
-        _ = element.set_do_action
-
-    def test_exit_action(self, element):
-        """Test getter and setter for exit action property."""
-        value = "test_value"
-        element.exit_action = value
-        assert element.exit_action == value
-
-    def test_set_entry_action(self, element):
-        """Test getter for set entry action property."""
-        _ = element.set_entry_action
-
-    def test_set_exit_action(self, element):
-        """Test getter for set exit action property."""
-        _ = element.set_exit_action

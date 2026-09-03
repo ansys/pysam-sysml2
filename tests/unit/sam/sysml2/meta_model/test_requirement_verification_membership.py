@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.requirement_verification_membership import Requ
 
 
 class TestRequirementVerificationMembership:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.RequirementVerificationMembership'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.RequirementVerificationMembership'."""
 
     @pytest.fixture
     def element(self):
@@ -40,6 +40,12 @@ class TestRequirementVerificationMembership:
     def test_id_set(self, element):
         """Test element ID is correctly set."""
         assert element.id == "element_id"
+
+    def test_owned_requirement(self, element):
+        """Test getter and setter for owned requirement property."""
+        value = "test_value"
+        element.owned_requirement = value
+        assert element.owned_requirement == value
 
     def test_verified_requirement(self, element):
         """Test getter and setter for verified requirement property."""

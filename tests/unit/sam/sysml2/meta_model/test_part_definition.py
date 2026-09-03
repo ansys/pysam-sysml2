@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.part_definition import PartDefinition
 
 
 class TestPartDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.PartDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.PartDefinition'."""
 
     @pytest.fixture
     def element(self):

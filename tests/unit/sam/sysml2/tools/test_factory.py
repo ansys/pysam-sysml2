@@ -42,7 +42,6 @@ ELEMENT_TYPES = [
     ("create_state_usage", "StateUsage"),
 ]
 
-
 class TestFactory:
 
     @pytest.fixture
@@ -51,19 +50,21 @@ class TestFactory:
 
     @pytest.mark.parametrize("factory_method,element_type", ELEMENT_TYPES)
     def test_create_element_transactional_scripting(
-        self, project_manager, factory_method, element_type, mocker
+        self, project_manager, factory_method, element_type, includes_derived, mocker
     ):
-        project = project_manager.get_scripting_project(PROJECT_ID_2)
+        project = project_manager.get_scripting_project(
+            PROJECT_ID_2, includes_derived=includes_derived
+        )
         factory = Factory(project, project_manager._connector)
         root = project.get_root_package()
         commit_spy = mocker.spy(project_manager._connector, "create_commit")
         project.start_transactional_mode()
         create_fn = getattr(factory, factory_method)
 
-        elem = create_fn(name="test_elem", owner=root)
+        elem = create_fn(declared_name="test_elem", owner=root)
 
         assert elem.__class__.__name__ == element_type
-        assert elem._name == "test_elem"
+        assert elem._declared_name == "test_elem"
 
         project.stop_transactional_mode()
 
@@ -71,49 +72,55 @@ class TestFactory:
 
     @pytest.mark.parametrize("factory_method,element_type", ELEMENT_TYPES)
     def test_create_element_transactional_sysml(
-        self, connector, factory_method, element_type, mocker
+        self, connector, factory_method, element_type, includes_derived, mocker
     ):
         manager = SysML2ProjectManager(connector)
-        project = manager.get_sysml_project(PROJECT_ID_2)
+        project = manager.get_sysml_project(
+            PROJECT_ID_2, includes_derived=includes_derived
+        )
         factory = Factory(project, manager._connector)
         root = project.get_root_package()
         commit_spy = mocker.spy(manager._connector, "create_commit")
         project.start_transactional_mode()
         create_fn = getattr(factory, factory_method)
 
-        elem = create_fn(name="test_elem", owner=root)
+        elem = create_fn(declared_name="test_elem", owner=root)
 
         assert elem.__class__.__name__ == element_type
-        assert elem.name == "test_elem"
+        assert elem.declared_name == "test_elem"
 
         project.stop_transactional_mode()
 
         assert commit_spy.call_count == 1
 
     def test_create_part_definition_with_owned_elements(
-        self, project_manager, mocker
+        self, project_manager, includes_derived, mocker
     ):
-        project = project_manager.get_scripting_project(PROJECT_ID_2)
+        project = project_manager.get_scripting_project(
+            PROJECT_ID_2, includes_derived=includes_derived
+        )
         factory = Factory(project, project_manager._connector)
         root = project.get_root_package()
         commit_spy = mocker.spy(project_manager._connector, "create_commit")
         project.start_transactional_mode()
-        new_attr = factory.create_attribute_usage(name="new_attribute", owner=root)
+        new_attr = factory.create_attribute_usage(declared_name="new_attribute", owner=root)
 
         new_part = factory.create_part_definition(
-            name="new_part_def", owner=root, owned_elements=[new_attr]
+            declared_name="new_part_def", owner=root, owned_element=[new_attr]
         )
 
         assert new_part.__class__.__name__ == "PartDefinition"
-        assert new_part._name == "new_part_def"
-        assert len(new_part._owned_elements) == 1
+        assert new_part._declared_name == "new_part_def"
+        assert len(new_part._owned_element) == 1
 
         project.stop_transactional_mode()
 
         assert commit_spy.call_count == 1
 
-    def test_create_element_commit_rejected(self, project_manager, mocker):
-        project = project_manager.get_scripting_project(PROJECT_ID_2)
+    def test_create_element_commit_rejected(self, project_manager, includes_derived, mocker):
+        project = project_manager.get_scripting_project(
+            PROJECT_ID_2, includes_derived=includes_derived
+        )
         factory = Factory(project, project_manager._connector)
         mocker.patch.object(
             project_manager._connector,
@@ -122,10 +129,12 @@ class TestFactory:
         )
 
         with pytest.raises(BadRequestConnectionException) as exc:
-            factory._create_element(element_type=None, name="test")
+            factory._create_element(element_type=None, declared_name="test")
 
-    def test_create_element_owner_invalid(self, project_manager, mocker):
-        project = project_manager.get_scripting_project(PROJECT_ID_2)
+    def test_create_element_owner_invalid(self, project_manager, includes_derived, mocker):
+        project = project_manager.get_scripting_project(
+            PROJECT_ID_2, includes_derived=includes_derived
+        )
         factory = Factory(project, project_manager._connector)
         mocker.patch.object(
             project_manager._connector,
@@ -134,14 +143,18 @@ class TestFactory:
         )
 
         with pytest.raises(BadRequestConnectionException):
-            factory.create_attribute_usage(name="new_attribute")
+            factory.create_attribute_usage(declared_name="new_attribute")
 
-    def test_create_element_with_invalid_owner_attr(self, project_manager):
-        project = project_manager.get_scripting_project(PROJECT_ID_2)
+    def test_create_element_with_invalid_owner_attr(
+        self, project_manager, includes_derived
+    ):
+        project = project_manager.get_scripting_project(
+            PROJECT_ID_2, includes_derived=includes_derived
+        )
         factory = Factory(project, project_manager._connector)
         root = project.get_root_package()
 
         with pytest.raises(AttributeError):
             factory.create_attribute_usage(
-                name="new_attribute", owner=root.UNDEFINED_ELEMENT
+                declared_name="new_attribute", owner=root.UNDEFINED_ELEMENT
             )

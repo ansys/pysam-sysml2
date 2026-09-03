@@ -24,14 +24,12 @@
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
-from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
+from ansys.sam.sysml2.builder.derived_collections import fill_derived_collections
 from ansys.sam.sysml2.builder.mapper.mapper import Mapper
 from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
 from ansys.sam.sysml2.builder.mapper.sysml_mapper import SysMLMapper
 from ansys.sam.sysml2.classes.project import Project
-from ansys.sam.sysml2.classes.scripting_project import ScriptingProject
-from ansys.sam.sysml2.classes.sysml_element import SysMLElement
 from ansys.sam.sysml2.dto.query.constraints_classes import (
     CompositeConstraint,
     PrimitiveConstraint,
@@ -42,8 +40,7 @@ from ansys.sam.sysml2.exception.mapper_exception import MapperException
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.observer.observer import ModificationObserver
 
-_SCRIPTING_KEEP = {"get_value", "parse_and_set_value", "set_value", "delete"}
-sysml_element_dir = dir(SysMLElement) + ["_id"]
+_SYSML_KEEP = {"get", "get_value", "set_value", "delete"}
 
 
 class SysML2ProjectBuilder:
@@ -51,8 +48,8 @@ class SysML2ProjectBuilder:
 
     _connector: SysML2APIConnector
     _mappers: dict[str, Mapper] = {
-        "Scripting": ScriptingMapper(),
         "SysML": SysMLMapper(),
+        "Scripting": ScriptingMapper(),
     }
 
     def __init__(self, connector: SysML2APIConnector):
@@ -66,31 +63,103 @@ class SysML2ProjectBuilder:
         """
         self._connector = connector
 
-    def build_sysml_project(self, project_id: str) -> Project:
-        """Call the API with the specified project ID and build the SysML project from JSON."""
+    def build_sysml_project(
+        self,
+        project_id: str,
+        resolve_libraries: bool = False,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
+    ) -> Project:
+        """
+        Call the API with the specified project ID and build the SysML project from JSON.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to build.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' references so their contents are resolved
+            and mapped during the build.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API ``/elements`` response.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features from the API response.
+
+        Returns
+        -------
+        Project
+            The fully built SysML project.
+        """
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
+        project._resolve_libraries = resolve_libraries
+        project._includes_derived = includes_derived
+        project._includes_inherited = includes_inherited
         self.__build_project(project)
         return project
 
-    def build_scripting_project(self, project_id: str) -> ScriptingProject:
-        """Call the API with the specified project ID and build the scripting project from JSON."""
+    def build_scripting_project(
+        self,
+        project_id: str,
+        resolve_libraries: bool = False,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
+    ) -> Project:
+        """
+        Call the API with the specified project ID and build the scripting project from JSON.
+
+        Parameters
+        ----------
+        project_id : str
+            ID of the project to build.
+        resolve_libraries : bool, default: False
+            When ``True``, keep library elements' references so their contents are resolved
+            and mapped during the build.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API ``/elements`` response.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features from the API response.
+
+        Returns
+        -------
+        Project
+            The fully built dynamic project.
+        """
         project_info = self._connector.get_project_by_id(project_id)
-        project = ScriptingProjectImpl(project_id, project_info["name"])
+        project = ProjectImpl(project_id, project_info["name"])
+        project._scripting = True
+        project._resolve_libraries = resolve_libraries
+        project._includes_derived = includes_derived
+        project._includes_inherited = includes_inherited
         self.__build_project(project)
         return project
 
-    def __build_project(self, project: Project | ScriptingProject):
+    def __build_project(self, project: Project):
         """Build the project from JSON."""
+        # TODO(agrzecho): re-introduce library element tracking once the API exposes
+        # library elements (bulk in get_all_elements, or per-UUID fetch).
+        # https://github.com/ansys/pysam-sysml2/issues/183
         self._build_project_element(project)
+        fill_derived_collections(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
-        self._index_libraries(project)
 
-    def _build_project_element(self, project: Project | ScriptingProject):
+    def _build_project_element(self, project: Project) -> None:
         """Build all project elements in the project."""
-        elements = self._connector.get_all_elements(project_id=project._id)
-        self._map_element_in_project(project, elements)
+        roots_json = self._connector.get_root_elements(project_id=project._id)
+        root_ids = {root["@id"] for root in roots_json}
+
+        elements_json = self._connector.get_all_elements(
+            project_id=project._id,
+            includes_derived=project._includes_derived,
+            includes_inherited=project._includes_inherited,
+        )
+        known_ids = {element["@id"] for element in elements_json}
+        # The API omits the root Namespace from /elements; mapping an element twice would
+        # stack a second UnresolvedField and duplicate it in list fields on resolve.
+        elements_json.extend(root for root in roots_json if root["@id"] not in known_ids)
+
+        self._map_element_in_project(project, elements_json)
         missing_elements = self._resolve_fields(project)
         seen = missing_elements.copy()
         while missing_elements:
@@ -99,39 +168,32 @@ class SysML2ProjectBuilder:
             missing_elements = self._resolve_fields(project)
             missing_elements.difference_update(seen)
             seen.update(missing_elements)
-        self.extract_root_and_check_names(project)
+        self.extract_root_and_check_names(project, root_ids)
 
-    def extract_root_and_check_names(self, project: Project | ScriptingProject):
-        """Extract root elements and resolve inherited names in a single pass.
-
-        Both operations are combined into one iteration over the project
-        environment to avoid looping twice.
-        """
+    def extract_root_and_check_names(self, project: Project, root_ids: set[str]):
+        """Extract root elements and resolve inherited names in a single pass."""
         roots = []
         if isinstance(project, Project):
+            dot_safe = getattr(project, "_scripting", False)
             for element in project._env.values():
-                setattr(element, "name", SysMLUtil.check_sysml_inherited_name(element))
-                if element.owner is None:
-                    roots.append(element)
-        elif isinstance(project, ScriptingProject):
-            for element in project._env.values():
-                setattr(element, "_name", SysMLUtil.check_inherited_name(element))
-                if getattr(element, "_owner", None) is None:
+                element.declared_name = SysMLUtil.check_sysml_inherited_name(
+                    element, dot_safe=dot_safe
+                )
+                if element.id in root_ids:
                     roots.append(element)
         else:
             raise TypeError(
-                f"Unsupported project type: {type(project).__name__}. "
-                "Expected Project or ScriptingProject."
+                f"Unsupported project type: {type(project).__name__}. Expected Project."
             )
         project._root = roots
 
-    def _get_mapper(self, project: Project | ScriptingProject) -> Mapper:
+    def _get_mapper(self, project: Project) -> Mapper:
         """
         Get the correct mapper.
 
         Parameters
         ----------
-        project : Project | ScriptingProject
+        project : Project
             Context project.
 
         Returns
@@ -145,39 +207,40 @@ class SysML2ProjectBuilder:
             If no mapper is found for the project type.
         """
         if isinstance(project, Project):
+            if getattr(project, "_scripting", False):
+                return self._mappers.get("Scripting")
             return self._mappers.get("SysML")
-        elif isinstance(project, ScriptingProject):
-            return self._mappers.get("Scripting")
         else:
             raise MapperException(f"No mapper found for project type: {type(project).__name__}")
 
-    def _map_element_in_project(self, project: Project | ScriptingProject, elements: list):
+    def _map_element_in_project(self, project: Project, elements: list):
         """
         Map all elements and add them to the context project.
 
         Parameters
         ----------
-        project : Project | ScriptingProject
+        project : Project
             Context project.
         elements : list[dict]
             All elements to map.
         """
         unresolved_fields = []
         mapper = self._get_mapper(project)
+        resolve_libraries = getattr(project, "_resolve_libraries", False)
         for element in elements:
             existing_element = project.find_element_by_id(element["@id"])
-            mapped_element = mapper.map(project.get_name(), element, existing_element)
+            mapped_element = mapper.map(element, existing_element, resolve_libraries)
             project.add_element(mapped_element.get_element())
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
 
-    def _resolve_fields(self, project: Project | ScriptingProject) -> set[str]:
+    def _resolve_fields(self, project: Project) -> set[str]:
         """
         Resolve all fields and return missing IDs.
 
         Parameters
         ----------
-        project : Project | ScriptingProject
+        project : Project
             Context project.
 
         Returns
@@ -197,17 +260,15 @@ class SysML2ProjectBuilder:
             else:
                 missing.add(element_id)
         project._unresolved_fields = [f for f in unresolved_fields if f not in resolved_fields]
-        return {x for x in missing if "/?" not in x}
+        return missing
 
-    def _get_missing(
-        self, project: Project | ScriptingProject, missing_elements: set[str]
-    ) -> list[dict]:
+    def _get_missing(self, project: Project, missing_elements: set[str]) -> list[dict]:
         """
         Get all missing elements from the API.
 
         Parameters
         ----------
-        project : Project | ScriptingProject
+        project : Project
             Current context.
         missing_elements : set[str]
             All missing element IDs.
@@ -227,300 +288,50 @@ class SysML2ProjectBuilder:
         else:
             cp = PrimitiveConstraint(property_name="@id", value=next(iter(missing_elements)))
         query.where = cp
-        return self._connector.execute_query(project._id, query.to_json())
+        return self._connector.execute_query(
+            project._id,
+            query.to_json(),
+            includes_derived=project._includes_derived,
+            includes_inherited=project._includes_inherited,
+        )
 
-    def _resolve_inherited_link(self, project: Project | ScriptingProject):
-        """Resolve all inherited elements and add them as members."""
-        if isinstance(project, ScriptingProject):
-            for element in project._env.copy().values():
-                self.clear_element(_SCRIPTING_KEEP, element)
-                self.update_element(element)
+    def _resolve_inherited_link(self, project: Project):
+        """Refresh per-element hash map and owned-name set; proxies are created lazily on access."""
+        for element in project._env.copy().values():
+            self._clear_element(element, _SYSML_KEEP)
+            element._element_hash_map = self.__get_all_sysml_element(element)
+            element._owned_names = self.__get_sysml_owned_names(element)
 
-            self._resolve_dynamic_inherited_fields(project)
-
-        else:
-            for element in project._env.copy().values():
-                element._element_hash_map = self.__get_all_sysml_element(element)
-            self._resolve_sysml_inherited_fields(project)
-
-    def _resolve_dynamic_inherited_fields(self, project: ScriptingProjectImpl):
-        """Resolve all inherited fields and add them as members."""
-        composed_ids = {
-            x.get_id() for x in project._unresolved_fields if x.get_id().startswith("/?")
-        }
-        elements = {}
-        for composed_id in composed_ids:
-            elements_ids = composed_id.split("/?")
-            element: SysMLElement = project._env.get(elements_ids[-1], None)
-            if element is None:
-                continue
-            parents = self._get_all_parents(project, elements_ids)
-            if not parents:
-                continue
-            elif len(parents) == 1:
-                elements.update(self._resolve_single_level_inherited_dynamic(element, parents))
-            else:
-                elements.update(self._resolve_multi_level_inherited_dynamic(element, parents))
-        project._env.update(elements)
-        self._resolve_fields(project)
-
-    def _resolve_sysml_inherited_fields(self, project: Project):
-        """Resolve all inherited fields and add them as members."""
-        composed_ids = {
-            x.get_id() for x in project._unresolved_fields if x.get_id().startswith("/?")
-        }
-        elements = {}
-        for composed_id in composed_ids:
-            elements_ids = composed_id.split("/?")
-            element: Element = project._env.get(elements_ids[-1], None)
-            if element is None:
-                continue
-            parents = self._get_all_parents(project, elements_ids)
-            if not parents:
-                continue
-            elif len(parents) == 1:
-                elements.update(self._resolve_single_level_inherited(element, parents))
-            else:
-                elements.update(self._resolve_multi_level_inherited(element, parents))
-        project._env.update(elements)
-        self._resolve_fields(project)
-
-    def _resolve_multi_level_inherited_dynamic(self, element, parents):
-        """
-        Resolve multi-level inherited element.
-
-        Parameters
-        ----------
-        element :  SysMLElement
-            The element to resolve.
-        parents : list[Element]
-            The list of parent elements.
-
-        Returns
-        -------
-        dict
-            A dictionary containing the resolved inherited element.
-        """
-        current = parents[0]
-        for parent in parents[1:]:
-            if parent._name is not None and parent._name in current._element_hash_map:
-                current = getattr(current, parent._name, None)
-            else:
-                return {}
-        if element._name is not None and element._name in current._element_hash_map:
-            element_ = getattr(current, element._name, None)
-        else:
-            return {}
-        if element_ is not None:
-            return {element_._id: element_}
-        return {}
-
-    def _resolve_single_level_inherited_dynamic(self, element, parents):
-        """
-        Resolve single-level inherited element.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            The element to resolve.
-        parents : list[Element]
-            The list of parent elements.
-
-        Returns
-        -------
-        dict
-            A dictionary containing the resolved inherited element.
-        """
-        if element._name is not None:
-            e = getattr(parents[0], element._name, None)
-            if e is not None:
-                return {e._id: e}
-            return {}
-        else:
-            from ansys.sam.sysml2.classes.sysml_inherited_element import (
-                SysMLInheritedElement,
-            )
-
-            element_ = SysMLInheritedElement(
-                parents[0],
-                next(
-                    (e for e in parents[0]._element_hash_map if e._id == element._id),
-                    None,
-                ),
-            )
-            if element_._element is not None:
-                return {element_._id: element_}
-        return {}
-
-    def _resolve_multi_level_inherited(self, element, parents):
-        """
-        Resolve multi-level inherited element.
-
-        Parameters
-        ----------
-        element : Element
-            The element to resolve.
-        parents : list[Element]
-            The list of parent elements.
-
-        Returns
-        -------
-        dict
-            A dictionary containing the resolved inherited element.
-        """
-        current = parents[0]
-        for parent in parents[1:]:
-            if parent.name is not None and parent.name in current._element_hash_map:
-                current = current.get(parent.name)
-            else:
-                return {}
-        if element.name is not None and element.name in current._element_hash_map:
-            element_ = current.get(element.name)
-        else:
-            return {}
-        if element_ is not None:
-            return {element_.id: element_}
-        return {}
-
-    def _resolve_single_level_inherited(self, element, parents):
-        """
-        Resolve single-level inherited element.
-
-        Parameters
-        ----------
-        element : Element
-            The element to resolve.
-        parents : list[Element]
-            The list of parent elements.
-
-        Returns
-        -------
-        dict
-            A dictionary containing the resolved inherited element.
-        """
-        if element.name is not None:
-            e = parents[0].get(element.name)
-            if e is not None:
-                return {e.id: e}
-            return {}
-        else:
-            from ansys.sam.sysml2.classes.sysml_inherited_element import (
-                SysMLInheritedElement,
-            )
-
-            element_ = SysMLInheritedElement(
-                parents[0],
-                next(
-                    (e for e in parents[0]._element_hash_map if e.id == element.id),
-                    None,
-                ),
-            )
-            if element_._element is not None:
-                return {element_.id: element_}
-        return {}
-
-    def _get_all_parents(self, project, elements_ids):
-        """
-        Get all parent elements from the composed ID.
-
-        Parameters
-        ----------
-        project : Project | ScriptingProject
-            The project containing the elements.
-        elements_ids : list[str]
-            The list of element IDs.
-
-        Returns
-        -------
-        list[Element]
-            The list of parent elements.
-        """
-        parents: list[Element] = []
-        for parent_id in elements_ids[1:-1]:
-            parent_element = project._env.get(parent_id, None)
-            if parent_element is None:
-                break
-            parents.append(parent_element)
-        return parents
-
-    def update_element(self, element):
-        """
-        Update the element with inherited elements.
-
-        Parameters
-        ----------
-        element : SysMLElement
-            The element to update.
-        """
-        all_element = self.__get_all_element(element)
-        element._element_hash_map = all_element
-        for name, e in all_element.items():
-            if name is not None:
-                setattr(element, f"#{name}", e)
-
-    def clear_element(self, ignore_list, element):
-        """
-        Clear all inherited elements in the element.
-
-        Parameters
-        ----------
-        ignore_list : list
-            List of attributes to ignore when clearing.
-        element : SysMLElement
-            The element to clear.
-        """
-        [
-            delattr(element, x)
-            for x in list(element.__dict__.keys())
-            if not x.startswith("_") and x not in ignore_list
-        ]
-
-    def __get_all_element(self, element: SysMLElement) -> dict:
-        """Parse all definitions from the element and return its owned elements."""
-        all_element = getattr(element, "_ownedElement", []).copy()
-        all_element.extend(getattr(element, "_inheritedFeature", []))
-        return {x._name: x for x in all_element if isinstance(x, SysMLElement)}
+    def _clear_element(self, element, keep: set[str]) -> None:
+        """Drop stale pre-wrapped proxies from a previous build before refilling."""
+        for x in list(element.__dict__.keys()):
+            if not x.startswith("_") and x not in keep:
+                delattr(element, x)
 
     def __get_all_sysml_element(self, element: Element) -> dict:
-        """Parse all definitions and collect owned elements."""
+        """Return owned + inherited children of a metamodel element keyed by ``declared_name``."""
         all_element = element.owned_element.copy()
-        all_element.extend(getattr(element, "owned_inherited_feature", []).copy())
-        return {x.name: x for x in all_element if isinstance(x, Element)}
+        all_element.extend(getattr(element, "inherited_feature", []).copy())
+        return {x.declared_name: x for x in all_element if isinstance(x, Element)}
 
-    def _add_write_access(self, project: Project | ScriptingProject):
+    def __get_sysml_owned_names(self, element: Element) -> set[str]:
+        """Return the declared names of owned (non-inherited) children of a metamodel element."""
+        return {
+            x.declared_name
+            for x in element.owned_element
+            if isinstance(x, Element) and x.declared_name
+        }
+
+    def _add_write_access(self, project: Project):
         """Add write rules access on the project."""
         project_modification_observer = ModificationObserver(project, self._connector)
         for element in project._env.values():
             element._observer = project_modification_observer
 
-    def _index_sysml_libraries(self, libraries_elements, element, project):
-        """Index libraries of the SysML project for future reload."""
-        if not getattr(element, "qualifiedName", "").startswith(project._name):
-            libraries_elements.add(element.id)
-
-    def _index_scripting_libraries(self, libraries_elements, element, project):
-        """Index libraries of the scripting project for future reload."""
-        if not getattr(element, "_qualifiedName", "").startswith(project._name):
-            libraries_elements.add(element._id)
-
-    def _index_libraries(self, project: Project | ScriptingProject):
-        """Index libraries of the project for future reload."""
-        libraries_elements = set()
-        call = None
-        if isinstance(project, Project):
-            call = self._index_sysml_libraries
-        elif isinstance(project, ScriptingProject):
-            call = self._index_scripting_libraries
-        else:
-            raise TypeError(f"Unsupported project type: {type(project).__name__}. ")
-        for element in project._env.values():
-            call(libraries_elements, element, project)
-        project._libraries_ids = libraries_elements
-
     def reload_project(
         self,
         modification_observer: ModificationObserver,
-        project: Project | ScriptingProject,
+        project: Project,
     ):
         """
         Reload the project and update all its elements.
@@ -529,12 +340,13 @@ class SysML2ProjectBuilder:
         ----------
         modification_observer : ModificationObserver
             Observer instance.
-        project : Project | ScriptingProject
+        project : Project
             Project instance to reload.
         """
         modification_observer.stop()
+        project._resolve_libraries = False  # libraries are static; never re-resolve on reload
         self._build_project_element(project)
+        fill_derived_collections(project)
         self._resolve_inherited_link(project)
         self._add_write_access(project)
-        self._index_libraries(project)
         modification_observer.start()

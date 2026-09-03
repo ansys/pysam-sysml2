@@ -22,12 +22,17 @@ All SysML2 properties are accessible using dot notation.
     >>> package.owned_element
     [..,..]
 
-The utility function ``get_value`` extracts the value from a feature element.
+The utility function ``get_value`` returns the value element of a feature. Read the literal value
+through ``value``, or render any value element as text with ``SysMLTools.serialize_expression``.
 
 .. code:: python
 
     >>> myFeature.get_value()
+    <LiteralInteger>
+    >>> myFeature.get_value().value
     5
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    '5'
 
 
 Model elements
@@ -53,10 +58,10 @@ To parse the project, you can use dot access or underscore access.
 Dot access
 ----------
 
-.. currentmodule:: ansys.sam.sysml2.classes.sysml_element
+.. currentmodule:: ansys.sam.sysml2.meta_model.e_object
 
 With dot access, you can access all direct named elements of your SysML element. Also, you can
-access some useful top-level functions, such as :meth:`get_value() <SysMLElement.get_value>`.
+access some useful top-level functions, such as :meth:`get_value() <EObject.get_value>`.
 
 Sub-elements
 ~~~~~~~~~~~~
@@ -77,31 +82,60 @@ which have names, to the container element.
 - **Names with spaces**: You cannot access elements with spaces in their names (for example, "bike
   frame") using dot notation. Python identifiers cannot contain spaces.
 
-Function :meth:`get_value() <SysMLElement.get_value>`
+Function :meth:`get_value() <EObject.get_value>`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The :meth:`get_value() <SysMLElement.get_value>` function works only for the SysML ``Feature``
-element. Use this top-level function to get the value of the feature without reading the internal
-structure:
+The :meth:`get_value() <EObject.get_value>` function works only for the SysML ``Feature``
+element. It returns the feature's value element (a literal such as ``LiteralInteger`` or an
+expression such as ``OperatorExpression``) without reading the internal structure:
 
-.. code:: bash
+.. code:: python
 
-    >>> myExpressionFeature.get_value()
-    (10, 'kg')
     >>> myIntFeature.get_value()
+    <LiteralInteger>
+    >>> myArithmeticFeature.get_value()
+    <OperatorExpression>
+
+Read the literal value directly through ``_value``:
+
+.. code:: python
+
+    >>> myIntFeature.get_value()._value
     10
-    >>> myStringFeature.get_value()
-    "Hello"
-    >>> myBoolFeature.get_value()
+    >>> myStringFeature.get_value()._value
+    'Hello'
+    >>> myBoolFeature.get_value()._value
     False
-    >>> myFloatFeature.get_value()
+    >>> myFloatFeature.get_value()._value
     10.56
 
-The :meth:`get_value() <SysMLElement.get_value>` function supports:
+Render any value element (literal or expression) as text with
+``SysMLTools.serialize_expression``:
 
-- All primitive types, such as LiteralInteger and LiteralString - Returns the value directly.
-- Simple expressions, such as ``<value> [<unit>]`` - Returns a tuple:
-  ``(<value>,<unit short name>)``.
+.. code:: python
+
+    >>> from ansys.sam.sysml2.tools import SysMLTools
+    >>> SysMLTools.serialize_expression(myIntFeature.get_value())
+    '10'
+    >>> SysMLTools.serialize_expression(myUnitFeature.get_value())
+    '10 [kg]'
+    >>> SysMLTools.serialize_expression(myArithmeticFeature.get_value())
+    '5 + 5'
+    >>> SysMLTools.serialize_expression(myReferenceFeature.get_value())
+    'baseValue + baseValue'
+    >>> SysMLTools.serialize_expression(myBooleanExpressionFeature.get_value())
+    'not true'
+
+``SysMLTools.serialize_expression`` supports:
+
+- All primitive literals, such as ``LiteralInteger``, ``LiteralString``, ``LiteralBoolean``, and
+  ``LiteralRational``, which render as text (for example ``'10'``).
+- Expressions, which render in their text form, including:
+
+  - unit expressions, such as ``<value> [<unit>]`` (for example ``'10 [kg]'``);
+  - arithmetic expressions (for example ``'5 + 5'``);
+  - reference expressions that name other features (for example ``'baseValue + baseValue'``);
+  - unary expressions (for example ``'not true'``).
 
 Underscore access
 =================
@@ -119,6 +153,41 @@ With underscore (``_``) access, you can find all SysML2 methods:
 
     In this first PySAM SysML2 version, only existing fields (with data) are linked, which means
     that you might not find a function that exists in SysML V2.
+
+.. _Feature_Chaining_Section:
+
+Resolve connection ends (feature chaining)
+==========================================
+
+A connection end (``source`` or ``target``) does not always point directly at the element you
+expect. An end is an *end feature* that can reference its target through a **feature chaining**, a
+path such as ``a.b.c``. Because of redefinition and inheritance, the element a chaining resolves to
+is *context dependent*: the same feature can resolve to a different element depending on where it is
+observed.
+
+Reading ``connection.source`` (static) or ``connection._source`` (dynamic) directly therefore
+returns the raw end feature, not the meaningful element it represents. Use
+:class:`SysMLTools <ansys.sam.sysml2.tools.sysmltools.SysMLTools>`
+to resolve an end within its connection context:
+
+.. code:: python
+
+    from ansys.sam.sysml2.tools import SysMLTools
+
+    source = SysMLTools.resolve_feature_chaining(connection, "source")
+    target = SysMLTools.resolve_feature_chaining(connection, "target")
+
+    # Or resolve both ends at once:
+    source, target = SysMLTools.get_connector_ends(connection)
+
+``SysMLTools``:
+
+- Resolves each end within the connection's owner as context, so feature chaining, inheritance, and
+  redefinition are all accounted for.
+- Auto-detects whether you use the static (:class:`Project <ansys.sam.sysml2.classes.project.Project>`)
+  or dynamic (scripting) representation from the element you pass in, so the same call works for both
+  approaches.
+- Returns the resolved representative element, or ``None`` when the end or context is missing.
 
 .. only:: html
 

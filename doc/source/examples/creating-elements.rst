@@ -6,7 +6,7 @@ Create a new element
 Make sure that you have access to a valid server and a project containing the ``Bike`` structure.
 If you do not have a project containing the ``Bike`` structure, perform the following steps:
 
-#. Download the model: :download:`Bike Model <../_static/code/bike.xmi>`.
+#. Download the model: :download:`Bike Model <../_static/code/bike.kpar>`.
 
 #. Open the SAM editor in your browser and select the desired organization (for example, *MyOrga*).
 
@@ -14,7 +14,7 @@ If you do not have a project containing the ``Bike`` structure, perform the foll
 
 #. Select **Choose File** for the **File to import** option.
 
-#. Select the ``bike.xmi`` file that you just downloaded. The project name is automatically set to
+#. Select the ``bike.kpar`` file that you just downloaded. The project name is automatically set to
    ``bike``.
 
 #. Click **Import** and wait for the project to load.
@@ -53,13 +53,13 @@ structure and assign it a value.
 
 You just created a new element and assigned a parsed value to it.
 
-.. currentmodule:: ansys.sam.sysml2.classes.sysml_element
+.. currentmodule:: ansys.sam.sysml2.meta_model.e_object
 
 .. note::
 
     You can also assign a value directly when creating the element, without using the
-    :meth:`set_value() <SysMLElement.set_value>` or
-    :meth:`parse_and_set_value() <SysMLElement.parse_and_set_value>`
+    :meth:`set_value() <EObject.set_value>` or
+    ``SysMLTools.parse_and_set_value``
     method. There are two ways:
 
     - ``value=...`` for simple values (such as numbers).
@@ -72,13 +72,13 @@ You just created a new element and assigned a parsed value to it.
             .. code:: python
 
                 new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-                    name="lengthWithValue",
+                    declared_name="lengthWithValue",
                     owner=bike.frame,
                     value=60
                 )
 
                 new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-                    name="lengthWithExpression",
+                    declared_name="lengthWithExpression",
                     owner=bike.frame,
                     expression="60 [cm]"
                 )
@@ -88,13 +88,13 @@ You just created a new element and assigned a parsed value to it.
             .. code:: python
 
                 new_bicycle_frame_length_with_value = factory.create_attribute_usage(
-                    name="lengthWithValue",
+                    declared_name="lengthWithValue",
                     owner=bike.get("frame"),
                     value=60
                 )
 
                 new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
-                    name="lengthWithExpression",
+                    declared_name="lengthWithExpression",
                     owner=bike.get("frame"),
                     expression="60 [cm]"
                 )

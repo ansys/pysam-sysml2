@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.metadata_feature import MetadataFeature
 
 
 class TestMetadataFeature:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.MetadataFeature'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.MetadataFeature'."""
 
     @pytest.fixture
     def element(self):
@@ -46,3 +46,11 @@ class TestMetadataFeature:
         value = "test_value"
         element.metaclass = value
         assert element.metaclass == value
+
+    def test_semantic(self, element):
+        """Test getter for semantic property."""
+        _ = element.semantic
+
+    def test_syntactic(self, element):
+        """Test getter for syntactic property."""
+        _ = element.syntactic

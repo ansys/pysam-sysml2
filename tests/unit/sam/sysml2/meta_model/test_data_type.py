@@ -28,7 +28,7 @@ from ansys.sam.sysml2.meta_model.data_type import DataType
 
 
 class TestDataType:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.DataType'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.DataType'."""
 
     @pytest.fixture
     def element(self):

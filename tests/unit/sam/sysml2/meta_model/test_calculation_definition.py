@@ -22,14 +22,14 @@
 
 """Generated  test class from metamodel."""
 
-
 import pytest
+
 
 from ansys.sam.sysml2.meta_model.calculation_definition import CalculationDefinition
 
 
 class TestCalculationDefinition:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.CalculationDefinition'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.CalculationDefinition'."""
 
     @pytest.fixture
     def element(self):

@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.exhibit_state_usage import ExhibitStateUsage
 
 
 class TestExhibitStateUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.ExhibitStateUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.ExhibitStateUsage'."""
 
     @pytest.fixture
     def element(self):

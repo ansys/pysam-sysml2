@@ -26,106 +26,326 @@ import pytest
 
 from ansys.sam.sysml2.exception.connector_exception import ProjectNotFoundException
 from ansys.sam.sysml2.tools.factory import Factory
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 
 @pytest.mark.e2e
 class TestValues:
 
-    def test_bike_weight_and_unit(self, project_factory):
+    def test_bike_weight_and_unit(self, project_factory, includes_derived):
         """Navigate model, calculate total weight, checks weight and unit."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
         bike_parts = [
-            bike.frontWheel.rim.weight.get_value(),
-            bike.frontWheel.tire.weight.get_value(),
-            bike.rearWheel.rim.weight.get_value(),
-            bike.rearWheel.tire.weight.get_value(),
-            bike.frame.weight.get_value(),
+            SysMLTools.serialize_expression(bike.frontWheel.rim.weight.get_value()),
+            SysMLTools.serialize_expression(bike.frontWheel.tire.weight.get_value()),
+            SysMLTools.serialize_expression(bike.rearWheel.rim.weight.get_value()),
+            SysMLTools.serialize_expression(bike.rearWheel.tire.weight.get_value())
         ]
 
-        total_bike_weight = sum(part[0] for part in bike_parts)
-        bike_first_part_weight_unit = bike_parts[0][1]
-        bike_parts_weight_unit_all_same = all(p[1] == bike_parts[0][1] for p in bike_parts)
+        total_bike_weight = sum(int(part.split()[0]) for part in bike_parts)
+        bike_parts_weight_unit_all_same = all(p.endswith(" [kg]") for p in bike_parts)
 
-        assert total_bike_weight == 10
-        assert bike_first_part_weight_unit == "kg"
+        assert total_bike_weight == 8
+        assert bike_parts[0].endswith(" [kg]")
         assert bike_parts_weight_unit_all_same
 
-    def test_bike_rim_weight_and_unit_update(self, project_factory):
+    def test_bike_rim_weight_and_unit_update(self, project_factory, includes_derived):
         """Update rim weight and unit, verify change."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
-        original_front_weight = bike.frontWheel.rim.weight.get_value()
+        original_front_weight = SysMLTools.serialize_expression(
+            bike.frontWheel.rim.weight.get_value()
+        )
 
-        assert original_front_weight == (1, 'kg')
+        assert original_front_weight == "1 [kg]"
 
-        bike.frontWheel.rim.weight.parse_and_set_value("500 [g]")
-        updated_front_weight = bike.frontWheel.rim.weight.get_value()
+        SysMLTools.parse_and_set_value(bike.frontWheel.rim.weight, "500 [g]")
+        updated_front_weight = SysMLTools.serialize_expression(
+            bike.frontWheel.rim.weight.get_value()
+        )
 
         assert updated_front_weight != original_front_weight
-        assert updated_front_weight == (500, 'g')
+        assert updated_front_weight == "500 [g]"
 
-    def test_bike_rim_weight_transaction(self, project_factory):
+    def test_bike_rim_weight_transaction(self, project_factory, includes_derived):
         """Transactional mode: batch updates, verify after commit."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
-        original_front_weight = bike.frontWheel.rim.weight.get_value()
-        original_rear_weight = bike.rearWheel.rim.weight.get_value()
+        original_front_rim_weight = SysMLTools.serialize_expression(
+            bike.frontWheel.rim.weight.get_value()
+        )
+        original_front_tire_weight = SysMLTools.serialize_expression(
+            bike.frontWheel.tire.weight.get_value()
+        )
 
-        assert original_front_weight == (1, 'kg')
-        assert original_rear_weight == (1, 'kg')
+        assert original_front_rim_weight == "1 [kg]"
+        assert original_front_tire_weight == "3 [kg]"
 
         project.start_transactional_mode()
-        bike.frontWheel.rim.weight.parse_and_set_value("500 [g]")
-        bike.rearWheel.rim.weight.parse_and_set_value("750 [g]")
+        SysMLTools.parse_and_set_value(bike.frontWheel.rim.weight, "500 [g]")
+        SysMLTools.parse_and_set_value(bike.frontWheel.tire.weight, "750 [g]")
         project.stop_transactional_mode()
 
-        updated_front_weight = bike.frontWheel.rim.weight.get_value()
-        updated_rear_weight = bike.rearWheel.rim.weight.get_value()
+        updated_front_rim_weight = SysMLTools.serialize_expression(
+            bike.frontWheel.rim.weight.get_value()
+        )
+        updated_front_tire_weight = SysMLTools.serialize_expression(bike.frontWheel.tire.weight.get_value())
 
-        assert updated_front_weight == (500, 'g')
-        assert updated_rear_weight == (750, 'g')
+        assert updated_front_rim_weight == "500 [g]"
+        assert updated_front_tire_weight == "750 [g]"
 
-    def test_bike_create_element(self, connector, project_factory):
+    def test_bike_create_element(self, connector, project_factory, includes_derived):
         """Create attribute on bike.frame, set value, verify roundtrip."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         bike = project.get_root_package().Structure.Bike
         factory = Factory(project, connector)
-        factory.create_attribute_usage(name="length", owner=bike.frame)
+        factory.create_attribute_usage(declared_name="length", owner=bike.frame)
 
-        bike.frame.length.parse_and_set_value("60 [cm]")
-        value = bike.frame.length.get_value()
+        SysMLTools.parse_and_set_value(bike.frame.length, "60 [cm]")
+        value = SysMLTools.serialize_expression(bike.frame.length.get_value())
 
-        assert value == (60, "cm")
+        assert value == "60 [cm]"
 
-    def test_bike_sysml_project(self, project_factory):
+    def test_bike_sysml_project(self, project_factory, includes_derived):
         """Load bike via sysml project, navigate with .get(), verify structure (weight-bike-static.py)."""
-        project = project_factory(model="bike", kind="sysml")
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
         bike = project.get_root_package().get("Structure").get("Bike")
         front_wheel = bike.get("frontWheel")
         rear_wheel = bike.get("rearWheel")
         bike_parts = [
-            front_wheel.get("rim").get("weight").get_value(),
-            front_wheel.get("tire").get("weight").get_value(),
-            rear_wheel.get("rim").get("weight").get_value(),
-            rear_wheel.get("tire").get("weight").get_value(),
-            bike.get("frame").get("weight").get_value(),
+            SysMLTools.serialize_expression(front_wheel.get("rim").get("weight").get_value()),
+            SysMLTools.serialize_expression(front_wheel.get("tire").get("weight").get_value()),
+            SysMLTools.serialize_expression(rear_wheel.get("rim").get("weight").get_value()),
+            SysMLTools.serialize_expression(rear_wheel.get("tire").get("weight").get_value()),
         ]
 
-        total_bike_weight = sum(part[0] for part in bike_parts)
-        bike_first_part_weight_unit = bike_parts[0][1]
-        bike_parts_weight_unit_all_same = all(p[1] == bike_parts[0][1] for p in bike_parts)
+        total_bike_weight = sum(int(part.split()[0]) for part in bike_parts)
+        bike_parts_weight_unit_all_same = all(p.endswith(" [kg]") for p in bike_parts)
 
-        assert total_bike_weight == 10
-        assert bike_first_part_weight_unit == "kg"
+        assert total_bike_weight == 8
+        assert bike_parts[0].endswith(" [kg]")
         assert bike_parts_weight_unit_all_same
 
-    def test_bike_delete_project(self, connector, project_factory):
+    def test_bike_delete_project(self, connector, project_factory, includes_derived):
         """Delete project and verify it raises ProjectNotFoundException."""
-        project = project_factory(model="bike", kind="scripting")
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         project_id = project.get_id()
 
         connector.delete_project(project_id)
 
         with pytest.raises(ProjectNotFoundException):
             connector.get_project_by_id(project_id)
+
+    def test_create_attribute_arithmetic_expression(self, connector, project_factory, includes_derived):
+        """Create an attribute, set an arithmetic complex expression, verify roundtrip."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        bike = project.get_root_package().Structure.Bike
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="complexArithmetic", owner=bike.frame)
+
+        SysMLTools.parse_and_set_value(bike.frame.complexArithmetic, "5 + 5 + 5")
+
+        assert (
+            SysMLTools.serialize_expression(bike.frame.complexArithmetic.get_value()) == "5 + 5 + 5"
+        )
+
+    def test_create_attribute_reference_expression(self, connector, project_factory, includes_derived):
+        """Reference an already-created attribute from a second attribute's expression."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        bike = project.get_root_package().Structure.Bike
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="baseValue", owner=bike.frame)
+        SysMLTools.parse_and_set_value(bike.frame.baseValue, "5 + 5")
+        factory.create_attribute_usage(declared_name="refValue", owner=bike.frame)
+
+        SysMLTools.parse_and_set_value(bike.frame.refValue, "Bike::Structure::Bike::frame::baseValue + Bike::Structure::Bike::frame::baseValue")
+
+        assert SysMLTools.serialize_expression(bike.frame.baseValue.get_value()) == "5 + 5"
+        assert (
+            SysMLTools.serialize_expression(bike.frame.refValue.get_value())
+            == "baseValue + baseValue"
+        )
+
+    def test_create_attribute_usage_with_expression_tag(self, connector, project_factory, includes_derived):
+        """Create an attribute usage with the expression already set at creation time."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        bike = project.get_root_package().Structure.Bike
+        factory = Factory(project, connector)
+
+        factory.create_attribute_usage(
+            declared_name="preSetExpr", owner=bike.frame, expression="5 + 5 + 5"
+        )
+
+        assert SysMLTools.serialize_expression(bike.frame.preSetExpr.get_value()) == "5 + 5 + 5"
+
+    def test_create_attribute_expression_sysml(self, connector, project_factory, includes_derived):
+        """SysML-kind: create an attribute, set an arithmetic expression, read it via .get()."""
+        project = project_factory(model="bike", kind="sysml", includes_derived=includes_derived)
+        bike = project.get_root_package().get("Structure").get("Bike")
+        frame = bike.get("frame")
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="complexArithmetic", owner=frame)
+
+        SysMLTools.parse_and_set_value(frame.get("complexArithmetic"), "5 + 5 + 5")
+
+        assert (
+            SysMLTools.serialize_expression(frame.get("complexArithmetic").get_value())
+            == "5 + 5 + 5"
+        )
+
+    def test_create_attribute_with_value_kwarg(self, connector, project_factory, includes_derived):
+        """Create attributes with an initial literal value; read them back as native ints."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="second", owner=root, value=1)
+        factory.create_attribute_usage(declared_name="third", owner=root, value=5)
+
+        assert root.second.get_value()._value == 1
+        assert root.third.get_value()._value == 5
+
+    def test_create_attribute_with_expression_kwarg(self, connector, project_factory, includes_derived):
+        """Create an attribute with an expression set at creation time (unary not)."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+
+        factory.create_attribute_usage(declared_name="notAttr", owner=root, expression="not false")
+
+        assert SysMLTools.serialize_expression(root.notAttr.get_value()) == "not false"
+
+    def test_set_value_stores_string_verbatim(self, connector, project_factory, includes_derived):
+        """set_value stores a string literal returned verbatim, without spacing changes."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="first", owner=root)
+
+        root.first.set_value("1+2+3+4+5")
+
+        assert root.first.get_value()._value == "1+2+3+4+5"
+
+    def test_parse_and_set_value_renders_expression(self, connector, project_factory, includes_derived):
+        """parse_and_set_value builds an expression re-rendered with normalized spacing."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="first", owner=root)
+
+        SysMLTools.parse_and_set_value(root.first, "1+2+3+4+5")
+
+        assert SysMLTools.serialize_expression(root.first.get_value()) == "1 + 2 + 3 + 4 + 5"
+
+    def test_reference_expression_across_siblings(self, connector, project_factory, includes_derived):
+        """Reference sibling attributes by name inside a nested arithmetic expression."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="second", owner=root, value=1)
+        factory.create_attribute_usage(declared_name="third", owner=root, value=5)
+        factory.create_attribute_usage(declared_name="first", owner=root)
+
+        root.first.set_value("first_value")
+        assert root.first.get_value()._value == "first_value"
+
+        SysMLTools.parse_and_set_value(root.first, "second + third * 3")
+
+        assert SysMLTools.serialize_expression(root.first.get_value()) == "second + third * 3"
+
+    def test_unary_not_expression(self, connector, project_factory, includes_derived):
+        """Unary not renders with a lowercased boolean, both at creation and after update."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="flag", owner=root, expression="not false")
+
+        assert SysMLTools.serialize_expression(root.flag.get_value()) == "not false"
+
+        SysMLTools.parse_and_set_value(root.flag, "not true")
+
+        assert SysMLTools.serialize_expression(root.flag.get_value()) == "not true"
+
+    def test_switch_string_value_to_expression_and_back(self, connector, project_factory, includes_derived):
+        """Switch a value between a string literal and an operator expression both ways."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="second", owner=root, value=1)
+        factory.create_attribute_usage(declared_name="notAttrStr", owner=root, value="not false")
+
+        assert root.notAttrStr.get_value()._value == "not false"
+
+        SysMLTools.parse_and_set_value(root.notAttrStr, "second * 3")
+        assert SysMLTools.serialize_expression(root.notAttrStr.get_value()) == "second * 3"
+
+        root.notAttrStr.set_value("not true")
+        assert root.notAttrStr.get_value()._value == "not true"
+
+    def test_update_existing_attribute_value(self, connector, project_factory, includes_derived):
+        """Update an already-created attribute value twice (same-type in place)."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="first", owner=root)
+
+        root.first.set_value("first_value")
+        assert root.first.get_value()._value == "first_value"
+
+        root.first.set_value("second_value")
+
+        assert root.first.get_value()._value == "second_value"
+
+    def test_backslash_create_and_read(self, connector, project_factory, includes_derived):
+        """Create a string with a backslash via set_value and read it back unchanged."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="pathAttr", owner=root)
+
+        root.pathAttr.set_value("Hello\\World")
+
+        value = root.pathAttr.get_value()._value
+        assert value == "Hello\\World"
+        assert value.count("\\") == 1
+
+    def test_backslash_update_in_place(self, connector, project_factory, includes_derived):
+        """Update an existing LiteralString in place with a backslash value."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="pathAttr", owner=root)
+
+        root.pathAttr.set_value("plain")
+        root.pathAttr.set_value("try\\to")
+
+        value = root.pathAttr.get_value()._value
+        assert value == "try\\to"
+        assert value.count("\\") == 1
+
+    def test_backslash_parse_and_set_value_quoted_kerml(self, connector, project_factory, includes_derived):
+        """parse_and_set_value accepts a quoted KerML string literal with escapes."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="pathAttr", owner=root)
+
+        SysMLTools.parse_and_set_value(root.pathAttr, '"Hello\\\\World"')
+
+        value = root.pathAttr.get_value()._value
+        assert value == "Hello\\World"
+        assert value.count("\\") == 1
+
+    def test_backslash_newline_roundtrip(self, connector, project_factory, includes_derived):
+        """Roundtrip a string with two backslashes and a real newline."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_attribute_usage(declared_name="pathAttr", owner=root)
+
+        root.pathAttr.set_value("try\\\\\nto")
+
+        value = root.pathAttr.get_value()._value
+        assert value == "try\\\\\nto"
+        assert value.count("\\") == 2
+        assert "\n" in value

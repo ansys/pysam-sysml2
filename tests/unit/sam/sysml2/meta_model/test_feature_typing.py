@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.feature_typing import FeatureTyping
 
 
 class TestFeatureTyping:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.FeatureTyping'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.FeatureTyping'."""
 
     @pytest.fixture
     def element(self):
@@ -40,6 +40,12 @@ class TestFeatureTyping:
     def test_id_set(self, element):
         """Test element ID is correctly set."""
         assert element.id == "element_id"
+
+    def test_owning_feature(self, element):
+        """Test getter and setter for owning feature property."""
+        value = "test_value"
+        element.owning_feature = value
+        assert element.owning_feature == value
 
     def test_type_(self, element):
         """Test getter and setter for type property."""
@@ -52,9 +58,3 @@ class TestFeatureTyping:
         value = "test_value"
         element.typed_feature = value
         assert element.typed_feature == value
-
-    def test_owning_feature(self, element):
-        """Test getter and setter for owning feature property."""
-        value = "test_value"
-        element.owning_feature = value
-        assert element.owning_feature == value

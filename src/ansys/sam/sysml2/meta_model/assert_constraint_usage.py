@@ -29,7 +29,7 @@ from .invariant import Invariant
 
 
 class AssertConstraintUsage(ConstraintUsage, Invariant):
-    """Java class 'com.ansys.medini.metamodel.sysml.AssertConstraintUsage'."""
+    """Java class 'com.ansys.metamodel.sysml2.AssertConstraintUsage'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

@@ -28,7 +28,7 @@ from .relationship import Relationship
 
 
 class TypeFeaturing(Relationship):
-    """Java class 'com.ansys.medini.metamodel.sysml.TypeFeaturing'."""
+    """Java class 'com.ansys.metamodel.sysml2.TypeFeaturing'."""
 
     def __init__(self, element_id: str):
         """Construct new instance.

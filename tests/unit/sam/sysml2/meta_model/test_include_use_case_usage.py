@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.include_use_case_usage import IncludeUseCaseUsa
 
 
 class TestIncludeUseCaseUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.IncludeUseCaseUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.IncludeUseCaseUsage'."""
 
     @pytest.fixture
     def element(self):

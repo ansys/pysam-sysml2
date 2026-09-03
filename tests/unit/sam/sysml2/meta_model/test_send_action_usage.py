@@ -30,7 +30,7 @@ from ansys.sam.sysml2.meta_model.send_action_usage import SendActionUsage
 
 
 class TestSendActionUsage:
-    """Test class for Java class 'com.ansys.medini.metamodel.sysml.SendActionUsage'."""
+    """Test class for Java class 'com.ansys.metamodel.sysml2.SendActionUsage'."""
 
     @pytest.fixture
     def element(self):
@@ -41,14 +41,20 @@ class TestSendActionUsage:
         """Test element ID is correctly set."""
         assert element.id == "element_id"
 
-    def test_sender_argument(self, element):
-        """Test getter for sender argument property."""
-        _ = element.sender_argument
-
     def test_payload_argument(self, element):
-        """Test getter for payload argument property."""
-        _ = element.payload_argument
+        """Test getter and setter for payload argument property."""
+        value = "test_value"
+        element.payload_argument = value
+        assert element.payload_argument == value
 
     def test_receiver_argument(self, element):
-        """Test getter for receiver argument property."""
-        _ = element.receiver_argument
+        """Test getter and setter for receiver argument property."""
+        value = "test_value"
+        element.receiver_argument = value
+        assert element.receiver_argument == value
+
+    def test_sender_argument(self, element):
+        """Test getter and setter for sender argument property."""
+        value = "test_value"
+        element.sender_argument = value
+        assert element.sender_argument == value

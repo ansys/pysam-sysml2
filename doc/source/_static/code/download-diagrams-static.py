@@ -25,8 +25,7 @@ import requests
 from urllib3.exceptions import InsecureRequestWarning
 
 from ansys.sam.sysml2 import AnsysSysML2APIConnector, SysML2ProjectManager
-from ansys.sam.sysml2.diagrams.api.sam_rest_api_connector import SamRestApiConnector
-from ansys.sam.sysml2.diagrams.sam_diagram_manager import SAMDiagramManager
+from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
 from ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader import SamDiagramDownloader
 
 # Used to disable warnings
@@ -39,7 +38,7 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
     use_ssl=False,  # If the server hasn't a valid SSL
 )
 
-sam_rest_api_connector = SamRestApiConnector(
+sam_api_connector = SamApiConnector(
     server_url="<SAM Server URL>",  # Your SAM server base URL
     token="<Token>",  # Your authorization token
     use_ssl=False,  # If the server hasn't a valid SSL
@@ -53,12 +52,11 @@ project = project_manager.get_sysml_project("<Bike Project ID>")
 # Work with diagrams
 # -----------------------------------------
 
-with SAMDiagramManager(connector=sam_rest_api_connector) as diagrams:
-    diagrams.load_diagrams(model=project)
+diagrams_info = sam_api_connector.get_diagrams_info(project._id)
 
-print(f"Loaded {len(project.get_root_package().__diagram)} diagrams.")
+print(f"Found {len(diagrams_info)} diagrams.")
 
-downloader = SamDiagramDownloader(connector=sam_rest_api_connector, project_id=project._id)
+downloader = SamDiagramDownloader(connector=sam_api_connector, project_id=project._id)
 
 # -----------------------------------------
 # Download diagrams
@@ -76,8 +74,8 @@ path = downloader.download_all_diagrams(
 print(f"ZIP saved at: {path}\n")
 
 
-first_diagram = project.get_root_package().__diagram[0]
-first_diagram_id = first_diagram._id
+first_diagram = diagrams_info[0]
+first_diagram_id = first_diagram["diagramId"]
 
 path = downloader.download_diagram(
     diagram_id=first_diagram_id,
@@ -87,18 +85,18 @@ path = downloader.download_diagram(
 print(f"Diagram saved at: {path}")
 
 
-usage_diagrams = project.get_root_package().get("Usage").__diagram
-for i, diagram in enumerate(usage_diagrams, 1):
+for i, diagram in enumerate(diagrams_info, 1):
     downloader.download_diagram(
-        diagram_id=diagram._id, file_format="png", path=SAVE_IMAGE_PATH + "/Usage"
+        diagram_id=diagram["diagramId"], file_format="png", path=SAVE_IMAGE_PATH + "/all"
     )
-    print(f"> Saved Usage diagram #{i}: {diagram._plane._model_element._name}")
+    print(f"> Saved diagram #{i}: {diagram['name']}")
 
 # -----------------------------------------
-# Navigate through diagrams
+# Retrieve diagram information
 # -----------------------------------------
 
-print(first_diagram._plane._model_element._name)
+single_info = sam_api_connector.get_single_diagram_info(project._id, first_diagram_id)
+print(single_info["name"])
 
-for diagram in usage_diagrams:
-    print("Diagram name:", diagram._name)
+for diagram in diagrams_info:
+    print("Diagram name:", diagram["name"])
