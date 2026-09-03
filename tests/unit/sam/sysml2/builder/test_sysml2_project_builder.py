@@ -24,7 +24,7 @@
 
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport
-from tests.unit.const import PROJECT_1_ATTR_ID, PROJECT_ID_1, PROJECT_ID_5
+from tests.unit.const import PROJECT_1_ATTR_ID, PROJECT_ID_1, PROJECT_ID_5, PROJECT_ID_7
 
 
 class TestSysML2ProjectBuilderScripting:
@@ -167,3 +167,15 @@ class TestSysML2ProjectBuilderLibraries:
 
         assert libraries
         assert all(library is not None for library in libraries)
+    def test_libraries_packages_for_empty_librairies(self, connector, includes_derived):
+        builder = SysML2ProjectBuilder(connector)
+
+        project = builder.build_sysml_project(
+            PROJECT_ID_7, includes_derived=includes_derived
+        )
+
+        assert project.get_root_package().name == "VehicleModel"
+
+        libraries = project.get_libraries_packages()
+
+        assert libraries == []

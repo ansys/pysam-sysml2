@@ -95,6 +95,7 @@ class ProjectImpl(Project):
         List[Package]
             List of libraries packages.
         """
+        # This function is to heavy and should be refactored.
         matches = []
         for element in self._env.values():
             if not isinstance(element, NamespaceImport):
@@ -105,8 +106,6 @@ class ProjectImpl(Project):
             if imported is None or isinstance(imported, UnresolvedField):
                 continue
             matches.append(imported)
-        if not matches:
-            raise ValueError("No libraries packages found in project.")
         return matches
 
     def get_name(self) -> str:
