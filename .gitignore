@@ -1,3 +1,9 @@
+# Local credentials filled in from examples/code/example_identifiers.py.template
+examples/code/example_identifiers.py
+
+# Local scratch scripts
+examples/code/my_*.py
+
 # Created by https://www.toptal.com/developers/gitignore/api/python
 # Edit at https://www.toptal.com/developers/gitignore?templates=python
 
