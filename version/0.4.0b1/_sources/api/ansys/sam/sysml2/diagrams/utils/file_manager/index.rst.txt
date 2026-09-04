@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``file_manager.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.diagrams.utils.file_manager
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: file_manager
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.utils.file_manager.FileManager`
+            - Handles file operations and path management.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> FileManager</api/ansys/sam/sysml2/diagrams/utils/file_manager/FileManager>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+File management utilities for diagram operations.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

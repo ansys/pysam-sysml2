@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``membership.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.membership
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: membership
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.membership.Membership`
+            - Java class 'com.ansys.medini.metamodel.sysml.Membership'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Membership</api/ansys/sam/sysml2/meta_model/membership/Membership>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated membership class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

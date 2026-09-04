@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`FlowEnd`
+================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.flow_end.FlowEnd(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature.Feature`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.FlowEnd'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.flow_end import FlowEnd
+
+
+
+
+

@@ -1,0 +1,87 @@
+
+
+
+
+
+
+:class:`PortionKind`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.portion_kind.PortionKind
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.PortionKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PortionKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~TIMESLICE`
+            - 
+          * - :py:attr:`~SNAPSHOT`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.portion_kind import PortionKind
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: TIMESLICE
+   :value: 'timeslice'
+
+
+.. py:attribute:: SNAPSHOT
+   :value: 'snapshot'
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``commit_class.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.dto.commit.commit_class
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: commit_class
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.commit.commit_class.Commit`
+            - Creates and structures a standard PySAM SysML2 commit.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Commit</api/ansys/sam/sysml2/dto/commit/commit_class/Commit>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Commit module.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

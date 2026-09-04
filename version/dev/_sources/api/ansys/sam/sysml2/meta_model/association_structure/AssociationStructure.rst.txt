@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`AssociationStructure`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.association_structure.AssociationStructure(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.association.Association`, :py:obj:`ansys.sam.sysml2.meta_model.structure.Structure`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.AssociationStructure'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.association_structure import AssociationStructure
+
+
+
+
+

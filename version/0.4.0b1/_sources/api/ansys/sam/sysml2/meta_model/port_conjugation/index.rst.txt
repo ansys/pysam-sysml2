@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``port_conjugation.py`` module
+==================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.port_conjugation
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: port_conjugation
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.port_conjugation.PortConjugation`
+            - Java class 'com.ansys.metamodel.sysml2.PortConjugation'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> PortConjugation</api/ansys/sam/sysml2/meta_model/port_conjugation/PortConjugation>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated port conjugation class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

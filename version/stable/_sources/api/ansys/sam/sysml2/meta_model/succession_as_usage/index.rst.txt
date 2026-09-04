@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``succession_as_usage.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.succession_as_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: succession_as_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.succession_as_usage.SuccessionAsUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.SuccessionAsUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SuccessionAsUsage</api/ansys/sam/sysml2/meta_model/succession_as_usage/SuccessionAsUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated succession as usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

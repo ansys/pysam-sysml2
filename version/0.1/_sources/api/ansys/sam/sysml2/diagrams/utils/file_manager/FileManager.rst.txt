@@ -1,0 +1,236 @@
+
+
+
+
+
+
+:class:`FileManager`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.utils.file_manager.FileManager
+
+   
+   Handles file operations and path management.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
+.. py:currentmodule:: FileManager
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+
+   .. tab-item:: Static methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~save_binary_content`
+            - Save binary content to a file.
+          * - :py:attr:`~save_response_content`
+            - Save streamed response content to a file.
+          * - :py:attr:`~resolve_file_path`
+            - Resolve a valid file path from the given path and default filename.
+          * - :py:attr:`~ensure_directory_exists`
+            - Ensure that a directory exists. Create it if needed.
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.utils.file_manager import FileManager
+
+
+
+Method detail
+-------------
+
+.. py:method:: save_binary_content(content: bytes, path: Union[str, pathlib.Path], filename: str, file_format: str) -> pathlib.Path
+   :staticmethod:
+
+
+   
+   Save binary content to a file.
+
+
+   :Parameters:
+
+       **content** : :obj:`bytes`
+           Binary content to write.
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Path to a file or directory.
+
+       **filename** : :class:`python:str`
+           Name of the file to save.
+
+       **file_format** : :class:`python:str`
+           Format requested.
+
+
+
+   :Returns:
+
+       :obj:`Path`
+           Path where the file was saved.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: save_response_content(response: requests.Response, path: Union[str, pathlib.Path], filename: str) -> pathlib.Path
+   :staticmethod:
+
+
+   
+   Save streamed response content to a file.
+
+
+   :Parameters:
+
+       **response** : :obj:`requests.Response`
+           Response object containing the streamed data.
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Path to a file or directory.
+
+       **filename** : :class:`python:str`
+           Name of the file to save.
+
+
+
+   :Returns:
+
+       :obj:`Path`
+           Path where the file was saved.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: resolve_file_path(path: Union[str, pathlib.Path], filename: str) -> pathlib.Path
+   :staticmethod:
+
+
+   
+   Resolve a valid file path from the given path and default filename.
+
+   If a file is specified, use its parent directory and concatenate with the filename.
+
+   :Parameters:
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Directory or file path.
+
+       **filename** : :class:`python:str`
+           Default filename if path is a directory
+           or filename to use with parent directory if path is a file.
+
+
+
+   :Returns:
+
+       :obj:`Path`
+           Resolved file path.
+
+
+
+
+   :Raises:
+
+       :obj:`ValueError`
+           If the path cannot be resolved properly.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: ensure_directory_exists(directory_path: pathlib.Path) -> None
+   :staticmethod:
+
+
+   
+   Ensure that a directory exists. Create it if needed.
+
+
+   :Parameters:
+
+       **directory_path** : :obj:`Path`
+           Directory to check or create.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

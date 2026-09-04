@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`MetadataDefinition`
+===========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.metadata_definition.MetadataDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.item_definition.ItemDefinition`, :py:obj:`ansys.sam.sysml2.meta_model.metaclass.Metaclass`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.MetadataDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.metadata_definition import MetadataDefinition
+
+
+
+
+

@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`CrossSubsetting`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.cross_subsetting.CrossSubsetting(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.subsetting.Subsetting`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.CrossSubsetting'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: CrossSubsetting
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~crossed_feature`
+            - Get the crossed feature property.
+          * - :py:attr:`~crossing_feature`
+            - Get the crossing feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.cross_subsetting import CrossSubsetting
+
+Property detail
+---------------
+
+.. py:property:: crossed_feature
+   :type: Feature
+
+
+   
+   Get the crossed feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property crossed feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: crossing_feature
+   :type: Feature
+
+
+   
+   Get the crossing feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property crossing feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``collect_expression.py`` module
+====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.collect_expression
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: collect_expression
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.collect_expression.CollectExpression`
+            - Java class 'com.ansys.metamodel.sysml2.CollectExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> CollectExpression</api/ansys/sam/sysml2/meta_model/collect_expression/CollectExpression>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated collect expression class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

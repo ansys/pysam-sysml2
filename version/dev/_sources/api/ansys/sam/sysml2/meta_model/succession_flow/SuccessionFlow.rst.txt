@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`SuccessionFlow`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.succession_flow.SuccessionFlow(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.flow.Flow`, :py:obj:`ansys.sam.sysml2.meta_model.succession.Succession`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.SuccessionFlow'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.succession_flow import SuccessionFlow
+
+
+
+
+

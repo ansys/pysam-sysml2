@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`ViewRenderingMembership`
+================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.view_rendering_membership.ViewRenderingMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ViewRenderingMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ViewRenderingMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_rendering`
+            - Get the owned rendering property.
+          * - :py:attr:`~referenced_rendering`
+            - Get the referenced rendering property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.view_rendering_membership import ViewRenderingMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_rendering
+   :type: RenderingUsage
+
+
+   
+   Get the owned rendering property.
+
+
+
+
+
+   :Returns:
+
+       "RenderingUsage"
+           Value of property owned rendering.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: referenced_rendering
+   :type: RenderingUsage
+
+
+   
+   Get the referenced rendering property.
+
+
+
+
+
+   :Returns:
+
+       "RenderingUsage"
+           Value of property referenced rendering.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+
+
+
+
+
+
+The ``classes`` package
+===========================
+
+.. py:module:: ansys.sam.sysml2.diagrams.classes
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: classes
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.classes.diagram_element`
+            - Diagram element data.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.classes.plane`
+            - Generic class for diagram elements.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> diagram_element</api/ansys/sam/sysml2/diagrams/classes/diagram_element/index>
+    <span class="nf nf-fa-file"></span> plane</api/ansys/sam/sysml2/diagrams/classes/plane/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Classes module for the PySAM SysML2 diagram library.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

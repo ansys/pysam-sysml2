@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ViewpointDefinition`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.viewpoint_definition.ViewpointDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.requirement_definition.RequirementDefinition`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ViewpointDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ViewpointDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~viewpoint_stakeholder`
+            - Get the viewpoint stakeholder property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.viewpoint_definition import ViewpointDefinition
+
+Property detail
+---------------
+
+.. py:property:: viewpoint_stakeholder
+   :type: list[PartUsage]
+
+
+   
+   Get the viewpoint stakeholder property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["PartUsage"]
+           Value of property viewpoint stakeholder.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

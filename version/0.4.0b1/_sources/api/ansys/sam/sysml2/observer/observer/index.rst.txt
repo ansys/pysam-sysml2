@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``observer.py`` module
+==========================
+
+.. py:module:: ansys.sam.sysml2.observer.observer
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: observer
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.observer.observer.ModificationObserver`
+            - Modification observer for SysML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ModificationObserver</api/ansys/sam/sysml2/observer/observer/ModificationObserver>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Observer class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

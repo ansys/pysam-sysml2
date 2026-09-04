@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`EventOccurrenceUsage`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.event_occurrence_usage.EventOccurrenceUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.EventOccurrenceUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: EventOccurrenceUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~event_occurrence`
+            - Get the event occurrence property.
+          * - :py:attr:`~is_reference`
+            - Get the is reference property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.event_occurrence_usage import EventOccurrenceUsage
+
+Property detail
+---------------
+
+.. py:property:: event_occurrence
+   :type: ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage
+
+
+   
+   Get the event occurrence property.
+
+
+
+
+
+   :Returns:
+
+       "OccurrenceUsage"
+           Value of property event occurrence.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_reference
+   :type: bool
+
+
+   
+   Get the is reference property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is reference.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`InstantiationExpression`
+================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.instantiation_expression.InstantiationExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.expression.Expression`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.InstantiationExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: InstantiationExpression
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~argument`
+            - Get the argument property.
+          * - :py:attr:`~instantiated_type`
+            - Get the instantiated type property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.instantiation_expression import InstantiationExpression
+
+Property detail
+---------------
+
+.. py:property:: argument
+   :type: list[ansys.sam.sysml2.meta_model.expression.Expression]
+
+
+   
+   Get the argument property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: instantiated_type
+   :type: Type
+
+
+   
+   Get the instantiated type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property instantiated type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

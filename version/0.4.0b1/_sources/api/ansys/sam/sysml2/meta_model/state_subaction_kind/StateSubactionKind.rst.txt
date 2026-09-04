@@ -1,0 +1,93 @@
+
+
+
+
+
+
+:class:`StateSubactionKind`
+===========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.state_subaction_kind.StateSubactionKind
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.StateSubactionKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: StateSubactionKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~ENTRY`
+            - 
+          * - :py:attr:`~DO`
+            - 
+          * - :py:attr:`~EXIT`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.state_subaction_kind import StateSubactionKind
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: ENTRY
+   :value: 'entry'
+
+
+.. py:attribute:: DO
+   :value: 'do'
+
+
+.. py:attribute:: EXIT
+   :value: 'exit'
+
+
+
+
+
+

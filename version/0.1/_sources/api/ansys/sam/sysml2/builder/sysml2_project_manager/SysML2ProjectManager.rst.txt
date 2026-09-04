@@ -1,0 +1,97 @@
+
+
+
+
+
+
+:class:`SysML2ProjectManager`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager(connector: ansys.sam.sysml2.api.sysml2_api_connector.SysML2APIConnector)
+
+   
+   Provides the director class for loading a project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SysML2ProjectManager
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_project`
+            - Get a project with its ID from the API and map it in a Python object.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_project(project_id: str) -> ansys.sam.sysml2.classes.project.Project
+
+   
+   Get a project with its ID from the API and map it in a Python object.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

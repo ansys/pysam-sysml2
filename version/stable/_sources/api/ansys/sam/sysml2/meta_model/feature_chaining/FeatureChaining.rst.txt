@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`FeatureChaining`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature_chaining.FeatureChaining(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.FeatureChaining'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureChaining
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~chaining_feature`
+            - Get the chaining feature property.
+          * - :py:attr:`~feature_chained`
+            - Get the feature chained property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature_chaining import FeatureChaining
+
+Property detail
+---------------
+
+.. py:property:: chaining_feature
+   :type: Feature
+
+
+   
+   Get the chaining feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property chaining feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: feature_chained
+   :type: Feature
+
+
+   
+   Get the feature chained property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property feature chained.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

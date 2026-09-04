@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ViewUsage`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.view_usage.ViewUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.part_usage.PartUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ViewUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ViewUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~view_definition`
+            - Get the view definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.view_usage import ViewUsage
+
+Property detail
+---------------
+
+.. py:property:: view_definition
+   :type: ViewDefinition
+
+
+   
+   Get the view definition property.
+
+
+
+
+
+   :Returns:
+
+       "ViewDefinition"
+           Value of property view definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

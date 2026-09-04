@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Multiplicity`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.multiplicity.Multiplicity(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature.Feature`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Multiplicity'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.multiplicity import Multiplicity
+
+
+
+
+

@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`FlowUsage`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.flow_usage.FlowUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`, :py:obj:`ansys.sam.sysml2.meta_model.connector_as_usage.ConnectorAsUsage`, :py:obj:`ansys.sam.sysml2.meta_model.flow.Flow`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.FlowUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FlowUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~flow_definition`
+            - Get the flow definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.flow_usage import FlowUsage
+
+Property detail
+---------------
+
+.. py:property:: flow_definition
+   :type: list[Interaction]
+
+
+   
+   Get the flow definition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Interaction"]
+           Value of property flow definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

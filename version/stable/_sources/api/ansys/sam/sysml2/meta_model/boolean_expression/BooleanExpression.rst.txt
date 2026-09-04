@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`BooleanExpression`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.boolean_expression.BooleanExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.expression.Expression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.BooleanExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: BooleanExpression
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~predicate`
+            - Get the predicate property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.boolean_expression import BooleanExpression
+
+Property detail
+---------------
+
+.. py:property:: predicate
+   :type: Predicate
+
+
+   
+   Get the predicate property.
+
+
+
+
+
+   :Returns:
+
+       "Predicate"
+           Value of property predicate.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

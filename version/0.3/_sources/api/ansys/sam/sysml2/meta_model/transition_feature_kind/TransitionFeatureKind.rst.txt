@@ -1,0 +1,257 @@
+
+
+
+
+
+
+:class:`TransitionFeatureKind`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.transition_feature_kind.TransitionFeatureKind
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.TransitionFeatureKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TransitionFeatureKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value`
+            - Get the value property.
+          * - :py:attr:`~name`
+            - Get the name property.
+          * - :py:attr:`~literal`
+            - Get the literal property.
+          * - :py:attr:`~by_name`
+            - Get the by name property.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~TRIGGER`
+            - 
+          * - :py:attr:`~GUARD`
+            - 
+          * - :py:attr:`~EFFECT`
+            - 
+          * - :py:attr:`~UNDEFINED`
+            - 
+          * - :py:attr:`~TRIGGER_VALUE`
+            - 
+          * - :py:attr:`~GUARD_VALUE`
+            - 
+          * - :py:attr:`~EFFECT_VALUE`
+            - 
+          * - :py:attr:`~UNDEFINED_VALUE`
+            - 
+          * - :py:attr:`~VALUES_ARRAY`
+            - 
+          * - :py:attr:`~VALUES`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.transition_feature_kind import TransitionFeatureKind
+
+Property detail
+---------------
+
+.. py:property:: value
+   :type: int
+
+
+   
+   Get the value property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:int`
+           Value of property value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: name
+   :type: str
+
+
+   
+   Get the name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: literal
+   :type: str
+
+
+   
+   Get the literal property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property literal.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: by_name
+   :type: TransitionFeatureKind
+
+
+   
+   Get the by name property.
+
+
+
+
+
+   :Returns:
+
+       "TransitionFeatureKind"
+           Value of property by name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: TRIGGER
+   :type:  TransitionFeatureKind
+
+.. py:attribute:: GUARD
+   :type:  TransitionFeatureKind
+
+.. py:attribute:: EFFECT
+   :type:  TransitionFeatureKind
+
+.. py:attribute:: UNDEFINED
+   :type:  TransitionFeatureKind
+
+.. py:attribute:: TRIGGER_VALUE
+   :type:  int
+
+.. py:attribute:: GUARD_VALUE
+   :type:  int
+
+.. py:attribute:: EFFECT_VALUE
+   :type:  int
+
+.. py:attribute:: UNDEFINED_VALUE
+   :type:  int
+
+.. py:attribute:: VALUES_ARRAY
+   :type:  TransitionFeatureKind
+
+.. py:attribute:: VALUES
+   :type:  list
+
+
+
+
+

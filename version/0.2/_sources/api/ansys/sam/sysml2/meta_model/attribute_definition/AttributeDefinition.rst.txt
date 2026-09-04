@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`AttributeDefinition`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.attribute_definition.AttributeDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.definition.Definition`, :py:obj:`ansys.sam.sysml2.meta_model.data_type.DataType`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AttributeDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.attribute_definition import AttributeDefinition
+
+
+
+
+
