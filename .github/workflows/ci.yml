@@ -235,11 +235,11 @@ jobs:
       - name: "Select private PyPI registry"
         shell: pwsh
         env:
-          GITHUB_REF_NAME: "v0.1.dev0" # ${{ github.ref_name }}
+          TAG_VERSION: "v0.1.dev0" # ${{ github.ref_name }}
           TWINE_RELEASE_REPOSITORY_URL: ${{ secrets.TWINE_RELEASE_REPOSITORY_URL }}
           TWINE_PRERELEASE_REPOSITORY_URL: ${{ secrets.TWINE_PRERELEASE_REPOSITORY_URL }}
         run: |
-          $isPrerelease = "$env:GITHUB_REF_NAME" -match "(?i)(?:a|b|rc|dev)\d+(?:\.post\d+)?$"
+          $isPrerelease = "$env:TAG_VERSION" -match "(?i)(?:a|b|rc|dev)\d+(?:\.post\d+)?$"
           $repositoryUrl = if ($isPrerelease) {
             $env:TWINE_PRERELEASE_REPOSITORY_URL
           } else {
