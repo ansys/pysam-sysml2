@@ -222,7 +222,7 @@ jobs:
   release-private-pypi:
     name: Upload to private PyPI registry
     needs: [package] # , update-changelog]
-    runs-on: [self-hosted, Windows, ansys-network]
+    runs-on: [self-hosted, Windows, ansys-network, artifactory]
     environment: release-private-pypi
     # if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
     steps:
