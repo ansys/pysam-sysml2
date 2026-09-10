@@ -218,3 +218,48 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           bot-user: ${{ secrets.PYANSYS_CI_BOT_USERNAME }}
           bot-email: ${{ secrets.PYANSYS_CI_BOT_EMAIL }}
+
+  release-private-pypi:
+    name: Upload to private PyPI registry
+    needs: [package] # , update-changelog]
+    runs-on: [self-hosted, Windows, ansys-network]
+    environment: release-private-pypi
+    # if: ${{ github.event_name == 'push' && contains(github.ref, 'refs/tags') }}
+    steps:
+      - name: "Download packages artifact"
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: ${{ env.PACKAGE_NAME }}-artifacts
+          path: packages
+
+      - name: "Select private PyPI registry"
+        shell: pwsh
+        env:
+          GITHUB_REF_NAME: "v0.1.dev0" # ${{ github.ref_name }}
+          TWINE_RELEASE_REPOSITORY_URL: ${{ secrets.TWINE_RELEASE_REPOSITORY_URL }}
+          TWINE_PRERELEASE_REPOSITORY_URL: ${{ secrets.TWINE_PRERELEASE_REPOSITORY_URL }}
+        run: |
+          $isPrerelease = "$env:GITHUB_REF_NAME" -match "(?i)(?:a|b|rc|dev)\d+(?:\.post\d+)?$"
+          $repositoryUrl = if ($isPrerelease) {
+            $env:TWINE_PRERELEASE_REPOSITORY_URL
+          } else {
+            $env:TWINE_RELEASE_REPOSITORY_URL
+          }
+          "TWINE_REPOSITORY_URL=$repositoryUrl" >> $env:GITHUB_ENV
+
+      - name: "Install twine"
+        shell: pwsh
+        run: |
+          python -m venv .venv
+          .venv\Scripts\activate
+          python -m pip install -U pip
+          pip install twine
+
+      - name: "Upload to private PyPI registry"
+        shell: pwsh
+        env:
+          TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
+          TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
+        run: |
+          .venv\Scripts\activate
+          twine upload --repository-url $env:TWINE_REPOSITORY_URL --verbose packages/*
