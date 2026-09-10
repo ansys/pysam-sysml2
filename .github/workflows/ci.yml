@@ -235,10 +235,13 @@ jobs:
       - name: "Select private PyPI registry"
         shell: pwsh
         env:
-          TAG_VERSION: "v0.1.dev0" # ${{ github.ref_name }}
+          TAG_VERSION: "refs/tags/v0.1.dev0" # ${{ github.ref_name }}
           TWINE_RELEASE_REPOSITORY_URL: ${{ secrets.TWINE_RELEASE_REPOSITORY_URL }}
           TWINE_PRERELEASE_REPOSITORY_URL: ${{ secrets.TWINE_PRERELEASE_REPOSITORY_URL }}
         run: |
+          # Extract version from git tag (strip refs/tags/ and optional leading 'v')
+          $env:TAG_VERSION = $env:TAG_VERSION -replace '^refs/tags/v?', ''
+          Write-Host "Extracted tag version: $env:TAG_VERSION"
           $isPrerelease = "$env:TAG_VERSION" -match "(?i)(?:a|b|rc|dev)\d+(?:\.post\d+)?$"
           $repositoryUrl = if ($isPrerelease) {
             $env:TWINE_PRERELEASE_REPOSITORY_URL
