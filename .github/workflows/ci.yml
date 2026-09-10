@@ -260,6 +260,6 @@ jobs:
         env:
           TWINE_USERNAME: ${{ secrets.TWINE_USERNAME }}
           TWINE_PASSWORD: ${{ secrets.TWINE_PASSWORD }}
-        run: |
+        run: | # zizmor: ignore[use-trusted-publishing] private registry does not support trusted publishing
           .venv\Scripts\activate
           twine upload --repository-url $env:TWINE_REPOSITORY_URL --verbose packages/*
