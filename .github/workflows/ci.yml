@@ -245,6 +245,10 @@ jobs:
           } else {
             $env:TWINE_RELEASE_REPOSITORY_URL
           }
+          # Extract repository name from URL for logging purposes
+          $repositoryName = ($repositoryUrl -split '/')[-1]
+          Write-Host "Is prerelease: $isPrerelease"
+          Write-Host "Selected repository name: $repositoryName"
           "TWINE_REPOSITORY_URL=$repositoryUrl" >> $env:GITHUB_ENV
 
       - name: "Install twine"
