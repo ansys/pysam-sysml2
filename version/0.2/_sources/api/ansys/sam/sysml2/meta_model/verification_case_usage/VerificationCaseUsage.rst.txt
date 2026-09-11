@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`VerificationCaseUsage`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.verification_case_usage.VerificationCaseUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.case_usage.CaseUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.VerificationCaseUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: VerificationCaseUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~verification_case_definition`
+            - Get the verification case definition property.
+          * - :py:attr:`~verified_requirement`
+            - Get the verified requirement property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.verification_case_usage import VerificationCaseUsage
+
+Property detail
+---------------
+
+.. py:property:: verification_case_definition
+   :type: VerificationCaseDefinition
+
+
+   
+   Get the verification case definition property.
+
+
+
+
+
+   :Returns:
+
+       "VerificationCaseDefinition"
+           Value of property verification case definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: verified_requirement
+   :type: List[RequirementUsage]
+
+
+   
+   Get the verified requirement property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["RequirementUsage"]
+           Value of property verified requirement.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

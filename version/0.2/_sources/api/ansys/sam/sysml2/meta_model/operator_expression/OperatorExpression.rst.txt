@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`OperatorExpression`
+===========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.operator_expression.OperatorExpression(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.invocation_expression.InvocationExpression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.OperatorExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: OperatorExpression
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~operator`
+            - Get the operator property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.operator_expression import OperatorExpression
+
+Property detail
+---------------
+
+.. py:property:: operator
+   :type: str
+
+
+   
+   Get the operator property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property operator.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

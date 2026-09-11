@@ -1,0 +1,97 @@
+
+
+
+
+
+
+The ``builder`` package
+===========================
+
+.. py:module:: ansys.sam.sysml2.diagrams.builder
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: builder
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.builder.emf_json_mapper`
+            - EMFJSON mapper class.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.builder.sam_diagram_builder`
+            - Diagram builder.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> emf_json_mapper</api/ansys/sam/sysml2/diagrams/builder/emf_json_mapper/index>
+    <span class="nf nf-fa-file"></span> sam_diagram_builder</api/ansys/sam/sysml2/diagrams/builder/sam_diagram_builder/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Builder module for the PySAM SysML2 diagram library.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

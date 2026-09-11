@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`Association`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.association.Association(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.classifier.Classifier`, :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Association'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Association
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~association_end`
+            - Get the association end property.
+          * - :py:attr:`~target_type`
+            - Get the target type property.
+          * - :py:attr:`~source_type`
+            - Get the source type property.
+          * - :py:attr:`~related_type`
+            - Get the related type property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.association import Association
+
+Property detail
+---------------
+
+.. py:property:: association_end
+   :type: List[Feature]
+
+
+   
+   Get the association end property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property association end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: target_type
+   :type: List[Type]
+
+
+   
+   Get the target type property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Type"]
+           Value of property target type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: source_type
+   :type: Type
+
+
+   
+   Get the source type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property source type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: related_type
+   :type: List[Type]
+
+
+   
+   Get the related type property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Type"]
+           Value of property related type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

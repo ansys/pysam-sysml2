@@ -1,0 +1,84 @@
+
+
+
+
+
+
+The ``feature_chaining_resolver.py`` module
+===========================================
+
+.. py:module:: ansys.sam.sysml2.tools.feature_chaining_resolver
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: feature_chaining_resolver
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.feature_chaining_resolver.FeatureChainingResolver`
+            - Resolve connection ends and feature chains in a SysML model.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> FeatureChainingResolver</api/ansys/sam/sysml2/tools/feature_chaining_resolver/FeatureChainingResolver>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Find the element that a connection end really points to.
+
+A connection end (``source`` or ``target``) can point straight at an element, or
+reach it through a chain of intermediate features. The answer can differ from one
+parent part to another, because features get redefined and inherited along the way.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

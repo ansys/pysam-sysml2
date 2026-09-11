@@ -1,0 +1,93 @@
+
+
+
+
+
+
+:class:`TransitionFeatureKind`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.transition_feature_kind.TransitionFeatureKind
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.TransitionFeatureKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TransitionFeatureKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~TRIGGER`
+            - 
+          * - :py:attr:`~GUARD`
+            - 
+          * - :py:attr:`~EFFECT`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.transition_feature_kind import TransitionFeatureKind
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: TRIGGER
+   :value: 'trigger'
+
+
+.. py:attribute:: GUARD
+   :value: 'guard'
+
+
+.. py:attribute:: EFFECT
+   :value: 'effect'
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sam_api_connector.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.diagrams.api.sam_api_connector
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sam_api_connector
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.api.sam_api_connector.SamApiConnector`
+            - Provides the SAM API connector interface.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SamApiConnector</api/ansys/sam/sysml2/diagrams/api/sam_api_connector/SamApiConnector>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+API connector interface utilities for SAM API operations.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

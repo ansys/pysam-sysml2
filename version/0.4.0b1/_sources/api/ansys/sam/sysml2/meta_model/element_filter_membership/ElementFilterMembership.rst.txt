@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ElementFilterMembership`
+================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.element_filter_membership.ElementFilterMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.owning_membership.OwningMembership`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ElementFilterMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ElementFilterMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~condition`
+            - Get the condition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.element_filter_membership import ElementFilterMembership
+
+Property detail
+---------------
+
+.. py:property:: condition
+   :type: Expression
+
+
+   
+   Get the condition property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property condition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

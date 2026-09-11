@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`IndexExpression`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.index_expression.IndexExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.operator_expression.OperatorExpression`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.IndexExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.index_expression import IndexExpression
+
+
+
+
+

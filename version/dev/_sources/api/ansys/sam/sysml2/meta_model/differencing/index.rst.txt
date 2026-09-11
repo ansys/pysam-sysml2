@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``differencing.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.differencing
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: differencing
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.differencing.Differencing`
+            - Java class 'com.ansys.metamodel.sysml2.Differencing'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Differencing</api/ansys/sam/sysml2/meta_model/differencing/Differencing>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated differencing class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

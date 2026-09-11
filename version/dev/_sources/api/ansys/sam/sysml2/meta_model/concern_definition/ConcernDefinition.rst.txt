@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ConcernDefinition`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.concern_definition.ConcernDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.requirement_definition.RequirementDefinition`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ConcernDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.concern_definition import ConcernDefinition
+
+
+
+
+

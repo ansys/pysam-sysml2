@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``literal_boolean.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.literal_boolean
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: literal_boolean
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_boolean.LiteralBoolean`
+            - Java class 'com.ansys.medini.metamodel.sysml.LiteralBoolean'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> LiteralBoolean</api/ansys/sam/sysml2/meta_model/literal_boolean/LiteralBoolean>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated literal boolean class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

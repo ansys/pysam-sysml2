@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`NamespaceImport`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.namespace_import.NamespaceImport(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.import_.Import`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.NamespaceImport'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: NamespaceImport
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~imported_namespace`
+            - Get the imported namespace property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport
+
+Property detail
+---------------
+
+.. py:property:: imported_namespace
+   :type: Namespace
+
+
+   
+   Get the imported namespace property.
+
+
+
+
+
+   :Returns:
+
+       "Namespace"
+           Value of property imported namespace.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

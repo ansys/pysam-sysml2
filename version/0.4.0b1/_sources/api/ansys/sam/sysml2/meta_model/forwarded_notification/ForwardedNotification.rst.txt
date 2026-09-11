@@ -1,0 +1,103 @@
+
+
+
+
+
+
+:class:`ForwardedNotification`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.forwarded_notification.ForwardedNotification
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ForwardedNotification'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ForwardedNotification
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~original_event_type`
+            - Get the original event type property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.forwarded_notification import ForwardedNotification
+
+Property detail
+---------------
+
+.. py:property:: original_event_type
+   :type: int
+
+
+   
+   Get the original event type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:int`
+           Value of property original event type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

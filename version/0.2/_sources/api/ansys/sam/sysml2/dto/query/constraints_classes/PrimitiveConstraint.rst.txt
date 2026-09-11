@@ -1,0 +1,99 @@
+
+
+
+
+
+
+:class:`PrimitiveConstraint`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.dto.query.constraints_classes.PrimitiveConstraint
+
+   Bases: :py:obj:`Constraint`
+
+
+   
+   Provides a primitive constraint for a simple query constraint.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PrimitiveConstraint
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~property`
+            - 
+          * - :py:attr:`~value`
+            - 
+          * - :py:attr:`~inverse`
+            - 
+          * - :py:attr:`~operator`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.query.constraints_classes import PrimitiveConstraint
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: property
+   :type:  str
+
+.. py:attribute:: value
+   :type:  str
+
+.. py:attribute:: inverse
+   :type:  bool
+   :value: False
+
+
+.. py:attribute:: operator
+   :type:  ansys.sam.sysml2.dto.query.query_enum.Operator
+   :value: '='
+
+
+
+
+
+

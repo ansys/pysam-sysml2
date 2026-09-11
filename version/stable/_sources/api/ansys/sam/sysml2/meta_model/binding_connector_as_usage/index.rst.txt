@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``binding_connector_as_usage.py`` module
+============================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.binding_connector_as_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: binding_connector_as_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.binding_connector_as_usage.BindingConnectorAsUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.BindingConnectorAsUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> BindingConnectorAsUsage</api/ansys/sam/sysml2/meta_model/binding_connector_as_usage/BindingConnectorAsUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated binding connector as usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

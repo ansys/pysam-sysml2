@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ConnectorConnectionException`
+=====================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.ConnectorConnectionException
+
+   Bases: :py:obj:`ConnectorException`
+
+
+   
+   Exception when connection information is invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import ConnectorConnectionException
+
+
+
+
+

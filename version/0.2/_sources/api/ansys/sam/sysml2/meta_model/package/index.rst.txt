@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``package.py`` module
+=========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.package
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: package
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.package.Package`
+            - Java class 'com.ansys.medini.metamodel.sysml.Package'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Package</api/ansys/sam/sysml2/meta_model/package/Package>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated package class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

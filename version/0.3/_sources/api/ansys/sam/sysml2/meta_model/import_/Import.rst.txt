@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`Import`
+===============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.import_.Import(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Import'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Import
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~is_recursive`
+            - Get the is recursive property.
+          * - :py:attr:`~imported_namespace`
+            - Get the imported namespace property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.import_ import Import
+
+Property detail
+---------------
+
+.. py:property:: is_recursive
+   :type: bool
+
+
+   
+   Get the is recursive property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is recursive.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: imported_namespace
+   :type: Namespace
+
+
+   
+   Get the imported namespace property.
+
+
+
+
+
+   :Returns:
+
+       "Namespace"
+           Value of property imported namespace.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

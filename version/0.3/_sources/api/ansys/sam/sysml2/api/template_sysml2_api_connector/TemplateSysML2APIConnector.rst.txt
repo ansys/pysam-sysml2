@@ -1,0 +1,408 @@
+
+
+
+
+
+
+:class:`TemplateSysML2APIConnector`
+===================================
+
+
+.. py:class:: ansys.sam.sysml2.api.template_sysml2_api_connector.TemplateSysML2APIConnector(use_ssl: bool = True)
+
+   Bases: :py:obj:`ansys.sam.sysml2.api.sysml2_api_connector.SysML2APIConnector`
+
+
+   
+   Provides the abstract class with SysML methods.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TemplateSysML2APIConnector
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_projects`
+            - Get all projects of the connected user.
+          * - :py:attr:`~get_project_by_id`
+            - Get information for a given project.
+          * - :py:attr:`~create_project`
+            - Create a project with a given name and description.
+          * - :py:attr:`~delete_project`
+            - Delete the project with the given ID.
+          * - :py:attr:`~update_project`
+            - Update the project with the given ID.
+          * - :py:attr:`~get_all_elements`
+            - Get all elements of a given project.
+          * - :py:attr:`~get_element_by_id`
+            - Get information of a given element.
+          * - :py:attr:`~get_root_elements`
+            - Get all root elements of the project.
+          * - :py:attr:`~execute_query`
+            - Send a query to the standard API using the connector.
+          * - :py:attr:`~create_commit`
+            - Send a commit, provided as a JSON string, to the standard API.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.api.template_sysml2_api_connector import TemplateSysML2APIConnector
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_projects() -> list
+
+   
+   Get all projects of the connected user.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`
+           List of all projects of the connected user.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_project_by_id(project_id: str) -> dict
+
+   
+   Get information for a given project.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Information for the project.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_project(project_name: str, project_description: str = 'Project description') -> dict
+
+   
+   Create a project with a given name and description.
+
+
+   :Parameters:
+
+       **project_name** : :class:`python:str`
+           Name of the project.
+
+       **project_description (optional)** : :class:`python:str`
+           Description of the project.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Project record.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: delete_project(project_id: str) -> dict
+
+   
+   Delete the project with the given ID.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project to delete.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Confirmation containing ``@type`` and ``@id`` of the deleted project.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: update_project(project_id: str, project_name: str = None, project_description: str = None) -> dict
+
+   
+   Update the project with the given ID.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project to update.
+
+       **project_name** : :class:`python:str`, :obj:`optional`
+           New name for the project.
+
+       **project_description** : :class:`python:str`, :obj:`optional`
+           New description for the project.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Updated project record.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_all_elements(project_id: str) -> list
+
+   
+   Get all elements of a given project.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project.
+
+
+
+   :Returns:
+
+       :class:`python:list`
+           List of all elements.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_element_by_id(project_id: str, element_id: str) -> dict
+
+   
+   Get information of a given element.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project where the element is located.
+
+       **element_id** : :class:`python:str`
+           ID of the given element.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Information of the element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_root_elements(project_id: str) -> list
+
+   
+   Get all root elements of the project.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project.
+
+
+
+   :Returns:
+
+       :class:`python:list`
+           All root elements.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: execute_query(project_id: str, query: str) -> dict
+
+   
+   Send a query to the standard API using the connector.
+
+
+   :Parameters:
+
+       **project_id** : :class:`python:str`
+           ID of the project.
+
+       **query** : :class:`python:str`
+           Query in JSON format.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Result of the query.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_commit(project_id: str, commit: str) -> dict
+
+   
+   Send a commit, provided as a JSON string, to the standard API.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

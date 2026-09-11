@@ -1,0 +1,128 @@
+
+
+
+
+
+
+:class:`NameUtils`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.utils.name_utils.NameUtils
+
+   
+   Helps standardize element names.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+.. py:currentmodule:: NameUtils
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+
+   .. tab-item:: Static methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~to_snake_case`
+            - Convert a camelCase or PascalCase string to snake_case.
+          * - :py:attr:`~to_key`
+            - Convert a camelCase or PascalCase string to _snake_case.
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.utils.name_utils import NameUtils
+
+
+
+Method detail
+-------------
+
+.. py:method:: to_snake_case(string: str) -> str
+   :staticmethod:
+
+
+   
+   Convert a camelCase or PascalCase string to snake_case.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: to_key(string: str) -> str
+   :staticmethod:
+
+
+   
+   Convert a camelCase or PascalCase string to _snake_case.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

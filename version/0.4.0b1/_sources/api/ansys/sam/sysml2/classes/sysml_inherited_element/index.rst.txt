@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sysml_inherited_element.py`` module
+=========================================
+
+.. py:module:: ansys.sam.sysml2.classes.sysml_inherited_element
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sysml_inherited_element
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.sysml_inherited_element.SysMLInheritedElement`
+            - Proxy that exposes an inherited element under its on-the-fly owner.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SysMLInheritedElement</api/ansys/sam/sysml2/classes/sysml_inherited_element/SysMLInheritedElement>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+A proxy class for the element that is not created yet.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

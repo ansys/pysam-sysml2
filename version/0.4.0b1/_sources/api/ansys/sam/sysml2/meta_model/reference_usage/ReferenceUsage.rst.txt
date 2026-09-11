@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ReferenceUsage`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.reference_usage.ReferenceUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.usage.Usage`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ReferenceUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.reference_usage import ReferenceUsage
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``feature_value.py`` module
+===============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.feature_value
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: feature_value
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_value.FeatureValue`
+            - Java class 'com.ansys.medini.metamodel.sysml.FeatureValue'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> FeatureValue</api/ansys/sam/sysml2/meta_model/feature_value/FeatureValue>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated feature value class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

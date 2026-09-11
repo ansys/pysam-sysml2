@@ -1,0 +1,93 @@
+
+
+
+
+
+
+:class:`VisibilityKind`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.visibility_kind.VisibilityKind
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.VisibilityKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: VisibilityKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~PRIVATE`
+            - 
+          * - :py:attr:`~PROTECTED`
+            - 
+          * - :py:attr:`~PUBLIC`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.visibility_kind import VisibilityKind
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: PRIVATE
+   :value: 'private'
+
+
+.. py:attribute:: PROTECTED
+   :value: 'protected'
+
+
+.. py:attribute:: PUBLIC
+   :value: 'public'
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``conjugation.py`` module
+=============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.conjugation
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: conjugation
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.conjugation.Conjugation`
+            - Java class 'com.ansys.metamodel.sysml2.Conjugation'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Conjugation</api/ansys/sam/sysml2/meta_model/conjugation/Conjugation>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated conjugation class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

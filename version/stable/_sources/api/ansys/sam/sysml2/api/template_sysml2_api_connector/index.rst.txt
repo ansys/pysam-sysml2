@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``template_sysml2_api_connector.py`` module
+===============================================
+
+.. py:module:: ansys.sam.sysml2.api.template_sysml2_api_connector
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: template_sysml2_api_connector
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.api.template_sysml2_api_connector.TemplateSysML2APIConnector`
+            - Provides the abstract class with SysML methods.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> TemplateSysML2APIConnector</api/ansys/sam/sysml2/api/template_sysml2_api_connector/TemplateSysML2APIConnector>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Template for implementation of endpoint.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

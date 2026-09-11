@@ -1,0 +1,87 @@
+
+
+
+
+
+
+The ``query_enum.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.dto.query.query_enum
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: query_enum
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.query_enum.Operator`
+            - Provides the operator enum.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.query_enum.JoinOperator`
+            - Provides the join operators enum.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Operator</api/ansys/sam/sysml2/dto/query/query_enum/Operator>
+    <span class="nf nf-cod-symbol_class"></span> JoinOperator</api/ansys/sam/sysml2/dto/query/query_enum/JoinOperator>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Enum classes for PySAM SysML2 queries.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

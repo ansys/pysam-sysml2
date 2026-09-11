@@ -1,0 +1,187 @@
+
+
+
+
+
+
+:class:`SysMLElement`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.classes.sysml_element.SysMLElement(id: str)
+
+   
+   Provides the Python base class for all SysML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+.. py:currentmodule:: SysMLElement
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_value`
+            - Get the value of the feature.
+          * - :py:attr:`~parse_and_set_value`
+            - Parse the value and create the valuation part in the feature.
+          * - :py:attr:`~set_value`
+            - Update the feature value.
+
+
+
+
+
+   .. tab-item:: Special methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~__setattr__`
+            - Blocker function the set function of each classes.
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.sysml_element import SysMLElement
+
+
+
+Method detail
+-------------
+
+.. py:method:: __setattr__(name: str, value: object)
+
+   
+   Blocker function the set function of each classes.
+
+
+   :Parameters:
+
+       **name** : :class:`python:str`
+           Name of the key.
+
+       **value** : :obj:`object`
+           Value of the key.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_value()
+
+   
+   Get the value of the feature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: parse_and_set_value(value: str)
+
+   
+   Parse the value and create the valuation part in the feature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: set_value(new_value: Union[str | int | float | bool])
+
+   
+   Update the feature value.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

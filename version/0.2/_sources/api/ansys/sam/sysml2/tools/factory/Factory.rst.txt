@@ -1,0 +1,4132 @@
+
+
+
+
+
+
+:class:`Factory`
+================
+
+
+.. py:class:: ansys.sam.sysml2.tools.factory.Factory(project: Union[ansys.sam.sysml2.classes.project.Project | ansys.sam.sysml2.classes.scripting_project.ScriptingProject], conn: ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector)
+
+   
+   Provides the Python factory class for creating new SysML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Factory
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~create_function`
+            - Create a new Function.
+          * - :py:attr:`~create_class`
+            - Create a new Class.
+          * - :py:attr:`~create_behavior`
+            - Create a new Behavior.
+          * - :py:attr:`~create_comment`
+            - Create a new Comment.
+          * - :py:attr:`~create_connector`
+            - Create a new Connector.
+          * - :py:attr:`~create_element`
+            - Create a new Element.
+          * - :py:attr:`~create_association`
+            - Create a new Association.
+          * - :py:attr:`~create_classifier`
+            - Create a new Classifier.
+          * - :py:attr:`~create_data_type`
+            - Create a new DataType.
+          * - :py:attr:`~create_expression`
+            - Create a new Expression.
+          * - :py:attr:`~create_feature`
+            - Create a new Feature.
+          * - :py:attr:`~create_annotation`
+            - Create a new Annotation.
+          * - :py:attr:`~create_import`
+            - Create a new Import.
+          * - :py:attr:`~create_structure`
+            - Create a new Structure.
+          * - :py:attr:`~create_item_feature`
+            - Create a new ItemFeature.
+          * - :py:attr:`~create_dependency`
+            - Create a new Dependency.
+          * - :py:attr:`~create_interaction`
+            - Create a new Interaction.
+          * - :py:attr:`~create_redefinition`
+            - Create a new Redefinition.
+          * - :py:attr:`~create_state_usage`
+            - Create a new StateUsage.
+          * - :py:attr:`~create_life_class`
+            - Create a new LifeClass.
+          * - :py:attr:`~create_metaclass`
+            - Create a new Metaclass.
+          * - :py:attr:`~create_port_usage`
+            - Create a new PortUsage.
+          * - :py:attr:`~create_namespace`
+            - Create a new Namespace.
+          * - :py:attr:`~create_step`
+            - Create a new Step.
+          * - :py:attr:`~create_succession`
+            - Create a new Succession.
+          * - :py:attr:`~create_definition`
+            - Create a new Definition.
+          * - :py:attr:`~create_concern_usage`
+            - Create a new ConcernUsage.
+          * - :py:attr:`~create_item_flow`
+            - Create a new ItemFlow.
+          * - :py:attr:`~create_predicate`
+            - Create a new Predicate.
+          * - :py:attr:`~create_part_usage`
+            - Create a new PartUsage.
+          * - :py:attr:`~create_package`
+            - Create a new Package.
+          * - :py:attr:`~create_merge_node`
+            - Create a new MergeNode.
+          * - :py:attr:`~create_literal_real`
+            - Create a new LiteralReal.
+          * - :py:attr:`~create_fork_node`
+            - Create a new ForkNode.
+          * - :py:attr:`~create_view_usage`
+            - Create a new ViewUsage.
+          * - :py:attr:`~create_case_usage`
+            - Create a new CaseUsage.
+          * - :py:attr:`~create_multiplicity`
+            - Create a new Multiplicity.
+          * - :py:attr:`~create_decision_node`
+            - Create a new DecisionNode.
+          * - :py:attr:`~create_item_usage`
+            - Create a new ItemUsage.
+          * - :py:attr:`~create_subsetting`
+            - Create a new Subsetting.
+          * - :py:attr:`~create_usage`
+            - Create a new Usage.
+          * - :py:attr:`~create_use_case_usage`
+            - Create a new UseCaseUsage.
+          * - :py:attr:`~create_feature_value`
+            - Create a new FeatureValue.
+          * - :py:attr:`~create_action_usage`
+            - Create a new ActionUsage.
+          * - :py:attr:`~create_membership`
+            - Create a new Membership.
+          * - :py:attr:`~create_type`
+            - Create a new Type.
+          * - :py:attr:`~create_invariant`
+            - Create a new Invariant.
+          * - :py:attr:`~create_relationship`
+            - Create a new Relationship.
+          * - :py:attr:`~create_item_flow_end`
+            - Create a new ItemFlowEnd.
+          * - :py:attr:`~create_join_node`
+            - Create a new JoinNode.
+          * - :py:attr:`~create_attribute_definition`
+            - Create a new AttributeDefinition.
+          * - :py:attr:`~create_accept_action_usage`
+            - Create a new AcceptActionUsage.
+          * - :py:attr:`~create_documentation`
+            - Create a new Documentation.
+          * - :py:attr:`~create_assignment_action_usage`
+            - Create a new AssignmentActionUsage.
+          * - :py:attr:`~create_item_definition`
+            - Create a new ItemDefinition.
+          * - :py:attr:`~create_literal_boolean`
+            - Create a new LiteralBoolean.
+          * - :py:attr:`~create_binding_connector_as_usage`
+            - Create a new BindingConnectorAsUsage.
+          * - :py:attr:`~create_constraint_usage`
+            - Create a new ConstraintUsage.
+          * - :py:attr:`~create_literal_expression`
+            - Create a new LiteralExpression.
+          * - :py:attr:`~create_parameter_membership`
+            - Create a new ParameterMembership.
+          * - :py:attr:`~create_association_structure`
+            - Create a new AssociationStructure.
+          * - :py:attr:`~create_reference_subsetting`
+            - Create a new ReferenceSubsetting.
+          * - :py:attr:`~create_interface_usage`
+            - Create a new InterfaceUsage.
+          * - :py:attr:`~create_binding_connector`
+            - Create a new BindingConnector.
+          * - :py:attr:`~create_feature_chaining`
+            - Create a new FeatureChaining.
+          * - :py:attr:`~create_literal_integer`
+            - Create a new LiteralInteger.
+          * - :py:attr:`~create_invocation_expression`
+            - Create a new InvocationExpression.
+          * - :py:attr:`~create_perform_action_usage`
+            - Create a new PerformActionUsage.
+          * - :py:attr:`~create_portioning_feature`
+            - Create a new PortioningFeature.
+          * - :py:attr:`~create_feature_chain_expression`
+            - Create a new FeatureChainExpression.
+          * - :py:attr:`~create_constraint_definition`
+            - Create a new ConstraintDefinition.
+          * - :py:attr:`~create_literal_unbounded`
+            - Create a new LiteralUnbounded.
+          * - :py:attr:`~create_calculation_definition`
+            - Create a new CalculationDefinition.
+          * - :py:attr:`~create_end_feature_membership`
+            - Create a new EndFeatureMembership.
+          * - :py:attr:`~create_feature_membership`
+            - Create a new FeatureMembership.
+          * - :py:attr:`~create_requirement_definition`
+            - Create a new RequirementDefinition.
+          * - :py:attr:`~create_requirement_usage`
+            - Create a new RequirementUsage.
+          * - :py:attr:`~create_return_parameter_membership`
+            - Create a new ReturnParameterMembership.
+          * - :py:attr:`~create_reference_usage`
+            - Create a new ReferenceUsage.
+          * - :py:attr:`~create_port_definition`
+            - Create a new PortDefinition.
+          * - :py:attr:`~create_result_expression_membership`
+            - Create a new ResultExpressionMembership.
+          * - :py:attr:`~create_satisfy_requirement_usage`
+            - Create a new SatisfyRequirementUsage.
+          * - :py:attr:`~create_specialization`
+            - Create a new Specialization.
+          * - :py:attr:`~create_literal_rational`
+            - Create a new LiteralRational.
+          * - :py:attr:`~create_stakeholder_membership`
+            - Create a new StakeholderMembership.
+          * - :py:attr:`~create_state_definition`
+            - Create a new StateDefinition.
+          * - :py:attr:`~create_literal_string`
+            - Create a new LiteralString.
+          * - :py:attr:`~create_annotating_element`
+            - Create a new AnnotatingElement.
+          * - :py:attr:`~create_attribute_usage`
+            - Create a new AttributeUsage.
+          * - :py:attr:`~create_boolean_expression`
+            - Create a new BooleanExpression.
+          * - :py:attr:`~create_interface_definition`
+            - Create a new InterfaceDefinition.
+          * - :py:attr:`~create_send_action_usage`
+            - Create a new SendActionUsage.
+          * - :py:attr:`~create_null_expression`
+            - Create a new NullExpression.
+          * - :py:attr:`~create_part_definition`
+            - Create a new PartDefinition.
+          * - :py:attr:`~create_connection_definition`
+            - Create a new ConnectionDefinition.
+          * - :py:attr:`~create_assert_constraint_usage`
+            - Create a new AssertConstraintUsage.
+          * - :py:attr:`~create_connection_usage`
+            - Create a new ConnectionUsage.
+          * - :py:attr:`~create_feature_reference_expression`
+            - Create a new FeatureReferenceExpression.
+          * - :py:attr:`~create_view_definition`
+            - Create a new ViewDefinition.
+          * - :py:attr:`~create_library_package`
+            - Create a new LibraryPackage.
+          * - :py:attr:`~create_textual_representation`
+            - Create a new TextualRepresentation.
+          * - :py:attr:`~create_transition_usage`
+            - Create a new TransitionUsage.
+          * - :py:attr:`~create_case_definition`
+            - Create a new CaseDefinition.
+          * - :py:attr:`~create_allocation_usage`
+            - Create a new AllocationUsage.
+          * - :py:attr:`~create_trigger_invocation_expression`
+            - Create a new TriggerInvocationExpression.
+          * - :py:attr:`~create_transition_feature_membership`
+            - Create a new TransitionFeatureMembership.
+          * - :py:attr:`~create_type_featuring`
+            - Create a new TypeFeaturing.
+          * - :py:attr:`~create_flow_connection_definition`
+            - Create a new FlowConnectionDefinition.
+          * - :py:attr:`~create_variant_membership`
+            - Create a new VariantMembership.
+          * - :py:attr:`~create_exhibit_state_usage`
+            - Create a new ExhibitStateUsage.
+          * - :py:attr:`~create_for_loop_action_usage`
+            - Create a new ForLoopActionUsage.
+          * - :py:attr:`~create_metadata_feature`
+            - Create a new MetadataFeature.
+          * - :py:attr:`~create_actor_membership`
+            - Create a new ActorMembership.
+          * - :py:attr:`~create_action_definition`
+            - Create a new ActionDefinition.
+          * - :py:attr:`~create_event_occurrence_usage`
+            - Create a new EventOccurrenceUsage.
+          * - :py:attr:`~create_operator_expression`
+            - Create a new OperatorExpression.
+          * - :py:attr:`~create_enumeration_usage`
+            - Create a new EnumerationUsage.
+          * - :py:attr:`~create_occurrence_usage`
+            - Create a new OccurrenceUsage.
+          * - :py:attr:`~create_flow_connection_usage`
+            - Create a new FlowConnectionUsage.
+          * - :py:attr:`~create_state_subaction_membership`
+            - Create a new StateSubactionMembership.
+          * - :py:attr:`~create_succession_as_usage`
+            - Create a new SuccessionAsUsage.
+          * - :py:attr:`~create_subclassification`
+            - Create a new Subclassification.
+          * - :py:attr:`~create_if_action_usage`
+            - Create a new IfActionUsage.
+          * - :py:attr:`~create_allocation_definition`
+            - Create a new AllocationDefinition.
+          * - :py:attr:`~create_metadata_usage`
+            - Create a new MetadataUsage.
+          * - :py:attr:`~create_feature_typing`
+            - Create a new FeatureTyping.
+          * - :py:attr:`~create_objective_membership`
+            - Create a new ObjectiveMembership.
+          * - :py:attr:`~create_subject_membership`
+            - Create a new SubjectMembership.
+          * - :py:attr:`~create_calculation_usage`
+            - Create a new CalculationUsage.
+          * - :py:attr:`~create_occurrence_definition`
+            - Create a new OccurrenceDefinition.
+          * - :py:attr:`~create_metadata_definition`
+            - Create a new MetadataDefinition.
+          * - :py:attr:`~create_while_loop_action_usage`
+            - Create a new WhileLoopActionUsage.
+          * - :py:attr:`~create_enumeration_definition`
+            - Create a new EnumerationDefinition.
+          * - :py:attr:`~create_use_case_definition`
+            - Create a new UseCaseDefinition.
+          * - :py:attr:`~create_include_use_case_usage`
+            - Create a new IncludeUseCaseUsage.
+          * - :py:attr:`~create_succession_item_flow`
+            - Create a new SuccessionItemFlow.
+          * - :py:attr:`~create_multiplicity_range`
+            - Create a new MultiplicityRange.
+          * - :py:attr:`~create_loop_action_usage`
+            - Create a new LoopActionUsage.
+          * - :py:attr:`~create_requirement_constraint_membership`
+            - Create a new RequirementConstraintMembership.
+          * - :py:attr:`~create_succession_flow_connection_usage`
+            - Create a new SuccessionFlowConnectionUsage.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.factory import Factory
+
+
+
+Method detail
+-------------
+
+.. py:method:: create_function(**kwargs) -> ansys.sam.sysml2.meta_model.function.Function
+
+   
+   Create a new Function.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Function`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_class(**kwargs) -> ansys.sam.sysml2.meta_model.class_.Class
+
+   
+   Create a new Class.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Class`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_behavior(**kwargs) -> ansys.sam.sysml2.meta_model.behavior.Behavior
+
+   
+   Create a new Behavior.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Behavior`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_comment(**kwargs) -> ansys.sam.sysml2.meta_model.comment.Comment
+
+   
+   Create a new Comment.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Comment`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_connector(**kwargs) -> ansys.sam.sysml2.meta_model.connector.Connector
+
+   
+   Create a new Connector.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Connector`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_element(**kwargs) -> ansys.sam.sysml2.meta_model.element.Element
+
+   
+   Create a new Element.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Element`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_association(**kwargs) -> ansys.sam.sysml2.meta_model.association.Association
+
+   
+   Create a new Association.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Association`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_classifier(**kwargs) -> ansys.sam.sysml2.meta_model.classifier.Classifier
+
+   
+   Create a new Classifier.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Classifier`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_data_type(**kwargs) -> ansys.sam.sysml2.meta_model.data_type.DataType
+
+   
+   Create a new DataType.
+
+
+
+
+
+   :Returns:
+
+       :obj:`DataType`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_expression(**kwargs) -> ansys.sam.sysml2.meta_model.expression.Expression
+
+   
+   Create a new Expression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Expression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_feature(**kwargs) -> ansys.sam.sysml2.meta_model.feature.Feature
+
+   
+   Create a new Feature.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Feature`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_annotation(**kwargs) -> ansys.sam.sysml2.meta_model.annotation.Annotation
+
+   
+   Create a new Annotation.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Annotation`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_import(**kwargs) -> ansys.sam.sysml2.meta_model.import_.Import
+
+   
+   Create a new Import.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Import`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_structure(**kwargs) -> ansys.sam.sysml2.meta_model.structure.Structure
+
+   
+   Create a new Structure.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Structure`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_item_feature(**kwargs) -> ansys.sam.sysml2.meta_model.item_feature.ItemFeature
+
+   
+   Create a new ItemFeature.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ItemFeature`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_dependency(**kwargs) -> ansys.sam.sysml2.meta_model.dependency.Dependency
+
+   
+   Create a new Dependency.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Dependency`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_interaction(**kwargs) -> ansys.sam.sysml2.meta_model.interaction.Interaction
+
+   
+   Create a new Interaction.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Interaction`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_redefinition(**kwargs) -> ansys.sam.sysml2.meta_model.redefinition.Redefinition
+
+   
+   Create a new Redefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Redefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_state_usage(**kwargs) -> ansys.sam.sysml2.meta_model.state_usage.StateUsage
+
+   
+   Create a new StateUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`StateUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_life_class(**kwargs) -> ansys.sam.sysml2.meta_model.life_class.LifeClass
+
+   
+   Create a new LifeClass.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LifeClass`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_metaclass(**kwargs) -> ansys.sam.sysml2.meta_model.metaclass.Metaclass
+
+   
+   Create a new Metaclass.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Metaclass`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_port_usage(**kwargs) -> ansys.sam.sysml2.meta_model.port_usage.PortUsage
+
+   
+   Create a new PortUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`PortUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_namespace(**kwargs) -> ansys.sam.sysml2.meta_model.namespace.Namespace
+
+   
+   Create a new Namespace.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Namespace`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_step(**kwargs) -> ansys.sam.sysml2.meta_model.step.Step
+
+   
+   Create a new Step.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Step`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_succession(**kwargs) -> ansys.sam.sysml2.meta_model.succession.Succession
+
+   
+   Create a new Succession.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Succession`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_definition(**kwargs) -> ansys.sam.sysml2.meta_model.definition.Definition
+
+   
+   Create a new Definition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Definition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_concern_usage(**kwargs) -> ansys.sam.sysml2.meta_model.concern_usage.ConcernUsage
+
+   
+   Create a new ConcernUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ConcernUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_item_flow(**kwargs) -> ansys.sam.sysml2.meta_model.item_flow.ItemFlow
+
+   
+   Create a new ItemFlow.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ItemFlow`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_predicate(**kwargs) -> ansys.sam.sysml2.meta_model.predicate.Predicate
+
+   
+   Create a new Predicate.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Predicate`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_part_usage(**kwargs) -> ansys.sam.sysml2.meta_model.part_usage.PartUsage
+
+   
+   Create a new PartUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`PartUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_package(**kwargs) -> ansys.sam.sysml2.meta_model.package.Package
+
+   
+   Create a new Package.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Package`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_merge_node(**kwargs) -> ansys.sam.sysml2.meta_model.merge_node.MergeNode
+
+   
+   Create a new MergeNode.
+
+
+
+
+
+   :Returns:
+
+       :obj:`MergeNode`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_literal_real(**kwargs) -> ansys.sam.sysml2.meta_model.literal_real.LiteralReal
+
+   
+   Create a new LiteralReal.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LiteralReal`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_fork_node(**kwargs) -> ansys.sam.sysml2.meta_model.fork_node.ForkNode
+
+   
+   Create a new ForkNode.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ForkNode`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_view_usage(**kwargs) -> ansys.sam.sysml2.meta_model.view_usage.ViewUsage
+
+   
+   Create a new ViewUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ViewUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_case_usage(**kwargs) -> ansys.sam.sysml2.meta_model.case_usage.CaseUsage
+
+   
+   Create a new CaseUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`CaseUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_multiplicity(**kwargs) -> ansys.sam.sysml2.meta_model.multiplicity.Multiplicity
+
+   
+   Create a new Multiplicity.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Multiplicity`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_decision_node(**kwargs) -> ansys.sam.sysml2.meta_model.decision_node.DecisionNode
+
+   
+   Create a new DecisionNode.
+
+
+
+
+
+   :Returns:
+
+       :obj:`DecisionNode`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_item_usage(**kwargs) -> ansys.sam.sysml2.meta_model.item_usage.ItemUsage
+
+   
+   Create a new ItemUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ItemUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_subsetting(**kwargs) -> ansys.sam.sysml2.meta_model.subsetting.Subsetting
+
+   
+   Create a new Subsetting.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Subsetting`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_usage(**kwargs) -> ansys.sam.sysml2.meta_model.usage.Usage
+
+   
+   Create a new Usage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Usage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_use_case_usage(**kwargs) -> ansys.sam.sysml2.meta_model.use_case_usage.UseCaseUsage
+
+   
+   Create a new UseCaseUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`UseCaseUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_feature_value(**kwargs) -> ansys.sam.sysml2.meta_model.feature_value.FeatureValue
+
+   
+   Create a new FeatureValue.
+
+
+
+
+
+   :Returns:
+
+       :obj:`FeatureValue`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.action_usage.ActionUsage
+
+   
+   Create a new ActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_membership(**kwargs) -> ansys.sam.sysml2.meta_model.membership.Membership
+
+   
+   Create a new Membership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Membership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_type(**kwargs) -> ansys.sam.sysml2.meta_model.type_.Type
+
+   
+   Create a new Type.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Type`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_invariant(**kwargs) -> ansys.sam.sysml2.meta_model.invariant.Invariant
+
+   
+   Create a new Invariant.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Invariant`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_relationship(**kwargs) -> ansys.sam.sysml2.meta_model.relationship.Relationship
+
+   
+   Create a new Relationship.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Relationship`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_item_flow_end(**kwargs) -> ansys.sam.sysml2.meta_model.item_flow_end.ItemFlowEnd
+
+   
+   Create a new ItemFlowEnd.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ItemFlowEnd`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_join_node(**kwargs) -> ansys.sam.sysml2.meta_model.join_node.JoinNode
+
+   
+   Create a new JoinNode.
+
+
+
+
+
+   :Returns:
+
+       :obj:`JoinNode`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_attribute_definition(**kwargs) -> ansys.sam.sysml2.meta_model.attribute_definition.AttributeDefinition
+
+   
+   Create a new AttributeDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AttributeDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_accept_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.accept_action_usage.AcceptActionUsage
+
+   
+   Create a new AcceptActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AcceptActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_documentation(**kwargs) -> ansys.sam.sysml2.meta_model.documentation.Documentation
+
+   
+   Create a new Documentation.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Documentation`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_assignment_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.assignment_action_usage.AssignmentActionUsage
+
+   
+   Create a new AssignmentActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AssignmentActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_item_definition(**kwargs) -> ansys.sam.sysml2.meta_model.item_definition.ItemDefinition
+
+   
+   Create a new ItemDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ItemDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_literal_boolean(**kwargs) -> ansys.sam.sysml2.meta_model.literal_boolean.LiteralBoolean
+
+   
+   Create a new LiteralBoolean.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LiteralBoolean`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_binding_connector_as_usage(**kwargs) -> ansys.sam.sysml2.meta_model.binding_connector_as_usage.BindingConnectorAsUsage
+
+   
+   Create a new BindingConnectorAsUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`BindingConnectorAsUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_constraint_usage(**kwargs) -> ansys.sam.sysml2.meta_model.constraint_usage.ConstraintUsage
+
+   
+   Create a new ConstraintUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ConstraintUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_literal_expression(**kwargs) -> ansys.sam.sysml2.meta_model.literal_expression.LiteralExpression
+
+   
+   Create a new LiteralExpression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LiteralExpression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_parameter_membership(**kwargs) -> ansys.sam.sysml2.meta_model.parameter_membership.ParameterMembership
+
+   
+   Create a new ParameterMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ParameterMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_association_structure(**kwargs) -> ansys.sam.sysml2.meta_model.association_structure.AssociationStructure
+
+   
+   Create a new AssociationStructure.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AssociationStructure`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_reference_subsetting(**kwargs) -> ansys.sam.sysml2.meta_model.reference_subsetting.ReferenceSubsetting
+
+   
+   Create a new ReferenceSubsetting.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ReferenceSubsetting`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_interface_usage(**kwargs) -> ansys.sam.sysml2.meta_model.interface_usage.InterfaceUsage
+
+   
+   Create a new InterfaceUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`InterfaceUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_binding_connector(**kwargs) -> ansys.sam.sysml2.meta_model.binding_connector.BindingConnector
+
+   
+   Create a new BindingConnector.
+
+
+
+
+
+   :Returns:
+
+       :obj:`BindingConnector`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_feature_chaining(**kwargs) -> ansys.sam.sysml2.meta_model.feature_chaining.FeatureChaining
+
+   
+   Create a new FeatureChaining.
+
+
+
+
+
+   :Returns:
+
+       :obj:`FeatureChaining`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_literal_integer(**kwargs) -> ansys.sam.sysml2.meta_model.literal_integer.LiteralInteger
+
+   
+   Create a new LiteralInteger.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LiteralInteger`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_invocation_expression(**kwargs) -> ansys.sam.sysml2.meta_model.invocation_expression.InvocationExpression
+
+   
+   Create a new InvocationExpression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`InvocationExpression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_perform_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.perform_action_usage.PerformActionUsage
+
+   
+   Create a new PerformActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`PerformActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_portioning_feature(**kwargs) -> ansys.sam.sysml2.meta_model.portioning_feature.PortioningFeature
+
+   
+   Create a new PortioningFeature.
+
+
+
+
+
+   :Returns:
+
+       :obj:`PortioningFeature`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_feature_chain_expression(**kwargs) -> ansys.sam.sysml2.meta_model.feature_chain_expression.FeatureChainExpression
+
+   
+   Create a new FeatureChainExpression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`FeatureChainExpression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_constraint_definition(**kwargs) -> ansys.sam.sysml2.meta_model.constraint_definition.ConstraintDefinition
+
+   
+   Create a new ConstraintDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ConstraintDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_literal_unbounded(**kwargs) -> ansys.sam.sysml2.meta_model.literal_unbounded.LiteralUnbounded
+
+   
+   Create a new LiteralUnbounded.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LiteralUnbounded`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_calculation_definition(**kwargs) -> ansys.sam.sysml2.meta_model.calculation_definition.CalculationDefinition
+
+   
+   Create a new CalculationDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`CalculationDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_end_feature_membership(**kwargs) -> ansys.sam.sysml2.meta_model.end_feature_membership.EndFeatureMembership
+
+   
+   Create a new EndFeatureMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`EndFeatureMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_feature_membership(**kwargs) -> ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership
+
+   
+   Create a new FeatureMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`FeatureMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_requirement_definition(**kwargs) -> ansys.sam.sysml2.meta_model.requirement_definition.RequirementDefinition
+
+   
+   Create a new RequirementDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`RequirementDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_requirement_usage(**kwargs) -> ansys.sam.sysml2.meta_model.requirement_usage.RequirementUsage
+
+   
+   Create a new RequirementUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`RequirementUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_return_parameter_membership(**kwargs) -> ansys.sam.sysml2.meta_model.return_parameter_membership.ReturnParameterMembership
+
+   
+   Create a new ReturnParameterMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ReturnParameterMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_reference_usage(**kwargs) -> ansys.sam.sysml2.meta_model.reference_usage.ReferenceUsage
+
+   
+   Create a new ReferenceUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ReferenceUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_port_definition(**kwargs) -> ansys.sam.sysml2.meta_model.port_definition.PortDefinition
+
+   
+   Create a new PortDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`PortDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_result_expression_membership(**kwargs) -> ansys.sam.sysml2.meta_model.result_expression_membership.ResultExpressionMembership
+
+   
+   Create a new ResultExpressionMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ResultExpressionMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_satisfy_requirement_usage(**kwargs) -> ansys.sam.sysml2.meta_model.satisfy_requirement_usage.SatisfyRequirementUsage
+
+   
+   Create a new SatisfyRequirementUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`SatisfyRequirementUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_specialization(**kwargs) -> ansys.sam.sysml2.meta_model.specialization.Specialization
+
+   
+   Create a new Specialization.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Specialization`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_literal_rational(**kwargs) -> ansys.sam.sysml2.meta_model.literal_rational.LiteralRational
+
+   
+   Create a new LiteralRational.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LiteralRational`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_stakeholder_membership(**kwargs) -> ansys.sam.sysml2.meta_model.stakeholder_membership.StakeholderMembership
+
+   
+   Create a new StakeholderMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`StakeholderMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_state_definition(**kwargs) -> ansys.sam.sysml2.meta_model.state_definition.StateDefinition
+
+   
+   Create a new StateDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`StateDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_literal_string(**kwargs) -> ansys.sam.sysml2.meta_model.literal_string.LiteralString
+
+   
+   Create a new LiteralString.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LiteralString`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_annotating_element(**kwargs) -> ansys.sam.sysml2.meta_model.annotating_element.AnnotatingElement
+
+   
+   Create a new AnnotatingElement.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AnnotatingElement`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_attribute_usage(**kwargs) -> ansys.sam.sysml2.meta_model.attribute_usage.AttributeUsage
+
+   
+   Create a new AttributeUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AttributeUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_boolean_expression(**kwargs) -> ansys.sam.sysml2.meta_model.boolean_expression.BooleanExpression
+
+   
+   Create a new BooleanExpression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`BooleanExpression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_interface_definition(**kwargs) -> ansys.sam.sysml2.meta_model.interface_definition.InterfaceDefinition
+
+   
+   Create a new InterfaceDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`InterfaceDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_send_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.send_action_usage.SendActionUsage
+
+   
+   Create a new SendActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`SendActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_null_expression(**kwargs) -> ansys.sam.sysml2.meta_model.null_expression.NullExpression
+
+   
+   Create a new NullExpression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`NullExpression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_part_definition(**kwargs) -> ansys.sam.sysml2.meta_model.part_definition.PartDefinition
+
+   
+   Create a new PartDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`PartDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_connection_definition(**kwargs) -> ansys.sam.sysml2.meta_model.connection_definition.ConnectionDefinition
+
+   
+   Create a new ConnectionDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ConnectionDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_assert_constraint_usage(**kwargs) -> ansys.sam.sysml2.meta_model.assert_constraint_usage.AssertConstraintUsage
+
+   
+   Create a new AssertConstraintUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AssertConstraintUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_connection_usage(**kwargs) -> ansys.sam.sysml2.meta_model.connection_usage.ConnectionUsage
+
+   
+   Create a new ConnectionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ConnectionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_feature_reference_expression(**kwargs) -> ansys.sam.sysml2.meta_model.feature_reference_expression.FeatureReferenceExpression
+
+   
+   Create a new FeatureReferenceExpression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`FeatureReferenceExpression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_view_definition(**kwargs) -> ansys.sam.sysml2.meta_model.view_definition.ViewDefinition
+
+   
+   Create a new ViewDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ViewDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_library_package(**kwargs) -> ansys.sam.sysml2.meta_model.library_package.LibraryPackage
+
+   
+   Create a new LibraryPackage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LibraryPackage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_textual_representation(**kwargs) -> ansys.sam.sysml2.meta_model.textual_representation.TextualRepresentation
+
+   
+   Create a new TextualRepresentation.
+
+
+
+
+
+   :Returns:
+
+       :obj:`TextualRepresentation`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_transition_usage(**kwargs) -> ansys.sam.sysml2.meta_model.transition_usage.TransitionUsage
+
+   
+   Create a new TransitionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`TransitionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_case_definition(**kwargs) -> ansys.sam.sysml2.meta_model.case_definition.CaseDefinition
+
+   
+   Create a new CaseDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`CaseDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_allocation_usage(**kwargs) -> ansys.sam.sysml2.meta_model.allocation_usage.AllocationUsage
+
+   
+   Create a new AllocationUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AllocationUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_trigger_invocation_expression(**kwargs) -> ansys.sam.sysml2.meta_model.trigger_invocation_expression.TriggerInvocationExpression
+
+   
+   Create a new TriggerInvocationExpression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`TriggerInvocationExpression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_transition_feature_membership(**kwargs) -> ansys.sam.sysml2.meta_model.transition_feature_membership.TransitionFeatureMembership
+
+   
+   Create a new TransitionFeatureMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`TransitionFeatureMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_type_featuring(**kwargs) -> ansys.sam.sysml2.meta_model.type_featuring.TypeFeaturing
+
+   
+   Create a new TypeFeaturing.
+
+
+
+
+
+   :Returns:
+
+       :obj:`TypeFeaturing`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_flow_connection_definition(**kwargs) -> ansys.sam.sysml2.meta_model.flow_connection_definition.FlowConnectionDefinition
+
+   
+   Create a new FlowConnectionDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`FlowConnectionDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_variant_membership(**kwargs) -> ansys.sam.sysml2.meta_model.variant_membership.VariantMembership
+
+   
+   Create a new VariantMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`VariantMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_exhibit_state_usage(**kwargs) -> ansys.sam.sysml2.meta_model.exhibit_state_usage.ExhibitStateUsage
+
+   
+   Create a new ExhibitStateUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ExhibitStateUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_for_loop_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.for_loop_action_usage.ForLoopActionUsage
+
+   
+   Create a new ForLoopActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ForLoopActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_metadata_feature(**kwargs) -> ansys.sam.sysml2.meta_model.metadata_feature.MetadataFeature
+
+   
+   Create a new MetadataFeature.
+
+
+
+
+
+   :Returns:
+
+       :obj:`MetadataFeature`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_actor_membership(**kwargs) -> ansys.sam.sysml2.meta_model.actor_membership.ActorMembership
+
+   
+   Create a new ActorMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ActorMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_action_definition(**kwargs) -> ansys.sam.sysml2.meta_model.action_definition.ActionDefinition
+
+   
+   Create a new ActionDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ActionDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_event_occurrence_usage(**kwargs) -> ansys.sam.sysml2.meta_model.event_occurrence_usage.EventOccurrenceUsage
+
+   
+   Create a new EventOccurrenceUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`EventOccurrenceUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_operator_expression(**kwargs) -> ansys.sam.sysml2.meta_model.operator_expression.OperatorExpression
+
+   
+   Create a new OperatorExpression.
+
+
+
+
+
+   :Returns:
+
+       :obj:`OperatorExpression`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_enumeration_usage(**kwargs) -> ansys.sam.sysml2.meta_model.enumeration_usage.EnumerationUsage
+
+   
+   Create a new EnumerationUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`EnumerationUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_occurrence_usage(**kwargs) -> ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage
+
+   
+   Create a new OccurrenceUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`OccurrenceUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_flow_connection_usage(**kwargs) -> ansys.sam.sysml2.meta_model.flow_connection_usage.FlowConnectionUsage
+
+   
+   Create a new FlowConnectionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`FlowConnectionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_state_subaction_membership(**kwargs) -> ansys.sam.sysml2.meta_model.state_subaction_membership.StateSubactionMembership
+
+   
+   Create a new StateSubactionMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`StateSubactionMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_succession_as_usage(**kwargs) -> ansys.sam.sysml2.meta_model.succession_as_usage.SuccessionAsUsage
+
+   
+   Create a new SuccessionAsUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`SuccessionAsUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_subclassification(**kwargs) -> ansys.sam.sysml2.meta_model.subclassification.Subclassification
+
+   
+   Create a new Subclassification.
+
+
+
+
+
+   :Returns:
+
+       :obj:`Subclassification`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_if_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.if_action_usage.IfActionUsage
+
+   
+   Create a new IfActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`IfActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_allocation_definition(**kwargs) -> ansys.sam.sysml2.meta_model.allocation_definition.AllocationDefinition
+
+   
+   Create a new AllocationDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`AllocationDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_metadata_usage(**kwargs) -> ansys.sam.sysml2.meta_model.metadata_usage.MetadataUsage
+
+   
+   Create a new MetadataUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`MetadataUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_feature_typing(**kwargs) -> ansys.sam.sysml2.meta_model.feature_typing.FeatureTyping
+
+   
+   Create a new FeatureTyping.
+
+
+
+
+
+   :Returns:
+
+       :obj:`FeatureTyping`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_objective_membership(**kwargs) -> ansys.sam.sysml2.meta_model.objective_membership.ObjectiveMembership
+
+   
+   Create a new ObjectiveMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`ObjectiveMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_subject_membership(**kwargs) -> ansys.sam.sysml2.meta_model.subject_membership.SubjectMembership
+
+   
+   Create a new SubjectMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`SubjectMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_calculation_usage(**kwargs) -> ansys.sam.sysml2.meta_model.calculation_usage.CalculationUsage
+
+   
+   Create a new CalculationUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`CalculationUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_occurrence_definition(**kwargs) -> ansys.sam.sysml2.meta_model.occurrence_definition.OccurrenceDefinition
+
+   
+   Create a new OccurrenceDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`OccurrenceDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_metadata_definition(**kwargs) -> ansys.sam.sysml2.meta_model.metadata_definition.MetadataDefinition
+
+   
+   Create a new MetadataDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`MetadataDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_while_loop_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.while_loop_action_usage.WhileLoopActionUsage
+
+   
+   Create a new WhileLoopActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`WhileLoopActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_enumeration_definition(**kwargs) -> ansys.sam.sysml2.meta_model.enumeration_definition.EnumerationDefinition
+
+   
+   Create a new EnumerationDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`EnumerationDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_use_case_definition(**kwargs) -> ansys.sam.sysml2.meta_model.use_case_definition.UseCaseDefinition
+
+   
+   Create a new UseCaseDefinition.
+
+
+
+
+
+   :Returns:
+
+       :obj:`UseCaseDefinition`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_include_use_case_usage(**kwargs) -> ansys.sam.sysml2.meta_model.include_use_case_usage.IncludeUseCaseUsage
+
+   
+   Create a new IncludeUseCaseUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`IncludeUseCaseUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_succession_item_flow(**kwargs) -> ansys.sam.sysml2.meta_model.succession_item_flow.SuccessionItemFlow
+
+   
+   Create a new SuccessionItemFlow.
+
+
+
+
+
+   :Returns:
+
+       :obj:`SuccessionItemFlow`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_multiplicity_range(**kwargs) -> ansys.sam.sysml2.meta_model.multiplicity_range.MultiplicityRange
+
+   
+   Create a new MultiplicityRange.
+
+
+
+
+
+   :Returns:
+
+       :obj:`MultiplicityRange`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_loop_action_usage(**kwargs) -> ansys.sam.sysml2.meta_model.loop_action_usage.LoopActionUsage
+
+   
+   Create a new LoopActionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`LoopActionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_requirement_constraint_membership(**kwargs) -> ansys.sam.sysml2.meta_model.requirement_constraint_membership.RequirementConstraintMembership
+
+   
+   Create a new RequirementConstraintMembership.
+
+
+
+
+
+   :Returns:
+
+       :obj:`RequirementConstraintMembership`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_succession_flow_connection_usage(**kwargs) -> ansys.sam.sysml2.meta_model.succession_flow_connection_usage.SuccessionFlowConnectionUsage
+
+   
+   Create a new SuccessionFlowConnectionUsage.
+
+
+
+
+
+   :Returns:
+
+       :obj:`SuccessionFlowConnectionUsage`
+           The new model element
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

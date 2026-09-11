@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``step.py`` module
+======================
+
+.. py:module:: ansys.sam.sysml2.meta_model.step
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: step
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.step.Step`
+            - Java class 'com.ansys.medini.metamodel.sysml.Step'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Step</api/ansys/sam/sysml2/meta_model/step/Step>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated step class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

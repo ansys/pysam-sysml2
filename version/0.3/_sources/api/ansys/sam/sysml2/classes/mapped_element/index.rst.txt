@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``mapped_element.py`` module
+================================
+
+.. py:module:: ansys.sam.sysml2.classes.mapped_element
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: mapped_element
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.mapped_element.MappedElement`
+            - Provides a mapped element class.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> MappedElement</api/ansys/sam/sysml2/classes/mapped_element/MappedElement>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Mapped element class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

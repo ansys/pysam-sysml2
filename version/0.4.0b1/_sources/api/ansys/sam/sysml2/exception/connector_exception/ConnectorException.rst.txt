@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ConnectorException`
+===========================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.ConnectorException
+
+   Bases: :py:obj:`Exception`
+
+
+   
+   Provides top-level exceptions for connectors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import ConnectorException
+
+
+
+
+

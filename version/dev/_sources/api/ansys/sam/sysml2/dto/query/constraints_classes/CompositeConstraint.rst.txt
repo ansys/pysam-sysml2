@@ -1,0 +1,125 @@
+
+
+
+
+
+
+:class:`CompositeConstraint`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.dto.query.constraints_classes.CompositeConstraint
+
+   Bases: :py:obj:`Constraint`
+
+
+   
+   Provides a composite constraint for multiple query constraints.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: CompositeConstraint
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~to_json`
+            - Get a JSON representation of the class.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~operator`
+            - 
+          * - :py:attr:`~constraint`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.query.constraints_classes import CompositeConstraint
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: operator
+   :type:  ansys.sam.sysml2.dto.query.query_enum.JoinOperator
+   :value: 'and'
+
+
+.. py:attribute:: constraint
+   :type:  List[Constraint]
+   :value: []
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: to_json() -> dict
+
+   
+   Get a JSON representation of the class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

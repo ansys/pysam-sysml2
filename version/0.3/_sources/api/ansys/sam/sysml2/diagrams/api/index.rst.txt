@@ -1,0 +1,97 @@
+
+
+
+
+
+
+The ``api`` package
+=======================
+
+.. py:module:: ansys.sam.sysml2.diagrams.api
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: api
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.api.sam_api_connector`
+            - API connector interface utilities for SAM API operations.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.api.sam_rest_api_connector`
+            - SAM API connector implementation.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> sam_api_connector</api/ansys/sam/sysml2/diagrams/api/sam_api_connector/index>
+    <span class="nf nf-fa-file"></span> sam_rest_api_connector</api/ansys/sam/sysml2/diagrams/api/sam_rest_api_connector/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+API package for the SAM API connector.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

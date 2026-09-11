@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Succession`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.succession.Succession(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connector.Connector`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Succession'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.succession import Succession
+
+
+
+
+

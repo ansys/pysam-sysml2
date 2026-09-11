@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`PartUsage`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.part_usage.PartUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.item_usage.ItemUsage`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.PartUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PartUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~part_definition`
+            - Get the part definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.part_usage import PartUsage
+
+Property detail
+---------------
+
+.. py:property:: part_definition
+   :type: list[PartDefinition]
+
+
+   
+   Get the part definition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["PartDefinition"]
+           Value of property part definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

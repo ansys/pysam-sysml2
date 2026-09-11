@@ -1,0 +1,127 @@
+
+
+
+
+
+
+:class:`InheritedElement`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.classes.inherited_element.InheritedElement(owner, element)
+
+   Bases: :py:obj:`ansys.sam.sysml2.classes.sysml_element.SysMLElement`
+
+
+   
+   A proxy class for the element that is not created yet.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+.. py:currentmodule:: InheritedElement
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+
+
+   .. tab-item:: Special methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~__dir__`
+            - Get the attribute list from the real element.
+          * - :py:attr:`~__getattr__`
+            - Get the attribute from the real element.
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.inherited_element import InheritedElement
+
+
+
+Method detail
+-------------
+
+.. py:method:: __dir__()
+
+   
+   Get the attribute list from the real element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __getattr__(name)
+
+   
+   Get the attribute from the real element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

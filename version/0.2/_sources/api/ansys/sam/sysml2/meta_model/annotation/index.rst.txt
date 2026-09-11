@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``annotation.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.annotation
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: annotation
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.annotation.Annotation`
+            - Java class 'com.ansys.medini.metamodel.sysml.Annotation'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Annotation</api/ansys/sam/sysml2/meta_model/annotation/Annotation>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated annotation class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

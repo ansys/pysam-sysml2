@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sam_diagram_downloader.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sam_diagram_downloader
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.tools.sam_diagram_downloader.SamDiagramDownloader`
+            - Provides for managing and downloading diagrams.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SamDiagramDownloader</api/ansys/sam/sysml2/diagrams/tools/sam_diagram_downloader/SamDiagramDownloader>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Diagram downloader for PySAM SysML2 diagram library.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

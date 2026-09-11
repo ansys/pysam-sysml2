@@ -1,0 +1,93 @@
+
+
+
+
+
+
+:class:`FeatureDirectionKind`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature_direction_kind.FeatureDirectionKind
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.FeatureDirectionKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureDirectionKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~IN`
+            - 
+          * - :py:attr:`~INOUT`
+            - 
+          * - :py:attr:`~OUT`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature_direction_kind import FeatureDirectionKind
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: IN
+   :value: 'in'
+
+
+.. py:attribute:: INOUT
+   :value: 'inout'
+
+
+.. py:attribute:: OUT
+   :value: 'out'
+
+
+
+
+
+

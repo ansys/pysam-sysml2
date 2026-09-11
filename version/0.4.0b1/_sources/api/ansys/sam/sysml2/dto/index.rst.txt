@@ -1,0 +1,97 @@
+
+
+
+
+
+
+The ``dto`` package
+=======================
+
+.. py:module:: ansys.sam.sysml2.dto
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: dto
+.. tab-set::
+
+    .. tab-item:: Subpackages
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.commit`
+            - Data Transfer Objects (DTO) for commit-related data in PySAM SysML2.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query`
+            - Data Transfer Objects (DTO) for query-related data in PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-package"></span> commit</api/ansys/sam/sysml2/dto/commit/index>
+    <span class="nf nf-md-package"></span> query</api/ansys/sam/sysml2/dto/query/index>
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Data Transfer Objects (DTO) module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

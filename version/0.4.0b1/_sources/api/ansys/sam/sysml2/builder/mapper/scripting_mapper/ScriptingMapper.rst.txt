@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ScriptingMapper`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.builder.mapper.scripting_mapper.ScriptingMapper
+
+   Bases: :py:obj:`ansys.sam.sysml2.builder.mapper.sysml_mapper.SysMLMapper`
+
+
+   
+   JSON mapper building generated elements composed with the dynamic mixin.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
+
+
+
+
+

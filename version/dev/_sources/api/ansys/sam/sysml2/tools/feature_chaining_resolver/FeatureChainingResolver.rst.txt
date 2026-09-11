@@ -1,0 +1,147 @@
+
+
+
+
+
+
+:class:`FeatureChainingResolver`
+================================
+
+
+.. py:class:: ansys.sam.sysml2.tools.feature_chaining_resolver.FeatureChainingResolver(element)
+
+   
+   Resolve connection ends and feature chains in a SysML model.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureChainingResolver
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~resolve_connector_end`
+            - Find the element that one end of the seed connection points to.
+          * - :py:attr:`~resolve_end`
+            - Find the element that the first end of ``ends`` points to, seen from ``context``.
+          * - :py:attr:`~resolve_representative`
+            - Find the element that ``element`` points to, seen from ``context``.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.feature_chaining_resolver import FeatureChainingResolver
+
+
+
+Method detail
+-------------
+
+.. py:method:: resolve_connector_end(end)
+
+   
+   Find the element that one end of the seed connection points to.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: resolve_end(ends, context)
+
+   
+   Find the element that the first end of ``ends`` points to, seen from ``context``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: resolve_representative(element, context)
+
+   
+   Find the element that ``element`` points to, seen from ``context``.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

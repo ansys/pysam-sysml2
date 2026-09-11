@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`Expression`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.expression.Expression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.step.Step`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Expression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Expression
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~function`
+            - Get the function property.
+          * - :py:attr:`~result`
+            - Get the result property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.expression import Expression
+
+Property detail
+---------------
+
+.. py:property:: function
+   :type: Function
+
+
+   
+   Get the function property.
+
+
+
+
+
+   :Returns:
+
+       "Function"
+           Value of property function.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: result
+   :type: Feature
+
+
+   
+   Get the result property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property result.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

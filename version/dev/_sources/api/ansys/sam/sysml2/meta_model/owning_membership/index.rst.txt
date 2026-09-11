@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``owning_membership.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.owning_membership
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: owning_membership
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.owning_membership.OwningMembership`
+            - Java class 'com.ansys.metamodel.sysml2.OwningMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> OwningMembership</api/ansys/sam/sysml2/meta_model/owning_membership/OwningMembership>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated owning membership class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+
