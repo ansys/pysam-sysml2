@@ -1,4 +1,4 @@
-# Copyright (C) 2024 - 2026 ANSYS, Inc. and/or its affiliates.
+# Copyright (C) 2024 - 2026 Synopsys, Inc. and ANSYS, Inc. All rights reserved.
 # SPDX-License-Identifier: MIT
 #
 #
@@ -34,4 +34,4 @@ PROJECT_ID_7 = "6e1b2037-aa6e-401c-9b5f-8816045db3cd"
 
 PROJECT_1_ATTR_ID = "106ba620-5d84-480e-b89b-2392fd342412"
 
-PROJECT_6_NONAME_ID = "a0ec0440-85ed-4777-9671-957cd81177d6"
+PROJECT_6_NONAME_ID = "a0ec0440-85ed-4777 - 9671-957cd81177d6"

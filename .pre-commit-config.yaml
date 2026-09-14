@@ -5,7 +5,7 @@ ci:
 
 repos:
   - repo: https://github.com/ansys/pre-commit-hooks
-    rev: v0.5.2
+    rev: 55c5b6a5439abd847613579c6924da750e8b78b2  # frozen: v0.8.0
     hooks:
       - id: add-license-headers
         args:
