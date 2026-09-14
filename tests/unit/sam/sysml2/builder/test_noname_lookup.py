@@ -41,7 +41,7 @@ class TestSysMLNoNameLookup:
     def test_get_resolves_noname_child_by_element_type_id(self, project):
         root = project.get_root_package()
 
-        child = root.get("ConnectionUsage::a0ec0440-85ed-4777 - 9671-957cd81177d6")
+        child = root.get("ConnectionUsage::a0ec0440-85ed-4777-9671-957cd81177d6")
 
         assert child is not None
         assert child.id == PROJECT_6_NONAME_ID
@@ -50,11 +50,11 @@ class TestSysMLNoNameLookup:
         child = project.find_element_by_id(PROJECT_6_NONAME_ID)
 
         assert child.name == ""
-        assert child.declared_name == "ConnectionUsage::a0ec0440-85ed-4777 - 9671-957cd81177d6"
+        assert child.declared_name == "ConnectionUsage::a0ec0440-85ed-4777-9671-957cd81177d6"
 
     def test_find_elements_by_name_matches_element_type_id(self, project):
         matches = project.find_elements_by_name(
-            "ConnectionUsage::a0ec0440-85ed-4777 - 9671-957cd81177d6"
+            "ConnectionUsage::a0ec0440-85ed-4777-9671-957cd81177d6"
         )
 
         assert len(matches) == 1
