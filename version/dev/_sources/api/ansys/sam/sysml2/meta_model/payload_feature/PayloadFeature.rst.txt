@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`PayloadFeature`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.payload_feature.PayloadFeature(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature.Feature`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.PayloadFeature'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.payload_feature import PayloadFeature
+
+
+
+
+

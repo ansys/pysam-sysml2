@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`Unioning`
+=================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.unioning.Unioning(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Unioning'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Unioning
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~type_unioned`
+            - Get the type unioned property.
+          * - :py:attr:`~unioning_type`
+            - Get the unioning type property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.unioning import Unioning
+
+Property detail
+---------------
+
+.. py:property:: type_unioned
+   :type: Type
+
+
+   
+   Get the type unioned property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property type unioned.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: unioning_type
+   :type: Type
+
+
+   
+   Get the unioning type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property unioning type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

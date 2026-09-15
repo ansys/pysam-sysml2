@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`Conjugation`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.conjugation.Conjugation(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Conjugation'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Conjugation
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~conjugated_type`
+            - Get the conjugated type property.
+          * - :py:attr:`~original_type`
+            - Get the original type property.
+          * - :py:attr:`~owning_type`
+            - Get the owning type property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.conjugation import Conjugation
+
+Property detail
+---------------
+
+.. py:property:: conjugated_type
+   :type: Type
+
+
+   
+   Get the conjugated type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property conjugated type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: original_type
+   :type: Type
+
+
+   
+   Get the original type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property original type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_type
+   :type: Type
+
+
+   
+   Get the owning type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property owning type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

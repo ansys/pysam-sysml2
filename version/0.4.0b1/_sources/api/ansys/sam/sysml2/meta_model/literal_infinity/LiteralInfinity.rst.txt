@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`LiteralInfinity`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.literal_infinity.LiteralInfinity(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.literal_expression.LiteralExpression`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.LiteralInfinity'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.literal_infinity import LiteralInfinity
+
+
+
+
+

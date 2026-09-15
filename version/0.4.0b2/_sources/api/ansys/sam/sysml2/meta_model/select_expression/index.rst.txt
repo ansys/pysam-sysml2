@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``select_expression.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.select_expression
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: select_expression
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.select_expression.SelectExpression`
+            - Java class 'com.ansys.metamodel.sysml2.SelectExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SelectExpression</api/ansys/sam/sysml2/meta_model/select_expression/SelectExpression>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated select expression class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

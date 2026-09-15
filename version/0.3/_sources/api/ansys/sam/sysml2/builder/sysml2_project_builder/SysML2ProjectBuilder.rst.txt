@@ -1,0 +1,242 @@
+
+
+
+
+
+
+:class:`SysML2ProjectBuilder`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.builder.sysml2_project_builder.SysML2ProjectBuilder(connector: ansys.sam.sysml2.api.sysml2_api_connector.SysML2APIConnector)
+
+   
+   Provides the SysML2 project builder.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SysML2ProjectBuilder
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~build_sysml_project`
+            - Call the API with the specified project ID and build the SysML project from JSON.
+          * - :py:attr:`~build_scripting_project`
+            - Call the API with the specified project ID and build the scripting project from JSON.
+          * - :py:attr:`~extract_root_and_check_names`
+            - Extract root elements and resolve inherited names in a single pass.
+          * - :py:attr:`~update_element`
+            - Update the element with inherited elements.
+          * - :py:attr:`~clear_element`
+            - Clear all inherited elements in the element.
+          * - :py:attr:`~reload_project`
+            - Reload the project and update all its elements.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
+
+
+
+Method detail
+-------------
+
+.. py:method:: build_sysml_project(project_id: str) -> ansys.sam.sysml2.classes.project.Project
+
+   
+   Call the API with the specified project ID and build the SysML project from JSON.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: build_scripting_project(project_id: str) -> ansys.sam.sysml2.classes.scripting_project.ScriptingProject
+
+   
+   Call the API with the specified project ID and build the scripting project from JSON.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: extract_root_and_check_names(project: ansys.sam.sysml2.classes.project.Project | ansys.sam.sysml2.classes.scripting_project.ScriptingProject)
+
+   
+   Extract root elements and resolve inherited names in a single pass.
+
+   Both operations are combined into one iteration over the project
+   environment to avoid looping twice.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: update_element(element)
+
+   
+   Update the element with inherited elements.
+
+
+   :Parameters:
+
+       **element** : :obj:`SysMLElement`
+           The element to update.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: clear_element(ignore_list, element)
+
+   
+   Clear all inherited elements in the element.
+
+
+   :Parameters:
+
+       **ignore_list** : :class:`python:list`
+           List of attributes to ignore when clearing.
+
+       **element** : :obj:`SysMLElement`
+           The element to clear.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: reload_project(modification_observer: ansys.sam.sysml2.observer.observer.ModificationObserver, project: ansys.sam.sysml2.classes.project.Project | ansys.sam.sysml2.classes.scripting_project.ScriptingProject)
+
+   
+   Reload the project and update all its elements.
+
+
+   :Parameters:
+
+       **modification_observer** : :obj:`ModificationObserver`
+           Observer instance.
+
+       **project** : :obj:`Project` | :obj:`ScriptingProject`
+           Project instance to reload.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

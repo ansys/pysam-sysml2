@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``disjoining.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.disjoining
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: disjoining
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.disjoining.Disjoining`
+            - Java class 'com.ansys.metamodel.sysml2.Disjoining'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Disjoining</api/ansys/sam/sysml2/meta_model/disjoining/Disjoining>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated disjoining class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

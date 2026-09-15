@@ -1,0 +1,126 @@
+
+
+
+
+
+
+:class:`UnresolvedField`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.classes.unresolved_field.UnresolvedField(owner: ansys.sam.sysml2.classes.sysml_element.SysMLElement, owning_feature: str, element_id: str)
+
+   
+   Provides for resolving unresolved fields.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: UnresolvedField
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_id`
+            - Get the missing element ID.
+          * - :py:attr:`~resolve`
+            - Resolve the fields.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_id() -> str
+
+   
+   Get the missing element ID.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: resolve(element: ansys.sam.sysml2.classes.sysml_element.SysMLElement)
+
+   
+   Resolve the fields.
+
+
+   :Parameters:
+
+       **element** : :obj:`SysMLElement`
+           Missing element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

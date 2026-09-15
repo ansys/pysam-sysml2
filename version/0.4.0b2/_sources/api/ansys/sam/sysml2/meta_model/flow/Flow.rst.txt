@@ -1,0 +1,261 @@
+
+
+
+
+
+
+:class:`Flow`
+=============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.flow.Flow(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connector.Connector`, :py:obj:`ansys.sam.sysml2.meta_model.step.Step`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Flow'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Flow
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~flow_end`
+            - Get the flow end property.
+          * - :py:attr:`~interaction`
+            - Get the interaction property.
+          * - :py:attr:`~payload_feature`
+            - Get the payload feature property.
+          * - :py:attr:`~payload_type`
+            - Get the payload type property.
+          * - :py:attr:`~source_output_feature`
+            - Get the source output feature property.
+          * - :py:attr:`~target_input_feature`
+            - Get the target input feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.flow import Flow
+
+Property detail
+---------------
+
+.. py:property:: flow_end
+   :type: list[FlowEnd]
+
+
+   
+   Get the flow end property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["FlowEnd"]
+           Value of property flow end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: interaction
+   :type: list[Interaction]
+
+
+   
+   Get the interaction property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Interaction"]
+           Value of property interaction.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: payload_feature
+   :type: PayloadFeature
+
+
+   
+   Get the payload feature property.
+
+
+
+
+
+   :Returns:
+
+       "PayloadFeature"
+           Value of property payload feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: payload_type
+   :type: list[Classifier]
+
+
+   
+   Get the payload type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Classifier"]
+           Value of property payload type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: source_output_feature
+   :type: Feature
+
+
+   
+   Get the source output feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property source output feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: target_input_feature
+   :type: Feature
+
+
+   
+   Get the target input feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property target input feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

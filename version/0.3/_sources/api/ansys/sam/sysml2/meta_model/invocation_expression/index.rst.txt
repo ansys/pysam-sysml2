@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``invocation_expression.py`` module
+=======================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.invocation_expression
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: invocation_expression
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.invocation_expression.InvocationExpression`
+            - Java class 'com.ansys.medini.metamodel.sysml.InvocationExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> InvocationExpression</api/ansys/sam/sysml2/meta_model/invocation_expression/InvocationExpression>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated invocation expression class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

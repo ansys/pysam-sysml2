@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`MergeNode`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.merge_node.MergeNode(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.control_node.ControlNode`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.MergeNode'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.merge_node import MergeNode
+
+
+
+
+

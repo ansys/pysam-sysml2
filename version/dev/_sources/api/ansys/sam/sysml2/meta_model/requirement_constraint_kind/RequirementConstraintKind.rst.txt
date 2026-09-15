@@ -1,0 +1,87 @@
+
+
+
+
+
+
+:class:`RequirementConstraintKind`
+==================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.requirement_constraint_kind.RequirementConstraintKind
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.RequirementConstraintKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: RequirementConstraintKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~ASSUMPTION`
+            - 
+          * - :py:attr:`~REQUIREMENT`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.requirement_constraint_kind import RequirementConstraintKind
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: ASSUMPTION
+   :value: 'assumption'
+
+
+.. py:attribute:: REQUIREMENT
+   :value: 'requirement'
+
+
+
+
+
+

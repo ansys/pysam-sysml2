@@ -1,0 +1,1067 @@
+
+
+
+
+
+
+:class:`Type`
+=============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.type_.Type(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.namespace.Namespace`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Type'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Type
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~base_type`
+            - Get the base type property.
+          * - :py:attr:`~differencing_type`
+            - Get the differencing type property.
+          * - :py:attr:`~directed_feature`
+            - Get the directed feature property.
+          * - :py:attr:`~end_feature`
+            - Get the end feature property.
+          * - :py:attr:`~feature`
+            - Get the feature property.
+          * - :py:attr:`~feature_exclude_implied`
+            - Get the feature exclude implied property.
+          * - :py:attr:`~feature_membership`
+            - Get the feature membership property.
+          * - :py:attr:`~inherited_feature`
+            - Get the inherited feature property.
+          * - :py:attr:`~inherited_feature_exclude_implicit`
+            - Get the inherited feature exclude implicit property.
+          * - :py:attr:`~inherited_membership`
+            - Get the inherited membership property.
+          * - :py:attr:`~inherited_membership_exclude_implied`
+            - Get the inherited membership exclude implied property.
+          * - :py:attr:`~input`
+            - Get the input property.
+          * - :py:attr:`~intersecting_type`
+            - Get the intersecting type property.
+          * - :py:attr:`~multiplicity`
+            - Get the multiplicity property.
+          * - :py:attr:`~output`
+            - Get the output property.
+          * - :py:attr:`~owned_conjugator`
+            - Get the owned conjugator property.
+          * - :py:attr:`~owned_differencing`
+            - Get the owned differencing property.
+          * - :py:attr:`~owned_disjoining`
+            - Get the owned disjoining property.
+          * - :py:attr:`~owned_end_feature`
+            - Get the owned end feature property.
+          * - :py:attr:`~owned_feature`
+            - Get the owned feature property.
+          * - :py:attr:`~owned_feature_membership`
+            - Get the owned feature membership property.
+          * - :py:attr:`~owned_intersecting`
+            - Get the owned intersecting property.
+          * - :py:attr:`~owned_specialization`
+            - Get the owned specialization property.
+          * - :py:attr:`~owned_specialization_exclude_implied`
+            - Get the owned specialization exclude implied property.
+          * - :py:attr:`~owned_unioning`
+            - Get the owned unioning property.
+          * - :py:attr:`~unioning_type`
+            - Get the unioning type property.
+          * - :py:attr:`~compatible_with`
+            - Get the compatible with property.
+          * - :py:attr:`~is_abstract`
+            - Get the is abstract property.
+          * - :py:attr:`~is_conjugated`
+            - Get the is conjugated property.
+          * - :py:attr:`~is_sufficient`
+            - Get the is sufficient property.
+          * - :py:attr:`~set_is_abstract`
+            - Get the set is abstract property.
+          * - :py:attr:`~set_is_sufficient`
+            - Get the set is sufficient property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.type_ import Type
+
+Property detail
+---------------
+
+.. py:property:: base_type
+   :type: str
+
+
+   
+   Get the base type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property base type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: differencing_type
+   :type: list[Type]
+
+
+   
+   Get the differencing type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Type"]
+           Value of property differencing type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: directed_feature
+   :type: list[Feature]
+
+
+   
+   Get the directed feature property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property directed feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: end_feature
+   :type: list[Feature]
+
+
+   
+   Get the end feature property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property end feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: feature
+   :type: list[Feature]
+
+
+   
+   Get the feature property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: feature_exclude_implied
+   :type: list[Feature]
+
+
+   
+   Get the feature exclude implied property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property feature exclude implied.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: feature_membership
+   :type: list[FeatureMembership]
+
+
+   
+   Get the feature membership property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["FeatureMembership"]
+           Value of property feature membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inherited_feature
+   :type: list[Feature]
+
+
+   
+   Get the inherited feature property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property inherited feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inherited_feature_exclude_implicit
+   :type: list[Feature]
+
+
+   
+   Get the inherited feature exclude implicit property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property inherited feature exclude implicit.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inherited_membership
+   :type: list[Membership]
+
+
+   
+   Get the inherited membership property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Membership"]
+           Value of property inherited membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inherited_membership_exclude_implied
+   :type: list[Membership]
+
+
+   
+   Get the inherited membership exclude implied property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Membership"]
+           Value of property inherited membership exclude implied.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: input
+   :type: list[Feature]
+
+
+   
+   Get the input property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property input.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: intersecting_type
+   :type: list[Type]
+
+
+   
+   Get the intersecting type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Type"]
+           Value of property intersecting type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: multiplicity
+   :type: Multiplicity
+
+
+   
+   Get the multiplicity property.
+
+
+
+
+
+   :Returns:
+
+       "Multiplicity"
+           Value of property multiplicity.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: output
+   :type: list[Feature]
+
+
+   
+   Get the output property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property output.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_conjugator
+   :type: Conjugation
+
+
+   
+   Get the owned conjugator property.
+
+
+
+
+
+   :Returns:
+
+       "Conjugation"
+           Value of property owned conjugator.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_differencing
+   :type: list[Differencing]
+
+
+   
+   Get the owned differencing property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Differencing"]
+           Value of property owned differencing.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_disjoining
+   :type: list[Disjoining]
+
+
+   
+   Get the owned disjoining property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Disjoining"]
+           Value of property owned disjoining.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_end_feature
+   :type: list[Feature]
+
+
+   
+   Get the owned end feature property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property owned end feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_feature
+   :type: list[Feature]
+
+
+   
+   Get the owned feature property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property owned feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_feature_membership
+   :type: list[FeatureMembership]
+
+
+   
+   Get the owned feature membership property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["FeatureMembership"]
+           Value of property owned feature membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_intersecting
+   :type: list[Intersecting]
+
+
+   
+   Get the owned intersecting property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Intersecting"]
+           Value of property owned intersecting.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_specialization
+   :type: list[Specialization]
+
+
+   
+   Get the owned specialization property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Specialization"]
+           Value of property owned specialization.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_specialization_exclude_implied
+   :type: list[Specialization]
+
+
+   
+   Get the owned specialization exclude implied property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Specialization"]
+           Value of property owned specialization exclude implied.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_unioning
+   :type: list[Unioning]
+
+
+   
+   Get the owned unioning property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Unioning"]
+           Value of property owned unioning.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: unioning_type
+   :type: list[Type]
+
+
+   
+   Get the unioning type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Type"]
+           Value of property unioning type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: compatible_with
+   :type: bool
+
+
+   
+   Get the compatible with property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property compatible with.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_abstract
+   :type: bool
+
+
+   
+   Get the is abstract property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is abstract.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_conjugated
+   :type: bool
+
+
+   
+   Get the is conjugated property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is conjugated.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_sufficient
+   :type: bool
+
+
+   
+   Get the is sufficient property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is sufficient.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_abstract
+   :type: bool
+
+
+   
+   Get the set is abstract property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is abstract.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_sufficient
+   :type: bool
+
+
+   
+   Get the set is sufficient property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is sufficient.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

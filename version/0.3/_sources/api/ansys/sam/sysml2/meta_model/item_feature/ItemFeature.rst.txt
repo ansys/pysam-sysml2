@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ItemFeature`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.item_feature.ItemFeature(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature.Feature`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ItemFeature'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.item_feature import ItemFeature
+
+
+
+
+

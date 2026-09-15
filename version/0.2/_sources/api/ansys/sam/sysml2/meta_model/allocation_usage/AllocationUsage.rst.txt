@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`AllocationUsage`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.allocation_usage.AllocationUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connection_usage.ConnectionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AllocationUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AllocationUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~allocation_definition`
+            - Get the allocation definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.allocation_usage import AllocationUsage
+
+Property detail
+---------------
+
+.. py:property:: allocation_definition
+   :type: List[AllocationDefinition]
+
+
+   
+   Get the allocation definition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["AllocationDefinition"]
+           Value of property allocation definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

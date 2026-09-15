@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``project_impl.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.builder.classes.project_impl
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: project_impl
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.classes.project_impl.ProjectImpl`
+            - Provides a private class for project building.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ProjectImpl</api/ansys/sam/sysml2/builder/classes/project_impl/ProjectImpl>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Private implementation for a project.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

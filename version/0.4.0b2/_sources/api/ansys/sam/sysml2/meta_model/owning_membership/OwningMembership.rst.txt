@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`OwningMembership`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.owning_membership.OwningMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.membership.Membership`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.OwningMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: OwningMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_member_element`
+            - Get the owned member element property.
+          * - :py:attr:`~owned_member_element_id`
+            - Get the owned member element id property.
+          * - :py:attr:`~owned_member_name`
+            - Get the owned member name property.
+          * - :py:attr:`~owned_member_short_name`
+            - Get the owned member short name property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.owning_membership import OwningMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_member_element
+   :type: Element
+
+
+   
+   Get the owned member element property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property owned member element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_member_element_id
+   :type: str
+
+
+   
+   Get the owned member element id property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property owned member element id.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_member_name
+   :type: str
+
+
+   
+   Get the owned member name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property owned member name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_member_short_name
+   :type: str
+
+
+   
+   Get the owned member short name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property owned member short name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

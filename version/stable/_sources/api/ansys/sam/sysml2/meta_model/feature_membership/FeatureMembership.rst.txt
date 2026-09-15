@@ -1,0 +1,230 @@
+
+
+
+
+
+
+:class:`FeatureMembership`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.membership.Membership`, :py:obj:`ansys.sam.sysml2.meta_model.type_featuring.TypeFeaturing`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.FeatureMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owning_type`
+            - Get the owning type property.
+          * - :py:attr:`~member_feature`
+            - Get the member feature property.
+          * - :py:attr:`~owned_member_feature`
+            - Get the owned member feature property.
+          * - :py:attr:`~direction`
+            - Get the direction property.
+          * - :py:attr:`~is_composite`
+            - Get the is composite property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature_membership import FeatureMembership
+
+Property detail
+---------------
+
+.. py:property:: owning_type
+   :type: Type
+
+
+   
+   Get the owning type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property owning type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: member_feature
+   :type: Feature
+
+
+   
+   Get the member feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property member feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_member_feature
+   :type: Feature
+
+
+   
+   Get the owned member feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property owned member feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: direction
+   :type: FeatureDirectionKind
+
+
+   
+   Get the direction property.
+
+
+
+
+
+   :Returns:
+
+       "FeatureDirectionKind"
+           Value of property direction.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_composite
+   :type: bool
+
+
+   
+   Get the is composite property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is composite.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

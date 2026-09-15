@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`SuccessionFlowUsage`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.succession_flow_usage.SuccessionFlowUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.flow_usage.FlowUsage`, :py:obj:`ansys.sam.sysml2.meta_model.succession_flow.SuccessionFlow`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.SuccessionFlowUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.succession_flow_usage import SuccessionFlowUsage
+
+
+
+
+

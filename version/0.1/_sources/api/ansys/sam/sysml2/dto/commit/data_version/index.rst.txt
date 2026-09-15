@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``data_version.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.dto.commit.data_version
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: data_version
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.commit.data_version.DataVersion`
+            - Edits or creates a SysML element.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> DataVersion</api/ansys/sam/sysml2/dto/commit/data_version/DataVersion>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Data version module.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

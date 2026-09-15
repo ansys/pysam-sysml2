@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``scripting_project_impl.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.builder.classes.scripting_project_impl
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: scripting_project_impl
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.classes.scripting_project_impl.ScriptingProjectImpl`
+            - Provides a private class for scripting project building.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ScriptingProjectImpl</api/ansys/sam/sysml2/builder/classes/scripting_project_impl/ScriptingProjectImpl>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Private implementation for a scripting project.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

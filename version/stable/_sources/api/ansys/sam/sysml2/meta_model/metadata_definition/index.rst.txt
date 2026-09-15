@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``metadata_definition.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.metadata_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: metadata_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.metadata_definition.MetadataDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.MetadataDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> MetadataDefinition</api/ansys/sam/sysml2/meta_model/metadata_definition/MetadataDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated metadata definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

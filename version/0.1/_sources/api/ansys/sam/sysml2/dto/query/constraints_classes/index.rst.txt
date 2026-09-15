@@ -1,0 +1,94 @@
+
+
+
+
+
+
+The ``constraints_classes.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.dto.query.constraints_classes
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: constraints_classes
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.constraints_classes.Constraint`
+            - Provides the constraint interface.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.constraints_classes.PrimitiveConstraint`
+            - Provides a primitive constraint for a simple query constraint.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.constraints_classes.CompositeConstraint`
+            - Provides a composite constraint for multiple query constraints.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Constraint</api/ansys/sam/sysml2/dto/query/constraints_classes/Constraint>
+    <span class="nf nf-cod-symbol_class"></span> PrimitiveConstraint</api/ansys/sam/sysml2/dto/query/constraints_classes/PrimitiveConstraint>
+    <span class="nf nf-cod-symbol_class"></span> CompositeConstraint</api/ansys/sam/sysml2/dto/query/constraints_classes/CompositeConstraint>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Constraint interface for SysML queries.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+
+
+
+
+
+
+:class:`SamDiagramBuilder`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.builder.sam_diagram_builder.SamDiagramBuilder(connector: ansys.sam.sysml2.diagrams.api.SamApiConnector)
+
+   
+   Provides the diagram builder with integrated extraction capabilities.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SamDiagramBuilder
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~extract_and_build_diagrams`
+            - Extract and build all diagrams from a project.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.builder.sam_diagram_builder import SamDiagramBuilder
+
+
+
+Method detail
+-------------
+
+.. py:method:: extract_and_build_diagrams(project: ansys.sam.sysml2.classes.project.Project) -> dict
+
+   
+   Extract and build all diagrams from a project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

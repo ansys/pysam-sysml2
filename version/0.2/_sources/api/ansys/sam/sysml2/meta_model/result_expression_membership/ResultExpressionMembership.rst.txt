@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ResultExpressionMembership`
+===================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.result_expression_membership.ResultExpressionMembership(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ResultExpressionMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ResultExpressionMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_result_expression`
+            - Get the owned result expression property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.result_expression_membership import ResultExpressionMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_result_expression
+   :type: Expression
+
+
+   
+   Get the owned result expression property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property owned result expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

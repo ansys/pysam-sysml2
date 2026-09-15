@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`AnalysisCaseDefinition`
+===============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.analysis_case_definition.AnalysisCaseDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.case_definition.CaseDefinition`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AnalysisCaseDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AnalysisCaseDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~result_expression`
+            - Get the result expression property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.analysis_case_definition import AnalysisCaseDefinition
+
+Property detail
+---------------
+
+.. py:property:: result_expression
+   :type: Expression
+
+
+   
+   Get the result expression property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property result expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``constraint_definition.py`` module
+=======================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.constraint_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: constraint_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.constraint_definition.ConstraintDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.ConstraintDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ConstraintDefinition</api/ansys/sam/sysml2/meta_model/constraint_definition/ConstraintDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated constraint definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

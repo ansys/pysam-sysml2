@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Plane`
+==============
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.classes.plane.Plane(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.diagrams.classes.diagram_element.DiagramElement`
+
+
+   
+   Provides planes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.classes.plane import Plane
+
+
+
+
+

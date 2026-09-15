@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ConcernUsage`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.concern_usage.ConcernUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.e_object.EObject`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ConcernUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.concern_usage import ConcernUsage
+
+
+
+
+

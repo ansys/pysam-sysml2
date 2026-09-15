@@ -1,0 +1,108 @@
+
+
+
+
+
+
+:class:`Factory`
+================
+
+
+.. py:class:: ansys.sam.sysml2.tools.factory.Factory(project: ansys.sam.sysml2.classes.project.Project, conn: ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector)
+
+   
+   Provides the Python factory class for creating new SysML elements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Factory
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~create_element`
+            - Create a new element in the model and return it.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.factory import Factory
+
+
+
+Method detail
+-------------
+
+.. py:method:: create_element(element_type: str, **kwargs)
+
+   
+   Create a new element in the model and return it.
+
+
+   :Parameters:
+
+       **element_type** : :class:`python:str`
+           Type of the element.
+
+       **kwargs** : :obj:`Any`
+           Other parameters of the new element.
+
+
+
+   :Returns:
+
+       :obj:`SysMLElement`
+           Created element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

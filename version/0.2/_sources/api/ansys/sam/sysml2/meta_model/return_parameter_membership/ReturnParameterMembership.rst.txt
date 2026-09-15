@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ReturnParameterMembership`
+==================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.return_parameter_membership.ReturnParameterMembership(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.parameter_membership.ParameterMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ReturnParameterMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.return_parameter_membership import ReturnParameterMembership
+
+
+
+
+

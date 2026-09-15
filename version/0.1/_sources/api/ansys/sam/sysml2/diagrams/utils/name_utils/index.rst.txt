@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``name_utils.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.diagrams.utils.name_utils
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: name_utils
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.utils.name_utils.NameUtils`
+            - Helps standardize element names.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> NameUtils</api/ansys/sam/sysml2/diagrams/utils/name_utils/NameUtils>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Name utilities class for the PySAM SysML2 diagram library.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

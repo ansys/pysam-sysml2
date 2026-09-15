@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ReferenceUsage`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.reference_usage.ReferenceUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.usage.Usage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ReferenceUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ReferenceUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~reference_type`
+            - Get the reference type property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.reference_usage import ReferenceUsage
+
+Property detail
+---------------
+
+.. py:property:: reference_type
+   :type: list[Classifier]
+
+
+   
+   Get the reference type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Classifier"]
+           Value of property reference type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

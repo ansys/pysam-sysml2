@@ -1,0 +1,265 @@
+
+
+
+
+
+
+:class:`ValueHelper`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.classes.value_helper.ValueHelper(prefix: str)
+
+   
+   Helper class for feature value resolve.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
+
+
+.. py:currentmodule:: ValueHelper
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~prefix`
+            - 
+
+
+   .. tab-item:: Static methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~is_value_capable`
+            - Return ``True`` if the element can carry a feature value (a Feature or descendant).
+          * - :py:attr:`~get_value_for_sysml_element`
+            - Get the value of the feature.
+          * - :py:attr:`~serialize`
+            - Render a value element (literal or operator expression) to its text form.
+          * - :py:attr:`~set_or_update_value`
+            - Create the commit to set or update the value of type ``value_type``.
+          * - :py:attr:`~escape_kerml_string`
+            - Escape a string for use inside a KerML string literal.
+          * - :py:attr:`~unescape_kerml_string`
+            - Decode KerML escapes; leave already-decoded strings (real \n/\r/\t) unchanged.
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.value_helper import ValueHelper
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: prefix
+
+
+
+Method detail
+-------------
+
+.. py:method:: is_value_capable(element) -> bool
+   :staticmethod:
+
+
+   
+   Return ``True`` if the element can carry a feature value (a Feature or descendant).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_value_for_sysml_element(element)
+   :staticmethod:
+
+
+   
+   Get the value of the feature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: serialize(value)
+   :staticmethod:
+
+
+   
+   Render a value element (literal or operator expression) to its text form.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: set_or_update_value(element, value_type: type, new_value: str | int | float | bool)
+   :staticmethod:
+
+
+   
+   Create the commit to set or update the value of type ``value_type``.
+
+
+   :Parameters:
+
+       **element** : :obj:`Element`
+           Element whose feature value is updated.
+
+       **value_type** : :obj:`type`
+           Value type of the new value.
+
+       **new_value** : :class:`python:str` | :class:`python:int` | :class:`python:float` | :ref:`bool <python:bltin-boolean-values>`
+           New value to update to.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: escape_kerml_string(text: str) -> str
+   :staticmethod:
+
+
+   
+   Escape a string for use inside a KerML string literal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: unescape_kerml_string(text: str) -> str
+   :staticmethod:
+
+
+   
+   Decode KerML escapes; leave already-decoded strings (real \n/\r/\t) unchanged.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

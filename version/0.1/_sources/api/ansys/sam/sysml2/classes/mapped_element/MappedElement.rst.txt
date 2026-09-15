@@ -1,0 +1,122 @@
+
+
+
+
+
+
+:class:`MappedElement`
+======================
+
+
+.. py:class:: ansys.sam.sysml2.classes.mapped_element.MappedElement(element: ansys.sam.sysml2.classes.sysml_element.SysMLElement, unresolved_fields: List[ansys.sam.sysml2.classes.unresolved_field.UnresolvedField])
+
+   
+   Provides a mapped element class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: MappedElement
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_element`
+            - Get the mapped element.
+          * - :py:attr:`~get_unresolved_fields`
+            - Get a list of all unresolved fields.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.mapped_element import MappedElement
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_element() -> ansys.sam.sysml2.classes.sysml_element.SysMLElement
+
+   
+   Get the mapped element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_unresolved_fields() -> List[ansys.sam.sysml2.classes.unresolved_field.UnresolvedField]
+
+   
+   Get a list of all unresolved fields.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

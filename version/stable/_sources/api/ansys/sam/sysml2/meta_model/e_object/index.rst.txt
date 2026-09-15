@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``e_object.py`` module
+==========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.e_object
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: e_object
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.e_object.EObject`
+            - Base class of the metamodel.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> EObject</api/ansys/sam/sysml2/meta_model/e_object/EObject>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Base class of the metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

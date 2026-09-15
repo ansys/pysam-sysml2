@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`Specialization`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.specialization.Specialization(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Specialization'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Specialization
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owning_type`
+            - Get the owning type property.
+          * - :py:attr:`~specific`
+            - Get the specific property.
+          * - :py:attr:`~general`
+            - Get the general property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.specialization import Specialization
+
+Property detail
+---------------
+
+.. py:property:: owning_type
+   :type: Type
+
+
+   
+   Get the owning type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property owning type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: specific
+   :type: None
+
+
+   
+   Get the specific property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property specific.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: general
+   :type: None
+
+
+   
+   Get the general property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property general.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

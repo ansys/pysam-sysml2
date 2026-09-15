@@ -1,0 +1,328 @@
+
+
+
+
+
+
+:class:`AnsysSysML2Project`
+===========================
+
+
+.. py:class:: ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project(server_url: str, token: str, organization_id: str, project_id: str, use_ssl: bool = True)
+
+   Bases: :py:obj:`ansys.sam.sysml2.builder.classes.project_impl.ProjectImpl`
+
+
+   
+   Provides a complete Ansys SysML2 project implementation with integrated capabilities.
+
+
+   :Parameters:
+
+       **server_url** : :class:`python:str`
+           Base URL of the SysML2 server.
+
+       **token** : :class:`python:str`
+           Authentication token for API access.
+
+       **organization_id** : :class:`python:str`
+           Unique ID of the organization.
+
+       **project_id** : :class:`python:str`
+           Unique ID of the project to manage.
+
+       **use_ssl** : :ref:`bool <python:bltin-boolean-values>`, default: :data:`python:True`
+           Whether to use SSL/TLS for connections.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AnsysSysML2Project
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~download_diagram`
+            - Download a single diagram and save it to disk.
+          * - :py:attr:`~download_all_diagrams`
+            - Download all diagrams as a ZIP archive.
+          * - :py:attr:`~is_diagrams_available`
+            - Check if diagram functionality is available for this project.
+          * - :py:attr:`~get_project_diagrams_info`
+            - Get information about available diagrams in the project.
+          * - :py:attr:`~get_single_diagram_info`
+            - Get information about a diagram in the project.
+          * - :py:attr:`~create_element`
+            - Create a new SysML element in the project.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.ansys_sysml2_project import AnsysSysML2Project
+
+
+
+Method detail
+-------------
+
+.. py:method:: download_diagram(diagram_id: str, path: Union[str, pathlib.Path], file_format: str = 'svg', filename: str = '') -> str
+
+   
+   Download a single diagram and save it to disk.
+
+
+   :Parameters:
+
+       **diagram_id** : :class:`python:str`
+           Diagram ID to download.
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Destination file or directory.
+
+       **file_format** : :class:`python:str`
+           Format of the diagram (``'svg'``, ``'png'``, or ``'jpeg'``).
+
+       **filename** : :class:`python:str`, default: ""
+           Name of the file. The default is the diagram ID.
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Path of the file created.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+       :obj:`DiagramConnectorException`
+           If the download fails or HTTP response is not 200.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: download_all_diagrams(path: Union[str, pathlib.Path], file_format: str = 'svg', filename: str = '') -> str
+
+   
+   Download all diagrams as a ZIP archive.
+
+
+   :Parameters:
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Destination directory or file path for the ZIP archive.
+
+       **file_format** : :class:`python:str`, default: ``'svg'``
+           Format of the diagrams (``'png'``, ``'jpeg'``, or ``'svg'``).
+
+       **filename** : :class:`python:str`, default: ""
+           Name of the file. The default is ``"{Project Name}_{Image Extension}_diagrams.zip"``.
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Path to the saved ZIP archive.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+       :obj:`DiagramConnectorException`
+           If the download fails or HTTP response is not 200.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: is_diagrams_available() -> bool
+
+   
+   Check if diagram functionality is available for this project.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           ``True`` if diagrams can be downloaded, ``False`` otherwise.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_project_diagrams_info() -> dict
+
+   
+   Get information about available diagrams in the project.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Dictionary containing diagram information.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_single_diagram_info(diagram_id: str) -> dict
+
+   
+   Get information about a diagram in the project.
+
+
+   :Parameters:
+
+       **diagram_id: str**
+           ID of the diagram.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Dictionary containing diagram information.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: create_element(element_type: str, **kwargs) -> ansys.sam.sysml2.classes.sysml_element.SysMLElement
+
+   
+   Create a new SysML element in the project.
+
+
+   :Parameters:
+
+       **element_type** : :class:`python:str`
+           Type of the SysML element to create.
+
+       **\*\*kwargs**
+           Additional parameters for element creation.
+
+
+
+   :Returns:
+
+       :obj:`SysMLElement`
+           Newly created SysML element instance.
+
+
+
+
+   :Raises:
+
+       :obj:`ValueError`
+           If element type is not supported or required parameters are missing.
+
+       :obj:`ConnectionError`
+           If unable to commit the new element to the server.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

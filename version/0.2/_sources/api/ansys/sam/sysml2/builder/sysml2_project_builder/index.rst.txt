@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sysml2_project_builder.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.builder.sysml2_project_builder
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sysml2_project_builder
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.sysml2_project_builder.SysML2ProjectBuilder`
+            - Provides the SysML2 project builder.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SysML2ProjectBuilder</api/ansys/sam/sysml2/builder/sysml2_project_builder/SysML2ProjectBuilder>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Project builder.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

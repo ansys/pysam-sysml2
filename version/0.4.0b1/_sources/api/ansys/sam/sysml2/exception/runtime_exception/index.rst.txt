@@ -1,0 +1,78 @@
+
+
+
+
+
+
+The ``runtime_exception.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.exception.runtime_exception
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: runtime_exception
+.. tab-set::
+
+
+
+
+
+
+    .. tab-item:: Exceptions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.runtime_exception.UnsupportedValueExpression`
+            - Exception when the requested expression is not value [unit].
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-lightning_bolt"></span> UnsupportedValueExpression</api/ansys/sam/sysml2/exception/runtime_exception/UnsupportedValueExpression>
+
+
+
+
+
+
+
+Description
+-----------
+
+Runtime exception.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

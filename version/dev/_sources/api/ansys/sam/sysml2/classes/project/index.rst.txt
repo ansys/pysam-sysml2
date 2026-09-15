@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``project.py`` module
+=========================
+
+.. py:module:: ansys.sam.sysml2.classes.project
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: project
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.project.Project`
+            - Provides the project interface for users.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Project</api/ansys/sam/sysml2/classes/project/Project>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Project Interface for users.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+
+
+
+
+
+
+The ``mapper`` package
+==========================
+
+.. py:module:: ansys.sam.sysml2.builder.mapper
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: mapper
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.mapper.mapper`
+            - Generic interface for mappers.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.mapper.scripting_mapper`
+            - JSON mapper class.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.mapper.sysml_mapper`
+            - SysML specific mapper for SysML version.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> mapper</api/ansys/sam/sysml2/builder/mapper/mapper/index>
+    <span class="nf nf-fa-file"></span> scripting_mapper</api/ansys/sam/sysml2/builder/mapper/scripting_mapper/index>
+    <span class="nf nf-fa-file"></span> sysml_mapper</api/ansys/sam/sysml2/builder/mapper/sysml_mapper/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Mapper module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

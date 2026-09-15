@@ -1,0 +1,115 @@
+
+
+
+
+
+
+:class:`Query`
+==============
+
+
+.. py:class:: ansys.sam.sysml2.dto.query.query_class.Query
+
+   
+   Provides a data class for a query.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Query
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~to_json`
+            - Get a JSON representation of the class.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~where`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.query.query_class import Query
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: where
+   :type:  ansys.sam.sysml2.dto.query.constraints_classes.Constraint
+   :value: None
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: to_json() -> str
+
+   
+   Get a JSON representation of the class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

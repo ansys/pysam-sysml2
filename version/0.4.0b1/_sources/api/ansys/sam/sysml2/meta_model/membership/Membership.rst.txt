@@ -1,0 +1,292 @@
+
+
+
+
+
+
+:class:`Membership`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.membership.Membership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Membership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Membership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~member_element`
+            - Get the member element property.
+          * - :py:attr:`~member_element_id`
+            - Get the member element id property.
+          * - :py:attr:`~member_name`
+            - Get the member name property.
+          * - :py:attr:`~member_short_name`
+            - Get the member short name property.
+          * - :py:attr:`~membership_owning_namespace`
+            - Get the membership owning namespace property.
+          * - :py:attr:`~visibility`
+            - Get the visibility property.
+          * - :py:attr:`~distinguishable_from`
+            - Get the distinguishable from property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.membership import Membership
+
+Property detail
+---------------
+
+.. py:property:: member_element
+   :type: Element
+
+
+   
+   Get the member element property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property member element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: member_element_id
+   :type: str
+
+
+   
+   Get the member element id property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property member element id.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: member_name
+   :type: str
+
+
+   
+   Get the member name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property member name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: member_short_name
+   :type: str
+
+
+   
+   Get the member short name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property member short name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: membership_owning_namespace
+   :type: Namespace
+
+
+   
+   Get the membership owning namespace property.
+
+
+
+
+
+   :Returns:
+
+       "Namespace"
+           Value of property membership owning namespace.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: visibility
+   :type: VisibilityKind
+
+
+   
+   Get the visibility property.
+
+
+
+
+
+   :Returns:
+
+       "VisibilityKind"
+           Value of property visibility.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: distinguishable_from
+   :type: bool
+
+
+   
+   Get the distinguishable from property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property distinguishable from.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

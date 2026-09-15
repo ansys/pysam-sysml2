@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`AttributeUsage`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.attribute_usage.AttributeUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.usage.Usage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AttributeUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AttributeUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~attribute_definition`
+            - Get the attribute definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.attribute_usage import AttributeUsage
+
+Property detail
+---------------
+
+.. py:property:: attribute_definition
+   :type: List[DataType]
+
+
+   
+   Get the attribute definition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["DataType"]
+           Value of property attribute definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

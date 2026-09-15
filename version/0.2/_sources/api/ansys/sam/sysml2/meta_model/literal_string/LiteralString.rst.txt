@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`LiteralString`
+======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.literal_string.LiteralString(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.literal_expression.LiteralExpression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.LiteralString'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: LiteralString
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value`
+            - Get the value property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.literal_string import LiteralString
+
+Property detail
+---------------
+
+.. py:property:: value
+   :type: str
+
+
+   
+   Get the value property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
