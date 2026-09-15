@@ -15,3 +15,21 @@ updates:
       default-days: 10 # Fallback cooldown if no specific rule applies
     labels:
       - "maintenance"
+
+  - package-ecosystem: "pre-commit"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7
+      exclude:
+        - "ansys/pre-commit-hooks"
+    labels:
+      - "maintenance"
+      - "dependencies"
+    commit-message:
+      prefix: "build(pre-commit)"
+    groups:
+      pre-commit:
+        patterns:
+          - "*"
