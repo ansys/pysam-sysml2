@@ -23,6 +23,9 @@
 """Weight bike static example for PySAM SysML2."""
 
 # Import connector and model manager
+from example_identifiers import BIKE_PROJECT_ID, SAM_ORGANIZATION_ID, SAM_SERVER_URL, SAM_TOKEN
+
+# See example_identifiers.py.template for credentials and project IDs.
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
@@ -34,15 +37,15 @@ requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 # Create your connector for the SAM Server
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="<SAM Server URL>",  # Your SAM server base URL
-    organization_id="<Orga ID>",  # The organization ID
-    token="<Token>",  # Your authorization token
+    server_url=SAM_SERVER_URL,
+    organization_id=SAM_ORGANIZATION_ID,
+    token=SAM_TOKEN,
     use_ssl=False,  # If the server hasn't a valid SSL
 )
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-my_bike_project = project_manager.get_sysml_project("<Bike Project ID>")
+my_bike_project = project_manager.get_sysml_project(BIKE_PROJECT_ID)
 
 bike = my_bike_project.get_root_package().get("Structure").get("Bike")
 

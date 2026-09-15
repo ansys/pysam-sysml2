@@ -22,6 +22,9 @@
 
 """Computer cost static example for PySAM SysML2."""
 
+from example_identifiers import COMPUTER_PROJECT_ID, SAM_ORGANIZATION_ID, SAM_SERVER_URL, SAM_TOKEN
+
+# See example_identifiers.py.template for credentials and project IDs.
 import requests
 from urllib3.exceptions import InsecureRequestWarning
 
@@ -36,17 +39,15 @@ from ansys.sam.sysml2.tools import SysMLTools
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 ansyssysml2apiconnector = AnsysSysML2APIConnector(
-    server_url="<SAM Server URL>",  # Your SAM server base URL
-    organization_id="<Orga ID>",  # The organization ID
-    token="<Token>",  # Your authorization token
+    server_url=SAM_SERVER_URL,
+    organization_id=SAM_ORGANIZATION_ID,
+    token=SAM_TOKEN,
     use_ssl=False,  # If the server hasn't a valid SSL
 )
 
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
-project = project_manager.get_sysml_project(
-    "<Computer Project ID>"
-)  # You can find your project ID in the URL of the editor.
+project = project_manager.get_sysml_project(COMPUTER_PROJECT_ID)
 
 real_systems: Package = project.get_root_package().get("RealSystems")
 
