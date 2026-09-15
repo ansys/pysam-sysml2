@@ -69,8 +69,8 @@ au.owner
 ### Now
 
 ```python
-au.owning_membership   # real structural container
-au.owning_namespace    # semantic container, close to the former au.owner
+au.owning_membership  # real structural container
+au.owning_namespace  # semantic container, close to the former au.owner
 ```
 
 ### What to do
@@ -375,10 +375,12 @@ In the new metamodel, the writable object is a `Documentation` element (with a `
 ```python
 # scripting
 req._text = ["The bicycle shall not exceed 15 kg."]
-req._text.extend([
-    "Measured under standard conditions.",
-    "Excludes accessories.",
-])
+req._text.extend(
+    [
+        "Measured under standard conditions.",
+        "Excludes accessories.",
+    ]
+)
 
 # SysML
 req.text = ["The bicycle shall not exceed 15 kg."]
@@ -414,12 +416,16 @@ If the `RequirementUsage` already exists and already has a `Documentation`, **ed
 
 ```python
 # scripting
-req._documentation[0]._body = (
+req._documentation[
+    0
+]._body = (
     "The bicycle shall not exceed 15 kg.\nMeasured under ISO conditions.\nExcludes accessories."
 )
 
 # SysML
-req.documentation[0].body = (
+req.documentation[
+    0
+].body = (
     "The bicycle shall not exceed 15 kg.\nMeasured under ISO conditions.\nExcludes accessories."
 )
 ```
@@ -537,7 +543,7 @@ Because dynamic elements inherit from the generated classes, standard type check
 ```python
 from ansys.sam.sysml2.meta_model import PartUsage
 
-isinstance(element, PartUsage)   # True in both static and dynamic
+isinstance(element, PartUsage)  # True in both static and dynamic
 ```
 
 ### Notation: `_camelCase` and snake_case
