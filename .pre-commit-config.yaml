@@ -1,7 +1,7 @@
 ci:
   autofix_commit_msg: 'chore: auto fixes from pre-commit hooks'
   autoupdate_commit_msg: 'chore: pre-commit automatic update'
-  autoupdate_schedule: weekly
+  autoupdate_schedule: quarterly
 
 repos:
   - repo: https://github.com/ansys/pre-commit-hooks
@@ -18,7 +18,7 @@ repos:
           )$
 
   - repo: https://github.com/numpy/numpydoc
-    rev: v1.10.0
+    rev: 16a20aad58d5532fb12c2a87af0eb4ea290bacb4  # frozen: v1.10.0
     hooks:
       - id: numpydoc-validation
         files: \.py$
@@ -30,13 +30,13 @@ repos:
           )
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.15.4
+    rev: a27a2e47c7751b639d2b5badf0ef6ff11fee893f  # frozen: v0.15.4
     hooks:
       - id: ruff-check
       - id: ruff-format
 
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.4.1
+    rev: 57b21406f092110c18776e39b0bda50d37c945c8  # frozen: v2.4.3
     hooks:
       - id: codespell
         args:
@@ -49,19 +49,18 @@ repos:
           )
 
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v6.0.0
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
     hooks:
       - id: check-merge-conflict
       - id: trailing-whitespace
       - id: check-yaml
-      - id: trailing-whitespace
 
   - repo: https://github.com/python-jsonschema/check-jsonschema
-    rev: 0.37.0
+    rev: 12e63946db2c5cfcc9030fac21c3883ba88c6ed8  # frozen: 0.38.0
     hooks:
       - id: check-github-workflows
 
   - repo: https://github.com/pre-commit-ci/pre-commit-ci-config
-    rev: v1.6.1
+    rev: 500543de231a91e6157db630075d70320709b834  # frozen: v1.6.1
     hooks:
       - id: check-pre-commit-ci-config
