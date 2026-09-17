@@ -107,7 +107,7 @@ jobs:
     needs: [doc-style]
     steps:
       - name: "Run Ansys documentation building action"
-        uses: ansys/actions/doc-build@3ad3b285bd9b67045477dafc7f9865a3aa39f692 # v11.0.6
+        uses: ansys/actions/doc-build@7410037bfb276c79ae91eb3617b9f5d2876f0c94 # v11.0.8
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
 
