@@ -30,6 +30,7 @@ from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
 from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 TYPE_KEY = "@type"
 
@@ -55,8 +56,8 @@ class SysMLMapper(Mapper):
         mapped_element : Element
             Existing element.
         resolve_libraries : bool, default: False
-            When ``True``, keep library elements' unresolved references so their contents
-            are resolved and mapped.
+            When ``True``, keep standard ``LibraryPackage`` unresolved references so their
+            contents are resolved and mapped.
 
         Returns
         -------
@@ -88,8 +89,8 @@ class SysMLMapper(Mapper):
         element : Element
             Existing element.
         resolve_libraries : bool, default: False
-            When ``True``, keep library elements' unresolved references so their contents
-            are resolved and mapped.
+            When ``True``, keep standard ``LibraryPackage`` unresolved references so their
+            contents are resolved and mapped.
 
         Returns
         -------
@@ -103,7 +104,11 @@ class SysMLMapper(Mapper):
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        if not resolve_libraries and getattr(element, "is_library_element", False):
+        if (
+            not resolve_libraries
+            and SysMLTools.isinstance(element, "LibraryPackage")
+            and getattr(element, "is_standard", False)
+        ):
             unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 

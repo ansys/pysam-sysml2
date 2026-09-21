@@ -70,8 +70,9 @@ class Mapper(ABC):
         mapped_element : Element
             Existing element.
         resolve_libraries : bool, default: False
-            When ``True``, library elements keep their unresolved references so their
-            contents are resolved and mapped; otherwise those references are dropped.
+            When ``True``, standard ``LibraryPackage`` elements keep their unresolved
+            references so their contents are resolved and mapped; otherwise those
+            references are dropped.
 
         Returns
         -------
