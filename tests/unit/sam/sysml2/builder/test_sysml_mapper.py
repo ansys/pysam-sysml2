@@ -159,3 +159,61 @@ class TestSysMLMapper:
         assert element.__class__.__name__ == "LiteralString"
         assert element.value == "try\\to"
         assert element.value.count("\\") == 1
+
+    def test_standard_library_package_drops_unresolved_fields(self, sysml_mapper: SysMLMapper):
+        """Standard LibraryPackage does not keep child references."""
+        data = {
+            "@id": "library_id",
+            "@type": "LibraryPackage",
+            "isLibraryElement": True,
+            "isStandard": True,
+            "ownedElement": [{"@id": "child_id"}],
+        }
+
+        mapped_element = sysml_mapper.map(data, None)
+
+        assert mapped_element.get_unresolved_fields() == []
+
+    def test_user_library_package_keeps_unresolved_fields(self, sysml_mapper: SysMLMapper):
+        """Non-standard LibraryPackage keeps child references."""
+        data = {
+            "@id": "library_id",
+            "@type": "LibraryPackage",
+            "isLibraryElement": True,
+            "isStandard": False,
+            "ownedElement": [{"@id": "child_id"}],
+        }
+
+        mapped_element = sysml_mapper.map(data, None)
+
+        unresolved_ids = [field.get_id() for field in mapped_element.get_unresolved_fields()]
+        assert "child_id" in unresolved_ids
+
+    def test_standard_library_package_keeps_fields_when_resolving(self, sysml_mapper: SysMLMapper):
+        """resolve_libraries keeps standard LibraryPackage child references."""
+        data = {
+            "@id": "library_id",
+            "@type": "LibraryPackage",
+            "isLibraryElement": True,
+            "isStandard": True,
+            "ownedElement": [{"@id": "child_id"}],
+        }
+
+        mapped_element = sysml_mapper.map(data, None, resolve_libraries=True)
+
+        unresolved_ids = [field.get_id() for field in mapped_element.get_unresolved_fields()]
+        assert "child_id" in unresolved_ids
+
+    def test_library_part_usage_keeps_unresolved_fields(self, sysml_mapper: SysMLMapper):
+        """User-library PartUsage keeps child references."""
+        data = {
+            "@id": "part_id",
+            "@type": "PartUsage",
+            "isLibraryElement": True,
+            "ownedElement": [{"@id": "child_id"}],
+        }
+
+        mapped_element = sysml_mapper.map(data, None)
+
+        unresolved_ids = [field.get_id() for field in mapped_element.get_unresolved_fields()]
+        assert "child_id" in unresolved_ids
