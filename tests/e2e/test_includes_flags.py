@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""E2E tests for client-side reconstitution when includes_derived is False."""
+"""E2E tests for client-side reconstitution when derived collections are reconstructed."""
 
 import pytest
 
@@ -37,7 +37,7 @@ class TestIncludesFlags:
 
     @pytest.mark.parametrize("kind", ["sysml", "scripting"])
     def test_bike_navigation_without_derived(self, connector, project_factory, kind):
-        """Navigate Structure.Bike with includes_derived=False and check reconstitution."""
+        """Navigate Structure.Bike with reconstructed derived collections."""
         project = project_factory(
             model="bike",
             kind=kind,
@@ -91,7 +91,7 @@ class TestIncludesFlags:
 
     @pytest.mark.parametrize("kind", ["sysml", "scripting"])
     def test_requirement_text_without_derived(self, connector, project_factory, kind):
-        """Read BikeWeightValuesRedefined text/documentation with includes_derived=False."""
+        """Read BikeWeightValuesRedefined text/documentation with reconstructed derived collections."""
         project = project_factory(
             model="bike",
             kind=kind,

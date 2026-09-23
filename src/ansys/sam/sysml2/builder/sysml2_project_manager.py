@@ -33,7 +33,7 @@ class _ProjectCacheKey(NamedTuple):
     """Cache key for a loaded project variant."""
 
     project_id: str
-    resolve_libraries: bool
+    resolve_standard_libraries: bool
     includes_derived: bool
     includes_inherited: bool
 
@@ -65,7 +65,7 @@ class SysML2ProjectManager:
     def get_sysml_project(
         self,
         project_id: str,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
         includes_derived: bool = True,
         includes_inherited: bool = True,
     ) -> Project:
@@ -76,9 +76,9 @@ class SysML2ProjectManager:
         ----------
         project_id : str
             ID of the project to load.
-        resolve_libraries : bool, default: False
-            When ``True``, library element contents are resolved and mapped so they can be
-            navigated. Only applied on first load; a cached project is returned as-is.
+        resolve_standard_libraries : bool, default: False
+            When ``True``, standard library element contents are resolved and mapped so they
+            can be navigated. Only applied on first load; a cached project is returned as-is.
         includes_derived : bool, default: True
             When ``True``, include derived properties from the API ``/elements`` response.
         includes_inherited : bool, default: True
@@ -90,13 +90,13 @@ class SysML2ProjectManager:
             The requested project, built from the API or returned from cache.
         """
         cache_key = self._project_cache_key(
-            project_id, resolve_libraries, includes_derived, includes_inherited
+            project_id, resolve_standard_libraries, includes_derived, includes_inherited
         )
         project = self._sysml_projects.get(cache_key)
         if project is None:
             project = SysML2ProjectBuilder(self._connector).build_sysml_project(
                 project_id,
-                resolve_libraries,
+                resolve_standard_libraries,
                 includes_derived,
                 includes_inherited,
             )
@@ -106,7 +106,7 @@ class SysML2ProjectManager:
     def get_scripting_project(
         self,
         project_id: str,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
         includes_derived: bool = True,
         includes_inherited: bool = True,
     ) -> Project:
@@ -117,9 +117,9 @@ class SysML2ProjectManager:
         ----------
         project_id : str
             ID of the project to load.
-        resolve_libraries : bool, default: False
-            When ``True``, library element contents are resolved and mapped so they can be
-            navigated. Only applied on first load; a cached project is returned as-is.
+        resolve_standard_libraries : bool, default: False
+            When ``True``, standard library element contents are resolved and mapped so they
+            can be navigated. Only applied on first load; a cached project is returned as-is.
         includes_derived : bool, default: True
             When ``True``, include derived properties from the API ``/elements`` response.
         includes_inherited : bool, default: True
@@ -131,13 +131,13 @@ class SysML2ProjectManager:
             The requested project, built from the API or returned from cache.
         """
         cache_key = self._project_cache_key(
-            project_id, resolve_libraries, includes_derived, includes_inherited
+            project_id, resolve_standard_libraries, includes_derived, includes_inherited
         )
         project = self._scripting_projects.get(cache_key)
         if project is None:
             project = SysML2ProjectBuilder(self._connector).build_scripting_project(
                 project_id,
-                resolve_libraries,
+                resolve_standard_libraries,
                 includes_derived,
                 includes_inherited,
             )
@@ -148,6 +148,9 @@ class SysML2ProjectManager:
         self,
         name: str,
         description: str = "Project description",
+        resolve_standard_libraries: bool = False,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
     ) -> Project:
         """
         Create a new project on the server and return it as a SysML Project.
@@ -158,6 +161,13 @@ class SysML2ProjectManager:
             Name of the project.
         description : str, default: ``"Project description"``
             Description of the project.
+        resolve_standard_libraries : bool, default: False
+            When ``True``, standard library element contents are resolved and mapped so they
+            can be navigated.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API ``/elements`` response.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features from the API response.
 
         Returns
         -------
@@ -166,12 +176,14 @@ class SysML2ProjectManager:
         """
         project_data = self._connector.create_project(name, description)
         project_id = project_data["@id"]
-        project = SysML2ProjectBuilder(self._connector).build_sysml_project(project_id)
-        cache_key = _ProjectCacheKey(
-            project_id=project_id,
-            resolve_libraries=False,
-            includes_derived=True,
-            includes_inherited=True,
+        project = SysML2ProjectBuilder(self._connector).build_sysml_project(
+            project_id,
+            resolve_standard_libraries,
+            includes_derived,
+            includes_inherited,
+        )
+        cache_key = self._project_cache_key(
+            project_id, resolve_standard_libraries, includes_derived, includes_inherited
         )
         self._sysml_projects[cache_key] = project
         return project
@@ -180,6 +192,9 @@ class SysML2ProjectManager:
         self,
         name: str,
         description: str = "Project description",
+        resolve_standard_libraries: bool = False,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
     ) -> Project:
         """
         Create a new project on the server and return it as a Scripting Project.
@@ -190,6 +205,13 @@ class SysML2ProjectManager:
             Name of the project.
         description : str, default: ``"Project description"``
             Description of the project.
+        resolve_standard_libraries : bool, default: False
+            When ``True``, standard library element contents are resolved and mapped so they
+            can be navigated.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API ``/elements`` response.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features from the API response.
 
         Returns
         -------
@@ -198,12 +220,14 @@ class SysML2ProjectManager:
         """
         project_data = self._connector.create_project(name, description)
         project_id = project_data["@id"]
-        project = SysML2ProjectBuilder(self._connector).build_scripting_project(project_id)
-        cache_key = _ProjectCacheKey(
-            project_id=project_id,
-            resolve_libraries=False,
-            includes_derived=True,
-            includes_inherited=True,
+        project = SysML2ProjectBuilder(self._connector).build_scripting_project(
+            project_id,
+            resolve_standard_libraries,
+            includes_derived,
+            includes_inherited,
+        )
+        cache_key = self._project_cache_key(
+            project_id, resolve_standard_libraries, includes_derived, includes_inherited
         )
         self._scripting_projects[cache_key] = project
         return project
@@ -256,7 +280,7 @@ class SysML2ProjectManager:
     @staticmethod
     def _project_cache_key(
         project_id: str,
-        resolve_libraries: bool,
+        resolve_standard_libraries: bool,
         includes_derived: bool,
         includes_inherited: bool,
     ) -> _ProjectCacheKey:
@@ -267,8 +291,8 @@ class SysML2ProjectManager:
         ----------
         project_id : str
             ID of the project.
-        resolve_libraries : bool
-            Whether library contents are resolved.
+        resolve_standard_libraries : bool
+            Whether standard library contents are resolved.
         includes_derived : bool
             Whether derived properties were requested from the API.
         includes_inherited : bool
@@ -281,7 +305,7 @@ class SysML2ProjectManager:
         """
         return _ProjectCacheKey(
             project_id=project_id,
-            resolve_libraries=resolve_libraries,
+            resolve_standard_libraries=resolve_standard_libraries,
             includes_derived=includes_derived,
             includes_inherited=includes_inherited,
         )

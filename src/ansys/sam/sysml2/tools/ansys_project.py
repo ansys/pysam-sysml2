@@ -45,7 +45,8 @@ class AnsysProject:
         organization_id: str,
         project_id: str,
         use_ssl: bool = True,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
+        includes_derived: bool = True,
     ) -> None:
         """
         Initialize the AnsysProject with connection parameters.
@@ -62,13 +63,22 @@ class AnsysProject:
             Unique identifier of the project to manage.
         use_ssl : bool, optional
             Whether to use SSL/TLS for connections. Default is True.
-        resolve_libraries : bool, optional
-            When True, resolve and map library element contents so they can be navigated.
-            Default is False.
+        resolve_standard_libraries : bool, optional
+            When True, resolve and map standard library element contents so they can be
+            navigated. Default is False.
+        includes_derived : bool, optional
+            When True, include derived properties from the API. Default is True.
         """
         self._project_id = project_id
         self.__diagrams_available = False
-        self._initialize_components(server_url, token, organization_id, use_ssl, resolve_libraries)
+        self._initialize_components(
+            server_url,
+            token,
+            organization_id,
+            use_ssl,
+            resolve_standard_libraries,
+            includes_derived,
+        )
 
     def _initialize_components(
         self,
@@ -76,7 +86,8 @@ class AnsysProject:
         token: str,
         organization_id: str,
         use_ssl: bool = True,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
+        includes_derived: bool = True,
     ) -> None:
         """Initialize all internal components and establish connections."""
         sysml2_connector = AnsysSysML2APIConnector(
@@ -88,7 +99,7 @@ class AnsysProject:
 
         self.__sam_connector = SamApiConnector(server_url=server_url, token=token, use_ssl=use_ssl)
 
-        project = self._get_project(sysml2_connector, resolve_libraries)
+        project = self._get_project(sysml2_connector, resolve_standard_libraries, includes_derived)
 
         for attr_name, attr_value in project.__dict__.items():
             if attr_name.startswith("_"):
@@ -101,7 +112,8 @@ class AnsysProject:
     def _get_project(
         self,
         sysml2_connector: AnsysSysML2APIConnector,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
+        includes_derived: bool = True,
     ):
         """
         Retrieve the correct project type.
@@ -110,8 +122,11 @@ class AnsysProject:
         ----------
         sysml2_connector : AnsysSysML2APIConnector
             Connector used to load the project.
-        resolve_libraries : bool, default: False
-            When ``True``, resolve and map library element contents so they can be navigated.
+        resolve_standard_libraries : bool, default: False
+            When ``True``, resolve and map standard library element contents so they can be
+            navigated.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API.
 
         Returns
         -------

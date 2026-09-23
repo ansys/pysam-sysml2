@@ -35,7 +35,8 @@ class AnsysScriptingProject(AnsysProject, ProjectImpl):
     def _get_project(
         self,
         sysml2_connector: AnsysSysML2APIConnector,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
+        includes_derived: bool = True,
     ) -> Project:
         """
         Load a scripting project.
@@ -44,8 +45,11 @@ class AnsysScriptingProject(AnsysProject, ProjectImpl):
         ----------
         sysml2_connector : AnsysSysML2APIConnector
             Connector used to load the project.
-        resolve_libraries : bool, default: False
-            When ``True``, resolve and map library element contents so they can be navigated.
+        resolve_standard_libraries : bool, default: False
+            When ``True``, resolve and map standard library element contents so they can be
+            navigated.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API.
 
         Returns
         -------
@@ -53,5 +57,8 @@ class AnsysScriptingProject(AnsysProject, ProjectImpl):
             The loaded scripting project.
         """
         project_manager = SysML2ProjectManager(connector=sysml2_connector)
-        project = project_manager.get_scripting_project(self._project_id, resolve_libraries)
-        return project
+        return project_manager.get_scripting_project(
+            self._project_id,
+            resolve_standard_libraries=resolve_standard_libraries,
+            includes_derived=includes_derived,
+        )

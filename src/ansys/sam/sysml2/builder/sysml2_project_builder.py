@@ -66,7 +66,7 @@ class SysML2ProjectBuilder:
     def build_sysml_project(
         self,
         project_id: str,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
         includes_derived: bool = True,
         includes_inherited: bool = True,
     ) -> Project:
@@ -77,9 +77,9 @@ class SysML2ProjectBuilder:
         ----------
         project_id : str
             ID of the project to build.
-        resolve_libraries : bool, default: False
-            When ``True``, keep library elements' references so their contents are resolved
-            and mapped during the build.
+        resolve_standard_libraries : bool, default: False
+            When ``True``, keep standard library elements' references so their contents are
+            resolved and mapped during the build.
         includes_derived : bool, default: True
             When ``True``, include derived properties from the API ``/elements`` response.
         includes_inherited : bool, default: True
@@ -92,7 +92,7 @@ class SysML2ProjectBuilder:
         """
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
-        project._resolve_libraries = resolve_libraries
+        project._resolve_standard_libraries = resolve_standard_libraries
         project._includes_derived = includes_derived
         project._includes_inherited = includes_inherited
         self.__build_project(project)
@@ -101,7 +101,7 @@ class SysML2ProjectBuilder:
     def build_scripting_project(
         self,
         project_id: str,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
         includes_derived: bool = True,
         includes_inherited: bool = True,
     ) -> Project:
@@ -112,9 +112,9 @@ class SysML2ProjectBuilder:
         ----------
         project_id : str
             ID of the project to build.
-        resolve_libraries : bool, default: False
-            When ``True``, keep library elements' references so their contents are resolved
-            and mapped during the build.
+        resolve_standard_libraries : bool, default: False
+            When ``True``, keep standard library elements' references so their contents are
+            resolved and mapped during the build.
         includes_derived : bool, default: True
             When ``True``, include derived properties from the API ``/elements`` response.
         includes_inherited : bool, default: True
@@ -128,7 +128,7 @@ class SysML2ProjectBuilder:
         project_info = self._connector.get_project_by_id(project_id)
         project = ProjectImpl(project_id, project_info["name"])
         project._scripting = True
-        project._resolve_libraries = resolve_libraries
+        project._resolve_standard_libraries = resolve_standard_libraries
         project._includes_derived = includes_derived
         project._includes_inherited = includes_inherited
         self.__build_project(project)
@@ -226,7 +226,7 @@ class SysML2ProjectBuilder:
         """
         unresolved_fields = []
         mapper = self._get_mapper(project)
-        resolve_libraries = getattr(project, "_resolve_libraries", False)
+        resolve_standard_libraries = getattr(project, "_resolve_standard_libraries", False)
         mapped_batch = []
         for element in elements:
             existing_element = project.find_element_by_id(element["@id"])
@@ -235,7 +235,9 @@ class SysML2ProjectBuilder:
             mapped_batch.append(mapped_element)
         for mapped_element in mapped_batch:
             element = mapped_element.get_element()
-            if mapper._should_drop_library_unresolved(element, project._env, resolve_libraries):
+            if mapper._should_drop_library_unresolved(
+                element, project._env, resolve_standard_libraries
+            ):
                 continue
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
@@ -350,7 +352,7 @@ class SysML2ProjectBuilder:
             Project instance to reload.
         """
         modification_observer.stop()
-        project._resolve_libraries = False  # libraries are static; never re-resolve on reload
+        project._resolve_standard_libraries = False
         self._build_project_element(project)
         fill_derived_collections(project)
         self._resolve_inherited_link(project)

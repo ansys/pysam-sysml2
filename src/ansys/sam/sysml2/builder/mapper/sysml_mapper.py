@@ -109,10 +109,10 @@ class SysMLMapper(Mapper):
         self,
         element: Element,
         env: dict | None,
-        resolve_libraries: bool,
+        resolve_standard_libraries: bool,
     ) -> bool:
         """Return whether child references of a library element should not be fetched."""
-        if resolve_libraries:
+        if resolve_standard_libraries:
             return False
         if not getattr(element, "is_library_element", False):
             return False

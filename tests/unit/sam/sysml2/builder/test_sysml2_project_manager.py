@@ -24,6 +24,7 @@
 
 import pytest
 
+from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.sysml2_project_manager import (
     SysML2ProjectManager,
     _ProjectCacheKey,
@@ -38,7 +39,7 @@ from tests.unit.const import PROJECT_ID_1
 
 _DEFAULT_CACHE_KEY = _ProjectCacheKey(
     project_id=PROJECT_ID_1,
-    resolve_libraries=False,
+    resolve_standard_libraries=False,
     includes_derived=True,
     includes_inherited=True,
 )
@@ -74,6 +75,43 @@ class TestSysML2ProjectManagerScripting:
 
         with pytest.raises(ProjectAlreadyExistsException):
             manager.create_scripting_project("project-1")
+
+    def test_create_scripting_project_forwards_load_flags(self, connector, mocker):
+        manager = SysML2ProjectManager(connector)
+        built = ProjectImpl("new-id", "created")
+        built._resolve_standard_libraries = True
+        built._includes_derived = False
+        mocker.patch.object(connector, "create_project", return_value={"@id": "new-id"})
+        build = mocker.patch(
+            "ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectBuilder.build_scripting_project",
+            return_value=built,
+        )
+
+        project = manager.create_scripting_project(
+            "created",
+            resolve_standard_libraries=True,
+            includes_derived=False,
+            includes_inherited=False,
+        )
+
+        assert project is built
+        assert project._resolve_standard_libraries is True
+        assert project._includes_derived is False
+        build.assert_called_once_with(
+            "new-id",
+            True,
+            False,
+            False,
+        )
+        assert (
+            _ProjectCacheKey(
+                project_id="new-id",
+                resolve_standard_libraries=True,
+                includes_derived=False,
+                includes_inherited=False,
+            )
+            in manager._scripting_projects
+        )
 
     def test_delete_project(self, connector):
         manager = SysML2ProjectManager(connector)
@@ -257,7 +295,7 @@ class TestSysML2ProjectManagerEdgeCases:
         assert (
             _ProjectCacheKey(
                 project_id=PROJECT_ID_1,
-                resolve_libraries=False,
+                resolve_standard_libraries=False,
                 includes_derived=False,
                 includes_inherited=False,
             )
