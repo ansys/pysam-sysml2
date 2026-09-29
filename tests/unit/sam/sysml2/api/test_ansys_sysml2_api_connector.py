@@ -25,6 +25,7 @@
 import json
 
 import pytest
+import requests
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.classes.http_request import HttpRequest
@@ -81,8 +82,9 @@ class TestAnsysSysML2APIConnector:
         assert c._server_url == "http://fake-server"
 
     def test_get_all_elements_query_params(self, connector, mocker):
-        mock_get = mocker.patch(
-            "requests.get",
+        mock_get = mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(200, content=b"[]"),
         )
 
@@ -99,8 +101,9 @@ class TestAnsysSysML2APIConnector:
         }
 
     def test_execute_query_query_params(self, connector, mocker):
-        mock_post = mocker.patch(
-            "requests.post",
+        mock_post = mocker.patch.object(
+            connector._session,
+            "post",
             return_value=_MockResponse(200, content=b"[]"),
         )
 
@@ -118,8 +121,9 @@ class TestAnsysSysML2APIConnector:
         }
 
     def test_validated_check_version(self, connector, mocker):
-            mock_get = mocker.patch(
-                "requests.get",
+            mock_get = mocker.patch.object(
+                connector._session,
+                "get",
                 return_value=_MockResponse(200, content=json.dumps({"build": {"version": "27.1.0"}})),
             )
 
@@ -129,8 +133,9 @@ class TestAnsysSysML2APIConnector:
 
 
     def test_invalid_check_version(self, connector, mocker):
-        mock_get = mocker.patch(
-            "requests.get",
+        mock_get = mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(200, content=json.dumps({"build": {"version": "26.1.0"}})),
         )
 
@@ -141,8 +146,9 @@ class TestAnsysSysML2APIConnector:
         assert "Unsupported SAM server version" in str(excinfo.value)
 
     def test_check_version_request_failure(self, connector, mocker):
-        mock_get = mocker.patch(
-            "requests.get",
+        mock_get = mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(500, content=json.dumps({"error": "Internal Server Error"})),
         )
 
@@ -152,8 +158,9 @@ class TestAnsysSysML2APIConnector:
         assert "Internal Server Error" in str(excinfo.value)
 
     def test_check_version_invalid_format(self, connector, mocker):
-            mock_get = mocker.patch(
-                "requests.get",
+            mock_get = mocker.patch.object(
+                connector._session,
+                "get",
                 return_value=_MockResponse(200, content=json.dumps({"build": {"server_version": "26.1.0"}})),
             )
 
@@ -161,3 +168,19 @@ class TestAnsysSysML2APIConnector:
                 connector._check_version()
 
             assert "Failed to check SAM server version" in str(excinfo.value)
+
+    def test_requests_reuse_the_same_session(self, connector, mocker):
+        """Two reads share the connector HTTP session."""
+        session = connector._session
+        mock_get = mocker.patch.object(
+            session,
+            "get",
+            return_value=_MockResponse(200, content=b"[]"),
+        )
+
+        connector.get_projects()
+        connector.get_project_by_id("project-1")
+
+        assert isinstance(session, requests.Session)
+        assert connector._session is session
+        assert mock_get.call_count == 2
