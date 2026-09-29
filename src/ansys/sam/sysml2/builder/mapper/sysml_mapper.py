@@ -30,6 +30,7 @@ from ansys.sam.sysml2.exception.mapper_exception import (
     InvalidProjectJSONMapperException,
 )
 from ansys.sam.sysml2.meta_model.element import Element
+from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 
 TYPE_KEY = "@type"
 
@@ -43,7 +44,6 @@ class SysMLMapper(Mapper):
         self,
         json_element: dict,
         mapped_element: Element,
-        resolve_libraries: bool = False,
     ) -> MappedElement:
         """
         Map the JSON into a python element.
@@ -54,9 +54,6 @@ class SysMLMapper(Mapper):
             Element data.
         mapped_element : Element
             Existing element.
-        resolve_libraries : bool, default: False
-            When ``True``, keep library elements' unresolved references so their contents
-            are resolved and mapped.
 
         Returns
         -------
@@ -66,17 +63,70 @@ class SysMLMapper(Mapper):
         if TYPE_KEY not in json_element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(json_element, mapped_element, resolve_libraries)
+        return self.__build_element(json_element, mapped_element)
 
     def _get_constructor(self, element_type: str):
         """Get the constructor for the element type."""
         return SysMLUtil.get_sysml_constructor(element_type)
 
+    def _element_reference_id(self, value) -> str | None:
+        """Return the element id from a mapped element, unresolved field, or id string."""
+        if value is None:
+            return None
+        if isinstance(value, UnresolvedField):
+            return value.get_id()
+        if isinstance(value, str):
+            return value
+        return getattr(value, "id", None)
+
+    def _owner_or_namespace_id(self, element: Element) -> str | None:
+        """Return the owner id, falling back to owning namespace."""
+        owner_id = self._element_reference_id(getattr(element, "owner", None))
+        if owner_id is not None:
+            return owner_id
+        return self._element_reference_id(getattr(element, "owning_namespace", None))
+
+    def _owning_library_package(self, element: Element, env: dict | None):
+        """Return the nearest LibraryPackage on the owner chain in ``env``."""
+        mapped_elements = env or {}
+        current = element
+        seen = set()
+        while current is not None:
+            current_id = getattr(current, "id", None)
+            if current_id in seen:
+                break
+            if current_id is not None:
+                seen.add(current_id)
+            if SysMLTools.isinstance(current, "LibraryPackage"):
+                return current
+            owner_id = self._owner_or_namespace_id(current)
+            if owner_id is None:
+                break
+            current = mapped_elements.get(owner_id)
+        return None
+
+    def _should_drop_library_unresolved(
+        self,
+        element: Element,
+        env: dict | None,
+        resolve_libraries: bool,
+    ) -> bool:
+        """Return whether child references of a library element should not be fetched."""
+        if resolve_libraries:
+            return False
+        if not getattr(element, "is_library_element", False):
+            return False
+        if SysMLTools.isinstance(element, "LibraryPackage"):
+            return bool(getattr(element, "is_standard", False))
+        package = self._owning_library_package(element, env)
+        if package is None:
+            return True
+        return bool(getattr(package, "is_standard", False))
+
     def __build_element(
         self,
         data: dict,
         element: Element | None,
-        resolve_libraries: bool = False,
     ) -> MappedElement:
         """
         Map element data to python object.
@@ -87,9 +137,6 @@ class SysMLMapper(Mapper):
             Element data.
         element : Element
             Existing element.
-        resolve_libraries : bool, default: False
-            When ``True``, keep library elements' unresolved references so their contents
-            are resolved and mapped.
 
         Returns
         -------
@@ -103,8 +150,6 @@ class SysMLMapper(Mapper):
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        if not resolve_libraries and getattr(element, "is_library_element", False):
-            unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 
     def __add_fields(
