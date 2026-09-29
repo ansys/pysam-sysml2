@@ -14,7 +14,17 @@ This class helps you load a model in Python, using the SysML2 standard API.
 For more information, see the :class:`SysML2ProjectManager <ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager>` class.
 
 
-With the project manager, and the ID of the project you want, you can load two types of projects:
+With the project manager, and the ID of the project you want, you can load two types of projects.
+``get_sysml_project()`` and ``get_scripting_project()`` accept the same optional load flags:
+
+* ``resolve_standard_libraries`` (default ``False``): resolve and map standard library element contents.
+* ``includes_derived`` (default ``True``): include derived properties from the API.
+* ``includes_inherited`` (default ``True``): include inherited memberships and features.
+
+When ``includes_derived`` is ``False``, PySAM rebuilds the local derived collections from
+``ownedRelationship`` (and from ``inheritedMembership`` when present), for example
+``ownedElement``, ``ownedFeature``, ``feature``, and requirement text from each
+``documentation.body``.
 
 SysML2 project (static approach)
 ================================
@@ -24,7 +34,10 @@ SysML2 projects use a Python-based metamodel, enabling static completion for all
 .. code:: python
 
     project = project_manager.get_sysml_project(
-        "<Computer Project ID>"
+        "<Computer Project ID>",
+        resolve_standard_libraries=False,
+        includes_derived=True,
+        includes_inherited=True,
     )  # You can find your project ID in the URL of the editor.
 
 Scripting project (dynamic approach)
@@ -46,7 +59,8 @@ Create and load a new project
 
 You can also create a new project on the server and load it in a single step. The project manager
 provides ``create_scripting_project()`` and ``create_sysml_project()`` methods that create the
-project remotely and return a fully built Python object.
+project remotely and return a fully built Python object. They accept the same load flags as
+``get_scripting_project()`` and ``get_sysml_project()``.
 
 .. tab-set::
 
@@ -57,6 +71,9 @@ project remotely and return a fully built Python object.
             project = project_manager.create_scripting_project(
                 name="My New Project",
                 description="A project created via PySAM SysML2",
+                resolve_standard_libraries=False,
+                includes_derived=True,
+                includes_inherited=True,
             )
 
     .. tab-item:: Static approach
@@ -66,6 +83,9 @@ project remotely and return a fully built Python object.
             project = project_manager.create_sysml_project(
                 name="My New Project",
                 description="A project created via PySAM SysML2",
+                resolve_standard_libraries=False,
+                includes_derived=True,
+                includes_inherited=True,
             )
 
 For more project management operations (update, delete, list), see :ref:`Manage projects <Manage_Projects_Section>`.
