@@ -24,7 +24,7 @@ repos:
           )$
 
   - repo: https://github.com/numpy/numpydoc
-    rev: 16a20aad58d5532fb12c2a87af0eb4ea290bacb4  # frozen: v1.10.0
+    rev: 9c52969be60d16e0e5e758d3f5d9a2c802e9a232  # frozen: v1.11.0
     hooks:
       - id: numpydoc-validation
         files: \.py$
@@ -36,7 +36,7 @@ repos:
           )
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 321478e58f4938179c6b86e4ddfa923d1547a49b  # frozen: v0.16.6
+    rev: 2eeb5678de71a00c0902cbda7105d328432f72cb  # frozen: v0.16.8
     hooks:
       - id: ruff-check
       - id: ruff-format
