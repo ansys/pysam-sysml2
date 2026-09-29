@@ -43,7 +43,7 @@ class SysMLMapper(Mapper):
         self,
         json_element: dict,
         mapped_element: Element,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
     ) -> MappedElement:
         """
         Map the JSON into a python element.
@@ -54,7 +54,7 @@ class SysMLMapper(Mapper):
             Element data.
         mapped_element : Element
             Existing element.
-        resolve_libraries : bool, default: False
+        resolve_standard_libraries : bool, default: False
             When ``True``, keep library elements' unresolved references so their contents
             are resolved and mapped.
 
@@ -66,7 +66,7 @@ class SysMLMapper(Mapper):
         if TYPE_KEY not in json_element:
             raise InvalidProjectJSONMapperException("Not valid sysml element data")
 
-        return self.__build_element(json_element, mapped_element, resolve_libraries)
+        return self.__build_element(json_element, mapped_element, resolve_standard_libraries)
 
     def _get_constructor(self, element_type: str):
         """Get the constructor for the element type."""
@@ -76,7 +76,7 @@ class SysMLMapper(Mapper):
         self,
         data: dict,
         element: Element | None,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
     ) -> MappedElement:
         """
         Map element data to python object.
@@ -87,7 +87,7 @@ class SysMLMapper(Mapper):
             Element data.
         element : Element
             Existing element.
-        resolve_libraries : bool, default: False
+        resolve_standard_libraries : bool, default: False
             When ``True``, keep library elements' unresolved references so their contents
             are resolved and mapped.
 
@@ -103,7 +103,7 @@ class SysMLMapper(Mapper):
         for k, v in data.items():
             if not k.startswith("@"):
                 unresolved_fields.extend(self.__add_fields(element, k, v))
-        if not resolve_libraries and getattr(element, "is_library_element", False):
+        if not resolve_standard_libraries and getattr(element, "is_library_element", False):
             unresolved_fields = []
         return MappedElement(element, unresolved_fields)
 

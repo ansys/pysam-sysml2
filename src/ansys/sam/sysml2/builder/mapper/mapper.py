@@ -58,7 +58,7 @@ class Mapper(ABC):
         self,
         json_element: dict,
         mapped_element: Element,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
     ) -> MappedElement:
         """
         Map a JSON element to a Python object and return unresolved references.
@@ -69,7 +69,7 @@ class Mapper(ABC):
             Data.
         mapped_element : Element
             Existing element.
-        resolve_libraries : bool, default: False
+        resolve_standard_libraries : bool, default: False
             When ``True``, library elements keep their unresolved references so their
             contents are resolved and mapped; otherwise those references are dropped.
 
