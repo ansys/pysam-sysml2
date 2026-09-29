@@ -66,8 +66,9 @@ def connector():
 class TestConnectorErrorHandling:
 
     def test_get_project_200_returns_json(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(
                 200, content=f'{{"@id": "{PROJECT_ID_1}", "name": "P"}}'.encode()
             ),
@@ -77,8 +78,9 @@ class TestConnectorErrorHandling:
         assert result["@id"] == PROJECT_ID_1
 
     def test_get_project_200_invalid_json(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(200, content=b"not json"),
         )
 
@@ -86,8 +88,9 @@ class TestConnectorErrorHandling:
             connector.get_project_by_id(PROJECT_ID_1)
 
     def test_get_project_401(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(401),
         )
 
@@ -95,8 +98,9 @@ class TestConnectorErrorHandling:
             connector.get_project_by_id(PROJECT_ID_1)
 
     def test_get_project_403(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(
                 403,
                 json_data={
@@ -109,8 +113,9 @@ class TestConnectorErrorHandling:
             connector.get_project_by_id(PROJECT_ID_1)
 
     def test_get_project_404_project(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(
                 404, json_data={"message": "Project X not found"}
             ),
@@ -120,8 +125,9 @@ class TestConnectorErrorHandling:
             connector.get_project_by_id("X")
 
     def test_get_element_404_element(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(
                 404,
                 json_data={"message": "Element X not found in project Y"},
@@ -132,8 +138,9 @@ class TestConnectorErrorHandling:
             connector.get_element_by_id("Y", "X")
 
     def test_get_project_404_organization(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(
                 404, json_data={"message": "Organization Z not found"}
             ),
@@ -143,8 +150,9 @@ class TestConnectorErrorHandling:
             connector.get_project_by_id(PROJECT_ID_1)
 
     def test_create_project_409(self, connector, mocker):
-        mocker.patch(
-            "requests.post",
+        mocker.patch.object(
+            connector._session,
+            "post",
             return_value=_MockResponse(
                 409,
                 json_data={
@@ -157,8 +165,9 @@ class TestConnectorErrorHandling:
             connector.create_project("duplicate")
 
     def test_commit_400(self, connector, mocker):
-        mocker.patch(
-            "requests.post",
+        mocker.patch.object(
+            connector._session,
+            "post",
             return_value=_MockResponse(
                 400, json_data={"message": "Change can't be empty"}
             ),
@@ -168,8 +177,9 @@ class TestConnectorErrorHandling:
             connector.create_commit(f"{PROJECT_ID_1}", '{"@type": "Commit", "change": []}')
 
     def test_get_project_500(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(500),
         )
 
@@ -177,8 +187,9 @@ class TestConnectorErrorHandling:
             connector.get_project_by_id(PROJECT_ID_1)
 
     def test_get_project_unknown_status(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             return_value=_MockResponse(418),
         )
 
@@ -186,8 +197,9 @@ class TestConnectorErrorHandling:
             connector.get_project_by_id(PROJECT_ID_1)
 
     def test_connection_error(self, connector, mocker):
-        mocker.patch(
-            "requests.get",
+        mocker.patch.object(
+            connector._session,
+            "get",
             side_effect=ConnectionError("Connection refused"),
         )
 
