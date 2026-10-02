@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``calculation_usage.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.calculation_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: calculation_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.calculation_usage.CalculationUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.CalculationUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> CalculationUsage</api/ansys/sam/sysml2/meta_model/calculation_usage/CalculationUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated calculation usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

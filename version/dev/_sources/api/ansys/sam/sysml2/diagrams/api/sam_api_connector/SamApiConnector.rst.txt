@@ -1,0 +1,257 @@
+
+
+
+
+
+
+:class:`SamApiConnector`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.diagrams.api.sam_api_connector.SamApiConnector(server_url: str, token: str, use_ssl: bool = True)
+
+   
+   Provides the SAM API connector for the diagram info and image service.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SamApiConnector
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_diagrams_info`
+            - Get metadata and information for all diagrams within a specific project.
+          * - :py:attr:`~get_single_diagram_info`
+            - Get detailed information for a single diagram within a project.
+          * - :py:attr:`~get_diagram_image_as_svg`
+            - Download a diagram rendered as SVG format.
+          * - :py:attr:`~get_diagram_image_as_png`
+            - Download a diagram rendered as PNG format.
+          * - :py:attr:`~get_diagram_image_as_jpeg`
+            - Download a diagram rendered as JPEG format.
+          * - :py:attr:`~get_all_diagram_image_from_project`
+            - Download all diagrams from a project as a compressed ZIP archive.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.diagrams.api.sam_api_connector import SamApiConnector
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_diagrams_info(project_id: str) -> dict
+
+   
+   Get metadata and information for all diagrams within a specific project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_single_diagram_info(project_id: str, diagram_id: str) -> dict
+
+   
+   Get detailed information for a single diagram within a project.
+
+
+   :Parameters:
+
+       **project_id: str**
+           Project ID of the project containing the diagram.
+
+       **diagram_id: str**
+           Diagram ID of the diagram to get information on.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_diagram_image_as_svg(project_id: str, diagram_id: str) -> bytes
+
+   
+   Download a diagram rendered as SVG format.
+
+
+   :Parameters:
+
+       **project_id: str**
+           Project ID of the project containing the diagram.
+
+       **diagram_id: str**
+           Diagram ID of the diagram to download.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_diagram_image_as_png(project_id: str, diagram_id: str) -> bytes
+
+   
+   Download a diagram rendered as PNG format.
+
+
+   :Parameters:
+
+       **project_id: str**
+           Project ID of the project containing the diagram.
+
+       **diagram_id: str**
+           Diagram ID of the diagram to download.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_diagram_image_as_jpeg(project_id: str, diagram_id: str) -> bytes
+
+   
+   Download a diagram rendered as JPEG format.
+
+
+   :Parameters:
+
+       **project_id: str**
+           Project ID of the project containing the diagram.
+
+       **diagram_id: str**
+           Diagram ID of the diagram to download.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_all_diagram_image_from_project(project_id: str, file_format: str) -> bytes
+
+   
+   Download all diagrams from a project as a compressed ZIP archive.
+
+
+   :Parameters:
+
+       **project_id: str**
+           Project ID of the project containing the diagram.
+
+       **file_format: str**
+           File format of the diagram images contained in the ZIP archive.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

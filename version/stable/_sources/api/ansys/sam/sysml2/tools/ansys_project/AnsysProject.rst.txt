@@ -1,0 +1,304 @@
+
+
+
+
+
+
+:class:`AnsysProject`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.tools.ansys_project.AnsysProject(server_url: str, token: str, organization_id: str, project_id: str, use_ssl: bool = True)
+
+   
+   Complete Ansys SysML2 project implementation with integrated capabilities.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AnsysProject
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~download_diagram`
+            - Download a single diagram and save it to disk.
+          * - :py:attr:`~download_all_diagrams`
+            - Download all diagrams as a ZIP archive.
+          * - :py:attr:`~is_diagrams_available`
+            - Check if diagram functionality is available for this project.
+          * - :py:attr:`~get_project_diagrams_info`
+            - Get information about available diagrams in the project.
+          * - :py:attr:`~get_single_diagram_info`
+            - Get information about a diagram in the project.
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~factory`
+            - Getter property for factory.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.ansys_project import AnsysProject
+
+Property detail
+---------------
+
+.. py:property:: factory
+   :type: ansys.sam.sysml2.tools.factory.Factory
+
+
+   
+   Getter property for factory.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: download_diagram(diagram_id: str, path: Union[str, pathlib.Path], file_format: str = 'svg', filename: str = '') -> str
+
+   
+   Download a single diagram and save it to disk.
+
+
+   :Parameters:
+
+       **diagram_id** : :class:`python:str`
+           The diagram id to download.
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Destination file or directory.
+
+       **file_format** : :class:`python:str`
+           Format of the diagram (e.g., 'svg', 'png', 'jpeg').
+
+       **filename** : :class:`python:str`, :obj:`optional`
+           Name of the file. Default is diagram ID.
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Return the path of the file created.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+       :obj:`DiagramConnectorException`
+           If the download fails or HTTP response is not 200.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: download_all_diagrams(path: Union[str, pathlib.Path], file_format: str = 'svg', filename: str = '') -> str
+
+   
+   Download all diagrams as a ZIP archive.
+
+
+   :Parameters:
+
+       **path** : :class:`python:str` or :obj:`Path`
+           Destination directory or file path for the ZIP file.
+
+       **file_format** : :class:`python:str`, :obj:`optional`
+           Format of the diagrams (e.g., 'png', 'jpeg', 'svg'). Default is "svg".
+
+       **filename** : :class:`python:str`, :obj:`optional`
+           Name of the file. Default is "{Project Name}_{Image Extension}_diagrams.zip".
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Path to the saved ZIP file.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+       :obj:`DiagramConnectorException`
+           If the download fails or HTTP response is not 200.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: is_diagrams_available() -> bool
+
+   
+   Check if diagram functionality is available for this project.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           True if diagrams can be downloaded, False otherwise.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_project_diagrams_info() -> dict
+
+   
+   Get information about available diagrams in the project.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Dictionary containing diagram information.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_single_diagram_info(diagram_id: str) -> dict
+
+   
+   Get information about a diagram in the project.
+
+
+   :Parameters:
+
+       **diagram_id: str**
+           ID of the diagram we want info about.
+
+
+
+   :Returns:
+
+       :class:`python:dict`
+           Dictionary containing diagram information.
+
+
+
+
+   :Raises:
+
+       :obj:`DiagramNotAvailableException`
+           If diagram functionality is not available for this project.
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

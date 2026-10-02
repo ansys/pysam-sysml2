@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`MapperException`
+========================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.mapper_exception.MapperException
+
+   Bases: :py:obj:`Exception`
+
+
+   
+   Top-level exception for mapper exception.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.mapper_exception import MapperException
+
+
+
+
+

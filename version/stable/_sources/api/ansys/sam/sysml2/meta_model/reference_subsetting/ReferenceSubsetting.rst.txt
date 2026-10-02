@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`ReferenceSubsetting`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.reference_subsetting.ReferenceSubsetting(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.subsetting.Subsetting`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ReferenceSubsetting'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ReferenceSubsetting
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~referencing_feature`
+            - Get the referencing feature property.
+          * - :py:attr:`~referenced_feature`
+            - Get the referenced feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.reference_subsetting import ReferenceSubsetting
+
+Property detail
+---------------
+
+.. py:property:: referencing_feature
+   :type: Feature
+
+
+   
+   Get the referencing feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property referencing feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: referenced_feature
+   :type: Feature
+
+
+   
+   Get the referenced feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property referenced feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

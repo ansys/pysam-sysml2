@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`AssignmentActionUsage`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.assignment_action_usage.AssignmentActionUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AssignmentActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AssignmentActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value_expression`
+            - Get the value expression property.
+          * - :py:attr:`~target_argument`
+            - Get the target argument property.
+          * - :py:attr:`~referent`
+            - Get the referent property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.assignment_action_usage import AssignmentActionUsage
+
+Property detail
+---------------
+
+.. py:property:: value_expression
+   :type: Expression
+
+
+   
+   Get the value expression property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property value expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: target_argument
+   :type: Expression
+
+
+   
+   Get the target argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property target argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: referent
+   :type: Feature
+
+
+   
+   Get the referent property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property referent.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

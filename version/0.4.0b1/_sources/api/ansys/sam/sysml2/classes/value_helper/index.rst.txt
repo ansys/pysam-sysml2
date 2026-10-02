@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``value_helper.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.classes.value_helper
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: value_helper
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.value_helper.ValueHelper`
+            - Helper class for feature value resolve.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ValueHelper</api/ansys/sam/sysml2/classes/value_helper/ValueHelper>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Value helper class for Feature's value.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

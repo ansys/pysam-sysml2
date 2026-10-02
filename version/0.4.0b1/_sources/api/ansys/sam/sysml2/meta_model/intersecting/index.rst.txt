@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``intersecting.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.intersecting
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: intersecting
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.intersecting.Intersecting`
+            - Java class 'com.ansys.metamodel.sysml2.Intersecting'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Intersecting</api/ansys/sam/sysml2/meta_model/intersecting/Intersecting>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated intersecting class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Interaction`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.interaction.Interaction(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.behavior.Behavior`, :py:obj:`ansys.sam.sysml2.meta_model.association.Association`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Interaction'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.interaction import Interaction
+
+
+
+
+

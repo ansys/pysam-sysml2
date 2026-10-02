@@ -1,0 +1,237 @@
+
+
+
+
+
+
+:class:`PortionKind`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.portion_kind.PortionKind
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.PortionKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PortionKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value`
+            - Get the value property.
+          * - :py:attr:`~name`
+            - Get the name property.
+          * - :py:attr:`~literal`
+            - Get the literal property.
+          * - :py:attr:`~by_name`
+            - Get the by name property.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~TIMESLICE`
+            - 
+          * - :py:attr:`~SNAPSHOT`
+            - 
+          * - :py:attr:`~TIMESLICE_VALUE`
+            - 
+          * - :py:attr:`~SNAPSHOT_VALUE`
+            - 
+          * - :py:attr:`~VALUES_ARRAY`
+            - 
+          * - :py:attr:`~VALUES`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.portion_kind import PortionKind
+
+Property detail
+---------------
+
+.. py:property:: value
+   :type: int
+
+
+   
+   Get the value property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:int`
+           Value of property value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: name
+   :type: str
+
+
+   
+   Get the name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: literal
+   :type: str
+
+
+   
+   Get the literal property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property literal.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: by_name
+   :type: PortionKind
+
+
+   
+   Get the by name property.
+
+
+
+
+
+   :Returns:
+
+       "PortionKind"
+           Value of property by name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: TIMESLICE
+   :type:  PortionKind
+
+.. py:attribute:: SNAPSHOT
+   :type:  PortionKind
+
+.. py:attribute:: TIMESLICE_VALUE
+   :type:  int
+
+.. py:attribute:: SNAPSHOT_VALUE
+   :type:  int
+
+.. py:attribute:: VALUES_ARRAY
+   :type:  PortionKind
+
+.. py:attribute:: VALUES
+   :type:  list
+
+
+
+
+

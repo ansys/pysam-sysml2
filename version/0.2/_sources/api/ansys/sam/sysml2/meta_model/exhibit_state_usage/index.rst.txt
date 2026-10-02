@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``exhibit_state_usage.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.exhibit_state_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: exhibit_state_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.exhibit_state_usage.ExhibitStateUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.ExhibitStateUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ExhibitStateUsage</api/ansys/sam/sysml2/meta_model/exhibit_state_usage/ExhibitStateUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated exhibit state usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

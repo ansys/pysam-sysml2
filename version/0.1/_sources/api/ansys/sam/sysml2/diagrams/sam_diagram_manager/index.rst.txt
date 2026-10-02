@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sam_diagram_manager.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.diagrams.sam_diagram_manager
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sam_diagram_manager
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.sam_diagram_manager.SAMDiagramManager`
+            - Provides the SAM Diagram Manager.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SAMDiagramManager</api/ansys/sam/sysml2/diagrams/sam_diagram_manager/SAMDiagramManager>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Main class of PySAM SysML2.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

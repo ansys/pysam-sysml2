@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`DiagramNotAvailableException`
+=====================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.DiagramNotAvailableException
+
+   Bases: :py:obj:`ConnectorException`
+
+
+   
+   Exception when diagram functionality is not available for the project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import DiagramNotAvailableException
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``documentation.py`` module
+===============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.documentation
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: documentation
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.documentation.Documentation`
+            - Java class 'com.ansys.medini.metamodel.sysml.Documentation'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Documentation</api/ansys/sam/sysml2/meta_model/documentation/Documentation>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated documentation class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,154 @@
+
+
+
+
+
+
+:class:`DynamicEObject`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.classes.dynamic_e_object.DynamicEObject(*args, **kwargs)
+
+   
+   Dynamic-notation behaviour mixed in front of a generated metamodel class.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+.. py:currentmodule:: DynamicEObject
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+
+
+   .. tab-item:: Special methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~__getattr__`
+            - Resolve a ``_camelCase`` property or a named child; only fires on lookup failure.
+          * - :py:attr:`~__setattr__`
+            - Mirror static write semantics: send a scripting ``_field`` write to its property.
+          * - :py:attr:`~__dir__`
+            - Expose the dynamic view: ``_camelCase`` accessors, named children and action methods.
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.dynamic_e_object import DynamicEObject
+
+
+
+Method detail
+-------------
+
+.. py:method:: __getattr__(name)
+
+   
+   Resolve a ``_camelCase`` property or a named child; only fires on lookup failure.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __setattr__(name, value)
+
+   
+   Mirror static write semantics: send a scripting ``_field`` write to its property.
+
+   A read-only property (no setter) raises ``AttributeError`` exactly as in the
+   static model; a writable property runs its setter and notifies the observer.
+   Internal writes stay raw in two cases: during construction, and while a routed
+   setter is writing its own backing field.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: __dir__()
+
+   
+   Expose the dynamic view: ``_camelCase`` accessors, named children and action methods.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

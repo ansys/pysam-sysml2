@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`HTTPResponseException`
+==============================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.HTTPResponseException
+
+   Bases: :py:obj:`ConnectorException`
+
+
+   
+   Exception when the connection returns other than 200.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import HTTPResponseException
+
+
+
+
+

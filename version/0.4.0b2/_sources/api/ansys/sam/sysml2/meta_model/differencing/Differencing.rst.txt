@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`Differencing`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.differencing.Differencing(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Differencing'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Differencing
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~differencing_type`
+            - Get the differencing type property.
+          * - :py:attr:`~type_differenced`
+            - Get the type differenced property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.differencing import Differencing
+
+Property detail
+---------------
+
+.. py:property:: differencing_type
+   :type: Type
+
+
+   
+   Get the differencing type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property differencing type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: type_differenced
+   :type: Type
+
+
+   
+   Get the type differenced property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property type differenced.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

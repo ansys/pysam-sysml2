@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``literal_expression.py`` module
+====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.literal_expression
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: literal_expression
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_expression.LiteralExpression`
+            - Java class 'com.ansys.medini.metamodel.sysml.LiteralExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> LiteralExpression</api/ansys/sam/sysml2/meta_model/literal_expression/LiteralExpression>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated literal expression class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

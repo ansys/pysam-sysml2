@@ -1,0 +1,160 @@
+
+
+
+
+
+
+:class:`Commit`
+===============
+
+
+.. py:class:: ansys.sam.sysml2.dto.commit.commit_class.Commit(project_id: str)
+
+   
+   Creates and structures a standard PySAM SysML2 commit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Commit
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~add_change`
+            - Add a change to the commit.
+          * - :py:attr:`~to_json`
+            - Serialize the commit data into JSON data.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~project_id`
+            - 
+          * - :py:attr:`~changes`
+            - 
+          * - :py:attr:`~previous_commit_id`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.commit.commit_class import Commit
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: project_id
+   :type:  str | None
+   :value: None
+
+
+.. py:attribute:: changes
+   :type:  List[ansys.sam.sysml2.dto.commit.data_version.DataVersion]
+
+.. py:attribute:: previous_commit_id
+   :type:  str
+   :value: 'head'
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: add_change(change: ansys.sam.sysml2.dto.commit.data_version.DataVersion)
+
+   
+   Add a change to the commit.
+
+
+   :Parameters:
+
+       **change** : :obj:`DataVersion`
+           Data version of the change.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: to_json() -> str
+
+   
+   Serialize the commit data into JSON data.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           JSON data.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

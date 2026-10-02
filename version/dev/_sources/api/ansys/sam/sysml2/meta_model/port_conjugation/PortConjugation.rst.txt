@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`PortConjugation`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.port_conjugation.PortConjugation(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.conjugation.Conjugation`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.PortConjugation'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PortConjugation
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~conjugated_port_definition`
+            - Get the conjugated port definition property.
+          * - :py:attr:`~original_port_definition`
+            - Get the original port definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.port_conjugation import PortConjugation
+
+Property detail
+---------------
+
+.. py:property:: conjugated_port_definition
+   :type: ConjugatedPortDefinition
+
+
+   
+   Get the conjugated port definition property.
+
+
+
+
+
+   :Returns:
+
+       "ConjugatedPortDefinition"
+           Value of property conjugated port definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: original_port_definition
+   :type: PortDefinition
+
+
+   
+   Get the original port definition property.
+
+
+
+
+
+   :Returns:
+
+       "PortDefinition"
+           Value of property original port definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
