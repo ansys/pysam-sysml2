@@ -22,8 +22,6 @@
 
 """Module for Ansys SysML2 API connector."""
 
-import requests
-
 from ansys.sam.sysml2.api.template_sysml2_api_connector import (
     TemplateSysML2APIConnector,
 )
@@ -85,7 +83,7 @@ class AnsysSysML2APIConnector(TemplateSysML2APIConnector):
     def _check_version(self):
         """Check the version of the API."""
         http_request = http_request = HttpRequest(f"{self._server_url}/api/status/info")
-        response = self._send_request(http_request, requests.get)
+        response = self._send_request(http_request, self._session.get)
         try:
             version = response["build"]["version"].split(".")[0]
         except (KeyError, TypeError):
