@@ -299,8 +299,9 @@ class SysML2ProjectBuilder:
         """Refresh per-element hash map and owned-name set; proxies are created lazily on access."""
         for element in project._env.copy().values():
             self._clear_element(element, _SYSML_KEEP)
-            element._element_hash_map = self.__get_all_sysml_element(element)
-            element._owned_names = self.__get_sysml_owned_names(element)
+            children = self.__get_all_sysml_element(element)
+            element._element_hash_map = children
+            element._owned_names = self.__get_sysml_owned_names(element, children)
 
     def _clear_element(self, element, keep: set[str]) -> None:
         """Drop stale pre-wrapped proxies from a previous build before refilling."""
@@ -309,18 +310,36 @@ class SysML2ProjectBuilder:
                 delattr(element, x)
 
     def __get_all_sysml_element(self, element: Element) -> dict:
-        """Return owned + inherited children of a metamodel element keyed by ``declared_name``."""
+        """Return owned, inherited, and namespace-imported children keyed by ``declared_name``."""
         all_element = element.owned_element.copy()
         all_element.extend(getattr(element, "inherited_feature", []).copy())
-        return {x.declared_name: x for x in all_element if isinstance(x, Element)}
+        children = {x.declared_name: x for x in all_element if isinstance(x, Element)}
+        for imported in self.__imported_namespace_elements(element):
+            children.setdefault(imported.declared_name, imported)
+        return children
 
-    def __get_sysml_owned_names(self, element: Element) -> set[str]:
-        """Return the declared names of owned (non-inherited) children of a metamodel element."""
-        return {
-            x.declared_name
-            for x in element.owned_element
-            if isinstance(x, Element) and x.declared_name
+    def __get_sysml_owned_names(self, element: Element, children: dict) -> set[str]:
+        """Return declared names of owned children and imports that won their name."""
+        names = {
+            child.declared_name
+            for child in element.owned_element
+            if isinstance(child, Element) and child.declared_name
         }
+        for imported in self.__imported_namespace_elements(element):
+            if children.get(imported.declared_name) is imported:
+                names.add(imported.declared_name)
+        return names
+
+    def __imported_namespace_elements(self, element: Element) -> list[Element]:
+        """Return elements imported by a ``NamespaceImport`` owned by this element."""
+        imported_elements = []
+        for relationship in getattr(element, "owned_import", []):
+            if type(relationship).__name__ != "NamespaceImport":
+                continue
+            imported = getattr(relationship, "imported_element", None)
+            if isinstance(imported, Element) and imported.declared_name:
+                imported_elements.append(imported)
+        return imported_elements
 
     def _add_write_access(self, project: Project):
         """Add write rules access on the project."""

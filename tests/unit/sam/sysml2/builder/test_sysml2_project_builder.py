@@ -22,8 +22,14 @@
 
 """Unit tests for SysML2ProjectBuilder using the mocked connector."""
 
+from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
+from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
+from ansys.sam.sysml2.meta_model.attribute_usage import AttributeUsage
+from ansys.sam.sysml2.meta_model.namespace_expose import NamespaceExpose
 from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport
+from ansys.sam.sysml2.meta_model.package import Package
+from ansys.sam.sysml2.meta_model.part_definition import PartDefinition
 from tests.unit.const import PROJECT_1_ATTR_ID, PROJECT_ID_1, PROJECT_ID_5, PROJECT_ID_7
 
 
@@ -179,3 +185,100 @@ class TestSysML2ProjectBuilderLibraries:
         libraries = project.get_libraries_packages()
 
         assert libraries == []
+
+
+class TestNestedLibraryNavigation:
+
+    def test_namespace_import_is_navigable(self, connector):
+        """A nested library package is reached through its NamespaceImport."""
+        builder = SysML2ProjectBuilder(connector)
+        library = Package("lib1")
+        library.declared_name = "Lib1"
+        owned_child = Package("owned")
+        owned_child.declared_name = "Owned"
+        library.owned_element.append(owned_child)
+
+        nested = Package("lib2")
+        nested.declared_name = "Lib2"
+        nested_child = Package("element")
+        nested_child.declared_name = "Element"
+        nested.owned_element.append(nested_child)
+        namespace_import = NamespaceImport("import")
+        namespace_import.imported_element = nested
+        library.owned_import.append(namespace_import)
+
+        unresolved_import = NamespaceImport("unresolved")
+        unresolved_import.imported_element = UnresolvedField(
+            library, "imported_element", "missing"
+        )
+        library.owned_import.append(unresolved_import)
+
+        project = ProjectImpl("project_id", "name")
+        project.add_element(library)
+        project.add_element(nested)
+        project.add_element(nested_child)
+        builder._resolve_inherited_link(project)
+
+        assert library.get("Lib2") is nested
+        assert library.get("Lib2").get("Element") is nested_child
+        assert "Lib2" in library._owned_names
+        assert nested not in library.owned_element
+
+    def test_owned_element_keeps_priority_over_namespace_import(self, connector):
+        """An owned child keeps the name when an import uses the same declared name."""
+        builder = SysML2ProjectBuilder(connector)
+        library = Package("lib1")
+        owned_child = Package("owned")
+        owned_child.declared_name = "Lib2"
+        library.owned_element.append(owned_child)
+
+        imported = Package("lib2")
+        imported.declared_name = "Lib2"
+        namespace_import = NamespaceImport("import")
+        namespace_import.imported_element = imported
+        library.owned_import.append(namespace_import)
+
+        project = ProjectImpl("project_id", "name")
+        project.add_element(library)
+        builder._resolve_inherited_link(project)
+
+        assert library._element_hash_map["Lib2"] is owned_child
+        assert library.get("Lib2") is owned_child
+
+    def test_inherited_feature_keeps_priority_over_namespace_import(self, connector):
+        """An inherited feature keeps the name when an import uses the same declared name."""
+        builder = SysML2ProjectBuilder(connector)
+        definition = PartDefinition("definition")
+        inherited = AttributeUsage("inherited")
+        inherited.declared_name = "shared"
+        definition.inherited_feature.append(inherited)
+
+        imported = Package("imported")
+        imported.declared_name = "shared"
+        namespace_import = NamespaceImport("import")
+        namespace_import.imported_element = imported
+        definition.owned_import.append(namespace_import)
+
+        project = ProjectImpl("project_id", "name")
+        project.add_element(definition)
+        builder._resolve_inherited_link(project)
+
+        assert definition._element_hash_map["shared"] is inherited
+        assert "shared" not in definition._owned_names
+
+    def test_namespace_expose_is_not_navigable(self, connector):
+        """A NamespaceExpose does not add its imported element to the child table."""
+        builder = SysML2ProjectBuilder(connector)
+        library = Package("lib1")
+        exposed = Package("exposed")
+        exposed.declared_name = "Exposed"
+        namespace_expose = NamespaceExpose("expose")
+        namespace_expose.imported_element = exposed
+        library.owned_import.append(namespace_expose)
+
+        project = ProjectImpl("project_id", "name")
+        project.add_element(library)
+        builder._resolve_inherited_link(project)
+
+        assert "Exposed" not in library._element_hash_map
+        assert "Exposed" not in library._owned_names
