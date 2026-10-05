@@ -1,0 +1,97 @@
+
+
+
+
+
+
+The ``commit`` package
+==========================
+
+.. py:module:: ansys.sam.sysml2.dto.commit
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: commit
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.commit.commit_class`
+            - Commit module.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.commit.data_version`
+            - Data version module.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> commit_class</api/ansys/sam/sysml2/dto/commit/commit_class/index>
+    <span class="nf nf-fa-file"></span> data_version</api/ansys/sam/sysml2/dto/commit/data_version/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Data Transfer Objects (DTO) for commit-related data in PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

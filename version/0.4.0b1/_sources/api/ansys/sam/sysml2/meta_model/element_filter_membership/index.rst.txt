@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``element_filter_membership.py`` module
+===========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.element_filter_membership
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: element_filter_membership
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.element_filter_membership.ElementFilterMembership`
+            - Java class 'com.ansys.metamodel.sysml2.ElementFilterMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ElementFilterMembership</api/ansys/sam/sysml2/meta_model/element_filter_membership/ElementFilterMembership>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated element filter membership class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

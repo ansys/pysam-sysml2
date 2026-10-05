@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``trigger_kind.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.trigger_kind
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: trigger_kind
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.trigger_kind.TriggerKind`
+            - Java class 'com.ansys.medini.metamodel.sysml.TriggerKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> TriggerKind</api/ansys/sam/sysml2/meta_model/trigger_kind/TriggerKind>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated trigger kind class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

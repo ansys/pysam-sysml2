@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`Dependency`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.dependency.Dependency(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Dependency'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Dependency
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~client`
+            - Get the client property.
+          * - :py:attr:`~supplier`
+            - Get the supplier property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.dependency import Dependency
+
+Property detail
+---------------
+
+.. py:property:: client
+   :type: list[Element]
+
+
+   
+   Get the client property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Element"]
+           Value of property client.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: supplier
+   :type: list[Element]
+
+
+   
+   Get the supplier property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Element"]
+           Value of property supplier.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

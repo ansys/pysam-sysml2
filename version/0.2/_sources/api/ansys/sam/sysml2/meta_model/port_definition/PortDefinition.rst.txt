@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`PortDefinition`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.port_definition.PortDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.occurrence_definition.OccurrenceDefinition`, :py:obj:`ansys.sam.sysml2.meta_model.structure.Structure`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.PortDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.port_definition import PortDefinition
+
+
+
+
+

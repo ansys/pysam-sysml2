@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``structure.py`` module
+===========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.structure
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: structure
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.structure.Structure`
+            - Java class 'com.ansys.medini.metamodel.sysml.Structure'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Structure</api/ansys/sam/sysml2/meta_model/structure/Structure>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated structure class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

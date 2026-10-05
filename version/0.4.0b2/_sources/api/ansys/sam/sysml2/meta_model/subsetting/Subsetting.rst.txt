@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`Subsetting`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.subsetting.Subsetting(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.specialization.Specialization`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Subsetting'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Subsetting
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owning_feature`
+            - Get the owning feature property.
+          * - :py:attr:`~subsetted_feature`
+            - Get the subsetted feature property.
+          * - :py:attr:`~subsetting_feature`
+            - Get the subsetting feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.subsetting import Subsetting
+
+Property detail
+---------------
+
+.. py:property:: owning_feature
+   :type: Feature
+
+
+   
+   Get the owning feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property owning feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: subsetted_feature
+   :type: Feature
+
+
+   
+   Get the subsetted feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property subsetted feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: subsetting_feature
+   :type: Feature
+
+
+   
+   Get the subsetting feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property subsetting feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

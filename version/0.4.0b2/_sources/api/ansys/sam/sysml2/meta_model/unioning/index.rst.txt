@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``unioning.py`` module
+==========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.unioning
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: unioning
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.unioning.Unioning`
+            - Java class 'com.ansys.metamodel.sysml2.Unioning'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Unioning</api/ansys/sam/sysml2/meta_model/unioning/Unioning>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated unioning class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

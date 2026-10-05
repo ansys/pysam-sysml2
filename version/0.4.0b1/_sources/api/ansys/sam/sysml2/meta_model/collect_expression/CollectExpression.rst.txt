@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`CollectExpression`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.collect_expression.CollectExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.operator_expression.OperatorExpression`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.CollectExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.collect_expression import CollectExpression
+
+
+
+
+

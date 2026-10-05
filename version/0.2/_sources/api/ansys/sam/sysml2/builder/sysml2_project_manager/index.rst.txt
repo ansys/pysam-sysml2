@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sysml2_project_manager.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.builder.sysml2_project_manager
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sysml2_project_manager
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.sysml2_project_manager.SysML2ProjectManager`
+            - Provides the director class for loading a project.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SysML2ProjectManager</api/ansys/sam/sysml2/builder/sysml2_project_manager/SysML2ProjectManager>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Director class for project building.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

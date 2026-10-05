@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``relationship.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.relationship
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: relationship
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.relationship.Relationship`
+            - Java class 'com.ansys.medini.metamodel.sysml.Relationship'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Relationship</api/ansys/sam/sysml2/meta_model/relationship/Relationship>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated relationship class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

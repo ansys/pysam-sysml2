@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``item_feature.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.item_feature
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: item_feature
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.item_feature.ItemFeature`
+            - Java class 'com.ansys.medini.metamodel.sysml.ItemFeature'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ItemFeature</api/ansys/sam/sysml2/meta_model/item_feature/ItemFeature>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated item feature class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

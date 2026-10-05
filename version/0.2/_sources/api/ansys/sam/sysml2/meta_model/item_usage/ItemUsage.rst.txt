@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ItemUsage`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.item_usage.ItemUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ItemUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ItemUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~item_definition`
+            - Get the item definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.item_usage import ItemUsage
+
+Property detail
+---------------
+
+.. py:property:: item_definition
+   :type: List[Structure]
+
+
+   
+   Get the item definition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Structure"]
+           Value of property item definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

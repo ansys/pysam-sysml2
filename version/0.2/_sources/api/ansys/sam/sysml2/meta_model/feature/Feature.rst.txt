@@ -1,0 +1,1036 @@
+
+
+
+
+
+
+:class:`Feature`
+================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature.Feature(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.type_.Type`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Feature'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Feature
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~inherited`
+            - Get the inherited property.
+          * - :py:attr:`~type_`
+            - Get the ``type_`` property.
+          * - :py:attr:`~default_value`
+            - Get the default value property.
+          * - :py:attr:`~inherited_type`
+            - Get the inherited type property.
+          * - :py:attr:`~inheriting_type`
+            - Get the inheriting type property.
+          * - :py:attr:`~is_composite`
+            - Get the is composite property.
+          * - :py:attr:`~is_end`
+            - Get the is end property.
+          * - :py:attr:`~declaration`
+            - Get the declaration property.
+          * - :py:attr:`~owned_subsetting`
+            - Get the owned subsetting property.
+          * - :py:attr:`~direction`
+            - Get the direction property.
+          * - :py:attr:`~chaining_feature`
+            - Get the chaining feature property.
+          * - :py:attr:`~valuation`
+            - Get the valuation property.
+          * - :py:attr:`~owned_typing`
+            - Get the owned typing property.
+          * - :py:attr:`~set_is_composite`
+            - Get the set is composite property.
+          * - :py:attr:`~set_direction`
+            - Get the set direction property.
+          * - :py:attr:`~is_ordered`
+            - Get the is ordered property.
+          * - :py:attr:`~is_unique`
+            - Get the is unique property.
+          * - :py:attr:`~set_is_ordered`
+            - Get the set is ordered property.
+          * - :py:attr:`~set_is_unique`
+            - Get the set is unique property.
+          * - :py:attr:`~set_default_value`
+            - Get the set default value property.
+          * - :py:attr:`~set_valuation`
+            - Get the set valuation property.
+          * - :py:attr:`~referenced_feature`
+            - Get the referenced feature property.
+          * - :py:attr:`~feature_value_expression`
+            - Get the feature value expression property.
+          * - :py:attr:`~owned_reference_subsetting`
+            - Get the owned reference subsetting property.
+          * - :py:attr:`~owned_redefinition`
+            - Get the owned redefinition property.
+          * - :py:attr:`~owned_type_featuring`
+            - Get the owned type featuring property.
+          * - :py:attr:`~owning_feature_membership`
+            - Get the owning feature membership property.
+          * - :py:attr:`~subsetted_feature`
+            - Get the subsetted feature property.
+          * - :py:attr:`~redefined_feature`
+            - Get the redefined feature property.
+          * - :py:attr:`~set_feature_value_expression`
+            - Get the set feature value expression property.
+          * - :py:attr:`~all_redefinitions`
+            - Get the all redefinitions property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature import Feature
+
+Property detail
+---------------
+
+.. py:property:: inherited
+   :type: bool
+
+
+   
+   Get the inherited property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property inherited.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: type_
+   :type: List[ansys.sam.sysml2.meta_model.type_.Type]
+
+
+   
+   Get the ``type_`` property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Type"]
+           Value of property ``type_``.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: default_value
+   :type: Expression
+
+
+   
+   Get the default value property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property default value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inherited_type
+   :type: List[ansys.sam.sysml2.meta_model.type_.Type]
+
+
+   
+   Get the inherited type property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Type"]
+           Value of property inherited type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inheriting_type
+   :type: ansys.sam.sysml2.meta_model.type_.Type
+
+
+   
+   Get the inheriting type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property inheriting type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_composite
+   :type: bool
+
+
+   
+   Get the is composite property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is composite.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_end
+   :type: bool
+
+
+   
+   Get the is end property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: declaration
+   :type: Feature
+
+
+   
+   Get the declaration property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property declaration.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_subsetting
+   :type: List[Subsetting]
+
+
+   
+   Get the owned subsetting property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Subsetting"]
+           Value of property owned subsetting.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: direction
+   :type: FeatureDirectionKind
+
+
+   
+   Get the direction property.
+
+
+
+
+
+   :Returns:
+
+       "FeatureDirectionKind"
+           Value of property direction.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: chaining_feature
+   :type: List[Feature]
+
+
+   
+   Get the chaining feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property chaining feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: valuation
+   :type: FeatureValue
+
+
+   
+   Get the valuation property.
+
+
+
+
+
+   :Returns:
+
+       "FeatureValue"
+           Value of property valuation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_typing
+   :type: List[FeatureTyping]
+
+
+   
+   Get the owned typing property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["FeatureTyping"]
+           Value of property owned typing.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_composite
+   :type: bool
+
+
+   
+   Get the set is composite property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is composite.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_direction
+   :type: bool
+
+
+   
+   Get the set direction property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set direction.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_ordered
+   :type: None
+
+
+   
+   Get the is ordered property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property is ordered.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_unique
+   :type: bool
+
+
+   
+   Get the is unique property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is unique.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_ordered
+   :type: bool
+
+
+   
+   Get the set is ordered property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is ordered.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_unique
+   :type: bool
+
+
+   
+   Get the set is unique property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is unique.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_default_value
+   :type: bool
+
+
+   
+   Get the set default value property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set default value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_valuation
+   :type: bool
+
+
+   
+   Get the set valuation property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set valuation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: referenced_feature
+   :type: List[Feature]
+
+
+   
+   Get the referenced feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property referenced feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: feature_value_expression
+   :type: Expression
+
+
+   
+   Get the feature value expression property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property feature value expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_reference_subsetting
+   :type: List[ReferenceSubsetting]
+
+
+   
+   Get the owned reference subsetting property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ReferenceSubsetting"]
+           Value of property owned reference subsetting.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_redefinition
+   :type: List[Redefinition]
+
+
+   
+   Get the owned redefinition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Redefinition"]
+           Value of property owned redefinition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_type_featuring
+   :type: List[TypeFeaturing]
+
+
+   
+   Get the owned type featuring property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["TypeFeaturing"]
+           Value of property owned type featuring.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_feature_membership
+   :type: FeatureMembership
+
+
+   
+   Get the owning feature membership property.
+
+
+
+
+
+   :Returns:
+
+       "FeatureMembership"
+           Value of property owning feature membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: subsetted_feature
+   :type: List[Feature]
+
+
+   
+   Get the subsetted feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property subsetted feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: redefined_feature
+   :type: List[Feature]
+
+
+   
+   Get the redefined feature property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property redefined feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_feature_value_expression
+   :type: bool
+
+
+   
+   Get the set feature value expression property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set feature value expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: all_redefinitions
+   :type: List[Feature]
+
+
+   
+   Get the all redefinitions property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Feature"]
+           Value of property all redefinitions.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

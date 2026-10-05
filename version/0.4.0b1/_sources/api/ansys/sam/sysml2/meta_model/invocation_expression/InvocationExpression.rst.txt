@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`InvocationExpression`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.invocation_expression.InvocationExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.instantiation_expression.InstantiationExpression`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.InvocationExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.invocation_expression import InvocationExpression
+
+
+
+
+

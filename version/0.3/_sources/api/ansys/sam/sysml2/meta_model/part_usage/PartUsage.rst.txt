@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`PartUsage`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.part_usage.PartUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.item_usage.ItemUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.PartUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PartUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~is_stakeholder`
+            - Get the is stakeholder property.
+          * - :py:attr:`~part_definition`
+            - Get the part definition property.
+          * - :py:attr:`~is_actor`
+            - Get the is actor property.
+          * - :py:attr:`~all_part_definition`
+            - Get the all part definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.part_usage import PartUsage
+
+Property detail
+---------------
+
+.. py:property:: is_stakeholder
+   :type: bool
+
+
+   
+   Get the is stakeholder property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is stakeholder.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: part_definition
+   :type: list[PartDefinition]
+
+
+   
+   Get the part definition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["PartDefinition"]
+           Value of property part definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_actor
+   :type: bool
+
+
+   
+   Get the is actor property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is actor.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: all_part_definition
+   :type: list[PartDefinition]
+
+
+   
+   Get the all part definition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["PartDefinition"]
+           Value of property all part definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``forwarded_notification.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.forwarded_notification
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: forwarded_notification
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.forwarded_notification.ForwardedNotification`
+            - Java class 'com.ansys.metamodel.sysml2.ForwardedNotification'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ForwardedNotification</api/ansys/sam/sysml2/meta_model/forwarded_notification/ForwardedNotification>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated forwarded notification class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

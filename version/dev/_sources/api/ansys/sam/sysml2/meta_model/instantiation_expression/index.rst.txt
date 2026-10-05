@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``instantiation_expression.py`` module
+==========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.instantiation_expression
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: instantiation_expression
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.instantiation_expression.InstantiationExpression`
+            - Java class 'com.ansys.metamodel.sysml2.InstantiationExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> InstantiationExpression</api/ansys/sam/sysml2/meta_model/instantiation_expression/InstantiationExpression>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated instantiation expression class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

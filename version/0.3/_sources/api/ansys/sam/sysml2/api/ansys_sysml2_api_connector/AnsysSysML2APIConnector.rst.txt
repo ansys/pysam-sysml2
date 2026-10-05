@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`AnsysSysML2APIConnector`
+================================
+
+
+.. py:class:: ansys.sam.sysml2.api.ansys_sysml2_api_connector.AnsysSysML2APIConnector(server_url: str, token: str, organization_id: str, use_ssl: bool = True)
+
+   Bases: :py:obj:`ansys.sam.sysml2.api.template_sysml2_api_connector.TemplateSysML2APIConnector`
+
+
+   
+   Provides the Ansys SysML2 connector.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
+
+
+
+
+

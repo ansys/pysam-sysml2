@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`TriggerInvocationExpression`
+====================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.trigger_invocation_expression.TriggerInvocationExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.invocation_expression.InvocationExpression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.TriggerInvocationExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TriggerInvocationExpression
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~kind`
+            - Get the kind property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.trigger_invocation_expression import TriggerInvocationExpression
+
+Property detail
+---------------
+
+.. py:property:: kind
+   :type: TriggerKind
+
+
+   
+   Get the kind property.
+
+
+
+
+
+   :Returns:
+
+       "TriggerKind"
+           Value of property kind.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

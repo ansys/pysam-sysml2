@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``transition_feature_membership.py`` module
+===============================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.transition_feature_membership
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: transition_feature_membership
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.transition_feature_membership.TransitionFeatureMembership`
+            - Java class 'com.ansys.medini.metamodel.sysml.TransitionFeatureMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> TransitionFeatureMembership</api/ansys/sam/sysml2/meta_model/transition_feature_membership/TransitionFeatureMembership>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated transition feature membership class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

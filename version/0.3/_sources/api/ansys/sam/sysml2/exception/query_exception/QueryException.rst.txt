@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`QueryException`
+=======================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.query_exception.QueryException
+
+   Bases: :py:obj:`Exception`
+
+
+   
+   Top exception for queries.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.query_exception import QueryException
+
+
+
+
+

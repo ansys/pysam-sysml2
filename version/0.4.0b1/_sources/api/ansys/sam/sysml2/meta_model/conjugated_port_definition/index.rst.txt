@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``conjugated_port_definition.py`` module
+============================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.conjugated_port_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: conjugated_port_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.conjugated_port_definition.ConjugatedPortDefinition`
+            - Java class 'com.ansys.metamodel.sysml2.ConjugatedPortDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ConjugatedPortDefinition</api/ansys/sam/sysml2/meta_model/conjugated_port_definition/ConjugatedPortDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated conjugated port definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

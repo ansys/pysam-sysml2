@@ -1,0 +1,247 @@
+
+
+
+
+
+
+:class:`TriggerKind`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.trigger_kind.TriggerKind
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.TriggerKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TriggerKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value`
+            - Get the value property.
+          * - :py:attr:`~name`
+            - Get the name property.
+          * - :py:attr:`~literal`
+            - Get the literal property.
+          * - :py:attr:`~by_name`
+            - Get the by name property.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~WHEN`
+            - 
+          * - :py:attr:`~AT`
+            - 
+          * - :py:attr:`~AFTER`
+            - 
+          * - :py:attr:`~WHEN_VALUE`
+            - 
+          * - :py:attr:`~AT_VALUE`
+            - 
+          * - :py:attr:`~AFTER_VALUE`
+            - 
+          * - :py:attr:`~VALUES_ARRAY`
+            - 
+          * - :py:attr:`~VALUES`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.trigger_kind import TriggerKind
+
+Property detail
+---------------
+
+.. py:property:: value
+   :type: int
+
+
+   
+   Get the value property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:int`
+           Value of property value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: name
+   :type: str
+
+
+   
+   Get the name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: literal
+   :type: str
+
+
+   
+   Get the literal property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property literal.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: by_name
+   :type: TriggerKind
+
+
+   
+   Get the by name property.
+
+
+
+
+
+   :Returns:
+
+       "TriggerKind"
+           Value of property by name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: WHEN
+   :type:  TriggerKind
+
+.. py:attribute:: AT
+   :type:  TriggerKind
+
+.. py:attribute:: AFTER
+   :type:  TriggerKind
+
+.. py:attribute:: WHEN_VALUE
+   :type:  int
+
+.. py:attribute:: AT_VALUE
+   :type:  int
+
+.. py:attribute:: AFTER_VALUE
+   :type:  int
+
+.. py:attribute:: VALUES_ARRAY
+   :type:  TriggerKind
+
+.. py:attribute:: VALUES
+   :type:  list
+
+
+
+
+

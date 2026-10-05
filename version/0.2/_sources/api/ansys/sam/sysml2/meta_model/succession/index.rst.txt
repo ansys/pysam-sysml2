@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``succession.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.succession
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: succession
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.succession.Succession`
+            - Java class 'com.ansys.medini.metamodel.sysml.Succession'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Succession</api/ansys/sam/sysml2/meta_model/succession/Succession>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated succession class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

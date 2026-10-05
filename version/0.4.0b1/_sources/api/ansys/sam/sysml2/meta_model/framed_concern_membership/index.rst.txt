@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``framed_concern_membership.py`` module
+===========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.framed_concern_membership
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: framed_concern_membership
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.framed_concern_membership.FramedConcernMembership`
+            - Java class 'com.ansys.metamodel.sysml2.FramedConcernMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> FramedConcernMembership</api/ansys/sam/sysml2/meta_model/framed_concern_membership/FramedConcernMembership>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated framed concern membership class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+
