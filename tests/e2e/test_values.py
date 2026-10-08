@@ -349,3 +349,44 @@ class TestValues:
         assert value == "try\\\\\nto"
         assert value.count("\\") == 2
         assert "\n" in value
+
+    def test_feature_chain_expression_renders_base_dot_target(
+        self, connector, project_factory, includes_derived
+    ):
+        """A feature chain with a null operator renders as base.target."""
+        project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
+        root = project.get_root_package()
+        factory = Factory(project, connector)
+        factory.create_part_usage(declared_name="r1", owner=root)
+        lower_right_membership = factory.create_feature_membership(
+            owning_related_element=root.r1
+        )
+        factory.create_attribute_usage(
+            declared_name="lowerRight",
+            owning_relationship=lower_right_membership,
+        )
+        factory.create_attribute_usage(declared_name="chainBinding", owner=root)
+
+        SysMLTools.parse_and_set_value(root.chainBinding, "r1.lowerRight")
+
+        value = root.chainBinding.get_value()
+        assert SysMLTools.isinstance(value, "FeatureChainExpression")
+        assert value.operator is None
+        assert SysMLTools.serialize_expression(value) == "r1.lowerRight"
+        assert SysMLTools.isinstance(
+            root.r1.lowerRight.owning_feature_membership, "FeatureMembership"
+        )
+
+        corner_membership = factory.create_feature_membership(
+            owning_related_element=root.r1.lowerRight
+        )
+        factory.create_attribute_usage(
+            declared_name="corner",
+            owning_relationship=corner_membership,
+        )
+        factory.create_attribute_usage(declared_name="nestedBinding", owner=root)
+        SysMLTools.parse_and_set_value(root.nestedBinding, "r1.lowerRight.corner")
+
+        assert (
+            SysMLTools.serialize_expression(root.nestedBinding.get_value()) == "r1.lowerRight.corner"
+        )
