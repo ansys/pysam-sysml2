@@ -47,7 +47,7 @@ project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
 my_bike_project = project_manager.get_sysml_project(BIKE_PROJECT_ID)
 
-bike = my_bike_project.get_root_package().get("Structure").get("Bike")
+bike = my_bike_project.get_root_packages()[0].get("Structure").get("Bike")
 
 # see computer-cost-static.py for a computation of weight
 # through a recursive way (replace "cost" with "weight")

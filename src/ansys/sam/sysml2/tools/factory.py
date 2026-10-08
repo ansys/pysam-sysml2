@@ -2375,7 +2375,7 @@ class Factory:
         Element
             Created element.
         """
-        if self._project.get_root_package()._observer._is_transactional_mode:
+        if self._project.get_root_packages()[0]._observer._is_transactional_mode:
             return self._create_local_element_and_stack(element_type, **kwargs)
         else:
             return self._direct_create_element(element_type, **kwargs)
@@ -2404,7 +2404,7 @@ class Factory:
             constructor = SysMLUtil.get_sysml_constructor(element_type)
         instance = constructor(element_id)
 
-        instance._observer = self._project.get_root_package()._observer
+        instance._observer = self._project.get_root_packages()[0]._observer
         instance._observer.notify(element_id, "@type", element_type)
         for key, value in kwargs.items():
             if isinstance(value, list):
@@ -2490,5 +2490,5 @@ class Factory:
         from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 
         builder = SysML2ProjectBuilder(self._connector)
-        observer = self._project.get_root_package()._observer
+        observer = self._project.get_root_packages()[0]._observer
         builder.reload_project(observer, self._project)

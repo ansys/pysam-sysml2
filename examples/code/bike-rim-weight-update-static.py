@@ -49,9 +49,9 @@ my_bike_project = project_manager.get_sysml_project(BIKE_PROJECT_ID)
 
 
 # Then we can use the following code to get the PartDefinition of the bike
-bike = my_bike_project.get_root_package().get("Structure").get("Bike")
+bike = my_bike_project.get_root_packages()[0].get("Structure").get("Bike")
 
-rim = my_bike_project.get_root_package().get("Structure").get("Rim")
+rim = my_bike_project.get_root_packages()[0].get("Structure").get("Rim")
 
 
 def render(feature):

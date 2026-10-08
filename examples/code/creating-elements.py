@@ -45,7 +45,7 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 project = project_manager.get_scripting_project(BIKE_PROJECT_ID)
 
-bike = project.get_root_package().Structure.Bike
+bike = project.get_root_packages()[0].Structure.Bike
 
 factory = Factory(project, ansyssysml2apiconnector)
 
@@ -53,5 +53,5 @@ new_bicycle_frame_length = factory.create_attribute_usage(declared_name="length"
 
 SysMLTools.parse_and_set_value(bike.frame.length, "60 [cm]")
 
-length = project.get_root_package().Structure.Bike.frame.length
+length = project.get_root_packages()[0].Structure.Bike.frame.length
 print(SysMLTools.serialize_expression(length.get_value()))

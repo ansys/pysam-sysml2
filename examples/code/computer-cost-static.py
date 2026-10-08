@@ -49,7 +49,7 @@ project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 
 project = project_manager.get_sysml_project(COMPUTER_PROJECT_ID)
 
-real_systems: Package = project.get_root_package().get("RealSystems")
+real_systems: Package = project.get_root_packages()[0].get("RealSystems")
 
 
 def assess_cost(element: Element):

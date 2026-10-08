@@ -24,6 +24,7 @@ You are likely impacted if your code does any of the following:
 - writes requirement text or documentation
 - builds or navigates diagrams through the diagram REST API
 - calls `get_all_elements` directly, or loads projects while controlling derived / inherited payload size
+- calls `get_root_package()` (deprecated; use `get_root_packages()`)
 
 ---
 
@@ -43,6 +44,7 @@ You are likely impacted if your code does any of the following:
 | Requirement text / documentation | `req._text = ["..."]` (or assign/extend on `text`) | create+append `Documentation` to add; edit `documentation.body` to update; read via `text` |
 | Diagrams | navigable diagram model via REST API | removed (image download only) |
 | Element fetch / derived collections | `get_all_elements(project_id)` only; derived collections always from API | `get_all_elements(project_id, **kwargs)`; optional `includes_derived` / `includes_inherited`; client rebuild when derived is omitted |
+| Root packages | `project.get_root_package()` | `project.get_root_packages()` (`get_root_package()` deprecated) |
 
 ---
 

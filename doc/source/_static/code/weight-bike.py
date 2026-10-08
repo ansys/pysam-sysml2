@@ -46,7 +46,7 @@ my_bike_project = project_manager.get_scripting_project("<Bike Project ID>")
 
 
 # Then we can use the following code to get the PartDefinition of the bike
-bike = my_bike_project.get_root_package().Structure.Bike
+bike = my_bike_project.get_root_packages()[0].Structure.Bike
 
 weight_features = [
     bike.frontWheel.rim.weight,
