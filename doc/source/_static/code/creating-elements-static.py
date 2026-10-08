@@ -41,7 +41,7 @@ ansyssysml2apiconnector = AnsysSysML2APIConnector(
 project_manager = SysML2ProjectManager(connector=ansyssysml2apiconnector)
 project = project_manager.get_sysml_project("<Bike Project ID>")
 
-bike = project.get_root_package().get("Structure").get("Bike")
+bike = project.get_root_packages()[0].get("Structure").get("Bike")
 
 factory = Factory(project, ansyssysml2apiconnector)
 

@@ -52,7 +52,11 @@ class Project(ABC):
 
     @abstractmethod
     def get_root_package(self) -> Package:
-        """Get the root package."""
+        """Get the first root package. Deprecated."""
+
+    @abstractmethod
+    def get_root_packages(self) -> list[Package]:
+        """Get the packages owned by the root Namespace."""
 
     @abstractmethod
     def get_libraries_packages(self) -> list[Package]:

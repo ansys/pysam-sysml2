@@ -44,7 +44,7 @@ project = project_manager.get_scripting_project(
     "<Computer Project ID>"
 )  # You can find your project ID in the URL of the editor.
 
-real_systems = project.get_root_package().RealSystems
+real_systems = project.get_root_packages()[0].RealSystems
 
 
 def assess_cost(element):

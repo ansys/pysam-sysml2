@@ -50,7 +50,7 @@ Dynamic example
 .. code-block:: python
 
    # Get a dynamic/scripting project from the project manager
-   project = project_manager.get_scripting_project().get_root_package()
+   project = project_manager.get_scripting_project().get_root_packages()[0]
 
    # Auto-completion after '.' shows contained objects
    project.MyPart.  # Shows: MyAttribute, MyPort, ...
@@ -80,7 +80,7 @@ Static example
 .. code-block:: python
 
    # Get a sysml/static project from the project manager
-   project = project_manager.get_sysml_project().get_root_package()
+   project = project_manager.get_sysml_project().get_root_packages()[0]
 
    # Auto-completion after '.' shows SysML2 properties only
    project.element.  # Shows: name, isAbstract, owned_element, multiplicity, ...
