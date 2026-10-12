@@ -197,7 +197,7 @@ class TestSysMLMapper:
         )
 
     def test_standard_library_package_kept_when_resolving(self, sysml_mapper: SysMLMapper):
-        """resolve_libraries does not drop standard LibraryPackage child references."""
+        """resolve_standard_libraries does not drop standard LibraryPackage child references."""
         data = {
             "@id": "library_id",
             "@type": "LibraryPackage",
