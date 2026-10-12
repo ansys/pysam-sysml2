@@ -22,8 +22,6 @@
 
 """Unit tests for ProjectImpl root packages."""
 
-import pytest
-
 from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.meta_model.element import Element
 from ansys.sam.sysml2.meta_model.namespace import Namespace
@@ -42,5 +40,4 @@ def test_get_root_packages_returns_owned_member_packages():
     project._root = [root, package_root]
 
     assert project.get_root_packages() == [first, second]
-    with pytest.warns(DeprecationWarning, match="get_root_packages"):
-        assert project.get_root_package() is first
+    assert project.get_root_package() is first

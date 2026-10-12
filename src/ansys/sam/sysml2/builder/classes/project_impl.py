@@ -22,8 +22,6 @@
 
 """Private implementation for a project."""
 
-import warnings
-
 from ansys.sam.sysml2.classes.project import Project
 from ansys.sam.sysml2.classes.unresolved_field import UnresolvedField
 from ansys.sam.sysml2.meta_model.element import Element
@@ -80,12 +78,7 @@ class ProjectImpl(Project):
         return self._id
 
     def get_root_package(self) -> Package:
-        """Get the first root package. Deprecated."""
-        warnings.warn(
-            "get_root_package() is deprecated. Use get_root_packages() instead.",
-            DeprecationWarning,
-            stacklevel=2,
-        )
+        """Get the first package owned by the root Namespace."""
         packages = self.get_root_packages()
         if not packages:
             raise ValueError("No root Package found in project.")
@@ -168,7 +161,7 @@ class ProjectImpl(Project):
         transaction is committed or stopped. Calculated modifications are applied only
         once all changes are committed.
         """
-        self.get_root_packages()[0]._observer.set_transactional_mode(True)
+        self.get_root_package()._observer.set_transactional_mode(True)
 
     def stop_transactional_mode(self) -> None:
         """
@@ -176,4 +169,4 @@ class ProjectImpl(Project):
 
         Close the current transaction and commit all changes to the server.
         """
-        self.get_root_packages()[0]._observer.set_transactional_mode(False)
+        self.get_root_package()._observer.set_transactional_mode(False)
