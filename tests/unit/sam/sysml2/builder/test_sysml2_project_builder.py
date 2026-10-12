@@ -22,6 +22,7 @@
 
 """Unit tests for SysML2ProjectBuilder using the mocked connector."""
 
+from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
 from ansys.sam.sysml2.meta_model.namespace_import import NamespaceImport
 from tests.unit.const import PROJECT_1_ATTR_ID, PROJECT_ID_1, PROJECT_ID_5, PROJECT_ID_7
@@ -179,3 +180,31 @@ class TestSysML2ProjectBuilderLibraries:
         libraries = project.get_libraries_packages()
 
         assert libraries == []
+
+
+class TestSysML2ProjectBuilderLibrarySkip:
+
+    def test_user_library_child_kept_when_package_mapped_later(self, connector):
+        """Package before its user LibraryPackage still registers child refs."""
+        builder = SysML2ProjectBuilder(connector)
+        project = ProjectImpl("project_id", "name")
+        project._resolve_libraries = False
+        components = {
+            "@id": "components_id",
+            "@type": "Package",
+            "isLibraryElement": True,
+            "owner": {"@id": "library_id"},
+            "ownedElement": [{"@id": "fpgas_id"}],
+        }
+        library = {
+            "@id": "library_id",
+            "@type": "LibraryPackage",
+            "isLibraryElement": True,
+            "isStandard": False,
+            "ownedElement": [{"@id": "components_id"}],
+        }
+
+        builder._map_element_in_project(project, [components, library])
+
+        unresolved_ids = [field.get_id() for field in project._unresolved_fields]
+        assert "fpgas_id" in unresolved_ids
