@@ -37,7 +37,7 @@ class ProjectImpl(Project):
     _root: list[Element]
     _unresolved_fields: list[UnresolvedField]
     _name: str
-    _resolve_libraries: bool = False
+    _resolve_standard_libraries: bool = False
     _scripting: bool = False
 
     def __init__(self, project_id: str, name: str):
@@ -78,13 +78,22 @@ class ProjectImpl(Project):
         return self._id
 
     def get_root_package(self) -> Package:
-        """Get the root package."""
-        namespace = next((x for x in self._root if type(x).__name__ == "Namespace"), None)
-        if namespace is not None:
-            for member in namespace.owned_member:
+        """Get the first package owned by the root Namespace."""
+        packages = self.get_root_packages()
+        if not packages:
+            raise ValueError("No root Package found in project.")
+        return packages[0]
+
+    def get_root_packages(self) -> list[Package]:
+        """Get the packages owned by the root Namespace."""
+        packages = []
+        for root in self._root:
+            if type(root).__name__ != "Namespace":
+                continue
+            for member in root.owned_member:
                 if isinstance(member, Package):
-                    return member
-        raise ValueError("No root Package found in project.")
+                    packages.append(member)
+        return packages
 
     def get_libraries_packages(self) -> list[Package]:
         """
