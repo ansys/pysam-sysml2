@@ -227,10 +227,18 @@ class SysML2ProjectBuilder:
         unresolved_fields = []
         mapper = self._get_mapper(project)
         resolve_standard_libraries = getattr(project, "_resolve_standard_libraries", False)
+        mapped_batch = []
         for element in elements:
             existing_element = project.find_element_by_id(element["@id"])
-            mapped_element = mapper.map(element, existing_element, resolve_standard_libraries)
+            mapped_element = mapper.map(element, existing_element)
             project.add_element(mapped_element.get_element())
+            mapped_batch.append(mapped_element)
+        for mapped_element in mapped_batch:
+            element = mapped_element.get_element()
+            if mapper._should_drop_library_unresolved(
+                element, project._env, resolve_standard_libraries
+            ):
+                continue
             unresolved_fields.extend(mapped_element.get_unresolved_fields())
         project.update_unresolved_fields(unresolved_fields)
 
