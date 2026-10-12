@@ -47,6 +47,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
     """Provides the abstract class with SysML methods."""
 
     _use_ssl: bool
+    _session: requests.Session
 
     def __init__(self, use_ssl: bool = True):
         """
@@ -59,6 +60,8 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         """
         super().__init__()
         self._use_ssl = use_ssl
+        self._session = requests.Session()
+        self._session.verify = use_ssl
 
     def get_projects(self) -> list:
         """
@@ -70,7 +73,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             List of all projects of the connected user.
         """
         http_request = self._build_http_request(endpoint="/projects")
-        return self._send_request(http_request, requests.get)
+        return self._send_request(http_request, self._session.get)
 
     def get_project_by_id(self, project_id: str) -> dict:
         """
@@ -89,7 +92,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}")
         return self._send_request(
             http_request=http_request,
-            call=requests.get,
+            call=self._session.get,
         )
 
     def create_project(
@@ -121,7 +124,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             "name": project_name,
             "description": project_description,
         }
-        return self._send_request(http_request=http_request, call=requests.post)
+        return self._send_request(http_request=http_request, call=self._session.post)
 
     def delete_project(self, project_id: str) -> dict:
         """
@@ -138,7 +141,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             Confirmation containing ``@type`` and ``@id`` of the deleted project.
         """
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}")
-        return self._send_request(http_request=http_request, call=requests.delete)
+        return self._send_request(http_request=http_request, call=self._session.delete)
 
     def update_project(
         self,
@@ -170,7 +173,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         if project_description is not None:
             body["description"] = project_description
         http_request.json_body = body
-        return self._send_request(http_request=http_request, call=requests.put)
+        return self._send_request(http_request=http_request, call=self._session.put)
 
     def get_all_elements(self, project_id: str, **kwargs) -> list:
         """
@@ -195,7 +198,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         self._set_query_params(http_request, kwargs)
         return self._send_request(
             http_request=http_request,
-            call=requests.get,
+            call=self._session.get,
         )
 
     def get_element_by_id(self, project_id: str, element_id: str) -> dict:
@@ -219,7 +222,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         )
         return self._send_request(
             http_request=http_request,
-            call=requests.get,
+            call=self._session.get,
         )
 
     def get_root_elements(self, project_id: str) -> list:
@@ -239,7 +242,7 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(
             endpoint=f"/projects/{project_id}/commits/head/roots"
         )
-        return self._send_request(http_request=http_request, call=requests.get)
+        return self._send_request(http_request=http_request, call=self._session.get)
 
     def execute_query(self, project_id: str, query: str, **kwargs) -> dict:
         """
@@ -263,13 +266,13 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/query-results")
         http_request.json_body = json.loads(query)
         self._set_query_params(http_request, kwargs)
-        return self._send_request(http_request=http_request, call=requests.post)
+        return self._send_request(http_request=http_request, call=self._session.post)
 
     def create_commit(self, project_id: str, commit: str) -> dict:
         """Send a commit, provided as a JSON string, to the standard API."""
         http_request = self._build_http_request(endpoint=f"/projects/{project_id}/commit")
         http_request.json_body = json.loads(commit)
-        return self._send_request(http_request=http_request, call=requests.post)
+        return self._send_request(http_request=http_request, call=self._session.post)
 
     @staticmethod
     def _set_query_params(http_request: HttpRequest, kwargs: dict) -> None:
