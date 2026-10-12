@@ -28,6 +28,10 @@ import pytest
 
 from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.value_helper import ValueHelper
+from ansys.sam.sysml2.meta_model.feature import Feature
+from ansys.sam.sysml2.meta_model.feature_chain_expression import FeatureChainExpression
+from ansys.sam.sysml2.meta_model.feature_reference_expression import FeatureReferenceExpression
+from ansys.sam.sysml2.meta_model.feature_value import FeatureValue
 from ansys.sam.sysml2.tools.sysmltools import SysMLTools
 from tests.unit.const import PROJECT_ID_5
 
@@ -236,3 +240,51 @@ class TestValueHelperComplexExpressions:
             "@type": "LiteralString",
             "value": "try\\\\to",
         }
+
+    def test_feature_chain_renders_base_and_target(self):
+        """Render ``r1.lowerRight`` when ``operator`` is null and ``target_feature`` is set."""
+        referent = Feature("r1-id")
+        referent._name = "r1"
+        reference = FeatureReferenceExpression("r1-ref")
+        reference._referent = referent
+        target = Feature("lower-right-id")
+        target._name = "lowerRight"
+        parameter = Feature("chain-input")
+        valuation = FeatureValue("chain-input-value")
+        valuation.value = reference
+        parameter.valuation = valuation
+        chain = FeatureChainExpression("chain-id")
+        chain.operator = None
+        chain.input.append(parameter)
+        chain._target_feature = target
+
+        assert SysMLTools.serialize_expression(chain) == "r1.lowerRight"
+
+    def test_nested_feature_chain_renders_each_segment(self):
+        """Render ``r1.lowerRight.corner`` when the base is itself a chain."""
+        referent = Feature("r1-id")
+        referent._name = "r1"
+        reference = FeatureReferenceExpression("r1-ref")
+        reference._referent = referent
+        lower_right = Feature("lower-right-id")
+        lower_right._name = "lowerRight"
+        inner_parameter = Feature("inner-input")
+        inner_valuation = FeatureValue("inner-input-value")
+        inner_valuation.value = reference
+        inner_parameter.valuation = inner_valuation
+        inner = FeatureChainExpression("inner-id")
+        inner.operator = None
+        inner.input.append(inner_parameter)
+        inner._target_feature = lower_right
+        corner = Feature("corner-id")
+        corner._name = "corner"
+        outer_parameter = Feature("outer-input")
+        outer_valuation = FeatureValue("outer-input-value")
+        outer_valuation.value = inner
+        outer_parameter.valuation = outer_valuation
+        outer = FeatureChainExpression("outer-id")
+        outer.operator = None
+        outer.input.append(outer_parameter)
+        outer._target_feature = corner
+
+        assert SysMLTools.serialize_expression(outer) == "r1.lowerRight.corner"
