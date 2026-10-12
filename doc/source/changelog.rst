@@ -9,6 +9,298 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.4.1 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.4.1>`_ - October 12, 2026
+=======================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Added
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Add get_target/get_source on connections and fix transactional commit field names
+          - `#189 <https://github.com/ansys/pysam-sysml2/pull/189>`_
+
+        * - Add scripting get(name) accessor for non-dot-accessible names
+          - `#191 <https://github.com/ansys/pysam-sysml2/pull/191>`_
+
+        * - Surface renamed name/visibility fields through deprecation shims
+          - `#192 <https://github.com/ansys/pysam-sysml2/pull/192>`_
+
+        * - Align metamodel
+          - `#197 <https://github.com/ansys/pysam-sysml2/pull/197>`_
+
+        * - Add opt-in resolve_libraries flag to load and map library element contents
+          - `#207 <https://github.com/ansys/pysam-sysml2/pull/207>`_
+
+        * - Read and write complex value expressions as text
+          - `#209 <https://github.com/ansys/pysam-sysml2/pull/209>`_
+
+        * - Resolve feature chaining
+          - `#215 <https://github.com/ansys/pysam-sysml2/pull/215>`_
+
+        * - Change valuation reading process
+          - `#231 <https://github.com/ansys/pysam-sysml2/pull/231>`_
+
+        * - Support includesDerived/includesInherited and derive local collections
+          - `#273 <https://github.com/ansys/pysam-sysml2/pull/273>`_
+
+        * - Forward includes_derived/includes_inherited on execute_query and element resolution
+          - `#295 <https://github.com/ansys/pysam-sysml2/pull/295>`_
+
+        * - Add ForwardedNotification class and extend properties in Classifier, Feature, and Type
+          - `#302 <https://github.com/ansys/pysam-sysml2/pull/302>`_
+
+        * - Enhance derived collections and testing framework, fix issues with missing reconstruction on derived collections
+          - `#304 <https://github.com/ansys/pysam-sysml2/pull/304>`_
+
+        * - Centralized identifiers
+          - `#329 <https://github.com/ansys/pysam-sysml2/pull/329>`_
+
+        * - Add api version check
+          - `#352 <https://github.com/ansys/pysam-sysml2/pull/352>`_
+
+        * - Align project API parameters
+          - `#388 <https://github.com/ansys/pysam-sysml2/pull/388>`_
+
+        * - Navigate nested library packages reached through NamespaceImport
+          - `#401 <https://github.com/ansys/pysam-sysml2/pull/401>`_
+
+
+  .. tab-item:: Fixed
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Rework FeatureValue set-value commits and drop legacy defaultValue paths
+          - `#186 <https://github.com/ansys/pysam-sysml2/pull/186>`_
+
+        * - Make IPython autocomplete honor element __dir__ via complete_object hook
+          - `#193 <https://github.com/ansys/pysam-sysml2/pull/193>`_
+
+        * - Resolve no-name elements via their ElementType and ID declared name
+          - `#212 <https://github.com/ansys/pysam-sysml2/pull/212>`_
+
+        * - Hide private backing fields from static element autocomplete
+          - `#214 <https://github.com/ansys/pysam-sysml2/pull/214>`_
+
+        * - Add enum support
+          - `#237 <https://github.com/ansys/pysam-sysml2/pull/237>`_
+
+        * - Change name to declared_name in unchanged code
+          - `#244 <https://github.com/ansys/pysam-sysml2/pull/244>`_
+
+        * - Preload roots before build and resolve root package via Namespace
+          - `#272 <https://github.com/ansys/pysam-sysml2/pull/272>`_
+
+        * - Round-trip LiteralString values with KerML string-literal escaping
+          - `#275 <https://github.com/ansys/pysam-sysml2/pull/275>`_
+
+        * - Repair e2e transactional documentation links and KerML literal string updates
+          - `#288 <https://github.com/ansys/pysam-sysml2/pull/288>`_
+
+        * - Improve library package retrieval logic in ProjectImpl
+          - `#305 <https://github.com/ansys/pysam-sysml2/pull/305>`_
+
+        * - Get libraries package() should not raise error
+          - `#354 <https://github.com/ansys/pysam-sysml2/pull/354>`_
+
+        * - Resolve internal LibraryPackage contents when resolve_libraries is false
+          - `#382 <https://github.com/ansys/pysam-sysml2/pull/382>`_
+
+        * - Serialize feature-chain expressions
+          - `#406 <https://github.com/ansys/pysam-sysml2/pull/406>`_
+
+        * - Return every root package from the project
+          - `#407 <https://github.com/ansys/pysam-sysml2/pull/407>`_
+
+        * - Fill missing derived membership collections
+          - `#409 <https://github.com/ansys/pysam-sysml2/pull/409>`_
+
+
+  .. tab-item:: Documentation
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Migration guide
+          - `#230 <https://github.com/ansys/pysam-sysml2/pull/230>`_
+
+        * - Replace XMI models with KPAR models for bike and computer examples
+          - `#311 <https://github.com/ansys/pysam-sysml2/pull/311>`_
+
+
+  .. tab-item:: Dependencies
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Bump ansys/actions/doc-changelog from 11.0.3 to 11.0.4
+          - `#361 <https://github.com/ansys/pysam-sysml2/pull/361>`_
+
+        * - Bump prek from 0.4.14 to 0.5.0
+          - `#362 <https://github.com/ansys/pysam-sysml2/pull/362>`_
+
+        * - Bump prek from 0.5.0 to 0.5.2
+          - `#367 <https://github.com/ansys/pysam-sysml2/pull/367>`_
+
+        * - Bump ansys-sphinx-theme from 1.10.0 to 1.11.0
+          - `#368 <https://github.com/ansys/pysam-sysml2/pull/368>`_
+
+        * - Bump ansys/actions/doc-changelog from 11.0.4 to 11.0.6
+          - `#369 <https://github.com/ansys/pysam-sysml2/pull/369>`_
+
+        * - Bump ansys/pre-commit-hooks from v0.5.2 to v0.8.0
+          - `#371 <https://github.com/ansys/pysam-sysml2/pull/371>`_
+
+        * - Pin hook revisions to frozen SHAs and enable Dependabot
+          - `#372 <https://github.com/ansys/pysam-sysml2/pull/372>`_
+
+        * - Bump https://github.com/astral-sh/ruff-pre-commit from v0.15.4 to 0.16.6 in the pre-commit group across 1 directory
+          - `#373 <https://github.com/ansys/pysam-sysml2/pull/373>`_
+
+        * - Bump ansys/actions/doc-style from 11.0.6 to 11.0.8
+          - `#375 <https://github.com/ansys/pysam-sysml2/pull/375>`_
+
+        * - Bump ansys/actions/doc-deploy-changelog from 11.0.6 to 11.0.8
+          - `#376 <https://github.com/ansys/pysam-sysml2/pull/376>`_
+
+        * - Bump ansys/actions/check-vulnerabilities from 11.0.6 to 11.0.8
+          - `#377 <https://github.com/ansys/pysam-sysml2/pull/377>`_
+
+        * - Bump ansys/actions/build-wheelhouse from 11.0.6 to 11.0.8
+          - `#378 <https://github.com/ansys/pysam-sysml2/pull/378>`_
+
+        * - Bump ansys/actions/doc-build from 11.0.6 to 11.0.8
+          - `#379 <https://github.com/ansys/pysam-sysml2/pull/379>`_
+
+        * - Bump prek from 0.5.2 to 0.5.3
+          - `#383 <https://github.com/ansys/pysam-sysml2/pull/383>`_
+
+        * - Bump numpydoc from 1.10.0 to 1.11.0
+          - `#386 <https://github.com/ansys/pysam-sysml2/pull/386>`_
+
+        * - Bump the pre-commit group across 1 directory with 2 updates
+          - `#387 <https://github.com/ansys/pysam-sysml2/pull/387>`_
+
+        * - Bump ansys/actions/check-pr-title from 11.0.6 to 11.0.8
+          - `#390 <https://github.com/ansys/pysam-sysml2/pull/390>`_
+
+        * - Bump ansys/actions/check-actions-security from 11.0.6 to 11.0.8
+          - `#391 <https://github.com/ansys/pysam-sysml2/pull/391>`_
+
+        * - Bump ansys/actions/tests-pytest from 11.0.6 to 11.0.8
+          - `#392 <https://github.com/ansys/pysam-sysml2/pull/392>`_
+
+        * - Bump ansys/actions/doc-deploy-stable from 11.0.6 to 11.0.8
+          - `#393 <https://github.com/ansys/pysam-sysml2/pull/393>`_
+
+        * - Bump ansys/actions/code-style from 11.0.6 to 11.0.8
+          - `#394 <https://github.com/ansys/pysam-sysml2/pull/394>`_
+
+        * - Bump ansys/actions/release-github from 11.0.6 to 11.0.8
+          - `#395 <https://github.com/ansys/pysam-sysml2/pull/395>`_
+
+        * - Bump ansys/actions/doc-deploy-dev from 11.0.6 to 11.0.8
+          - `#396 <https://github.com/ansys/pysam-sysml2/pull/396>`_
+
+        * - Bump ansys/actions/doc-changelog from 11.0.6 to 11.0.8
+          - `#397 <https://github.com/ansys/pysam-sysml2/pull/397>`_
+
+        * - Bump ansys/actions/build-library from 11.0.6 to 11.0.8
+          - `#398 <https://github.com/ansys/pysam-sysml2/pull/398>`_
+
+        * - Bump the pre-commit group with 2 updates
+          - `#400 <https://github.com/ansys/pysam-sysml2/pull/400>`_
+
+        * - Bump pytest-mock from 3.15.1 to 3.16.0
+          - `#402 <https://github.com/ansys/pysam-sysml2/pull/402>`_
+
+        * - Bump prek from 0.5.3 to 0.5.4
+          - `#408 <https://github.com/ansys/pysam-sysml2/pull/408>`_
+
+        * - Bump https://github.com/astral-sh/ruff-pre-commit from v0.16.9 to 0.16.10 in the pre-commit group
+          - `#410 <https://github.com/ansys/pysam-sysml2/pull/410>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Regenerate static metamodel for the new SysML2 API
+          - `#184 <https://github.com/ansys/pysam-sysml2/pull/184>`_
+
+        * - Update CHANGELOG for v0.3.3
+          - `#356 <https://github.com/ansys/pysam-sysml2/pull/356>`_
+
+        * - Update CHANGELOG for v0.4.0b1
+          - `#360 <https://github.com/ansys/pysam-sysml2/pull/360>`_
+
+        * - Releasing to private PyPI
+          - `#364 <https://github.com/ansys/pysam-sysml2/pull/364>`_
+
+        * - Allow manual trigger of private PyPI release workflow
+          - `#366 <https://github.com/ansys/pysam-sysml2/pull/366>`_
+
+        * - Update CHANGELOG for v0.4.0b2
+          - `#374 <https://github.com/ansys/pysam-sysml2/pull/374>`_
+
+
+  .. tab-item:: Miscellaneous
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Adapt builder and mappers to the regenerated metamodel
+          - `#185 <https://github.com/ansys/pysam-sysml2/pull/185>`_
+
+        * - Use a dot-safe ClassName_<id> fallback for empty-name elements
+          - `#187 <https://github.com/ansys/pysam-sysml2/pull/187>`_
+
+        * - Adapt builder to FeatureChaining with lazy inherited-proxy caching
+          - `#188 <https://github.com/ansys/pysam-sysml2/pull/188>`_
+
+        * - Remove rest api support for diagrams
+          - `#243 <https://github.com/ansys/pysam-sysml2/pull/243>`_
+
+        * - Move parse_and_set_value from elements to SysMLTools
+          - `#255 <https://github.com/ansys/pysam-sysml2/pull/255>`_
+
+        * - Expose real UUID for inherited elements instead of self-built composed IDs
+          - `#256 <https://github.com/ansys/pysam-sysml2/pull/256>`_
+
+        * - Add SysMLTools.get_element_visibility and remove name and visibility deprecation shims
+          - `#257 <https://github.com/ansys/pysam-sysml2/pull/257>`_
+
+        * - Unify metamodel
+          - `#269 <https://github.com/ansys/pysam-sysml2/pull/269>`_
+
+        * - Reuse an HTTP session when loading SysML v2 projects
+          - `#389 <https://github.com/ansys/pysam-sysml2/pull/389>`_
+
+
+  .. tab-item:: Test
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Update e2e tests
+          - `#271 <https://github.com/ansys/pysam-sysml2/pull/271>`_
+
+        * - Refresh modeltestset fixtures and resolve mock project dirs by UUID
+          - `#303 <https://github.com/ansys/pysam-sysml2/pull/303>`_
+
+
 `0.4.0b2 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.4.0b2>`_ - September 15, 2026
 =============================================================================================
 
