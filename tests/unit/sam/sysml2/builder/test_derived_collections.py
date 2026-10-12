@@ -26,6 +26,7 @@ from ansys.sam.sysml2.builder.classes.project_impl import ProjectImpl
 from ansys.sam.sysml2.builder.classes.sysml_util import SysMLUtil
 from ansys.sam.sysml2.builder.derived_collections import fill_derived_collections
 from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
+from ansys.sam.sysml2.builder.sysml2_project_manager import SysML2ProjectManager
 from ansys.sam.sysml2.classes.dynamic_e_object import DynamicEObject
 from ansys.sam.sysml2.meta_model.annotation import Annotation
 from ansys.sam.sysml2.meta_model.attribute_definition import AttributeDefinition
@@ -46,6 +47,7 @@ from ansys.sam.sysml2.meta_model.reference_subsetting import ReferenceSubsetting
 from ansys.sam.sysml2.meta_model.requirement_usage import RequirementUsage
 from ansys.sam.sysml2.meta_model.subclassification import Subclassification
 from ansys.sam.sysml2.meta_model.subsetting import Subsetting
+from ansys.sam.sysml2.tools.factory import Factory
 from tests.unit.const import PROJECT_ID_1
 
 
@@ -401,6 +403,48 @@ class TestFillDerivedCollectionsScripting:
         assert package._ownedElement == [child]
         assert package._ownedMembership == [owning]
         assert package._ownedMember == [child]
+
+
+class TestUseCaseMembershipsFromFactory:
+
+    def test_actor_objective_and_subject(self, connector):
+        manager = SysML2ProjectManager(connector)
+        project = manager.get_scripting_project(PROJECT_ID_1, includes_derived=False)
+        factory = Factory(project, connector)
+        root = project.get_root_package()
+        project.start_transactional_mode()
+
+        use_case_definition = factory.create_use_case_definition(
+            declared_name="UseCaseDefinition",
+            owner=root,
+        )
+        actor_membership = factory.create_actor_membership(
+            owning_related_element=use_case_definition
+        )
+        actor = factory.create_part_usage(
+            declared_name="actor",
+            owning_relationship=actor_membership,
+        )
+        objective_membership = factory.create_objective_membership(
+            owning_related_element=use_case_definition,
+        )
+        objective = factory.create_requirement_usage(
+            declared_name="objective",
+            owning_relationship=objective_membership,
+        )
+        subject_membership = factory.create_subject_membership(
+            owning_related_element=use_case_definition
+        )
+        subject = factory.create_reference_usage(
+            declared_name="subject",
+            owning_relationship=subject_membership,
+        )
+
+        fill_derived_collections(project)
+
+        assert list(use_case_definition.actor_parameter) == [actor]
+        assert use_case_definition.objective_requirement is objective
+        assert use_case_definition.subject_parameter is subject
 
 
 class TestSysML2ProjectBuilderDerivedCollections:
