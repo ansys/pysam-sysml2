@@ -188,7 +188,7 @@ class TestSysML2ProjectBuilderLibrarySkip:
         """Package before its user LibraryPackage still registers child refs."""
         builder = SysML2ProjectBuilder(connector)
         project = ProjectImpl("project_id", "name")
-        project._resolve_libraries = False
+        project._resolve_standard_libraries = False
         components = {
             "@id": "components_id",
             "@type": "Package",

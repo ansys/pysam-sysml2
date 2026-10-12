@@ -28,7 +28,17 @@ Create a project
 Create a new project on the server. The project is automatically built and returned as a
 Python object, ready to use.
 
-Two methods are available depending on the approach:
+Two methods are available depending on the approach. Both accept the same optional load
+flags as ``get_scripting_project()`` and ``get_sysml_project()``:
+
+* ``resolve_standard_libraries`` (default ``False``): resolve and map standard library element contents.
+* ``includes_derived`` (default ``True``): include derived properties from the API.
+* ``includes_inherited`` (default ``True``): include inherited memberships and features.
+
+When ``includes_derived`` is ``False``, PySAM rebuilds the local derived collections from
+``ownedRelationship`` (and from ``inheritedMembership`` when present), for example
+``ownedElement``, ``ownedFeature``, ``feature``, and requirement text from each
+``documentation.body``.
 
 .. tab-set::
 
@@ -39,6 +49,9 @@ Two methods are available depending on the approach:
             project = project_manager.create_scripting_project(
                 name="My New Project",
                 description="A project created via PySAM SysML2",
+                resolve_standard_libraries=False,
+                includes_derived=True,
+                includes_inherited=True,
             )
 
     .. tab-item:: Static approach
@@ -48,6 +61,9 @@ Two methods are available depending on the approach:
             project = project_manager.create_sysml_project(
                 name="My New Project",
                 description="A project created via PySAM SysML2",
+                resolve_standard_libraries=False,
+                includes_derived=True,
+                includes_inherited=True,
             )
 
 Both methods create the project on the server and return a fully loaded project object, similar
