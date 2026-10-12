@@ -257,6 +257,8 @@ class ValueHelper:
 
     def _serialize_value(self, value):
         """Render a value element (expression or literal) to its text form."""
+        if type(value).__name__ == "FeatureChainExpression":
+            return self._render_feature_chain(value, value)
         if getattr(value, self.prefix + "operator", None) is not None:
             return self._render_expression(value, value)
         if hasattr(value, self.prefix + "value"):
@@ -299,6 +301,34 @@ class ValueHelper:
             return f"{operator} {rendered[0]}"
         return f" {operator} ".join(rendered)
 
+    def _render_feature_chain(self, element, value):
+        """Render a feature chain as ``base.target``.
+
+        ``operator`` is absent on the chains SAM returns. The base is the single
+        ``input`` and the target is ``target_feature``.
+
+        Parameters
+        ----------
+        element : object
+            Feature owning the expression, used to resolve referents.
+        value : object
+            Feature chain expression to render.
+
+        Returns
+        -------
+        str
+            The rendered chain text.
+        """
+        operands = self._input_operands(value)
+        if len(operands) != 1:
+            raise UnsupportedValueExpression("Expression not supported!")
+        base = self._render_operand(element, operands[0])
+        target = getattr(value, self.prefix + "target_feature", None)
+        name = self._resolve_referent_name(element, target)
+        if name is None:
+            raise UnsupportedValueExpression("Unresolved reference in expression")
+        return f"{base}.{name}"
+
     def _input_operands(self, value):
         """Return each ``input`` operand's underlying expression via its valuation."""
         operands = []
@@ -328,6 +358,8 @@ class ValueHelper:
         str
             The rendered operand text.
         """
+        if type(operand).__name__ == "FeatureChainExpression":
+            return self._render_feature_chain(element, operand)
         if getattr(operand, self.prefix + "operator", None) is not None:
             return self._render_expression(element, operand)
         if hasattr(operand, self.prefix + "referent"):
