@@ -35,7 +35,9 @@ class AnsysSysML2Project(AnsysProject, ProjectImpl):
     def _get_project(
         self,
         sysml2_connector: AnsysSysML2APIConnector,
-        resolve_libraries: bool = False,
+        resolve_standard_libraries: bool = False,
+        includes_derived: bool = True,
+        includes_inherited: bool = True,
     ) -> Project:
         """
         Load a SysML project.
@@ -44,8 +46,12 @@ class AnsysSysML2Project(AnsysProject, ProjectImpl):
         ----------
         sysml2_connector : AnsysSysML2APIConnector
             Connector used to load the project.
-        resolve_libraries : bool, default: False
+        resolve_standard_libraries : bool, default: False
             When ``True``, resolve and map library element contents so they can be navigated.
+        includes_derived : bool, default: True
+            When ``True``, include derived properties from the API.
+        includes_inherited : bool, default: True
+            When ``True``, include inherited memberships and features from the API.
 
         Returns
         -------
@@ -53,5 +59,9 @@ class AnsysSysML2Project(AnsysProject, ProjectImpl):
             The loaded SysML project.
         """
         project_manager = SysML2ProjectManager(connector=sysml2_connector)
-        project = project_manager.get_sysml_project(self._project_id, resolve_libraries)
-        return project
+        return project_manager.get_sysml_project(
+            self._project_id,
+            resolve_standard_libraries=resolve_standard_libraries,
+            includes_derived=includes_derived,
+            includes_inherited=includes_inherited,
+        )
