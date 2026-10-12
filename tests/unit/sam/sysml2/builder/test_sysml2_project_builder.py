@@ -282,3 +282,32 @@ class TestNestedLibraryNavigation:
 
         assert "Exposed" not in library._element_hash_map
         assert "Exposed" not in library._owned_names
+
+
+class TestSysML2ProjectBuilderLibrarySkip:
+
+    def test_user_library_child_kept_when_package_mapped_later(self, connector):
+        """Package before its user LibraryPackage still registers child refs."""
+        builder = SysML2ProjectBuilder(connector)
+        project = ProjectImpl("project_id", "name")
+        project._resolve_standard_libraries = False
+        components = {
+            "@id": "components_id",
+            "@type": "Package",
+            "isLibraryElement": True,
+            "owner": {"@id": "library_id"},
+            "ownedElement": [{"@id": "fpgas_id"}],
+        }
+        library = {
+            "@id": "library_id",
+            "@type": "LibraryPackage",
+            "isLibraryElement": True,
+            "isStandard": False,
+            "ownedElement": [{"@id": "components_id"}],
+        }
+
+        builder._map_element_in_project(project, [components, library])
+
+        unresolved_ids = [field.get_id() for field in project._unresolved_fields]
+        assert "fpgas_id" in unresolved_ids
+
