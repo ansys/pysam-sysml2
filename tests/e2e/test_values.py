@@ -357,17 +357,20 @@ class TestValues:
         project = project_factory(model="bike", kind="scripting", includes_derived=includes_derived)
         root = project.get_root_package()
         factory = Factory(project, connector)
-        factory.create_part_usage(declared_name="r1", owner=root)
+
+        project.start_transactional_mode()
+        r1 = factory.create_part_usage(declared_name="r1", owner=root)
         lower_right_membership = factory.create_feature_membership(
-            owning_related_element=root.r1
+            owning_related_element=r1
         )
         factory.create_attribute_usage(
             declared_name="lowerRight",
             owning_relationship=lower_right_membership,
         )
-        factory.create_attribute_usage(declared_name="chainBinding", owner=root)
+        chain_binding = factory.create_attribute_usage(declared_name="chainBinding", owner=root)
 
-        SysMLTools.parse_and_set_value(root.chainBinding, "r1.lowerRight")
+        SysMLTools.parse_and_set_value(chain_binding, "r1.lowerRight")
+        project.stop_transactional_mode()
 
         value = root.chainBinding.get_value()
         assert SysMLTools.isinstance(value, "FeatureChainExpression")
@@ -377,6 +380,7 @@ class TestValues:
             root.r1.lowerRight.owning_feature_membership, "FeatureMembership"
         )
 
+        project.start_transactional_mode()
         corner_membership = factory.create_feature_membership(
             owning_related_element=root.r1.lowerRight
         )
@@ -384,8 +388,9 @@ class TestValues:
             declared_name="corner",
             owning_relationship=corner_membership,
         )
-        factory.create_attribute_usage(declared_name="nestedBinding", owner=root)
-        SysMLTools.parse_and_set_value(root.nestedBinding, "r1.lowerRight.corner")
+        nested_binding = factory.create_attribute_usage(declared_name="nestedBinding", owner=root)
+        SysMLTools.parse_and_set_value(nested_binding, "r1.lowerRight.corner")
+        project.stop_transactional_mode()
 
         assert (
             SysMLTools.serialize_expression(root.nestedBinding.get_value()) == "r1.lowerRight.corner"
