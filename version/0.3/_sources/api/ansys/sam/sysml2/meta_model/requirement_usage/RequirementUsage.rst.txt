@@ -1,0 +1,447 @@
+
+
+
+
+
+
+:class:`RequirementUsage`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.requirement_usage.RequirementUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.constraint_usage.ConstraintUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.RequirementUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: RequirementUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~text`
+            - Get the text property.
+          * - :py:attr:`~is_objective`
+            - Get the is objective property.
+          * - :py:attr:`~req_id`
+            - Get the req id property.
+          * - :py:attr:`~all_text`
+            - Get the all text property.
+          * - :py:attr:`~framed_concern`
+            - Get the framed concern property.
+          * - :py:attr:`~actor_parameter`
+            - Get the actor parameter property.
+          * - :py:attr:`~subject_parameter`
+            - Get the subject parameter property.
+          * - :py:attr:`~requirement_definition`
+            - Get the requirement definition property.
+          * - :py:attr:`~stakeholder_parameter`
+            - Get the stakeholder parameter property.
+          * - :py:attr:`~required_constraint`
+            - Get the required constraint property.
+          * - :py:attr:`~a_verify_requirement`
+            - Get the a verify requirement property.
+          * - :py:attr:`~assumed_constraint`
+            - Get the assumed constraint property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.requirement_usage import RequirementUsage
+
+Property detail
+---------------
+
+.. py:property:: text
+   :type: list[str]
+
+
+   
+   Get the text property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\[:class:`python:str`]
+           Value of property text.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_objective
+   :type: bool
+
+
+   
+   Get the is objective property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is objective.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: req_id
+   :type: str
+
+
+   
+   Get the req id property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property req id.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: all_text
+   :type: list[str]
+
+
+   
+   Get the all text property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\[:class:`python:str`]
+           Value of property all text.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: framed_concern
+   :type: list[ConcernUsage]
+
+
+   
+   Get the framed concern property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ConcernUsage"]
+           Value of property framed concern.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: actor_parameter
+   :type: list[PartUsage]
+
+
+   
+   Get the actor parameter property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["PartUsage"]
+           Value of property actor parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: subject_parameter
+   :type: Usage
+
+
+   
+   Get the subject parameter property.
+
+
+
+
+
+   :Returns:
+
+       "Usage"
+           Value of property subject parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: requirement_definition
+   :type: RequirementDefinition
+
+
+   
+   Get the requirement definition property.
+
+
+
+
+
+   :Returns:
+
+       "RequirementDefinition"
+           Value of property requirement definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: stakeholder_parameter
+   :type: list[PartUsage]
+
+
+   
+   Get the stakeholder parameter property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["PartUsage"]
+           Value of property stakeholder parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: required_constraint
+   :type: list[ansys.sam.sysml2.meta_model.constraint_usage.ConstraintUsage]
+
+
+   
+   Get the required constraint property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ConstraintUsage"]
+           Value of property required constraint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: a_verify_requirement
+   :type: bool
+
+
+   
+   Get the a verify requirement property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property a verify requirement.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: assumed_constraint
+   :type: list[ansys.sam.sysml2.meta_model.constraint_usage.ConstraintUsage]
+
+
+   
+   Get the assumed constraint property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ConstraintUsage"]
+           Value of property assumed constraint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

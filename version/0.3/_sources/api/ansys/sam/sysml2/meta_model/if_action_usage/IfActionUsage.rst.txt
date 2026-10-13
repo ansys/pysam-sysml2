@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`IfActionUsage`
+======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.if_action_usage.IfActionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.IfActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: IfActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~else_action`
+            - Get the else action property.
+          * - :py:attr:`~if_argument`
+            - Get the if argument property.
+          * - :py:attr:`~then_action`
+            - Get the then action property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.if_action_usage import IfActionUsage
+
+Property detail
+---------------
+
+.. py:property:: else_action
+   :type: ansys.sam.sysml2.meta_model.action_usage.ActionUsage
+
+
+   
+   Get the else action property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property else action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: if_argument
+   :type: Expression
+
+
+   
+   Get the if argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property if argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: then_action
+   :type: ansys.sam.sysml2.meta_model.action_usage.ActionUsage
+
+
+   
+   Get the then action property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property then action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

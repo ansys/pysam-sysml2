@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`FeatureTyping`
+======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature_typing.FeatureTyping(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.specialization.Specialization`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.FeatureTyping'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureTyping
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~type_`
+            - Get the type property.
+          * - :py:attr:`~typed_feature`
+            - Get the typed feature property.
+          * - :py:attr:`~owning_feature`
+            - Get the owning feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature_typing import FeatureTyping
+
+Property detail
+---------------
+
+.. py:property:: type_
+   :type: Type
+
+
+   
+   Get the type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: typed_feature
+   :type: Feature
+
+
+   
+   Get the typed feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property typed feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_feature
+   :type: Feature
+
+
+   
+   Get the owning feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property owning feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

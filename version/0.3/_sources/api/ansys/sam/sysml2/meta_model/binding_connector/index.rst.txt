@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``binding_connector.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.binding_connector
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: binding_connector
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.binding_connector.BindingConnector`
+            - Java class 'com.ansys.medini.metamodel.sysml.BindingConnector'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> BindingConnector</api/ansys/sam/sysml2/meta_model/binding_connector/BindingConnector>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated binding connector class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

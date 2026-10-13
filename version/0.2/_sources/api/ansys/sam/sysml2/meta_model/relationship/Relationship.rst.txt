@@ -1,0 +1,261 @@
+
+
+
+
+
+
+:class:`Relationship`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.relationship.Relationship(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.element.Element`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Relationship'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Relationship
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~target`
+            - Get the target property.
+          * - :py:attr:`~source`
+            - Get the source property.
+          * - :py:attr:`~related_element`
+            - Get the related element property.
+          * - :py:attr:`~owned_related_element`
+            - Get the owned related element property.
+          * - :py:attr:`~owning_related_element`
+            - Get the owning related element property.
+          * - :py:attr:`~inheriting_element`
+            - Get the inheriting element property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.relationship import Relationship
+
+Property detail
+---------------
+
+.. py:property:: target
+   :type: List[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the target property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Element"]
+           Value of property target.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: source
+   :type: List[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the source property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Element"]
+           Value of property source.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: related_element
+   :type: List[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the related element property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Element"]
+           Value of property related element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_related_element
+   :type: List[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the owned related element property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Element"]
+           Value of property owned related element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_related_element
+   :type: None
+
+
+   
+   Get the owning related element property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property owning related element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inheriting_element
+   :type: ansys.sam.sysml2.meta_model.element.Element
+
+
+   
+   Get the inheriting element property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property inheriting element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

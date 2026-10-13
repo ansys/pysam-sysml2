@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sysml_util.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.builder.classes.sysml_util
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sysml_util
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.classes.sysml_util.SysMLUtil`
+            - Provides utility methods for SysML element name resolution and class lookup.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SysMLUtil</api/ansys/sam/sysml2/builder/classes/sysml_util/SysMLUtil>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+SysML utility class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

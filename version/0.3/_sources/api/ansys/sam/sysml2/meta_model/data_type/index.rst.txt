@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``data_type.py`` module
+===========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.data_type
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: data_type
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.data_type.DataType`
+            - Java class 'com.ansys.medini.metamodel.sysml.DataType'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> DataType</api/ansys/sam/sysml2/meta_model/data_type/DataType>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated data type class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

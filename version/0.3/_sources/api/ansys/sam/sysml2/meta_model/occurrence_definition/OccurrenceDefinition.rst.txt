@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`OccurrenceDefinition`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.occurrence_definition.OccurrenceDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.definition.Definition`, :py:obj:`ansys.sam.sysml2.meta_model.class_.Class`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.OccurrenceDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: OccurrenceDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~lifeclass`
+            - Get the lifeclass property.
+          * - :py:attr:`~is_individual`
+            - Get the is individual property.
+          * - :py:attr:`~set_is_individual`
+            - Get the set is individual property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.occurrence_definition import OccurrenceDefinition
+
+Property detail
+---------------
+
+.. py:property:: lifeclass
+   :type: LifeClass
+
+
+   
+   Get the lifeclass property.
+
+
+
+
+
+   :Returns:
+
+       "LifeClass"
+           Value of property lifeclass.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_individual
+   :type: bool
+
+
+   
+   Get the is individual property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is individual.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_individual
+   :type: bool
+
+
+   
+   Get the set is individual property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is individual.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

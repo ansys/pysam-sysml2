@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`DecisionNode`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.decision_node.DecisionNode(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.control_node.ControlNode`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.DecisionNode'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.decision_node import DecisionNode
+
+
+
+
+

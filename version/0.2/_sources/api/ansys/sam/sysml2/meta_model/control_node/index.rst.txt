@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``control_node.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.control_node
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: control_node
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.control_node.ControlNode`
+            - Java class 'com.ansys.medini.metamodel.sysml.ControlNode'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ControlNode</api/ansys/sam/sysml2/meta_model/control_node/ControlNode>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated control node class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

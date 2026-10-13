@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ElementNotFoundException`
+=================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.ElementNotFoundException
+
+   Bases: :py:obj:`ConnectorException`
+
+
+   
+   Exception when the requested element is not found.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import ElementNotFoundException
+
+
+
+
+

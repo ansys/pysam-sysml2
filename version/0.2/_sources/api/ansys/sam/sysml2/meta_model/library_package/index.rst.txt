@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``library_package.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.library_package
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: library_package
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.library_package.LibraryPackage`
+            - Java class 'com.ansys.medini.metamodel.sysml.LibraryPackage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> LibraryPackage</api/ansys/sam/sysml2/meta_model/library_package/LibraryPackage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated library package class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

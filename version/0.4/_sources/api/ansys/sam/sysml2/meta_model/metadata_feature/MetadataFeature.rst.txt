@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`MetadataFeature`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.metadata_feature.MetadataFeature(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.annotating_element.AnnotatingElement`, :py:obj:`ansys.sam.sysml2.meta_model.feature.Feature`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.MetadataFeature'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: MetadataFeature
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~metaclass`
+            - Get the metaclass property.
+          * - :py:attr:`~semantic`
+            - Get the semantic property.
+          * - :py:attr:`~syntactic`
+            - Get the syntactic property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.metadata_feature import MetadataFeature
+
+Property detail
+---------------
+
+.. py:property:: metaclass
+   :type: Metaclass
+
+
+   
+   Get the metaclass property.
+
+
+
+
+
+   :Returns:
+
+       "Metaclass"
+           Value of property metaclass.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: semantic
+   :type: bool
+
+
+   
+   Get the semantic property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property semantic.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: syntactic
+   :type: bool
+
+
+   
+   Get the syntactic property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property syntactic.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

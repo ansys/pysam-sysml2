@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`AnalysisCaseUsage`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.analysis_case_usage.AnalysisCaseUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.case_usage.CaseUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AnalysisCaseUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AnalysisCaseUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~analysis_case_definition`
+            - Get the analysis case definition property.
+          * - :py:attr:`~result_expression`
+            - Get the result expression property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.analysis_case_usage import AnalysisCaseUsage
+
+Property detail
+---------------
+
+.. py:property:: analysis_case_definition
+   :type: AnalysisCaseDefinition
+
+
+   
+   Get the analysis case definition property.
+
+
+
+
+
+   :Returns:
+
+       "AnalysisCaseDefinition"
+           Value of property analysis case definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: result_expression
+   :type: Expression
+
+
+   
+   Get the result expression property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property result expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

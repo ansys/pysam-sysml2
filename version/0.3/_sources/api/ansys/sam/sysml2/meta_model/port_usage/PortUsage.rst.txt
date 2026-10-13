@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`PortUsage`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.port_usage.PortUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.PortUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PortUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~port_definition`
+            - Get the port definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.port_usage import PortUsage
+
+Property detail
+---------------
+
+.. py:property:: port_definition
+   :type: list[PortDefinition]
+
+
+   
+   Get the port definition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["PortDefinition"]
+           Value of property port definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

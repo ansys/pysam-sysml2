@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`AssertConstraintUsage`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.assert_constraint_usage.AssertConstraintUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.constraint_usage.ConstraintUsage`, :py:obj:`ansys.sam.sysml2.meta_model.invariant.Invariant`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AssertConstraintUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AssertConstraintUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~asserted_constraint`
+            - Get the asserted constraint property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.assert_constraint_usage import AssertConstraintUsage
+
+Property detail
+---------------
+
+.. py:property:: asserted_constraint
+   :type: ansys.sam.sysml2.meta_model.constraint_usage.ConstraintUsage
+
+
+   
+   Get the asserted constraint property.
+
+
+
+
+
+   :Returns:
+
+       "ConstraintUsage"
+           Value of property asserted constraint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

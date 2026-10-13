@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`ActionUsage`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.action_usage.ActionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage`, :py:obj:`ansys.sam.sysml2.meta_model.step.Step`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~action_definition`
+            - Get the action definition property.
+          * - :py:attr:`~subaction_usage`
+            - Get the subaction usage property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.action_usage import ActionUsage
+
+Property detail
+---------------
+
+.. py:property:: action_definition
+   :type: list[Behavior]
+
+
+   
+   Get the action definition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Behavior"]
+           Value of property action definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: subaction_usage
+   :type: bool
+
+
+   
+   Get the subaction usage property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property subaction usage.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

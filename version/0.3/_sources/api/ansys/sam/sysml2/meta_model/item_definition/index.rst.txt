@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``item_definition.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.item_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: item_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.item_definition.ItemDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.ItemDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ItemDefinition</api/ansys/sam/sysml2/meta_model/item_definition/ItemDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated item definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

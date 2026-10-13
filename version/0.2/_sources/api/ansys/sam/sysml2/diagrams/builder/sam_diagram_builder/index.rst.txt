@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sam_diagram_builder.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.diagrams.builder.sam_diagram_builder
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sam_diagram_builder
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.builder.sam_diagram_builder.SamDiagramBuilder`
+            - Provides the diagram builder with integrated extraction capabilities.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SamDiagramBuilder</api/ansys/sam/sysml2/diagrams/builder/sam_diagram_builder/SamDiagramBuilder>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Diagram builder.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ActorMembership`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.actor_membership.ActorMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.parameter_membership.ParameterMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ActorMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ActorMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_actor_parameter`
+            - Get the owned actor parameter property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.actor_membership import ActorMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_actor_parameter
+   :type: PartUsage
+
+
+   
+   Get the owned actor parameter property.
+
+
+
+
+
+   :Returns:
+
+       "PartUsage"
+           Value of property owned actor parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

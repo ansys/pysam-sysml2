@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``use_case_definition.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.use_case_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: use_case_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.use_case_definition.UseCaseDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.UseCaseDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> UseCaseDefinition</api/ansys/sam/sysml2/meta_model/use_case_definition/UseCaseDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated use case definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

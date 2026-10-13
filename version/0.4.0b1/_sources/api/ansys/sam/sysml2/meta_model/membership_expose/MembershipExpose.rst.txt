@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`MembershipExpose`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.membership_expose.MembershipExpose(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.expose.Expose`, :py:obj:`ansys.sam.sysml2.meta_model.membership_import.MembershipImport`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.MembershipExpose'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.membership_expose import MembershipExpose
+
+
+
+
+

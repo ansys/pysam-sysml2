@@ -1,0 +1,178 @@
+
+
+
+
+
+
+:class:`ValueHelper`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.classes.value_helper.ValueHelper(prefix: str)
+
+   
+   Helper class for feature value resolve.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+.. py:currentmodule:: ValueHelper
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~prefix`
+            - 
+
+
+   .. tab-item:: Static methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_value_for_scripting_element`
+            - Get the value of the feature.
+          * - :py:attr:`~get_value_for_sysml_element`
+            - Get the value of the feature.
+          * - :py:attr:`~set_or_update_value`
+            - Create the commit to set or update the value of type ``value_type``.
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.value_helper import ValueHelper
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: prefix
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_value_for_scripting_element(element)
+   :staticmethod:
+
+
+   
+   Get the value of the feature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_value_for_sysml_element(element)
+   :staticmethod:
+
+
+   
+   Get the value of the feature.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: set_or_update_value(element, value_type: type, new_value: Union[str | int | float | bool])
+   :staticmethod:
+
+
+   
+   Create the commit to set or update the value of type ``value_type``.
+
+
+   :Parameters:
+
+       **value_type** : :obj:`type`
+           Value type of the new value.
+
+       **new_value** : :obj:`Union`\[:class:`python:str` | :class:`python:int` | :class:`python:float` | :ref:`bool <python:bltin-boolean-values>`]
+           New value to update to.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
