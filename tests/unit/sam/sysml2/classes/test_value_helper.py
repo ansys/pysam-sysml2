@@ -288,3 +288,27 @@ class TestValueHelperComplexExpressions:
         outer._target_feature = corner
 
         assert SysMLTools.serialize_expression(outer) == "r1.lowerRight.corner"
+
+    def test_feature_chain_renders_chaining_feature_segments(self):
+        """Render ``r1.lowerRight.corner`` when the target chains those features."""
+        referent = Feature("r1-id")
+        referent._name = "r1"
+        reference = FeatureReferenceExpression("r1-ref")
+        reference._referent = referent
+        lower_right = Feature("lower-right-id")
+        lower_right._name = "lowerRight"
+        corner = Feature("corner-id")
+        corner._name = "corner"
+        target = Feature("chain-target-id")
+        target.chaining_feature.append(lower_right)
+        target.chaining_feature.append(corner)
+        parameter = Feature("chain-input")
+        valuation = FeatureValue("chain-input-value")
+        valuation.value = reference
+        parameter.valuation = valuation
+        chain = FeatureChainExpression("chain-id")
+        chain.operator = None
+        chain.input.append(parameter)
+        chain._target_feature = target
+
+        assert SysMLTools.serialize_expression(chain) == "r1.lowerRight.corner"

@@ -305,7 +305,8 @@ class ValueHelper:
         """Render a feature chain as ``base.target``.
 
         ``operator`` is absent on the chains SAM returns. The base is the single
-        ``input`` and the target is ``target_feature``.
+        ``input``. A named ``target_feature`` is one segment. An unnamed target
+        contributes each ``chaining_feature``.
 
         Parameters
         ----------
@@ -324,6 +325,12 @@ class ValueHelper:
             raise UnsupportedValueExpression("Expression not supported!")
         base = self._render_operand(element, operands[0])
         target = getattr(value, self.prefix + "target_feature", None)
+        segments = getattr(target, self.prefix + "chaining_feature", None) or []
+        if segments:
+            names = [self._resolve_referent_name(element, feature) for feature in segments]
+            if any(name is None for name in names):
+                raise UnsupportedValueExpression("Unresolved reference in expression")
+            return f"{base}.{'.'.join(names)}"
         name = self._resolve_referent_name(element, target)
         if name is None:
             raise UnsupportedValueExpression("Unresolved reference in expression")
