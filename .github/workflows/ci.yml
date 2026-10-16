@@ -105,11 +105,77 @@ jobs:
     name: Doc building
     runs-on: ubuntu-latest
     needs: [doc-style]
+    permissions:
+      contents: read
+      actions: write # Required to save the Sphinx doctree cache
     steps:
+      - name: "Clone project"
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: "Restore doc-build cache"
+        id: cache-doc-build-restore
+        # zizmor: ignore[cache-poisoning] - cache is for doc build only, not release artifacts
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          # This list MUST stay strictly identical to the one of the "Save doc-build cache" step.
+          path: |
+            doc/_build/doctrees
+            doc/source/api
+          # run_id keeps each save immutable. A pull request can read its own cache and the
+          # default branch cache; the main prefix is that shared fallback.
+          key: doc-build-${{ github.ref_name }}-${{ hashFiles('pyproject.toml') }}-${{ github.run_id }}
+          restore-keys: |
+            doc-build-${{ github.ref_name }}-${{ hashFiles('pyproject.toml') }}-
+            doc-build-main-${{ hashFiles('pyproject.toml') }}-
+
+      - name: "Reuse cached API documentation when the sources are unchanged"
+        # sphinx-autoapi skips its read/render stage only when no scanned source is newer than
+        # the mtime recorded in the cached Sphinx environment. actions/checkout stamps every
+        # file with the current time, so unchanged sources are backdated from a content hash.
+        shell: bash
+        env:
+          SRC_HASH: ${{ hashFiles('src/**/*.py', 'doc/source/conf.py') }}
+        run: |
+          stamp="doc/_build/doctrees/.autoapi-src-hash"
+          if [[ -d doc/source/api && -f "${stamp}" && "$(cat "${stamp}")" == "${SRC_HASH}" ]]; then
+            find src -name '*.py' -exec touch -d '2000-01-01T00:00:00Z' {} +
+            echo "API sources unchanged: autoapi reuses the cached doc/source/api."
+          else
+            rm -rf doc/source/api
+            echo "API sources changed or not cached: autoapi regenerates doc/source/api."
+          fi
+
+      - name: "Restore tracked API index overwritten by the cache"
+        # doc/source/api/index.rst is versioned. The cache would otherwise revert it.
+        shell: bash
+        run: |
+          git checkout -- doc/source/api/index.rst
+
       - name: "Run Ansys documentation building action"
         uses: ansys/actions/doc-build@7410037bfb276c79ae91eb3617b9f5d2876f0c94 # v11.0.8
         with:
           python-version: ${{ env.MAIN_PYTHON_VERSION }}
+          checkout: false
+
+      - name: "Stamp the cached API documentation"
+        shell: bash
+        env:
+          SRC_HASH: ${{ hashFiles('src/**/*.py', 'doc/source/conf.py') }}
+        run: |
+          mkdir -p doc/_build/doctrees
+          echo "${SRC_HASH}" > doc/_build/doctrees/.autoapi-src-hash
+
+      - name: "Save doc-build cache"
+        # zizmor: ignore[cache-poisoning] - cache is for doc build only, not release artifacts
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          # Keep strictly identical to the path list of the "Restore doc-build cache" step.
+          path: |
+            doc/_build/doctrees
+            doc/source/api
+          key: ${{ steps.cache-doc-build-restore.outputs.cache-primary-key }}
 
   build-tests:
     name: "Build and unit tests"
