@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``terminate_action_usage.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.terminate_action_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: terminate_action_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.terminate_action_usage.TerminateActionUsage`
+            - Java class 'com.ansys.metamodel.sysml2.TerminateActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> TerminateActionUsage</api/ansys/sam/sysml2/meta_model/terminate_action_usage/TerminateActionUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated terminate action usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

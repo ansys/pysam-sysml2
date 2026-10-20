@@ -1,0 +1,92 @@
+
+
+
+
+
+
+The ``data_structures`` package
+===================================
+
+.. py:module:: ansys.sam.sysml2.data_structures
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: data_structures
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.data_structures.observed_list`
+            - Observed list for SysMl list.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> observed_list</api/ansys/sam/sysml2/data_structures/observed_list/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Data structures module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

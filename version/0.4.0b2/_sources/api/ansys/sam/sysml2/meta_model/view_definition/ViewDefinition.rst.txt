@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`ViewDefinition`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.view_definition.ViewDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.part_definition.PartDefinition`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ViewDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ViewDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~satisfied_viewpoint`
+            - Get the satisfied viewpoint property.
+          * - :py:attr:`~view`
+            - Get the view property.
+          * - :py:attr:`~view_condition`
+            - Get the view condition property.
+          * - :py:attr:`~view_rendering`
+            - Get the view rendering property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.view_definition import ViewDefinition
+
+Property detail
+---------------
+
+.. py:property:: satisfied_viewpoint
+   :type: list[ViewpointUsage]
+
+
+   
+   Get the satisfied viewpoint property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ViewpointUsage"]
+           Value of property satisfied viewpoint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: view
+   :type: list[ViewUsage]
+
+
+   
+   Get the view property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ViewUsage"]
+           Value of property view.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: view_condition
+   :type: list[Expression]
+
+
+   
+   Get the view condition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property view condition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: view_rendering
+   :type: RenderingUsage
+
+
+   
+   Get the view rendering property.
+
+
+
+
+
+   :Returns:
+
+       "RenderingUsage"
+           Value of property view rendering.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

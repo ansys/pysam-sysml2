@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``verification_case_definition.py`` module
+==============================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.verification_case_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: verification_case_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.verification_case_definition.VerificationCaseDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.VerificationCaseDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> VerificationCaseDefinition</api/ansys/sam/sysml2/meta_model/verification_case_definition/VerificationCaseDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated verification case definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

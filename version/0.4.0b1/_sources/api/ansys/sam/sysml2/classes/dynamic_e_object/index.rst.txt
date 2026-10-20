@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``dynamic_e_object.py`` module
+==================================
+
+.. py:module:: ansys.sam.sysml2.classes.dynamic_e_object
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: dynamic_e_object
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.dynamic_e_object.DynamicEObject`
+            - Dynamic-notation behaviour mixed in front of a generated metamodel class.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> DynamicEObject</api/ansys/sam/sysml2/classes/dynamic_e_object/DynamicEObject>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Dynamic-notation mixin for the generated metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

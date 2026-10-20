@@ -1,0 +1,121 @@
+
+
+
+
+
+
+:class:`Operator`
+=================
+
+
+.. py:class:: ansys.sam.sysml2.dto.query.query_enum.Operator
+
+   
+   Provides the operator enum.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Operator
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~EQUALS`
+            - 
+          * - :py:attr:`~INSTANCE_OF`
+            - 
+          * - :py:attr:`~IN`
+            - 
+          * - :py:attr:`~LOWER`
+            - 
+          * - :py:attr:`~UPPER`
+            - 
+          * - :py:attr:`~EQUALS_OR_LOWER`
+            - 
+          * - :py:attr:`~EQUALS_OR_UPPER`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.query.query_enum import Operator
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: EQUALS
+   :type:  str
+   :value: '='
+
+
+.. py:attribute:: INSTANCE_OF
+   :type:  str
+   :value: 'instanceOf'
+
+
+.. py:attribute:: IN
+   :type:  str
+   :value: 'in'
+
+
+.. py:attribute:: LOWER
+   :type:  str
+   :value: '<'
+
+
+.. py:attribute:: UPPER
+   :type:  str
+   :value: '>'
+
+
+.. py:attribute:: EQUALS_OR_LOWER
+   :type:  str
+   :value: '<='
+
+
+.. py:attribute:: EQUALS_OR_UPPER
+   :type:  str
+   :value: '>='
+
+
+
+
+
+

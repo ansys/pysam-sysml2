@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``boolean_expression.py`` module
+====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.boolean_expression
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: boolean_expression
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.boolean_expression.BooleanExpression`
+            - Java class 'com.ansys.medini.metamodel.sysml.BooleanExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> BooleanExpression</api/ansys/sam/sysml2/meta_model/boolean_expression/BooleanExpression>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated boolean expression class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,222 @@
+
+
+
+
+
+
+:class:`ModelReader`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.tools.model_reader.ModelReader
+
+   
+   Read metamodel elements with a single snake_case property vocabulary.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ModelReader
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_inherited_element_class`
+            - Return the class used to wrap an inherited element under a parent part.
+          * - :py:attr:`~get`
+            - Read a field of ``element`` by its snake_case property name.
+          * - :py:attr:`~unwrap`
+            - Return the real element, without the wrapper that ties it to a parent part.
+          * - :py:attr:`~is_a`
+            - Tell whether ``element`` is a ``base`` (a Feature, a Type, a Namespace...).
+          * - :py:attr:`~is_chaining`
+            - Tell whether ``element`` reaches its target through a chain of features.
+          * - :py:attr:`~redefined_features`
+            - Return every feature that ``feature`` redefines, directly or indirectly.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.model_reader import ModelReader
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_inherited_element_class()
+
+   
+   Return the class used to wrap an inherited element under a parent part.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get(element, key, default=None)
+
+   
+   Read a field of ``element`` by its snake_case property name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: unwrap(element)
+
+   
+   Return the real element, without the wrapper that ties it to a parent part.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: is_a(element, base)
+
+   
+   Tell whether ``element`` is a ``base`` (a Feature, a Type, a Namespace...).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: is_chaining(element)
+
+   
+   Tell whether ``element`` reaches its target through a chain of features.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: redefined_features(feature)
+
+   
+   Return every feature that ``feature`` redefines, directly or indirectly.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

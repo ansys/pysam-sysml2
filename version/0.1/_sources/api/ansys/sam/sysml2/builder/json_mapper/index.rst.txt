@@ -1,0 +1,99 @@
+
+
+
+
+
+
+The ``json_mapper.py`` module
+=============================
+
+.. py:module:: ansys.sam.sysml2.builder.json_mapper
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: json_mapper
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.json_mapper.JsonMapper`
+            - Provides the JSON mapper class for a SysML element.
+
+
+
+
+
+
+
+    .. tab-item:: Constants
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~TYPE_KEY`
+            - 
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> JsonMapper</api/ansys/sam/sysml2/builder/json_mapper/JsonMapper>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+JSON Mapper class.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:data:: TYPE_KEY
+   :value: '@type'
+
+
+
+

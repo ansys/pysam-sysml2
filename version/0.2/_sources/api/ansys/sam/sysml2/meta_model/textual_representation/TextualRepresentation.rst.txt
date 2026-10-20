@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`TextualRepresentation`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.textual_representation.TextualRepresentation(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.annotating_element.AnnotatingElement`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.TextualRepresentation'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TextualRepresentation
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~language`
+            - Get the language property.
+          * - :py:attr:`~body`
+            - Get the body property.
+          * - :py:attr:`~represented_element`
+            - Get the represented element property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.textual_representation import TextualRepresentation
+
+Property detail
+---------------
+
+.. py:property:: language
+   :type: str
+
+
+   
+   Get the language property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property language.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: body
+   :type: None
+
+
+   
+   Get the body property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property body.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: represented_element
+   :type: None
+
+
+   
+   Get the represented element property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property represented element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

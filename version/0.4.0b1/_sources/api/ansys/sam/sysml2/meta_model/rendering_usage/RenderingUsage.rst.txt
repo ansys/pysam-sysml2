@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`RenderingUsage`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.rendering_usage.RenderingUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.part_usage.PartUsage`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.RenderingUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: RenderingUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~rendering_definition`
+            - Get the rendering definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.rendering_usage import RenderingUsage
+
+Property detail
+---------------
+
+.. py:property:: rendering_definition
+   :type: RenderingDefinition
+
+
+   
+   Get the rendering definition property.
+
+
+
+
+
+   :Returns:
+
+       "RenderingDefinition"
+           Value of property rendering definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

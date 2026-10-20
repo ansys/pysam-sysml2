@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`FlowDefinition`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.flow_definition.FlowDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_definition.ActionDefinition`, :py:obj:`ansys.sam.sysml2.meta_model.interaction.Interaction`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.FlowDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FlowDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~flow_end`
+            - Get the flow end property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.flow_definition import FlowDefinition
+
+Property detail
+---------------
+
+.. py:property:: flow_end
+   :type: list[Usage]
+
+
+   
+   Get the flow end property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Usage"]
+           Value of property flow end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
