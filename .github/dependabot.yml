@@ -11,10 +11,21 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-    cooldown:
-      default-days: 10 # Fallback cooldown if no specific rule applies
     labels:
       - "maintenance"
+    commit-message:
+      prefix: "ci"
+    cooldown:
+      default-days: 10
+      include:
+        - "*" # Include all dependencies in cooldown
+      exclude:
+        - "ansys/actions"
+        - "ansys/actions/*"
+    groups:
+      actions:
+        patterns:
+          - "*"
 
   - package-ecosystem: "pre-commit"
     directory: "/"
