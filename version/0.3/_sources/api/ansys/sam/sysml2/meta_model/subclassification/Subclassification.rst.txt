@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`Subclassification`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.subclassification.Subclassification(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.specialization.Specialization`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Subclassification'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Subclassification
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~superclassifier`
+            - Get the superclassifier property.
+          * - :py:attr:`~subclassifier`
+            - Get the subclassifier property.
+          * - :py:attr:`~owning_classifier`
+            - Get the owning classifier property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.subclassification import Subclassification
+
+Property detail
+---------------
+
+.. py:property:: superclassifier
+   :type: Classifier
+
+
+   
+   Get the superclassifier property.
+
+
+
+
+
+   :Returns:
+
+       "Classifier"
+           Value of property superclassifier.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: subclassifier
+   :type: Classifier
+
+
+   
+   Get the subclassifier property.
+
+
+
+
+
+   :Returns:
+
+       "Classifier"
+           Value of property subclassifier.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_classifier
+   :type: Classifier
+
+
+   
+   Get the owning classifier property.
+
+
+
+
+
+   :Returns:
+
+       "Classifier"
+           Value of property owning classifier.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

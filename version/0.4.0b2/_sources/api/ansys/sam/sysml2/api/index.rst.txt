@@ -1,0 +1,102 @@
+
+
+
+
+
+
+The ``api`` package
+=======================
+
+.. py:module:: ansys.sam.sysml2.api
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: api
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.api.ansys_sysml2_api_connector`
+            - Module for Ansys SysML2 API connector.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.api.sysml2_api_connector`
+            - Top-level interface module for SysML2 API.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.api.template_sysml2_api_connector`
+            - Template for implementation of endpoint.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> ansys_sysml2_api_connector</api/ansys/sam/sysml2/api/ansys_sysml2_api_connector/index>
+    <span class="nf nf-fa-file"></span> sysml2_api_connector</api/ansys/sam/sysml2/api/sysml2_api_connector/index>
+    <span class="nf nf-fa-file"></span> template_sysml2_api_connector</api/ansys/sam/sysml2/api/template_sysml2_api_connector/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+API package for SysML V2 API connection.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

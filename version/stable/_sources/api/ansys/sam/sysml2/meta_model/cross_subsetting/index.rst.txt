@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``cross_subsetting.py`` module
+==================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.cross_subsetting
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: cross_subsetting
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.cross_subsetting.CrossSubsetting`
+            - Java class 'com.ansys.metamodel.sysml2.CrossSubsetting'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> CrossSubsetting</api/ansys/sam/sysml2/meta_model/cross_subsetting/CrossSubsetting>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated cross subsetting class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

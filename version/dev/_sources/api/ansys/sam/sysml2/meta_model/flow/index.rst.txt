@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``flow.py`` module
+======================
+
+.. py:module:: ansys.sam.sysml2.meta_model.flow
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: flow
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.flow.Flow`
+            - Java class 'com.ansys.metamodel.sysml2.Flow'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Flow</api/ansys/sam/sysml2/meta_model/flow/Flow>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated flow class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`EnumerationUsage`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.enumeration_usage.EnumerationUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.attribute_usage.AttributeUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.EnumerationUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: EnumerationUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~enumeration_definition`
+            - Get the enumeration definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.enumeration_usage import EnumerationUsage
+
+Property detail
+---------------
+
+.. py:property:: enumeration_definition
+   :type: EnumerationDefinition
+
+
+   
+   Get the enumeration definition property.
+
+
+
+
+
+   :Returns:
+
+       "EnumerationDefinition"
+           Value of property enumeration definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

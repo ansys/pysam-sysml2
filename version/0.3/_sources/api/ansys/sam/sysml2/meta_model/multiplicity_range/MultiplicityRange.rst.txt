@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`MultiplicityRange`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.multiplicity_range.MultiplicityRange(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.multiplicity.Multiplicity`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.MultiplicityRange'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: MultiplicityRange
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~upper_bound`
+            - Get the upper bound property.
+          * - :py:attr:`~lower_bound`
+            - Get the lower bound property.
+          * - :py:attr:`~bound`
+            - Get the bound property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.multiplicity_range import MultiplicityRange
+
+Property detail
+---------------
+
+.. py:property:: upper_bound
+   :type: Expression
+
+
+   
+   Get the upper bound property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property upper bound.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: lower_bound
+   :type: Expression
+
+
+   
+   Get the lower bound property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property lower bound.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: bound
+   :type: list[Expression]
+
+
+   
+   Get the bound property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property bound.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

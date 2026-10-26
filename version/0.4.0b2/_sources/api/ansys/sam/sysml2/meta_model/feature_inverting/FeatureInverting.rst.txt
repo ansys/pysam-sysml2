@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`FeatureInverting`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature_inverting.FeatureInverting(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.FeatureInverting'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureInverting
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~feature_inverted`
+            - Get the feature inverted property.
+          * - :py:attr:`~inverting_feature`
+            - Get the inverting feature property.
+          * - :py:attr:`~owning_feature`
+            - Get the owning feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature_inverting import FeatureInverting
+
+Property detail
+---------------
+
+.. py:property:: feature_inverted
+   :type: Feature
+
+
+   
+   Get the feature inverted property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property feature inverted.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: inverting_feature
+   :type: Feature
+
+
+   
+   Get the inverting feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property inverting feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_feature
+   :type: Feature
+
+
+   
+   Get the owning feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property owning feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

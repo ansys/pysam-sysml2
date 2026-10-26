@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`InvalidElementJsonFoundException`
+=========================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.InvalidElementJsonFoundException
+
+   Bases: :py:obj:`ConnectorException`
+
+
+   
+   Exception when the received JSON data is invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import InvalidElementJsonFoundException
+
+
+
+
+

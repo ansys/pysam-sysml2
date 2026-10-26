@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Metaclass`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.metaclass.Metaclass(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.structure.Structure`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Metaclass'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.metaclass import Metaclass
+
+
+
+
+

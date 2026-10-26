@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`SatisfyRequirementUsage`
+================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.satisfy_requirement_usage.SatisfyRequirementUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.requirement_usage.RequirementUsage`, :py:obj:`ansys.sam.sysml2.meta_model.assert_constraint_usage.AssertConstraintUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.SatisfyRequirementUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SatisfyRequirementUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~satisfied_requirement`
+            - Get the satisfied requirement property.
+          * - :py:attr:`~satisfying_feature`
+            - Get the satisfying feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.satisfy_requirement_usage import SatisfyRequirementUsage
+
+Property detail
+---------------
+
+.. py:property:: satisfied_requirement
+   :type: ansys.sam.sysml2.meta_model.requirement_usage.RequirementUsage
+
+
+   
+   Get the satisfied requirement property.
+
+
+
+
+
+   :Returns:
+
+       "RequirementUsage"
+           Value of property satisfied requirement.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: satisfying_feature
+   :type: Feature
+
+
+   
+   Get the satisfying feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property satisfying feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

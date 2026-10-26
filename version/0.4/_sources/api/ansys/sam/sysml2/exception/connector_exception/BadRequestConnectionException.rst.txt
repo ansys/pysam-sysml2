@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`BadRequestConnectionException`
+======================================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.connector_exception.BadRequestConnectionException
+
+   Bases: :py:obj:`ConnectorException`
+
+
+   
+   Exception when request is invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.connector_exception import BadRequestConnectionException
+
+
+
+
+
