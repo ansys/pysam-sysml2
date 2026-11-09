@@ -124,11 +124,14 @@ jobs:
             doc/_build/doctrees
             doc/source/api
           # run_id keeps each save immutable. A pull request can read its own cache and the
-          # default branch cache; the main prefix is that shared fallback.
+          # default branch cache. The last prefix is the shared main cache, used when
+          # pyproject.toml changed but the documented sources did not.
           key: doc-build-${{ github.ref_name }}-${{ hashFiles('pyproject.toml') }}-${{ github.run_id }}
           restore-keys: |
             doc-build-${{ github.ref_name }}-${{ hashFiles('pyproject.toml') }}-
+            doc-build-${{ github.ref_name }}-
             doc-build-main-${{ hashFiles('pyproject.toml') }}-
+            doc-build-main-
 
       - name: "Restore tracked API index overwritten by the cache"
         # doc/source/api/index.rst is versioned. The cache would otherwise revert it.
