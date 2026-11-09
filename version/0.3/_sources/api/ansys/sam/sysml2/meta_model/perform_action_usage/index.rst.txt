@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``perform_action_usage.py`` module
+======================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.perform_action_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: perform_action_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.perform_action_usage.PerformActionUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.PerformActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> PerformActionUsage</api/ansys/sam/sysml2/meta_model/perform_action_usage/PerformActionUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated perform action usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

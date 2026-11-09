@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`ViewDefinition`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.view_definition.ViewDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.part_definition.PartDefinition`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ViewDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ViewDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~view`
+            - Get the view property.
+          * - :py:attr:`~view_condition`
+            - Get the view condition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.view_definition import ViewDefinition
+
+Property detail
+---------------
+
+.. py:property:: view
+   :type: List[ViewUsage]
+
+
+   
+   Get the view property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ViewUsage"]
+           Value of property view.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: view_condition
+   :type: List[Expression]
+
+
+   
+   Get the view condition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Expression"]
+           Value of property view condition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

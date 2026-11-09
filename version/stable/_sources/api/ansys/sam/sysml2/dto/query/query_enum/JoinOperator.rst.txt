@@ -1,0 +1,86 @@
+
+
+
+
+
+
+:class:`JoinOperator`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.dto.query.query_enum.JoinOperator
+
+   
+   Provides the join operators enum.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: JoinOperator
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~AND`
+            - 
+          * - :py:attr:`~OR`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.query.query_enum import JoinOperator
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: AND
+   :type:  str
+   :value: 'and'
+
+
+.. py:attribute:: OR
+   :type:  str
+   :value: 'or'
+
+
+
+
+
+

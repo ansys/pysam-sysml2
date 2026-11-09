@@ -1,0 +1,257 @@
+
+
+
+
+
+
+:class:`StateSubactionKind`
+===========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.state_subaction_kind.StateSubactionKind
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.StateSubactionKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: StateSubactionKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value`
+            - Get the value property.
+          * - :py:attr:`~name`
+            - Get the name property.
+          * - :py:attr:`~literal`
+            - Get the literal property.
+          * - :py:attr:`~by_name`
+            - Get the by name property.
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~ENTRY`
+            - 
+          * - :py:attr:`~DO`
+            - 
+          * - :py:attr:`~EXIT`
+            - 
+          * - :py:attr:`~UNDEFINED`
+            - 
+          * - :py:attr:`~ENTRY_VALUE`
+            - 
+          * - :py:attr:`~DO_VALUE`
+            - 
+          * - :py:attr:`~EXIT_VALUE`
+            - 
+          * - :py:attr:`~UNDEFINED_VALUE`
+            - 
+          * - :py:attr:`~VALUES_ARRAY`
+            - 
+          * - :py:attr:`~VALUES`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.state_subaction_kind import StateSubactionKind
+
+Property detail
+---------------
+
+.. py:property:: value
+   :type: int
+
+
+   
+   Get the value property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:int`
+           Value of property value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: name
+   :type: str
+
+
+   
+   Get the name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: literal
+   :type: str
+
+
+   
+   Get the literal property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property literal.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: by_name
+   :type: StateSubactionKind
+
+
+   
+   Get the by name property.
+
+
+
+
+
+   :Returns:
+
+       "StateSubactionKind"
+           Value of property by name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: ENTRY
+   :type:  StateSubactionKind
+
+.. py:attribute:: DO
+   :type:  StateSubactionKind
+
+.. py:attribute:: EXIT
+   :type:  StateSubactionKind
+
+.. py:attribute:: UNDEFINED
+   :type:  StateSubactionKind
+
+.. py:attribute:: ENTRY_VALUE
+   :type:  int
+
+.. py:attribute:: DO_VALUE
+   :type:  int
+
+.. py:attribute:: EXIT_VALUE
+   :type:  int
+
+.. py:attribute:: UNDEFINED_VALUE
+   :type:  int
+
+.. py:attribute:: VALUES_ARRAY
+   :type:  StateSubactionKind
+
+.. py:attribute:: VALUES
+   :type:  list
+
+
+
+
+

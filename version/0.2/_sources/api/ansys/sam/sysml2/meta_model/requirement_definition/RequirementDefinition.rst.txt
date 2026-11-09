@@ -1,0 +1,354 @@
+
+
+
+
+
+
+:class:`RequirementDefinition`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.requirement_definition.RequirementDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.constraint_definition.ConstraintDefinition`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.RequirementDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: RequirementDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~text`
+            - Get the text property.
+          * - :py:attr:`~actor_parameter`
+            - Get the actor parameter property.
+          * - :py:attr:`~framed_concern`
+            - Get the framed concern property.
+          * - :py:attr:`~all_text`
+            - Get the all text property.
+          * - :py:attr:`~req_id`
+            - Get the req id property.
+          * - :py:attr:`~assumed_constraint`
+            - Get the assumed constraint property.
+          * - :py:attr:`~required_constraint`
+            - Get the required constraint property.
+          * - :py:attr:`~subject_parameter`
+            - Get the subject parameter property.
+          * - :py:attr:`~stakeholder_parameter`
+            - Get the stakeholder parameter property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.requirement_definition import RequirementDefinition
+
+Property detail
+---------------
+
+.. py:property:: text
+   :type: List[str]
+
+
+   
+   Get the text property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\[:class:`python:str`]
+           Value of property text.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: actor_parameter
+   :type: List[PartUsage]
+
+
+   
+   Get the actor parameter property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["PartUsage"]
+           Value of property actor parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: framed_concern
+   :type: List[ConcernUsage]
+
+
+   
+   Get the framed concern property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ConcernUsage"]
+           Value of property framed concern.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: all_text
+   :type: List[str]
+
+
+   
+   Get the all text property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\[:class:`python:str`]
+           Value of property all text.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: req_id
+   :type: str
+
+
+   
+   Get the req id property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property req id.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: assumed_constraint
+   :type: List[ConstraintUsage]
+
+
+   
+   Get the assumed constraint property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ConstraintUsage"]
+           Value of property assumed constraint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: required_constraint
+   :type: List[ConstraintUsage]
+
+
+   
+   Get the required constraint property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ConstraintUsage"]
+           Value of property required constraint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: subject_parameter
+   :type: Usage
+
+
+   
+   Get the subject parameter property.
+
+
+
+
+
+   :Returns:
+
+       "Usage"
+           Value of property subject parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: stakeholder_parameter
+   :type: List[PartUsage]
+
+
+   
+   Get the stakeholder parameter property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["PartUsage"]
+           Value of property stakeholder parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

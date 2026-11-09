@@ -1,0 +1,129 @@
+
+
+
+
+
+
+:class:`ScriptingMapper`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.builder.mapper.scripting_mapper.ScriptingMapper
+
+   Bases: :py:obj:`ansys.sam.sysml2.builder.mapper.mapper.Mapper`
+
+
+   
+   JSON mapper class for SysML element.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ScriptingMapper
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~map`
+            - Map the JSON into a python element.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~class_cache`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.mapper.scripting_mapper import ScriptingMapper
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: class_cache
+
+
+
+Method detail
+-------------
+
+.. py:method:: map(name_space: str, json_element: dict, mapped_element: ansys.sam.sysml2.classes.sysml_element.SysMLElement) -> ansys.sam.sysml2.classes.mapped_element.MappedElement
+
+   
+   Map the JSON into a python element.
+
+
+   :Parameters:
+
+       **name_space** : :class:`python:str`
+           Project namespace.
+
+       **json_element** : :class:`python:dict`
+           Element data.
+
+       **mapped_element** : :obj:`SysMLElement`
+           Existing element.
+
+
+
+   :Returns:
+
+       :obj:`MappedElement`
+           Mapped element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

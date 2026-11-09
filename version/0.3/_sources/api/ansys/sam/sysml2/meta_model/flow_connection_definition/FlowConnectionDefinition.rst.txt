@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`FlowConnectionDefinition`
+=================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.flow_connection_definition.FlowConnectionDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connection_definition.ConnectionDefinition`, :py:obj:`ansys.sam.sysml2.meta_model.action_definition.ActionDefinition`, :py:obj:`ansys.sam.sysml2.meta_model.interaction.Interaction`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.FlowConnectionDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.flow_connection_definition import FlowConnectionDefinition
+
+
+
+
+

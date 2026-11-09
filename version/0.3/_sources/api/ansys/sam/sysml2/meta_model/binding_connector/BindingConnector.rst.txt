@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`BindingConnector`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.binding_connector.BindingConnector(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connector.Connector`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.BindingConnector'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.binding_connector import BindingConnector
+
+
+
+
+

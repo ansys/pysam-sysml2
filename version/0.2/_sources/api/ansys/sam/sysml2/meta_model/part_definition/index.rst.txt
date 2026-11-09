@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``part_definition.py`` module
+=================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.part_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: part_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.part_definition.PartDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.PartDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> PartDefinition</api/ansys/sam/sysml2/meta_model/part_definition/PartDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated part definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

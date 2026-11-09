@@ -1,0 +1,107 @@
+
+
+
+
+
+
+The ``exception`` package
+=============================
+
+.. py:module:: ansys.sam.sysml2.exception
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: exception
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.connector_exception`
+            - Custom exceptions for connector-related errors.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.mapper_exception`
+            - Exception file for mappers.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.query_exception`
+            - Query exception module.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.exception.runtime_exception`
+            - Runtime exception.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> connector_exception</api/ansys/sam/sysml2/exception/connector_exception/index>
+    <span class="nf nf-fa-file"></span> mapper_exception</api/ansys/sam/sysml2/exception/mapper_exception/index>
+    <span class="nf nf-fa-file"></span> query_exception</api/ansys/sam/sysml2/exception/query_exception/index>
+    <span class="nf nf-fa-file"></span> runtime_exception</api/ansys/sam/sysml2/exception/runtime_exception/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Exception module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

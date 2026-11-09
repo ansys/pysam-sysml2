@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`AnnotatingElement`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.annotating_element.AnnotatingElement(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.element.Element`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.AnnotatingElement'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AnnotatingElement
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~annotated_element`
+            - Get the annotated element property.
+          * - :py:attr:`~annotation`
+            - Get the annotation property.
+          * - :py:attr:`~owned_annotating_relationship`
+            - Get the owned annotating relationship property.
+          * - :py:attr:`~owning_annotating_relationship`
+            - Get the owning annotating relationship property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.annotating_element import AnnotatingElement
+
+Property detail
+---------------
+
+.. py:property:: annotated_element
+   :type: list[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the annotated element property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Element"]
+           Value of property annotated element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: annotation
+   :type: list[Annotation]
+
+
+   
+   Get the annotation property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Annotation"]
+           Value of property annotation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_annotating_relationship
+   :type: list[Annotation]
+
+
+   
+   Get the owned annotating relationship property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Annotation"]
+           Value of property owned annotating relationship.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_annotating_relationship
+   :type: Annotation
+
+
+   
+   Get the owning annotating relationship property.
+
+
+
+
+
+   :Returns:
+
+       "Annotation"
+           Value of property owning annotating relationship.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

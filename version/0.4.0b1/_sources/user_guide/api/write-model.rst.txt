@@ -1,0 +1,262 @@
+.. _Write_Model_Section:
+
+Write data to your model
+########################
+
+.. note:: To avoid performance issues, don't forget to use `Transaction mode`_. See the bottom of this page for details.
+
+
+Update a feature value
+======================
+
+You have two ways of updating the value of a feature:
+
+.. currentmodule:: ansys.sam.sysml2.meta_model.e_object
+
+- :meth:`set_value() <EObject.set_value>`
+- ``SysMLTools.parse_and_set_value``
+
+Function :meth:`set_value() <EObject.set_value>`
+------------------------------------------------------
+
+The :meth:`set_value() <EObject.set_value>` function supports all primitive types:
+
+.. code:: python
+
+    >>> myFeature.set_value(True)
+    >>> myFeature.get_value()._value
+    True
+    >>> myFeature.set_value(10)
+    >>> myFeature.get_value()._value
+    10
+    >>> myFeature.set_value("Hello")
+    >>> myFeature.get_value()._value
+    'Hello'
+    >>> myFeature.set_value(10.5)
+    >>> myFeature.get_value()._value
+    10.5
+
+The model updates after you set all values to ensure accuracy.
+
+Function ``SysMLTools.parse_and_set_value``
+-------------------------------------------
+
+The ``SysMLTools.parse_and_set_value`` function handles more complex
+expressions. The text you pass is sent as-is to the server, which builds the corresponding
+expression; :meth:`get_value() <EObject.get_value>` then returns the expression element, which
+``SysMLTools.serialize_expression`` renders as text:
+
+.. code:: python
+
+    >>> from ansys.sam.sysml2.tools import SysMLTools
+    >>> SysMLTools.parse_and_set_value(myFeature, "10 [m]")
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    '10 [m]'
+    >>> SysMLTools.parse_and_set_value(myFeature, "5 + 5")
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    '5 + 5'
+    >>> SysMLTools.parse_and_set_value(myFeature, "baseValue * 3")
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    'baseValue * 3'
+    >>> SysMLTools.parse_and_set_value(myFeature, "not true")
+    >>> SysMLTools.serialize_expression(myFeature.get_value())
+    'not true'
+
+.. note::
+
+    :meth:`set_value() <EObject.set_value>` and
+    ``SysMLTools.parse_and_set_value`` are not interchangeable, even
+    for the same text. :meth:`set_value() <EObject.set_value>` stores a string literal, whose
+    ``_value`` is returned verbatim, while
+    ``SysMLTools.parse_and_set_value`` builds an expression, which
+    ``SysMLTools.serialize_expression`` renders in its normalized form:
+
+    .. code:: python
+
+        >>> myFeature.set_value("1+2+3")
+        >>> myFeature.get_value()._value
+        '1+2+3'
+        >>> SysMLTools.parse_and_set_value(myFeature, "1+2+3")
+        >>> SysMLTools.serialize_expression(myFeature.get_value())
+        '1 + 2 + 3'
+
+    Switching a feature between a literal and an expression (in either direction) drops the previous
+    value and recreates it, so the feature always reflects the latest call.
+
+Create new elements
+===================
+
+.. currentmodule:: ansys.sam.sysml2.tools.factory
+
+Use the :class:`Factory` class to create new elements in your model.
+
+.. tip::
+
+    For a comprehensive example, see :ref:`Create a new element <Creating_Example>`.
+
+.. literalinclude:: ../../_static/code/creating-elements.py
+    :lines: 46
+    :language: python
+    :caption: Create a Factory instance
+
+Use the :meth:`create_<element_type>()` method to create a new model element.
+Provide the element type and any number of keyword arguments representing its attributes:
+
+.. code:: python
+
+    new_attribute_usage = factory.create_attribute_usage(
+        declared_name="new_attribute_usage",
+    )
+
+This creates a new ``AttributeUsage`` element at the root of your project. The
+:meth:`create_<element_type>()` method returns the newly created element.
+
+.. literalinclude:: ../../_static/code/creating-elements.py
+    :lines: 48-50
+    :language: python
+    :caption: Create a new AttributeUsage element with owner
+
+This creates a new ``AttributeUsage`` element with the specified attributes inside the ``Bike``
+frame.
+
+.. note::
+
+    The list of accepted attributes depends on the element type you are creating. For example,
+    ``name``, ``owner``, ``shortName``, and others are defined by the ``metamodel``.
+
+    You can also assign a value directly when creating the element. There are two ways:
+
+    - ``value=...`` for simple values (such as numbers).
+    - ``expression="..."`` for values with units or expressions.
+
+    .. tab-set::
+
+        .. tab-item:: Dynamic approach
+
+            .. code:: python
+
+                new_bicycle_frame_length_with_value = factory.create_attribute_usage(
+                    declared_name="lengthWithValue",
+                    owner=bike.frame,
+                    value=60
+                )
+
+                new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
+                    declared_name="lengthWithExpression",
+                    owner=bike.frame,
+                    expression="60 [cm]"
+                )
+
+        .. tab-item:: Static approach
+
+            .. code:: python
+
+                new_bicycle_frame_length_with_value = factory.create_attribute_usage(
+                    declared_name="lengthWithValue",
+                    owner=bike.get("frame"),
+                    value=60
+                )
+
+                new_bicycle_frame_length_with_expression = factory.create_attribute_usage(
+                    declared_name="lengthWithExpression",
+                    owner=bike.get("frame"),
+                    expression="60 [cm]"
+                )
+
+    This lets you set values directly at creation time, depending on your data format.
+
+Update attributes directly
+--------------------------
+
+Update element properties directly using simple assignment. This is useful for quickly changing
+properties like names.
+
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            >>> my_attribute = factory.create_attribute_usage(declared_name="OriginalName")
+            >>> my_attribute._name = "New Name"
+            New Name
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            >>> my_attribute = factory.create_attribute_usage(declared_name="OriginalName")
+            >>> my_attribute.name = "New Name"
+            New Name
+
+Moving elements
+---------------
+
+Use ``append()`` on the owned element property to move an element to a different container.
+The element is automatically removed from its current container.
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            new_container._owned_element.append(element_to_move)
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            new_container.owned_element.append(element_to_move)
+
+Removing elements
+-----------------
+
+| If you use the ``remove()`` method of the owned element property, the element is deleted from the model.
+| Please use this with caution: if a diagram displays this removed element, the diagram displays errors.
+
+Transaction mode
+----------------
+When you perform write operations, the model is updated after each operation to ensure accuracy. However, if you want to perform multiple write operations without intermediate updates, you can use the transaction mode. In transaction mode, the model updates only after you complete all your operations. This can improve performance when making multiple changes to the model, but be aware that the model does not reflect any changes until you exit the transaction mode.
+
+
+.. tab-set::
+
+    .. tab-item:: Dynamic approach
+
+        .. code:: python
+
+            my_bike_project.start_transactional_mode()
+
+            SysMLTools.parse_and_set_value(bike.frontWheel.rim.weight, "0.5 [kg]")
+            SysMLTools.parse_and_set_value(bike.rearWheel.rim.weight, "0.8 [kg]")
+
+            my_bike_project.stop_transactional_mode()
+
+    .. tab-item:: Static approach
+
+        .. code:: python
+
+            my_bike_project.start_transactional_mode()
+
+            SysMLTools.parse_and_set_value(bike.get("frontWheel").get("rim").get("weight"), "0.5 [kg]")
+            SysMLTools.parse_and_set_value(bike.get("rearWheel").get("rim").get("weight"), "0.8 [kg]")
+
+            my_bike_project.stop_transactional_mode()
+
+.. only:: html
+
+    .. grid:: 2
+
+        .. grid-item-card:: :fa:`arrow-left` Previous step
+            :link: read-model
+            :link-type: doc
+
+            Read your model
+
+        .. grid-item-card:: Next step :fa:`arrow-right`
+            :link: diagram-model
+            :link-type: doc
+
+            Work with diagrams

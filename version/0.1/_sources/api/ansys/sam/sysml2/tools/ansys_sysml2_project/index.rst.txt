@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``ansys_sysml2_project.py`` module
+======================================
+
+.. py:module:: ansys.sam.sysml2.tools.ansys_sysml2_project
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: ansys_sysml2_project
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.ansys_sysml2_project.AnsysSysML2Project`
+            - Provides a complete Ansys SysML2 project implementation with integrated capabilities.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> AnsysSysML2Project</api/ansys/sam/sysml2/tools/ansys_sysml2_project/AnsysSysML2Project>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Ansys SysML2 project to facilitate use of PySAM SysML2.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,230 @@
+
+
+
+
+
+
+:class:`Import`
+===============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.import_.Import(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Import'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Import
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~import_owning_namespace`
+            - Get the import owning namespace property.
+          * - :py:attr:`~imported_element`
+            - Get the imported element property.
+          * - :py:attr:`~visibility`
+            - Get the visibility property.
+          * - :py:attr:`~is_import_all`
+            - Get the is import all property.
+          * - :py:attr:`~is_recursive`
+            - Get the is recursive property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.import_ import Import
+
+Property detail
+---------------
+
+.. py:property:: import_owning_namespace
+   :type: Namespace
+
+
+   
+   Get the import owning namespace property.
+
+
+
+
+
+   :Returns:
+
+       "Namespace"
+           Value of property import owning namespace.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: imported_element
+   :type: Element
+
+
+   
+   Get the imported element property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property imported element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: visibility
+   :type: VisibilityKind
+
+
+   
+   Get the visibility property.
+
+
+
+
+
+   :Returns:
+
+       "VisibilityKind"
+           Value of property visibility.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_import_all
+   :type: bool
+
+
+   
+   Get the is import all property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is import all.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_recursive
+   :type: bool
+
+
+   
+   Get the is recursive property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is recursive.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

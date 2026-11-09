@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``calculation_definition.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.calculation_definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: calculation_definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.calculation_definition.CalculationDefinition`
+            - Java class 'com.ansys.medini.metamodel.sysml.CalculationDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> CalculationDefinition</api/ansys/sam/sysml2/meta_model/calculation_definition/CalculationDefinition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated calculation definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`WhileLoopActionUsage`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.while_loop_action_usage.WhileLoopActionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.loop_action_usage.LoopActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.WhileLoopActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: WhileLoopActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~while_argument`
+            - Get the while argument property.
+          * - :py:attr:`~until_argument`
+            - Get the until argument property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.while_loop_action_usage import WhileLoopActionUsage
+
+Property detail
+---------------
+
+.. py:property:: while_argument
+   :type: Expression
+
+
+   
+   Get the while argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property while argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: until_argument
+   :type: Expression
+
+
+   
+   Get the until argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property until argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

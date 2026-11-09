@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ConnectionUsage`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.connection_usage.ConnectionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.part_usage.PartUsage`, :py:obj:`ansys.sam.sysml2.meta_model.connector_as_usage.ConnectorAsUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ConnectionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ConnectionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~connection_definition`
+            - Get the connection definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.connection_usage import ConnectionUsage
+
+Property detail
+---------------
+
+.. py:property:: connection_definition
+   :type: list[AssociationStructure]
+
+
+   
+   Get the connection definition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["AssociationStructure"]
+           Value of property connection definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

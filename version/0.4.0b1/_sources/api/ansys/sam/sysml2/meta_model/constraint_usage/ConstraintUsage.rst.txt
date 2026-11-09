@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ConstraintUsage`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.constraint_usage.ConstraintUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.boolean_expression.BooleanExpression`, :py:obj:`ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ConstraintUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ConstraintUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~constraint_definition`
+            - Get the constraint definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.constraint_usage import ConstraintUsage
+
+Property detail
+---------------
+
+.. py:property:: constraint_definition
+   :type: Predicate
+
+
+   
+   Get the constraint definition property.
+
+
+
+
+
+   :Returns:
+
+       "Predicate"
+           Value of property constraint definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

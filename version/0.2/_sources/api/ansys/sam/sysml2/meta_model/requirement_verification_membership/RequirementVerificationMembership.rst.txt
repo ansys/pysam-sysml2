@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`RequirementVerificationMembership`
+==========================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.requirement_verification_membership.RequirementVerificationMembership(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.requirement_constraint_membership.RequirementConstraintMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.RequirementVerificationMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: RequirementVerificationMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~verified_requirement`
+            - Get the verified requirement property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.requirement_verification_membership import RequirementVerificationMembership
+
+Property detail
+---------------
+
+.. py:property:: verified_requirement
+   :type: None
+
+
+   
+   Get the verified requirement property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property verified requirement.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``succession_item_flow.py`` module
+======================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.succession_item_flow
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: succession_item_flow
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.succession_item_flow.SuccessionItemFlow`
+            - Java class 'com.ansys.medini.metamodel.sysml.SuccessionItemFlow'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SuccessionItemFlow</api/ansys/sam/sysml2/meta_model/succession_item_flow/SuccessionItemFlow>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated succession item flow class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

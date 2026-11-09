@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``scripting_project.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.classes.scripting_project
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: scripting_project
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.scripting_project.ScriptingProject`
+            - Scripting project interface for users.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ScriptingProject</api/ansys/sam/sysml2/classes/scripting_project/ScriptingProject>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Scripting project interface for users.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

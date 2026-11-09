@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``flow_end.py`` module
+==========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.flow_end
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: flow_end
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.flow_end.FlowEnd`
+            - Java class 'com.ansys.metamodel.sysml2.FlowEnd'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> FlowEnd</api/ansys/sam/sysml2/meta_model/flow_end/FlowEnd>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated flow end class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

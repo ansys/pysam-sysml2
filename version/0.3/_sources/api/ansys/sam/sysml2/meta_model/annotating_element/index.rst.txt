@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``annotating_element.py`` module
+====================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.annotating_element
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: annotating_element
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.annotating_element.AnnotatingElement`
+            - Java class 'com.ansys.medini.metamodel.sysml.AnnotatingElement'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> AnnotatingElement</api/ansys/sam/sysml2/meta_model/annotating_element/AnnotatingElement>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated annotating element class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

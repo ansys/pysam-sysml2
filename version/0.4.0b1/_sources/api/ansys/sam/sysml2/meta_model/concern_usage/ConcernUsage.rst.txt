@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ConcernUsage`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.concern_usage.ConcernUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.requirement_usage.RequirementUsage`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ConcernUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ConcernUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~concern_definition`
+            - Get the concern definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.concern_usage import ConcernUsage
+
+Property detail
+---------------
+
+.. py:property:: concern_definition
+   :type: ConcernDefinition
+
+
+   
+   Get the concern definition property.
+
+
+
+
+
+   :Returns:
+
+       "ConcernDefinition"
+           Value of property concern definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

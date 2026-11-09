@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``item_flow.py`` module
+===========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.item_flow
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: item_flow
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.item_flow.ItemFlow`
+            - Java class 'com.ansys.medini.metamodel.sysml.ItemFlow'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ItemFlow</api/ansys/sam/sysml2/meta_model/item_flow/ItemFlow>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated item flow class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

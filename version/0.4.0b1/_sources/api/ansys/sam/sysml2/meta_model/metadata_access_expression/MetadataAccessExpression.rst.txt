@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`MetadataAccessExpression`
+=================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.metadata_access_expression.MetadataAccessExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.expression.Expression`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.MetadataAccessExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: MetadataAccessExpression
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~referenced_element`
+            - Get the referenced element property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.metadata_access_expression import MetadataAccessExpression
+
+Property detail
+---------------
+
+.. py:property:: referenced_element
+   :type: Element
+
+
+   
+   Get the referenced element property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property referenced element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`ControlNode`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.control_node.ControlNode(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ControlNode'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.control_node import ControlNode
+
+
+
+
+

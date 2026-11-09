@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`Function`
+=================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.function.Function(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.behavior.Behavior`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Function'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Function
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~result`
+            - Get the result property.
+          * - :py:attr:`~expression`
+            - Get the expression property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.function import Function
+
+Property detail
+---------------
+
+.. py:property:: result
+   :type: Feature
+
+
+   
+   Get the result property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property result.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: expression
+   :type: list[Expression]
+
+
+   
+   Get the expression property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

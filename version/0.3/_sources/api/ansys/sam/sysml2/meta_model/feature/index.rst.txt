@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``feature.py`` module
+=========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.feature
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: feature
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature.Feature`
+            - Java class 'com.ansys.medini.metamodel.sysml.Feature'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Feature</api/ansys/sam/sysml2/meta_model/feature/Feature>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated feature class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

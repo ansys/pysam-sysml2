@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`Package`
+================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.package.Package(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.namespace.Namespace`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Package'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Package
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~filter_condition`
+            - Get the filter condition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.package import Package
+
+Property detail
+---------------
+
+.. py:property:: filter_condition
+   :type: list[Expression]
+
+
+   
+   Get the filter condition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property filter condition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`LiteralInteger`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.literal_integer.LiteralInteger(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.literal_expression.LiteralExpression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.LiteralInteger'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: LiteralInteger
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~value`
+            - Get the value property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.literal_integer import LiteralInteger
+
+Property detail
+---------------
+
+.. py:property:: value
+   :type: int
+
+
+   
+   Get the value property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:int`
+           Value of property value.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Package`
+================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.package.Package(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.namespace.Namespace`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Package'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.package import Package
+
+
+
+
+

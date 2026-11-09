@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`Behavior`
+=================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.behavior.Behavior(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.class_.Class`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Behavior'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Behavior
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~step`
+            - Get the step property.
+          * - :py:attr:`~parameter`
+            - Get the parameter property.
+          * - :py:attr:`~general_parameter`
+            - Get the general parameter property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.behavior import Behavior
+
+Property detail
+---------------
+
+.. py:property:: step
+   :type: list[Step]
+
+
+   
+   Get the step property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Step"]
+           Value of property step.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: parameter
+   :type: list[Feature]
+
+
+   
+   Get the parameter property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: general_parameter
+   :type: list[Feature]
+
+
+   
+   Get the general parameter property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property general parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`CaseDefinition`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.case_definition.CaseDefinition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.calculation_definition.CalculationDefinition`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.CaseDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: CaseDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~actor_parameter`
+            - Get the actor parameter property.
+          * - :py:attr:`~objective_requirement`
+            - Get the objective requirement property.
+          * - :py:attr:`~subject_parameter`
+            - Get the subject parameter property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.case_definition import CaseDefinition
+
+Property detail
+---------------
+
+.. py:property:: actor_parameter
+   :type: List[PartUsage]
+
+
+   
+   Get the actor parameter property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["PartUsage"]
+           Value of property actor parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: objective_requirement
+   :type: None
+
+
+   
+   Get the objective requirement property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property objective requirement.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: subject_parameter
+   :type: Usage
+
+
+   
+   Get the subject parameter property.
+
+
+
+
+
+   :Returns:
+
+       "Usage"
+           Value of property subject parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

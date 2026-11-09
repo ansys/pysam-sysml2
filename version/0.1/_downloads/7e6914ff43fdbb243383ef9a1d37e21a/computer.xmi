@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sysml:Package xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.genmymodel.ecoreonline.graphic="http://com.genmymodel.ecoreonline.graphic/2.0" xmlns:sysml="http://www.omg.org/spec/sysml/2.0/beta" xmi:id="2a7caada-6cdf-4596-8dcc-dc803d4d9a9b" name="Computer" ownedImport="7a8f006a-cd7a-4e97-97b5-385697d0702b">
+  <eAnnotations xmi:id="f83b4d99-fb4a-4410-9cf9-5c4333388a4c" source="genmymodel">
+    <contents xsi:type="com.genmymodel.ecoreonline.graphic:SimpleDiagram" xmi:id="0db542d5-2289-42d8-a808-5bee00530bc4" name="general diagram" width="1200" height="800">
+      <plane xmi:id="9b8480d9-0cc0-4b9b-ae2f-213bd98d24c3" modelElement="2a7caada-6cdf-4596-8dcc-dc803d4d9a9b">
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="4dcba2d1-d6cc-4218-b357-eb8740f57932" modelElement="32a4eece-0e0d-404a-a07a-9abae9eb174a" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="67" deltaX="122"/>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="cce947d6-7939-4112-a6bd-56df883b02a1" modelElement="0d5a01a9-08fe-4f3d-b166-73e84afde4b5" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="67" deltaX="327"/>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="5a2f3ca3-5752-47d6-ab30-e542137a992d" modelElement="012dcf04-6998-42ef-a898-236f1e628e39" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="67" deltaX="528"/>
+      </plane>
+    </contents>
+    <contents xsi:type="com.genmymodel.ecoreonline.graphic:SimpleDiagram" xmi:id="dfcc8eb2-2e50-433c-83cf-4972275fc9c8" name="costs" width="1200" height="800" kind="block-diagram">
+      <plane xmi:id="bc8200ad-d64a-4697-a0df-9ffbd6dd7ad1" modelElement="2a7caada-6cdf-4596-8dcc-dc803d4d9a9b">
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="715120eb-087d-4837-8e07-b940accfec22" modelElement="68ea1e01-3267-437b-aae8-7c3fb1d915a7" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="66" deltaX="422">
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="e445b95f-9aae-42a9-81ed-38de83e0462c" modelElement="68ea1e01-3267-437b-aae8-7c3fb1d915a7" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="edf8c8df-4087-4a20-9e54-1c4d2cffd617" modelElement="835b89fd-0c8d-4824-9770-c6ac8974a997" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+          </ownedDiagramElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="b3567eff-3300-4adc-8dff-32ab401e999b" modelElement="f3f75efe-148b-41f6-bf77-fc7c3ff29f7d" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="269" deltaX="338"/>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="3214e5f6-198a-4c8e-abca-b1d325cc8b8b" modelElement="de5d4c60-ca96-4a4f-a411-7571e068e90f" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="440" deltaX="221"/>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="c2946cc0-8b14-42fa-8819-03b214e808e0" modelElement="14f4297c-d891-4916-9c43-04303f49e1d5" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="563" deltaX="354"/>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="bbb388ab-bc98-489c-8cbd-02b7b6a4624d" modelElement="54d00f16-4c0a-4acf-bc09-5e8cc0b9ffd4" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="440" deltaX="473"/>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="141142c2-9619-4334-9c11-9141a2e41dfc" source="3214e5f6-198a-4c8e-abca-b1d325cc8b8b" target="b3567eff-3300-4adc-8dff-32ab401e999b" orientation="VERTICAL" feature="type">
+          <points xmi:id="4d603584-7ca3-4f86-8502-05ece31c1663" x="365" y="440"/>
+          <points xmi:id="aae520b5-535a-4ec3-ad9f-2b7634f9a921" x="365" y="413"/>
+          <points xmi:id="c714f47b-0218-4787-a594-8084467543e1" x="365" y="386"/>
+          <points xmi:id="7bd1a6fa-b46f-4a13-acd2-16b3f511e69a" x="365" y="359"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="5f7f8be1-8f50-47c0-906c-82be3c8a4d4b" source="c2946cc0-8b14-42fa-8819-03b214e808e0" target="b3567eff-3300-4adc-8dff-32ab401e999b" orientation="VERTICAL" feature="type">
+          <points xmi:id="eb5b2ae0-99b0-4072-b893-2135f0e3907b" x="431" y="563"/>
+          <points xmi:id="d385f20e-2bdf-4fa7-8eaf-867c56194237" x="431" y="495"/>
+          <points xmi:id="314d80e4-fbb1-48c2-a8a6-9afbae898db5" x="431" y="427"/>
+          <points xmi:id="a2c2e71b-64c4-4073-95d8-2be8439675ca" x="431" y="359"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="75791580-aee4-4b5d-b222-69a309d1beff" source="bbb388ab-bc98-489c-8cbd-02b7b6a4624d" target="b3567eff-3300-4adc-8dff-32ab401e999b" orientation="VERTICAL" feature="type">
+          <points xmi:id="c3769a6c-68a3-49fe-965f-209b38be4ec8" x="491" y="440"/>
+          <points xmi:id="6de3bf98-8ea8-4f44-bf32-3861059d5bcb" x="491" y="413"/>
+          <points xmi:id="9556fcca-533c-428a-871d-545347b9e3c4" x="491" y="386"/>
+          <points xmi:id="528fd3ae-a128-4e6c-adf0-220b010c6aa2" x="491" y="359"/>
+        </ownedDiagramElements>
+      </plane>
+    </contents>
+  </eAnnotations>
+  <ownedMember xsi:type="sysml:Package" xmi:id="c1400339-65ab-4520-9a33-7f7d2a39e8a5" name="Structure definitions">
+    <eAnnotations xmi:id="a2e993ad-5f50-471b-918f-f7319ba61c9e" source="genmymodel">
+      <contents xsi:type="com.genmymodel.ecoreonline.graphic:SimpleDiagram" xmi:id="697b7ceb-da7b-43c0-b1dc-e0153d0df764" name="general components" width="1200" height="800" kind="block-diagram">
+        <plane xmi:id="26225155-295a-4c9b-a51a-c0fbacabcb2d" modelElement="c1400339-65ab-4520-9a33-7f7d2a39e8a5">
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="6e6d8669-e693-4e5f-a0bb-e58215da0603" modelElement="32a4eece-0e0d-404a-a07a-9abae9eb174a" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="236" deltaX="113"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="edd190de-26c8-434f-99c1-fd33cc8893ba" modelElement="012dcf04-6998-42ef-a898-236f1e628e39" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="236" deltaX="309"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="78c5cd7b-9ca5-4a46-a20a-b9859e426bfe" modelElement="0d5a01a9-08fe-4f3d-b166-73e84afde4b5" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="236" deltaX="497"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="b5d35f39-7474-4a5c-bbf0-d596d076e53f" modelElement="bd75c31e-2df0-408c-af4d-db088f102d7b" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="236" deltaX="695"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="7f6ffefd-cf2d-469b-a5a0-724acd730e9f" modelElement="8cd3b842-230b-4fe6-9098-bcd0525eed45" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="362" deltaX="174"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="4455323a-469c-454c-8e0e-aeac51002617" modelElement="6c8331d4-bcf3-4f75-96e3-1eefee2d41fc" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="362" deltaX="401"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="5048021f-551f-4fee-b70f-e5ed6780940f" modelElement="38c73f1e-fae5-472a-8278-dad8a179433f" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="362" deltaX="635"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="595b081c-3008-410d-bc07-edf334b7a072" modelElement="9e4a6f98-910e-46da-9933-a66c313c0bd7" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="486" deltaX="433"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" modelElement="68ea1e01-3267-437b-aae8-7c3fb1d915a7" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="44" deltaX="401"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="4bd670ad-de30-40c5-b546-5b249aa7d1a7" modelElement="295445aa-4255-431b-b2f1-dc0ea6c1b816" source="78c5cd7b-9ca5-4a46-a20a-b9859e426bfe" target="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" orientation="VERTICAL">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleLabel" xmi:id="59719765-a7f3-4324-927c-30745feffcdf" modelElement="295445aa-4255-431b-b2f1-dc0ea6c1b816" width="60" height="30" constraintPosition="CENTER_POSITION" deltaY="20" deltaX="20"/>
+            <points xmi:id="1e33165b-85f3-42f2-8557-0aa0310d6dea" x="534" y="236"/>
+            <points xmi:id="af45b79b-f1f6-480b-b914-507558f0ece5" x="534" y="202"/>
+            <points xmi:id="c125bd69-6d6d-473a-a224-f3e1e0e4a457" x="534" y="168"/>
+            <points xmi:id="a20f99d9-344e-4e64-8dd1-17ff2673d624" x="534" y="134"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="9b4b6645-7e45-4eba-9816-e8941c5a9255" modelElement="3f7a3c52-bf7d-49d9-944a-6a1944505654" source="b5d35f39-7474-4a5c-bbf0-d596d076e53f" target="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" orientation="VERTICAL">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleLabel" xmi:id="d5fa245f-ad3f-4dc4-a8cf-33fb6fb8fd8e" modelElement="3f7a3c52-bf7d-49d9-944a-6a1944505654" width="60" height="30" constraintPosition="CENTER_POSITION" deltaY="20" deltaX="20"/>
+            <points xmi:id="205eebd5-63c7-423f-877a-3e2f2532ddca" x="780" y="236"/>
+            <points xmi:id="7f4e111e-8a73-4483-aef3-05aeda4caf20" x="780" y="185"/>
+            <points xmi:id="f8c57b42-46e2-4624-a32f-edd3d2b9cfdf" x="486" y="185"/>
+            <points xmi:id="29e4d531-f2c9-4157-ba18-82749ed80931" x="486" y="134"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="5c5af4a0-3440-453b-8003-47171c6968d7" modelElement="13875bf0-423d-4c52-8064-ff9acee61e9a" source="6e6d8669-e693-4e5f-a0bb-e58215da0603" target="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" orientation="VERTICAL">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleLabel" xmi:id="54307452-fd66-45e8-aae0-771687e9d6b2" modelElement="13875bf0-423d-4c52-8064-ff9acee61e9a" width="60" height="30" constraintPosition="CENTER_POSITION" deltaY="20" deltaX="20"/>
+            <points xmi:id="e15fb684-4025-4230-83ef-82053c45a1c3" x="198" y="236"/>
+            <points xmi:id="ea4b3944-f090-4d81-a454-215029b9bd51" x="198" y="185"/>
+            <points xmi:id="de158990-fa77-44c9-993c-af1549cf9e3d" x="486" y="185"/>
+            <points xmi:id="894c9db3-9901-46c1-99f6-94d35fd412ee" x="486" y="134"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="dc15b7a6-1658-4eab-8e19-a8c4ff7eae0e" modelElement="6d91143d-bf8c-4636-b585-d5e2866fe2d9" source="edd190de-26c8-434f-99c1-fd33cc8893ba" target="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" orientation="VERTICAL">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleLabel" xmi:id="72782a05-e9c1-4c62-a93d-12d89a04d1a4" modelElement="6d91143d-bf8c-4636-b585-d5e2866fe2d9" width="60" height="30" constraintPosition="CENTER_POSITION" deltaY="20" deltaX="20"/>
+            <points xmi:id="6bf8936f-4e4a-4e51-b02f-ac26515c7699" x="440" y="236"/>
+            <points xmi:id="ece754cd-b15c-4eb9-b8af-528d4a841a87" x="440" y="202"/>
+            <points xmi:id="dfc815e8-86e1-4114-94a1-70dcc137f878" x="440" y="168"/>
+            <points xmi:id="4e6c9cc0-facf-46b8-8c2c-21a853219055" x="440" y="134"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="ed66c38c-c829-4d26-a27a-0e64e148c3c5" modelElement="401dcd54-adcf-47e3-9adc-f67d8b9e1dea" source="7f6ffefd-cf2d-469b-a5a0-724acd730e9f" target="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" orientation="VERTICAL">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleLabel" xmi:id="0743a949-3455-4bb5-af4e-a9b97df30a77" modelElement="401dcd54-adcf-47e3-9adc-f67d8b9e1dea" width="60" height="30" constraintPosition="CENTER_POSITION" deltaY="20" deltaX="20"/>
+            <points xmi:id="ab844e3c-9ccc-49a4-ab4b-111b1fb00e5c" x="259" y="362"/>
+            <points xmi:id="60a8e835-5f29-4635-bb45-92513c043fde" x="259" y="248"/>
+            <points xmi:id="79ff10ae-0a8e-41d8-b117-5890d9201577" x="486" y="248"/>
+            <points xmi:id="6fd44ee8-95a5-4a62-a8a7-583a2f7cccf9" x="486" y="134"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="53ecc295-bfb0-4cac-9b56-805bcf1b3b62" modelElement="75424298-44cb-4493-ad26-24d28ceb24ec" source="5048021f-551f-4fee-b70f-e5ed6780940f" target="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" orientation="VERTICAL">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleLabel" xmi:id="601432de-6d30-4f9a-b5a1-ea518926e213" modelElement="75424298-44cb-4493-ad26-24d28ceb24ec" width="60" height="30" constraintPosition="CENTER_POSITION" deltaY="20" deltaX="20"/>
+            <points xmi:id="33ed5c52-31a6-4f5d-8d0a-770cfac6e10e" x="720" y="362"/>
+            <points xmi:id="37212707-4119-44fb-b874-0ca33d036a7e" x="720" y="248"/>
+            <points xmi:id="e5dd7391-9ae3-4720-8874-8a355f67f3dc" x="486" y="248"/>
+            <points xmi:id="a6ccd0b2-0fa1-45dd-8e1a-402d9a4fd831" x="486" y="134"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="002cad57-676f-4437-8e9a-fa7d0cc5b712" modelElement="18a11db9-a45d-43d9-98bc-75e0bdc9c3b4" source="595b081c-3008-410d-bc07-edf334b7a072" target="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" orientation="VERTICAL">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleLabel" xmi:id="ffe5a4c4-ae21-4463-9008-1ac976b51158" modelElement="18a11db9-a45d-43d9-98bc-75e0bdc9c3b4" width="60" height="30" constraintPosition="CENTER_POSITION" deltaY="20" deltaX="20"/>
+            <points xmi:id="3349af06-c8dd-45f2-bed8-4a07f3973b7d" x="502" y="486"/>
+            <points xmi:id="6a70606f-8fdd-475d-ad79-26d08c43b884" x="502" y="369"/>
+            <points xmi:id="83a35401-db12-454a-bb8d-c0b4e4e06fd3" x="502" y="251"/>
+            <points xmi:id="e6d6194e-8c60-431f-a70f-6221b2feb8aa" x="502" y="134"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="fc03cfb6-7dd2-4f51-aa9b-191261f761d6" modelElement="09fa9f39-d5dd-4012-bcc1-c957783dfa49" source="4455323a-469c-454c-8e0e-aeac51002617" target="ffbfbc6a-697a-4abb-8dad-00d94d42eb52" orientation="VERTICAL">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleLabel" xmi:id="13686a48-c721-4429-86ee-122d0876d86e" modelElement="09fa9f39-d5dd-4012-bcc1-c957783dfa49" width="60" height="30" constraintPosition="CENTER_POSITION" deltaY="20" deltaX="20"/>
+            <points xmi:id="753de2a4-20b7-4c8d-b01e-1eb8149b8335" x="486" y="362"/>
+            <points xmi:id="4045d51f-13e3-49e6-ab10-43d181035bce" x="486" y="286"/>
+            <points xmi:id="0c36bd06-a110-446b-a50d-f7b96e7c60de" x="486" y="210"/>
+            <points xmi:id="94f90405-74f9-491c-96d3-b90ac09c54bc" x="486" y="134"/>
+          </ownedDiagramElements>
+        </plane>
+      </contents>
+    </eAnnotations>
+    <ownedMember xsi:type="sysml:PartDefinition" xmi:id="32a4eece-0e0d-404a-a07a-9abae9eb174a" name="Computer">
+      <ownedRelationship xsi:type="sysml:Subclassification" xmi:id="13875bf0-423d-4c52-8064-ff9acee61e9a" general="68ea1e01-3267-437b-aae8-7c3fb1d915a7" specific="32a4eece-0e0d-404a-a07a-9abae9eb174a"/>
+    </ownedMember>
+    <ownedMember xsi:type="sysml:PartDefinition" xmi:id="012dcf04-6998-42ef-a898-236f1e628e39" name="DynamicMemoryDevice">
+      <ownedRelationship xsi:type="sysml:Subclassification" xmi:id="6d91143d-bf8c-4636-b585-d5e2866fe2d9" general="68ea1e01-3267-437b-aae8-7c3fb1d915a7" specific="012dcf04-6998-42ef-a898-236f1e628e39"/>
+    </ownedMember>
+    <ownedMember xsi:type="sysml:PartDefinition" xmi:id="0d5a01a9-08fe-4f3d-b166-73e84afde4b5" name="StorageDevice">
+      <ownedRelationship xsi:type="sysml:Subclassification" xmi:id="295445aa-4255-431b-b2f1-dc0ea6c1b816" general="68ea1e01-3267-437b-aae8-7c3fb1d915a7" specific="0d5a01a9-08fe-4f3d-b166-73e84afde4b5"/>
+    </ownedMember>
+    <ownedMember xsi:type="sysml:PartDefinition" xmi:id="bd75c31e-2df0-408c-af4d-db088f102d7b" name="CPU">
+      <ownedRelationship xsi:type="sysml:Subclassification" xmi:id="3f7a3c52-bf7d-49d9-944a-6a1944505654" general="68ea1e01-3267-437b-aae8-7c3fb1d915a7" specific="bd75c31e-2df0-408c-af4d-db088f102d7b"/>
+    </ownedMember>
+    <ownedMember xsi:type="sysml:PartDefinition" xmi:id="8cd3b842-230b-4fe6-9098-bcd0525eed45" name="GPU">
+      <ownedRelationship xsi:type="sysml:Subclassification" xmi:id="401dcd54-adcf-47e3-9adc-f67d8b9e1dea" general="68ea1e01-3267-437b-aae8-7c3fb1d915a7" specific="8cd3b842-230b-4fe6-9098-bcd0525eed45"/>
+    </ownedMember>
+    <ownedMember xsi:type="sysml:PartDefinition" xmi:id="6c8331d4-bcf3-4f75-96e3-1eefee2d41fc" name="Screen">
+      <ownedRelationship xsi:type="sysml:Subclassification" xmi:id="09fa9f39-d5dd-4012-bcc1-c957783dfa49" general="68ea1e01-3267-437b-aae8-7c3fb1d915a7" specific="6c8331d4-bcf3-4f75-96e3-1eefee2d41fc"/>
+    </ownedMember>
+    <ownedMember xsi:type="sysml:PartDefinition" xmi:id="38c73f1e-fae5-472a-8278-dad8a179433f" name="Keyboard">
+      <ownedRelationship xsi:type="sysml:Subclassification" xmi:id="75424298-44cb-4493-ad26-24d28ceb24ec" general="68ea1e01-3267-437b-aae8-7c3fb1d915a7" specific="38c73f1e-fae5-472a-8278-dad8a179433f"/>
+    </ownedMember>
+    <ownedMember xsi:type="sysml:PartDefinition" xmi:id="9e4a6f98-910e-46da-9933-a66c313c0bd7" name="PointerDevice">
+      <ownedRelationship xsi:type="sysml:Subclassification" xmi:id="18a11db9-a45d-43d9-98bc-75e0bdc9c3b4" general="68ea1e01-3267-437b-aae8-7c3fb1d915a7" specific="9e4a6f98-910e-46da-9933-a66c313c0bd7"/>
+    </ownedMember>
+  </ownedMember>
+  <ownedMember xsi:type="sysml:Package" xmi:id="89920ece-2808-439c-8e13-f22abd19e7d9" name="Behaviour"/>
+  <ownedMember xsi:type="sysml:Package" xmi:id="d2237527-0827-4456-9a0c-5664e37d8b30" name="RealSystems">
+    <eAnnotations xmi:id="bd77ce54-661a-4e84-be28-6645fb23491a" source="genmymodel">
+      <contents xsi:type="com.genmymodel.ecoreonline.graphic:SimpleDiagram" xmi:id="27b50238-4e1a-466f-b0b6-cc4051d04f3e" name="MyComputer" width="1200" height="800" kind="block-diagram">
+        <plane xmi:id="97a2c734-24df-4c4a-9134-16301d09da8e" modelElement="d2237527-0827-4456-9a0c-5664e37d8b30">
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="ae8f1cba-9a2c-4c57-addb-4bfd7c3c0e07" modelElement="7c0e2795-1f9b-4410-9fef-923f0e9327bf" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="190" deltaX="370">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="c55e5f8a-5c33-4ce7-9a71-11166769d26d" modelElement="7c0e2795-1f9b-4410-9fef-923f0e9327bf" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="3d20bbfa-80e3-4a37-9efa-d6db5bd6a2cc" modelElement="858521c7-c72e-4ce9-ac9b-a794eadb5e2b" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="190" deltaX="76">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="d25aa8c1-6b10-4caf-b29c-39f59e4d35d8" modelElement="858521c7-c72e-4ce9-ac9b-a794eadb5e2b" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+              <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="d48dc26f-9610-4352-bff8-de32d5c0fd82" modelElement="2df3ef2e-d7f8-4f48-814a-4d4a0c43b54b" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+            </ownedDiagramElements>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="bc61b35e-2e5e-4b78-82ab-5940d08460c2" modelElement="feb4c92d-f256-4838-aaf3-d2d72c1f84d1" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="489" deltaX="90">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="b1d9dd5d-35ff-4ec4-91a3-e7e198f8a1d4" modelElement="feb4c92d-f256-4838-aaf3-d2d72c1f84d1" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+              <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="b415ca8f-3e5f-4d0b-905d-f5ec56591d77" modelElement="1c997402-cca5-44df-9387-c9fb07e06be7" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+            </ownedDiagramElements>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="881cc3f4-383c-4002-892b-523e32f44898" modelElement="b918fd2f-7c80-4506-be0a-79deef9d23d7" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="489" deltaX="370">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="fe4ed233-eff9-487e-9936-e6d34159912f" modelElement="b918fd2f-7c80-4506-be0a-79deef9d23d7" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+              <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="f24f3b87-8b73-4612-b0eb-bbccd70f2c5a" modelElement="c7f6a3b2-9ca2-4690-a2ae-40973d0ee419" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+            </ownedDiagramElements>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="3c783bc1-8af5-4245-ab41-a40569905f2c" modelElement="cb453969-5f28-4d9c-b2d6-4d5d2a6d79b7" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="489" deltaX="653">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="c6a86d7b-eb68-4f9b-8029-6fe365ce95e5" modelElement="cb453969-5f28-4d9c-b2d6-4d5d2a6d79b7" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+              <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="221b1a5b-1f42-43bc-bc05-fd6a1be3a4a6" modelElement="5d0df9b6-bdd3-457d-9639-a370d41cf856" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+            </ownedDiagramElements>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="d6c671ae-5b1b-418d-afdb-4ec28b494d61" modelElement="979a72ea-669f-4c32-accc-6a602abdca2b" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="322" deltaX="370"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="06d66cbc-2d18-4201-a49e-04fd22863390" source="d6c671ae-5b1b-418d-afdb-4ec28b494d61" target="bc61b35e-2e5e-4b78-82ab-5940d08460c2" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="475ec885-9110-4082-88b8-c50d687f7961" x="455" y="412"/>
+            <points xmi:id="ea48647c-8200-4a05-89e3-6162c715f6a4" x="455" y="451"/>
+            <points xmi:id="39b28ea3-3477-4db2-8a78-a2d5da5ad987" x="175" y="451"/>
+            <points xmi:id="9d3d8d82-ca3d-4db9-b29d-7f07abfc5822" x="175" y="489"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="6245a8c1-239d-4348-8218-aa4a3028f1bd" source="d6c671ae-5b1b-418d-afdb-4ec28b494d61" target="881cc3f4-383c-4002-892b-523e32f44898" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="7da2672b-64fc-42e7-907e-295cc56c8770" x="455" y="412"/>
+            <points xmi:id="7710f129-25bc-4265-88da-9ca97304f7bd" x="455" y="438"/>
+            <points xmi:id="875589ab-91a7-45bc-80f9-6d1e43e76b59" x="455" y="463"/>
+            <points xmi:id="b8fcebc1-c69c-406e-aaba-b0692466b359" x="455" y="489"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="9cb29c63-59da-4d10-b38e-d6eaf2048c56" source="d6c671ae-5b1b-418d-afdb-4ec28b494d61" target="3c783bc1-8af5-4245-ab41-a40569905f2c" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="4522444b-016c-4ae3-9387-e30fd7c92c0e" x="455" y="412"/>
+            <points xmi:id="5c902fec-ad53-45a8-9c27-60ed64b7b8e2" x="455" y="451"/>
+            <points xmi:id="9745fdc4-feaa-49a1-874e-6cca08af9196" x="738" y="451"/>
+            <points xmi:id="61003b9e-4ce6-4684-97f1-86eb8de23eab" x="738" y="489"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="5804fffa-4583-462b-bfa2-d603622a16f5" source="ae8f1cba-9a2c-4c57-addb-4bfd7c3c0e07" target="d6c671ae-5b1b-418d-afdb-4ec28b494d61" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="d627a700-163e-4959-b5c3-b1c35f149cb4" x="455" y="280"/>
+            <points xmi:id="2a8f66ba-ff9c-4324-984a-d299a335ed03" x="455" y="294"/>
+            <points xmi:id="0917b663-fe7d-48d8-83fb-453b6159cf18" x="455" y="308"/>
+            <points xmi:id="63abcdf6-85b5-4c7e-a2fe-497425b9cd3c" x="455" y="322"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="e2816d8c-f3d1-4c01-8531-2b8a3132945c" source="ae8f1cba-9a2c-4c57-addb-4bfd7c3c0e07" target="3d20bbfa-80e3-4a37-9efa-d6db5bd6a2cc" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="5fac899c-a685-4a26-903c-1b9ada123cb8" x="370" y="235"/>
+            <points xmi:id="d77ee20f-50bb-434a-88ca-ae47d9cd23aa" x="329" y="235"/>
+            <points xmi:id="1db0ac06-c0ed-403e-91f0-03b9210bf967" x="287" y="235"/>
+            <points xmi:id="b534e215-8db5-423a-8133-9d5cbd51cacb" x="246" y="235"/>
+          </ownedDiagramElements>
+        </plane>
+      </contents>
+      <contents xsi:type="com.genmymodel.ecoreonline.graphic:SimpleDiagram" xmi:id="8608a1fa-68b1-4b41-8392-595385ac5345" name="My Computer 2" width="1200" height="800" kind="block-diagram">
+        <plane xmi:id="6a7d3ce3-2a1d-46f9-bd1e-24a3dd5590d1" modelElement="d2237527-0827-4456-9a0c-5664e37d8b30">
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="ba9052a1-d2af-4f45-93fc-72dc9b90652b" modelElement="ad6e72c2-3b83-404f-96fe-f430670fed81" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="177" deltaX="292">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="dded9d91-12e5-41c4-8688-fff9892ddef4" modelElement="ad6e72c2-3b83-404f-96fe-f430670fed81" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="f9c8b3ca-fbec-4243-977a-d32edaf3ef43" modelElement="0e42d42c-6fa5-4d69-9bfe-9cec5631a38b" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="130" deltaX="583">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="9ab58cd3-e62d-4c48-891a-e4588abed36c" modelElement="0e42d42c-6fa5-4d69-9bfe-9cec5631a38b" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+              <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="971be747-9eaa-4cae-8e1c-cd527f09e68b" modelElement="342395e9-8f1e-4d69-9154-f0d8f43b9fad" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+            </ownedDiagramElements>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="800b860b-f064-4632-8392-bed0337e88b9" source="ba9052a1-d2af-4f45-93fc-72dc9b90652b" target="f9c8b3ca-fbec-4243-977a-d32edaf3ef43" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="7d18c79b-b101-49a5-bbc5-63e8dc536041" x="462" y="199"/>
+            <points xmi:id="06c2fd34-c790-4028-b7aa-4cf25798cf65" x="502" y="199"/>
+            <points xmi:id="564751a0-7689-438d-9643-df40a27d207e" x="543" y="199"/>
+            <points xmi:id="616f1414-1c2d-4763-9949-8551edb68aec" x="583" y="199"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="96c3ac1d-0521-4a1c-818b-9b1c88f7e916" modelElement="7ba43859-74c4-4e41-b7d3-dc0eba001069" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="326" deltaX="292"/>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="5d0a4aec-c3ea-4a1e-bcff-f97254e5692f" source="ba9052a1-d2af-4f45-93fc-72dc9b90652b" target="96c3ac1d-0521-4a1c-818b-9b1c88f7e916" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="4b77f415-8e95-4d6f-8996-9d5a41d80090" x="377" y="267"/>
+            <points xmi:id="1525c7db-1720-4cfb-aa80-81d9a136d79b" x="377" y="287"/>
+            <points xmi:id="123bfd27-17eb-4613-b8e4-79d7326b79ac" x="377" y="306"/>
+            <points xmi:id="e078dbde-7ae5-4bba-bed2-a4711b8746d0" x="377" y="326"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="f320fae0-68c6-4572-b9f6-87d834ddef25" modelElement="e8ba1035-17b7-4302-8b39-8ca32dc121ac" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="499" deltaX="76">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="b36fed2e-743f-48bb-9341-30f994d2eb6f" modelElement="e8ba1035-17b7-4302-8b39-8ca32dc121ac" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+              <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="66dbf4bc-b8bd-4f29-8fe2-2db21e43765f" modelElement="a663cc42-cfbb-4a75-89c0-4088643d781d" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+            </ownedDiagramElements>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="abd18a47-c4fc-4619-84a8-8bd5f1914e7f" source="96c3ac1d-0521-4a1c-818b-9b1c88f7e916" target="f320fae0-68c6-4572-b9f6-87d834ddef25" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="7b5569dc-c770-4f97-9418-1354f5ffdd9a" x="377" y="416"/>
+            <points xmi:id="dcadefd3-43dc-4a9f-bb16-a83ba84a3a2f" x="377" y="458"/>
+            <points xmi:id="f27b4d86-f309-4082-befc-5f7719b23890" x="161" y="458"/>
+            <points xmi:id="cc40a24b-d209-4f82-a7d7-3d8d5753571f" x="161" y="499"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="cb249088-43b4-4f30-933b-864b3b490b88" modelElement="63bc759d-641c-438e-bc8f-dd8db3c98cd3" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="499" deltaX="571">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="a1f04067-75bc-4be3-ae65-380a3c42d5d9" modelElement="63bc759d-641c-438e-bc8f-dd8db3c98cd3" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+              <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="54ab877f-097d-4182-81d0-4dea2f1c392d" modelElement="a35ca59a-b993-452e-be34-7e4d10d09dc5" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+            </ownedDiagramElements>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="81e0cd16-aea4-4ddd-aecd-9afbda490a1b" source="96c3ac1d-0521-4a1c-818b-9b1c88f7e916" target="cb249088-43b4-4f30-933b-864b3b490b88" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="3d349bae-97f4-4e57-9f81-c04b9915fc62" x="377" y="416"/>
+            <points xmi:id="82862d04-f564-4a04-a1d3-85c3efc6d62a" x="377" y="458"/>
+            <points xmi:id="b3dbb7b0-f9ef-459a-8feb-cac24ff6f1c1" x="656" y="458"/>
+            <points xmi:id="cf7dd966-a60f-4a27-9d4e-a48b84778b89" x="656" y="499"/>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="ef1c8b41-23ba-4c4e-81f7-049fd5285ebf" modelElement="893389b5-7383-4554-ad57-350deabe33c7" width="170" height="90" constraintPosition="CONTAINED_POSITION" deltaY="499" deltaX="323">
+            <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="7631645a-7c44-4f08-b44d-b004fc51f8ad" modelElement="893389b5-7383-4554-ad57-350deabe33c7" width="170" height="60" constraintPosition="COMPARTMENT" deltaY="30" kind="attributes">
+              <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:SimpleNode" xmi:id="d27f2267-a363-4585-bebc-4be606d8c1cc" modelElement="1545df9d-2a51-4157-b2dd-eeb527ca033f" width="170" height="15" constraintPosition="Y_AXIS" deltaY="20"/>
+            </ownedDiagramElements>
+          </ownedDiagramElements>
+          <ownedDiagramElements xsi:type="com.genmymodel.ecoreonline.graphic:Path" xmi:id="a3284df7-e316-41c5-9602-281407e84d0c" source="96c3ac1d-0521-4a1c-818b-9b1c88f7e916" target="ef1c8b41-23ba-4c4e-81f7-049fd5285ebf" orientation="VERTICAL" feature="ownedMember">
+            <points xmi:id="72798f63-a181-47b4-a773-690e3006985e" x="393" y="416"/>
+            <points xmi:id="dbf272ba-105a-4469-8259-3658a99dea6e" x="393" y="444"/>
+            <points xmi:id="22c3e3f6-4c7c-47c4-af7a-edc7e5d78884" x="393" y="471"/>
+            <points xmi:id="c0337b5a-99f5-459a-b49b-c21270b5a6bd" x="393" y="499"/>
+          </ownedDiagramElements>
+        </plane>
+      </contents>
+    </eAnnotations>
+    <ownedMember xsi:type="sysml:PartUsage" xmi:id="7c0e2795-1f9b-4410-9fef-923f0e9327bf" name="MyComputer" isComposite="true" type="32a4eece-0e0d-404a-a07a-9abae9eb174a">
+      <ownedMember xsi:type="sysml:PartUsage" xmi:id="979a72ea-669f-4c32-accc-6a602abdca2b" name="centralUnit" isComposite="true">
+        <ownedMember xsi:type="sysml:PartUsage" xmi:id="feb4c92d-f256-4838-aaf3-d2d72c1f84d1" name="i7_Turbo" isComposite="true" type="bd75c31e-2df0-408c-af4d-db088f102d7b">
+          <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="1c997402-cca5-44df-9387-c9fb07e06be7">
+            <ownedRelationship xsi:type="sysml:Redefinition" xmi:id="87a344b1-2e04-41a5-83e8-6c241e7d3f8e" general="835b89fd-0c8d-4824-9770-c6ac8974a997" specific="1c997402-cca5-44df-9387-c9fb07e06be7"/>
+            <defaultValue xsi:type="sysml:OperatorExpression" xmi:id="f6b5738a-c42b-4709-8936-2f4756248549" operator="[">
+              <ownedMember xsi:type="sysml:Feature" xmi:id="dbf3872c-bbc2-4c55-8451-24283eca5005" direction="in">
+                <defaultValue xsi:type="sysml:LiteralInteger" xmi:id="3d2306ef-089b-41f1-8e3f-2cacf4d97834" value="100">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="87f611b0-6691-4637-9175-393472f82e56" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="d0c5e8a7-23c8-41b2-b4e8-685867ab01da" direction="in">
+                <defaultValue xsi:type="sysml:FeatureReferenceExpression" xmi:id="40325c75-c35f-48dc-9b8c-eb624fd708fc" member="de5d4c60-ca96-4a4f-a411-7571e068e90f">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="a495b737-ae62-448e-b616-9946c3753d49" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="c51e4110-9f49-4b40-aaf7-c1c0f6a9e118" name="result" direction="out"/>
+            </defaultValue>
+          </ownedMember>
+        </ownedMember>
+        <ownedMember xsi:type="sysml:PartUsage" xmi:id="b918fd2f-7c80-4506-be0a-79deef9d23d7" name="nVidioGTX7800" isComposite="true" type="8cd3b842-230b-4fe6-9098-bcd0525eed45">
+          <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="c7f6a3b2-9ca2-4690-a2ae-40973d0ee419">
+            <ownedRelationship xsi:type="sysml:Redefinition" xmi:id="99b3cebc-e6c1-4c80-85e9-aca8b20a5b49" general="835b89fd-0c8d-4824-9770-c6ac8974a997" specific="c7f6a3b2-9ca2-4690-a2ae-40973d0ee419"/>
+            <defaultValue xsi:type="sysml:OperatorExpression" xmi:id="49df9dbd-3848-4bca-9d81-4af5b133f21e" operator="[">
+              <ownedMember xsi:type="sysml:Feature" xmi:id="ae97e463-a727-49a4-aff4-f0674a2e9523" direction="in">
+                <defaultValue xsi:type="sysml:LiteralInteger" xmi:id="c47aeca0-0860-4f88-ab9c-e1ffff12c0e7" value="1000">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="ea1b8c02-8fd3-4e1a-bbca-d10cc126297e" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="fa1ab446-3786-40b2-adf8-c89cca4fceec" direction="in">
+                <defaultValue xsi:type="sysml:FeatureReferenceExpression" xmi:id="10f15f69-2348-49d8-bb31-1b963e586769" member="de5d4c60-ca96-4a4f-a411-7571e068e90f">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="e6968dae-d43e-44c9-b8e5-d17b11b98517" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="267a8908-612a-48e7-87e7-58609d92715b" name="result" direction="out"/>
+            </defaultValue>
+          </ownedMember>
+        </ownedMember>
+        <ownedMember xsi:type="sysml:PartUsage" xmi:id="cb453969-5f28-4d9c-b2d6-4d5d2a6d79b7" name="SSD2To" isComposite="true" type="0d5a01a9-08fe-4f3d-b166-73e84afde4b5">
+          <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="5d0df9b6-bdd3-457d-9639-a370d41cf856">
+            <ownedRelationship xsi:type="sysml:Redefinition" xmi:id="703f5f72-3f60-41e4-ab6b-89addee63256" general="835b89fd-0c8d-4824-9770-c6ac8974a997" specific="5d0df9b6-bdd3-457d-9639-a370d41cf856"/>
+            <defaultValue xsi:type="sysml:OperatorExpression" xmi:id="0018b32b-63b2-4127-bcfa-526b69bb43f2" operator="[">
+              <ownedMember xsi:type="sysml:Feature" xmi:id="d1abfc6e-7b99-4d4e-a73a-33dc8410592f" direction="in">
+                <defaultValue xsi:type="sysml:LiteralInteger" xmi:id="fc82fc1a-2456-4a00-8144-31e0b5dd139d" value="150">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="2b174aec-d42f-4742-b8fb-0e54baed8dc2" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="a10554ce-0e17-49f7-a0cf-c63e1fda380e" direction="in">
+                <defaultValue xsi:type="sysml:FeatureReferenceExpression" xmi:id="bee32401-970a-4dc6-83b7-c7b51daa0648" member="de5d4c60-ca96-4a4f-a411-7571e068e90f">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="1f26d04f-b28a-45e3-8f2f-3be0799d9080" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="3dfce713-df69-4001-b771-29c020bf204c" name="result" direction="out"/>
+            </defaultValue>
+          </ownedMember>
+        </ownedMember>
+      </ownedMember>
+      <ownedMember xsi:type="sysml:PartUsage" xmi:id="858521c7-c72e-4ce9-ac9b-a794eadb5e2b" name="Screen43" isComposite="true" type="6c8331d4-bcf3-4f75-96e3-1eefee2d41fc">
+        <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="2df3ef2e-d7f8-4f48-814a-4d4a0c43b54b">
+          <ownedRelationship xsi:type="sysml:Redefinition" xmi:id="fce74a03-9551-4110-8a2d-ec6098103682" general="835b89fd-0c8d-4824-9770-c6ac8974a997" specific="2df3ef2e-d7f8-4f48-814a-4d4a0c43b54b"/>
+          <defaultValue xsi:type="sysml:OperatorExpression" xmi:id="6c8e9b18-79a5-404c-acd6-02b81d5b2fc5" operator="[">
+            <ownedMember xsi:type="sysml:Feature" xmi:id="62caaae9-f076-4526-8756-41e64ad7f67f" direction="in">
+              <defaultValue xsi:type="sysml:LiteralInteger" xmi:id="a688d025-1325-4bbe-97da-4b5f2165edba" value="400">
+                <ownedMember xsi:type="sysml:Feature" xmi:id="8f48d2d3-4d7e-415f-9ad9-078203be2c9f" name="result" direction="out"/>
+              </defaultValue>
+            </ownedMember>
+            <ownedMember xsi:type="sysml:Feature" xmi:id="e8599765-14cb-4966-bc31-cdd633b7fa10" direction="in">
+              <defaultValue xsi:type="sysml:FeatureReferenceExpression" xmi:id="2753acd0-e81b-4f40-b5aa-94c4801cfe68" member="de5d4c60-ca96-4a4f-a411-7571e068e90f">
+                <ownedMember xsi:type="sysml:Feature" xmi:id="13f9885e-98a7-430f-a67f-82469b050c6a" name="result" direction="out"/>
+              </defaultValue>
+            </ownedMember>
+            <ownedMember xsi:type="sysml:Feature" xmi:id="8638ab69-098d-4422-a70d-d749508b66bb" name="result" direction="out"/>
+          </defaultValue>
+        </ownedMember>
+      </ownedMember>
+    </ownedMember>
+    <ownedMember xsi:type="sysml:PartUsage" xmi:id="ad6e72c2-3b83-404f-96fe-f430670fed81" name="MyComputer2" isComposite="true" type="32a4eece-0e0d-404a-a07a-9abae9eb174a">
+      <ownedMember xsi:type="sysml:PartUsage" xmi:id="7ba43859-74c4-4e41-b7d3-dc0eba001069" name="centralUnit" isComposite="true">
+        <ownedMember xsi:type="sysml:PartUsage" xmi:id="63bc759d-641c-438e-bc8f-dd8db3c98cd3" name="i7_Turbo" isComposite="true" type="bd75c31e-2df0-408c-af4d-db088f102d7b">
+          <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="a35ca59a-b993-452e-be34-7e4d10d09dc5">
+            <ownedRelationship xsi:type="sysml:Redefinition" xmi:id="d6d338b0-3056-4866-b9c2-bad2f2ad1de6" general="835b89fd-0c8d-4824-9770-c6ac8974a997" specific="a35ca59a-b993-452e-be34-7e4d10d09dc5"/>
+            <defaultValue xsi:type="sysml:OperatorExpression" xmi:id="b1c96df8-441d-4eb3-8f60-d1ca1c2f0fe4" operator="[">
+              <ownedMember xsi:type="sysml:Feature" xmi:id="77f67754-611e-4b1c-8428-d83a5e576c3d" direction="in">
+                <defaultValue xsi:type="sysml:LiteralInteger" xmi:id="5a0a3d92-d186-4986-bbb9-396997050bf5" value="100">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="b5b84888-0aa9-4680-8904-745facd999f3" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="b150b4d4-41c9-4464-85cd-e3d48b91879a" direction="in">
+                <defaultValue xsi:type="sysml:FeatureReferenceExpression" xmi:id="916f77b4-1e99-405c-b8c6-c4eb017a2b1d" member="de5d4c60-ca96-4a4f-a411-7571e068e90f">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="8255c2a2-58bf-4b75-b3ed-465d4a66b687" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="d3d60cd7-ab4f-48af-9e81-44aa8305ce35" name="result" direction="out"/>
+            </defaultValue>
+          </ownedMember>
+        </ownedMember>
+        <ownedMember xsi:type="sysml:PartUsage" xmi:id="893389b5-7383-4554-ad57-350deabe33c7" name="nVidioGTX7800" isComposite="true" type="8cd3b842-230b-4fe6-9098-bcd0525eed45">
+          <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="1545df9d-2a51-4157-b2dd-eeb527ca033f">
+            <ownedRelationship xsi:type="sysml:Redefinition" xmi:id="d7d27677-5f15-4f17-98d2-21b7c5ff3130" general="835b89fd-0c8d-4824-9770-c6ac8974a997" specific="1545df9d-2a51-4157-b2dd-eeb527ca033f"/>
+            <defaultValue xsi:type="sysml:OperatorExpression" xmi:id="9388948c-cb39-4f01-a1b9-bea00cc0b9c6" operator="[">
+              <ownedMember xsi:type="sysml:Feature" xmi:id="97011a38-d66c-478f-a27c-35f08b12094b" direction="in">
+                <defaultValue xsi:type="sysml:LiteralInteger" xmi:id="8e7dcc4e-374d-4c79-aca4-719126390c85" value="500">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="e245c77a-7c7f-4b34-918b-3929272b5270" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="928de350-6c3a-46cd-8a6e-759605e7e3ae" direction="in">
+                <defaultValue xsi:type="sysml:FeatureReferenceExpression" xmi:id="d1c75825-b89f-4ac4-b09d-7fe362b1d7a3" member="de5d4c60-ca96-4a4f-a411-7571e068e90f">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="2fd42f52-910c-4618-9061-c5fae43835df" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="d396d3f4-a2f4-46e0-b97a-e39485536f74" name="result" direction="out"/>
+            </defaultValue>
+          </ownedMember>
+        </ownedMember>
+        <ownedMember xsi:type="sysml:PartUsage" xmi:id="e8ba1035-17b7-4302-8b39-8ca32dc121ac" name="SSD2To" isComposite="true" type="0d5a01a9-08fe-4f3d-b166-73e84afde4b5">
+          <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="a663cc42-cfbb-4a75-89c0-4088643d781d">
+            <ownedRelationship xsi:type="sysml:Redefinition" xmi:id="a74ae716-7953-4487-af3a-9a62d49f2f8a" general="835b89fd-0c8d-4824-9770-c6ac8974a997" specific="a663cc42-cfbb-4a75-89c0-4088643d781d"/>
+            <defaultValue xsi:type="sysml:OperatorExpression" xmi:id="eb1b082f-39a0-406f-bd0e-8dd23cfb06d0" operator="[">
+              <ownedMember xsi:type="sysml:Feature" xmi:id="31efed78-5e2e-4e35-9d7c-140002aa3efb" direction="in">
+                <defaultValue xsi:type="sysml:LiteralInteger" xmi:id="a49e2117-31bc-44dd-b310-314fc68d44be" value="250">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="4799110c-d38c-4922-a83c-712d992d0757" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="f266568d-99a9-4d95-b03b-2abf7869b2e2" direction="in">
+                <defaultValue xsi:type="sysml:FeatureReferenceExpression" xmi:id="35bdd227-7838-40b7-b64f-9024ded4de90" member="de5d4c60-ca96-4a4f-a411-7571e068e90f">
+                  <ownedMember xsi:type="sysml:Feature" xmi:id="013637bc-9b05-428d-9130-3e62d1446020" name="result" direction="out"/>
+                </defaultValue>
+              </ownedMember>
+              <ownedMember xsi:type="sysml:Feature" xmi:id="8a98798b-2496-40a2-9590-87c0e44a8fce" name="result" direction="out"/>
+            </defaultValue>
+          </ownedMember>
+        </ownedMember>
+      </ownedMember>
+      <ownedMember xsi:type="sysml:PartUsage" xmi:id="0e42d42c-6fa5-4d69-9bfe-9cec5631a38b" name="Screen43" isComposite="true" type="6c8331d4-bcf3-4f75-96e3-1eefee2d41fc">
+        <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="342395e9-8f1e-4d69-9154-f0d8f43b9fad">
+          <ownedRelationship xsi:type="sysml:Redefinition" xmi:id="b0716970-4878-4ea7-97d5-abe5ab5ae2a4" general="835b89fd-0c8d-4824-9770-c6ac8974a997" specific="342395e9-8f1e-4d69-9154-f0d8f43b9fad"/>
+          <defaultValue xsi:type="sysml:OperatorExpression" xmi:id="f2ca0f2e-16ea-4030-9ab3-560c48642b4d" operator="[">
+            <ownedMember xsi:type="sysml:Feature" xmi:id="3cfcac49-3cef-47bf-b816-34b6a25a0b1d" direction="in">
+              <defaultValue xsi:type="sysml:LiteralInteger" xmi:id="b35c4840-73a8-4742-a381-0099de548d96" value="400">
+                <ownedMember xsi:type="sysml:Feature" xmi:id="6c9dd14e-a8d9-40a0-8abe-59b860709bc9" name="result" direction="out"/>
+              </defaultValue>
+            </ownedMember>
+            <ownedMember xsi:type="sysml:Feature" xmi:id="0d7f33b8-b83b-4aa6-9dc8-4e1027ba090a" direction="in">
+              <defaultValue xsi:type="sysml:FeatureReferenceExpression" xmi:id="f70eb6e2-4054-4269-8356-44584ebd96f4" member="de5d4c60-ca96-4a4f-a411-7571e068e90f">
+                <ownedMember xsi:type="sysml:Feature" xmi:id="50065e30-2658-4797-b2b8-8520c3249864" name="result" direction="out"/>
+              </defaultValue>
+            </ownedMember>
+            <ownedMember xsi:type="sysml:Feature" xmi:id="df399d9e-8df6-42c0-b8ed-f1b8eb4530df" name="result" direction="out"/>
+          </defaultValue>
+        </ownedMember>
+      </ownedMember>
+    </ownedMember>
+  </ownedMember>
+  <ownedMember xsi:type="sysml:PartDefinition" xmi:id="68ea1e01-3267-437b-aae8-7c3fb1d915a7" name="CostableElement">
+    <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="835b89fd-0c8d-4824-9770-c6ac8974a997" name="cost" isComposite="true" type="f3f75efe-148b-41f6-bf77-fc7c3ff29f7d"/>
+  </ownedMember>
+  <ownedMember xsi:type="sysml:AttributeDefinition" xmi:id="f3f75efe-148b-41f6-bf77-fc7c3ff29f7d" name="Cost"/>
+  <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="de5d4c60-ca96-4a4f-a411-7571e068e90f" name="Euro" isComposite="true">
+    <type href="#f3f75efe-148b-41f6-bf77-fc7c3ff29f7d"/>
+    <type href="genmymodel://DomainLibraries-QuantitiesandUnits-MeasurementReferences.library.sysml#3217445d-a1f4-5933-879e-23d5dd9b1d69"/>
+  </ownedMember>
+  <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="14f4297c-d891-4916-9c43-04303f49e1d5" name="Dollar" isComposite="true">
+    <type href="#f3f75efe-148b-41f6-bf77-fc7c3ff29f7d"/>
+    <type href="genmymodel://DomainLibraries-QuantitiesandUnits-MeasurementReferences.library.sysml#3217445d-a1f4-5933-879e-23d5dd9b1d69"/>
+  </ownedMember>
+  <ownedMember xsi:type="sysml:AttributeUsage" xmi:id="54d00f16-4c0a-4acf-bc09-5e8cc0b9ffd4" name="Yen" isComposite="true">
+    <type href="#f3f75efe-148b-41f6-bf77-fc7c3ff29f7d"/>
+    <type href="genmymodel://DomainLibraries-QuantitiesandUnits-MeasurementReferences.library.sysml#3217445d-a1f4-5933-879e-23d5dd9b1d69"/>
+  </ownedMember>
+  <ownedMember xsi:type="sysml:Import" xmi:id="7a8f006a-cd7a-4e97-97b5-385697d0702b">
+    <importedNamespace href="genmymodel://DomainLibraries-QuantitiesandUnits-MeasurementReferences.library.sysml#61628156-6d52-593b-b0d2-4dc07bc06a1a"/>
+  </ownedMember>
+</sysml:Package>

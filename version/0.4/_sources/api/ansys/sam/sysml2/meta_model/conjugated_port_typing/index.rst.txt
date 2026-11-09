@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``conjugated_port_typing.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.conjugated_port_typing
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: conjugated_port_typing
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.conjugated_port_typing.ConjugatedPortTyping`
+            - Java class 'com.ansys.metamodel.sysml2.ConjugatedPortTyping'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ConjugatedPortTyping</api/ansys/sam/sysml2/meta_model/conjugated_port_typing/ConjugatedPortTyping>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated conjugated port typing class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

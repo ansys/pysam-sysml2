@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`AcceptActionUsage`
+==========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.accept_action_usage.AcceptActionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.AcceptActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: AcceptActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~payload_argument`
+            - Get the payload argument property.
+          * - :py:attr:`~receiver_argument`
+            - Get the receiver argument property.
+          * - :py:attr:`~payload_parameter`
+            - Get the payload parameter property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.accept_action_usage import AcceptActionUsage
+
+Property detail
+---------------
+
+.. py:property:: payload_argument
+   :type: Expression
+
+
+   
+   Get the payload argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property payload argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: receiver_argument
+   :type: Expression
+
+
+   
+   Get the receiver argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property receiver argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: payload_parameter
+   :type: ReferenceUsage
+
+
+   
+   Get the payload parameter property.
+
+
+
+
+
+   :Returns:
+
+       "ReferenceUsage"
+           Value of property payload parameter.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

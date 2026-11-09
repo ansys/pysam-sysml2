@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`TypeFeaturing`
+======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.type_featuring.TypeFeaturing(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.TypeFeaturing'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TypeFeaturing
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~feature_of_type`
+            - Get the feature of type property.
+          * - :py:attr:`~featuring_type`
+            - Get the featuring type property.
+          * - :py:attr:`~owning_feature_of_type`
+            - Get the owning feature of type property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.type_featuring import TypeFeaturing
+
+Property detail
+---------------
+
+.. py:property:: feature_of_type
+   :type: Feature
+
+
+   
+   Get the feature of type property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property feature of type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: featuring_type
+   :type: Type
+
+
+   
+   Get the featuring type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property featuring type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_feature_of_type
+   :type: Feature
+
+
+   
+   Get the owning feature of type property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property owning feature of type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

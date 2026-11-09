@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``metaclass.py`` module
+===========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.metaclass
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: metaclass
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.metaclass.Metaclass`
+            - Java class 'com.ansys.medini.metamodel.sysml.Metaclass'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Metaclass</api/ansys/sam/sysml2/meta_model/metaclass/Metaclass>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated metaclass class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

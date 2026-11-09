@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`InterfaceUsage`
+=======================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.interface_usage.InterfaceUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.connection_usage.ConnectionUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.InterfaceUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: InterfaceUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~interface_definition`
+            - Get the interface definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.interface_usage import InterfaceUsage
+
+Property detail
+---------------
+
+.. py:property:: interface_definition
+   :type: InterfaceDefinition
+
+
+   
+   Get the interface definition property.
+
+
+
+
+
+   :Returns:
+
+       "InterfaceDefinition"
+           Value of property interface definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

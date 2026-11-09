@@ -1,0 +1,102 @@
+
+
+
+
+
+
+The ``query`` package
+=========================
+
+.. py:module:: ansys.sam.sysml2.dto.query
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: query
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.constraints_classes`
+            - Constraint interface for SysML queries.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.query_class`
+            - Query class.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.dto.query.query_enum`
+            - Enum classes for PySAM SysML2 queries.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> constraints_classes</api/ansys/sam/sysml2/dto/query/constraints_classes/index>
+    <span class="nf nf-fa-file"></span> query_class</api/ansys/sam/sysml2/dto/query/query_class/index>
+    <span class="nf nf-fa-file"></span> query_enum</api/ansys/sam/sysml2/dto/query/query_enum/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Data Transfer Objects (DTO) for query-related data in PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

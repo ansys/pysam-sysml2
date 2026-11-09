@@ -1,0 +1,509 @@
+
+
+
+
+
+
+:class:`Element`
+================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.element.Element(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.e_object.EObject`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Element'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Element
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~name`
+            - Get the name property.
+          * - :py:attr:`~owner`
+            - Get the owner property.
+          * - :py:attr:`~comment`
+            - Get the comment property.
+          * - :py:attr:`~short_name`
+            - Get the short name property.
+          * - :py:attr:`~documentation`
+            - Get the documentation property.
+          * - :py:attr:`~owning_namespace`
+            - Get the owning namespace property.
+          * - :py:attr:`~owned_element`
+            - Get the owned element property.
+          * - :py:attr:`~owned_annotation`
+            - Get the owned annotation property.
+          * - :py:attr:`~qualified_name`
+            - Get the qualified name property.
+          * - :py:attr:`~alias_ids`
+            - Get the alias ids property.
+          * - :py:attr:`~visibility`
+            - Get the visibility property.
+          * - :py:attr:`~owned_relationship`
+            - Get the owned relationship property.
+          * - :py:attr:`~textual_representation`
+            - Get the textual representation property.
+          * - :py:attr:`~owned_inherited_relationship`
+            - Get the owned inherited relationship property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.element import Element
+
+Property detail
+---------------
+
+.. py:property:: name
+   :type: str
+
+
+   
+   Get the name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owner
+   :type: Element
+
+
+   
+   Get the owner property.
+
+
+
+
+
+   :Returns:
+
+       "Element"
+           Value of property owner.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: comment
+   :type: List[Comment]
+
+
+   
+   Get the comment property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Comment"]
+           Value of property comment.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: short_name
+   :type: None
+
+
+   
+   Get the short name property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property short name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: documentation
+   :type: List[Documentation]
+
+
+   
+   Get the documentation property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Documentation"]
+           Value of property documentation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_namespace
+   :type: Namespace
+
+
+   
+   Get the owning namespace property.
+
+
+
+
+
+   :Returns:
+
+       "Namespace"
+           Value of property owning namespace.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_element
+   :type: List[Element]
+
+
+   
+   Get the owned element property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Element"]
+           Value of property owned element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_annotation
+   :type: List[Annotation]
+
+
+   
+   Get the owned annotation property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Annotation"]
+           Value of property owned annotation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: qualified_name
+   :type: str
+
+
+   
+   Get the qualified name property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:str`
+           Value of property qualified name.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: alias_ids
+   :type: List[str]
+
+
+   
+   Get the alias ids property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\[:class:`python:str`]
+           Value of property alias ids.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: visibility
+   :type: None
+
+
+   
+   Get the visibility property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property visibility.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_relationship
+   :type: List[Relationship]
+
+
+   
+   Get the owned relationship property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Relationship"]
+           Value of property owned relationship.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: textual_representation
+   :type: List[TextualRepresentation]
+
+
+   
+   Get the textual representation property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["TextualRepresentation"]
+           Value of property textual representation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_inherited_relationship
+   :type: List[Relationship]
+
+
+   
+   Get the owned inherited relationship property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Relationship"]
+           Value of property owned inherited relationship.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

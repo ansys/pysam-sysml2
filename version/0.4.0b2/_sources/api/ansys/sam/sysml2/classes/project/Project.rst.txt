@@ -1,0 +1,384 @@
+
+
+
+
+
+
+:class:`Project`
+================
+
+
+.. py:class:: ansys.sam.sysml2.classes.project.Project
+
+   Bases: :py:obj:`abc.ABC`
+
+
+   
+   Provides the project interface for users.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: Project
+
+Overview
+--------
+
+.. tab-set::
+
+   .. tab-item:: Abstract methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~get_id`
+            - Get the project ID.
+          * - :py:attr:`~get_name`
+            - Get the project name.
+          * - :py:attr:`~get_root_package`
+            - Get the root package.
+          * - :py:attr:`~get_libraries_packages`
+            - Get the libraries packages.
+          * - :py:attr:`~find_element_by_id`
+            - Find an element by ID.
+          * - :py:attr:`~find_elements_by_name`
+            - Find all elements by name.
+          * - :py:attr:`~start_transactional_mode`
+            - Start a transactional mode for model edition.
+          * - :py:attr:`~stop_transactional_mode`
+            - Stop the current transaction.
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~id`
+            - Get the project ID.
+          * - :py:attr:`~name`
+            - Get the project name.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.project import Project
+
+Property detail
+---------------
+
+.. py:property:: id
+   :type: str
+
+
+   
+   Get the project ID.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: name
+   :type: str
+
+
+   
+   Get the project name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: get_id() -> str
+   :abstractmethod:
+
+
+   
+   Get the project ID.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_name() -> str
+   :abstractmethod:
+
+
+   
+   Get the project name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_root_package() -> ansys.sam.sysml2.meta_model.package.Package
+   :abstractmethod:
+
+
+   
+   Get the root package.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_libraries_packages() -> list[ansys.sam.sysml2.meta_model.package.Package]
+   :abstractmethod:
+
+
+   
+   Get the libraries packages.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: find_element_by_id(element_id: str) -> ansys.sam.sysml2.meta_model.element.Element
+   :abstractmethod:
+
+
+   
+   Find an element by ID.
+
+
+   :Parameters:
+
+       **element_id** : :class:`python:str`
+           Element ID.
+
+
+
+   :Returns:
+
+       :obj:`Element`
+           Element retrieved.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: find_elements_by_name(element_name: str) -> List[ansys.sam.sysml2.meta_model.element.Element]
+   :abstractmethod:
+
+
+   
+   Find all elements by name.
+
+
+   :Parameters:
+
+       **element_name** : :class:`python:str`
+           Name of elements.
+
+
+
+   :Returns:
+
+       :obj:`List`\[:obj:`Element`]
+           The list of elements retrieved
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: start_transactional_mode()
+   :abstractmethod:
+
+
+   
+   Start a transactional mode for model edition.
+
+   Direct model updates are suspended and every change is registered until the
+   transaction is committed or stopped. Calculated modifications are applied only
+   once all changes are committed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: stop_transactional_mode()
+   :abstractmethod:
+
+
+   
+   Stop the current transaction.
+
+   Close the current transaction and commit all changes to the server.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

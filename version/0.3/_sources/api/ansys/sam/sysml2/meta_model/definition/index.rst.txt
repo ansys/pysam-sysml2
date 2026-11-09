@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``definition.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.definition
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: definition
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.definition.Definition`
+            - Java class 'com.ansys.medini.metamodel.sysml.Definition'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Definition</api/ansys/sam/sysml2/meta_model/definition/Definition>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated definition class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

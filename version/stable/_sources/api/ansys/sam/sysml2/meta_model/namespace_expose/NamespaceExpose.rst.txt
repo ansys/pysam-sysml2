@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`NamespaceExpose`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.namespace_expose.NamespaceExpose(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.expose.Expose`, :py:obj:`ansys.sam.sysml2.meta_model.namespace_import.NamespaceImport`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.NamespaceExpose'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.namespace_expose import NamespaceExpose
+
+
+
+
+

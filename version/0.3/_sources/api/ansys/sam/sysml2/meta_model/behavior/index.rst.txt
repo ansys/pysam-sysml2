@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``behavior.py`` module
+==========================
+
+.. py:module:: ansys.sam.sysml2.meta_model.behavior
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: behavior
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.behavior.Behavior`
+            - Java class 'com.ansys.medini.metamodel.sysml.Behavior'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Behavior</api/ansys/sam/sysml2/meta_model/behavior/Behavior>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated behavior class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

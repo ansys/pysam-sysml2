@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`FramedConcernMembership`
+================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.framed_concern_membership.FramedConcernMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.requirement_constraint_membership.RequirementConstraintMembership`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.FramedConcernMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FramedConcernMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_concern`
+            - Get the owned concern property.
+          * - :py:attr:`~referenced_concern`
+            - Get the referenced concern property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.framed_concern_membership import FramedConcernMembership
+
+Property detail
+---------------
+
+.. py:property:: owned_concern
+   :type: ConcernUsage
+
+
+   
+   Get the owned concern property.
+
+
+
+
+
+   :Returns:
+
+       "ConcernUsage"
+           Value of property owned concern.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: referenced_concern
+   :type: ConcernUsage
+
+
+   
+   Get the referenced concern property.
+
+
+
+
+
+   :Returns:
+
+       "ConcernUsage"
+           Value of property referenced concern.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

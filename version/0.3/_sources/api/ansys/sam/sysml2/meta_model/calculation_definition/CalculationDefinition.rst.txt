@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`CalculationDefinition`
+==============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.calculation_definition.CalculationDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_definition.ActionDefinition`, :py:obj:`ansys.sam.sysml2.meta_model.function.Function`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.CalculationDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: CalculationDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~calculation`
+            - Get the calculation property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.calculation_definition import CalculationDefinition
+
+Property detail
+---------------
+
+.. py:property:: calculation
+   :type: list[CalculationUsage]
+
+
+   
+   Get the calculation property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["CalculationUsage"]
+           Value of property calculation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

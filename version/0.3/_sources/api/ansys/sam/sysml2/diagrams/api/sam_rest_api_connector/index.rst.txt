@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``sam_rest_api_connector.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.diagrams.api.sam_rest_api_connector
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: sam_rest_api_connector
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.api.sam_rest_api_connector.SamRestApiConnector`
+            - Provides the SAM REST API connector.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> SamRestApiConnector</api/ansys/sam/sysml2/diagrams/api/sam_rest_api_connector/SamRestApiConnector>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+SAM API connector implementation.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

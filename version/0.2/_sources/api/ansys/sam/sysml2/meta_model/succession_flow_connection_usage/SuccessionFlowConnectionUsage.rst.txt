@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`SuccessionFlowConnectionUsage`
+======================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.succession_flow_connection_usage.SuccessionFlowConnectionUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.flow_connection_usage.FlowConnectionUsage`, :py:obj:`ansys.sam.sysml2.meta_model.succession_item_flow.SuccessionItemFlow`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.SuccessionFlowConnectionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.succession_flow_connection_usage import SuccessionFlowConnectionUsage
+
+
+
+
+

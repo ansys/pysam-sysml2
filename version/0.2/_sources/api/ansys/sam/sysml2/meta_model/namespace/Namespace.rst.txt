@@ -1,0 +1,199 @@
+
+
+
+
+
+
+:class:`Namespace`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.namespace.Namespace(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.element.Element`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Namespace'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Namespace
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~owned_member`
+            - Get the owned member property.
+          * - :py:attr:`~owned_import`
+            - Get the owned import property.
+          * - :py:attr:`~member`
+            - Get the member property.
+          * - :py:attr:`~owned_membership`
+            - Get the owned membership property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.namespace import Namespace
+
+Property detail
+---------------
+
+.. py:property:: owned_member
+   :type: List[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the owned member property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Element"]
+           Value of property owned member.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_import
+   :type: List[Import]
+
+
+   
+   Get the owned import property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Import"]
+           Value of property owned import.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: member
+   :type: List[ansys.sam.sysml2.meta_model.element.Element]
+
+
+   
+   Get the member property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Element"]
+           Value of property member.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_membership
+   :type: List[Membership]
+
+
+   
+   Get the owned membership property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Membership"]
+           Value of property owned membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

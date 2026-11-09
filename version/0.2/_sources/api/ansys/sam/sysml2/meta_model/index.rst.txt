@@ -1,0 +1,862 @@
+
+
+
+
+
+
+The ``meta_model`` package
+==============================
+
+.. py:module:: ansys.sam.sysml2.meta_model
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: meta_model
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.accept_action_usage`
+            - Generated accept action usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.action_definition`
+            - Generated action definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.action_usage`
+            - Generated action usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.actor_membership`
+            - Generated actor membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.allocation_definition`
+            - Generated allocation definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.allocation_usage`
+            - Generated allocation usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.analysis_case_definition`
+            - Generated analysis case definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.analysis_case_usage`
+            - Generated analysis case usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.annotating_element`
+            - Generated annotating element class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.annotation`
+            - Generated annotation class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.assert_constraint_usage`
+            - Generated assert constraint usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.assignment_action_usage`
+            - Generated assignment action usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.association`
+            - Generated association class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.association_structure`
+            - Generated association structure class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.attribute_definition`
+            - Generated attribute definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.attribute_usage`
+            - Generated attribute usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.behavior`
+            - Generated behavior class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.binding_connector`
+            - Generated binding connector class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.binding_connector_as_usage`
+            - Generated binding connector as usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.boolean_expression`
+            - Generated boolean expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.calculation_definition`
+            - Generated calculation definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.calculation_usage`
+            - Generated calculation usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.case_definition`
+            - Generated case definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.case_usage`
+            - Generated case usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.class_`
+            - Generated class class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.classifier`
+            - Generated classifier class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.comment`
+            - Generated comment class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.concern_usage`
+            - Generated concern usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.connection_definition`
+            - Generated connection definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.connection_usage`
+            - Generated connection usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.connector`
+            - Generated connector class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.connector_as_usage`
+            - Generated connector as usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.constraint_definition`
+            - Generated constraint definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.constraint_usage`
+            - Generated constraint usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.control_node`
+            - Generated control node class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.data_type`
+            - Generated data type class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.decision_node`
+            - Generated decision node class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.definition`
+            - Generated definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.dependency`
+            - Generated dependency class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.documentation`
+            - Generated documentation class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.e_object`
+            - Base class of the metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.element`
+            - Generated element class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.end_feature_membership`
+            - Generated end feature membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.enumeration_definition`
+            - Generated enumeration definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.enumeration_usage`
+            - Generated enumeration usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.event_occurrence_usage`
+            - Generated event occurrence usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.exhibit_state_usage`
+            - Generated exhibit state usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.expression`
+            - Generated expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature`
+            - Generated feature class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_chain_expression`
+            - Generated feature chain expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_chaining`
+            - Generated feature chaining class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_direction_kind`
+            - Generated feature direction kind class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_membership`
+            - Generated feature membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_reference_expression`
+            - Generated feature reference expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_typing`
+            - Generated feature typing class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_value`
+            - Generated feature value class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.flow_connection_definition`
+            - Generated flow connection definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.flow_connection_usage`
+            - Generated flow connection usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.for_loop_action_usage`
+            - Generated for loop action usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.fork_node`
+            - Generated fork node class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.function`
+            - Generated function class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.if_action_usage`
+            - Generated if action usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.import_`
+            - Generated import class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.include_use_case_usage`
+            - Generated include use case usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.interaction`
+            - Generated interaction class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.interface_definition`
+            - Generated interface definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.interface_usage`
+            - Generated interface usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.invariant`
+            - Generated invariant class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.invocation_expression`
+            - Generated invocation expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.item_definition`
+            - Generated item definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.item_feature`
+            - Generated item feature class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.item_flow`
+            - Generated item flow class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.item_flow_end`
+            - Generated item flow end class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.item_usage`
+            - Generated item usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.join_node`
+            - Generated join node class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.library_package`
+            - Generated library package class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.life_class`
+            - Generated life class class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_boolean`
+            - Generated literal boolean class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_expression`
+            - Generated literal expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_integer`
+            - Generated literal integer class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_rational`
+            - Generated literal rational class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_real`
+            - Generated literal real class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_string`
+            - Generated literal string class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.literal_unbounded`
+            - Generated literal unbounded class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.loop_action_usage`
+            - Generated loop action usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.membership`
+            - Generated membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.merge_node`
+            - Generated merge node class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.metaclass`
+            - Generated metaclass class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.metadata_definition`
+            - Generated metadata definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.metadata_feature`
+            - Generated metadata feature class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.metadata_usage`
+            - Generated metadata usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.multiplicity`
+            - Generated multiplicity class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.multiplicity_range`
+            - Generated multiplicity range class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.namespace`
+            - Generated namespace class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.null_expression`
+            - Generated null expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.objective_membership`
+            - Generated objective membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.occurrence_definition`
+            - Generated occurrence definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.occurrence_usage`
+            - Generated occurrence usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.operator_expression`
+            - Generated operator expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.package`
+            - Generated package class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.parameter_membership`
+            - Generated parameter membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.part_definition`
+            - Generated part definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.part_usage`
+            - Generated part usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.perform_action_usage`
+            - Generated perform action usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.port_definition`
+            - Generated port definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.port_usage`
+            - Generated port usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.portion_kind`
+            - Generated portion kind class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.portioning_feature`
+            - Generated portioning feature class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.predicate`
+            - Generated predicate class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.redefinition`
+            - Generated redefinition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.reference_subsetting`
+            - Generated reference subsetting class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.reference_usage`
+            - Generated reference usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.relationship`
+            - Generated relationship class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.requirement_constraint_kind`
+            - Generated requirement constraint kind class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.requirement_constraint_membership`
+            - Generated requirement constraint membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.requirement_definition`
+            - Generated requirement definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.requirement_usage`
+            - Generated requirement usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.requirement_verification_membership`
+            - Generated requirement verification membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.result_expression_membership`
+            - Generated result expression membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.return_parameter_membership`
+            - Generated return parameter membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.satisfy_requirement_usage`
+            - Generated satisfy requirement usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.send_action_usage`
+            - Generated send action usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.specialization`
+            - Generated specialization class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.stakeholder_membership`
+            - Generated stakeholder membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.state_definition`
+            - Generated state definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.state_subaction_kind`
+            - Generated state subaction kind class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.state_subaction_membership`
+            - Generated state subaction membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.state_usage`
+            - Generated state usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.step`
+            - Generated step class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.structure`
+            - Generated structure class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.subclassification`
+            - Generated subclassification class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.subject_membership`
+            - Generated subject membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.subsetting`
+            - Generated subsetting class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.succession`
+            - Generated succession class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.succession_as_usage`
+            - Generated succession as usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.succession_flow_connection_usage`
+            - Generated succession flow connection usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.succession_item_flow`
+            - Generated succession item flow class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.textual_representation`
+            - Generated textual representation class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.transition_feature_kind`
+            - Generated transition feature kind class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.transition_feature_membership`
+            - Generated transition feature membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.transition_usage`
+            - Generated transition usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.trigger_invocation_expression`
+            - Generated trigger invocation expression class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.trigger_kind`
+            - Generated trigger kind class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.type_`
+            - Generated type class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.type_featuring`
+            - Generated type featuring class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.usage`
+            - Generated usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.use_case_definition`
+            - Generated use case definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.use_case_usage`
+            - Generated use case usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.variant_membership`
+            - Generated variant membership class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.verification_case_definition`
+            - Generated verification case definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.verification_case_usage`
+            - Generated verification case usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.view_definition`
+            - Generated view definition class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.view_usage`
+            - Generated view usage class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.visibility_kind`
+            - Generated visibility kind class from metamodel.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.while_loop_action_usage`
+            - Generated while loop action usage class from metamodel.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> accept_action_usage</api/ansys/sam/sysml2/meta_model/accept_action_usage/index>
+    <span class="nf nf-fa-file"></span> action_definition</api/ansys/sam/sysml2/meta_model/action_definition/index>
+    <span class="nf nf-fa-file"></span> action_usage</api/ansys/sam/sysml2/meta_model/action_usage/index>
+    <span class="nf nf-fa-file"></span> actor_membership</api/ansys/sam/sysml2/meta_model/actor_membership/index>
+    <span class="nf nf-fa-file"></span> allocation_definition</api/ansys/sam/sysml2/meta_model/allocation_definition/index>
+    <span class="nf nf-fa-file"></span> allocation_usage</api/ansys/sam/sysml2/meta_model/allocation_usage/index>
+    <span class="nf nf-fa-file"></span> analysis_case_definition</api/ansys/sam/sysml2/meta_model/analysis_case_definition/index>
+    <span class="nf nf-fa-file"></span> analysis_case_usage</api/ansys/sam/sysml2/meta_model/analysis_case_usage/index>
+    <span class="nf nf-fa-file"></span> annotating_element</api/ansys/sam/sysml2/meta_model/annotating_element/index>
+    <span class="nf nf-fa-file"></span> annotation</api/ansys/sam/sysml2/meta_model/annotation/index>
+    <span class="nf nf-fa-file"></span> assert_constraint_usage</api/ansys/sam/sysml2/meta_model/assert_constraint_usage/index>
+    <span class="nf nf-fa-file"></span> assignment_action_usage</api/ansys/sam/sysml2/meta_model/assignment_action_usage/index>
+    <span class="nf nf-fa-file"></span> association</api/ansys/sam/sysml2/meta_model/association/index>
+    <span class="nf nf-fa-file"></span> association_structure</api/ansys/sam/sysml2/meta_model/association_structure/index>
+    <span class="nf nf-fa-file"></span> attribute_definition</api/ansys/sam/sysml2/meta_model/attribute_definition/index>
+    <span class="nf nf-fa-file"></span> attribute_usage</api/ansys/sam/sysml2/meta_model/attribute_usage/index>
+    <span class="nf nf-fa-file"></span> behavior</api/ansys/sam/sysml2/meta_model/behavior/index>
+    <span class="nf nf-fa-file"></span> binding_connector</api/ansys/sam/sysml2/meta_model/binding_connector/index>
+    <span class="nf nf-fa-file"></span> binding_connector_as_usage</api/ansys/sam/sysml2/meta_model/binding_connector_as_usage/index>
+    <span class="nf nf-fa-file"></span> boolean_expression</api/ansys/sam/sysml2/meta_model/boolean_expression/index>
+    <span class="nf nf-fa-file"></span> calculation_definition</api/ansys/sam/sysml2/meta_model/calculation_definition/index>
+    <span class="nf nf-fa-file"></span> calculation_usage</api/ansys/sam/sysml2/meta_model/calculation_usage/index>
+    <span class="nf nf-fa-file"></span> case_definition</api/ansys/sam/sysml2/meta_model/case_definition/index>
+    <span class="nf nf-fa-file"></span> case_usage</api/ansys/sam/sysml2/meta_model/case_usage/index>
+    <span class="nf nf-fa-file"></span> class_</api/ansys/sam/sysml2/meta_model/class_/index>
+    <span class="nf nf-fa-file"></span> classifier</api/ansys/sam/sysml2/meta_model/classifier/index>
+    <span class="nf nf-fa-file"></span> comment</api/ansys/sam/sysml2/meta_model/comment/index>
+    <span class="nf nf-fa-file"></span> concern_usage</api/ansys/sam/sysml2/meta_model/concern_usage/index>
+    <span class="nf nf-fa-file"></span> connection_definition</api/ansys/sam/sysml2/meta_model/connection_definition/index>
+    <span class="nf nf-fa-file"></span> connection_usage</api/ansys/sam/sysml2/meta_model/connection_usage/index>
+    <span class="nf nf-fa-file"></span> connector</api/ansys/sam/sysml2/meta_model/connector/index>
+    <span class="nf nf-fa-file"></span> connector_as_usage</api/ansys/sam/sysml2/meta_model/connector_as_usage/index>
+    <span class="nf nf-fa-file"></span> constraint_definition</api/ansys/sam/sysml2/meta_model/constraint_definition/index>
+    <span class="nf nf-fa-file"></span> constraint_usage</api/ansys/sam/sysml2/meta_model/constraint_usage/index>
+    <span class="nf nf-fa-file"></span> control_node</api/ansys/sam/sysml2/meta_model/control_node/index>
+    <span class="nf nf-fa-file"></span> data_type</api/ansys/sam/sysml2/meta_model/data_type/index>
+    <span class="nf nf-fa-file"></span> decision_node</api/ansys/sam/sysml2/meta_model/decision_node/index>
+    <span class="nf nf-fa-file"></span> definition</api/ansys/sam/sysml2/meta_model/definition/index>
+    <span class="nf nf-fa-file"></span> dependency</api/ansys/sam/sysml2/meta_model/dependency/index>
+    <span class="nf nf-fa-file"></span> documentation</api/ansys/sam/sysml2/meta_model/documentation/index>
+    <span class="nf nf-fa-file"></span> e_object</api/ansys/sam/sysml2/meta_model/e_object/index>
+    <span class="nf nf-fa-file"></span> element</api/ansys/sam/sysml2/meta_model/element/index>
+    <span class="nf nf-fa-file"></span> end_feature_membership</api/ansys/sam/sysml2/meta_model/end_feature_membership/index>
+    <span class="nf nf-fa-file"></span> enumeration_definition</api/ansys/sam/sysml2/meta_model/enumeration_definition/index>
+    <span class="nf nf-fa-file"></span> enumeration_usage</api/ansys/sam/sysml2/meta_model/enumeration_usage/index>
+    <span class="nf nf-fa-file"></span> event_occurrence_usage</api/ansys/sam/sysml2/meta_model/event_occurrence_usage/index>
+    <span class="nf nf-fa-file"></span> exhibit_state_usage</api/ansys/sam/sysml2/meta_model/exhibit_state_usage/index>
+    <span class="nf nf-fa-file"></span> expression</api/ansys/sam/sysml2/meta_model/expression/index>
+    <span class="nf nf-fa-file"></span> feature</api/ansys/sam/sysml2/meta_model/feature/index>
+    <span class="nf nf-fa-file"></span> feature_chain_expression</api/ansys/sam/sysml2/meta_model/feature_chain_expression/index>
+    <span class="nf nf-fa-file"></span> feature_chaining</api/ansys/sam/sysml2/meta_model/feature_chaining/index>
+    <span class="nf nf-fa-file"></span> feature_direction_kind</api/ansys/sam/sysml2/meta_model/feature_direction_kind/index>
+    <span class="nf nf-fa-file"></span> feature_membership</api/ansys/sam/sysml2/meta_model/feature_membership/index>
+    <span class="nf nf-fa-file"></span> feature_reference_expression</api/ansys/sam/sysml2/meta_model/feature_reference_expression/index>
+    <span class="nf nf-fa-file"></span> feature_typing</api/ansys/sam/sysml2/meta_model/feature_typing/index>
+    <span class="nf nf-fa-file"></span> feature_value</api/ansys/sam/sysml2/meta_model/feature_value/index>
+    <span class="nf nf-fa-file"></span> flow_connection_definition</api/ansys/sam/sysml2/meta_model/flow_connection_definition/index>
+    <span class="nf nf-fa-file"></span> flow_connection_usage</api/ansys/sam/sysml2/meta_model/flow_connection_usage/index>
+    <span class="nf nf-fa-file"></span> for_loop_action_usage</api/ansys/sam/sysml2/meta_model/for_loop_action_usage/index>
+    <span class="nf nf-fa-file"></span> fork_node</api/ansys/sam/sysml2/meta_model/fork_node/index>
+    <span class="nf nf-fa-file"></span> function</api/ansys/sam/sysml2/meta_model/function/index>
+    <span class="nf nf-fa-file"></span> if_action_usage</api/ansys/sam/sysml2/meta_model/if_action_usage/index>
+    <span class="nf nf-fa-file"></span> import_</api/ansys/sam/sysml2/meta_model/import_/index>
+    <span class="nf nf-fa-file"></span> include_use_case_usage</api/ansys/sam/sysml2/meta_model/include_use_case_usage/index>
+    <span class="nf nf-fa-file"></span> interaction</api/ansys/sam/sysml2/meta_model/interaction/index>
+    <span class="nf nf-fa-file"></span> interface_definition</api/ansys/sam/sysml2/meta_model/interface_definition/index>
+    <span class="nf nf-fa-file"></span> interface_usage</api/ansys/sam/sysml2/meta_model/interface_usage/index>
+    <span class="nf nf-fa-file"></span> invariant</api/ansys/sam/sysml2/meta_model/invariant/index>
+    <span class="nf nf-fa-file"></span> invocation_expression</api/ansys/sam/sysml2/meta_model/invocation_expression/index>
+    <span class="nf nf-fa-file"></span> item_definition</api/ansys/sam/sysml2/meta_model/item_definition/index>
+    <span class="nf nf-fa-file"></span> item_feature</api/ansys/sam/sysml2/meta_model/item_feature/index>
+    <span class="nf nf-fa-file"></span> item_flow</api/ansys/sam/sysml2/meta_model/item_flow/index>
+    <span class="nf nf-fa-file"></span> item_flow_end</api/ansys/sam/sysml2/meta_model/item_flow_end/index>
+    <span class="nf nf-fa-file"></span> item_usage</api/ansys/sam/sysml2/meta_model/item_usage/index>
+    <span class="nf nf-fa-file"></span> join_node</api/ansys/sam/sysml2/meta_model/join_node/index>
+    <span class="nf nf-fa-file"></span> library_package</api/ansys/sam/sysml2/meta_model/library_package/index>
+    <span class="nf nf-fa-file"></span> life_class</api/ansys/sam/sysml2/meta_model/life_class/index>
+    <span class="nf nf-fa-file"></span> literal_boolean</api/ansys/sam/sysml2/meta_model/literal_boolean/index>
+    <span class="nf nf-fa-file"></span> literal_expression</api/ansys/sam/sysml2/meta_model/literal_expression/index>
+    <span class="nf nf-fa-file"></span> literal_integer</api/ansys/sam/sysml2/meta_model/literal_integer/index>
+    <span class="nf nf-fa-file"></span> literal_rational</api/ansys/sam/sysml2/meta_model/literal_rational/index>
+    <span class="nf nf-fa-file"></span> literal_real</api/ansys/sam/sysml2/meta_model/literal_real/index>
+    <span class="nf nf-fa-file"></span> literal_string</api/ansys/sam/sysml2/meta_model/literal_string/index>
+    <span class="nf nf-fa-file"></span> literal_unbounded</api/ansys/sam/sysml2/meta_model/literal_unbounded/index>
+    <span class="nf nf-fa-file"></span> loop_action_usage</api/ansys/sam/sysml2/meta_model/loop_action_usage/index>
+    <span class="nf nf-fa-file"></span> membership</api/ansys/sam/sysml2/meta_model/membership/index>
+    <span class="nf nf-fa-file"></span> merge_node</api/ansys/sam/sysml2/meta_model/merge_node/index>
+    <span class="nf nf-fa-file"></span> metaclass</api/ansys/sam/sysml2/meta_model/metaclass/index>
+    <span class="nf nf-fa-file"></span> metadata_definition</api/ansys/sam/sysml2/meta_model/metadata_definition/index>
+    <span class="nf nf-fa-file"></span> metadata_feature</api/ansys/sam/sysml2/meta_model/metadata_feature/index>
+    <span class="nf nf-fa-file"></span> metadata_usage</api/ansys/sam/sysml2/meta_model/metadata_usage/index>
+    <span class="nf nf-fa-file"></span> multiplicity</api/ansys/sam/sysml2/meta_model/multiplicity/index>
+    <span class="nf nf-fa-file"></span> multiplicity_range</api/ansys/sam/sysml2/meta_model/multiplicity_range/index>
+    <span class="nf nf-fa-file"></span> namespace</api/ansys/sam/sysml2/meta_model/namespace/index>
+    <span class="nf nf-fa-file"></span> null_expression</api/ansys/sam/sysml2/meta_model/null_expression/index>
+    <span class="nf nf-fa-file"></span> objective_membership</api/ansys/sam/sysml2/meta_model/objective_membership/index>
+    <span class="nf nf-fa-file"></span> occurrence_definition</api/ansys/sam/sysml2/meta_model/occurrence_definition/index>
+    <span class="nf nf-fa-file"></span> occurrence_usage</api/ansys/sam/sysml2/meta_model/occurrence_usage/index>
+    <span class="nf nf-fa-file"></span> operator_expression</api/ansys/sam/sysml2/meta_model/operator_expression/index>
+    <span class="nf nf-fa-file"></span> package</api/ansys/sam/sysml2/meta_model/package/index>
+    <span class="nf nf-fa-file"></span> parameter_membership</api/ansys/sam/sysml2/meta_model/parameter_membership/index>
+    <span class="nf nf-fa-file"></span> part_definition</api/ansys/sam/sysml2/meta_model/part_definition/index>
+    <span class="nf nf-fa-file"></span> part_usage</api/ansys/sam/sysml2/meta_model/part_usage/index>
+    <span class="nf nf-fa-file"></span> perform_action_usage</api/ansys/sam/sysml2/meta_model/perform_action_usage/index>
+    <span class="nf nf-fa-file"></span> port_definition</api/ansys/sam/sysml2/meta_model/port_definition/index>
+    <span class="nf nf-fa-file"></span> port_usage</api/ansys/sam/sysml2/meta_model/port_usage/index>
+    <span class="nf nf-fa-file"></span> portion_kind</api/ansys/sam/sysml2/meta_model/portion_kind/index>
+    <span class="nf nf-fa-file"></span> portioning_feature</api/ansys/sam/sysml2/meta_model/portioning_feature/index>
+    <span class="nf nf-fa-file"></span> predicate</api/ansys/sam/sysml2/meta_model/predicate/index>
+    <span class="nf nf-fa-file"></span> redefinition</api/ansys/sam/sysml2/meta_model/redefinition/index>
+    <span class="nf nf-fa-file"></span> reference_subsetting</api/ansys/sam/sysml2/meta_model/reference_subsetting/index>
+    <span class="nf nf-fa-file"></span> reference_usage</api/ansys/sam/sysml2/meta_model/reference_usage/index>
+    <span class="nf nf-fa-file"></span> relationship</api/ansys/sam/sysml2/meta_model/relationship/index>
+    <span class="nf nf-fa-file"></span> requirement_constraint_kind</api/ansys/sam/sysml2/meta_model/requirement_constraint_kind/index>
+    <span class="nf nf-fa-file"></span> requirement_constraint_membership</api/ansys/sam/sysml2/meta_model/requirement_constraint_membership/index>
+    <span class="nf nf-fa-file"></span> requirement_definition</api/ansys/sam/sysml2/meta_model/requirement_definition/index>
+    <span class="nf nf-fa-file"></span> requirement_usage</api/ansys/sam/sysml2/meta_model/requirement_usage/index>
+    <span class="nf nf-fa-file"></span> requirement_verification_membership</api/ansys/sam/sysml2/meta_model/requirement_verification_membership/index>
+    <span class="nf nf-fa-file"></span> result_expression_membership</api/ansys/sam/sysml2/meta_model/result_expression_membership/index>
+    <span class="nf nf-fa-file"></span> return_parameter_membership</api/ansys/sam/sysml2/meta_model/return_parameter_membership/index>
+    <span class="nf nf-fa-file"></span> satisfy_requirement_usage</api/ansys/sam/sysml2/meta_model/satisfy_requirement_usage/index>
+    <span class="nf nf-fa-file"></span> send_action_usage</api/ansys/sam/sysml2/meta_model/send_action_usage/index>
+    <span class="nf nf-fa-file"></span> specialization</api/ansys/sam/sysml2/meta_model/specialization/index>
+    <span class="nf nf-fa-file"></span> stakeholder_membership</api/ansys/sam/sysml2/meta_model/stakeholder_membership/index>
+    <span class="nf nf-fa-file"></span> state_definition</api/ansys/sam/sysml2/meta_model/state_definition/index>
+    <span class="nf nf-fa-file"></span> state_subaction_kind</api/ansys/sam/sysml2/meta_model/state_subaction_kind/index>
+    <span class="nf nf-fa-file"></span> state_subaction_membership</api/ansys/sam/sysml2/meta_model/state_subaction_membership/index>
+    <span class="nf nf-fa-file"></span> state_usage</api/ansys/sam/sysml2/meta_model/state_usage/index>
+    <span class="nf nf-fa-file"></span> step</api/ansys/sam/sysml2/meta_model/step/index>
+    <span class="nf nf-fa-file"></span> structure</api/ansys/sam/sysml2/meta_model/structure/index>
+    <span class="nf nf-fa-file"></span> subclassification</api/ansys/sam/sysml2/meta_model/subclassification/index>
+    <span class="nf nf-fa-file"></span> subject_membership</api/ansys/sam/sysml2/meta_model/subject_membership/index>
+    <span class="nf nf-fa-file"></span> subsetting</api/ansys/sam/sysml2/meta_model/subsetting/index>
+    <span class="nf nf-fa-file"></span> succession</api/ansys/sam/sysml2/meta_model/succession/index>
+    <span class="nf nf-fa-file"></span> succession_as_usage</api/ansys/sam/sysml2/meta_model/succession_as_usage/index>
+    <span class="nf nf-fa-file"></span> succession_flow_connection_usage</api/ansys/sam/sysml2/meta_model/succession_flow_connection_usage/index>
+    <span class="nf nf-fa-file"></span> succession_item_flow</api/ansys/sam/sysml2/meta_model/succession_item_flow/index>
+    <span class="nf nf-fa-file"></span> textual_representation</api/ansys/sam/sysml2/meta_model/textual_representation/index>
+    <span class="nf nf-fa-file"></span> transition_feature_kind</api/ansys/sam/sysml2/meta_model/transition_feature_kind/index>
+    <span class="nf nf-fa-file"></span> transition_feature_membership</api/ansys/sam/sysml2/meta_model/transition_feature_membership/index>
+    <span class="nf nf-fa-file"></span> transition_usage</api/ansys/sam/sysml2/meta_model/transition_usage/index>
+    <span class="nf nf-fa-file"></span> trigger_invocation_expression</api/ansys/sam/sysml2/meta_model/trigger_invocation_expression/index>
+    <span class="nf nf-fa-file"></span> trigger_kind</api/ansys/sam/sysml2/meta_model/trigger_kind/index>
+    <span class="nf nf-fa-file"></span> type_</api/ansys/sam/sysml2/meta_model/type_/index>
+    <span class="nf nf-fa-file"></span> type_featuring</api/ansys/sam/sysml2/meta_model/type_featuring/index>
+    <span class="nf nf-fa-file"></span> usage</api/ansys/sam/sysml2/meta_model/usage/index>
+    <span class="nf nf-fa-file"></span> use_case_definition</api/ansys/sam/sysml2/meta_model/use_case_definition/index>
+    <span class="nf nf-fa-file"></span> use_case_usage</api/ansys/sam/sysml2/meta_model/use_case_usage/index>
+    <span class="nf nf-fa-file"></span> variant_membership</api/ansys/sam/sysml2/meta_model/variant_membership/index>
+    <span class="nf nf-fa-file"></span> verification_case_definition</api/ansys/sam/sysml2/meta_model/verification_case_definition/index>
+    <span class="nf nf-fa-file"></span> verification_case_usage</api/ansys/sam/sysml2/meta_model/verification_case_usage/index>
+    <span class="nf nf-fa-file"></span> view_definition</api/ansys/sam/sysml2/meta_model/view_definition/index>
+    <span class="nf nf-fa-file"></span> view_usage</api/ansys/sam/sysml2/meta_model/view_usage/index>
+    <span class="nf nf-fa-file"></span> visibility_kind</api/ansys/sam/sysml2/meta_model/visibility_kind/index>
+    <span class="nf nf-fa-file"></span> while_loop_action_usage</api/ansys/sam/sysml2/meta_model/while_loop_action_usage/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Metamodel package.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

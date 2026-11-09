@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`MembershipImport`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.membership_import.MembershipImport(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.import_.Import`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.MembershipImport'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: MembershipImport
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~imported_membership`
+            - Get the imported membership property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.membership_import import MembershipImport
+
+Property detail
+---------------
+
+.. py:property:: imported_membership
+   :type: Membership
+
+
+   
+   Get the imported membership property.
+
+
+
+
+
+   :Returns:
+
+       "Membership"
+           Value of property imported membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+
