@@ -9,6 +9,87 @@ This document contains the release notes for the project.
 
 .. towncrier release notes start
 
+`0.4.2 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.4.2>`_ - November 26, 2026
+========================================================================================
+
+.. tab-set::
+
+
+  .. tab-item:: Fixed
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Drop empty keep-alive JSON bodies and raise dependency floors
+          - `#439 <https://github.com/ansys/pysam-sysml2/pull/439>`_
+
+
+  .. tab-item:: Dependencies
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Bump prek from 0.5.4 to 0.5.5
+          - `#412 <https://github.com/ansys/pysam-sysml2/pull/412>`_
+
+        * - Bump actions/download-artifact from 8.0.1 to 8.0.2
+          - `#416 <https://github.com/ansys/pysam-sysml2/pull/416>`_
+
+        * - Bump https://github.com/astral-sh/ruff-pre-commit from v0.16.10 to 0.17.0 in the pre-commit group
+          - `#417 <https://github.com/ansys/pysam-sysml2/pull/417>`_
+
+        * - Bump https://github.com/astral-sh/ruff-pre-commit from v0.17.0 to 0.17.1 in the pre-commit group across 1 directory
+          - `#418 <https://github.com/ansys/pysam-sysml2/pull/418>`_
+
+        * - Bump pytest-mock from 3.16.0 to 3.17.0
+          - `#421 <https://github.com/ansys/pysam-sysml2/pull/421>`_
+
+        * - Bump sphinx from 9.1.0 to 9.1.1
+          - `#423 <https://github.com/ansys/pysam-sysml2/pull/423>`_
+
+        * - Bump ansys-sphinx-theme from 1.11.0 to 1.12.1
+          - `#429 <https://github.com/ansys/pysam-sysml2/pull/429>`_
+
+        * - Bump pytest from 9.1.1 to 9.2.0
+          - `#430 <https://github.com/ansys/pysam-sysml2/pull/430>`_
+
+        * - Bump the pre-commit group across 1 directory with 2 updates
+          - `#431 <https://github.com/ansys/pysam-sysml2/pull/431>`_
+
+        * - Bump prek from 0.5.5 to 0.5.9
+          - `#433 <https://github.com/ansys/pysam-sysml2/pull/433>`_
+
+
+  .. tab-item:: Maintenance
+
+    .. list-table::
+        :header-rows: 0
+        :widths: auto
+
+        * - Update CHANGELOG for v0.4.1
+          - `#411 <https://github.com/ansys/pysam-sysml2/pull/411>`_
+
+        * - Exclude ansys/actions from Dependabot cooldown
+          - `#419 <https://github.com/ansys/pysam-sysml2/pull/419>`_
+
+        * - Bump the actions group with 14 updates
+          - `#420 <https://github.com/ansys/pysam-sysml2/pull/420>`_
+
+        * - Bump the actions group across 1 directory with 15 updates
+          - `#425 <https://github.com/ansys/pysam-sysml2/pull/425>`_
+
+        * - Cache Sphinx doctrees so autoapi skips unchanged sources
+          - `#432 <https://github.com/ansys/pysam-sysml2/pull/432>`_
+
+        * - Bump the actions group across 1 directory with 14 updates
+          - `#434 <https://github.com/ansys/pysam-sysml2/pull/434>`_
+
+        * - Restore the main doc cache when dependencies change
+          - `#435 <https://github.com/ansys/pysam-sysml2/pull/435>`_
+
+
 `0.4.1 <https://github.com/ansys/pysam-sysml2/releases/tag/v0.4.1>`_ - October 12, 2026
 =======================================================================================
 
