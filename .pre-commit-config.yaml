@@ -10,7 +10,7 @@ repos:
       - id: gitleaks
 
   - repo: https://github.com/ansys/pre-commit-hooks
-    rev: dbcd0a4ad0060f78ac3c7d53d342f510edc48eab  # frozen: v0.8.1
+    rev: e55c4e315cb8ce98e3b81c63b5e869cfc3114039  # frozen: v0.8.2
     hooks:
       - id: add-license-headers
         args:
