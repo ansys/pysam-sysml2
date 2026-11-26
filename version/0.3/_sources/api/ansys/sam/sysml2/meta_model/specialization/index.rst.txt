@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``specialization.py`` module
+================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.specialization
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: specialization
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.specialization.Specialization`
+            - Java class 'com.ansys.medini.metamodel.sysml.Specialization'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Specialization</api/ansys/sam/sysml2/meta_model/specialization/Specialization>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated specialization class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

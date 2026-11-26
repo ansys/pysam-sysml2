@@ -1,0 +1,230 @@
+
+
+
+
+
+
+:class:`ViewUsage`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.view_usage.ViewUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.part_usage.PartUsage`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ViewUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ViewUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~exposed_element`
+            - Get the exposed element property.
+          * - :py:attr:`~satisfied_viewpoint`
+            - Get the satisfied viewpoint property.
+          * - :py:attr:`~view_condition`
+            - Get the view condition property.
+          * - :py:attr:`~view_definition`
+            - Get the view definition property.
+          * - :py:attr:`~view_rendering`
+            - Get the view rendering property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.view_usage import ViewUsage
+
+Property detail
+---------------
+
+.. py:property:: exposed_element
+   :type: list[Element]
+
+
+   
+   Get the exposed element property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Element"]
+           Value of property exposed element.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: satisfied_viewpoint
+   :type: list[ViewpointUsage]
+
+
+   
+   Get the satisfied viewpoint property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["ViewpointUsage"]
+           Value of property satisfied viewpoint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: view_condition
+   :type: list[Expression]
+
+
+   
+   Get the view condition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Expression"]
+           Value of property view condition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: view_definition
+   :type: ViewDefinition
+
+
+   
+   Get the view definition property.
+
+
+
+
+
+   :Returns:
+
+       "ViewDefinition"
+           Value of property view definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: view_rendering
+   :type: RenderingUsage
+
+
+   
+   Get the view rendering property.
+
+
+
+
+
+   :Returns:
+
+       "RenderingUsage"
+           Value of property view rendering.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

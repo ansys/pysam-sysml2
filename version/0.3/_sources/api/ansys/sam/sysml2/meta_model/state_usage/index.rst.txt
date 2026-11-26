@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``state_usage.py`` module
+=============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.state_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: state_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.state_usage.StateUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.StateUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> StateUsage</api/ansys/sam/sysml2/meta_model/state_usage/StateUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated state usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

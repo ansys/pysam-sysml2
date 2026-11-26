@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`FeatureReferenceExpression`
+===================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature_reference_expression.FeatureReferenceExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.expression.Expression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.FeatureReferenceExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: FeatureReferenceExpression
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~referent`
+            - Get the referent property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature_reference_expression import FeatureReferenceExpression
+
+Property detail
+---------------
+
+.. py:property:: referent
+   :type: Feature
+
+
+   
+   Get the referent property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property referent.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

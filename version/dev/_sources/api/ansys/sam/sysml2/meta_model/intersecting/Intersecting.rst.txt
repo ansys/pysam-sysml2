@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`Intersecting`
+=====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.intersecting.Intersecting(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Intersecting'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Intersecting
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~intersecting_type`
+            - Get the intersecting type property.
+          * - :py:attr:`~type_intersected`
+            - Get the type intersected property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.intersecting import Intersecting
+
+Property detail
+---------------
+
+.. py:property:: intersecting_type
+   :type: Type
+
+
+   
+   Get the intersecting type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property intersecting type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: type_intersected
+   :type: Type
+
+
+   
+   Get the type intersected property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property type intersected.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``index_expression.py`` module
+==================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.index_expression
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: index_expression
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.index_expression.IndexExpression`
+            - Java class 'com.ansys.metamodel.sysml2.IndexExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> IndexExpression</api/ansys/sam/sysml2/meta_model/index_expression/IndexExpression>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated index expression class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,102 @@
+
+
+
+
+
+
+The ``diagrams`` package
+============================
+
+.. py:module:: ansys.sam.sysml2.diagrams
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: diagrams
+.. tab-set::
+
+    .. tab-item:: Subpackages
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.api`
+            - API package for the SAM API connector.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.tools`
+            - Tools module for the PySAM SysML2 diagram library.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.diagrams.utils`
+            - Utilities module for the PySAM SysML2 diagram library.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-md-package"></span> api</api/ansys/sam/sysml2/diagrams/api/index>
+    <span class="nf nf-md-package"></span> tools</api/ansys/sam/sysml2/diagrams/tools/index>
+    <span class="nf nf-md-package"></span> utils</api/ansys/sam/sysml2/diagrams/utils/index>
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Diagram module for PySAM SysML2 diagram library.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

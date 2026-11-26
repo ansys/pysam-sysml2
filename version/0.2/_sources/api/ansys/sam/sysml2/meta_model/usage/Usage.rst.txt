@@ -1,0 +1,974 @@
+
+
+
+
+
+
+:class:`Usage`
+==============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.usage.Usage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature.Feature`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Usage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Usage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~definition`
+            - Get the definition property.
+          * - :py:attr:`~variant`
+            - Get the variant property.
+          * - :py:attr:`~nested_interface`
+            - Get the nested interface property.
+          * - :py:attr:`~nested_part`
+            - Get the nested part property.
+          * - :py:attr:`~nested_usage`
+            - Get the nested usage property.
+          * - :py:attr:`~nested_port`
+            - Get the nested port property.
+          * - :py:attr:`~nested_item`
+            - Get the nested item property.
+          * - :py:attr:`~nested_state`
+            - Get the nested state property.
+          * - :py:attr:`~nested_reference`
+            - Get the nested reference property.
+          * - :py:attr:`~is_subject`
+            - Get the is subject property.
+          * - :py:attr:`~nested_attribute`
+            - Get the nested attribute property.
+          * - :py:attr:`~nested_case`
+            - Get the nested case property.
+          * - :py:attr:`~is_variation`
+            - Get the is variation property.
+          * - :py:attr:`~nested_action`
+            - Get the nested action property.
+          * - :py:attr:`~nested_view`
+            - Get the nested view property.
+          * - :py:attr:`~nested_use_case`
+            - Get the nested use case property.
+          * - :py:attr:`~nested_metadata`
+            - Get the nested metadata property.
+          * - :py:attr:`~nested_flow`
+            - Get the nested flow property.
+          * - :py:attr:`~nested_enumeration`
+            - Get the nested enumeration property.
+          * - :py:attr:`~variant_membership`
+            - Get the variant membership property.
+          * - :py:attr:`~nested_transition`
+            - Get the nested transition property.
+          * - :py:attr:`~nested_occurrence`
+            - Get the nested occurrence property.
+          * - :py:attr:`~nested_calculation`
+            - Get the nested calculation property.
+          * - :py:attr:`~nested_verification_case`
+            - Get the nested verification case property.
+          * - :py:attr:`~nested_analysis_case`
+            - Get the nested analysis case property.
+          * - :py:attr:`~nested_requirement`
+            - Get the nested requirement property.
+          * - :py:attr:`~nested_connection`
+            - Get the nested connection property.
+          * - :py:attr:`~nested_allocation`
+            - Get the nested allocation property.
+          * - :py:attr:`~nested_constraint`
+            - Get the nested constraint property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.usage import Usage
+
+Property detail
+---------------
+
+.. py:property:: definition
+   :type: List[Classifier]
+
+
+   
+   Get the definition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Classifier"]
+           Value of property definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: variant
+   :type: List[Usage]
+
+
+   
+   Get the variant property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Usage"]
+           Value of property variant.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_interface
+   :type: List[InterfaceUsage]
+
+
+   
+   Get the nested interface property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["InterfaceUsage"]
+           Value of property nested interface.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_part
+   :type: List[PartUsage]
+
+
+   
+   Get the nested part property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["PartUsage"]
+           Value of property nested part.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_usage
+   :type: List[Usage]
+
+
+   
+   Get the nested usage property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Usage"]
+           Value of property nested usage.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_port
+   :type: List[PortUsage]
+
+
+   
+   Get the nested port property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["PortUsage"]
+           Value of property nested port.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_item
+   :type: List[ItemUsage]
+
+
+   
+   Get the nested item property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ItemUsage"]
+           Value of property nested item.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_state
+   :type: List[StateUsage]
+
+
+   
+   Get the nested state property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["StateUsage"]
+           Value of property nested state.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_reference
+   :type: List[ReferenceUsage]
+
+
+   
+   Get the nested reference property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ReferenceUsage"]
+           Value of property nested reference.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_subject
+   :type: bool
+
+
+   
+   Get the is subject property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is subject.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_attribute
+   :type: List[AttributeUsage]
+
+
+   
+   Get the nested attribute property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["AttributeUsage"]
+           Value of property nested attribute.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_case
+   :type: List[CaseUsage]
+
+
+   
+   Get the nested case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["CaseUsage"]
+           Value of property nested case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_variation
+   :type: None
+
+
+   
+   Get the is variation property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property is variation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_action
+   :type: List[ActionUsage]
+
+
+   
+   Get the nested action property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ActionUsage"]
+           Value of property nested action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_view
+   :type: List[ViewUsage]
+
+
+   
+   Get the nested view property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ViewUsage"]
+           Value of property nested view.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_use_case
+   :type: List[UseCaseUsage]
+
+
+   
+   Get the nested use case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["UseCaseUsage"]
+           Value of property nested use case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_metadata
+   :type: List[MetadataUsage]
+
+
+   
+   Get the nested metadata property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["MetadataUsage"]
+           Value of property nested metadata.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_flow
+   :type: List[FlowConnectionUsage]
+
+
+   
+   Get the nested flow property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["FlowConnectionUsage"]
+           Value of property nested flow.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_enumeration
+   :type: List[EnumerationUsage]
+
+
+   
+   Get the nested enumeration property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["EnumerationUsage"]
+           Value of property nested enumeration.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: variant_membership
+   :type: List[VariantMembership]
+
+
+   
+   Get the variant membership property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["VariantMembership"]
+           Value of property variant membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_transition
+   :type: List[TransitionUsage]
+
+
+   
+   Get the nested transition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["TransitionUsage"]
+           Value of property nested transition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_occurrence
+   :type: List[OccurrenceUsage]
+
+
+   
+   Get the nested occurrence property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["OccurrenceUsage"]
+           Value of property nested occurrence.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_calculation
+   :type: List[CalculationUsage]
+
+
+   
+   Get the nested calculation property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["CalculationUsage"]
+           Value of property nested calculation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_verification_case
+   :type: List[VerificationCaseUsage]
+
+
+   
+   Get the nested verification case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["VerificationCaseUsage"]
+           Value of property nested verification case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_analysis_case
+   :type: List[AnalysisCaseUsage]
+
+
+   
+   Get the nested analysis case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["AnalysisCaseUsage"]
+           Value of property nested analysis case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_requirement
+   :type: List[RequirementUsage]
+
+
+   
+   Get the nested requirement property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["RequirementUsage"]
+           Value of property nested requirement.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_connection
+   :type: List[ConnectorAsUsage]
+
+
+   
+   Get the nested connection property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ConnectorAsUsage"]
+           Value of property nested connection.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_allocation
+   :type: List[AllocationUsage]
+
+
+   
+   Get the nested allocation property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["AllocationUsage"]
+           Value of property nested allocation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: nested_constraint
+   :type: List[ConstraintUsage]
+
+
+   
+   Get the nested constraint property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ConstraintUsage"]
+           Value of property nested constraint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

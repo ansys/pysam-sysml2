@@ -1,0 +1,102 @@
+
+
+
+
+
+
+The ``derived_collections.py`` module
+=====================================
+
+.. py:module:: ansys.sam.sysml2.builder.derived_collections
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: derived_collections
+.. tab-set::
+
+
+
+
+
+
+
+    .. tab-item:: Functions
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~fill_derived_collections`
+            - Populate main derived collections when the API omitted them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Derive KerML/SysML collections from owned relationships when the API omits them.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+Module detail
+-------------
+
+.. py:function:: fill_derived_collections(project: ansys.sam.sysml2.classes.project.Project) -> None
+
+   
+   Populate main derived collections when the API omitted them.
+
+
+   :Parameters:
+
+       **project** : :obj:`Project`
+           Built project whose elements already have resolved relationships.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+

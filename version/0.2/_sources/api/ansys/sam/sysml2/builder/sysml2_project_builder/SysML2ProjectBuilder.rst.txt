@@ -1,0 +1,243 @@
+
+
+
+
+
+
+:class:`SysML2ProjectBuilder`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.builder.sysml2_project_builder.SysML2ProjectBuilder(connector: ansys.sam.sysml2.api.sysml2_api_connector.SysML2APIConnector)
+
+   
+   Provides the SysML2 project builder.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: SysML2ProjectBuilder
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~build_sysml_project`
+            - Call the API with the specified project ID and build the SysML project from JSON.
+          * - :py:attr:`~build_scripting_project`
+            - Call the API with the specified project ID and build the scripting project from JSON.
+          * - :py:attr:`~extract_root_and_check_names`
+            - Parse all project elements, extract the root element, and update names.
+          * - :py:attr:`~filter_and_add_sysml_element`
+            - Filter and check root packages for SysML projects.
+          * - :py:attr:`~filter_and_add_scripting_element`
+            - Filter and check root packages for Scripting project.
+          * - :py:attr:`~reload_project`
+            - Reload the project and update all its elements.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.sysml2_project_builder import SysML2ProjectBuilder
+
+
+
+Method detail
+-------------
+
+.. py:method:: build_sysml_project(project_id: str) -> ansys.sam.sysml2.classes.project.Project
+
+   
+   Call the API with the specified project ID and build the SysML project from JSON.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: build_scripting_project(project_id: str) -> ansys.sam.sysml2.classes.scripting_project.ScriptingProject
+
+   
+   Call the API with the specified project ID and build the scripting project from JSON.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: extract_root_and_check_names(project: Union[ansys.sam.sysml2.classes.project.Project | ansys.sam.sysml2.classes.scripting_project.ScriptingProject])
+
+   
+   Parse all project elements, extract the root element, and update names.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: filter_and_add_sysml_element(element: ansys.sam.sysml2.meta_model.element.Element, roots: List)
+
+   
+   Filter and check root packages for SysML projects.
+
+
+   :Parameters:
+
+       **element** : :obj:`Element`
+           Element to check.
+
+       **roots** : :obj:`List`
+           List of root packages.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: filter_and_add_scripting_element(element: ansys.sam.sysml2.classes.sysml_element.SysMLElement, roots: List)
+
+   
+   Filter and check root packages for Scripting project.
+
+
+   :Parameters:
+
+       **element** : :obj:`SysMLElement`
+           Element to check.
+
+       **roots** : :obj:`List`
+           List of root packages.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: reload_project(modification_observer: ansys.sam.sysml2.observer.observer.ModificationObserver, project: ansys.sam.sysml2.builder.classes.scripting_project_impl.ScriptingProjectImpl)
+
+   
+   Reload the project and update all its elements.
+
+
+   :Parameters:
+
+       **modification_observer** : :obj:`ModificationObserver`
+           Observer instance.
+
+       **project** : :obj:`ScriptingProjectImpl`
+           Scripting project instance to reload.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

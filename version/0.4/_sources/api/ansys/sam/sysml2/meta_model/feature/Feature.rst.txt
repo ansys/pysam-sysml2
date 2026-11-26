@@ -1,0 +1,1346 @@
+
+
+
+
+
+
+:class:`Feature`
+================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.feature.Feature(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.type_.Type`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Feature'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Feature
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~chaining_feature`
+            - Get the chaining feature property.
+          * - :py:attr:`~cross_feature`
+            - Get the cross feature property.
+          * - :py:attr:`~direction`
+            - Get the direction property.
+          * - :py:attr:`~endfeaturemembership`
+            - Get the endfeaturemembership property.
+          * - :py:attr:`~feature_target`
+            - Get the feature target property.
+          * - :py:attr:`~featuring_type`
+            - Get the featuring type property.
+          * - :py:attr:`~owned_cross_subsetting`
+            - Get the owned cross subsetting property.
+          * - :py:attr:`~owned_feature_chaining`
+            - Get the owned feature chaining property.
+          * - :py:attr:`~owned_feature_inverting`
+            - Get the owned feature inverting property.
+          * - :py:attr:`~owned_redefinition`
+            - Get the owned redefinition property.
+          * - :py:attr:`~owned_redefinition_exclude_implied`
+            - Get the owned redefinition exclude implied property.
+          * - :py:attr:`~owned_reference_subsetting`
+            - Get the owned reference subsetting property.
+          * - :py:attr:`~owned_subsetting`
+            - Get the owned subsetting property.
+          * - :py:attr:`~owned_subsetting_exclude_implied`
+            - Get the owned subsetting exclude implied property.
+          * - :py:attr:`~owned_type_featuring`
+            - Get the owned type featuring property.
+          * - :py:attr:`~owned_typing`
+            - Get the owned typing property.
+          * - :py:attr:`~owning_feature_membership`
+            - Get the owning feature membership property.
+          * - :py:attr:`~owning_type`
+            - Get the owning type property.
+          * - :py:attr:`~type_`
+            - Get the type property.
+          * - :py:attr:`~valuation`
+            - Get the valuation property.
+          * - :py:attr:`~cartesian_product`
+            - Get the cartesian product property.
+          * - :py:attr:`~compatible_with`
+            - Get the compatible with property.
+          * - :py:attr:`~featured_within`
+            - Get the featured within property.
+          * - :py:attr:`~is_composite`
+            - Get the is composite property.
+          * - :py:attr:`~is_constant`
+            - Get the is constant property.
+          * - :py:attr:`~is_derived`
+            - Get the is derived property.
+          * - :py:attr:`~is_end`
+            - Get the is end property.
+          * - :py:attr:`~is_ordered`
+            - Get the is ordered property.
+          * - :py:attr:`~is_portion`
+            - Get the is portion property.
+          * - :py:attr:`~is_unique`
+            - Get the is unique property.
+          * - :py:attr:`~is_variable`
+            - Get the is variable property.
+          * - :py:attr:`~owned_cross_feature`
+            - Get the owned cross feature property.
+          * - :py:attr:`~set_direction`
+            - Get the set direction property.
+          * - :py:attr:`~set_is_composite`
+            - Get the set is composite property.
+          * - :py:attr:`~set_is_constant`
+            - Get the set is constant property.
+          * - :py:attr:`~set_is_derived`
+            - Get the set is derived property.
+          * - :py:attr:`~set_is_end`
+            - Get the set is end property.
+          * - :py:attr:`~set_is_ordered`
+            - Get the set is ordered property.
+          * - :py:attr:`~set_is_portion`
+            - Get the set is portion property.
+          * - :py:attr:`~set_is_unique`
+            - Get the set is unique property.
+          * - :py:attr:`~set_is_variable`
+            - Get the set is variable property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.feature import Feature
+
+Property detail
+---------------
+
+.. py:property:: chaining_feature
+   :type: list[Feature]
+
+
+   
+   Get the chaining feature property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Feature"]
+           Value of property chaining feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: cross_feature
+   :type: Feature
+
+
+   
+   Get the cross feature property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property cross feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: direction
+   :type: FeatureDirectionKind
+
+
+   
+   Get the direction property.
+
+
+
+
+
+   :Returns:
+
+       "FeatureDirectionKind"
+           Value of property direction.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: endfeaturemembership
+   :type: EndFeatureMembership
+
+
+   
+   Get the endfeaturemembership property.
+
+
+
+
+
+   :Returns:
+
+       "EndFeatureMembership"
+           Value of property endfeaturemembership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: feature_target
+   :type: Feature
+
+
+   
+   Get the feature target property.
+
+
+
+
+
+   :Returns:
+
+       "Feature"
+           Value of property feature target.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: featuring_type
+   :type: bool
+
+
+   
+   Get the featuring type property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property featuring type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_cross_subsetting
+   :type: CrossSubsetting
+
+
+   
+   Get the owned cross subsetting property.
+
+
+
+
+
+   :Returns:
+
+       "CrossSubsetting"
+           Value of property owned cross subsetting.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_feature_chaining
+   :type: list[FeatureChaining]
+
+
+   
+   Get the owned feature chaining property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["FeatureChaining"]
+           Value of property owned feature chaining.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_feature_inverting
+   :type: list[FeatureInverting]
+
+
+   
+   Get the owned feature inverting property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["FeatureInverting"]
+           Value of property owned feature inverting.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_redefinition
+   :type: list[Redefinition]
+
+
+   
+   Get the owned redefinition property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Redefinition"]
+           Value of property owned redefinition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_redefinition_exclude_implied
+   :type: list[Redefinition]
+
+
+   
+   Get the owned redefinition exclude implied property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Redefinition"]
+           Value of property owned redefinition exclude implied.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_reference_subsetting
+   :type: ReferenceSubsetting
+
+
+   
+   Get the owned reference subsetting property.
+
+
+
+
+
+   :Returns:
+
+       "ReferenceSubsetting"
+           Value of property owned reference subsetting.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_subsetting
+   :type: list[Subsetting]
+
+
+   
+   Get the owned subsetting property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Subsetting"]
+           Value of property owned subsetting.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_subsetting_exclude_implied
+   :type: list[Subsetting]
+
+
+   
+   Get the owned subsetting exclude implied property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Subsetting"]
+           Value of property owned subsetting exclude implied.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_type_featuring
+   :type: list[TypeFeaturing]
+
+
+   
+   Get the owned type featuring property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["TypeFeaturing"]
+           Value of property owned type featuring.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_typing
+   :type: list[FeatureTyping]
+
+
+   
+   Get the owned typing property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["FeatureTyping"]
+           Value of property owned typing.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_feature_membership
+   :type: FeatureMembership
+
+
+   
+   Get the owning feature membership property.
+
+
+
+
+
+   :Returns:
+
+       "FeatureMembership"
+           Value of property owning feature membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_type
+   :type: ansys.sam.sysml2.meta_model.type_.Type
+
+
+   
+   Get the owning type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property owning type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: type_
+   :type: list[ansys.sam.sysml2.meta_model.type_.Type]
+
+
+   
+   Get the type property.
+
+
+
+
+
+   :Returns:
+
+       :class:`python:list`\["Type"]
+           Value of property type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: valuation
+   :type: FeatureValue
+
+
+   
+   Get the valuation property.
+
+
+
+
+
+   :Returns:
+
+       "FeatureValue"
+           Value of property valuation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: cartesian_product
+   :type: bool
+
+
+   
+   Get the cartesian product property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property cartesian product.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: compatible_with
+   :type: bool
+
+
+   
+   Get the compatible with property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property compatible with.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: featured_within
+   :type: bool
+
+
+   
+   Get the featured within property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property featured within.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_composite
+   :type: bool
+
+
+   
+   Get the is composite property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is composite.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_constant
+   :type: bool
+
+
+   
+   Get the is constant property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is constant.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_derived
+   :type: bool
+
+
+   
+   Get the is derived property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is derived.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_end
+   :type: bool
+
+
+   
+   Get the is end property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_ordered
+   :type: bool
+
+
+   
+   Get the is ordered property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is ordered.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_portion
+   :type: bool
+
+
+   
+   Get the is portion property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is portion.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_unique
+   :type: bool
+
+
+   
+   Get the is unique property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is unique.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_variable
+   :type: bool
+
+
+   
+   Get the is variable property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property is variable.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_cross_feature
+   :type: bool
+
+
+   
+   Get the owned cross feature property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property owned cross feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_direction
+   :type: bool
+
+
+   
+   Get the set direction property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set direction.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_composite
+   :type: bool
+
+
+   
+   Get the set is composite property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is composite.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_constant
+   :type: bool
+
+
+   
+   Get the set is constant property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is constant.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_derived
+   :type: bool
+
+
+   
+   Get the set is derived property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is derived.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_end
+   :type: bool
+
+
+   
+   Get the set is end property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is end.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_ordered
+   :type: bool
+
+
+   
+   Get the set is ordered property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is ordered.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_portion
+   :type: bool
+
+
+   
+   Get the set is portion property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is portion.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_unique
+   :type: bool
+
+
+   
+   Get the set is unique property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is unique.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_is_variable
+   :type: bool
+
+
+   
+   Get the set is variable property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set is variable.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

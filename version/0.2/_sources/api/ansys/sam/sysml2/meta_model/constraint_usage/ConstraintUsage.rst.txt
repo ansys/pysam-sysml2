@@ -1,0 +1,230 @@
+
+
+
+
+
+
+:class:`ConstraintUsage`
+========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.constraint_usage.ConstraintUsage(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.boolean_expression.BooleanExpression`, :py:obj:`ansys.sam.sysml2.meta_model.occurrence_usage.OccurrenceUsage`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ConstraintUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ConstraintUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~set_kind`
+            - Get the set kind property.
+          * - :py:attr:`~kind`
+            - Get the kind property.
+          * - :py:attr:`~constraint_definition`
+            - Get the constraint definition property.
+          * - :py:attr:`~constraint_expression`
+            - Get the constraint expression property.
+          * - :py:attr:`~set_constraint_expression`
+            - Get the set constraint expression property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.constraint_usage import ConstraintUsage
+
+Property detail
+---------------
+
+.. py:property:: set_kind
+   :type: bool
+
+
+   
+   Get the set kind property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set kind.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: kind
+   :type: None
+
+
+   
+   Get the kind property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property kind.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: constraint_definition
+   :type: Predicate
+
+
+   
+   Get the constraint definition property.
+
+
+
+
+
+   :Returns:
+
+       "Predicate"
+           Value of property constraint definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: constraint_expression
+   :type: None
+
+
+   
+   Get the constraint expression property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property constraint expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_constraint_expression
+   :type: bool
+
+
+   
+   Get the set constraint expression property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set constraint expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

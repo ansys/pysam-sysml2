@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``model_reader.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.tools.model_reader
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: model_reader
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.tools.model_reader.ModelReader`
+            - Read metamodel elements with a single snake_case property vocabulary.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ModelReader</api/ansys/sam/sysml2/tools/model_reader/ModelReader>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Read SysML model elements through the generated metamodel properties.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

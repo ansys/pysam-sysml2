@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Expose`
+===============
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.expose.Expose(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.import_.Import`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Expose'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.expose import Expose
+
+
+
+
+

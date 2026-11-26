@@ -1,0 +1,135 @@
+
+
+
+
+
+
+:class:`PrimitiveConstraint`
+============================
+
+
+.. py:class:: ansys.sam.sysml2.dto.query.constraints_classes.PrimitiveConstraint
+
+   Bases: :py:obj:`Constraint`
+
+
+   
+   Provides a primitive constraint for a simple query constraint.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: PrimitiveConstraint
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~to_json`
+            - Return JSON using the API key ``property`` for the property name.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~property_name`
+            - 
+          * - :py:attr:`~value`
+            - 
+          * - :py:attr:`~inverse`
+            - 
+          * - :py:attr:`~operator`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.dto.query.constraints_classes import PrimitiveConstraint
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: property_name
+   :type:  str
+
+.. py:attribute:: value
+   :type:  str
+
+.. py:attribute:: inverse
+   :type:  bool
+   :value: False
+
+
+.. py:attribute:: operator
+   :type:  ansys.sam.sysml2.dto.query.query_enum.Operator
+   :value: '='
+
+
+
+
+Method detail
+-------------
+
+.. py:method:: to_json() -> dict
+
+   
+   Return JSON using the API key ``property`` for the property name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

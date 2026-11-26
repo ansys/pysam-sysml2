@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``assignment_action_usage.py`` module
+=========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.assignment_action_usage
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: assignment_action_usage
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.assignment_action_usage.AssignmentActionUsage`
+            - Java class 'com.ansys.medini.metamodel.sysml.AssignmentActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> AssignmentActionUsage</api/ansys/sam/sysml2/meta_model/assignment_action_usage/AssignmentActionUsage>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated assignment action usage class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

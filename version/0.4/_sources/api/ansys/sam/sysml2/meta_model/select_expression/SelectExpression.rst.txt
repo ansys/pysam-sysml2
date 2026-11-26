@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`SelectExpression`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.select_expression.SelectExpression(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.operator_expression.OperatorExpression`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.SelectExpression'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.select_expression import SelectExpression
+
+
+
+
+

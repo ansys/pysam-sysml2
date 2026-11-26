@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`TransitionFeatureMembership`
+====================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.transition_feature_membership.TransitionFeatureMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.TransitionFeatureMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TransitionFeatureMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~kind`
+            - Get the kind property.
+          * - :py:attr:`~transition_feature`
+            - Get the transition feature property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.transition_feature_membership import TransitionFeatureMembership
+
+Property detail
+---------------
+
+.. py:property:: kind
+   :type: TransitionFeatureKind
+
+
+   
+   Get the kind property.
+
+
+
+
+
+   :Returns:
+
+       "TransitionFeatureKind"
+           Value of property kind.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: transition_feature
+   :type: Step
+
+
+   
+   Get the transition feature property.
+
+
+
+
+
+   :Returns:
+
+       "Step"
+           Value of property transition feature.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

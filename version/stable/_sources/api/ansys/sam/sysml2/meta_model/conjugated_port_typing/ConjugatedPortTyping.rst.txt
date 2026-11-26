@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`ConjugatedPortTyping`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.conjugated_port_typing.ConjugatedPortTyping(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_typing.FeatureTyping`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.ConjugatedPortTyping'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ConjugatedPortTyping
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~conjugated_port_definition`
+            - Get the conjugated port definition property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.conjugated_port_typing import ConjugatedPortTyping
+
+Property detail
+---------------
+
+.. py:property:: conjugated_port_definition
+   :type: ConjugatedPortDefinition
+
+
+   
+   Get the conjugated port definition property.
+
+
+
+
+
+   :Returns:
+
+       "ConjugatedPortDefinition"
+           Value of property conjugated port definition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

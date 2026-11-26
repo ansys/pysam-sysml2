@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`StateSubactionMembership`
+=================================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.state_subaction_membership.StateSubactionMembership(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.StateSubactionMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: StateSubactionMembership
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~kind`
+            - Get the kind property.
+          * - :py:attr:`~action`
+            - Get the action property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.state_subaction_membership import StateSubactionMembership
+
+Property detail
+---------------
+
+.. py:property:: kind
+   :type: None
+
+
+   
+   Get the kind property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property kind.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: action
+   :type: ActionUsage
+
+
+   
+   Get the action property.
+
+
+
+
+
+   :Returns:
+
+       "ActionUsage"
+           Value of property action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

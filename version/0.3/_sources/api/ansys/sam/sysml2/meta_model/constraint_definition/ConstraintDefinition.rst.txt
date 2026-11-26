@@ -1,0 +1,137 @@
+
+
+
+
+
+
+:class:`ConstraintDefinition`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.constraint_definition.ConstraintDefinition(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.predicate.Predicate`, :py:obj:`ansys.sam.sysml2.meta_model.occurrence_definition.OccurrenceDefinition`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.ConstraintDefinition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ConstraintDefinition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~constraint_expression`
+            - Get the constraint expression property.
+          * - :py:attr:`~set_constraint_expression`
+            - Get the set constraint expression property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.constraint_definition import ConstraintDefinition
+
+Property detail
+---------------
+
+.. py:property:: constraint_expression
+   :type: Expression
+
+
+   
+   Get the constraint expression property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property constraint expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: set_constraint_expression
+   :type: bool
+
+
+   
+   Get the set constraint expression property.
+
+
+
+
+
+   :Returns:
+
+       :ref:`bool <python:bltin-boolean-values>`
+           Value of property set constraint expression.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

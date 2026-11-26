@@ -1,0 +1,106 @@
+
+
+
+
+
+
+:class:`TerminateActionUsage`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.terminate_action_usage.TerminateActionUsage(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.action_usage.ActionUsage`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.TerminateActionUsage'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TerminateActionUsage
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~terminated_occurrence_argument`
+            - Get the terminated occurrence argument property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.terminate_action_usage import TerminateActionUsage
+
+Property detail
+---------------
+
+.. py:property:: terminated_occurrence_argument
+   :type: Expression
+
+
+   
+   Get the terminated occurrence argument property.
+
+
+
+
+
+   :Returns:
+
+       "Expression"
+           Value of property terminated occurrence argument.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`Invariant`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.invariant.Invariant(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.boolean_expression.BooleanExpression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Invariant'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.invariant import Invariant
+
+
+
+
+

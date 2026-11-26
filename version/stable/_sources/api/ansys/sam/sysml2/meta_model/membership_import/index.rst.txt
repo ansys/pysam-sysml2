@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``membership_import.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.membership_import
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: membership_import
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.membership_import.MembershipImport`
+            - Java class 'com.ansys.metamodel.sysml2.MembershipImport'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> MembershipImport</api/ansys/sam/sysml2/meta_model/membership_import/MembershipImport>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated membership import class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

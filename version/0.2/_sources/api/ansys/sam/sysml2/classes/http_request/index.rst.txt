@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``http_request.py`` module
+==============================
+
+.. py:module:: ansys.sam.sysml2.classes.http_request
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: http_request
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.http_request.HttpRequest`
+            - Stores data for a future HTTP request.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> HttpRequest</api/ansys/sam/sysml2/classes/http_request/HttpRequest>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Store all information and create new requests.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``association.py`` module
+=============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.association
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: association
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.association.Association`
+            - Java class 'com.ansys.medini.metamodel.sysml.Association'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> Association</api/ansys/sam/sysml2/meta_model/association/Association>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated association class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

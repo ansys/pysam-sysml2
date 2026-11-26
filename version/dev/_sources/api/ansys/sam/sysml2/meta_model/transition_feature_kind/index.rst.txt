@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``transition_feature_kind.py`` module
+=========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.transition_feature_kind
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: transition_feature_kind
+.. tab-set::
+
+
+
+
+
+    .. tab-item:: Enums
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.transition_feature_kind.TransitionFeatureKind`
+            - Java class 'com.ansys.metamodel.sysml2.TransitionFeatureKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_enum"></span> TransitionFeatureKind</api/ansys/sam/sysml2/meta_model/transition_feature_kind/TransitionFeatureKind>
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated transition feature kind class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

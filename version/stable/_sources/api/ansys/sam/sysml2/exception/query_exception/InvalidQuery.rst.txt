@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`InvalidQuery`
+=====================
+
+
+.. py:exception:: ansys.sam.sysml2.exception.query_exception.InvalidQuery
+
+   Bases: :py:obj:`QueryException`
+
+
+   
+   Exception when the JSON query is invalid.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.exception.query_exception import InvalidQuery
+
+
+
+
+

@@ -1,0 +1,912 @@
+
+
+
+
+
+
+:class:`Definition`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.definition.Definition(id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.classifier.Classifier`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.Definition'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Definition
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~variant`
+            - Get the variant property.
+          * - :py:attr:`~is_variation`
+            - Get the is variation property.
+          * - :py:attr:`~owned_metadata`
+            - Get the owned metadata property.
+          * - :py:attr:`~owned_flow`
+            - Get the owned flow property.
+          * - :py:attr:`~owned_occurrence`
+            - Get the owned occurrence property.
+          * - :py:attr:`~owned_attribute`
+            - Get the owned attribute property.
+          * - :py:attr:`~owned_use_case`
+            - Get the owned use case property.
+          * - :py:attr:`~owned_usage`
+            - Get the owned usage property.
+          * - :py:attr:`~owned_state`
+            - Get the owned state property.
+          * - :py:attr:`~owned_connection`
+            - Get the owned connection property.
+          * - :py:attr:`~owned_interface`
+            - Get the owned interface property.
+          * - :py:attr:`~owned_port`
+            - Get the owned port property.
+          * - :py:attr:`~owned_allocation`
+            - Get the owned allocation property.
+          * - :py:attr:`~owned_case`
+            - Get the owned case property.
+          * - :py:attr:`~owned_transition`
+            - Get the owned transition property.
+          * - :py:attr:`~owned_view`
+            - Get the owned view property.
+          * - :py:attr:`~owned_item`
+            - Get the owned item property.
+          * - :py:attr:`~owned_constraint`
+            - Get the owned constraint property.
+          * - :py:attr:`~owned_reference`
+            - Get the owned reference property.
+          * - :py:attr:`~owned_part`
+            - Get the owned part property.
+          * - :py:attr:`~owned_action`
+            - Get the owned action property.
+          * - :py:attr:`~variant_membership`
+            - Get the variant membership property.
+          * - :py:attr:`~owned_verification_case`
+            - Get the owned verification case property.
+          * - :py:attr:`~owned_calculation`
+            - Get the owned calculation property.
+          * - :py:attr:`~owned_analysis_case`
+            - Get the owned analysis case property.
+          * - :py:attr:`~owned_enumeration`
+            - Get the owned enumeration property.
+          * - :py:attr:`~owned_requirement`
+            - Get the owned requirement property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.definition import Definition
+
+Property detail
+---------------
+
+.. py:property:: variant
+   :type: List[Usage]
+
+
+   
+   Get the variant property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Usage"]
+           Value of property variant.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: is_variation
+   :type: None
+
+
+   
+   Get the is variation property.
+
+
+
+
+
+   :Returns:
+
+       :data:`python:None`
+           Value of property is variation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_metadata
+   :type: List[MetadataUsage]
+
+
+   
+   Get the owned metadata property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["MetadataUsage"]
+           Value of property owned metadata.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_flow
+   :type: List[FlowConnectionUsage]
+
+
+   
+   Get the owned flow property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["FlowConnectionUsage"]
+           Value of property owned flow.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_occurrence
+   :type: List[OccurrenceUsage]
+
+
+   
+   Get the owned occurrence property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["OccurrenceUsage"]
+           Value of property owned occurrence.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_attribute
+   :type: List[AttributeUsage]
+
+
+   
+   Get the owned attribute property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["AttributeUsage"]
+           Value of property owned attribute.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_use_case
+   :type: List[UseCaseUsage]
+
+
+   
+   Get the owned use case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["UseCaseUsage"]
+           Value of property owned use case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_usage
+   :type: List[Usage]
+
+
+   
+   Get the owned usage property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["Usage"]
+           Value of property owned usage.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_state
+   :type: List[StateUsage]
+
+
+   
+   Get the owned state property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["StateUsage"]
+           Value of property owned state.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_connection
+   :type: List[ConnectorAsUsage]
+
+
+   
+   Get the owned connection property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ConnectorAsUsage"]
+           Value of property owned connection.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_interface
+   :type: List[InterfaceUsage]
+
+
+   
+   Get the owned interface property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["InterfaceUsage"]
+           Value of property owned interface.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_port
+   :type: List[PortUsage]
+
+
+   
+   Get the owned port property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["PortUsage"]
+           Value of property owned port.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_allocation
+   :type: List[AllocationUsage]
+
+
+   
+   Get the owned allocation property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["AllocationUsage"]
+           Value of property owned allocation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_case
+   :type: List[CaseUsage]
+
+
+   
+   Get the owned case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["CaseUsage"]
+           Value of property owned case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_transition
+   :type: List[TransitionUsage]
+
+
+   
+   Get the owned transition property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["TransitionUsage"]
+           Value of property owned transition.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_view
+   :type: List[ViewUsage]
+
+
+   
+   Get the owned view property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ViewUsage"]
+           Value of property owned view.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_item
+   :type: List[ItemUsage]
+
+
+   
+   Get the owned item property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ItemUsage"]
+           Value of property owned item.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_constraint
+   :type: List[ConstraintUsage]
+
+
+   
+   Get the owned constraint property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ConstraintUsage"]
+           Value of property owned constraint.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_reference
+   :type: List[ReferenceUsage]
+
+
+   
+   Get the owned reference property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ReferenceUsage"]
+           Value of property owned reference.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_part
+   :type: List[PartUsage]
+
+
+   
+   Get the owned part property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["PartUsage"]
+           Value of property owned part.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_action
+   :type: List[ActionUsage]
+
+
+   
+   Get the owned action property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["ActionUsage"]
+           Value of property owned action.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: variant_membership
+   :type: List[VariantMembership]
+
+
+   
+   Get the variant membership property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["VariantMembership"]
+           Value of property variant membership.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_verification_case
+   :type: List[VerificationCaseUsage]
+
+
+   
+   Get the owned verification case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["VerificationCaseUsage"]
+           Value of property owned verification case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_calculation
+   :type: List[CalculationUsage]
+
+
+   
+   Get the owned calculation property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["CalculationUsage"]
+           Value of property owned calculation.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_analysis_case
+   :type: List[AnalysisCaseUsage]
+
+
+   
+   Get the owned analysis case property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["AnalysisCaseUsage"]
+           Value of property owned analysis case.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_enumeration
+   :type: List[EnumerationUsage]
+
+
+   
+   Get the owned enumeration property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["EnumerationUsage"]
+           Value of property owned enumeration.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owned_requirement
+   :type: List[RequirementUsage]
+
+
+   
+   Get the owned requirement property.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\["RequirementUsage"]
+           Value of property owned requirement.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

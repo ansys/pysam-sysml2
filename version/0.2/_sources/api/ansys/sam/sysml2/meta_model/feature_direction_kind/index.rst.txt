@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``feature_direction_kind.py`` module
+========================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.feature_direction_kind
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: feature_direction_kind
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.feature_direction_kind.FeatureDirectionKind`
+            - Java class 'com.ansys.medini.metamodel.sysml.FeatureDirectionKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> FeatureDirectionKind</api/ansys/sam/sysml2/meta_model/feature_direction_kind/FeatureDirectionKind>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated feature direction kind class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

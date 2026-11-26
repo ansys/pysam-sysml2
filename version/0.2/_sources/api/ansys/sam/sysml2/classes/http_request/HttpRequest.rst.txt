@@ -1,0 +1,138 @@
+
+
+
+
+
+
+:class:`HttpRequest`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.classes.http_request.HttpRequest
+
+   
+   Stores data for a future HTTP request.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: HttpRequest
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~explode`
+            - Get all information for building an HTTP request.
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~url`
+            - 
+          * - :py:attr:`~data`
+            - 
+          * - :py:attr:`~json`
+            - 
+          * - :py:attr:`~params`
+            - 
+          * - :py:attr:`~headers`
+            - 
+          * - :py:attr:`~cookies`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.classes.http_request import HttpRequest
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: url
+   :type:  str
+
+.. py:attribute:: data
+   :type:  dict
+
+.. py:attribute:: json
+   :type:  dict
+
+.. py:attribute:: params
+   :type:  dict
+
+.. py:attribute:: headers
+   :type:  dict
+
+.. py:attribute:: cookies
+   :type:  dict
+
+
+
+Method detail
+-------------
+
+.. py:method:: explode() -> dict
+
+   
+   Get all information for building an HTTP request.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

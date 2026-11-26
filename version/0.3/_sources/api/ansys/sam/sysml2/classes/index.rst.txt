@@ -1,0 +1,132 @@
+
+
+
+
+
+
+The ``classes`` package
+===========================
+
+.. py:module:: ansys.sam.sysml2.classes
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: classes
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.http_request`
+            - Store parameters for building an HTTP request.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.inherited_element`
+            - A proxy class for the element that is not created yet.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.mapped_element`
+            - Mapped element class.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.project`
+            - Project Interface for users.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.scripting_project`
+            - Scripting project interface for users.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.sysml_element`
+            - Python base class for SysML elements.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.sysml_inherited_element`
+            - A proxy class for the element that is not created yet.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.unresolved_field`
+            - Unresolved field class.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.classes.value_helper`
+            - Value helper class for Feature's value.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> http_request</api/ansys/sam/sysml2/classes/http_request/index>
+    <span class="nf nf-fa-file"></span> inherited_element</api/ansys/sam/sysml2/classes/inherited_element/index>
+    <span class="nf nf-fa-file"></span> mapped_element</api/ansys/sam/sysml2/classes/mapped_element/index>
+    <span class="nf nf-fa-file"></span> project</api/ansys/sam/sysml2/classes/project/index>
+    <span class="nf nf-fa-file"></span> scripting_project</api/ansys/sam/sysml2/classes/scripting_project/index>
+    <span class="nf nf-fa-file"></span> sysml_element</api/ansys/sam/sysml2/classes/sysml_element/index>
+    <span class="nf nf-fa-file"></span> sysml_inherited_element</api/ansys/sam/sysml2/classes/sysml_inherited_element/index>
+    <span class="nf nf-fa-file"></span> unresolved_field</api/ansys/sam/sysml2/classes/unresolved_field/index>
+    <span class="nf nf-fa-file"></span> value_helper</api/ansys/sam/sysml2/classes/value_helper/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Classes module for PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

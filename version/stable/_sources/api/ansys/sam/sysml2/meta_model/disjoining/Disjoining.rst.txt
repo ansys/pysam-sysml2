@@ -1,0 +1,168 @@
+
+
+
+
+
+
+:class:`Disjoining`
+===================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.disjoining.Disjoining(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.relationship.Relationship`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.Disjoining'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: Disjoining
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+   .. tab-item:: Properties
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~disjoining_type`
+            - Get the disjoining type property.
+          * - :py:attr:`~owning_type`
+            - Get the owning type property.
+          * - :py:attr:`~type_disjoined`
+            - Get the type disjoined property.
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.disjoining import Disjoining
+
+Property detail
+---------------
+
+.. py:property:: disjoining_type
+   :type: Type
+
+
+   
+   Get the disjoining type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property disjoining type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: owning_type
+   :type: Type
+
+
+   
+   Get the owning type property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property owning type.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:property:: type_disjoined
+   :type: Type
+
+
+   
+   Get the type disjoined property.
+
+
+
+
+
+   :Returns:
+
+       "Type"
+           Value of property type disjoined.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+

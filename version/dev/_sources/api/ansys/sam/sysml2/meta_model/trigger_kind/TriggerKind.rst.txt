@@ -1,0 +1,93 @@
+
+
+
+
+
+
+:class:`TriggerKind`
+====================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.trigger_kind.TriggerKind
+
+   Bases: :py:obj:`enum.Enum`
+
+
+   
+   Java class 'com.ansys.metamodel.sysml2.TriggerKind'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: TriggerKind
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+   .. tab-item:: Attributes
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~WHEN`
+            - 
+          * - :py:attr:`~AT`
+            - 
+          * - :py:attr:`~AFTER`
+            - 
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.trigger_kind import TriggerKind
+
+
+Attribute detail
+----------------
+
+.. py:attribute:: WHEN
+   :value: 'when'
+
+
+.. py:attribute:: AT
+   :value: 'at'
+
+
+.. py:attribute:: AFTER
+   :value: 'after'
+
+
+
+
+
+

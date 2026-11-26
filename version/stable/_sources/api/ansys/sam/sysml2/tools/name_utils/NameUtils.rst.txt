@@ -1,0 +1,156 @@
+
+
+
+
+
+
+:class:`NameUtils`
+==================
+
+
+.. py:class:: ansys.sam.sysml2.tools.name_utils.NameUtils
+
+   
+   Helps standardize element names.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
+
+.. py:currentmodule:: NameUtils
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+
+
+
+   .. tab-item:: Static methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~to_snake_case`
+            - Convert a camelCase or PascalCase string to snake_case.
+          * - :py:attr:`~to_key`
+            - Convert a camelCase or PascalCase string to _snake_case attribute name.
+          * - :py:attr:`~snake_to_camel`
+            - Convert a snake_case string to camelCase.
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.tools.name_utils import NameUtils
+
+
+
+Method detail
+-------------
+
+.. py:method:: to_snake_case(string: str) -> str
+   :staticmethod:
+
+
+   
+   Convert a camelCase or PascalCase string to snake_case.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: to_key(string: str) -> str
+   :staticmethod:
+
+
+   
+   Convert a camelCase or PascalCase string to _snake_case attribute name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: snake_to_camel(key: str) -> str
+   :staticmethod:
+
+
+   
+   Convert a snake_case string to camelCase.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+

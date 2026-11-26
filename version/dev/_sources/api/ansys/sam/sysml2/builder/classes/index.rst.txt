@@ -1,0 +1,97 @@
+
+
+
+
+
+
+The ``classes`` package
+===========================
+
+.. py:module:: ansys.sam.sysml2.builder.classes
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+.. py:currentmodule:: classes
+.. tab-set::
+
+
+    .. tab-item:: Submodules
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.classes.project_impl`
+            - Private implementation for a project.
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.classes.sysml_util`
+            - SysML utility class.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-fa-file"></span> project_impl</api/ansys/sam/sysml2/builder/classes/project_impl/index>
+    <span class="nf nf-fa-file"></span> sysml_util</api/ansys/sam/sysml2/builder/classes/sysml_util/index>
+
+
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+
+Classes module for builder module projects in PySAM SysML2.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+

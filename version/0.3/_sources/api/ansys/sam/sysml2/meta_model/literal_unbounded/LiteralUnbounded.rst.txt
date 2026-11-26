@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`LiteralUnbounded`
+=========================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.literal_unbounded.LiteralUnbounded(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.literal_expression.LiteralExpression`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.LiteralUnbounded'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.literal_unbounded import LiteralUnbounded
+
+
+
+
+

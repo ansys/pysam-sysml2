@@ -1,0 +1,49 @@
+
+
+
+
+
+
+:class:`EndFeatureMembership`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.meta_model.end_feature_membership.EndFeatureMembership(element_id: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.meta_model.feature_membership.FeatureMembership`
+
+
+   
+   Java class 'com.ansys.medini.metamodel.sysml.EndFeatureMembership'.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.meta_model.end_feature_membership import EndFeatureMembership
+
+
+
+
+

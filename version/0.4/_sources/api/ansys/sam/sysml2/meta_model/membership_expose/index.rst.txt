@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``membership_expose.py`` module
+===================================
+
+.. py:module:: ansys.sam.sysml2.meta_model.membership_expose
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: membership_expose
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.membership_expose.MembershipExpose`
+            - Java class 'com.ansys.metamodel.sysml2.MembershipExpose'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> MembershipExpose</api/ansys/sam/sysml2/meta_model/membership_expose/MembershipExpose>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated membership expose class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

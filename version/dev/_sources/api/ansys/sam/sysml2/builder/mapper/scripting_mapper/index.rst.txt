@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``scripting_mapper.py`` module
+==================================
+
+.. py:module:: ansys.sam.sysml2.builder.mapper.scripting_mapper
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: scripting_mapper
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.builder.mapper.scripting_mapper.ScriptingMapper`
+            - JSON mapper building generated elements composed with the dynamic mixin.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> ScriptingMapper</api/ansys/sam/sysml2/builder/mapper/scripting_mapper/ScriptingMapper>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Scripting mapper reusing the SysML mapping on scripting-notation classes.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

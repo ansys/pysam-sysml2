@@ -1,0 +1,80 @@
+
+
+
+
+
+
+The ``life_class.py`` module
+============================
+
+.. py:module:: ansys.sam.sysml2.meta_model.life_class
+
+
+Summary
+-------
+
+
+
+
+
+
+
+
+
+
+.. py:currentmodule:: life_class
+.. tab-set::
+
+
+
+
+    .. tab-item:: Classes
+
+        .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+
+          * - :py:obj:`~ansys.sam.sysml2.meta_model.life_class.LifeClass`
+            - Java class 'com.ansys.medini.metamodel.sysml.LifeClass'.
+
+
+
+
+
+
+
+
+
+
+
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :hidden:
+
+    <span class="nf nf-cod-symbol_class"></span> LifeClass</api/ansys/sam/sysml2/meta_model/life_class/LifeClass>
+
+
+
+
+
+
+
+
+
+Description
+-----------
+
+Generated life class class from metamodel.
+
+..
+    !! processed by numpydoc !!
+
+
+
+
+
+
+

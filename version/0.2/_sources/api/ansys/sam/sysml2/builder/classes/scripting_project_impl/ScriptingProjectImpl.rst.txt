@@ -1,0 +1,330 @@
+
+
+
+
+
+
+:class:`ScriptingProjectImpl`
+=============================
+
+
+.. py:class:: ansys.sam.sysml2.builder.classes.scripting_project_impl.ScriptingProjectImpl(id: str, name: str)
+
+   Bases: :py:obj:`ansys.sam.sysml2.classes.scripting_project.ScriptingProject`
+
+
+   
+   Provides a private class for scripting project building.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+.. py:currentmodule:: ScriptingProjectImpl
+
+Overview
+--------
+
+.. tab-set::
+
+
+
+   .. tab-item:: Methods
+
+      .. list-table::
+          :header-rows: 0
+          :widths: auto
+
+          * - :py:attr:`~add_element`
+            - Add an element to the project environment.
+          * - :py:attr:`~update_unresolved_fields`
+            - Update all unresolved fields.
+          * - :py:attr:`~get_root`
+            - Get a list of root packages.
+          * - :py:attr:`~get_root_package`
+            - Get the root package.
+          * - :py:attr:`~get_name`
+            - Get the project name.
+          * - :py:attr:`~find_element_by_id`
+            - Find an element by its ID.
+          * - :py:attr:`~find_elements_by_name`
+            - Find all elements by name.
+          * - :py:attr:`~start_transactional_mode`
+            - Start a transactional mode for model edition.
+          * - :py:attr:`~stop_transactional_mode`
+            - Stop the current transaction.
+
+
+
+
+
+
+
+
+Import detail
+-------------
+
+.. code-block:: python
+
+    from ansys.sam.sysml2.builder.classes.scripting_project_impl import ScriptingProjectImpl
+
+
+
+Method detail
+-------------
+
+.. py:method:: add_element(element: ansys.sam.sysml2.classes.sysml_element.SysMLElement)
+
+   
+   Add an element to the project environment.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: update_unresolved_fields(unresolved_fields: List[ansys.sam.sysml2.classes.unresolved_field.UnresolvedField])
+
+   
+   Update all unresolved fields.
+
+
+   :Parameters:
+
+       **unresolved_fields** : :obj:`List`\[:obj:`UnresolvedField`]
+           List of all new fields.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_root() -> List[ansys.sam.sysml2.classes.sysml_element.SysMLElement]
+
+   
+   Get a list of root packages.
+
+
+
+
+
+   :Returns:
+
+       :obj:`List`\[:obj:`SysMLElement`]
+           List of root packages.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_root_package() -> ansys.sam.sysml2.classes.sysml_element.SysMLElement
+
+   
+   Get the root package.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: get_name() -> str
+
+   
+   Get the project name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: find_element_by_id(element_id: str) -> ansys.sam.sysml2.classes.sysml_element.SysMLElement
+
+   
+   Find an element by its ID.
+
+
+   :Parameters:
+
+       **element_id** : :class:`python:str`
+           Element ID.
+
+
+
+   :Returns:
+
+       :obj:`SysMLElement`
+           SysMLElement retrieved.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: find_elements_by_name(elements_name: str) -> List[ansys.sam.sysml2.classes.sysml_element.SysMLElement]
+
+   
+   Find all elements by name.
+
+
+   :Parameters:
+
+       **elements_name** : :class:`python:str`
+           Name of elements.
+
+
+
+   :Returns:
+
+       :obj:`List`\[:obj:`SysMLElement`]
+           List of elements retrieved.
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: start_transactional_mode()
+
+   
+   Start a transactional mode for model edition.
+
+   This method will stop direct update for the model,
+   and register all changes until you commit or stop the transactional mode.
+
+   Warning, all calculated modifications will not be applied,
+   until the commit of all changes.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+.. py:method:: stop_transactional_mode()
+
+   
+   Stop the current transaction.
+
+   This method will close the current transaction and commit all changes to the server.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   ..
+       !! processed by numpydoc !!
+
+
+
+
