@@ -39,6 +39,9 @@ class HttpRequest:
     def to_dict(self) -> dict:
         """Return keyword arguments for ``requests``."""
         result = {k: v for k, v in self.__dict__.items() if not k.startswith("_")}
-        if "json_body" in result:
-            result["json"] = result.pop("json_body")
+        json_body = result.pop("json_body", None)
+        if json_body:
+            result["json"] = json_body
+        if not result.get("data"):
+            result.pop("data", None)
         return result

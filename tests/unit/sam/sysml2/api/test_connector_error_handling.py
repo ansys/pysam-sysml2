@@ -23,6 +23,8 @@
 """Tests for HTTP status code error handling in the connector."""
 
 import pytest
+from requests.exceptions import ConnectionError as RequestsConnectionError
+from urllib3.exceptions import ProtocolError
 
 from ansys.sam.sysml2.api.ansys_sysml2_api_connector import AnsysSysML2APIConnector
 from ansys.sam.sysml2.exception.connector_exception import (
@@ -205,3 +207,66 @@ class TestConnectorErrorHandling:
 
         with pytest.raises(ConnectorConnectionException):
             connector.get_project_by_id(PROJECT_ID_1)
+
+    def test_get_project_sends_no_body(self, connector, mocker):
+        get = mocker.patch.object(
+            connector._session,
+            "get",
+            return_value=_MockResponse(200, content=b'{"@id": "x"}'),
+        )
+
+        connector.get_project_by_id(PROJECT_ID_1)
+
+        assert "json" not in get.call_args.kwargs
+        assert "data" not in get.call_args.kwargs
+
+    def test_truncated_response_retries_once(self, connector, mocker):
+        response = _MockResponse(200, content=b'{"@id": "x"}')
+        error = RequestsConnectionError("Response ended prematurely")
+        error.__cause__ = ProtocolError("Response ended prematurely")
+        get = mocker.patch.object(connector._session, "get", side_effect=[error, response])
+        close = mocker.patch.object(connector._session, "close")
+
+        result = connector.get_project_by_id(PROJECT_ID_1)
+
+        assert result["@id"] == "x"
+        assert get.call_count == 2
+        close.assert_called_once()
+
+    def test_truncated_response_raises_after_retry(self, connector, mocker):
+        error = RequestsConnectionError("Response ended prematurely")
+        error.__cause__ = ProtocolError("Response ended prematurely")
+        get = mocker.patch.object(connector._session, "get", side_effect=[error, error])
+        close = mocker.patch.object(connector._session, "close")
+
+        with pytest.raises(ConnectorConnectionException):
+            connector.get_project_by_id(PROJECT_ID_1)
+
+        assert get.call_count == 2
+        close.assert_called_once()
+
+    def test_truncated_post_is_not_retried(self, connector, mocker):
+        error = RequestsConnectionError("Response ended prematurely")
+        error.__cause__ = ProtocolError("Response ended prematurely")
+        post = mocker.patch.object(connector._session, "post", side_effect=[error, error])
+        close = mocker.patch.object(connector._session, "close")
+
+        with pytest.raises(ConnectorConnectionException):
+            connector.create_commit(PROJECT_ID_1, "{}")
+
+        assert post.call_count == 1
+        close.assert_not_called()
+
+    def test_connection_refused_is_not_retried(self, connector, mocker):
+        get = mocker.patch.object(
+            connector._session,
+            "get",
+            side_effect=RequestsConnectionError("Connection refused"),
+        )
+        close = mocker.patch.object(connector._session, "close")
+
+        with pytest.raises(ConnectorConnectionException):
+            connector.get_project_by_id(PROJECT_ID_1)
+
+        assert get.call_count == 1
+        close.assert_not_called()

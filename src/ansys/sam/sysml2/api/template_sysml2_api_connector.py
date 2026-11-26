@@ -27,6 +27,7 @@ import json
 from typing import Callable
 
 import requests
+import urllib3
 
 from ansys.sam.sysml2.api.sysml2_api_connector import SysML2APIConnector
 from ansys.sam.sysml2.classes.http_request import HttpRequest
@@ -331,10 +332,15 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
             If the server returns an invalid element.
         """
         response = None
-        try:
-            response = call(**http_request.to_dict(), verify=self._use_ssl)
-        except Exception as e:
-            raise ConnectorConnectionException(e)
+        for attempt in range(2):
+            try:
+                response = call(**http_request.to_dict(), verify=self._use_ssl)
+                break
+            except Exception as error:
+                if attempt == 0 and call == self._session.get and self._response_interrupted(error):
+                    self._session.close()
+                    continue
+                raise ConnectorConnectionException(error)
 
         if response.status_code == 200:
             try:
@@ -343,6 +349,17 @@ class TemplateSysML2APIConnector(SysML2APIConnector):
                 raise InvalidElementJsonFoundException(f"Invalid JSON received : {e}")
         else:
             self._handle_http_error(response)
+
+    def _response_interrupted(self, error: BaseException) -> bool:
+        """Return whether the HTTP exchange stopped before the body was fully read."""
+        current: BaseException | None = error
+        while current is not None:
+            if isinstance(current, urllib3.exceptions.ProtocolError):
+                return True
+            if "Response ended prematurely" in str(current):
+                return True
+            current = current.__cause__
+        return False
 
     def _handle_http_error(self, response: requests.Response) -> None:
         """
