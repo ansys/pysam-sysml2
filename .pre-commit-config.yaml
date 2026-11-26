@@ -10,7 +10,7 @@ repos:
       - id: gitleaks
 
   - repo: https://github.com/ansys/pre-commit-hooks
-    rev: 55c5b6a5439abd847613579c6924da750e8b78b2  # frozen: v0.8.0
+    rev: dbcd0a4ad0060f78ac3c7d53d342f510edc48eab  # frozen: v0.8.1
     hooks:
       - id: add-license-headers
         args:
@@ -36,7 +36,7 @@ repos:
           )
 
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: 25bcf95026b96e2dd3c0aec3090c3d6ef6ca2e6c  # frozen: v0.17.3
+    rev: ef6cf06c079dd6b299dfc720b0f14400c9d168e1  # frozen: v0.17.5
     hooks:
       - id: ruff-check
       - id: ruff-format

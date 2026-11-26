@@ -37,6 +37,23 @@ class TestHttpRequest:
         assert "json_body" not in exploded
         assert exploded["json"] == {"key": "value"}
 
+    def test_empty_body_is_omitted(self):
+        req = HttpRequest(url="http://test")
+
+        exploded = req.to_dict()
+
+        assert "json" not in exploded
+        assert "data" not in exploded
+
+    def test_data_is_kept_when_set(self):
+        req = HttpRequest(url="http://test")
+        req.data = {"key": "value"}
+
+        exploded = req.to_dict()
+
+        assert exploded["data"] == {"key": "value"}
+        assert "json" not in exploded
+
     def test_headers_default_empty(self):
         req = HttpRequest(url="http://test")
 
